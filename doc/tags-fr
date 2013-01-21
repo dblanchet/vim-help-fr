@@ -1,3 +1,4 @@
+!_TAG_FILE_ENCODING	utf-8	//
 !	change.frx	/*!*
 !!	change.frx	/*!!*
 #	pattern.frx	/*#*
@@ -2658,6 +2659,7 @@ ATTENTION	usr_11.frx	/*ATTENTION*
 Abbreviations	map.frx	/*Abbreviations*
 Aleph	options.frx	/*Aleph*
 Amiga	os_amiga.frx	/*Amiga*
+Arabic	arabic.frx	/*Arabic*
 Atari	os_mint.frx	/*Atari*
 Athena	gui_x11.frx	/*Athena*
 B	motion.frx	/*B*
@@ -3427,6 +3429,7 @@ E77	message.frx	/*E77*
 E78	motion.frx	/*E78*
 E79	message.frx	/*E79*
 E80	message.frx	/*E80*
+E800	arabic.frx	/*E800*
 E81	map.frx	/*E81*
 E82	message.frx	/*E82*
 E83	message.frx	/*E83*
@@ -3647,6 +3650,7 @@ W13	message.frx	/*W13*
 W14	message.frx	/*W14*
 W15	repeat.frx	/*W15*
 W16	message.frx	/*W16*
+W17	arabic.frx	/*W17*
 WORD	motion.frx	/*WORD*
 Win32	os_win32.frx	/*Win32*
 WinEnter	autocmd.frx	/*WinEnter*
@@ -3819,6 +3823,8 @@ ap	motion.frx	/*ap*
 apache-syntax	syntax.frx	/*apache-syntax*
 apache.vim	syntax.frx	/*apache.vim*
 append()	eval.frx	/*append()*
+arabicfonts	arabic.frx	/*arabicfonts*
+arabickeymap	arabic.frx	/*arabickeymap*
 argc()	eval.frx	/*argc()*
 argidx()	eval.frx	/*argidx()*
 arglist	editing.frx	/*arglist*
@@ -3854,7 +3860,6 @@ autocmd-patterns	autocmd.frx	/*autocmd-patterns*
 autocmd-remove	autocmd.frx	/*autocmd-remove*
 autocmd-searchpat	autocmd.frx	/*autocmd-searchpat*
 autocmd-use	autocmd.frx	/*autocmd-use*
-autocmd.txt	autocmd.frx	/*autocmd.txt*
 autocmds-kept	version5.frx	/*autocmds-kept*
 autocommand	autocmd.frx	/*autocommand*
 autocommand-events	autocmd.frx	/*autocommand-events*
@@ -4004,7 +4009,6 @@ catch-interrupt	eval.frx	/*catch-interrupt*
 catch-order	eval.frx	/*catch-order*
 catch-text	eval.frx	/*catch-text*
 cc	change.frx	/*cc*
-change.txt	change.frx	/*change.txt*
 changed-5.1	version5.frx	/*changed-5.1*
 changed-5.2	version5.frx	/*changed-5.2*
 changed-5.3	version5.frx	/*changed-5.3*
@@ -4045,7 +4049,6 @@ cmdline-ranges	cmdline.frx	/*cmdline-ranges*
 cmdline-special	cmdline.frx	/*cmdline-special*
 cmdline-too-long	cmdline.frx	/*cmdline-too-long*
 cmdline-window	cmdline.frx	/*cmdline-window*
-cmdline.txt	cmdline.frx	/*cmdline.txt*
 cmdwin	cmdline.frx	/*cmdwin*
 cmdwin-char	cmdline.frx	/*cmdwin-char*
 cobol-syntax	syntax.frx	/*cobol-syntax*
@@ -4209,7 +4212,6 @@ debugger-compilation	debugger.frx	/*debugger-compilation*
 debugger-features	debugger.frx	/*debugger-features*
 debugger-integration	debugger.frx	/*debugger-integration*
 debugger-support	debugger.frx	/*debugger-support*
-debugger.txt	debugger.frx	/*debugger.txt*
 dec-mouse	options.frx	/*dec-mouse*
 definition-search	tagsrch.frx	/*definition-search*
 definitions	intro.frx	/*definitions*
@@ -4228,7 +4230,6 @@ design-maintain	develop.frx	/*design-maintain*
 design-multi-platform	develop.frx	/*design-multi-platform*
 design-not	develop.frx	/*design-not*
 design-speed-size	develop.frx	/*design-speed-size*
-develop.txt	develop.frx	/*develop.txt*
 development	develop.frx	/*development*
 dh	change.frx	/*dh*
 diB	motion.frx	/*diB*
@@ -4242,10 +4243,8 @@ diff-diffexpr	diff.frx	/*diff-diffexpr*
 diff-mode	diff.frx	/*diff-mode*
 diff-options	diff.frx	/*diff-options*
 diff-patchexpr	diff.frx	/*diff-patchexpr*
-diff.txt	diff.frx	/*diff.txt*
 digraph-arg	change.frx	/*digraph-arg*
 digraph-table	digraph.frx	/*digraph-table*
-digraph.txt	digraph.frx	/*digraph.txt*
 digraphs	digraph.frx	/*digraphs*
 digraphs-changed	version6.frx	/*digraphs-changed*
 digraphs-default	digraph.frx	/*digraphs-default*
@@ -4290,7 +4289,6 @@ edit-dialogs	editing.frx	/*edit-dialogs*
 edit-files	editing.frx	/*edit-files*
 edit-intro	editing.frx	/*edit-intro*
 edit-no-break	usr_25.frx	/*edit-no-break*
-editing.txt	editing.frx	/*editing.txt*
 efm-entries	quickfix.frx	/*efm-entries*
 efm-ignore	quickfix.frx	/*efm-ignore*
 eiffel-syntax	syntax.frx	/*eiffel-syntax*
@@ -4327,7 +4325,6 @@ escape-bar	version4.frx	/*escape-bar*
 eval	eval.frx	/*eval*
 eval-examples	eval.frx	/*eval-examples*
 eval-sandbox	eval.frx	/*eval-sandbox*
-eval.txt	eval.frx	/*eval.txt*
 eventhandler()	eval.frx	/*eventhandler()*
 eview	starting.frx	/*eview*
 evim	starting.frx	/*evim*
@@ -4431,7 +4428,6 @@ ez4	mbyte.frx	/*ez4*
 f	motion.frx	/*f*
 faq	intro.frx	/*faq*
 farsi	farsi.frx	/*farsi*
-farsi.txt	farsi.frx	/*farsi.txt*
 feature-list	eval.frx	/*feature-list*
 file-browser	pi_expl.frx	/*file-browser*
 file-browser-5.2	version5.frx	/*file-browser-5.2*
@@ -4453,7 +4449,6 @@ filetype-ignore	filetype.frx	/*filetype-ignore*
 filetype-overrule	filetype.frx	/*filetype-overrule*
 filetype-plugin	usr_43.frx	/*filetype-plugin*
 filetype-plugins	filetype.frx	/*filetype-plugins*
-filetype.txt	filetype.frx	/*filetype.txt*
 filetypedetect-changed	version6.frx	/*filetypedetect-changed*
 filetypes	filetype.frx	/*filetypes*
 filewritable()	eval.frx	/*filewritable()*
@@ -4491,7 +4486,6 @@ fold-marker	fold.frx	/*fold-marker*
 fold-methods	fold.frx	/*fold-methods*
 fold-options	fold.frx	/*fold-options*
 fold-syntax	fold.frx	/*fold-syntax*
-fold.txt	fold.frx	/*fold.txt*
 foldclosed()	eval.frx	/*foldclosed()*
 foldclosedend()	eval.frx	/*foldclosedend()*
 folddashes-variable	eval.frx	/*folddashes-variable*
@@ -4684,10 +4678,6 @@ gui-x11-neXtaw	gui_x11.frx	/*gui-x11-neXtaw*
 gui-x11-printing	gui_x11.frx	/*gui-x11-printing*
 gui-x11-start	gui_x11.frx	/*gui-x11-start*
 gui-x11-various	gui_x11.frx	/*gui-x11-various*
-gui.txt	gui.frx	/*gui.txt*
-gui_w16.txt	gui_w16.frx	/*gui_w16.txt*
-gui_w32.txt	gui_w32.frx	/*gui_w32.txt*
-gui_x11.txt	gui_x11.frx	/*gui_x11.txt*
 guifontwide_gtk2	options.frx	/*guifontwide_gtk2*
 guioptions_a	options.frx	/*guioptions_a*
 guu	change.frx	/*guu*
@@ -4705,13 +4695,12 @@ g~g~	change.frx	/*g~g~*
 g~~	change.frx	/*g~~*
 h	motion.frx	/*h*
 hangul	hangulin.frx	/*hangul*
-hangulin.txt	hangulin.frx	/*hangulin.txt*
 has()	eval.frx	/*has()*
 hasmapto()	eval.frx	/*hasmapto()*
+hebrew	hebrew.frx	/*hebrew*
 help	various.frx	/*help*
 help-context	help.frx	/*help-context*
 help-xterm-window	various.frx	/*help-xterm-window*
-help.txt	help.frx	/*help.txt*
 hex-editing	tips.frx	/*hex-editing*
 hidden-buffer	windows.frx	/*hidden-buffer*
 hidden-changed	version5.frx	/*hidden-changed*
@@ -4786,7 +4775,6 @@ how-do-i	howto.frx	/*how-do-i*
 how-to	howto.frx	/*how-to*
 howdoi	howto.frx	/*howdoi*
 howto	howto.frx	/*howto*
-howto.txt	howto.frx	/*howto.txt*
 hpterm	term.frx	/*hpterm*
 hpterm-color	syntax.frx	/*hpterm-color*
 html-syntax	syntax.frx	/*html-syntax*
@@ -4902,13 +4890,6 @@ iconise	starting.frx	/*iconise*
 iconize	starting.frx	/*iconize*
 iconv()	eval.frx	/*iconv()*
 ident-search	tips.frx	/*ident-search*
-if_cscop.txt	if_cscop.frx	/*if_cscop.txt*
-if_ole.txt	if_ole.frx	/*if_ole.txt*
-if_perl.txt	if_perl.frx	/*if_perl.txt*
-if_pyth.txt	if_pyth.frx	/*if_pyth.txt*
-if_ruby.txt	if_ruby.frx	/*if_ruby.txt*
-if_sniff.txt	if_sniff.frx	/*if_sniff.txt*
-if_tcl.txt	if_tcl.frx	/*if_tcl.txt*
 ignore-errors	eval.frx	/*ignore-errors*
 improved-autocmds-5.4	version5.frx	/*improved-autocmds-5.4*
 improved-quickfix	version5.frx	/*improved-quickfix*
@@ -4924,10 +4905,8 @@ incomp-small-6	version6.frx	/*incomp-small-6*
 incompatible-6	version6.frx	/*incompatible-6*
 indent()	eval.frx	/*indent()*
 indent-expression	indent.frx	/*indent-expression*
-indent.txt	indent.frx	/*indent.txt*
 indentkeys-format	indent.frx	/*indentkeys-format*
 index	index.frx	/*index*
-index.txt	index.frx	/*index.txt*
 info-message	starting.frx	/*info-message*
 inform-syntax	syntax.frx	/*inform-syntax*
 inform.vim	syntax.frx	/*inform.vim*
@@ -4947,7 +4926,6 @@ ins-special-special	insert.frx	/*ins-special-special*
 ins-textwidth	insert.frx	/*ins-textwidth*
 insert	insert.frx	/*insert*
 insert-index	index.frx	/*insert-index*
-insert.txt	insert.frx	/*insert.txt*
 insert_expand	insert.frx	/*insert_expand*
 inserting	insert.frx	/*inserting*
 inserting-ex	insert.frx	/*inserting-ex*
@@ -4961,7 +4939,6 @@ interfaces-5.2	version5.frx	/*interfaces-5.2*
 internal-variables	eval.frx	/*internal-variables*
 internet	intro.frx	/*internet*
 intro	intro.frx	/*intro*
-intro.txt	intro.frx	/*intro.txt*
 ip	motion.frx	/*ip*
 is	motion.frx	/*is*
 isdirectory()	eval.frx	/*isdirectory()*
@@ -5077,7 +5054,6 @@ map-overview	map.frx	/*map-overview*
 map-self-destroy	tips.frx	/*map-self-destroy*
 map-typing	map.frx	/*map-typing*
 map-which-keys	map.frx	/*map-which-keys*
-map.txt	map.frx	/*map.txt*
 map_CTRL_C	map.frx	/*map_CTRL_C*
 map_backslash	map.frx	/*map_backslash*
 map_bar	map.frx	/*map_bar*
@@ -5113,7 +5089,6 @@ mbyte-locale	mbyte.frx	/*mbyte-locale*
 mbyte-options	mbyte.frx	/*mbyte-options*
 mbyte-terminal	mbyte.frx	/*mbyte-terminal*
 mbyte-utf8	mbyte.frx	/*mbyte-utf8*
-mbyte.txt	mbyte.frx	/*mbyte.txt*
 menu-changes-5.4	version5.frx	/*menu-changes-5.4*
 menu-examples	gui.frx	/*menu-examples*
 menu-priority	gui.frx	/*menu-priority*
@@ -5121,13 +5096,11 @@ menu-separator	gui.frx	/*menu-separator*
 menu.vim	gui.frx	/*menu.vim*
 menus	gui.frx	/*menus*
 message-history	message.frx	/*message-history*
-message.txt	message.frx	/*message.txt*
 messages	message.frx	/*messages*
 meta	intro.frx	/*meta*
 minimal-features	os_msdos.frx	/*minimal-features*
 missing-commands	vi_diff.frx	/*missing-commands*
 missing-options	vi_diff.frx	/*missing-options*
-mlang.txt	mlang.frx	/*mlang.txt*
 mode()	eval.frx	/*mode()*
 mode-Ex	intro.frx	/*mode-Ex*
 mode-cmdline	cmdline.frx	/*mode-cmdline*
@@ -5143,7 +5116,6 @@ moo-syntax	syntax.frx	/*moo-syntax*
 moo.vim	syntax.frx	/*moo.vim*
 more-prompt	message.frx	/*more-prompt*
 mot	motion.frx	/*mot*
-motion.txt	motion.frx	/*motion.txt*
 mouse-mode-table	term.frx	/*mouse-mode-table*
 mouse-overview	term.frx	/*mouse-overview*
 mouse-swap-buttons	term.frx	/*mouse-swap-buttons*
@@ -5203,7 +5175,6 @@ netbeans-protocol	netbeans.frx	/*netbeans-protocol*
 netbeans-run	netbeans.frx	/*netbeans-run*
 netbeans-setup	netbeans.frx	/*netbeans-setup*
 netbeans-support	netbeans.frx	/*netbeans-support*
-netbeans.txt	netbeans.frx	/*netbeans.txt*
 netrw	pi_netrw.frx	/*netrw*
 netrw-activate	pi_netrw.frx	/*netrw-activate*
 netrw-debug	pi_netrw.frx	/*netrw-debug*
@@ -5307,23 +5278,9 @@ option-list	quickref.frx	/*option-list*
 option-summary	options.frx	/*option-summary*
 options	options.frx	/*options*
 options-changed	version5.frx	/*options-changed*
-options.txt	options.frx	/*options.txt*
 os2	os_os2.frx	/*os2*
 os2ansi	os_os2.frx	/*os2ansi*
 os390	os_390.frx	/*os390*
-os_390.txt	os_390.frx	/*os_390.txt*
-os_amiga.txt	os_amiga.frx	/*os_amiga.txt*
-os_beos.txt	os_beos.frx	/*os_beos.txt*
-os_dos.txt	os_dos.frx	/*os_dos.txt*
-os_mac.txt	os_mac.frx	/*os_mac.txt*
-os_mint.txt	os_mint.frx	/*os_mint.txt*
-os_msdos.txt	os_msdos.frx	/*os_msdos.txt*
-os_os2.txt	os_os2.frx	/*os_os2.txt*
-os_qnx.txt	os_qnx.frx	/*os_qnx.txt*
-os_risc.txt	os_risc.frx	/*os_risc.txt*
-os_unix.txt	os_unix.frx	/*os_unix.txt*
-os_vms.txt	os_vms.frx	/*os_vms.txt*
-os_win32.txt	os_win32.frx	/*os_win32.txt*
 other-features	vi_diff.frx	/*other-features*
 p	change.frx	/*p*
 page-down	intro.frx	/*page-down*
@@ -5342,7 +5299,6 @@ pattern-multi-byte	pattern.frx	/*pattern-multi-byte*
 pattern-multi-items	pattern.frx	/*pattern-multi-items*
 pattern-overview	pattern.frx	/*pattern-overview*
 pattern-searches	pattern.frx	/*pattern-searches*
-pattern.txt	pattern.frx	/*pattern.txt*
 perl	if_perl.frx	/*perl*
 perl-Append	if_perl.frx	/*perl-Append*
 perl-Buffer	if_perl.frx	/*perl-Buffer*
@@ -5375,10 +5331,6 @@ php3-syntax	syntax.frx	/*php3-syntax*
 php3.vim	syntax.frx	/*php3.vim*
 phtml-syntax	syntax.frx	/*phtml-syntax*
 phtml.vim	syntax.frx	/*phtml.vim*
-pi_expl.txt	pi_expl.frx	/*pi_expl.txt*
-pi_gzip.txt	pi_gzip.frx	/*pi_gzip.txt*
-pi_netrw.txt	pi_netrw.frx	/*pi_netrw.txt*
-pi_spec.txt	pi_spec.frx	/*pi_spec.txt*
 plugin	usr_05.frx	/*plugin*
 plugin-details	filetype.frx	/*plugin-details*
 plugin-special	usr_41.frx	/*plugin-special*
@@ -5444,9 +5396,7 @@ quickfix-error-lists	quickfix.frx	/*quickfix-error-lists*
 quickfix-manx	quickfix.frx	/*quickfix-manx*
 quickfix-valid	quickfix.frx	/*quickfix-valid*
 quickfix-window	quickfix.frx	/*quickfix-window*
-quickfix.txt	quickfix.frx	/*quickfix.txt*
 quickref	quickref.frx	/*quickref*
-quickref.txt	quickref.frx	/*quickref.txt*
 quote	change.frx	/*quote*
 quote#	change.frx	/*quote#*
 quote%	change.frx	/*quote%*
@@ -5479,7 +5429,6 @@ quotecommandquote	intro.frx	/*quotecommandquote*
 quoteplus	gui_x11.frx	/*quoteplus*
 quotequote	change.frx	/*quotequote*
 quotes	quotes.frx	/*quotes*
-quotes.txt	quotes.frx	/*quotes.txt*
 quotestar	gui.frx	/*quotestar*
 quote~	change.frx	/*quote~*
 r	change.frx	/*r*
@@ -5491,7 +5440,6 @@ read-stdin	version5.frx	/*read-stdin*
 readline-syntax	syntax.frx	/*readline-syntax*
 readline.vim	syntax.frx	/*readline.vim*
 recording	repeat.frx	/*recording*
-recover.txt	recover.frx	/*recover.txt*
 recovery	recover.frx	/*recovery*
 recursive_mapping	map.frx	/*recursive_mapping*
 redo	undo.frx	/*redo*
@@ -5503,7 +5451,6 @@ regexp-changes-5.4	version5.frx	/*regexp-changes-5.4*
 register-variable	eval.frx	/*register-variable*
 registers	change.frx	/*registers*
 regular-expression	pattern.frx	/*regular-expression*
-remote.txt	remote.frx	/*remote.txt*
 remote_expr()	eval.frx	/*remote_expr()*
 remote_foreground()	eval.frx	/*remote_foreground()*
 remote_peek()	eval.frx	/*remote_peek()*
@@ -5513,7 +5460,6 @@ remove-filetype	filetype.frx	/*remove-filetype*
 remove-option-flags	options.frx	/*remove-option-flags*
 rename()	eval.frx	/*rename()*
 rename-files	tips.frx	/*rename-files*
-repeat.txt	repeat.frx	/*repeat.txt*
 repeating	repeat.frx	/*repeating*
 replacing	change.frx	/*replacing*
 resolve()	eval.frx	/*resolve()*
@@ -5528,7 +5474,6 @@ rgview	starting.frx	/*rgview*
 rgvim	starting.frx	/*rgvim*
 right-justify	change.frx	/*right-justify*
 rileft	rileft.frx	/*rileft*
-rileft.txt	rileft.frx	/*rileft.txt*
 riscos	os_risc.frx	/*riscos*
 riscos-commandline	os_risc.frx	/*riscos-commandline*
 riscos-filetypes	os_risc.frx	/*riscos-filetypes*
@@ -5596,7 +5541,6 @@ scroll-mouse-wheel	scroll.frx	/*scroll-mouse-wheel*
 scroll-region	term.frx	/*scroll-region*
 scroll-smooth	tips.frx	/*scroll-smooth*
 scroll-up	scroll.frx	/*scroll-up*
-scroll.txt	scroll.frx	/*scroll.txt*
 scrollbind-quickadj	scroll.frx	/*scrollbind-quickadj*
 scrollbind-relative	scroll.frx	/*scrollbind-relative*
 scrolling	scroll.frx	/*scrolling*
@@ -5636,7 +5580,6 @@ showing-menus	gui.frx	/*showing-menus*
 sign-commands	sign.frx	/*sign-commands*
 sign-intro	sign.frx	/*sign-intro*
 sign-support	sign.frx	/*sign-support*
-sign.txt	sign.frx	/*sign.txt*
 simple-change	change.frx	/*simple-change*
 single-repeat	repeat.frx	/*single-repeat*
 skeleton	autocmd.frx	/*skeleton*
@@ -5669,7 +5612,6 @@ star	pattern.frx	/*star*
 start-of-file	pattern.frx	/*start-of-file*
 starting	starting.frx	/*starting*
 starting-amiga	starting.frx	/*starting-amiga*
-starting.txt	starting.frx	/*starting.txt*
 startup	starting.frx	/*startup*
 startup-options	starting.frx	/*startup-options*
 startup-terminal	term.frx	/*startup-terminal*
@@ -5716,7 +5658,6 @@ syntax	syntax.frx	/*syntax*
 syntax-highlighting	syntax.frx	/*syntax-highlighting*
 syntax-loading	syntax.frx	/*syntax-loading*
 syntax-printing	usr_06.frx	/*syntax-printing*
-syntax.txt	syntax.frx	/*syntax.txt*
 syntax_cmd	syntax.frx	/*syntax_cmd*
 sys-file-list	help.frx	/*sys-file-list*
 system()	eval.frx	/*system()*
@@ -5893,7 +5834,6 @@ tags-and-searches	tagsrch.frx	/*tags-and-searches*
 tags-file-changed	version5.frx	/*tags-file-changed*
 tags-file-format	tagsrch.frx	/*tags-file-format*
 tags-option	tagsrch.frx	/*tags-option*
-tagsrch.txt	tagsrch.frx	/*tagsrch.txt*
 tagstack	tagsrch.frx	/*tagstack*
 tcl	if_tcl.frx	/*tcl*
 tcl-beep	if_tcl.frx	/*tcl-beep*
@@ -5944,7 +5884,6 @@ template	autocmd.frx	/*template*
 tempname()	eval.frx	/*tempname()*
 term-dependent-settings	term.frx	/*term-dependent-settings*
 term-list	syntax.frx	/*term-list*
-term.txt	term.frx	/*term.txt*
 termcap	term.frx	/*termcap*
 termcap-changed	version4.frx	/*termcap-changed*
 termcap-colors	term.frx	/*termcap-colors*
@@ -5970,9 +5909,7 @@ throwpoint-variable	eval.frx	/*throwpoint-variable*
 timestamp	editing.frx	/*timestamp*
 timestamps	editing.frx	/*timestamps*
 tips	tips.frx	/*tips*
-tips.txt	tips.frx	/*tips.txt*
 todo	todo.frx	/*todo*
-todo.txt	todo.frx	/*todo.txt*
 toggle	options.frx	/*toggle*
 toggle-revins	version4.frx	/*toggle-revins*
 tolower()	eval.frx	/*tolower()*
@@ -5991,13 +5928,11 @@ typecorr-settings	usr_41.frx	/*typecorr-settings*
 typecorr.txt	usr_41.frx	/*typecorr.txt*
 u	undo.frx	/*u*
 uganda	uganda.frx	/*uganda*
-uganda.txt	uganda.frx	/*uganda.txt*
 undo	undo.frx	/*undo*
 undo-commands	undo.frx	/*undo-commands*
 undo-redo	undo.frx	/*undo-redo*
 undo-remarks	undo.frx	/*undo-remarks*
 undo-two-ways	undo.frx	/*undo-two-ways*
-undo.txt	undo.frx	/*undo.txt*
 unix	os_unix.frx	/*unix*
 unlisted-buffer	windows.frx	/*unlisted-buffer*
 up-down-motions	motion.frx	/*up-down-motions*
@@ -6015,38 +5950,6 @@ using-menus	gui.frx	/*using-menus*
 using-scripts	repeat.frx	/*using-scripts*
 using-xxd	tips.frx	/*using-xxd*
 using_CTRL-V	map.frx	/*using_CTRL-V*
-usr_01.txt	usr_01.frx	/*usr_01.txt*
-usr_02.txt	usr_02.frx	/*usr_02.txt*
-usr_03.txt	usr_03.frx	/*usr_03.txt*
-usr_04.txt	usr_04.frx	/*usr_04.txt*
-usr_05.txt	usr_05.frx	/*usr_05.txt*
-usr_06.txt	usr_06.frx	/*usr_06.txt*
-usr_07.txt	usr_07.frx	/*usr_07.txt*
-usr_08.txt	usr_08.frx	/*usr_08.txt*
-usr_09.txt	usr_09.frx	/*usr_09.txt*
-usr_10.txt	usr_10.frx	/*usr_10.txt*
-usr_11.txt	usr_11.frx	/*usr_11.txt*
-usr_12.txt	usr_12.frx	/*usr_12.txt*
-usr_20.txt	usr_20.frx	/*usr_20.txt*
-usr_21.txt	usr_21.frx	/*usr_21.txt*
-usr_22.txt	usr_22.frx	/*usr_22.txt*
-usr_23.txt	usr_23.frx	/*usr_23.txt*
-usr_24.txt	usr_24.frx	/*usr_24.txt*
-usr_25.txt	usr_25.frx	/*usr_25.txt*
-usr_26.txt	usr_26.frx	/*usr_26.txt*
-usr_27.txt	usr_27.frx	/*usr_27.txt*
-usr_28.txt	usr_28.frx	/*usr_28.txt*
-usr_29.txt	usr_29.frx	/*usr_29.txt*
-usr_30.txt	usr_30.frx	/*usr_30.txt*
-usr_31.txt	usr_31.frx	/*usr_31.txt*
-usr_40.txt	usr_40.frx	/*usr_40.txt*
-usr_41.txt	usr_41.frx	/*usr_41.txt*
-usr_42.txt	usr_42.frx	/*usr_42.txt*
-usr_43.txt	usr_43.frx	/*usr_43.txt*
-usr_44.txt	usr_44.frx	/*usr_44.txt*
-usr_45.txt	usr_45.frx	/*usr_45.txt*
-usr_90.txt	usr_90.frx	/*usr_90.txt*
-usr_toc.txt	usr_toc.frx	/*usr_toc.txt*
 utf-8	mbyte.frx	/*utf-8*
 utf-8-char-arg	mbyte.frx	/*utf-8-char-arg*
 utf-8-in-xwindows	mbyte.frx	/*utf-8-in-xwindows*
@@ -6181,7 +6084,6 @@ variables	eval.frx	/*variables*
 various	various.frx	/*various*
 various-cmds	various.frx	/*various-cmds*
 various-motions	motion.frx	/*various-motions*
-various.txt	various.frx	/*various.txt*
 vb-syntax	syntax.frx	/*vb-syntax*
 vb.vim	syntax.frx	/*vb.vim*
 verbose	starting.frx	/*verbose*
@@ -6197,12 +6099,8 @@ version-5.8	version5.frx	/*version-5.8*
 version-6.1	version6.frx	/*version-6.1*
 version-6.2	version6.frx	/*version-6.2*
 version-variable	eval.frx	/*version-variable*
-version4.txt	version4.frx	/*version4.txt*
-version5.txt	version5.frx	/*version5.txt*
-version6.txt	version6.frx	/*version6.txt*
 vi-differences	vi_diff.frx	/*vi-differences*
 vi:	options.frx	/*vi:*
-vi_diff.txt	vi_diff.frx	/*vi_diff.txt*
 view	starting.frx	/*view*
 view-diffs	diff.frx	/*view-diffs*
 view-file	starting.frx	/*view-file*
@@ -6249,7 +6147,6 @@ visual-repeat	visual.frx	/*visual-repeat*
 visual-search	visual.frx	/*visual-search*
 visual-start	visual.frx	/*visual-start*
 visual-use	visual.frx	/*visual-use*
-visual.txt	visual.frx	/*visual.txt*
 visualmode()	eval.frx	/*visualmode()*
 vms	os_vms.frx	/*vms*
 vms-authors	os_vms.frx	/*vms-authors*
@@ -6317,7 +6214,6 @@ windows	windows.frx	/*windows*
 windows-3.1	os_win32.frx	/*windows-3.1*
 windows-intro	windows.frx	/*windows-intro*
 windows-starting	windows.frx	/*windows-starting*
-windows.txt	windows.frx	/*windows.txt*
 windows95	os_win32.frx	/*windows95*
 winheight()	eval.frx	/*winheight()*
 winline()	eval.frx	/*winline()*
@@ -6334,7 +6230,6 @@ workshop-configure	workshop.frx	/*workshop-configure*
 workshop-intro	workshop.frx	/*workshop-intro*
 workshop-support	workshop.frx	/*workshop-support*
 workshop-xpm	workshop.frx	/*workshop-xpm*
-workshop.txt	workshop.frx	/*workshop.txt*
 wrap-off	intro.frx	/*wrap-off*
 write-compiler-plugin	usr_41.frx	/*write-compiler-plugin*
 write-device	editing.frx	/*write-device*
