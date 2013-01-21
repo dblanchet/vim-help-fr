@@ -1,93 +1,93 @@
 *visual.txt*    Pour Vim version 6.2.
 
 
-		 MANUEL de RÉFÉRENCE VIM - par Bram Moolenaar
+		 MANUEL de RÃ‰FÃ‰RENCE VIM - par Bram Moolenaar
 
 
 Mode Visuel				*Visual* *Visual-mode* *visual-mode*
 
-Le mode Visuel offre un moyen simple et flexible pour sélectionner une partie
-de texte et la faire traiter par un opérateur. C'est la seule façon de
-sélectionner un bloc de texte.
+Le mode Visuel offre un moyen simple et flexible pour sÃ©lectionner une partie
+de texte et la faire traiter par un opÃ©rateur. C'est la seule faÃ§on de
+sÃ©lectionner un bloc de texte.
 
 Consultez la section |04.4| du Manuel de l'utilisateur pour une introduction.
 
 1. Utiliser le mode Visuel		|visual-use|
 2. Lancer et quitter le mode Visuel	|visual-start|
 3. Changer la zone Visuel		|visual-change|
-4. Opérer sur la zone Visuel		|visual-operators|
-5. Opérateurs par blocs			|blockwise-operators|
-6. Répétition				|visual-repeat|
+4. OpÃ©rer sur la zone Visuel		|visual-operators|
+5. OpÃ©rateurs par blocs			|blockwise-operators|
+6. RÃ©pÃ©tition				|visual-repeat|
 7. Exemples				|visual-examples|
-8. Le mode Sélection			|Select-mode|
+8. Le mode SÃ©lection			|Select-mode|
 
-{Vi n'a pas de mode Visuel, mais le terme « visuel » est utilisé pour désigner
+{Vi n'a pas de mode Visuel, mais le terme Â« visuel Â» est utilisÃ© pour dÃ©signer
 le mode Normal, par opposition au mode Ex}
-{uniquement si compilé avec la fonctionnalité |+visual|}
+{uniquement si compilÃ© avec la fonctionnalitÃ© |+visual|}
 
 ==============================================================================
 1. Utiliser le mode Visuel				*visual-use*
 
-L'utilisation du mode Visuel se fait en trois étapes :
-1° Marquer le début du texte avec "v", "V" ou CTRL-V.
-   Le caractère sous le curseur sera utilisé comme caractère de départ.
-2° Se déplacer jusqu'à la fin du texte.
-   Le texte depuis le début de la zone Visuel et jusqu'au caractère sous le
+L'utilisation du mode Visuel se fait en trois Ã©tapes :
+1Â° Marquer le dÃ©but du texte avec "v", "V" ou CTRL-V.
+   Le caractÃ¨re sous le curseur sera utilisÃ© comme caractÃ¨re de dÃ©part.
+2Â° Se dÃ©placer jusqu'Ã  la fin du texte.
+   Le texte depuis le dÃ©but de la zone Visuel et jusqu'au caractÃ¨re sous le
    curseur (inclus) est mis en surbrillance.
-3° Saisir un opérateur.
-   Cette commande agira sur les caractères en surbrillance.
+3Â° Saisir un opÃ©rateur.
+   Cette commande agira sur les caractÃ¨res en surbrillance.
 
-L'option 'highlight' peut être utilisée pour modifier le mode de surbrillance
+L'option 'highlight' peut Ãªtre utilisÃ©e pour modifier le mode de surbrillance
 de la zone Visuel.
-   L'option 'virtualedit' peut être utilisée pour permettre le placement du
-curseur sur des positions où il n'y a pas en réalité de caractères.
+   L'option 'virtualedit' peut Ãªtre utilisÃ©e pour permettre le placement du
+curseur sur des positions oÃ¹ il n'y a pas en rÃ©alitÃ© de caractÃ¨res.
 
-Le texte en surbrillance inclut le caractère sous le curseur. Sur les
-terminaux où il est possible de rendre le curseur invisible, la position du
-curseur est également mise en surbrillance ; sur les terminaux où ce n'est pas
-possible, le curseur est affiché normalement. Si votre curseur ne peut être
-rendu invisible, mais que vous désirez que Vim mette malgré tout le caractère
+Le texte en surbrillance inclut le caractÃ¨re sous le curseur. Sur les
+terminaux oÃ¹ il est possible de rendre le curseur invisible, la position du
+curseur est Ã©galement mise en surbrillance ; sur les terminaux oÃ¹ ce n'est pas
+possible, le curseur est affichÃ© normalement. Si votre curseur ne peut Ãªtre
+rendu invisible, mais que vous dÃ©sirez que Vim mette malgrÃ© tout le caractÃ¨re
 sous le curseur en surbrillance, essayez de fixer les options 't_cv' et 't_ci'
-à une valeur sans conséquence, par exemple : >
+Ã  une valeur sans consÃ©quence, par exemple : >
 	:set t_cv=^[^[ t_ci=^[^[
 
-Avec "v", le texte avant la position initiale et après la position finale ne
-sera pas mis en surbrillance. De toute façon, tous les opérateurs en
-majuscules ou non-alphnumériques (sauf "~") fonctionneront sur des lignes
-entières. Voir la liste des opérateurs plus bas.
+Avec "v", le texte avant la position initiale et aprÃ¨s la position finale ne
+sera pas mis en surbrillance. De toute faÃ§on, tous les opÃ©rateurs en
+majuscules ou non-alphnumÃ©riques (sauf "~") fonctionneront sur des lignes
+entiÃ¨res. Voir la liste des opÃ©rateurs plus bas.
 
 							*visual-block*
 Avec CTRL-V (mode Visuel par blocs), le texte en surbrillance sera un
 rectangle compris entre la position initiale et la position du curseur. De
-toute façon, certains opérateurs continuent de fonctionner sur des lignes
-entières (voir la liste plus bas). Les opérateurs de changement et de
-substitution couperont le texte en surbrillance et débuteront l'insertion à la
-position en haut à gauche.
+toute faÃ§on, certains opÃ©rateurs continuent de fonctionner sur des lignes
+entiÃ¨res (voir la liste plus bas). Les opÃ©rateurs de changement et de
+substitution couperont le texte en surbrillance et dÃ©buteront l'insertion Ã  la
+position en haut Ã  gauche.
 
 ==============================================================================
 2. Lancer et quitter le mode Visuel			*visual-start*
 
 						*v* *characterwise-visual*
-v			Lance le mode Visuel par caractères.
+v			Lance le mode Visuel par caractÃ¨res.
 
 						*V* *linewise-visual*
 V			Lance le mode Visuel par lignes.
 
 						*CTRL-V* *blockwise-visual*
 CTRL-V			Lance le mode Visuel par blocs.
-			NOTE : Sous Windows, CTRL-V est parfois mappé au
+			NOTE : Sous Windows, CTRL-V est parfois mappÃ© au
 			collage de texte et ne lance pas alors le mode
 			Visuel. Voir |CTRL-V-alternative|.
 
 Si, en mode Visuel, vous pressez <Echap>, cliquez avec le bouton gauche de la
 souris ou utilisez une commande qui saute vers un autre tampon, la
-surbrillance s'arrête et rien ne se produit. De même si vous tapez "v" en mode
-Visuel par caractères, "V" en mode Visuel par lignes ou CTRL-V en mode Visuel
+surbrillance s'arrÃªte et rien ne se produit. De mÃªme si vous tapez "v" en mode
+Visuel par caractÃ¨res, "V" en mode Visuel par lignes ou CTRL-V en mode Visuel
 par blocs.
-   Si vous tapez CTRL-Z, la surbrillance s'arrête et l'éditeur est suspendu,
-ou bien un nouveau shell est lancé |CTRL-Z|.
+   Si vous tapez CTRL-Z, la surbrillance s'arrÃªte et l'Ã©diteur est suspendu,
+ou bien un nouveau shell est lancÃ© |CTRL-Z|.
 							*v_v* *v_CTRL-V* *v_V*
-			    NOUVEAU MODE APRÈS LA SAISIE DE...		~
+			    NOUVEAU MODE APRÃˆS LA SAISIE DE...		~
 	ANCIEN MODE	    "v"	     "V"		 CTRL-V		~
 	Normal		    Visuel   Visuel par lignes	 Visuel par blocs
 	Visuel		    Normal   Visuel par lignes	 Visuel par blocs
@@ -95,137 +95,137 @@ ou bien un nouveau shell est lancé |CTRL-Z|.
 	Visuel par blocs    Visuel   Visuel par lignes	 Normal		
 
 							*gv* *v_gv*
-gv			Lance le mode Visuel en resélectionnant la zone
-			précédente, avec le même mode. En mode Visuel, les
-			zones Visuel courantes et précédentes sont échangées.
+gv			Lance le mode Visuel en resÃ©lectionnant la zone
+			prÃ©cÃ©dente, avec le mÃªme mode. En mode Visuel, les
+			zones Visuel courantes et prÃ©cÃ©dentes sont Ã©changÃ©es.
 								 ["Get Visual"]
 
 							*<LeftMouse>*
 <ClicGauche>		Fixe la position courante du curseur. Si le mode
-			Visuel est actif, il est stoppé. Uniquement si
+			Visuel est actif, il est stoppÃ©. Uniquement si
 			l'option 'mouse' contient 'n' ou 'a'. Si la position
-			est inférieure à 'so' lignes depuis la dernière ligne
-			de l'écran, le texte défile vers le haut ; si elle est
-			supérieure à 'so' lignes depuis la première ligne de
-			l'écran, le texte défile vers le bas.
+			est infÃ©rieure Ã  'so' lignes depuis la derniÃ¨re ligne
+			de l'Ã©cran, le texte dÃ©file vers le haut ; si elle est
+			supÃ©rieure Ã  'so' lignes depuis la premiÃ¨re ligne de
+			l'Ã©cran, le texte dÃ©file vers le bas.
 
 							*<RightMouse>*
-<ClicDroit>		Lance le mode Visuel s'il n'est pas déjà actif. Le
-			texte depuis la position du curseur jusqu'à la
+<ClicDroit>		Lance le mode Visuel s'il n'est pas dÃ©jÃ  actif. Le
+			texte depuis la position du curseur jusqu'Ã  la
 			position du clic est mis en surbrillance. Si le mode
-			Visuel était déjà actif, déplace le début ou la fin du
-			texte en surbrillance (selon le plus proche) à la
+			Visuel Ã©tait dÃ©jÃ  actif, dÃ©place le dÃ©but ou la fin du
+			texte en surbrillance (selon le plus proche) Ã  la
 			position du clic. Uniquement si l'option 'mouse'
 			contient 'n' ou 'a'.
 			NOTE : Si 'mousemodel' vaut "popup", <S-ClicGauche>
-			doit être utilisé à la place de <ClicDroit>.
+			doit Ãªtre utilisÃ© Ã  la place de <ClicDroit>.
 
 							*<LeftRelease>*
-<LeftRelease>		Fonctionne comme <ClicGauche> s'il n'est pas à la même
+<LeftRelease>		Fonctionne comme <ClicGauche> s'il n'est pas Ã  la mÃªme
 			position que lui. Dans un xterm, vous ne verrez pas la
-			zone sélectionnée jusqu'à ce que le bouton soit
-			relâché, à moins qu'il n'y ait un accès à l'affichage
-			où le xterm fonctionne (via la variable
+			zone sÃ©lectionnÃ©e jusqu'Ã  ce que le bouton soit
+			relÃ¢chÃ©, Ã  moins qu'il n'y ait un accÃ¨s Ã  l'affichage
+			oÃ¹ le xterm fonctionne (via la variable
 			d'environnement $DISPLAY, ou l'argument -display).
 			Uniquement si l'option 'mouse' contient 'n' ou 'a'.
 
-Si le mode Visuel n'est pas actif et que "v", "V" ou CTRL-V est précédé par un
-{quant}ificateur, la taille initiale sera celle de la dernière zone utilisée.
-Vous pouvez ensuite déplacer la fin de la zone sélectionnée et saisir un
-opérateur. Le type de la zone précédente est réutilisé (par caractères, lignes
+Si le mode Visuel n'est pas actif et que "v", "V" ou CTRL-V est prÃ©cÃ©dÃ© par un
+{quant}ificateur, la taille initiale sera celle de la derniÃ¨re zone utilisÃ©e.
+Vous pouvez ensuite dÃ©placer la fin de la zone sÃ©lectionnÃ©e et saisir un
+opÃ©rateur. Le type de la zone prÃ©cÃ©dente est rÃ©utilisÃ© (par caractÃ¨res, lignes
 ou blocs).
-- Mode Visuel par lignes : le nombre de lignes est multiplié par {quant}.
-- Mode Visuel par blocs : le nombre de lignes et de colonnes est multiplié par
+- Mode Visuel par lignes : le nombre de lignes est multipliÃ© par {quant}.
+- Mode Visuel par blocs : le nombre de lignes et de colonnes est multipliÃ© par
   {quant}.
-- Mode Visuel normal à l'intérieur d'une ligne : le nombre de caractères est
-  multiplié par {quant}.
-- Mode Visuel normal sur plusieurs lignes : le nombre de lignes est multiplié
-  par {quant} ; dans la dernière ligne, le même nombre de caractères que dans
-  la dernière ligne de la précédente zone sélectionnée est utilisé.
-Le début du texte correspond à la position du curseur. Si la commande "$" a
-été utilisée comme une des dernières commandes pour étendre la zone Visuel,
-cette zone sera étendue jusqu'à la colonne la plus à droite de la ligne la
+- Mode Visuel normal Ã  l'intÃ©rieur d'une ligne : le nombre de caractÃ¨res est
+  multipliÃ© par {quant}.
+- Mode Visuel normal sur plusieurs lignes : le nombre de lignes est multipliÃ©
+  par {quant} ; dans la derniÃ¨re ligne, le mÃªme nombre de caractÃ¨res que dans
+  la derniÃ¨re ligne de la prÃ©cÃ©dente zone sÃ©lectionnÃ©e est utilisÃ©.
+Le dÃ©but du texte correspond Ã  la position du curseur. Si la commande "$" a
+Ã©tÃ© utilisÃ©e comme une des derniÃ¨res commandes pour Ã©tendre la zone Visuel,
+cette zone sera Ã©tendue jusqu'Ã  la colonne la plus Ã  droite de la ligne la
 plus longue.
 
-Si vous voulez réutiliser exactement la même zone de surbrillance que
-précédemment, vous pouvez utiliser "gv" |gv| |v_gv|.
+Si vous voulez rÃ©utiliser exactement la mÃªme zone de surbrillance que
+prÃ©cÃ©demment, vous pouvez utiliser "gv" |gv| |v_gv|.
 
 							*v_CTRL-C*
-CTRL-C			En mode Visuel : arrête le mode Visuel. En mode
+CTRL-C			En mode Visuel : arrÃªte le mode Visuel. En mode
 			Insertion Visuel (quand le message de mode affiche
-			"-- (insert) VISUAL --"), il est également arrêté.
+			"-- (insert) VISUAL --"), il est Ã©galement arrÃªtÃ©.
 
 ==============================================================================
 3. Changer la zone Visuel				*visual-change*
 
 							*v_o*
-o			Va à l'autre extrémité du texte en surbrillance : la
-			position courante devient le début de la zone Visuel,
-			et le curseur est déplacé à l'autre extrémité du texte
-			en surbrillance. La zone sélectionnée reste identique.
+o			Va Ã  l'autre extrÃ©mitÃ© du texte en surbrillance : la
+			position courante devient le dÃ©but de la zone Visuel,
+			et le curseur est dÃ©placÃ© Ã  l'autre extrÃ©mitÃ© du texte
+			en surbrillance. La zone sÃ©lectionnÃ©e reste identique.
 								  ["Other end"]
 
 							*v_O*
 O			Comme "o", mais en mode Visuel par blocs, le curseur
-			se déplace à l'autre coin sur la même ligne. Lorsque
-			le coin est sur un caractère qui occupe plus d'une
-			position à l'écran (un <Tab>, p. ex.), le texte en
+			se dÃ©place Ã  l'autre coin sur la mÃªme ligne. Lorsque
+			le coin est sur un caractÃ¨re qui occupe plus d'une
+			position Ã  l'Ã©cran (un <Tab>, p. ex.), le texte en
 			surbrillance peut changer.
 
 							*v_$*
-Lorsque la commande "$" est utilisée en mode Visuel par blocs, le côté droit
-du texte sélectionné est déterminé par la plus longue ligne en surbrillance.
-Cela cesse avec l'utilisation d'un mouvement qui ne déplace pas vers le haut
+Lorsque la commande "$" est utilisÃ©e en mode Visuel par blocs, le cÃ´tÃ© droit
+du texte sÃ©lectionnÃ© est dÃ©terminÃ© par la plus longue ligne en surbrillance.
+Cela cesse avec l'utilisation d'un mouvement qui ne dÃ©place pas vers le haut
 ou vers le bas.
 
-Pour déplacer la fin du bloc, de nombreuses commandes peuvent être utilisées
+Pour dÃ©placer la fin du bloc, de nombreuses commandes peuvent Ãªtre utilisÃ©es
 mais vous ne pouvez pas employer de commandes Ex, ni de commandes qui
-effectuent des changements ou abandonnent le fichier. Les commandes (débutant
+effectuent des changements ou abandonnent le fichier. Les commandes (dÃ©butant
 par) ".pPiIaAO&", CTRL-^, "Z", CTRL-], CTRL-T, CTRL-R, CTRL-I et CTRL-O
 provoquent un bip et le mode Visuel continue.
 
-Quand vous basculez dans une autre fenêtre affichant le même tampon, la
-position du curseur dans cette fenêtre est ajustée afin que la même zone
-Visuel soit toujours sélectionnée. C'est particulièrement utile pour
-visualiser le début de la zone Visuel dans une fenêtre, et la fin dans une
+Quand vous basculez dans une autre fenÃªtre affichant le mÃªme tampon, la
+position du curseur dans cette fenÃªtre est ajustÃ©e afin que la mÃªme zone
+Visuel soit toujours sÃ©lectionnÃ©e. C'est particuliÃ¨rement utile pour
+visualiser le dÃ©but de la zone Visuel dans une fenÃªtre, et la fin dans une
 autre. Vous pouvez ensuite utiliser <ClicDroit> (ou <S-ClicGauche> si
-'mousemodel' vaut "popup") pour vous déplacer à l'une des deux extrémités de
+'mousemodel' vaut "popup") pour vous dÃ©placer Ã  l'une des deux extrÃ©mitÃ©s de
 la zone Visuel.
 
 ==============================================================================
-4. Opérer sur la zone Visuel				*visual-operators*
+4. OpÃ©rer sur la zone Visuel				*visual-operators*
 
-Les opérateurs qui peuvent être utilisés sont :
+Les opÃ©rateurs qui peuvent Ãªtre utilisÃ©s sont :
 	~	inverse la casse    				|v_~|
 	d	coupe						|v_d|
 	c	change (4)					|v_c|
 	y	copie						|v_y|
-	>	décale à droite (4)				|v_>|
-	<	décale à gauche (4)				|v_<|
+	>	dÃ©cale Ã  droite (4)				|v_>|
+	<	dÃ©cale Ã  gauche (4)				|v_<|
 	!	filtre avec un programme externe (1)		|v_!|
 	=	filtre avec le programme 'equalprg' (1)		|v_=|
 	gq	met en forme les lignes sur 'textwidth' de large (1)  |v_gq|
 
-Les objets qui peuvent être utilisés sont :
+Les objets qui peuvent Ãªtre utilisÃ©s sont :
 	aw	un mot (avec l'espace blanc)			|v_aw|
-	iw	intérieur d'un mot				|v_iw|
+	iw	intÃ©rieur d'un mot				|v_iw|
 	aW	un MOT (avec l'espace blanc)			|v_aW|
-	iW	intérieur d'un MOT				|v_iW|
+	iW	intÃ©rieur d'un MOT				|v_iW|
 	as	une phrase (avec l'espace blanc)		|v_as|
-	is	intérieur d'une phrase				|v_is|
+	is	intÃ©rieur d'une phrase				|v_is|
 	ap	un paragraphe (avec l'espace blanc)		|v_ap|
-	ip	intérieur d'un paragraphe			|v_ip|
-	ab	un bloc () (avec les parenthèses)		|v_ab|
-	ib	intérieur d'un bloc ()				|v_ib|
+	ip	intÃ©rieur d'un paragraphe			|v_ip|
+	ab	un bloc () (avec les parenthÃ¨ses)		|v_ab|
+	ib	intÃ©rieur d'un bloc ()				|v_ib|
 	aB	un bloc {} (avec les accolades)			|v_aB|
-	iB	intérieur d'un bloc {}				|v_iB|
+	iB	intÃ©rieur d'un bloc {}				|v_iB|
 	a<	un bloc <> (avec '<' et '>')			|v_a<|
-	i<	intérieur d'un bloc <>				|v_i<|
+	i<	intÃ©rieur d'un bloc <>				|v_i<|
 	a[	un bloc [] (avec les crochets)			|v_a[|
-	i[	intérieur d'un bloc []				|v_i[|
+	i[	intÃ©rieur d'un bloc []				|v_i[|
 			
-Ces commandes peuvent également être utilisées :
-	:	lance une commande Ex sur la sélection (1)	|v_:|
+Ces commandes peuvent Ã©galement Ãªtre utilisÃ©es :
+	:	lance une commande Ex sur la sÃ©lection (1)	|v_:|
 	r	change (4)					|v_r|
 	s	change						|v_s|
 	C	change (2)(4)					|v_C|
@@ -240,171 +240,171 @@ Ces commandes peuvent également être utilisées :
 	U	passe en majuscules				|v_U|
 	u	passe en minuscules				|v_u|
 	CTRL-]	saute au marqueur				|v_CTRL-]|
-	I	insère par blocs				|v_b_I|
+	I	insÃ¨re par blocs				|v_b_I|
 	A	ajoute par blocs				|v_b_A|
 
-(1) S'applique toujours sur des lignes entières, voir |:visual_example|.
-(2) S'applique sur des lignes entières si CTRL-V n'est pas utilisé.
-(3) S'applique sur des lignes entières si CTRL-V n'est pas utilisé ; coupe
-    jusqu'à la fin de la ligne si CTRL-V est utilisé.
-(4) S'applique sur le bloc uniquement si CTRL-V est utilisé.
+(1) S'applique toujours sur des lignes entiÃ¨res, voir |:visual_example|.
+(2) S'applique sur des lignes entiÃ¨res si CTRL-V n'est pas utilisÃ©.
+(3) S'applique sur des lignes entiÃ¨res si CTRL-V n'est pas utilisÃ© ; coupe
+    jusqu'Ã  la fin de la ligne si CTRL-V est utilisÃ©.
+(4) S'applique sur le bloc uniquement si CTRL-V est utilisÃ©.
 
-NOTE : La commande ":vmap" peut être utilisée pour mapper des touches en mode
-Visuel. Par exemple, si vous ne désirez que la commande "/" étende la zone
-Visuel, mais au lieu de cela recherche le texte sélectionné : >
+NOTE : La commande ":vmap" peut Ãªtre utilisÃ©e pour mapper des touches en mode
+Visuel. Par exemple, si vous ne dÃ©sirez que la commande "/" Ã©tende la zone
+Visuel, mais au lieu de cela recherche le texte sÃ©lectionnÃ© : >
 	:vmap / y/<C-R>"<CR>
-(Dans une notation <> |<>|, les lettres sont à saisir littéralement ; vous
+(Dans une notation <> |<>|, les lettres sont Ã  saisir littÃ©ralement ; vous
 devrez supprimer les drapeaux 'B' et '<' de 'cpoptions'.)
 
-Si vous voulez spécifier un nom de registre avec la commande """, faites ceci
-juste avant de taper le caractère de l'opérateur : "v{deplacement}"xd".
+Si vous voulez spÃ©cifier un nom de registre avec la commande """, faites ceci
+juste avant de taper le caractÃ¨re de l'opÃ©rateur : "v{deplacement}"xd".
 
-Si vous voulez donner un argument {quant} à la commande, faites ceci juste
-avant de taper le caractère de l'opérateur : "v{deplacement}3>" (décale les
-lignes sélectionnées de 3 indentations à droite).
+Si vous voulez donner un argument {quant} Ã  la commande, faites ceci juste
+avant de taper le caractÃ¨re de l'opÃ©rateur : "v{deplacement}3>" (dÃ©cale les
+lignes sÃ©lectionnÃ©es de 3 indentations Ã  droite).
 
 					    *{move-around}* *{deplacement}*
-Un {deplacement} désigne n'importe quelle séquence de commandes de
-déplacement. NOTE : Tandis qu'un {mouv}ement désigne une UNIQUE commande de
-déplacement.
+Un {deplacement} dÃ©signe n'importe quelle sÃ©quence de commandes de
+dÃ©placement. NOTE : Tandis qu'un {mouv}ement dÃ©signe une UNIQUE commande de
+dÃ©placement.
 
 ==============================================================================
-5. Opérateurs par blocs					*blockwise-operators*
+5. OpÃ©rateurs par blocs					*blockwise-operators*
 
-{uniquement si compilé avec la fonctionnalité |+visualextra|}
+{uniquement si compilÃ© avec la fonctionnalitÃ© |+visualextra|}
 
-Rappel : utilisez 'virtualedit' pour pouvoir sélectionner des blocs qui
-débutent ou finissent après la fin d'une ligne ou dans l'espace d'une
+Rappel : utilisez 'virtualedit' pour pouvoir sÃ©lectionner des blocs qui
+dÃ©butent ou finissent aprÃ¨s la fin d'une ligne ou dans l'espace d'une
 tabulation.
 
 
 INSERTION EN MODE VISUEL-BLOC				*v_b_I*
 
-Avec une sélection par blocs, "I{chaine}<Echap>" insérera {chaine} au début du
-bloc sur toutes les lignes du bloc, pourvu que la ligne s'étende dans le bloc.
-Ainsi, les lignes qui sont plus courtes ne sont pas modifiées. Les tabulations
-sont converties afin de préserver le bloc Visuel.
+Avec une sÃ©lection par blocs, "I{chaine}<Echap>" insÃ©rera {chaine} au dÃ©but du
+bloc sur toutes les lignes du bloc, pourvu que la ligne s'Ã©tende dans le bloc.
+Ainsi, les lignes qui sont plus courtes ne sont pas modifiÃ©es. Les tabulations
+sont converties afin de prÃ©server le bloc Visuel.
    Voir |v_b_I_example|.
 
 
 AJOUT EN MODE VISUEL-BLOC				*v_b_A*
 
-Avec une sélection par blocs, "A{chaine}<Echap>" ajoutera {chaine} à la fin du
-bloc sur toutes les lignes du bloc. Le comportement est différent si le bloc
-n'est pas aligné à droite, à cause d'une longueur de ligne inégale :
+Avec une sÃ©lection par blocs, "A{chaine}<Echap>" ajoutera {chaine} Ã  la fin du
+bloc sur toutes les lignes du bloc. Le comportement est diffÃ©rent si le bloc
+n'est pas alignÃ© Ã  droite, Ã  cause d'une longueur de ligne inÃ©gale :
 
-1. Si le bloc a été créé avec "<C-V>$" : dans ce cas, la {chaine} est ajoutée
-   à la fin de chaque ligne.
-2. Si le bloc a été créé avec "<C-V>{deplacement}" : dans ce cas, la {chaine}
-   est ajoutée à la fin de chaque ligne et un espace blanc est inséré pour
-   que la colonne de fin-de-bloc soit bien alignée.
+1. Si le bloc a Ã©tÃ© crÃ©Ã© avec "<C-V>$" : dans ce cas, la {chaine} est ajoutÃ©e
+   Ã  la fin de chaque ligne.
+2. Si le bloc a Ã©tÃ© crÃ©Ã© avec "<C-V>{deplacement}" : dans ce cas, la {chaine}
+   est ajoutÃ©e Ã  la fin de chaque ligne et un espace blanc est insÃ©rÃ© pour
+   que la colonne de fin-de-bloc soit bien alignÃ©e.
 Voir |v_b_A_example|.
-   NOTE : "I" et "A" se comportent différemment pour les lignes qui ne
-s'étendent pas dans le bloc sélectionné. C'est intentionnel, pour vous
-permettre de choisir la méthode que vous souhaitez.
+   NOTE : "I" et "A" se comportent diffÃ©remment pour les lignes qui ne
+s'Ã©tendent pas dans le bloc sÃ©lectionnÃ©. C'est intentionnel, pour vous
+permettre de choisir la mÃ©thode que vous souhaitez.
 
 
 CHANGEMENT EN MODE VISUEL-BLOC				*v_b_c*
 
-Tout le texte sélectionné dans le bloc sera remplacé par la même chaîne de
-texte. Si "c" est utilisé, le texte sélectionné est coupé et le mode Insertion
-lancé. Vous pouvez alors saisir du texte. Quand vous saisissez <Echap>, la
-même chaîne sera insérée dans toutes les lignes précédemment sélectionnées.
+Tout le texte sÃ©lectionnÃ© dans le bloc sera remplacÃ© par la mÃªme chaÃ®ne de
+texte. Si "c" est utilisÃ©, le texte sÃ©lectionnÃ© est coupÃ© et le mode Insertion
+lancÃ©. Vous pouvez alors saisir du texte. Quand vous saisissez <Echap>, la
+mÃªme chaÃ®ne sera insÃ©rÃ©e dans toutes les lignes prÃ©cÃ©demment sÃ©lectionnÃ©es.
 
 
 CHANGEMENT EN MODE VISUEL-BLOC (BIS)			*v_b_C*
 
-Si vous utilisez "C", c'est identique à "c", mais la sélection est étendue
-jusqu'à la fin de la ligne pour toutes les lignes.
+Si vous utilisez "C", c'est identique Ã  "c", mais la sÃ©lection est Ã©tendue
+jusqu'Ã  la fin de la ligne pour toutes les lignes.
 
 
-DÉCALAGE EN MODE VISUEL-BLOC				*v_b_>* *v_b_<*
+DÃ‰CALAGE EN MODE VISUEL-BLOC				*v_b_>* *v_b_<*
 
-Le bloc est décalé de 'shiftwidth'. Le côté droit du bloc n'est pas affecté.
-Le côté gauche détermine le point à partir duquel appliquer un décalage vers
-la droite, en remplissant l'espace ainsi créé par des tabulations selon la
-valeur de 'ts' et 'et'. Le côté gauche du bloc détermine le point jusqu'au
-quel on peut décaler vers la gauche.
-   NOTE : Le remplissage avec "v_b_<" est bogué si le bloc Visuel commence et
-se finit par la même tabulation. (Vim 5.4c).
+Le bloc est dÃ©calÃ© de 'shiftwidth'. Le cÃ´tÃ© droit du bloc n'est pas affectÃ©.
+Le cÃ´tÃ© gauche dÃ©termine le point Ã  partir duquel appliquer un dÃ©calage vers
+la droite, en remplissant l'espace ainsi crÃ©Ã© par des tabulations selon la
+valeur de 'ts' et 'et'. Le cÃ´tÃ© gauche du bloc dÃ©termine le point jusqu'au
+quel on peut dÃ©caler vers la gauche.
+   NOTE : Le remplissage avec "v_b_<" est boguÃ© si le bloc Visuel commence et
+se finit par la mÃªme tabulation. (Vim 5.4c).
    Voir |v_b_>_example|.
    Voir |v_b_<_example|.
 
 
 REMPLACEMENT EN MODE VISUEL-BLOC			*v_b_r*
 
-Chaque caractère d'écran dans la zone en surbrillance est remplacé par le même
-caractère, c.-à-d. que les tabulations sont étendues et les espaces blancs
-virtuels remplacés, en conservant la structure du texte.
+Chaque caractÃ¨re d'Ã©cran dans la zone en surbrillance est remplacÃ© par le mÃªme
+caractÃ¨re, c.-Ã -d. que les tabulations sont Ã©tendues et les espaces blancs
+virtuels remplacÃ©s, en conservant la structure du texte.
    Voir |v_b_r_example|.
 
 ==============================================================================
-6. Répétition						*visual-repeat*
+6. RÃ©pÃ©tition						*visual-repeat*
 
-Lors de la répétition d'un opérateur en mode Visuel, celui-ci opérera sur la
-même somme de texte que précédemment :
-- en mode Visuel par lignes : le même nombre de lignes ;
-- en mode Visuel par blocs : le même nombre de lignes et de colonnes ;
-- en mode Visuel normal à l'intérieur d'une ligne : le même nombre de
-  caractères ;
-- en mode Visuel normal sur plusieurs lignes : le même nombre de lignes, et
-  pour la dernière ligne, le même nombre de caractères que dans la dernière
-  ligne de la sélection précédente.
-Le début du texte correspond à la position du curseur. Si la commande "$" a
-été utilisée comme une des dernières commandes pour étendre la zone Visuel,
-cette zone sera étendue jusqu'à la colonne la plus à droite de la ligne la
+Lors de la rÃ©pÃ©tition d'un opÃ©rateur en mode Visuel, celui-ci opÃ©rera sur la
+mÃªme somme de texte que prÃ©cÃ©demment :
+- en mode Visuel par lignes : le mÃªme nombre de lignes ;
+- en mode Visuel par blocs : le mÃªme nombre de lignes et de colonnes ;
+- en mode Visuel normal Ã  l'intÃ©rieur d'une ligne : le mÃªme nombre de
+  caractÃ¨res ;
+- en mode Visuel normal sur plusieurs lignes : le mÃªme nombre de lignes, et
+  pour la derniÃ¨re ligne, le mÃªme nombre de caractÃ¨res que dans la derniÃ¨re
+  ligne de la sÃ©lection prÃ©cÃ©dente.
+Le dÃ©but du texte correspond Ã  la position du curseur. Si la commande "$" a
+Ã©tÃ© utilisÃ©e comme une des derniÃ¨res commandes pour Ã©tendre la zone Visuel,
+cette zone sera Ã©tendue jusqu'Ã  la colonne la plus Ã  droite de la ligne la
 plus longue.
 
 ==============================================================================
 7. Exemples						*visual-examples*
 
 							*:visual_example*
-Actuellement, une commande ":" fonctionne uniquement sur des lignes entières.
-Si vous sélectionnez une partie d'une ligne et que vous faites quelque chose
-comme ":!date", la ligne entière sera remplacée. Si vous voulez que seule la
-partie sélectionnée soit remplacée, vous devrez utiliser un mappage. Dans une
-version ultérieure, ":" pourra fonctionner sur des parties de lignes.
+Actuellement, une commande ":" fonctionne uniquement sur des lignes entiÃ¨res.
+Si vous sÃ©lectionnez une partie d'une ligne et que vous faites quelque chose
+comme ":!date", la ligne entiÃ¨re sera remplacÃ©e. Si vous voulez que seule la
+partie sÃ©lectionnÃ©e soit remplacÃ©e, vous devrez utiliser un mappage. Dans une
+version ultÃ©rieure, ":" pourra fonctionner sur des parties de lignes.
 
-Voici un exemple pour remplacer le texte sélectionné par la sortie de la
+Voici un exemple pour remplacer le texte sÃ©lectionnÃ© par la sortie de la
 commande `date` : >
 	:vmap _a <Esc>`>a<CR><Esc>`<i<CR><Esc>!!date<CR>kJJ
 
-(Dans une notation <> |<>|, les lettres sont à saisir littéralement ; vous
+(Dans une notation <> |<>|, les lettres sont Ã  saisir littÃ©ralement ; vous
 devrez supprimer les drapeaux 'B' et '<' de 'cpoptions'.)
 
 Dissection :
-	<Esc>		arrête le mode Visuel
-	`>		saute à la fin de la zone Visuel
-	a<CR><Esc>	insère un passage à la ligne après la zone Visuel
-	`<		saute au début de la zone Visuel
-	i<CR><Esc>	insère un passage à la ligne avant la zone Visuel
+	<Esc>		arrÃªte le mode Visuel
+	`>		saute Ã  la fin de la zone Visuel
+	a<CR><Esc>	insÃ¨re un passage Ã  la ligne aprÃ¨s la zone Visuel
+	`<		saute au dÃ©but de la zone Visuel
+	i<CR><Esc>	insÃ¨re un passage Ã  la ligne avant la zone Visuel
 	!!date<CR>	filtre le texte de la zone Visuel avec `date`
-	kJJ		réunit les lignes à nouveau
+	kJJ		rÃ©unit les lignes Ã  nouveau
 
 							*visual-search*
-Voici une idée de mappage pour pouvoir effectuer une recherche sur un texte
-sélectionné : >
+Voici une idÃ©e de mappage pour pouvoir effectuer une recherche sur un texte
+sÃ©lectionnÃ© : >
 	:vmap X y/<C-R>"<CR>
 
-(Dans une notation <> |<>|, les lettres sont à saisir littéralement ; vous
+(Dans une notation <> |<>|, les lettres sont Ã  saisir littÃ©ralement ; vous
 devrez supprimer les drapeaux 'B' et '<' de 'cpoptions'.)
 
-NOTE : Les caractères spéciaux (comme '.' et '*') poseront des problèmes.
+NOTE : Les caractÃ¨res spÃ©ciaux (comme '.' et '*') poseront des problÃ¨mes.
 
 
 EXEMPLES EN MODE VISUEL-BLOC				*blockwise-examples*
 
-Voici quelques variantes sur le texte suivant : les résultats sont obtenus en
-tapant les commandes indiquées depuis le texte original, le curseur étant
-placé sur le 'a' de la première ligne.
-   On supposera les paramètres suivants pour la ligne de mode : ":ts=8:sw=4:".
+Voici quelques variantes sur le texte suivant : les rÃ©sultats sont obtenus en
+tapant les commandes indiquÃ©es depuis le texte original, le curseur Ã©tant
+placÃ© sur le 'a' de la premiÃ¨re ligne.
+   On supposera les paramÃ¨tres suivants pour la ligne de mode : ":ts=8:sw=4:".
 
-Il pourra être utile de faire >
+Il pourra Ãªtre utile de faire >
 	:set hls
 	/<Tab>
-où <Tab> désigne une vrai tabulation. Cela aidera à visualiser les opérations.
+oÃ¹ <Tab> dÃ©signe une vrai tabulation. Cela aidera Ã  visualiser les opÃ©rations.
 
-Le texte original utilisé pour cet exemple est :
+Le texte original utilisÃ© pour cet exemple est :
 
 abcdefghijklmnopqrstuvwxyz ~
 abc		defghijklmnopqrstuvwxyz ~
@@ -447,79 +447,79 @@ abcdef  ghi   XXXXXX    jklmnopqrstuvwxyz ~
 abcdefghijklmnXXXXXXuvwxyz ~
 
 ==============================================================================
-8. Le mode Sélection					*Select* *Select-mode*
+8. Le mode SÃ©lection					*Select* *Select-mode*
 
-Le mode Sélection ressemble au mode Visuel, mais les commandes acceptées sont
-assez différentes. Il se rapproche du mode de sélection de MS-Windows.
-   Lorsque l'option 'showmode' est activée, "-- SELECT --" est affiché sur la
-dernière ligne.
+Le mode SÃ©lection ressemble au mode Visuel, mais les commandes acceptÃ©es sont
+assez diffÃ©rentes. Il se rapproche du mode de sÃ©lection de MS-Windows.
+   Lorsque l'option 'showmode' est activÃ©e, "-- SELECT --" est affichÃ© sur la
+derniÃ¨re ligne.
 
-On entre en mode Sélection en :
-- utilisant la souris pour sélectionner une zone, si 'selectmode' contient
-  "mouse" ; 'mouse' doit également contenir un drapeau pour le mode courant ;
-- utilisant une commande de déplacement non-imprimable, avec la touche Maj
-  pressée (par exemple, <S-Gauche> et <S-Fin>), si 'selectmode' contient
-  "key" ; 'keymodel' doit également contenir "startsel" ;
+On entre en mode SÃ©lection en :
+- utilisant la souris pour sÃ©lectionner une zone, si 'selectmode' contient
+  "mouse" ; 'mouse' doit Ã©galement contenir un drapeau pour le mode courant ;
+- utilisant une commande de dÃ©placement non-imprimable, avec la touche Maj
+  pressÃ©e (par exemple, <S-Gauche> et <S-Fin>), si 'selectmode' contient
+  "key" ; 'keymodel' doit Ã©galement contenir "startsel" ;
 - utilisant la commande "v", "V" ou CTRL-V, si 'selectmode' contient "cmd" ;
 - utilisant la commande "gh", "gH" ou "g CTRL-H" en mode Normal ;
 - pressant CTRL-G depuis le mode Visuel.			*v_CTRL-G*
 
-Commandes possibles en mode Sélection :
-- Les caractères imprimables, <NL> et <CR> provoquent le coupage de la
-  sélection et passent Vim en mode Insertion. Le caractère tapé est inséré.
-- Les commandes de déplacement non-imprimables, avec la touche Maj pressée,
-  étendent la sélection. 'keymodel' doit contenir "startsel".
-- Les commandes de déplacement non-imprimables, avec la touche Maj NON
-  pressée, terminent le mode Sélection. 'keymodel' doit contenir "stopsel".
-- <Echap> termine le mode Sélection.
-- CTRL-O passe en mode Visuel pour la durée d'une commande.	*v_CTRL-O*
+Commandes possibles en mode SÃ©lection :
+- Les caractÃ¨res imprimables, <NL> et <CR> provoquent le coupage de la
+  sÃ©lection et passent Vim en mode Insertion. Le caractÃ¨re tapÃ© est insÃ©rÃ©.
+- Les commandes de dÃ©placement non-imprimables, avec la touche Maj pressÃ©e,
+  Ã©tendent la sÃ©lection. 'keymodel' doit contenir "startsel".
+- Les commandes de dÃ©placement non-imprimables, avec la touche Maj NON
+  pressÃ©e, terminent le mode SÃ©lection. 'keymodel' doit contenir "stopsel".
+- <Echap> termine le mode SÃ©lection.
+- CTRL-O passe en mode Visuel pour la durÃ©e d'une commande.	*v_CTRL-O*
 - CTRL-G passe en mode Visuel.
 
-Sinon, les caractères saisis sont traités comme en mode Visuel.
+Sinon, les caractÃ¨res saisis sont traitÃ©s comme en mode Visuel.
 
-Lorsqu'un opérateur est utilisé en mode Sélection et que la sélection est par
-lignes, les lignes sélectionnées sont affectées par l'opérateur, mais comme
-dans une sélection par caractères. Par exemple, lorsqu'une ligne entière est
-coupée, elle pourra ensuite être collée au milieu d'une ligne.
+Lorsqu'un opÃ©rateur est utilisÃ© en mode SÃ©lection et que la sÃ©lection est par
+lignes, les lignes sÃ©lectionnÃ©es sont affectÃ©es par l'opÃ©rateur, mais comme
+dans une sÃ©lection par caractÃ¨res. Par exemple, lorsqu'une ligne entiÃ¨re est
+coupÃ©e, elle pourra ensuite Ãªtre collÃ©e au milieu d'une ligne.
 
 
-MAPPAGES ET MENUS EN MODE SÉLECTION			*Select-mode-mapping*
+MAPPAGES ET MENUS EN MODE SÃ‰LECTION			*Select-mode-mapping*
 
-En mode Sélection, les mappages et menus du mode Visuel sont utilisés. Mais
-avant qu'ils ne soient exécutés, Vim bascule automatiquement en mode Visuel,
-de telle sorte que leurs comportements soient les même que dans ce mode.
+En mode SÃ©lection, les mappages et menus du mode Visuel sont utilisÃ©s. Mais
+avant qu'ils ne soient exÃ©cutÃ©s, Vim bascule automatiquement en mode Visuel,
+de telle sorte que leurs comportements soient les mÃªme que dans ce mode.
 
-Après la fin d'un mappage ou menu, la sélection est réactivée et l'on repasse
-en mode Sélection, à moins que la zone sélectionnée n'ait été coupée, qu'un
+AprÃ¨s la fin d'un mappage ou menu, la sÃ©lection est rÃ©activÃ©e et l'on repasse
+en mode SÃ©lection, Ã  moins que la zone sÃ©lectionnÃ©e n'ait Ã©tÃ© coupÃ©e, qu'un
 autre tampon ne soit devenu le tampon courant ou que la disposition des
-fenêtres n'ait été changée.
+fenÃªtres n'ait Ã©tÃ© changÃ©e.
 
-Lorsqu'un caractère est tapé qui provoque le coupage de la sélection et le
-lancement du mode Insertion, les mappages du mode Insertion sont appliqués à
-ce caractère. Cela peut être source de confusion, car cela signifie que les
-mappages du mode Insertion s'appliquent à un caractère tapé en mode Sélection.
-Les mappages de langue s'appliquent de la même manière.
+Lorsqu'un caractÃ¨re est tapÃ© qui provoque le coupage de la sÃ©lection et le
+lancement du mode Insertion, les mappages du mode Insertion sont appliquÃ©s Ã 
+ce caractÃ¨re. Cela peut Ãªtre source de confusion, car cela signifie que les
+mappages du mode Insertion s'appliquent Ã  un caractÃ¨re tapÃ© en mode SÃ©lection.
+Les mappages de langue s'appliquent de la mÃªme maniÃ¨re.
 
 							*gV* *v_gV*
-gV			Annule la resélection automatique de la zone Visuel
-			après la fin d'un mappage ou menu en mode Sélection.
-			Ceci doit être placé juste avant la fin du mappage ou
-			menu concerné, ou au moins après toutes les opérations
-			effectuées sur la sélection.
+gV			Annule la resÃ©lection automatique de la zone Visuel
+			aprÃ¨s la fin d'un mappage ou menu en mode SÃ©lection.
+			Ceci doit Ãªtre placÃ© juste avant la fin du mappage ou
+			menu concernÃ©, ou au moins aprÃ¨s toutes les opÃ©rations
+			effectuÃ©es sur la sÃ©lection.
 
 							*gh*
-gh			Lance le mode Sélection par caractères. C'est
-			identique à "v", mais pour le mode Sélection au lieu
+gh			Lance le mode SÃ©lection par caractÃ¨res. C'est
+			identique Ã  "v", mais pour le mode SÃ©lection au lieu
 			du mode Visuel.			   ["Get Highlighting"]
 
 							*gH*
-gH			Lance le mode Sélection par lignes. C'est identique à
-			"V", mais pour le mode Sélection au lieu du mode
+gH			Lance le mode SÃ©lection par lignes. C'est identique Ã 
+			"V", mais pour le mode SÃ©lection au lieu du mode
 			Visuel.
 
 							*g_CTRL-H*
-g CTRL-H		Lance le mode Sélection par blocs. C'est identique à
-			CTRL-V, mais pour le mode Sélection au lieu du mode
+g CTRL-H		Lance le mode SÃ©lection par blocs. C'est identique Ã 
+			CTRL-V, mais pour le mode SÃ©lection au lieu du mode
 			Visuel.
 
  vim:tw=78:ts=8:ft=help:norl:

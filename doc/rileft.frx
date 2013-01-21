@@ -1,143 +1,143 @@
 *rileft.txt*	Pour Vim version 6.2.
 
 
-		  MANUEL de RÉFÉRENCE VIM - par Avner Lottem
-				mis à jour par Nadim Shaikli
+		  MANUEL de RÃ‰FÃ‰RENCE VIM - par Avner Lottem
+				mis Ã  jour par Nadim Shaikli
 
 
-Mode d'affichage de droite à gauche pour Vim	*rileft*
+Mode d'affichage de droite Ã  gauche pour Vim	*rileft*
 
 
-Ces fonctions furent écrites à l'origine par Avner Lottem :
-   Courriel :	alottem@iil.intel.com
-   Téléphone :	+972-4-8307322
-[N.D.T. : Le traducteur ne garantit pas qu'Avner comprenne le français.]
+Ces fonctions furent Ã©crites Ã  l'origine par Avner LottemÂ :
+   CourrielÂ :	alottem@iil.intel.com
+   TÃ©lÃ©phoneÂ :	+972-4-8307322
+[N.D.T.Â : Le traducteur ne garantit pas qu'Avner comprenne le franÃ§ais.]
 
-{Vi ne possède aucune de ces commandes}
+{Vi ne possÃ¨de aucune de ces commandes}
 
 								*E26*
-Cette fonctionnalité n'est disponible que si la fonctionnalité |+rightleft| a
-été incluse lors de la compilation.
+Cette fonctionnalitÃ© n'est disponible que si la fonctionnalitÃ© |+rightleft| a
+Ã©tÃ© incluse lors de la compilation.
 
 
 Introduction
 ------------
-Certaines langues telles que l'arabe, le persan, l'hébreu (parmi d'autres)
-nécessitent la possibilité d'afficher leur texte de droite à gauche. Les
-fichiers écrits dans ces langues sont enregistrés de manière conventionnelle
-(c.-à-d. en commençant par le début, en continuant par le milieu, et en
-terminant par la fin) ; l'affichage de droite à gauche est uniquement une
-fonctionnalité de l'interface d'affichage (en vertu des spécifications
-Unicode). Dans les fichiers écrits dans l'orientation de droite à gauche, les
-caractères apparaissent de droite à gauche à l'écran.
+Certaines langues telles que l'arabe, le persan, l'hÃ©breu (parmi d'autres)
+nÃ©cessitent la possibilitÃ© d'afficher leur texte de droite Ã  gauche. Les
+fichiers Ã©crits dans ces langues sont enregistrÃ©s de maniÃ¨re conventionnelle
+(c.-Ã -d. en commenÃ§ant par le dÃ©but, en continuant par le milieu, et en
+terminant par la fin)Â ; l'affichage de droite Ã  gauche est uniquement une
+fonctionnalitÃ© de l'interface d'affichage (en vertu des spÃ©cifications
+Unicode). Dans les fichiers Ã©crits dans l'orientation de droite Ã  gauche, les
+caractÃ¨res apparaissent de droite Ã  gauche Ã  l'Ã©cran.
 
-La bidirectionnalité (ou, en abrégé, la bidi) est la solution universelle
-offerte à ces langues par Unicode. La bidi offre à l'utilisateur la
-possibilité de visualiser à la fois dans la même fenêtre du texte de gauche à
-droite ou de droite à gauche selon l'écriture utilisée. Pour des raisons de
-simplicité, Vim ne fournit pas la bidi à l'heure actuelle ; son choix est
-seulement de proposer à l'utilisateur la possibilité d'afficher, de saisir et
-d'utiliser du texte allant soit de gauche à droite, soit de droite à gauche.
-Une option hybride plus ancienne, qui consistait à encoder la direction
-d'affichage avec chaque caractère (ou groupe de caractères), n'a pas été
-retenue non plus, d'une part parce qu'elle dépasse ce à quoi on peut
-s'attendre de la part d'un « simple » éditeur de texte, et d'autre part parce
-qu'Unicode ne lui a pas accordé sa sanction.
+La bidirectionnalitÃ© (ou, en abrÃ©gÃ©, la bidi) est la solution universelle
+offerte Ã  ces langues par Unicode. La bidi offre Ã  l'utilisateur la
+possibilitÃ© de visualiser Ã  la fois dans la mÃªme fenÃªtre du texte de gauche Ã 
+droite ou de droite Ã  gauche selon l'Ã©criture utilisÃ©e. Pour des raisons de
+simplicitÃ©, Vim ne fournit pas la bidi Ã  l'heure actuelleÂ ; son choix est
+seulement de proposer Ã  l'utilisateur la possibilitÃ© d'afficher, de saisir et
+d'utiliser du texte allant soit de gauche Ã  droite, soit de droite Ã  gauche.
+Une option hybride plus ancienne, qui consistait Ã  encoder la direction
+d'affichage avec chaque caractÃ¨re (ou groupe de caractÃ¨res), n'a pas Ã©tÃ©
+retenue non plus, d'une part parce qu'elle dÃ©passe ce Ã  quoi on peut
+s'attendre de la part d'un Â«Â simpleÂ Â» Ã©diteur de texte, et d'autre part parce
+qu'Unicode ne lui a pas accordÃ© sa sanction.
 
 
-Résumé
+RÃ©sumÃ©
 ------
-o  L'édition « de gauche à droite » fonctionne comme dans le Vim
-   « classique », sans changement.
+o  L'Ã©dition Â«Â de gauche Ã  droiteÂ Â» fonctionne comme dans le Vim
+   Â«Â classiqueÂ Â», sans changement.
 
-o  Affichage et édition des fichiers dans des fenêtres orientées de droite à
-   gauche. L'orientation est définie « par fenêtre », de sorte qu'il est
-   possible de visualiser un même fichier à la fois de gauche à droite et de
-   droite à gauche. (Ceci est utile pour la visualisation de fichiers hybrides
-   contenant à la fois du texte de gauche à droite et de droite à gauche).
+o  Affichage et Ã©dition des fichiers dans des fenÃªtres orientÃ©es de droite Ã 
+   gauche. L'orientation est dÃ©finie Â«Â par fenÃªtreÂ Â», de sorte qu'il est
+   possible de visualiser un mÃªme fichier Ã  la fois de gauche Ã  droite et de
+   droite Ã  gauche. (Ceci est utile pour la visualisation de fichiers hybrides
+   contenant Ã  la fois du texte de gauche Ã  droite et de droite Ã  gauche).
 
-o  Compatibilité avec le Vim « classique ». Pratiquement toutes les
-   fonctionnalités sont indépendantes du sens de l'affichage (voir plus loin
-   « Bogues »).
+o  CompatibilitÃ© avec le Vim Â«Â classiqueÂ Â». Pratiquement toutes les
+   fonctionnalitÃ©s sont indÃ©pendantes du sens de l'affichage (voir plus loin
+   Â«Â BoguesÂ Â»).
 
 o  Recul en mode d'insertion inverse, vers la position correcte dans le
    fichier (si possible).
 
-o  Le terminal n'a pas besoin de posséder une fonction d'affichage de droite à
+o  Le terminal n'a pas besoin de possÃ©der une fonction d'affichage de droite Ã 
    gauche. Toutes les modifications introduites par l'option d'affichage de
-   droite à gauche sont totalement indépendantes du matériel.
+   droite Ã  gauche sont totalement indÃ©pendantes du matÃ©riel.
 
-o  De nombreuses langues exigent que l'affichage de droite à gauche soit
-   supporté. Il est très facile de supporter de nouvelles langues à écriture
-   de droite à gauche, moyennant l'inclusion de leur codage clavier, et
-   peut-être de quelques ajustement mineurs dans le code source. À l'heure
-   actuelle, trois de ces langues sont déjà supportées : voir |arabic.txt|,
+o  De nombreuses langues exigent que l'affichage de droite Ã  gauche soit
+   supportÃ©. Il est trÃ¨s facile de supporter de nouvelles langues Ã  Ã©criture
+   de droite Ã  gauche, moyennant l'inclusion de leur codage clavier, et
+   peut-Ãªtre de quelques ajustement mineurs dans le code source. Ã€ l'heure
+   actuelle, trois de ces langues sont dÃ©jÃ  supportÃ©esÂ : voir |arabic.txt|,
    |farsi.txt| et |hebrew.txt|.
 
 
-Particularités...
+ParticularitÃ©s...
 -----------------
 
 o  Invocation
    ----------
-   + 'rightleft' ('rl') oriente la fenêtre de droite à gauche.
-   + 'delcombine' ('deco'), option booléenne, permet, lors de l'édition de
-     textes encodés en UTF-8, de supprimer un caractère de composition,
-     c'est-à-dire un caractère qui s'affiche superposé sur le précédent
-     (de tels caractères sont utilisés, par exemple, pour les voyelles des
-     langues sémitiques).
+   + 'rightleft' ('rl') oriente la fenÃªtre de droite Ã  gauche.
+   + 'delcombine' ('deco'), option boolÃ©enne, permet, lors de l'Ã©dition de
+     textes encodÃ©s en UTF-8, de supprimer un caractÃ¨re de composition,
+     c'est-Ã -dire un caractÃ¨re qui s'affiche superposÃ© sur le prÃ©cÃ©dent
+     (de tels caractÃ¨res sont utilisÃ©s, par exemple, pour les voyelles des
+     langues sÃ©mitiques).
    + 'rightleftcmd' ('rlc') permet, dans certains modes (tels que la
-     recherche) l'utilisation de texte de droite à gauche même sur la ligne
+     recherche) l'utilisation de texte de droite Ã  gauche mÃªme sur la ligne
      de commande.
 
-O  Saisie rétrodirectionnelle				*ins-reverse*
+O  Saisie rÃ©trodirectionnelle				*ins-reverse*
    --------------------------
    Au lieu d'utiliser pleinement l'option 'rightleft', il est possible d'opter
-   pour l'insertion à reculons. Lorsque l'option 'revins' (reverse insert =
-   insertion inversée) est activée, l'insertion se produit à reculons. Ceci
-   peut être utilisé pour taper du texte de droite à gauche. Au cours de
-   l'insertion, le curseur reste immobile et le texte est « poussé » vers la
-   droite. La touche <RetArr> supprime le caractère le plus récent, qui se
-   trouve sous le curseur. CTRL-W et CTRL-U fonctionnent également en sens
-   inverse. <RetArr>, CTRL-W et CTRL-U ne s'arrêtent ni au début de
-   l'insertion ni à la fin de la ligne, quelle que soit la valeur de l'option
+   pour l'insertion Ã  reculons. Lorsque l'option 'revins' (reverse insert =
+   insertion inversÃ©e) est activÃ©e, l'insertion se produit Ã  reculons. Ceci
+   peut Ãªtre utilisÃ© pour taper du texte de droite Ã  gauche. Au cours de
+   l'insertion, le curseur reste immobile et le texte est Â«Â poussÃ©Â Â» vers la
+   droite. La touche <RetArr> supprime le caractÃ¨re le plus rÃ©cent, qui se
+   trouve sous le curseur. CTRL-W et CTRL-U fonctionnent Ã©galement en sens
+   inverse. <RetArr>, CTRL-W et CTRL-U ne s'arrÃªtent ni au dÃ©but de
+   l'insertion ni Ã  la fin de la ligne, quelle que soit la valeur de l'option
    'backspace'.
 
-   Il n'y a pas (encore) de mode remplacement à reculons.
+   Il n'y a pas (encore) de mode remplacement Ã  reculons.
 
-   Si l'option 'showmode' est activée, la ligne d'état affiche "-- REVERSE
-   INSERT --" lorsque l'insertion se fait à reculons.
+   Si l'option 'showmode' est activÃ©e, la ligne d'Ã©tat affiche "-- REVERSE
+   INSERT --" lorsque l'insertion se fait Ã  reculons.
 
-o  Coller dans une fenêtre orientée de droite à gauche
+o  Coller dans une fenÃªtre orientÃ©e de droite Ã  gauche
    ---------------------------------------------------
-   Si on colle dans une fenêtre orientée de droite à gauche du texte copié ou
-   coupé avec la souris, l'orientation du texte sera inversée, car les
-   caractères se trouvent de gauche à droite dans le presse-papiers. Pour
-   éviter cela, inversez l'options 'revins' avant de coller le texte.
+   Si on colle dans une fenÃªtre orientÃ©e de droite Ã  gauche du texte copiÃ© ou
+   coupÃ© avec la souris, l'orientation du texte sera inversÃ©e, car les
+   caractÃ¨res se trouvent de gauche Ã  droite dans le presse-papiers. Pour
+   Ã©viter cela, inversez l'options 'revins' avant de coller le texte.
 
 
 Bogues
 ------
 o  Les commandes CTRL-A et CTRL-X (addition et soustraction) ne sont pas
-   exécutées correctement dans une fenêtre orientée de droite à gauche.
+   exÃ©cutÃ©es correctement dans une fenÃªtre orientÃ©e de droite Ã  gauche.
 
-o  L'insertion à reculons et le mode de droite à gauche ne sont pas supportés
-   sur la ligne de commande. Toutefois, la fonctionnalité de l'éditeur ne s'en
-   trouve pas diminuée, car il est possible de saisir de droite à gauche les
-   mappages, les abréviations et les textes à rechercher.
+o  L'insertion Ã  reculons et le mode de droite Ã  gauche ne sont pas supportÃ©s
+   sur la ligne de commande. Toutefois, la fonctionnalitÃ© de l'Ã©diteur ne s'en
+   trouve pas diminuÃ©e, car il est possible de saisir de droite Ã  gauche les
+   mappages, les abrÃ©viations et les textes Ã  rechercher.
 
-o  Le traitement est légèrement plus lent en mode de droite à gauche, car le
-   mouvement de droite à gauche est « émulé » au sein de Vim, il n'est pas
-   exécuté directement par la carte d'écran.
+o  Le traitement est lÃ©gÃ¨rement plus lent en mode de droite Ã  gauche, car le
+   mouvement de droite Ã  gauche est Â«Â Ã©mulÃ©Â Â» au sein de Vim, il n'est pas
+   exÃ©cutÃ© directement par la carte d'Ã©cran.
 
 o  Dans l'IHM graphique Athena, l'ascenseur horizontal fonctionne dans le
-   mauvais sens. Ceci est difficile à corriger.
+   mauvais sens. Ceci est difficile Ã  corriger.
 
-o  Lorsque 'rightleft' et 'revins' sont activées en même temps, l'option
-   'textwidth' ne fonctionne pas : il n'y a pas de retour à la ligne
+o  Lorsque 'rightleft' et 'revins' sont activÃ©es en mÃªme temps, l'option
+   'textwidth' ne fonctionne pasÂ : il n'y a pas de retour Ã  la ligne
    automatique, vous obtenez une seule longue ligne.
 
-o  Il n'y a pas de support pour une vraie et complète bidirectionnalité
+o  Il n'y a pas de support pour une vraie et complÃ¨te bidirectionnalitÃ©
    (bidi).
 
 

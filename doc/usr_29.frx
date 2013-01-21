@@ -1,62 +1,62 @@
-*usr_29.txt*	Pour Vim version 6.2.  Dernière modification : 14 aoû 2002
+*usr_29.txt*	Pour Vim version 6.2.  DerniÃ¨re modification : 14 aoÃ» 2002
 
 	       MANUEL de l'UTILISATEUR VIM - par Bram Moolenaar
 
-		       Se déplacer dans les programmes
+		       Se dÃ©placer dans les programmes
 
 
-Le créateur de Vim est un programmeur. Il n'y a rien de surprenant à ce que
-Vim offre de nombreuses commodités pour faciliter l'écriture de programmes,
-telles que sauter à l'endroit où un identifiant est défini ou utilisé, ou
-encore visualiser les déclarations dans une fenêtre séparée. Le chapitre
+Le crÃ©ateur de Vim est un programmeur. Il n'y a rien de surprenant Ã  ce que
+Vim offre de nombreuses commoditÃ©s pour faciliter l'Ã©criture de programmes,
+telles que sauter Ã  l'endroit oÃ¹ un identifiant est dÃ©fini ou utilisÃ©, ou
+encore visualiser les dÃ©clarations dans une fenÃªtre sÃ©parÃ©e. Le chapitre
 suivant va encore plus loin.
 
 |29.1|  Utiliser les marqueurs
-|29.2|  La fenêtre de prévisualisation
-|29.3|  Se déplacer dans un programme
+|29.2|  La fenÃªtre de prÃ©visualisation
+|29.3|  Se dÃ©placer dans un programme
 |29.4|  Rechercher des identifiants globaux
 |29.5|  Rechercher des identifiants locaux
 
-  Chapitre suivant : |usr_30.txt|  Éditer des programmes
-Chapitre précédent : |usr_28.txt|  Utiliser les replis
-Table des matières : |usr_toc.txt|
+  Chapitre suivant : |usr_30.txt|  Ã‰diter des programmes
+Chapitre prÃ©cÃ©dent : |usr_28.txt|  Utiliser les replis
+Table des matiÃ¨res : |usr_toc.txt|
 
 ==============================================================================
 *29.1*  Utiliser des marqueurs
 
-Qu'est-ce qu'un marqueur (ou "tag" en anglais) ? Il s'agit de l'endroit où un
-identifiant est défini. Par exemple : la définition d'une fonction dans un
-programme C ou C++. Une liste des marqueurs est conservée dans un fichier de
-marqueurs. Cela permet à Vim de sauter directement de n'importe où jusqu'au
-marqueur, c'est-à-dire l'endroit où l'identifiant est défini.
-   Pour générer le fichier de marqueurs pour tous les fichiers en langage C
-situés dans le répertoire courant, utilisez la commande suivante : >
+Qu'est-ce qu'un marqueur (ou "tag" en anglais) ? Il s'agit de l'endroit oÃ¹ un
+identifiant est dÃ©fini. Par exemple : la dÃ©finition d'une fonction dans un
+programme C ou C++. Une liste des marqueurs est conservÃ©e dans un fichier de
+marqueurs. Cela permet Ã  Vim de sauter directement de n'importe oÃ¹ jusqu'au
+marqueur, c'est-Ã -dire l'endroit oÃ¹ l'identifiant est dÃ©fini.
+   Pour gÃ©nÃ©rer le fichier de marqueurs pour tous les fichiers en langage C
+situÃ©s dans le rÃ©pertoire courant, utilisez la commande suivante : >
 
 	ctags *.c
 
-`ctags` est un programme externe. La plupart des systèmes Unix en disposent.
-Si vous ne l'avez pas déjà, vous pouvez trouver "Exuberant ctags" ici :
+`ctags` est un programme externe. La plupart des systÃ¨mes Unix en disposent.
+Si vous ne l'avez pas dÃ©jÃ , vous pouvez trouver "Exuberant ctags" ici :
 
 	http://ctags.sf.net ~
 
-À présent, quand vous êtes dans Vim et que vous que voulez aller à la
-définition d'une fonction, vous pouvez y sauter en utilisant la commande
+Ã€ prÃ©sent, quand vous Ãªtes dans Vim et que vous que voulez aller Ã  la
+dÃ©finition d'une fonction, vous pouvez y sauter en utilisant la commande
 suivante : >
 
 	:tag debliste
 
-Cette commande trouvra la fonction "debliste", même si elle est définie dans
+Cette commande trouvra la fonction "debliste", mÃªme si elle est dÃ©finie dans
 un autre fichier.
-   La commande CTRL-] saute au marqueur correspondant au mot situé sous le
-curseur. Cela facilite l'exploration d'un enchevêtrement de code C. Supposons,
-par exemple, que vous êtes dans la fonction "ecrire_bloc". Vous pouvez voir
-qu'elle appelle "ecrire_ligne". Mais que fait "ecrire_ligne" ? En plaçant le
-curseur sur l'appel à "ecrire_ligne" puis en pressant CTRL-], vous sautez à la
-définition de cette fonction.
-   La fonction "ecrire_ligne" fait appel à la fonction "ecrire_car". Vous
-devez à présent vous figurer ce que fait cette dernière. Alors vous placez
-votre curseur sur l'appel à "ecrire_car" puis vous pressez CTRL-]. Vous êtes
-maintenant sur la définition de la fonction "ecrire_car".
+   La commande CTRL-] saute au marqueur correspondant au mot situÃ© sous le
+curseur. Cela facilite l'exploration d'un enchevÃªtrement de code C. Supposons,
+par exemple, que vous Ãªtes dans la fonction "ecrire_bloc". Vous pouvez voir
+qu'elle appelle "ecrire_ligne". Mais que fait "ecrire_ligne" ? En plaÃ§ant le
+curseur sur l'appel Ã  "ecrire_ligne" puis en pressant CTRL-], vous sautez Ã  la
+dÃ©finition de cette fonction.
+   La fonction "ecrire_ligne" fait appel Ã  la fonction "ecrire_car". Vous
+devez Ã  prÃ©sent vous figurer ce que fait cette derniÃ¨re. Alors vous placez
+votre curseur sur l'appel Ã  "ecrire_car" puis vous pressez CTRL-]. Vous Ãªtes
+maintenant sur la dÃ©finition de la fonction "ecrire_car".
 
 	+-------------------------------------+
 	|void ecrire_bloc(char **s, int cnt)  |
@@ -84,70 +84,70 @@ maintenant sur la définition de la fonction "ecrire_car".
 				       |}				    |
 				       +------------------------------------+
 
-La commande ":tags" affiche la liste des marqueurs par lesquels vous êtes
-déjà passé : >
+La commande ":tags" affiche la liste des marqueurs par lesquels vous Ãªtes
+dÃ©jÃ  passÃ© : >
 
 	:tags
-<	  # VERS étiquette DE ligne   dans fichier/texte ~
+<	  # VERS Ã©tiquette DE ligne   dans fichier/texte ~
 	  1  1 ecrire_ligne	   8  ecrire_bloc.c ~
 	  2  1 ecrire_car	   7  ecrire_ligne.c ~
 	> ~
 >
-Maintenant, revenons en arrière. La commande CTRL-T saute au marqueur
-précédent. Dans l'exemple ci-dessus, vous retournez dans la fonction
-"ecrire_ligne", au niveau de l'appel à "ecrire_car".
+Maintenant, revenons en arriÃ¨re. La commande CTRL-T saute au marqueur
+prÃ©cÃ©dent. Dans l'exemple ci-dessus, vous retournez dans la fonction
+"ecrire_ligne", au niveau de l'appel Ã  "ecrire_car".
    Cette commande prend un quantificateur en argument, qui indique de combien
-de marqueurs vous voulez reculer. Vous avez avancé, puis reculé. Avançons à
+de marqueurs vous voulez reculer. Vous avez avancÃ©, puis reculÃ©. AvanÃ§ons Ã 
 nouveau. La commande suivante saute au marqueur qui est au sommet de la 
 liste : >
 
 	:tag
 
-Vous pouvez la faire précéder d'un quantificateur et sauter vers l'avant
-d'autant de marqueurs. Par exemple : ":3tag". CTRL-T peut aussi être précédé
+Vous pouvez la faire prÃ©cÃ©der d'un quantificateur et sauter vers l'avant
+d'autant de marqueurs. Par exemple : ":3tag". CTRL-T peut aussi Ãªtre prÃ©cÃ©dÃ©
 d'un quantificateur.
    Ces commandes vous permettent ainsi de descendre un arbre d'appels avec
-CTRL-] et de le remonter avec CTRL-T. Utilisez ":tags" pour savoir où vous en
-êtes.
+CTRL-] et de le remonter avec CTRL-T. Utilisez ":tags" pour savoir oÃ¹ vous en
+Ãªtes.
 
 
-PARTAGER DES FENÊTRES
+PARTAGER DES FENÃŠTRES
 
-La commande ":tag" remplace le fichier de la fenêtre courante par celui
-contenant la fonction recherchée. Mais, supposons que vous vouliez voir non
-seulement la nouvelle fonction mais aussi la précédente ? Vous pouvez partager
-la fenêtre en utilisant la commande ":split" suivie de la commande ":tag". Vim
-dispose d'une commande raccourcie qui enchaîne les deux : >
+La commande ":tag" remplace le fichier de la fenÃªtre courante par celui
+contenant la fonction recherchÃ©e. Mais, supposons que vous vouliez voir non
+seulement la nouvelle fonction mais aussi la prÃ©cÃ©dente ? Vous pouvez partager
+la fenÃªtre en utilisant la commande ":split" suivie de la commande ":tag". Vim
+dispose d'une commande raccourcie qui enchaÃ®ne les deux : >
 >
 	:stag nommarqueur
 
-Pour partager la fenêtre courante et sauter au marqueur sous le curseur,
+Pour partager la fenÃªtre courante et sauter au marqueur sous le curseur,
 utilisez cette commande : >
 
 	CTRL-W ]
 
-Si un argument numérique est spécifié, la nouvelle fenêtre fera autant de
+Si un argument numÃ©rique est spÃ©cifiÃ©, la nouvelle fenÃªtre fera autant de
 lignes de hauteur.
 
 
 DAVANTAGE SUR LES FICHIERS DE MARQUEURS
 
-Quand vous avez des fichiers dans de nombreux répertoires, vous pouvez créer
+Quand vous avez des fichiers dans de nombreux rÃ©pertoires, vous pouvez crÃ©er
 un fichier de marqueurs dans chacun d'entre eux. Dans ce cas, Vim sera capable
-de sauter uniquement à des marqueurs situés dans le répertoire courant.
+de sauter uniquement Ã  des marqueurs situÃ©s dans le rÃ©pertoire courant.
    Pour trouver davantage de fichiers de marqueurs, fixez l'option 'tags' pour
-qu'elle inclut tous les fichiers souhaités. Exemple : >
+qu'elle inclut tous les fichiers souhaitÃ©s. Exemple : >
 
 	:set tags=./tags,./../tags,./*/tags
 
-Ceci recherche un fichier de marqueurs dans le même répertoire que le fichier
-courant, dans le répertoire parent du répertoire courant, ainsi que dans tous
-les sous-répertoires.
-   Bien que cela puisse conduire à un grand nombre de fichiers, il se peut
-que cela ne suffise pas. Par exemple, en éditant un fichier dans "~/proj/src",
-le fichier "~/proj/sub/tags" n'est pas trouvé. Face à cette situation, Vim
-propose la recherche de fichiers de marqueurs dans une arborescence complète
-de sous-répertoires. Exemple : >
+Ceci recherche un fichier de marqueurs dans le mÃªme rÃ©pertoire que le fichier
+courant, dans le rÃ©pertoire parent du rÃ©pertoire courant, ainsi que dans tous
+les sous-rÃ©pertoires.
+   Bien que cela puisse conduire Ã  un grand nombre de fichiers, il se peut
+que cela ne suffise pas. Par exemple, en Ã©ditant un fichier dans "~/proj/src",
+le fichier "~/proj/sub/tags" n'est pas trouvÃ©. Face Ã  cette situation, Vim
+propose la recherche de fichiers de marqueurs dans une arborescence complÃ¨te
+de sous-rÃ©pertoires. Exemple : >
 
 	:set tags=~/proj/**/tags
 
@@ -156,22 +156,22 @@ UN SEUL FICHIER DE MARQUEURS
 
 Quand Vim doit chercher des fichiers de marqueurs en de nombreux endroits,
 vous pouvez entendre le disque s'activer. Cela peut prendre du temps. Dans ce
-cas, il peut être intéressant de consacrer un peu plus de temps à générer un
+cas, il peut Ãªtre intÃ©ressant de consacrer un peu plus de temps Ã  gÃ©nÃ©rer un
 seul gros fichier de marqueurs. Vous pourriez le faire de nuit.
-   Ceci requiert le programme "Exuberant ctags" mentionné ci-dessus. Il accepte
-un paramètre lui demandant l'analyse récursive d'une arborescence complète de
-répertoires : >
+   Ceci requiert le programme "Exuberant ctags" mentionnÃ© ci-dessus. Il accepte
+un paramÃ¨tre lui demandant l'analyse rÃ©cursive d'une arborescence complÃ¨te de
+rÃ©pertoires : >
 
 	cd ~/proj
 	ctags -R .
 
-Un aspect sympathique de Exuberant ctags est qu'il reconnaît un nombre très
+Un aspect sympathique de Exuberant ctags est qu'il reconnaÃ®t un nombre trÃ¨s
 important de types de fichiers. Ainsi ne fonctionne-t-il pas seulement pour
-des programmes écrits en C ou en C++, mais également pour Eiffel ou même les
-scripts Vim. Consultez la documentation de ctags pour le paramétrer selon vos
+des programmes Ã©crits en C ou en C++, mais Ã©galement pour Eiffel ou mÃªme les
+scripts Vim. Consultez la documentation de ctags pour le paramÃ©trer selon vos
 besoins.
 
-   Maintenant, il ne vous reste plus qu'à indiquer à Vim où se trouve votre
+   Maintenant, il ne vous reste plus qu'Ã  indiquer Ã  Vim oÃ¹ se trouve votre
 gros fichier de marqueurs : >
 
 	:set tags=~/proj/tags
@@ -179,22 +179,22 @@ gros fichier de marqueurs : >
 
 CORRESPONDANCES MULTIPLES
 
-Quand une fonction est définie de nombreuses fois (ou une même méthode dans
-plusieurs classes), la commande ":tag" sautera à la première. Si une
+Quand une fonction est dÃ©finie de nombreuses fois (ou une mÃªme mÃ©thode dans
+plusieurs classes), la commande ":tag" sautera Ã  la premiÃ¨re. Si une
 correspondance existe dans le fichier courant, c'est elle qui est retenue.
    Vous pouvez sauter aux autres correspondances du marqueur avec la 
 commande : >
 
 	:tnext
 
-Répétez cette commande pour sauter aux occurences suivantes. S'il y en a
+RÃ©pÃ©tez cette commande pour sauter aux occurences suivantes. S'il y en a
 beaucoup, vous pouvez choisir vers laquelle sauter : >
 
 	:tselect tagname
 
-Vim vous présentera alors une liste de choix :
+Vim vous prÃ©sentera alors une liste de choix :
 
-	  # pri type étiquette	       fichier ~
+	  # pri type Ã©tiquette	       fichier ~
 	  1 F	f    mch_init	       os_amiga.c ~
 		       mch_init() ~
 	  2 F	f    mch_init	       os_mac.c ~
@@ -205,81 +205,81 @@ Vim vous présentera alors une liste de choix :
 		       mch_init() ~
 	Entrez le no choisi (<CR> pour annuler):  ~
 
-Vous pouvez saisir le numéro de la correspondance (indiqué dans la première
+Vous pouvez saisir le numÃ©ro de la correspondance (indiquÃ© dans la premiÃ¨re
 colonne) vers laquelle vous souhaitez sauter. Les autres colonnes vous donnent
-des informations sur l'endroit où la correspondance est définie.
+des informations sur l'endroit oÃ¹ la correspondance est dÃ©finie.
 
-Pour vous déplacer parmi les marqueurs correspondants, vous pouvez utiliser
+Pour vous dÃ©placer parmi les marqueurs correspondants, vous pouvez utiliser
 les commandes suivantes :
 
-	:tfirst			aller à la première correspondance
-	:[quant]tprevious	aller à la [quant]-ième correspondance
-				   précédente 
-	:[quant]tnext		aller à la [quant]-ième correspondance
+	:tfirst			aller Ã  la premiÃ¨re correspondance
+	:[quant]tprevious	aller Ã  la [quant]-iÃ¨me correspondance
+				   prÃ©cÃ©dente 
+	:[quant]tnext		aller Ã  la [quant]-iÃ¨me correspondance
 				   suivante 
-	:tlast			aller à la dernière correspondance
+	:tlast			aller Ã  la derniÃ¨re correspondance
 
 Si [quant] est omis, il vaut implicitement 1.
 
 
 DEVINER LES NOMS DES MARQUEURS
 
-Le complètement de ligne de commande est un bon moyen d'éviter la saisie d'un
+Le complÃ¨tement de ligne de commande est un bon moyen d'Ã©viter la saisie d'un
 nom de marqueur long. Tapez-en seulement une petite partie et pressez <Tab> : >
 
 	:tag ecrire_<Tab>
 
-Vous obtiendrez la première correspondance. Si ce n'est pas celle que vous
-voulez, pressez <Tab> jusqu'à ce que vous trouviez la bonne.
+Vous obtiendrez la premiÃ¨re correspondance. Si ce n'est pas celle que vous
+voulez, pressez <Tab> jusqu'Ã  ce que vous trouviez la bonne.
    Parfois, vous connaissez seulement une partie du nom d'une fonction. Ou
-vous avez de nombreux marqueurs qui commencent de la même façon, mais
-finissent différemment. Vous pouvez demander à Vim d'utiliser un motif de
+vous avez de nombreux marqueurs qui commencent de la mÃªme faÃ§on, mais
+finissent diffÃ©remment. Vous pouvez demander Ã  Vim d'utiliser un motif de
 recherche pour trouver le marqueur.
-   Supposons que vous vouliez sauter à un marqueur qui contient la chaîne
+   Supposons que vous vouliez sauter Ã  un marqueur qui contient la chaÃ®ne
 "bloc". Tapez d'abord ceci : >
 
 	:tag /bloc
 
-Maintenant, utilisez le complètement de la ligne de commande : pressez <Tab>.
+Maintenant, utilisez le complÃ¨tement de la ligne de commande : pressez <Tab>.
 Vim trouvera tous les marqueurs qui contiennent "bloc" et sautera au premier.
-   Le "/" devant un nom de marqueur signale à Vim que ce qui suit n'est pas un
-nom de marqueur à chercher littéralement, mais un motif. Vous pouvez utiliser
-tous les éléments des motifs de recherche. Par exemple, supposons que vous
+   Le "/" devant un nom de marqueur signale Ã  Vim que ce qui suit n'est pas un
+nom de marqueur Ã  chercher littÃ©ralement, mais un motif. Vous pouvez utiliser
+tous les Ã©lÃ©ments des motifs de recherche. Par exemple, supposons que vous
 vouliez vouliez trouver un marqueur qui commence par "ecrire_" : >
 
 	:tselect /^ecrire_
 
 Le "^" indique que le marqueur doit commencer par "ecrire_". Autrement, le
-motif pourrait correspondre au beau milieu d'un marqueur. De façon similaire,
-un "$" final assure que le motif ne correspond qu'à la fin du marqueur.
+motif pourrait correspondre au beau milieu d'un marqueur. De faÃ§on similaire,
+un "$" final assure que le motif ne correspond qu'Ã  la fin du marqueur.
 
 
 UN NAVIGATEUR POUR LES MARQUEURS
 
-Puisque CTRL-] vous envoie à la définition de l'identificateur trouvé sous le
+Puisque CTRL-] vous envoie Ã  la dÃ©finition de l'identificateur trouvÃ© sous le
 curseur, vous pouvez utiliser une liste d'identificateurs comme une table des
-matières. Voici un exemple.
-   Créez d'abord une liste des identifiants (ceci requiert d'utiliser
+matiÃ¨res. Voici un exemple.
+   CrÃ©ez d'abord une liste des identifiants (ceci requiert d'utiliser
 Exuberant ctags) : >
 
 	ctags --c-types=f -f fonctions *.c
 
-Maintenant, démarrez Vim sans nom de fichier et ouvrez le fichier contenant
-la liste dans une fenêtre partagée verticalement : >
+Maintenant, dÃ©marrez Vim sans nom de fichier et ouvrez le fichier contenant
+la liste dans une fenÃªtre partagÃ©e verticalement : >
 
 	vim
 	:vsplit functions
 
-La fenêtre contient une liste de toutes les fonctions. Il y a aussi d'autres
+La fenÃªtre contient une liste de toutes les fonctions. Il y a aussi d'autres
 informations que vous pouvez ignorer. Tapez ":set ts=99" pour nettoyer un peu
-l'écran.
-   Dans cette fenêtre, créez un mappage : >
+l'Ã©cran.
+   Dans cette fenÃªtre, crÃ©ez un mappage : >
 
 	:nmap <buffer> <CR> 0ye<C-W>w:tag <C-R>"<CR>
 
 Placez le curseur sur la ligne qui contient la fonction vers laquelle vous
-voulez sauter. À présent, pressez <Entree>. Vim ira dans l'autre fenêtre et
-sautera à la fonction souhaitée.
+voulez sauter. Ã€ prÃ©sent, pressez <Entree>. Vim ira dans l'autre fenÃªtre et
+sautera Ã  la fonction souhaitÃ©e.
 
 
 SUJETS CONNEXES
@@ -287,76 +287,76 @@ SUJETS CONNEXES
 Vous pouvez activer l'option 'ignorecase' pour ignorer la casse des noms de
 marqueurs.
 
-L'option 'tagbsearch' indique si le fichier de marqueurs est trié ou non. Par
-défaut, Vim suppose que le fichier de marqueurs est trié, ce qui accélère
-considérablement la recherche, mais cela ne fonctionne que si le fichier est
-effectivement trié.
+L'option 'tagbsearch' indique si le fichier de marqueurs est triÃ© ou non. Par
+dÃ©faut, Vim suppose que le fichier de marqueurs est triÃ©, ce qui accÃ©lÃ¨re
+considÃ©rablement la recherche, mais cela ne fonctionne que si le fichier est
+effectivement triÃ©.
 
-L'option 'taglength' permet d'indiquer à Vim le nombre de caractères
+L'option 'taglength' permet d'indiquer Ã  Vim le nombre de caractÃ¨res
 significatifs dans un marqueur.
 
 Si vous utilisez le programme SNiFF+, vous pouvez utiliser l'interface |sniff|
 de Vim. SNiFF+ est un programme commercial.
 
-Cscope est un programme libre. Il ne trouve pas seulement les endroits où un
-identifiant est défini, mais aussi les endroits où il est utilisé. Voir
+Cscope est un programme libre. Il ne trouve pas seulement les endroits oÃ¹ un
+identifiant est dÃ©fini, mais aussi les endroits oÃ¹ il est utilisÃ©. Voir
 |cscope|.
 
 ==============================================================================
-*29.2*	La fenêtre de prévisualisation
+*29.2*	La fenÃªtre de prÃ©visualisation
 
-Quand vous éditez du code qui contient un appel de fonction, vous devez
-utiliser les bons arguments. Pour connaître les valeurs à lui passer, vous
-pouvez regarder comment la fonction est définie. Le mécanisme des marqueurs
-est bien adapté pour cela. Mais afficher le code de la fonction dans une autre
-fenêtre semble préférable. Pour cela, vous pouvez utiliser la fenêtre de
-prévisualisation.
-   Pour ouvrir une fenêtre de prévisualisation afin d'afficher la fonction
+Quand vous Ã©ditez du code qui contient un appel de fonction, vous devez
+utiliser les bons arguments. Pour connaÃ®tre les valeurs Ã  lui passer, vous
+pouvez regarder comment la fonction est dÃ©finie. Le mÃ©canisme des marqueurs
+est bien adaptÃ© pour cela. Mais afficher le code de la fonction dans une autre
+fenÃªtre semble prÃ©fÃ©rable. Pour cela, vous pouvez utiliser la fenÃªtre de
+prÃ©visualisation.
+   Pour ouvrir une fenÃªtre de prÃ©visualisation afin d'afficher la fonction
 "ecrire_car" : >
 
 	:ptag ecrire_car
 
-Vim ouvrira une fenêtre et sautera au marqueur "ecrire_car". Puis il vous
-ramène où vous étiez. Ainsi, vous pourrez continuer de taper sans avoir besoin
+Vim ouvrira une fenÃªtre et sautera au marqueur "ecrire_car". Puis il vous
+ramÃ¨ne oÃ¹ vous Ã©tiez. Ainsi, vous pourrez continuer de taper sans avoir besoin
 de la commande CTRL-W.
-   Si le nom d'une fonction apparaît dans le texte, vous pouvez obtenir sa
-définition dans la fenêtre de prévisualisation avec : >
+   Si le nom d'une fonction apparaÃ®t dans le texte, vous pouvez obtenir sa
+dÃ©finition dans la fenÃªtre de prÃ©visualisation avec : >
 
 	CTRL-W }
 
-Il existe un script qui affiche automatiquement le texte se trouvant à
-l'endroit est défini le mot sous le curseur. Voir |CursorHold-example|.
+Il existe un script qui affiche automatiquement le texte se trouvant Ã 
+l'endroit est dÃ©fini le mot sous le curseur. Voir |CursorHold-example|.
 
-Pour fermer la fenêtre de prévisualisation, utilisez cette commande : >
+Pour fermer la fenÃªtre de prÃ©visualisation, utilisez cette commande : >
 
 	:pclose
 
-Pour éditer un fichier particulier (par exemple "defs.h") dans la fenêtre de
-prévisualisation, utilisez : >
+Pour Ã©diter un fichier particulier (par exemple "defs.h") dans la fenÃªtre de
+prÃ©visualisation, utilisez : >
 
 	:pedit defs.h
 
 Enfin, ":psearch" vous permet de trouver un mot dans le fichier courant ou
-dans tout fichier inclus, et d'afficher la correspondance dans la fenêtre de
-prévisualisation. C'est particulièrement utile lors de l'utilisation de
-fonctions faisant partie d'une bibliothèque, pour lesquelles aucun fichier de
+dans tout fichier inclus, et d'afficher la correspondance dans la fenÃªtre de
+prÃ©visualisation. C'est particuliÃ¨rement utile lors de l'utilisation de
+fonctions faisant partie d'une bibliothÃ¨que, pour lesquelles aucun fichier de
 marqueurs n'est disponible. Exemple : >
 
 	:psearch popen
 
-Ceci affichera le fichier "stdio.h" dans la fenêtre de prévisualisation, avec
+Ceci affichera le fichier "stdio.h" dans la fenÃªtre de prÃ©visualisation, avec
 le prototype de fonction popen() :
 
 	FILE	*popen __P((const char *, const char *)); ~
 
-Vous pouvez spécifier la hauteur de la fenêtre de prévisualisation lors de son
-ouverture en précisant le nombre de lignes dans l'option 'previewheight'.
+Vous pouvez spÃ©cifier la hauteur de la fenÃªtre de prÃ©visualisation lors de son
+ouverture en prÃ©cisant le nombre de lignes dans l'option 'previewheight'.
 
 ==============================================================================
-*29.3*  Se déplacer dans un programme
+*29.3*  Se dÃ©placer dans un programme
 
-Comme un programme est structuré, Vim peut y reconnaître des éléments. Des
-commandes particulières vous permettent de vous y déplacer.
+Comme un programme est structurÃ©, Vim peut y reconnaÃ®tre des Ã©lÃ©ments. Des
+commandes particuliÃ¨res vous permettent de vous y dÃ©placer.
    Les programmes en langage C contiennent souvent des constructions comme
 celle-ci :
 
@@ -366,18 +366,18 @@ celle-ci :
 	    fd = fopen("tmp", "w") ~
 	#endif ~
 
-Mais souvent beaucoup plus longues et éventuellement imbriquées. Placez le
-curseur sur le "#ifdef" et pressez %. Vim sautera au "#else". Presser % à
-nouveau vous envoie au "#endif". Un autre % vous ramène sur le "#ifdef"
+Mais souvent beaucoup plus longues et Ã©ventuellement imbriquÃ©es. Placez le
+curseur sur le "#ifdef" et pressez %. Vim sautera au "#else". Presser % Ã 
+nouveau vous envoie au "#endif". Un autre % vous ramÃ¨ne sur le "#ifdef"
 initial.
-   Quand la construction est imbriquée, Vim trouve les éléments appariés.
-C'est un bon moyen pour vérifier si vous n'avez pas oublié un "#endif".
-   Quand vous êtes quelque part à l'intérieur d'une paire "#if" - "#endif", 
-vous pouvez sauter au début avec : >
+   Quand la construction est imbriquÃ©e, Vim trouve les Ã©lÃ©ments appariÃ©s.
+C'est un bon moyen pour vÃ©rifier si vous n'avez pas oubliÃ© un "#endif".
+   Quand vous Ãªtes quelque part Ã  l'intÃ©rieur d'une paire "#if" - "#endif", 
+vous pouvez sauter au dÃ©but avec : >
 
 	[#
 
-Si vous n'êtes pas après un "#if" ou un "#ifdef", Vim émettra un signal
+Si vous n'Ãªtes pas aprÃ¨s un "#if" ou un "#ifdef", Vim Ã©mettra un signal
 sonore. Pour sauter vers l'avant au prochain "#else" ou "#endif", utilisez : >
 
 	]#
@@ -392,21 +392,21 @@ rencontrent. Exemple :
 	# endif ~
 	    set_width(a); ~
 
-Avec le curseur placé sur la dernière ligne, "[#" vous place sur la première
-ligne. Le bloc "#ifdef" - "#endif" intermédiaire est ignoré.
+Avec le curseur placÃ© sur la derniÃ¨re ligne, "[#" vous place sur la premiÃ¨re
+ligne. Le bloc "#ifdef" - "#endif" intermÃ©diaire est ignorÃ©.
 
 
-SE DÉPLACER DANS LES BLOCS DE CODE
+SE DÃ‰PLACER DANS LES BLOCS DE CODE
 
-En langage C, les blocs de code sont entourés de paires d'accolades {}. Ils
-peuvent être sacrement longs. Pour vous rendre au début du bloc le plus
-extérieur, utilisez la commande "[[". Utilisez "]]" pour trouver le début du
-bloc le plus extérieur suivant. Ceci suppose que les "{" et "}" sont dans la
-première colonne.
-   La commande "[{" vous déplace au début du bloc courant, elle ignore les
-paires {} contenues dans ce bloc. La commande "]}" saute à la fin.
+En langage C, les blocs de code sont entourÃ©s de paires d'accolades {}. Ils
+peuvent Ãªtre sacrement longs. Pour vous rendre au dÃ©but du bloc le plus
+extÃ©rieur, utilisez la commande "[[". Utilisez "]]" pour trouver le dÃ©but du
+bloc le plus extÃ©rieur suivant. Ceci suppose que les "{" et "}" sont dans la
+premiÃ¨re colonne.
+   La commande "[{" vous dÃ©place au dÃ©but du bloc courant, elle ignore les
+paires {} contenues dans ce bloc. La commande "]}" saute Ã  la fin.
 
-En résumé :
+En rÃ©sumÃ© :
 
 			fonction(int a)
 	   +->		{
@@ -422,14 +422,14 @@ En résumé :
 			    }			       <-+	 |
 			}				       <-+
 
-En C++ ou en java, un bloc {} externe délimite une classe. Le niveau suivant
-définit une méthode. Quand vous êtes quelque part à l'intérieur d'une classe,
-utilisez "[m" pour trouver le précédent début d'une méthode, et "]m" pour
-trouver la prochaine fin d'une méthode.
+En C++ ou en java, un bloc {} externe dÃ©limite une classe. Le niveau suivant
+dÃ©finit une mÃ©thode. Quand vous Ãªtes quelque part Ã  l'intÃ©rieur d'une classe,
+utilisez "[m" pour trouver le prÃ©cÃ©dent dÃ©but d'une mÃ©thode, et "]m" pour
+trouver la prochaine fin d'une mÃ©thode.
 
-De plus, "[]" déplace vers l'arrière à la fin d'une fonction et "][" vers
-l'avant à la fin d'une fonction. La fin d'une fonction est définie par 
-une "}" en première colonne.
+De plus, "[]" dÃ©place vers l'arriÃ¨re Ã  la fin d'une fonction et "][" vers
+l'avant Ã  la fin d'une fonction. La fin d'une fonction est dÃ©finie par 
+une "}" en premiÃ¨re colonne.
 
 				int fonc1(void)
 				{
@@ -448,15 +448,15 @@ une "}" en première colonne.
 					return 3;
 				}
 
-N'oubliez pas que vous pouvez aussi utiliser "%" pour vous déplacer
-alternativement entre (), {} et [] appariés. Cela fonctionne tout aussi bien
-quand de nombreuses lignes les séparent.
+N'oubliez pas que vous pouvez aussi utiliser "%" pour vous dÃ©placer
+alternativement entre (), {} et [] appariÃ©s. Cela fonctionne tout aussi bien
+quand de nombreuses lignes les sÃ©parent.
 
 
-SE DÉPLACER DANS LES PARENTHÈSES
+SE DÃ‰PLACER DANS LES PARENTHÃˆSES
 
-Les commandes "[(" et "])" marchent de façon similaire à "[{" et "]}", sauf
-qu'elles agissent sur des paires de parenthèses au lieu de paires d'accolades.
+Les commandes "[(" et "])" marchent de faÃ§on similaire Ã  "[{" et "]}", sauf
+qu'elles agissent sur des paires de parenthÃ¨ses au lieu de paires d'accolades.
 >
 				  [(
 <		    <--------------------------------
@@ -467,11 +467,11 @@ qu'elles agissent sur des paires de parenthèses au lieu de paires d'accolades.
 				       ])
 
 
-SE DÉPLACER DANS LES COMMENTAIRES
+SE DÃ‰PLACER DANS LES COMMENTAIRES
 
-Pour retourner au début d'un commentaire, utilisez "[/". Pour aller vers
-l'avant jusqu'à la fin d'un commentaire, utilisez "]/". Ceci ne fonctionne que
-pour les commentaires délimités par /* .... */ .
+Pour retourner au dÃ©but d'un commentaire, utilisez "[/". Pour aller vers
+l'avant jusqu'Ã  la fin d'un commentaire, utilisez "]/". Ceci ne fonctionne que
+pour les commentaires dÃ©limitÃ©s par /* .... */ .
 
 	  +->	  +-> /*
 	  |    [/ |    * Un commentaire		   --+
@@ -485,42 +485,42 @@ pour les commentaires délimités par /* .... */ .
 ==============================================================================
 *29.4*	Rechercher des identificateurs globaux
 
-Vous éditez un fichier C et vous vous demandez si une variable est déclarée
-comme "int" ou comme "unsigned". Une façon rapide de le savoir est de taper la
+Vous Ã©ditez un fichier C et vous vous demandez si une variable est dÃ©clarÃ©e
+comme "int" ou comme "unsigned". Une faÃ§on rapide de le savoir est de taper la
 commande "[I".
    Supposons que le curseur est sur le mot "colonne". Tapez >
 
 	[I
 
-Vim listera toutes les lignes où il peut trouver ce mot. Pas seulement dans le
+Vim listera toutes les lignes oÃ¹ il peut trouver ce mot. Pas seulement dans le
 fichier courant, mais aussi dans tous les fichiers inclus (et ceci
-récursivement : les fichiers inclus dans les fichiers inclus, etc.). Le
-résultat ressemble à :
+rÃ©cursivement : les fichiers inclus dans les fichiers inclus, etc.). Le
+rÃ©sultat ressemble Ã  :
 
 	structs.h ~
-	 1:   29     unsigned     colonne;    /* numéro de la colonne */ ~
+	 1:   29     unsigned     colonne;    /* numÃ©ro de la colonne */ ~
 
-L'avantage par rapport à l'utilisation de marqueurs ou de la fenêtre de
-prévisualisation est que la recherche s'étend aux fichiers inclus. Dans la
-plupart des cas, le résultat est que l'on retrouve la bonne déclaration, même
-si le fichier de marqueurs n'est plus à jour, ou que vous n'avez pas de
+L'avantage par rapport Ã  l'utilisation de marqueurs ou de la fenÃªtre de
+prÃ©visualisation est que la recherche s'Ã©tend aux fichiers inclus. Dans la
+plupart des cas, le rÃ©sultat est que l'on retrouve la bonne dÃ©claration, mÃªme
+si le fichier de marqueurs n'est plus Ã  jour, ou que vous n'avez pas de
 marqueurs pour les fichiers inclus.
-   Néanmoins, un certain nombre de prérequis doivent être satisfaits pour que
-"[I" fonctionne : tout d'abord, l'option 'include' doit spécifier comment un
-fichier est inclus. La valeur par défaut fonctionne pour le C et le C++. Pour
+   NÃ©anmoins, un certain nombre de prÃ©requis doivent Ãªtre satisfaits pour que
+"[I" fonctionne : tout d'abord, l'option 'include' doit spÃ©cifier comment un
+fichier est inclus. La valeur par dÃ©faut fonctionne pour le C et le C++. Pour
 d'autres langages, vous devrez l'ajuster.
 
 
 TROUVER DES FICHIERS INCLUS
 
-Vim trouvera les fichiers inclus aux endroits spécifiés dans l'option 'path'.
-S'il manque un répertoire, certains fichiers inclus ne seront pas trouvés.
+Vim trouvera les fichiers inclus aux endroits spÃ©cifiÃ©s dans l'option 'path'.
+S'il manque un rÃ©pertoire, certains fichiers inclus ne seront pas trouvÃ©s.
 Vous pouvez vous en rendre compte avec cette commande : >
 
 	:checkpath
 
-Elle donne la liste des fichiers inclus qui n'ont pas été trouvés, y compris
-les fichiers inclus dans des fichiers inclus et trouvés. Voici un exemple de
+Elle donne la liste des fichiers inclus qui n'ont pas Ã©tÃ© trouvÃ©s, y compris
+les fichiers inclus dans des fichiers inclus et trouvÃ©s. Voici un exemple de
 sortie :
 
 	--- Fichiers inclus introuvables dans le chemin --- ~
@@ -530,24 +530,24 @@ sortie :
 	  <clib/exec_protos.h> ~
 
 Le fichier "io.h" est inclus dans le fichier courant et est introuvable.
-"vim.h" a été trouvé, ainsi ":checkpath" ouvre ce fichier et cherche les
+"vim.h" a Ã©tÃ© trouvÃ©, ainsi ":checkpath" ouvre ce fichier et cherche les
 fichiers qu'il inclut. Les fichiers "functions.h" et "clib/exec_protos.h",
-inclus par "vim.h" n'ont pas été trouvés.
+inclus par "vim.h" n'ont pas Ã©tÃ© trouvÃ©s.
 
 	NOTE :
-	Vim n'est pas un compilateur. Il ne reconnaît pas les instructions
+	Vim n'est pas un compilateur. Il ne reconnaÃ®t pas les instructions
 	"#ifdef". Ceci signifie que toutes les instructions "#include" seront
-	analysées, même si elles se trouvent à l'intérieur d'un bloc 
+	analysÃ©es, mÃªme si elles se trouvent Ã  l'intÃ©rieur d'un bloc 
 	"#if JAMAIS".
 
-Pour localiser les fichiers introuvables, ajoutez un répertoire à l'option
-'path'. Le Makefile est un bon endroit pour savoir lequel ajouter. Repérez
+Pour localiser les fichiers introuvables, ajoutez un rÃ©pertoire Ã  l'option
+'path'. Le Makefile est un bon endroit pour savoir lequel ajouter. RepÃ©rez
 les lignes contenant un argument "-I", tel que "-I/usr/local/X11". Pour
-ajouter ce répertoire, utilisez : >
+ajouter ce rÃ©pertoire, utilisez : >
 
 	:set path+=/usr/local/X11
 
-S'il y a un grand nombre de répertoires, vous pouvez utiliser le joker '*'.
+S'il y a un grand nombre de rÃ©pertoires, vous pouvez utiliser le joker '*'.
 Exemple : >
 
 	:set path+=/usr/*/include
@@ -555,86 +555,86 @@ Exemple : >
 Ceci trouve autant "/usr/local/include" que "/usr/X11/include".
 
 Si vous travaillez sur un projet utilisant toute une arborescence de fichiers
-inclus, le joker '**' vous sera utile. Il cherche récursivement dans tous les
-sous-répertoires. Exemple : >
+inclus, le joker '**' vous sera utile. Il cherche rÃ©cursivement dans tous les
+sous-rÃ©pertoires. Exemple : >
 
 	:set path+=/projects/invent/**/include
 
-Ceci trouvera des fichiers inclus dans les répertoires :
+Ceci trouvera des fichiers inclus dans les rÃ©pertoires :
 
 	/projects/invent/include ~
 	/projects/invent/main/include ~
 	/projects/invent/main/os/include ~
 	etc.
 
-Il existe davantage encore de possibilités. Consultez l'option 'path' pour
+Il existe davantage encore de possibilitÃ©s. Consultez l'option 'path' pour
 plus d'informations.
-   Si vous voulez voir les fichiers inclus réellement trouvés, utilisez cette
+   Si vous voulez voir les fichiers inclus rÃ©ellement trouvÃ©s, utilisez cette
 commande : >
 
 	:checkpath!
 
-Vous obtiendrez une (très longue) liste de fichiers inclus, les fichiers
+Vous obtiendrez une (trÃ¨s longue) liste de fichiers inclus, les fichiers
 qu'ils incluent, et ainsi de suite. Pour raccourcir un peu la liste, Vim
-affiche "(Déjà listé)" pour les fichiers trouvés précédemment.
+affiche "(DÃ©jÃ  listÃ©)" pour les fichiers trouvÃ©s prÃ©cÃ©demment.
 
 
-SAUTER À UNE CORRESPONDANCE
+SAUTER Ã€ UNE CORRESPONDANCE
 
 "[I" produit une liste avec une seule ligne de texte. Si vous souhaitez
-regarder plus attentivement le premier élément, vous pouvez sauter à cette
+regarder plus attentivement le premier Ã©lÃ©ment, vous pouvez sauter Ã  cette
 ligne avec la commande : >
 
 	[<Tab>
 
-Vous pouvez aussi utiliser "[ CTRL-I", puisque CTRL-I revient au même que
+Vous pouvez aussi utiliser "[ CTRL-I", puisque CTRL-I revient au mÃªme que
 presser <Tab>.
 
-La liste produite par "[I" donne un numéro à chaque ligne. Quand vous voulez
-sauter à un autre élément que le premier, tapez son numéro d'abord : >
+La liste produite par "[I" donne un numÃ©ro Ã  chaque ligne. Quand vous voulez
+sauter Ã  un autre Ã©lÃ©ment que le premier, tapez son numÃ©ro d'abord : >
 
 	3[<Tab>
 
-sautera au troisième élément de la liste. Souvenez-vous que vous pouvez
-utiliser CTRL-O pour retourner d'où vous venez.
+sautera au troisiÃ¨me Ã©lÃ©ment de la liste. Souvenez-vous que vous pouvez
+utiliser CTRL-O pour retourner d'oÃ¹ vous venez.
 
 
 COMMANDES CONNEXES
 
-	[i	ne liste que la première correspondance
-	]I	ne liste que les correspondances après le curseur
-	]i	ne liste que la première correspondance après le curseur
+	[i	ne liste que la premiÃ¨re correspondance
+	]I	ne liste que les correspondances aprÃ¨s le curseur
+	]i	ne liste que la premiÃ¨re correspondance aprÃ¨s le curseur
 
 
 TROUVER DES MACROS
 
 La commande "[I" trouve n'importe quel identificateur. Pour ne trouver que
-des macros, définies avec "#define", utilisez : >
+des macros, dÃ©finies avec "#define", utilisez : >
 
 	[D
 
-À nouveau, la recherche est effectuée dans fichiers inclus. L'option 'define'
-indique à quoi doit ressembler une ligne qui définit les éléments recherchés
+Ã€ nouveau, la recherche est effectuÃ©e dans fichiers inclus. L'option 'define'
+indique Ã  quoi doit ressembler une ligne qui dÃ©finit les Ã©lÃ©ments recherchÃ©s
 par la commande "[D". Vous pourriez l'ajuster pour d'autres langages que le C
 et le C++.
-   Les commandes connexes à "[D" sont :
+   Les commandes connexes Ã  "[D" sont :
 
-	[d	ne liste que la première correspondance
-	]D	ne liste que les correspondances après le curseur
-	]d	ne liste que la première correspondance après le curseur
+	[d	ne liste que la premiÃ¨re correspondance
+	]D	ne liste que les correspondances aprÃ¨s le curseur
+	]d	ne liste que la premiÃ¨re correspondance aprÃ¨s le curseur
 
 ==============================================================================
 *29.5*	Rechercher des identificateurs locaux
 
 La command "[I" cherche dans les fichiers inclus. Pour chercher dans le seul
-fichier courant, et sauter au premier emplacement où le mot sous le curseur
-est employé : >
+fichier courant, et sauter au premier emplacement oÃ¹ le mot sous le curseur
+est employÃ© : >
 
 	gD
 
-Petite astuce mnémotechnique : aller à la Définition ["Goto Definition"].
-Cette commande est très utile pour trouver une variable ou une fonction
-déclarée localement ("static" en langage C). Exemple (curseur sur
+Petite astuce mnÃ©motechnique : aller Ã  la DÃ©finition ["Goto Definition"].
+Cette commande est trÃ¨s utile pour trouver une variable ou une fonction
+dÃ©clarÃ©e localement ("static" en langage C). Exemple (curseur sur
 l'identifiant "compteur") :
 
 	   +->   static int compteur = 0;
@@ -650,10 +650,10 @@ fonction courante, utilisez cette commande : >
 
 	gd
 
-Ceci reculera jusqu'au début de la fonction courante et trouvera la première
+Ceci reculera jusqu'au dÃ©but de la fonction courante et trouvera la premiÃ¨re
 occurence du mot sur lequel se trouve le curseur. En fait, Vim cherche vers
-arrière une ligne vide au-dessus d'une "{" en première colonne. A partir de
-là, il cherche l'identifiant vers l'avant. Exemple (curseur sur "idx") :
+arriÃ¨re une ligne vide au-dessus d'une "{" en premiÃ¨re colonne. A partir de
+lÃ , il cherche l'identifiant vers l'avant. Exemple (curseur sur "idx") :
 
 		int trouver_element(char *nom)
 		{
@@ -666,6 +666,6 @@ là, il cherche l'identifiant vers l'avant. Exemple (curseur sur "idx") :
 
 ==============================================================================
 
-Chapitre suivant : |usr_30.txt|  Éditer des programmes
+Chapitre suivant : |usr_30.txt|  Ã‰diter des programmes
 
 Copyright : voir |manual-copyright|  vim:tw=78:ts=8:ft=help:norl:

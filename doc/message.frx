@@ -1,11 +1,11 @@
 *message.txt*     Pour Vim version 6.2.
 
 
-		 MANUEL de RÉFÉRENCE VIM - par Bram Moolenaar
+		 MANUEL de RÃ‰FÃ‰RENCE VIM - par Bram Moolenaar
 
 
-Ce fichier contient une liste alphabétique des messages et des messages
-d'erreurs produits par Vim. Référez-vous-y si vous ne comprenez pas le sens
+Ce fichier contient une liste alphabÃ©tique des messages et des messages
+d'erreurs produits par Vim. RÃ©fÃ©rez-vous-y si vous ne comprenez pas le sens
 d'un message. Cette liste n'est toutefois pas exhaustive.
 
 1. Anciens messages	    |:messages|
@@ -15,41 +15,41 @@ d'un message. Cette liste n'est toutefois pas exhaustive.
 ==============================================================================
 1. Anciens messages			*:messages* *:mes* *message-history*
 
-La commande ":messages" permet de consulter les derniers messages émis. Elle
-est particulièrement utile lorsque des messages ont été effacés ou tronqués
-(voir à ce propos l'option 'shortmess').
+La commande ":messages" permet de consulter les derniers messages Ã©mis. Elle
+est particuliÃ¨rement utile lorsque des messages ont Ã©tÃ© effacÃ©s ou tronquÃ©s
+(voir Ã  ce propos l'option 'shortmess').
 
-Le nombre de messages mémorisés est fixé à 20.
+Le nombre de messages mÃ©morisÃ©s est fixÃ© Ã  20.
 
-Si vous utilisez une version traduite des messages, la première ligne vous
+Si vous utilisez une version traduite des messages, la premiÃ¨re ligne vous
 indiquera qui maintient les messages ou leur traduction. Vous pouvez ainsi
-contacter le responsable si vous décelez une erreur.
+contacter le responsable si vous dÃ©celez une erreur.
 
-Si vous recherchez de l'aide sur un message (d'erreur) spécifique, utilisez
-l'identifiant au début du message. Par exemple, pour obtenir de l'aide sur le
+Si vous recherchez de l'aide sur un message (d'erreur) spÃ©cifique, utilisez
+l'identifiant au dÃ©but du message. Par exemple, pour obtenir de l'aide sur le
 message
 
   E72: Close error on swap file ~
 
 ou (traduit)
 
-  E72: Erreur lors de la fermeture du fichier d'échange ~
+  E72: Erreur lors de la fermeture du fichier d'Ã©change ~
 
 utilisez : >
 
 	:help E72
 
-Si vous êtes paresseux, cela marche aussi sans la touche Maj : >
+Si vous Ãªtes paresseux, cela marche aussi sans la touche Maj : >
 
 	:help e72
 
 ==============================================================================
 2. Messages d'erreurs					*error-messages*
 
-Lorsqu'un message d'erreur est émis, mais disparaît avant que vous n'ayez eu
+Lorsqu'un message d'erreur est Ã©mis, mais disparaÃ®t avant que vous n'ayez eu
 le temps de le lire, vous pouvez le rappeler par >
 	:echo errmsg
-ou consulter la liste des message récents avec : >
+ou consulter la liste des message rÃ©cents avec : >
 	:messages
 
 
@@ -77,7 +77,7 @@ LISTE DES MESSAGES
   Internal error ~
   fatal error in cs_manage_matches ~
 
-Ces messages résultent d'une erreur interne. Si vous parvenez à les
+Ces messages rÃ©sultent d'une erreur interne. Si vous parvenez Ã  les
 reproduire, merci d'envoyer un rapport de bogue. |bugs|
 
 
@@ -89,51 +89,51 @@ Voir |ATTENTION|.
 							*E92*
   Buffer {N} not found ~
 
-Le tampon que vous avez demandé n'existe pas. Cela peut également se produire
-quand vous avez liquidé un tampon qui contient une marque ou est référencé
-différemment. |:bwipeout|
+Le tampon que vous avez demandÃ© n'existe pas. Cela peut Ã©galement se produire
+quand vous avez liquidÃ© un tampon qui contient une marque ou est rÃ©fÃ©rencÃ©
+diffÃ©remment. |:bwipeout|
 
 							*E95*
   Buffer with this name already exists ~
 
-Vous ne pouvez pas avoir deux tampons du même nom.
+Vous ne pouvez pas avoir deux tampons du mÃªme nom.
 
 							*E72*
   Close error on swap file ~
 
-Le fichier d'échange |swap-file|, qui est utilisé pour conserver une copie du
-texte édité, ne peut pas être fermé correctement. Souvent bénin.
+Le fichier d'Ã©change |swap-file|, qui est utilisÃ© pour conserver une copie du
+texte Ã©ditÃ©, ne peut pas Ãªtre fermÃ© correctement. Souvent bÃ©nin.
 
 							*E169*
   Command too recursive ~
 
-Cela se produit lorsqu'une commande Ex exécute une commande Ex qui exécute une
-commande Ex, etc. C'est autorisé jusqu'à 200 fois seulement. En cas d'appels
-ultérieurs, il s'agit certainement d'une boucle sans fin. Une commande
-|:execute| ou |:source| est probablement impliquée.
+Cela se produit lorsqu'une commande Ex exÃ©cute une commande Ex qui exÃ©cute une
+commande Ex, etc. C'est autorisÃ© jusqu'Ã  200 fois seulement. En cas d'appels
+ultÃ©rieurs, il s'agit certainement d'une boucle sans fin. Une commande
+|:execute| ou |:source| est probablement impliquÃ©e.
 
 							*E254*
   Cannot allocate color {nom} ~
 
 Le {nom} de couleur est inconnu. Voir |gui-colors| pour une liste des couleurs
-disponibles sur la plupart des systèmes.
+disponibles sur la plupart des systÃ¨mes.
 
 							*E458*
   Cannot allocate colormap entry for "xxxx" ~
   Cannot allocate colormap entry, some colors may be incorrect ~
 
 Ce message ne provient pas directement de Vim, mais de X Window. Il veut dire
-qu'il n'y a pas suffisamment de couleurs disponibles pour Vim. Il démarrera
-tout de même, mais certaines couleurs n'apparaîtront pas. Essayez d'arrêter
+qu'il n'y a pas suffisamment de couleurs disponibles pour Vim. Il dÃ©marrera
+tout de mÃªme, mais certaines couleurs n'apparaÃ®tront pas. Essayez d'arrÃªter
 d'autres applications qui consommeraient beaucoup de couleurs, ou de les
-lancer après gvim.
-   Netscape est bien connu pour être un gros consommateur de couleurs. Vous
-pouvez éviter ce problème en lui faisant utiliser sa propre palette de
+lancer aprÃ¨s gvim.
+   Netscape est bien connu pour Ãªtre un gros consommateur de couleurs. Vous
+pouvez Ã©viter ce problÃ¨me en lui faisant utiliser sa propre palette de
 couleurs >
 	netscape -install
-ou en le limitant à un certain nombre de couleurs (64 devraient suffire) : >
+ou en le limitant Ã  un certain nombre de couleurs (64 devraient suffire) : >
 	netscape -ncols 64
-Ceci peut également être fait par une ligne dans votre fichier ".Xdefaults" >
+Ceci peut Ã©galement Ãªtre fait par une ligne dans votre fichier ".Xdefaults" >
 	Netscape*installColormap: Yes
 ou : >
 	Netscape*maxImageColors:  64
@@ -141,114 +141,114 @@ ou : >
 							*E79*
   Cannot expand wildcards ~
 
-Un nom de fichier contient une combinaison de caractères étranges que Vim a
-tenté d'étendre comme motif d'englobement, mais cela a échoué. Cela ne
-signifie PAS qu'aucun nom de fichier correspondant n'a été trouvé, mais que le
-motif était invalide.
+Un nom de fichier contient une combinaison de caractÃ¨res Ã©tranges que Vim a
+tentÃ© d'Ã©tendre comme motif d'englobement, mais cela a Ã©chouÃ©. Cela ne
+signifie PAS qu'aucun nom de fichier correspondant n'a Ã©tÃ© trouvÃ©, mais que le
+motif Ã©tait invalide.
 
 							*E459*
   Cannot go back to previous directory ~
 
-Lors de l'expansion d'un nom de fichier, Vim n'a pas pu revenir au répertoire
-précédemment utilisé. Tous les noms de fichiers utilisés sont peut-être
-invalides à présent ! Vous devez posséder le droit d'exécution pour le
-répertoire courant.
+Lors de l'expansion d'un nom de fichier, Vim n'a pas pu revenir au rÃ©pertoire
+prÃ©cÃ©demment utilisÃ©. Tous les noms de fichiers utilisÃ©s sont peut-Ãªtre
+invalides Ã  prÃ©sent ! Vous devez possÃ©der le droit d'exÃ©cution pour le
+rÃ©pertoire courant.
 
 							*E190* *E212*
   Cannot open "{nomfichier}" for writing ~
   Can't open file for writing ~
 
-Pour une raison ou une autre, le fichier que vous avez essayé d'écrire ne
-peut pas être créé ou écrasé. Cela peut venir de ce que vous n'avez pas le
-droit d'écriture dans le répertoire concerné, ou que le nom de fichier n'est
+Pour une raison ou une autre, le fichier que vous avez essayÃ© d'Ã©crire ne
+peut pas Ãªtre crÃ©Ã© ou Ã©crasÃ©. Cela peut venir de ce que vous n'avez pas le
+droit d'Ã©criture dans le rÃ©pertoire concernÃ©, ou que le nom de fichier n'est
 pas valide.
 
 							*E166*
   Can't open linked file for writing ~
 
-Vous essayez d'écrire dans un fichier qui ne peut pas être écrasé et qui est
-un lien (physique ou symbolique). L'écriture devrait toujours être possible si
-le répertoire qui contient le lien ou le fichier est accessible en écriture,
-mais Vim ignore si vous voulez supprimer le lien et écrire le fichier à la
-place, ou bien supprimer le fichier lui-même et écrire le nouveau fichier à la
-place. Si vous voulez vraiment écrire le fichier sous ce nom, vous devez
-supprimer le lien ou le fichier à la main, ou changer les permissions pour que
-Vim puisse les écraser.
+Vous essayez d'Ã©crire dans un fichier qui ne peut pas Ãªtre Ã©crasÃ© et qui est
+un lien (physique ou symbolique). L'Ã©criture devrait toujours Ãªtre possible si
+le rÃ©pertoire qui contient le lien ou le fichier est accessible en Ã©criture,
+mais Vim ignore si vous voulez supprimer le lien et Ã©crire le fichier Ã  la
+place, ou bien supprimer le fichier lui-mÃªme et Ã©crire le nouveau fichier Ã  la
+place. Si vous voulez vraiment Ã©crire le fichier sous ce nom, vous devez
+supprimer le lien ou le fichier Ã  la main, ou changer les permissions pour que
+Vim puisse les Ã©craser.
 
 							*E46*
   Cannot set read-only variable "{nom}" ~
 
-Vous essayez d'assigner une valeur à un argument d'une fonction |a:var| ou
+Vous essayez d'assigner une valeur Ã  un argument d'une fonction |a:var| ou
 d'une variable interne Vim |v:var| qui est en lecture seule.
 
 							*E90*
   Cannot unload last buffer ~
 
-Vim a toujours besoin qu'un tampon au moins soit chargé, sans quoi il n'y
-aurait rien à afficher dans la fenêtre.
+Vim a toujours besoin qu'un tampon au moins soit chargÃ©, sans quoi il n'y
+aurait rien Ã  afficher dans la fenÃªtre.
 
 							*E40*
   Can't open errorfile <nomfichier> ~
 
-Lors de l'utilisation des commandes ":make" ou ":grep" : Le fichier utilisé
+Lors de l'utilisation des commandes ":make" ou ":grep" : Le fichier utilisÃ©
 pour enregistrer les messages d'erreurs ou la sortie de `grep` ne peut pas
-être ouvert. Il peut y avoir plusieurs raisons à cela :
+Ãªtre ouvert. Il peut y avoir plusieurs raisons Ã  cela :
 - 'shellredir' a une mauvaise valeur.
-- Le shell change de répertoire et le fichier d'erreurs sera écrit dans ce
-  répertoire. Cela peut être fixé en modifiant 'makeef', mais alors la
-  commande sera toujours exécutée dans le mauvais répertoire.
+- Le shell change de rÃ©pertoire et le fichier d'erreurs sera Ã©crit dans ce
+  rÃ©pertoire. Cela peut Ãªtre fixÃ© en modifiant 'makeef', mais alors la
+  commande sera toujours exÃ©cutÃ©e dans le mauvais rÃ©pertoire.
 - 'makeef' a un mauvaise valeur.
-- Les commandes 'grepprg' ou 'makeprg' ne peuvent pas être exécutées. Cela ne
-  peut pas toujours être détecté (en particulier sur MS-Windows). Vérifiez
+- Les commandes 'grepprg' ou 'makeprg' ne peuvent pas Ãªtre exÃ©cutÃ©es. Cela ne
+  peut pas toujours Ãªtre dÃ©tectÃ© (en particulier sur MS-Windows). VÃ©rifiez
   votre variable $PATH.
 
 
   Can't open file C:\TEMP\VIoD243.TMP ~
 
-Sur MS-Windows, ce message apparaît lorsque la sortie d'une commande externe
-devait être lue, mais que la commande ne s'est pas exécutée correctement. Il
-peut y avoir de nombreuses causes à cela. Vérifiez les options 'shell',
-'shellquote', 'shellxquote', 'shellslash' et options associées. Il se peut
-également que la commande externe n'ait pas été trouvée, ce qui émet ce même
+Sur MS-Windows, ce message apparaÃ®t lorsque la sortie d'une commande externe
+devait Ãªtre lue, mais que la commande ne s'est pas exÃ©cutÃ©e correctement. Il
+peut y avoir de nombreuses causes Ã  cela. VÃ©rifiez les options 'shell',
+'shellquote', 'shellxquote', 'shellslash' et options associÃ©es. Il se peut
+Ã©galement que la commande externe n'ait pas Ã©tÃ© trouvÃ©e, ce qui Ã©met ce mÃªme
 message.
 
 							*E12*
   Command not allowed from exrc/vimrc in current dir or tag search ~
 
-Certaines commandes sont interdites pour des raisons de sécurité. Elles
-viennent pour la plupart  d'un fichier exrc ou vimrc local (dans le répertoire
+Certaines commandes sont interdites pour des raisons de sÃ©curitÃ©. Elles
+viennent pour la plupart  d'un fichier exrc ou vimrc local (dans le rÃ©pertoire
 courant), ou d'un fichier de marqueurs. Voir aussi 'secure'.
 
 							*E74*
   Command too complex ~
 
-Un mappage produisant une très longue chaîne de commandes. Peut être produit
+Un mappage produisant une trÃ¨s longue chaÃ®ne de commandes. Peut Ãªtre produit
 par un mappage qui s'appelle indirectement.
 
 
   CONVERSION ERROR ~
 
-Si ce message apparaît lors de l'écriture d'un fichier, cela signifie que des
-bits ont été perdus lors de la conversion du texte du format UTF-8 utilisé en
-interne au format courant du fichier. Le fichier ne sera pas marqué comme
-non-modifié. Pour vous prémunir de la perte d'informations, fixez l'option
-'fileencoding' à une autre valeur qui puisse supporter les caractères dans le
-fichier et l'écrire à nouveau. Sinon, vous pouvez abandonner le tampon ou
-désactiver l'option 'modified'.
+Si ce message apparaÃ®t lors de l'Ã©criture d'un fichier, cela signifie que des
+bits ont Ã©tÃ© perdus lors de la conversion du texte du format UTF-8 utilisÃ© en
+interne au format courant du fichier. Le fichier ne sera pas marquÃ© comme
+non-modifiÃ©. Pour vous prÃ©munir de la perte d'informations, fixez l'option
+'fileencoding' Ã  une autre valeur qui puisse supporter les caractÃ¨res dans le
+fichier et l'Ã©crire Ã  nouveau. Sinon, vous pouvez abandonner le tampon ou
+dÃ©sactiver l'option 'modified'.
 
 							*E302*
   Could not rename swap file ~
 
 Lorsque le nom de fichier change, Vim essaie alors de renommer le fichier
-d'échange |swap-file|. Cela a échoué, et l'ancien fichier d'échange est
-toujours utilisé. Souvent bénin.
+d'Ã©change |swap-file|. Cela a Ã©chouÃ©, et l'ancien fichier d'Ã©change est
+toujours utilisÃ©. Souvent bÃ©nin.
 
 							*E43* *E44*
   Damaged match string ~
   Corrupted regexp program ~
 
-Quelque chose s'est mal passé à l'intérieur de Vim et il en résulte une exprat
-corrompue. Si vous savez comment reproduire ce problème, merci d'envoyer un
+Quelque chose s'est mal passÃ© Ã  l'intÃ©rieur de Vim et il en rÃ©sulte une exprat
+corrompue. Si vous savez comment reproduire ce problÃ¨me, merci d'envoyer un
 rapport de bogue. |bugs|
 
 							*E208* *E209* *E210*
@@ -257,37 +257,37 @@ rapport de bogue. |bugs|
   Error reading "{nomfichier}" ~
 
 Cela se produit lorsque Vim essaie de renommer un fichier, mais qu'un simple
-changement de nom ne fonctionne pas. Le fichier est alors copié, mais cela
-échoue pour une raison ou une autre. Le résultat peut être que le fichier
+changement de nom ne fonctionne pas. Le fichier est alors copiÃ©, mais cela
+Ã©choue pour une raison ou une autre. Le rÃ©sultat peut Ãªtre que le fichier
 d'origine et celui de destination existent tous deux, mais que celui de
 destination est incomplet.
 
 
   Vim: Error reading input, exiting... ~
 
-Cela se produit lorsque Vim ne peut pas lire les caractères tapés alors qu'une
-entrée est nécessaire. Vim est bloqué, la seule chose qu'il puisse faire est
-de quitter. Cela peut survenir si et stdout et stderr sont redirigés, lors de
-l'exécution d'un script qui ne quitte pas Vim.
+Cela se produit lorsque Vim ne peut pas lire les caractÃ¨res tapÃ©s alors qu'une
+entrÃ©e est nÃ©cessaire. Vim est bloquÃ©, la seule chose qu'il puisse faire est
+de quitter. Cela peut survenir si et stdout et stderr sont redirigÃ©s, lors de
+l'exÃ©cution d'un script qui ne quitte pas Vim.
 
 							*E47*
   Error while reading errorfile ~
 
-La lecture du fichier d'erreurs n'a pas été possible. Cela ne vient PAS d'un
-message d'erreur qui n'a pas été reconnu.
+La lecture du fichier d'erreurs n'a pas Ã©tÃ© possible. Cela ne vient PAS d'un
+message d'erreur qui n'a pas Ã©tÃ© reconnu.
 
 							*E80*
   Error while writing ~
 
-L'écriture d'un fichier n'a pas complètement réussie. Le fichier est
+L'Ã©criture d'un fichier n'a pas complÃ¨tement rÃ©ussie. Le fichier est
 probablement incomplet.
 
 							*E13* *E189*
   File exists (use ! to override) ~
   "{nomfichier}" exists (use ! to override) ~
 
-Vous êtes protégé contre l'écrasement accidentel d'un fichier. Si vous désirez
-enregistrer malgré tout, utilisez la même commande, mais en ajoutant un '!'
+Vous Ãªtes protÃ©gÃ© contre l'Ã©crasement accidentel d'un fichier. Si vous dÃ©sirez
+enregistrer malgrÃ© tout, utilisez la mÃªme commande, mais en ajoutant un '!'
 juste avant. Par exemple >
 	:w /tmp/test
 devient : >
@@ -296,118 +296,118 @@ devient : >
 							*E139*
   File is loaded in another buffer ~
 
-Vous essayez d'écrire un fichier sous un nom déjà utilisé par un autre
-tampon : cela donnerait deux versions du même fichier.
+Vous essayez d'Ã©crire un fichier sous un nom dÃ©jÃ  utilisÃ© par un autre
+tampon : cela donnerait deux versions du mÃªme fichier.
 
 							*E142*
   File not written: Writing is disabled by 'write' option ~
 
-L'option 'write' n'est pas activée. Cela provoque l'affichage de ce message
+L'option 'write' n'est pas activÃ©e. Cela provoque l'affichage de ce message
 pour chaque commande essayant d'enregistrer. Cela peut aussi se produire
-lorsque l'argument |-m| a été passé à `vim`. Vous pouvez activer l'option
+lorsque l'argument |-m| a Ã©tÃ© passÃ© Ã  `vim`. Vous pouvez activer l'option
 'write' en saisissant ":set write".
 
 							*E25*
   GUI cannot be used: Not enabled at compile time ~
 
-Vous êtes sous une version de Vim qui n'inclut pas le code de l'IHM graphique.
+Vous Ãªtes sous une version de Vim qui n'inclut pas le code de l'IHM graphique.
 C'est pourquoi `gvim` et ":gui" ne marchent pas.
 
 							*E49*
   Invalid scroll size ~
 
-Une valeur invalide a été donnée pour les options 'scroll', 'scrolljump' ou
+Une valeur invalide a Ã©tÃ© donnÃ©e pour les options 'scroll', 'scrolljump' ou
 'scrolloff'.
 
 							*E17*
   "{nomfichier}" is a directory ~
 
-Vous avez essayé d'écrire un fichier sous le nom d'un répertoire. C'est
-impossible. Vous devrez probablement ajouter un nom de fichier après celui du
-répertoire.
+Vous avez essayÃ© d'Ã©crire un fichier sous le nom d'un rÃ©pertoire. C'est
+impossible. Vous devrez probablement ajouter un nom de fichier aprÃ¨s celui du
+rÃ©pertoire.
 
 							*E19*
   Mark has invalid line number ~
 
-Vous utilisez une marque associée à un numéro de ligne qui n'existe pas. Cela
+Vous utilisez une marque associÃ©e Ã  un numÃ©ro de ligne qui n'existe pas. Cela
 peut survenir si vous utilisez une marque dans un autre fichier et qu'un autre
-programme y a supprimé des lignes.
+programme y a supprimÃ© des lignes.
 
 							*E219* *E220*
   Missing {. ~
   Missing }. ~
 
-Vous avez utilisé une construction {} dans un nom de fichier, mais il y a un
-'{' sans '}' apparié, ou l'inverse. Cette construction doit être utilisé comme
-suit : {toto,titi}. Cela correspond à "toto" et "titi".
+Vous avez utilisÃ© une construction {} dans un nom de fichier, mais il y a un
+'{' sans '}' appariÃ©, ou l'inverse. Cette construction doit Ãªtre utilisÃ© comme
+suit : {toto,titi}. Cela correspond Ã  "toto" et "titi".
 
 							*E315*
   ml_get: invalid lnum: ~
 
-C'est une erreur interne de Vim. Si vous savez comment reproduire ce problème,
+C'est une erreur interne de Vim. Si vous savez comment reproduire ce problÃ¨me,
 merci d'envoyer un rapport de bogue. |bugs|
 
 							*E173*
   {nombre} more files to edit ~
 
-Vous essayez de quitter alors que le dernier élément de la liste des arguments
-n'a pas été édité. Cela vous protège contre une sortie accidentelle alors
-qu'il reste des fichiers sur lesquels vous n'avez pas travaillé. Voir
-|argument-list|. Si vous voulez vraiment quitter, réessayez à nouveau et cela
+Vous essayez de quitter alors que le dernier Ã©lÃ©ment de la liste des arguments
+n'a pas Ã©tÃ© Ã©ditÃ©. Cela vous protÃ¨ge contre une sortie accidentelle alors
+qu'il reste des fichiers sur lesquels vous n'avez pas travaillÃ©. Voir
+|argument-list|. Si vous voulez vraiment quitter, rÃ©essayez Ã  nouveau et cela
 marchera.
 
 							*E23* *E194*
   No alternate file ~
   No alternate file name to substitute for '#' ~
 
-Le fichier alternatif n'est pas encore défini. Voir |alternate-file|.
+Le fichier alternatif n'est pas encore dÃ©fini. Voir |alternate-file|.
 
 							*E32*
   No file name ~
 
-Le tampon courant n'a pas de nom. Pour l'écrire, tapez ":w nomfich", ou bien
+Le tampon courant n'a pas de nom. Pour l'Ã©crire, tapez ":w nomfich", ou bien
 nommez le tampon avec ":file nomfich".
 
 							*E141*
   No file name for buffer {nombre} ~
 
-Un des tampons qui a été modifié n'a pas de nom de fichier. Il ne peut donc
-pas être écrit. Vous devez lui donner un nom : >
+Un des tampons qui a Ã©tÃ© modifiÃ© n'a pas de nom de fichier. Il ne peut donc
+pas Ãªtre Ã©crit. Vous devez lui donner un nom : >
 	:buffer {nombre}
 	:file {nomfichier}
 <
 							*E33*
   No previous substitute regular expression ~
 
-Si vous employez le caractère '~' dans un motif, il est remplacé par le motif
-précédemment utilisé dans une commande ":substitute". Cela échoue
-lorsque aucune commande de la sorte n'a encore été utilisée. Voir |/~|.
+Si vous employez le caractÃ¨re '~' dans un motif, il est remplacÃ© par le motif
+prÃ©cÃ©demment utilisÃ© dans une commande ":substitute". Cela Ã©choue
+lorsque aucune commande de la sorte n'a encore Ã©tÃ© utilisÃ©e. Voir |/~|.
 
 							*E35*
   No previous regular expression ~
 
-Si vous signifiez un motif de recherche vide, le motif de recherche précédent
-sera utilisé. Cela n'est possible que s'il y a eu une recherche précédente.
+Si vous signifiez un motif de recherche vide, le motif de recherche prÃ©cÃ©dent
+sera utilisÃ©. Cela n'est possible que s'il y a eu une recherche prÃ©cÃ©dente.
 
 							*E24*
   No such abbreviation ~
 
-Vous avez utilisé une commande ":unabbreviate" avec un argument qui n'est pas
-une abréviation existante. Toutes les variantes de cette commande donnent ce
-même message : ":cunabbrev", ":iunabbrev", etc.
+Vous avez utilisÃ© une commande ":unabbreviate" avec un argument qui n'est pas
+une abrÃ©viation existante. Toutes les variantes de cette commande donnent ce
+mÃªme message : ":cunabbrev", ":iunabbrev", etc.
 
 
   /dev/dsp: No such file or directory ~
 
-Ce message apparaît uniquement pour l'IHM graphique GTK avec le support Gnome.
-Gnome essaie d'utiliser le périphérique son, mais il n'est pas présent. Vous
+Ce message apparaÃ®t uniquement pour l'IHM graphique GTK avec le support Gnome.
+Gnome essaie d'utiliser le pÃ©riphÃ©rique son, mais il n'est pas prÃ©sent. Vous
 pouvez ignorer ce message.
 
 							*E31*
   No such mapping ~
 
-Vous avez utilisé une commande ":unmap" avec un argument qui n'est pas un
-mappage existant. Toutes les variantes de cette commande donnent ce même
+Vous avez utilisÃ© une commande ":unmap" avec un argument qui n'est pas un
+mappage existant. Toutes les variantes de cette commande donnent ce mÃªme
 message : ":cunmap", ":unmap!", etc.
 
 							*E37* *E89*
@@ -415,9 +415,9 @@ message : ":cunmap", ":unmap!", etc.
   No write since last change for buffer {N} (use ! to override) ~
 
 Vous essayez d'|abandon|ner un fichier qui comporte des modifications. Vim
-vous protège contre une perte de données. Vous pouvez soit enregistrer le
-fichier modifié avec ":w", soit l'|abandon|ner pour de bon -- et perdre vos
-modifications. Pour cela, il suffit d'ajouter un '!' juste après la commande à
+vous protÃ¨ge contre une perte de donnÃ©es. Vous pouvez soit enregistrer le
+fichier modifiÃ© avec ":w", soit l'|abandon|ner pour de bon -- et perdre vos
+modifications. Pour cela, il suffit d'ajouter un '!' juste aprÃ¨s la commande Ã 
 utiliser. Par exemple : >
 	:e autre_fichier
 devient : >
@@ -426,25 +426,25 @@ devient : >
 							*E162*
   No write since last change for buffer "{nom}" ~
 
-Ce message apparaît lorsque vous essayez de quitter Vim alors que des tampons
-sont modifiés. Vous devrez soit écrire les tampons modifiés (avec |:w|), soit
+Ce message apparaÃ®t lorsque vous essayez de quitter Vim alors que des tampons
+sont modifiÃ©s. Vous devrez soit Ã©crire les tampons modifiÃ©s (avec |:w|), soit
 utiliser une commande pour forcer l'abandon des tampons, p. ex. ":qa!". Dans
-ce cas, soyez sûrs que vous ne perdrez pas des modifications que vous
-souhaitez conserver. Soyez particulièrement prudent si 'hidden' est activé et
-des tampons cachés.
+ce cas, soyez sÃ»rs que vous ne perdrez pas des modifications que vous
+souhaitez conserver. Soyez particuliÃ¨rement prudent si 'hidden' est activÃ© et
+des tampons cachÃ©s.
 
 							*E38*
   Null argument ~
 
-Quelque chose s'est mal passé à l'intérieur de Vim et il en résulte un
-pointeur NUL. Si vous savez comment reproduire ce problème, merci d'envoyer un
+Quelque chose s'est mal passÃ© Ã  l'intÃ©rieur de Vim et il en rÃ©sulte un
+pointeur NUL. Si vous savez comment reproduire ce problÃ¨me, merci d'envoyer un
 rapport de bogue. |bugs|
 
 							*E172*
   Only one file name allowed ~
 
-La commande ":edit" accepte uniquement un nom de fichier. Si vous désirez
-spécifier plusieurs fichiers à éditer, utilisez ":next" |:next|.
+La commande ":edit" accepte uniquement un nom de fichier. Si vous dÃ©sirez
+spÃ©cifier plusieurs fichiers Ã  Ã©diter, utilisez ":next" |:next|.
 
 						*E41* *E82* *E83* *E342*
   Out of memory! ~
@@ -452,25 +452,25 @@ spécifier plusieurs fichiers à éditer, utilisez ":next" |:next|.
   Cannot allocate any buffer, exiting... ~
   Cannot allocate buffer, using other one... ~
 
-Oh oh ! Vous devez avoir fait quelque chose de compliqué, ou bien un programme
-tiers accapare votre mémoire. Soyez prudent ! Vim n'est pas complètement
-préparé pour un débordement de mémoire. Assurez-vous d'abord que tout soit
-sauvegardé, puis essayez de résoudre le manque de mémoire. Ensuite, par
-sécurité, sortez de Vim et relancez-le. Voir aussi |msdos-limitations|.
+Oh oh ! Vous devez avoir fait quelque chose de compliquÃ©, ou bien un programme
+tiers accapare votre mÃ©moire. Soyez prudent ! Vim n'est pas complÃ¨tement
+prÃ©parÃ© pour un dÃ©bordement de mÃ©moire. Assurez-vous d'abord que tout soit
+sauvegardÃ©, puis essayez de rÃ©soudre le manque de mÃ©moire. Ensuite, par
+sÃ©curitÃ©, sortez de Vim et relancez-le. Voir aussi |msdos-limitations|.
 
 							*E339*
   Pattern too long ~
 
-Ce message apparaît uniquement sur des systèmes avec des entiers de 16 bits :
-le motif d'exprat compilé dépasse quelques 65 000 caractères. Essayez
+Ce message apparaÃ®t uniquement sur des systÃ¨mes avec des entiers de 16 bits :
+le motif d'exprat compilÃ© dÃ©passe quelques 65 000 caractÃ¨res. Essayez
 d'utiliser un motif moins long.
 
 							*E45*
   'readonly' option is set (use ! to override) ~
 
 Vous essayez d'enregistrer un fichier ouvert en lecture seule. Pour
-enregistrer malgré tout, vous pouvez soit désactiver l'option 'readonly',
-soit ajouter un '!' juste après la commande à utiliser. Par exemple : >
+enregistrer malgrÃ© tout, vous pouvez soit dÃ©sactiver l'option 'readonly',
+soit ajouter un '!' juste aprÃ¨s la commande Ã  utiliser. Par exemple : >
 	:w
 devient : >
 	:w!
@@ -480,67 +480,67 @@ devient : >
   Seek error in swap file read ~
   Oops, lost the swap file!!! ~
 
-Vim a essayé de lire du texte depuis le fichier d'échange |swap-file|, mais
-quelque chose a mal tourné. Le texte dans le tampon concerné est peut-être
-corrompu, maintenant ! Vous pouvez l'écrire dans un autre fichier et vérifiez
-les différences. Vérifiez bien avant toute écriture.
+Vim a essayÃ© de lire du texte depuis le fichier d'Ã©change |swap-file|, mais
+quelque chose a mal tournÃ©. Le texte dans le tampon concernÃ© est peut-Ãªtre
+corrompu, maintenant ! Vous pouvez l'Ã©crire dans un autre fichier et vÃ©rifiez
+les diffÃ©rences. VÃ©rifiez bien avant toute Ã©criture.
 
 							*E192*
   Recursive use of :normal too deep ~
 
-Vous utilisez une commande ":normal" dont l'argument utilise à son tour une
-commande ":normal", créant une boucle récursive. La profondeur en est limitée
-à 'maxmapdepth' niveaux. L'exemple suivant illustre comment on peut obtenir ce
+Vous utilisez une commande ":normal" dont l'argument utilise Ã  son tour une
+commande ":normal", crÃ©ant une boucle rÃ©cursive. La profondeur en est limitÃ©e
+Ã  'maxmapdepth' niveaux. L'exemple suivant illustre comment on peut obtenir ce
 message : >
 	:map gq :normal gq<CR>
-Si vous tapez "gq", ce mappage sera exécuté et appellera à nouveau "gq".
+Si vous tapez "gq", ce mappage sera exÃ©cutÃ© et appellera Ã  nouveau "gq".
 
 							*E22*
   Scripts nested too deep ~
 
-Les scripts peuvent être lus avec l'argument "-s" passé à `vim`, et avec la
+Les scripts peuvent Ãªtre lus avec l'argument "-s" passÃ© Ã  `vim`, et avec la
 commande ":source". Le script peut alors lire d'autres scripts, et continuer
-ainsi sur 14 niveaux. Si cela se poursuit au-delà, Vim considère qu'il y a un
-bouclage récursif quelque part, interrompt les scripts et renvoie ce message.
+ainsi sur 14 niveaux. Si cela se poursuit au-delÃ , Vim considÃ¨re qu'il y a un
+bouclage rÃ©cursif quelque part, interrompt les scripts et renvoie ce message.
 
 							*E319*
   Sorry, the command is not available in this version ~
 
-Vous avez saisi une commande qui n'est pas présente dans la version de Vim que
-vous utilisez. Lors de la compilation, de nombreuses fonctionnalités
-différentes peuvent être activées ou non. Cela dépend du système
+Vous avez saisi une commande qui n'est pas prÃ©sente dans la version de Vim que
+vous utilisez. Lors de la compilation, de nombreuses fonctionnalitÃ©s
+diffÃ©rentes peuvent Ãªtre activÃ©es ou non. Cela dÃ©pend du systÃ¨me
 d'exploitation et de la taille d'installation choisie pour Vim. Voir
-|+feature-list| pour savoir quand une fonctionnalité est disponible. La
-commande |:version| montre les fonctionnalités avec lesquelles Vim a été
-compilé.
+|+feature-list| pour savoir quand une fonctionnalitÃ© est disponible. La
+commande |:version| montre les fonctionnalitÃ©s avec lesquelles Vim a Ã©tÃ©
+compilÃ©.
 
 							*E300*
   Swap file already exists (symlink attack?) ~
 
-Ce message apparaît lorsque Vim essaie d'ouvrir un fichier d'échange et
-découvre qu'il existe déjà ou bien trouve un lien symbolique à la place. Cela
-ne devrait pas se produire, car Vim s'est déjà assuré que le fichier
-n'existait pas. Ou bien quelqu'un d'autre a ouvert le même fichier exactement
-au même moment (très improbable), ou bien quelqu'un tente une attaque par lien
-symbolique (peut se produire lors de l'édition d'un fichier dans /tmp ou
-lorsque 'directory' débute par "/tmp", ce qui est un mauvais choix).
+Ce message apparaÃ®t lorsque Vim essaie d'ouvrir un fichier d'Ã©change et
+dÃ©couvre qu'il existe dÃ©jÃ  ou bien trouve un lien symbolique Ã  la place. Cela
+ne devrait pas se produire, car Vim s'est dÃ©jÃ  assurÃ© que le fichier
+n'existait pas. Ou bien quelqu'un d'autre a ouvert le mÃªme fichier exactement
+au mÃªme moment (trÃ¨s improbable), ou bien quelqu'un tente une attaque par lien
+symbolique (peut se produire lors de l'Ã©dition d'un fichier dans /tmp ou
+lorsque 'directory' dÃ©bute par "/tmp", ce qui est un mauvais choix).
 
 							*E432*
   Tags file not sorted: {nomfichier} ~
 
-Vim (et Vi) attendent des fichiers de marqueurs triés par valeur ASCII. Une
-recherche binaire peut alors être employée, de beaucoup plus rapide qu'une
-recherche linéaire. Si vos fichiers de marqueurs ne sont pas correctement
-triés, désactivez l'option |'tagbsearch'|.
-   Ce message est émis seulement lorsque Vim détecte un problème en
-recherchant un marqueur. Il est parfois omis, même si le fichier de marqueurs
-n'est pas convenablement trié.
+Vim (et Vi) attendent des fichiers de marqueurs triÃ©s par valeur ASCII. Une
+recherche binaire peut alors Ãªtre employÃ©e, de beaucoup plus rapide qu'une
+recherche linÃ©aire. Si vos fichiers de marqueurs ne sont pas correctement
+triÃ©s, dÃ©sactivez l'option |'tagbsearch'|.
+   Ce message est Ã©mis seulement lorsque Vim dÃ©tecte un problÃ¨me en
+recherchant un marqueur. Il est parfois omis, mÃªme si le fichier de marqueurs
+n'est pas convenablement triÃ©.
 
 							*E460*
   The resource fork would be lost (add ! to override) ~
 
 Sur Macintosh (versions classiques), lors de l'enregistrement d'un fichier,
-Vim essaie de préserver toute l'information du fichier, y compris sa branche
+Vim essaie de prÃ©server toute l'information du fichier, y compris sa branche
 de ressources. Si cela n'est pas possible, vous obtiendrez ce message
 d'erreur. Ajoutez '!' au nom de la commande pour forcer l'enregistrement (vous
 perdrez l'information).
@@ -548,172 +548,172 @@ perdrez l'information).
 							*E424*
   Too many different highlighting attributes in use ~
 
-Vim peut supporter jusqu'à seulement 223 sortes de surbrillance. Si vous
-dépassez cette limite, c'est que vous avez utilisé trop de commandes
-|:highlight| avec des arguments différents. Un ":highlight link" n'est pas
-compté.
+Vim peut supporter jusqu'Ã  seulement 223 sortes de surbrillance. Si vous
+dÃ©passez cette limite, c'est que vous avez utilisÃ© trop de commandes
+|:highlight| avec des arguments diffÃ©rents. Un ":highlight link" n'est pas
+comptÃ©.
 
 							*E77*
   Too many file names ~
 
-Lors du complètement d'un nom de fichier, plusieurs occurrences ont été
-trouvées. Une seule occurrence est autorisée.
+Lors du complÃ¨tement d'un nom de fichier, plusieurs occurrences ont Ã©tÃ©
+trouvÃ©es. Une seule occurrence est autorisÃ©e.
 
 							*E303*
   Unable to open swap file for "{nomfichier}", recovery impossible ~
 
-Vim n'a pas pu créer de fichier d'échange. Vous pouvez quand même éditer le
-fichier, mais si Vim était fermé inopinément, les modifications seraient
-perdues. Et Vim risque de consommer beaucoup de mémoire en éditant de gros
-fichiers. Vous voudrez probablement changer l'option 'directory' pour éviter
+Vim n'a pas pu crÃ©er de fichier d'Ã©change. Vous pouvez quand mÃªme Ã©diter le
+fichier, mais si Vim Ã©tait fermÃ© inopinÃ©ment, les modifications seraient
+perdues. Et Vim risque de consommer beaucoup de mÃ©moire en Ã©ditant de gros
+fichiers. Vous voudrez probablement changer l'option 'directory' pour Ã©viter
 cette erreur. Voir |swap-file|.
 
 							*E140*
   Use ! to write partial buffer ~
 
-Lors de l'utilisation d'une plage pour écrire un partie d'un tampon, il est
-inhabituel d'écraser le fichier original. Il s'agit probablement d'une erreur
-(p. ex., si le mode Visuel était actif lorsque ":w" a été saisi), et Vim
-rend nécessaire la saisie de '!' après la commande, p. ex. : ":3,10w!".
+Lors de l'utilisation d'une plage pour Ã©crire un partie d'un tampon, il est
+inhabituel d'Ã©craser le fichier original. Il s'agit probablement d'une erreur
+(p. ex., si le mode Visuel Ã©tait actif lorsque ":w" a Ã©tÃ© saisi), et Vim
+rend nÃ©cessaire la saisie de '!' aprÃ¨s la commande, p. ex. : ":3,10w!".
 
 
   Warning: Cannot convert string "<Key>Escape,_Key_Cancel" to type VirtualBinding ~
 
-Des messages comme ceci peuvent apparaître au démarrage. Ce problème ne vient
+Des messages comme ceci peuvent apparaÃ®tre au dÃ©marrage. Ce problÃ¨me ne vient
 pas de Vim, mais de votre configuration X11. Vous trouverez une aide pour
-le résoudre à : "http://groups.yahoo.com/group/solarisonintel/message/12179".
+le rÃ©soudre Ã  : "http://groups.yahoo.com/group/solarisonintel/message/12179".
 
 							*W10*
   Warning: Changing a readonly file ~
 
-Le fichier est en lecture seule et vous le modifiez malgré tout. Vous pouvez
-utiliser l'événement d'autocommande |FileChangedRO| pour éviter ce message
-(l'autocommande doit désactiver l'option 'readonly'. Voir 'modifiable' pour
+Le fichier est en lecture seule et vous le modifiez malgrÃ© tout. Vous pouvez
+utiliser l'Ã©vÃ©nement d'autocommande |FileChangedRO| pour Ã©viter ce message
+(l'autocommande doit dÃ©sactiver l'option 'readonly'. Voir 'modifiable' pour
 interdire toute forme de changement dans un fichier.
 
 							*W13*
   Warning: File "{nomfichier}" has been created after editing started ~
 
-Vous avez édité un fichier dans Vim alors qu'il n'existait pas, mais il
-existe maintenant. Vous devrez décider si vous voulez garder la version dans
-Vim ou le fichier nouvellement créé. Ce message n'est pas émis si 'buftype'
+Vous avez Ã©ditÃ© un fichier dans Vim alors qu'il n'existait pas, mais il
+existe maintenant. Vous devrez dÃ©cider si vous voulez garder la version dans
+Vim ou le fichier nouvellement crÃ©Ã©. Ce message n'est pas Ã©mis si 'buftype'
 n'est pas vide.
 
 							*W11*
   Warning: File "{nomfichier}" has changed since editing started ~
 
-Le fichier dont vous avez commencé l'édition a un horodatage différent et son
-contenu a changé (plus précisément : si le fichier était lu à nouveau avec le
-paramétrage d'options et les autocommandes courants, on aboutirait à un texte
-différent). Cela signifie probablement qu'un autre programme a changé le
-fichier. Vous devrez découvrir ce qui s'est produit et décider quelle version
-du fichier vous désirez garder. Activez l'option 'autoread' si vous souhaitez
+Le fichier dont vous avez commencÃ© l'Ã©dition a un horodatage diffÃ©rent et son
+contenu a changÃ© (plus prÃ©cisÃ©ment : si le fichier Ã©tait lu Ã  nouveau avec le
+paramÃ©trage d'options et les autocommandes courants, on aboutirait Ã  un texte
+diffÃ©rent). Cela signifie probablement qu'un autre programme a changÃ© le
+fichier. Vous devrez dÃ©couvrir ce qui s'est produit et dÃ©cider quelle version
+du fichier vous dÃ©sirez garder. Activez l'option 'autoread' si vous souhaitez
 que cela soit fait automatiquement.
-   Ce message n'est pas émis si 'buftype' n'est pas vide.
+   Ce message n'est pas Ã©mis si 'buftype' n'est pas vide.
 
-Il existe un cas particulier où vous obtiendrez ce message même s'il n'y a
-aucun problème : si vous enregistrez un fichier sous Windows le jour où le
-passage à l'heure d'été a eu lieu. Cela peut être résolu d'une des deux façons
+Il existe un cas particulier oÃ¹ vous obtiendrez ce message mÃªme s'il n'y a
+aucun problÃ¨me : si vous enregistrez un fichier sous Windows le jour oÃ¹ le
+passage Ã  l'heure d'Ã©tÃ© a eu lieu. Cela peut Ãªtre rÃ©solu d'une des deux faÃ§ons
 suivantes :
 - en ajoutant cette ligne dans votre fichier "autoexec.bat" : >
 	   SET TZ=-1
 < Ajustez la valeur "-1" selon votre fuseau horaire ;
-- en enregistrant à nouveau votre fichier le jour suivant. Ou sinon, en fixant
+- en enregistrant Ã  nouveau votre fichier le jour suivant. Ou sinon, en fixant
   votre horloge au jour suivant, en enregistrant le fichier deux fois, et en
-  remettant l'horloge à la date correcte.
+  remettant l'horloge Ã  la date correcte.
 
 							*W12*
   Warning: File "{nomfichier}" has changed and the buffer was changed in Vim as well ~
 
-Comme ci-dessus, mais le tampon pour le fichier a aussi été changé dans ce
-Vim. Vous devrez décider si vous voulez garder la version de Vim ou celle sur
-le disque. Ce message n'est pas émis si 'buftype' n'est pas vide.
+Comme ci-dessus, mais le tampon pour le fichier a aussi Ã©tÃ© changÃ© dans ce
+Vim. Vous devrez dÃ©cider si vous voulez garder la version de Vim ou celle sur
+le disque. Ce message n'est pas Ã©mis si 'buftype' n'est pas vide.
 
 							*W16*
   Warning: Mode of file "{nomfichier}" has changed since editing started ~
 
-Ce message est émis lorsque l'horodatage d'un tampon a été changé et que son
-contenu est resté identique, mais que le mode (les permissions d'accès) a
-changé. Cela peut se produire lors du contrôle XXX d'un fichier depuis un système
-de gestion de versions, qui provoque la désactivation du bit de lecture seule.
-Le rechargement du fichier devrait être sûr. Activez 'autoread' pour recharger
+Ce message est Ã©mis lorsque l'horodatage d'un tampon a Ã©tÃ© changÃ© et que son
+contenu est restÃ© identique, mais que le mode (les permissions d'accÃ¨s) a
+changÃ©. Cela peut se produire lors du contrÃ´le XXX d'un fichier depuis un systÃ¨me
+de gestion de versions, qui provoque la dÃ©sactivation du bit de lecture seule.
+Le rechargement du fichier devrait Ãªtre sÃ»r. Activez 'autoread' pour recharger
 automatiquement le fichier.
 
 							*E211*
   Warning: File "{nomfichier}" no longer available ~
 
-Le fichier que vous avez commencé à éditer a disparu, ou n'est plus
+Le fichier que vous avez commencÃ© Ã  Ã©diter a disparu, ou n'est plus
 accessible. Assurez-vous d'avoir enregistrer le tampon quelque part pour
-éviter la perte de données. Ce message n'est pas émis si 'buftype' n'est pas
+Ã©viter la perte de donnÃ©es. Ce message n'est pas Ã©mis si 'buftype' n'est pas
 vide.
 
 							*W14*
   Warning: List of file names overflow ~
 
 Vous devez utiliser un nombre incroyable de tampons. Il est possible que deux
-tampons aient le même numéro, ce qui cause divers problèmes. Vous avez intérêt
-à quitter Vim et à le relancer.
+tampons aient le mÃªme numÃ©ro, ce qui cause divers problÃ¨mes. Vous avez intÃ©rÃªt
+Ã  quitter Vim et Ã  le relancer.
 
 							*E296* *E297*
   Seek error in swap file write ~
   Write error in swap file ~
 
-Ce message est émis le plus souvent lorsque le disque est plein. Vim ne peut
-alors plus écrire dans le fichier d'échange |swap-file|. Ce n'est pas grave en
-soi, mais si Vim était fermé inopinément, du texte pourrait être perdu sans
-recouvrement possible. Si ce problème persiste, un débordement de mémoire
+Ce message est Ã©mis le plus souvent lorsque le disque est plein. Vim ne peut
+alors plus Ã©crire dans le fichier d'Ã©change |swap-file|. Ce n'est pas grave en
+soi, mais si Vim Ã©tait fermÃ© inopinÃ©ment, du texte pourrait Ãªtre perdu sans
+recouvrement possible. Si ce problÃ¨me persiste, un dÃ©bordement de mÃ©moire
 pourrait survenir.
 
 							*connection-refused*
   Xlib: connection to "nom-machine:0.0" refused by server ~
 
 Cela se produit lorsque Vim essaie de se connecter au serveur X, mais que le
-serveur X ne permet pas la connexion. La connexion au serveur X est nécessaire
-pour restaurer le titre de la fenêtre et pour le support du presse-papiers
-xterm. Ce message ne peut malheureusement pas être éviter, sauf en désactivant
-les fonctionnalités |+xterm_clipboard| et |+X11|.
+serveur X ne permet pas la connexion. La connexion au serveur X est nÃ©cessaire
+pour restaurer le titre de la fenÃªtre et pour le support du presse-papiers
+xterm. Ce message ne peut malheureusement pas Ãªtre Ã©viter, sauf en dÃ©sactivant
+les fonctionnalitÃ©s |+xterm_clipboard| et |+X11|.
 
 							*E10*
   \\ should be followed by /, ? or & ~
 
-Une ligne de commande débute par une contre-oblique ('\'), ou la plage d'une
-commande contient une contre-oblique mal placée. Ce problème survient souvent
-lorsque la continuation des lignes de commandes est désactivée. Supprimez le
+Une ligne de commande dÃ©bute par une contre-oblique ('\'), ou la plage d'une
+commande contient une contre-oblique mal placÃ©e. Ce problÃ¨me survient souvent
+lorsque la continuation des lignes de commandes est dÃ©sactivÃ©e. Supprimez le
 drapeau 'C' de l'option 'cpoptions' pour l'activer.
 
 							*E471*
   Argument required ~
 
 Cela se produit lorsqu'une commande Ex avec un ou plusieurs arguments
-obligatoires a été exécutée, mais qu'aucun argument n'a été spécifié.
+obligatoires a Ã©tÃ© exÃ©cutÃ©e, mais qu'aucun argument n'a Ã©tÃ© spÃ©cifiÃ©.
 
 							*E474* *E475*
   Invalid argument ~
 
-Une commande Ex a été exécutée, mais un argument invalide a été spécifié.
+Une commande Ex a Ã©tÃ© exÃ©cutÃ©e, mais un argument invalide a Ã©tÃ© spÃ©cifiÃ©.
 
 							*E488*
   Trailing characters ~
 
-Un argument a été ajouté à une commande Ex qui n'en admet pas.
+Un argument a Ã©tÃ© ajoutÃ© Ã  une commande Ex qui n'en admet pas.
 
 							*E477* *E478*
   No ! allowed ~
   Don't panic! ~
 
-Vous avez ajouté un '!' à une commande Ex qui n'en admet pas.
+Vous avez ajoutÃ© un '!' Ã  une commande Ex qui n'en admet pas.
 
 							*E481*
   No range allowed ~
 
-Une plage a été spécifiée à une commande Ex qui n'en admet pas. Voir
+Une plage a Ã©tÃ© spÃ©cifiÃ©e Ã  une commande Ex qui n'en admet pas. Voir
 |cmdline-ranges|.
 
 							*E482* *E483*
   Can't create file {nomfichier} ~
   Can't get temp file name ~
 
-Vim est incapable de créer un fichier temporaire.
+Vim est incapable de crÃ©er un fichier temporaire.
 
 							*E484* *E485*
   Can't open file %s" ~
@@ -724,8 +724,8 @@ Vim est incapable de lire un fichier temporaire.
 							*E464*
   Ambiguous use of user-defined command ~
 
-Au moins deux commandes utilisateur possèdent un préfixe commun, et vous avez
-utilisé le complètement de la ligne de commande pour exécuter l'une d'elles.
+Au moins deux commandes utilisateur possÃ¨dent un prÃ©fixe commun, et vous avez
+utilisÃ© le complÃ¨tement de la ligne de commande pour exÃ©cuter l'une d'elles.
 Voir |user-cmd-abmiguous| XXX. Exemple : >
 	:command MaCommande1 echo "un"
 	:command MaCommande2 echo "deux"
@@ -734,45 +734,45 @@ Voir |user-cmd-abmiguous| XXX. Exemple : >
 							*E492*
   Not an editor command ~
 
-Vous avez essayé d'utiliser une commande qui n'est ni une commande Ex ni une
+Vous avez essayÃ© d'utiliser une commande qui n'est ni une commande Ex ni une
 commande utilisateur.
 
 ==============================================================================
 3. Messages						*messages*
 
-Ceci est un bref (et incomplet) descriptif de différents messages envoyés
+Ceci est un bref (et incomplet) descriptif de diffÃ©rents messages envoyÃ©s
 par Vim.
 
 						*hit-return* *press-return*
-INVITE APPUYEZ-SUR-ENTRÉE			*hit-enter* *press-enter*
+INVITE APPUYEZ-SUR-ENTRÃ‰E			*hit-enter* *press-enter*
 
   Hit ENTER or type command to continue ~
 
-Ce message est émis lorsqu'il y a quelque chose à lire sur l'écran et qu'il
-doit être rafraîchi :
-- après l'exécution d'un commande externe (p. ex., ":!ls" et "=") ;
-- si quelque chose est affiché sur la ligne d'état, qui est plus large que
-  l'écran, ou qui empiète sur la sortie de 'showcmd' ou 'ruler'.
+Ce message est Ã©mis lorsqu'il y a quelque chose Ã  lire sur l'Ã©cran et qu'il
+doit Ãªtre rafraÃ®chi :
+- aprÃ¨s l'exÃ©cution d'un commande externe (p. ex., ":!ls" et "=") ;
+- si quelque chose est affichÃ© sur la ligne d'Ã©tat, qui est plus large que
+  l'Ã©cran, ou qui empiÃ¨te sur la sortie de 'showcmd' ou 'ruler'.
 
--> Tapez <Entree> ou <Espace> pour rafraîchir l'écran et continuer, sans que
-   cette touche ne soit exécutée autrement.
--> Tapez ":" ou toute autre caractère de commande du mode Normal pour lancer
+-> Tapez <Entree> ou <Espace> pour rafraÃ®chir l'Ã©cran et continuer, sans que
+   cette touche ne soit exÃ©cutÃ©e autrement.
+-> Tapez ":" ou toute autre caractÃ¨re de commande du mode Normal pour lancer
    cette commande.
--> Tapez CTRL-Y pour copier ["Yank"] une sélection amodale dans le registre
+-> Tapez CTRL-Y pour copier ["Yank"] une sÃ©lection amodale dans le registre
    du presse-papiers.
--> Utilisez un menu. Les caractères définis pour le mode Lignecmd sont
-   utilisés.
+-> Utilisez un menu. Les caractÃ¨res dÃ©finis pour le mode Lignecmd sont
+   utilisÃ©s.
 -> Quand 'mouse' contient le drapeau 'r', un clic avec le bouton gauche de la
-   souris agira comme <Espace>. Cela rendra alors impossible la sélection de
+   souris agira comme <Espace>. Cela rendra alors impossible la sÃ©lection de
    texte.
 -> Dans l'IHM graphique, un clic avec le bouton gauche de la souris sur la
-   dernière ligne agira comme <Espace>.
-{Vi : seules les commandes ":" sont interprétées}
+   derniÃ¨re ligne agira comme <Espace>.
+{Vi : seules les commandes ":" sont interprÃ©tÃ©es}
 
-Pour réduire le nombre des invites Appuyez-sur-entrée :
-- Fixez 'cmdheight' à 2 ou plus.
-- Ajoutez des drapeaux à 'shortmess'.
-- Désactivez 'showcmd' et/ou 'ruler'.
+Pour rÃ©duire le nombre des invites Appuyez-sur-entrÃ©e :
+- Fixez 'cmdheight' Ã  2 ou plus.
+- Ajoutez des drapeaux Ã  'shortmess'.
+- DÃ©sactivez 'showcmd' et/ou 'ruler'.
 
 Voir aussi 'mouse'. Ce message est mis en surbrillance avec le groupe
 |hl-Question|.
@@ -784,39 +784,39 @@ INVITE PLUS					    *more-prompt* *pager*
   -- More -- (RET: line, SPACE: page, d: half page, q: quit) ~
   -- More -- (RET/BS: line, SPACE/b: page, d/u: half page, q: quit) ~
 
-Ce message est émis lorsque l'écran entier est rempli par des messages. Il est
-émis uniquement si l'option 'more' est activée. Mis en surbrillance avec le
+Ce message est Ã©mis lorsque l'Ã©cran entier est rempli par des messages. Il est
+Ã©mis uniquement si l'option 'more' est activÃ©e. Mis en surbrillance avec le
 groupe |hl-MoreMsg|.
 
 	SAISIE			     EFFET		   ~
 	<CR> ou <NL> ou j ou <Bas>   une ligne vers le bas
 	<RetArr> ou k ou <Haut>	     une ligne vers le haut (*)
 	<Espace> ou <PageSuiv>	     page suivante
-	b ou <PagePrec>		     page précédente (*)	       ["Back"]
+	b ou <PagePrec>		     page prÃ©cÃ©dente (*)	       ["Back"]
 	d			     1/2 page vers le bas  	       ["Down"]
 	u			     1/2 page vers le haut (*)		 ["Up"]
-	q ou <Echap> ou CTRL-C	     arrête le listage
-	:			     arrête le listage et entre une ligne
+	q ou <Echap> ou CTRL-C	     arrÃªte le listage
+	:			     arrÃªte le listage et entre une ligne
 				        de commande
-	CTRL-Y			     copie une sélection amodale dans le
+	CTRL-Y			     copie une sÃ©lection amodale dans le
 				        presse-papiers (registres "* et "+)
 								       ["Yank"]
-	{entree-menu}		     exécute la définition de l'entrée du
+	{entree-menu}		     exÃ©cute la dÃ©finition de l'entrÃ©e du
 				        menu en mode Lignecmd
         <ClicGauche> (**)	     page suivante
 
 
 N'importe quelle autre touche provoque l'affichage de la signification des
-précédentes.
+prÃ©cÃ©dentes.
 
-(*)  Le défilement arrière est supporté uniquement pour la commande : >
+(*)  Le dÃ©filement arriÃ¨re est supportÃ© uniquement pour la commande : >
 	:clist
 (**) L'utilisation du bouton gauche de la souris fonctionne uniquement :
-     - pour l'IHM graphique : dans la dernière ligne de l'écran ;
-     - si 'r' est inclus dans 'mouse' (mais alors, la sélection de texte ne
+     - pour l'IHM graphique : dans la derniÃ¨re ligne de l'Ã©cran ;
+     - si 'r' est inclus dans 'mouse' (mais alors, la sÃ©lection de texte ne
        fonctionnera pas).
 
 NOTE : La touche saisie est obtenue directement depuis le terminal, elle n'est
-pas mappée et toute saisie la précédant est ignorée.
+pas mappÃ©e et toute saisie la prÃ©cÃ©dant est ignorÃ©e.
 
  vim:tw=78:ts=8:ft=help:norl:

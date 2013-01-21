@@ -1,20 +1,20 @@
-*pi_expl.txt*   Pour Vim version 6.2.  Dernière modification : 08 nov 2002
+*pi_expl.txt*   Pour Vim version 6.2.  DerniÃ¨re modification : 08 nov 2002
 
 
-		 MANUEL de RÉFÉRENCE VIM - par M A Aziz Ahmed
-					   mis à jour par Mark Waggoner
+		 MANUEL de RÃ‰FÃ‰RENCE VIM - par M A Aziz Ahmed
+					   mis Ã  jour par Mark Waggoner
 
 
 						*file-explorer* *file-browser*
-Greffon d'exploration (ou de navigation) pour répertoires et fichiers
+Greffon d'exploration (ou de navigation) pour rÃ©pertoires et fichiers
 
 1. Lancer l'explorateur de fichiers		|expl-starting|
 
-La fonctionnalité mentionnée dans ce fichier est mise en oeuvre par le biais
-d'un greffon global |standard-plugin|. Ce greffon n'est chargé que si l'option
-'compatible' n'est pas activée.
+La fonctionnalitÃ© mentionnÃ©e dans ce fichier est mise en oeuvre par le biais
+d'un greffon global |standard-plugin|. Ce greffon n'est chargÃ© que si l'option
+'compatible' n'est pas activÃ©e.
 
-Vous pouvez éviter le chargement de ce greffon en fixant la variable
+Vous pouvez Ã©viter le chargement de ce greffon en fixant la variable
 "loaded_explorer" : >
 
 	:let loaded_netrw = 1
@@ -24,36 +24,36 @@ Vous pouvez éviter le chargement de ce greffon en fixant la variable
 ==============================================================================
 1. Lancer l'explorateur de fichiers			*expl-starting*
 
-Le greffon permet d'explorer les répertoires en restant à l'intérieur de Vim.
-L'explorateur de fichiers est démarré à chaque fois que l'utilisateur tente
-d'éditer un répertoire.
+Le greffon permet d'explorer les rÃ©pertoires en restant Ã  l'intÃ©rieur de Vim.
+L'explorateur de fichiers est dÃ©marrÃ© Ã  chaque fois que l'utilisateur tente
+d'Ã©diter un rÃ©pertoire.
 						*:Explore* *:Sexplore*
-Pour lancer l'explorateur dans le répertoire du fichier est cours d'édition : >
+Pour lancer l'explorateur dans le rÃ©pertoire du fichier est cours d'Ã©dition : >
 	:Explore
-Si le fichier a été modifié, la fenêtre est partagée. Pour toujours partager
-la fenêtre : >
+Si le fichier a Ã©tÃ© modifiÃ©, la fenÃªtre est partagÃ©e. Pour toujours partager
+la fenÃªtre : >
 	:Sexplore
-Pour lancer l'explorateur dans un répertoire particulier : >
+Pour lancer l'explorateur dans un rÃ©pertoire particulier : >
 	:Explore nomrep
 	:Sexplore nomrep
 
 Une fois dans l'explorateur, placez le curseur sur une ligne contenant un nom
-de fichier ou de répertoire. Les commandes suivantes sont disponibles :
+de fichier ou de rÃ©pertoire. Les commandes suivantes sont disponibles :
 
-  <Entree>  ouvre le fichier dans la fenêtre actuellement utilisée par
+  <Entree>  ouvre le fichier dans la fenÃªtre actuellement utilisÃ©e par
 	       l'explorateur.
-  'o'	    partage la fenêtre et ouvre le fichier dans la nouvelle fenêtre.
-  'O'	    ouvre le fichier dans la fenêtre dans laquelle le curseur se
-	       trouvait juste avant que vous démarriez ou alliez dans la
-	       fenêtre de l'explorateur. Si l'explorateur est la seule
-	       fenêtre, une nouvelle fenêtre sera ouverte pour y charger le
+  'o'	    partage la fenÃªtre et ouvre le fichier dans la nouvelle fenÃªtre.
+  'O'	    ouvre le fichier dans la fenÃªtre dans laquelle le curseur se
+	       trouvait juste avant que vous dÃ©marriez ou alliez dans la
+	       fenÃªtre de l'explorateur. Si l'explorateur est la seule
+	       fenÃªtre, une nouvelle fenÃªtre sera ouverte pour y charger le
 	       fichier.
-  'p'	    utilise la fenêtre de prévisualisation pour afficher le fichier.
-  'x'	    exécute le fichier avec l'action par défaut du système. Supporté
+  'p'	    utilise la fenÃªtre de prÃ©visualisation pour afficher le fichier.
+  'x'	    exÃ©cute le fichier avec l'action par dÃ©faut du systÃ¨me. SupportÃ©
 	       uniquement par MS-Windows et KDE).
 
-Quand une nouvelle fenêtre est ouverte, vous pouvez contrôler sa position par
-rapport à la fenêtre de l'explorateur en utilisant les variables
+Quand une nouvelle fenÃªtre est ouverte, vous pouvez contrÃ´ler sa position par
+rapport Ã  la fenÃªtre de l'explorateur en utilisant les variables
 "g:explVertical", "g:explSplitBelow" et "g:explSplitRight".
 
 							*g:explVertical*
@@ -64,163 +64,163 @@ rapport à la fenêtre de l'explorateur en utilisant les variables
 Pour indiquer si le partage doit se faire horizontalement ou verticalement,
 utilisez : >
   let g:explVertical = 1      " Partage verticalement
-  let g:explVertical = 0      " Partage horizontalement (par défaut)
+  let g:explVertical = 0      " Partage horizontalement (par dÃ©faut)
 
-Pour indiquer la position de la nouvelle fenêtre par rapport à l'explorateur
+Pour indiquer la position de la nouvelle fenÃªtre par rapport Ã  l'explorateur
 quand le partage est horizontal, utilisez la variable : >
-  let g:explSplitBelow = 1    " Placer la nouvelle fenêtre sous l'explorateur
-  let g:explSplitBelow = 0    " Placer la nouvelle fenêtre au-dessus
-La valeur par défaut est fixée à la valeur de l'option 'splitbelow' lors du
+  let g:explSplitBelow = 1    " Placer la nouvelle fenÃªtre sous l'explorateur
+  let g:explSplitBelow = 0    " Placer la nouvelle fenÃªtre au-dessus
+La valeur par dÃ©faut est fixÃ©e Ã  la valeur de l'option 'splitbelow' lors du
 chargement du greffon.
 
-Pour indiquer la position de la nouvelle fenêtre par rapport à l'explorateur
+Pour indiquer la position de la nouvelle fenÃªtre par rapport Ã  l'explorateur
 quand le partage est vertical, utilisez la variable : >
-  let g:explSplitRight = 1    " Placer la nouvelle fenêtre à droite
-  let g:explSplitRight = 0    " Placer la nouvelle fenêtre à gauche
-La valeur par défaut est fixée à la valeur de l'option 'splitright' lors du
+  let g:explSplitRight = 1    " Placer la nouvelle fenÃªtre Ã  droite
+  let g:explSplitRight = 0    " Placer la nouvelle fenÃªtre Ã  gauche
+La valeur par dÃ©faut est fixÃ©e Ã  la valeur de l'option 'splitright' lors du
 chargement du greffon.
 
-Pour changer le principe de partage utilisé pour la fenêtre de l'explorateur,
+Pour changer le principe de partage utilisÃ© pour la fenÃªtre de l'explorateur,
 utilisez : >
-  let g:explStartRight = 1    " Place la nouvelle fenêtre de l'explorateur à
-			      " droite de la fenêtre courante
-  let g:explStartRight = 0    " Place la nouvelle fenêtre de l'explorateur à
-			      " gauche de la fenêtre courante
-La valeur par défaut est fixée à la valeur de "g:explSplitRight" au moment du
+  let g:explStartRight = 1    " Place la nouvelle fenÃªtre de l'explorateur Ã 
+			      " droite de la fenÃªtre courante
+  let g:explStartRight = 0    " Place la nouvelle fenÃªtre de l'explorateur Ã 
+			      " gauche de la fenÃªtre courante
+La valeur par dÃ©faut est fixÃ©e Ã  la valeur de "g:explSplitRight" au moment du
 chargement du greffon.
 
-Pour changer le principe de partage utilisé pour la fenêtre de l'explorateur,
+Pour changer le principe de partage utilisÃ© pour la fenÃªtre de l'explorateur,
 utilisez : >
-  let g:explStartBelow = 1    " Place la nouvelle fenêtre de l'explorateur
-			      " sous la fenêtre courante
-  let g:explStartBelow = 0    " Place la nouvelle fenêtre de l'explorateur
-			      " au-dessus la fenêtre courante
-La valeur par défaut est fixée à la valeur de "g:explSplitBelow" au moment du
+  let g:explStartBelow = 1    " Place la nouvelle fenÃªtre de l'explorateur
+			      " sous la fenÃªtre courante
+  let g:explStartBelow = 0    " Place la nouvelle fenÃªtre de l'explorateur
+			      " au-dessus la fenÃªtre courante
+La valeur par dÃ©faut est fixÃ©e Ã  la valeur de "g:explSplitBelow" au moment du
 chargement du greffon.
 
 Le comportement de partage au lancement de l'explorateur permettent le
-placement de la fenêtre à la manière d'un navigateur de fichiers, dans lequel
-les répertoires sont affichés à gauche et leur contenu à droite. Les
-paramètres de partage au lancement ne sont utilisés qu'avec la commande
+placement de la fenÃªtre Ã  la maniÃ¨re d'un navigateur de fichiers, dans lequel
+les rÃ©pertoires sont affichÃ©s Ã  gauche et leur contenu Ã  droite. Les
+paramÃ¨tres de partage au lancement ne sont utilisÃ©s qu'avec la commande
 ":Sexplore".
 
-NOTE : le partage de la fenêtre est effectué de manière légèrement différente
-par rapport à un partage traditionnel. D'ordinaire, lors du partage d'une
-fenêtre, l'espace occupé par la fenêtre courante est partagé pour donner de la
-place à la nouvelle fenêtre. L'explorateur tente au contraire de partager la
-fenêtre adjacente pour ne pas changer la taille de la fenêtre depuis laquelle
-est il est lancé. Si aucune fenêtre adjacente n'existe dans la direction
-retenue pour le partage, la fenêtre depuis laquelle il est lancé est partagée.
+NOTE : le partage de la fenÃªtre est effectuÃ© de maniÃ¨re lÃ©gÃ¨rement diffÃ©rente
+par rapport Ã  un partage traditionnel. D'ordinaire, lors du partage d'une
+fenÃªtre, l'espace occupÃ© par la fenÃªtre courante est partagÃ© pour donner de la
+place Ã  la nouvelle fenÃªtre. L'explorateur tente au contraire de partager la
+fenÃªtre adjacente pour ne pas changer la taille de la fenÃªtre depuis laquelle
+est il est lancÃ©. Si aucune fenÃªtre adjacente n'existe dans la direction
+retenue pour le partage, la fenÃªtre depuis laquelle il est lancÃ© est partagÃ©e.
 
 							*g:explWinSize*
-Après l'ouverture d'un fichier avec la commande 'o', vous pourrier vouloir
-redimensionner la fenêtre de l'explorateur. C'est possible en fixant la
+AprÃ¨s l'ouverture d'un fichier avec la commande 'o', vous pourrier vouloir
+redimensionner la fenÃªtre de l'explorateur. C'est possible en fixant la
 variable >
   let g:explWinSize = N
-où N désigne le nombre de lignes (si le partage est horizontal) ou de colonnes
-(si le partage est vertical). Si "g:explWinSize" à pour valeur une chaîne vide
-(""), le redimensionnement n'a pas lieu. La valeur par défaut de
+oÃ¹ N dÃ©signe le nombre de lignes (si le partage est horizontal) ou de colonnes
+(si le partage est vertical). Si "g:explWinSize" Ã  pour valeur une chaÃ®ne vide
+(""), le redimensionnement n'a pas lieu. La valeur par dÃ©faut de
 "g:explWinSize" est 15.
 
 							*g:explDetailedList*
-La taille de fichiers (en octets) et la date de modification peuvent être
-affichées dans la fenêtre de l'explorateur de fichiers. En tapant 'i', vous
-pouvez passer de l'affichage des noms uniquement à un affichage plus complet.
-Si vous souhaitez que la taille et la date apparaîssent par défaut, utilisez : >
+La taille de fichiers (en octets) et la date de modification peuvent Ãªtre
+affichÃ©es dans la fenÃªtre de l'explorateur de fichiers. En tapant 'i', vous
+pouvez passer de l'affichage des noms uniquement Ã  un affichage plus complet.
+Si vous souhaitez que la taille et la date apparaÃ®ssent par dÃ©faut, utilisez : >
   let g:explDetailedList = 1
-Cette fonctionnalité peut ralentir l'explorateur. La différence peut être
-sensible ou non en fonction de votre système, selon que le répertoire est
-local ou sur un réseau, et selon la taille de ce répertoire.
+Cette fonctionnalitÃ© peut ralentir l'explorateur. La diffÃ©rence peut Ãªtre
+sensible ou non en fonction de votre systÃ¨me, selon que le rÃ©pertoire est
+local ou sur un rÃ©seau, et selon la taille de ce rÃ©pertoire.
 
 							*g:explDateFormat*
-Le format de la date affichée est paramètrable en utilisant la variable
-"g:explDateFormat". L'explorateur passe cette variable à |strftime()| pour
-récupérer les informations sur la date. La valeur par défaut est : >
+Le format de la date affichÃ©e est paramÃ¨trable en utilisant la variable
+"g:explDateFormat". L'explorateur passe cette variable Ã  |strftime()| pour
+rÃ©cupÃ©rer les informations sur la date. La valeur par dÃ©faut est : >
   let g:explDateFormat = "%d %b %Y %H:%M"
 
-NOTE : à des fins de tri, la date dans sa forme brute est toujours placée à la
-fin de chaque ligne. Si la coloration syntaxique est activée, cette date
+NOTE : Ã  des fins de tri, la date dans sa forme brute est toujours placÃ©e Ã  la
+fin de chaque ligne. Si la coloration syntaxique est activÃ©e, cette date
 devrait rester invisible.
 
 							*g:explHideFiles*
-Vous pouvez masquer certains fichiers en spécifiant des expressions
+Vous pouvez masquer certains fichiers en spÃ©cifiant des expressions
 rationnelles dans la variable "g:explHideFiles". Un nom de fichier
-correspondant avec l'une de ces exprat ne sera pas affiché. Par exemple >
+correspondant avec l'une de ces exprat ne sera pas affichÃ©. Par exemple >
 
   let g:explHideFiles = '^\.,\.gz$,\.exe$,\.zip$'
 
-n'affichera par les fichiers débutant par ".", ni ceux se terminant par ".gz",
-".exe" ou ".zip". Cependant, tous les noms de répertoires seront montrés. Si
-durant l'exploration, vous souhaitez également voir les fichiers masqués,
-utilisez la commande 'a'. L'en-tête de l'explorateur vous indiquera si un
-filtrage a été effectué.
+n'affichera par les fichiers dÃ©butant par ".", ni ceux se terminant par ".gz",
+".exe" ou ".zip". Cependant, tous les noms de rÃ©pertoires seront montrÃ©s. Si
+durant l'exploration, vous souhaitez Ã©galement voir les fichiers masquÃ©s,
+utilisez la commande 'a'. L'en-tÃªte de l'explorateur vous indiquera si un
+filtrage a Ã©tÃ© effectuÃ©.
 
 							*g:explDetailedHelp*
-Le message d'aide de plusieurs lignes peut être désactivé (pour laisser un
+Le message d'aide de plusieurs lignes peut Ãªtre dÃ©sactivÃ© (pour laisser un
 message d'aide minimal) en utilisant la variable >
   let g:explDetailedHelp = 0
-Vous pouvez activer (ou désactiver) l'aide détaillée à n'importe quel moment
+Vous pouvez activer (ou dÃ©sactiver) l'aide dÃ©taillÃ©e Ã  n'importe quel moment
 en tapant '?'.
 
 							*explorer-delete*
 Taper 'D' dans l'explorateur supprime le fichier sous le curseur. Vous pouvez
-supprimer plusieurs fichiers en les sélectionnant Visuellement et en utilisant
+supprimer plusieurs fichiers en les sÃ©lectionnant Visuellement et en utilisant
 'D'. La suppression est interactive (invite oui/non/toujours/quitter). La
-suppression des répertoires n'est pas supportée (principalement parce
-qu'aucune manière de supprimer un répertoire n'est disponible avec les
-fonctions intégrées de Vim).
+suppression des rÃ©pertoires n'est pas supportÃ©e (principalement parce
+qu'aucune maniÃ¨re de supprimer un rÃ©pertoire n'est disponible avec les
+fonctions intÃ©grÃ©es de Vim).
 
 							*explorer-rename*
 Taper 'R' dans l'explorateur vous permet de renommer le fichier sous le
 curseur.
 
 							*g:explSortBy*
-L'affichage des fichiers dans l'explorateur peut être trié par ordre (direct
+L'affichage des fichiers dans l'explorateur peut Ãªtre triÃ© par ordre (direct
 ou inverse) de nom, de taille ou de date de modification. Vous pouvez fixer
-l'ordre de tri par défaut avec cette variable : >
-  let g:explSortBy = 'name'		" alphabétique
-  let g:explSortBy = 'reverse name'	" alphabétique inverse
-  let g:explSortBy = 'date'		" le plus récent d'abord
+l'ordre de tri par dÃ©faut avec cette variable : >
+  let g:explSortBy = 'name'		" alphabÃ©tique
+  let g:explSortBy = 'reverse name'	" alphabÃ©tique inverse
+  let g:explSortBy = 'date'		" le plus rÃ©cent d'abord
   let g:explSortBy = 'reverse date'	" le plus ancien d'abord
   let g:explSortBy = 'size'		" le plus gros d'abord
   let g:explSortBy = 'reverse size'     " le plus petit d'abord
-Une fois dans l'explorateur, vous pouvez passer d'un tri à l'autre avec la
+Une fois dans l'explorateur, vous pouvez passer d'un tri Ã  l'autre avec la
 touche 's', et vous pouvez inverser l'ordre de tri en appuyant sur la touche
-'r'. Le tri selon des champs différents du nom sera plus rapide si la date et
-la taille sont affichées (en utilisant 'i' ou "g:explDetailedList"). L'en-tête
-de l'explorateur vous indiquera le tri actuellement utilisé.
+'r'. Le tri selon des champs diffÃ©rents du nom sera plus rapide si la date et
+la taille sont affichÃ©es (en utilisant 'i' ou "g:explDetailedList"). L'en-tÃªte
+de l'explorateur vous indiquera le tri actuellement utilisÃ©.
 
 							*g:explDirsFirst*
-Pour contrôler la séparation entre les répertoires et les fichiers, vous
+Pour contrÃ´ler la sÃ©paration entre les rÃ©pertoires et les fichiers, vous
 pouvez utiliser cette variable : >
-  let g:explDirsFirst = 1	" Placer les répertoire au début (par défaut)
-  let g:explDirsFirst = 0	" Mélanger les répertoire et les fichiers
-  let g:explDirsFirst = -1	" Placer les répertoire à la fin
+  let g:explDirsFirst = 1	" Placer les rÃ©pertoire au dÃ©but (par dÃ©faut)
+  let g:explDirsFirst = 0	" MÃ©langer les rÃ©pertoire et les fichiers
+  let g:explDirsFirst = -1	" Placer les rÃ©pertoire Ã  la fin
 <
 							*g:explSuffixesLast*
-Pour contrôler la séparation des fichiers dont les suffixes correspondent avec
+Pour contrÃ´ler la sÃ©paration des fichiers dont les suffixes correspondent avec
 certaines extensions, vous pouvez utiliser cette variable : >
   let g:explSuffixesLast = 1	" Placer les fichiers dont les suffixent
-				" correspondent à la fin (par défaut)
-  let g:explSuffixesLast = 0	" Mélanger les fichiers dont les suffixes
+				" correspondent Ã  la fin (par dÃ©faut)
+  let g:explSuffixesLast = 0	" MÃ©langer les fichiers dont les suffixes
 				" correspondent avec les autres
   let g:explSuffixesLast = -1	" Placer les fichiers dont les suffixes
-				" correspondent au début
-L'en-tête de l'explorateur vous indiquera si les fichiers avec les suffixes
-spécifiés sont placés à la fin ou au début de la liste.
+				" correspondent au dÃ©but
+L'en-tÃªte de l'explorateur vous indiquera si les fichiers avec les suffixes
+spÃ©cifiÃ©s sont placÃ©s Ã  la fin ou au dÃ©but de la liste.
 
 							*g:explUseSeparators*
-Les répertoires et fichiers dont les suffixes correspondent sont mis en
-surbrillance. Si vos répertoires, fichiers et suffixes sont séparés et que
+Les rÃ©pertoires et fichiers dont les suffixes correspondent sont mis en
+surbrillance. Si vos rÃ©pertoires, fichiers et suffixes sont sÃ©parÃ©s et que
 vous souhaitez afficher une ligne entres les groupes, vous pouvez utiliser
 cette variable : >
-  let g:explUseSeparators = 1	" Mettre des séparateurs
-  let g:explUseSeparators = 0	" Ne pas mettre de séparateurs
+  let g:explUseSeparators = 1	" Mettre des sÃ©parateurs
+  let g:explUseSeparators = 0	" Ne pas mettre de sÃ©parateurs
 <
 							 *g:explFileHandler*
 Si vous fixez la variable "g:explFileHandler" au nom d'une fonction, cette
-dernière sera appelée quand 'x' sera tapé. Le nom du fichier ou du répertoire
-sous le curseur sera passé en argument à la fonction. En supposant que vous
+derniÃ¨re sera appelÃ©e quand 'x' sera tapÃ©. Le nom du fichier ou du rÃ©pertoire
+sous le curseur sera passÃ© en argument Ã  la fonction. En supposant que vous
 utilisez KDE, vous pourriez faire ceci : >
 
   function MyFileHandler(nomfich)
@@ -228,8 +228,8 @@ utilisez KDE, vous pourriez faire ceci : >
   endfunction
   let g:explFileHandler = 'MyFileHandler'
 
-Sur Win32, la variable est fixée par défaut pour invoquer l'action 
-« exécuter ». Si vous tapez 'x' sur un fichier HTML, MS Internet Explorer
-démarrera (ou toute autre application qui est associée aux fichiers HTML).
+Sur Win32, la variable est fixÃ©e par dÃ©faut pour invoquer l'action 
+Â« exÃ©cuter Â». Si vous tapez 'x' sur un fichier HTML, MS Internet Explorer
+dÃ©marrera (ou toute autre application qui est associÃ©e aux fichiers HTML).
 
  vim:tw=78:noet:ts=8:ft=help:norl:

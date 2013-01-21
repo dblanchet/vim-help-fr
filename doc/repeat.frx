@@ -1,335 +1,335 @@
 *repeat.txt*    Pour Vim version 6.2.
 
 
-		 MANUEL de RÉFÉRENCE VIM - par Bram Moolenaar
+		 MANUEL de RÃ‰FÃ‰RENCE VIM - par Bram Moolenaar
 
 
-Répétition de commandes, scripts Vim et débogage	*repeating*
+RÃ©pÃ©tition de commandes, scripts Vim et dÃ©bogage	*repeating*
 
 Consultez le chapitre 26 du Manuel de l'utilisateur pour une introduction sur
-la répétition de commandes |usr_26.txt|.
+la rÃ©pÃ©tition de commandes |usr_26.txt|.
 
-1. Répétitions simples		|single-repeat|
-2. Répétitions multiples	|multi-repeat|
-3. Répétitions complexes	|complex-repeat|
+1. RÃ©pÃ©titions simples		|single-repeat|
+2. RÃ©pÃ©titions multiples	|multi-repeat|
+3. RÃ©pÃ©titions complexes	|complex-repeat|
 4. Utiliser des scripts Vim	|using-scripts|
-5. Déboguer des scripts		|debug-scripts|
+5. DÃ©boguer des scripts		|debug-scripts|
 
 ==============================================================================
-1. Répétitions simples					*single-repeat*
+1. RÃ©pÃ©titions simples					*single-repeat*
 
 							*.*
-.			Répète le dernier changement, avec [quant] comme
-			nouveau quantificateur. Répète également une commande
+.			RÃ©pÃ¨te le dernier changement, avec [quant] comme
+			nouveau quantificateur. RÃ©pÃ¨te Ã©galement une commande
 			de copie si le drapeau 'y' est inclus dans
 			'cpoptions'.
 
-Les changements simples peuvent être répétés avec la commande ".". Si aucun
-quantificateur n'est donné, celui du dernier changement est utilisé. Si vous
-entrez un nouveau quantificateur, le dernier sera remplacé. Si le dernier
-changement fait appel à un registre numéroté, le numéro de ce registre sera
-incrémenté. Voir |redo-register| pour en avoir un exemple d'utilisation.
-   NOTE : Lors de la répétition d'une commande qui utilise une sélection
-Visuel, la même TAILLE de zone est utilisée, voir |visual-repeat|.
+Les changements simples peuvent Ãªtre rÃ©pÃ©tÃ©s avec la commande ".". Si aucun
+quantificateur n'est donnÃ©, celui du dernier changement est utilisÃ©. Si vous
+entrez un nouveau quantificateur, le dernier sera remplacÃ©. Si le dernier
+changement fait appel Ã  un registre numÃ©rotÃ©, le numÃ©ro de ce registre sera
+incrÃ©mentÃ©. Voir |redo-register| pour en avoir un exemple d'utilisation.
+   NOTE : Lors de la rÃ©pÃ©tition d'une commande qui utilise une sÃ©lection
+Visuel, la mÃªme TAILLE de zone est utilisÃ©e, voir |visual-repeat|.
 
 							*@:*
-@:			Répète la dernière ligne de commande [quant] fois.
-			{uniquement si compilé avec la fonctionnalité
+@:			RÃ©pÃ¨te la derniÃ¨re ligne de commande [quant] fois.
+			{uniquement si compilÃ© avec la fonctionnalitÃ©
 			|+cmdline_hist|}
 
 ==============================================================================
-2. Répétitions multiples				*multi-repeat*
+2. RÃ©pÃ©titions multiples				*multi-repeat*
 
 						*:g* *:global* *E147* *E148*
 :[plage]g[lobal]/{motif}/[cmd]
-			Exécute la commande Ex [cmd] (défaut : ":p") sur les
-			lignes de [plage] où {motif} correspond.
+			ExÃ©cute la commande Ex [cmd] (dÃ©faut : ":p") sur les
+			lignes de [plage] oÃ¹ {motif} correspond.
 
 :[plage]g[lobal]!/{motif}/[cmd]
-			Exécute la commande Ex [cmd] (défaut : ":p") sur les
-			lignes de [plage] où {motif} ne correspond PAS.
+			ExÃ©cute la commande Ex [cmd] (dÃ©faut : ":p") sur les
+			lignes de [plage] oÃ¹ {motif} ne correspond PAS.
 
 							*:v* *:vglobal*
 :[plage]v[global]/{motif}/[cmd]
 			Comme ":g!".
 
 Ces trois commandes fonctionnent en analysant d'abord les lignes de [plage]
-pour marquer chaque ligne où le motif correspond (pour un motif englobant
-plusieurs lignes, seule le début de la correspondance est prise en compte).
-   Dans un second temps, la [cmd] est exécutée sur chaque ligne marquée avec
-son numéro de ligne préfixé. Pour ":v" et ":g!", la commande est exécutée pour
-chaque ligne non marquée. Si une ligne est supprimée, sa marque disparaît.
-   La valeur par défaut pour [plage] est le tampon entier (1,$). Utilisez
-CTRL-C pour interrompre la commande. Si un message d'erreur est émis pour une
+pour marquer chaque ligne oÃ¹ le motif correspond (pour un motif englobant
+plusieurs lignes, seule le dÃ©but de la correspondance est prise en compte).
+   Dans un second temps, la [cmd] est exÃ©cutÃ©e sur chaque ligne marquÃ©e avec
+son numÃ©ro de ligne prÃ©fixÃ©. Pour ":v" et ":g!", la commande est exÃ©cutÃ©e pour
+chaque ligne non marquÃ©e. Si une ligne est supprimÃ©e, sa marque disparaÃ®t.
+   La valeur par dÃ©faut pour [plage] est le tampon entier (1,$). Utilisez
+CTRL-C pour interrompre la commande. Si un message d'erreur est Ã©mis pour une
 ligne, la [cmd] avorte pour cette ligne et la commande ":global" se poursuit
-sur la prochaine ligne marquée ou non.
+sur la prochaine ligne marquÃ©e ou non.
 
-Pour répéter une commande non-Ex, vous pouvez utiliser la commande
+Pour rÃ©pÃ©ter une commande non-Ex, vous pouvez utiliser la commande
 ":normal" : >
 	:g/motif/normal {commandes}
-Assurez-vous que {commandes} se termine par une commande entière, sans quoi
+Assurez-vous que {commandes} se termine par une commande entiÃ¨re, sans quoi
 Vim attendra que vous tapiez la fin de la commande pour chaque correspondance.
-L'écran ne sera pas rafraîchi et vous ne pourrez donc pas contrôler ce que
+L'Ã©cran ne sera pas rafraÃ®chi et vous ne pourrez donc pas contrÃ´ler ce que
 vous faites. Voir |:normal|.
 
 Les commandes d'annulation/restauration annuleront/restaureront en une seule
-fois une commande ":global" dans son ensemble. La marque de dernière position
-sera positionnée une fois uniquement (avec "''", vous pouvez retourner à la
+fois une commande ":global" dans son ensemble. La marque de derniÃ¨re position
+sera positionnÃ©e une fois uniquement (avec "''", vous pouvez retourner Ã  la
 position du curseur avant la commande ":global").
 
-La commande ":global" fixe à la fois le dernier motif de recherche utilisé et
-le dernier motif de substitution utilisé (ce comportement est compatible Vi).
-Cela rend possible de remplacer une chaîne globalement : >
+La commande ":global" fixe Ã  la fois le dernier motif de recherche utilisÃ© et
+le dernier motif de substitution utilisÃ© (ce comportement est compatible Vi).
+Cela rend possible de remplacer une chaÃ®ne globalement : >
 	:g/motif/s//MOTIF/g
-Ceci remplace toutes les occurrences de "motif" par "MOTIF". La même chose
-peut être faite avec : >
+Ceci remplace toutes les occurrences de "motif" par "MOTIF". La mÃªme chose
+peut Ãªtre faite avec : >
 	:%s/motif/MOTIF/g
-Ce qui est plus court de deux caractères !
+Ce qui est plus court de deux caractÃ¨res !
 
 ==============================================================================
-3. Répétitions complexes				*complex-repeat*
+3. RÃ©pÃ©titions complexes				*complex-repeat*
 
 							*q* *recording*
-q{0-9a-zA-Z"}		Enregistre les caractères saisis dans le registre
+q{0-9a-zA-Z"}		Enregistre les caractÃ¨res saisis dans le registre
 			{0-9a-zA-Z"} (majuscules pour ajouter). La commande
-			"q" est inactive lors de l'exécution d'un registre, et
-			ne fonctionne pas à l'intérieur d'un mappage.
+			"q" est inactive lors de l'exÃ©cution d'un registre, et
+			ne fonctionne pas Ã  l'intÃ©rieur d'un mappage.
 			{Vi : pas d'enregistrement}
 
-q			Arrête un enregistrement. (NOTE technique : Le "q" qui
-			arrête l'enregistrement n'est pas enregistré dans le
-			registre, à moins qu'il ne résulte d'un mappage.)
+q			ArrÃªte un enregistrement. (NOTE technique : Le "q" qui
+			arrÃªte l'enregistrement n'est pas enregistrÃ© dans le
+			registre, Ã  moins qu'il ne rÃ©sulte d'un mappage.)
 			{Vi : pas d'enregistrement}
 
 							*@*
-@{0-9a-z".=*}		Exécute le contenu du registre {0-9a-z".=*} [quant]
+@{0-9a-z".=*}		ExÃ©cute le contenu du registre {0-9a-z".=*} [quant]
 			fois. NOTE : Les registres '%' (nom du fichier
 			courant) et '#' (nom du fichier alternatif) ne peuvent
-			pas être utilisés.
-			Si vous tapez "@=", vous serez invité à entrer une
-			expression. Le résultat de l'expression sera ensuite
-			exécuté. Voir aussi |@:|.
-			{Vi : uniquement pour les registres nommés}
+			pas Ãªtre utilisÃ©s.
+			Si vous tapez "@=", vous serez invitÃ© Ã  entrer une
+			expression. Le rÃ©sultat de l'expression sera ensuite
+			exÃ©cutÃ©. Voir aussi |@:|.
+			{Vi : uniquement pour les registres nommÃ©s}
 
 							*@@*
-@@			Répète la commande "@{0-9a-z":*}" précédente [quant]
+@@			RÃ©pÃ¨te la commande "@{0-9a-z":*}" prÃ©cÃ©dente [quant]
 			fois.
 
 :[adr]*{0-9a-z".=}					*:@* *:star*
-:[adr]@{0-9a-z".=*}	Exécute le contenu du registre {0-9a-z".=*} comme
-			commande Ex. Place d'abord le curseur à la ligne [adr]
-			(défaut : ligne courante). Lorsque la dernière ligne
-			du registre ne contient pas un <CR>, elle sera ajoutée
-			automatiquement si le drapeau 'e' est présent dans
+:[adr]@{0-9a-z".=*}	ExÃ©cute le contenu du registre {0-9a-z".=*} comme
+			commande Ex. Place d'abord le curseur Ã  la ligne [adr]
+			(dÃ©faut : ligne courante). Lorsque la derniÃ¨re ligne
+			du registre ne contient pas un <CR>, elle sera ajoutÃ©e
+			automatiquement si le drapeau 'e' est prÃ©sent dans
 			'cpoptions'.
 			NOTE : La commande ":*" est reconnue uniquement
-			lorsque le drapeau '*' est présent dans 'cpoptions'.
-			Cela n'est pas le cas par défaut si 'nocompatible' est
-			activé.
-			Pour ":@=", la dernière expression utilisée sera
-			réemployée. Le résultat de l'évaluation de
-			l'expression sera exécuté comme commande Ex.
+			lorsque le drapeau '*' est prÃ©sent dans 'cpoptions'.
+			Cela n'est pas le cas par dÃ©faut si 'nocompatible' est
+			activÃ©.
+			Pour ":@=", la derniÃ¨re expression utilisÃ©e sera
+			rÃ©employÃ©e. Le rÃ©sultat de l'Ã©valuation de
+			l'expression sera exÃ©cutÃ© comme commande Ex.
 			Les mappages ne sont pas reconnus dans ces commandes.
 			{Vi : uniquement dans certaines versions}
-			Futur : Le registre sera exécuté pour chaque ligne
+			Futur : Le registre sera exÃ©cutÃ© pour chaque ligne
 			dans la plage de l'adresse.
 
 							*:@:*
-:[adr]@:		Répète la dernière ligne de commande. Place d'abord le
-			curseur à la ligne [adr] (défaut : ligne courante).
+:[adr]@:		RÃ©pÃ¨te la derniÃ¨re ligne de commande. Place d'abord le
+			curseur Ã  la ligne [adr] (dÃ©faut : ligne courante).
 			{absent de Vi}
 
 							*:@@*
-:[adr]@@		Répète le ":@{0-9a-z"}" précédent. Place d'abord le
-			curseur à la ligne [adr] (défaut : ligne courante).
+:[adr]@@		RÃ©pÃ¨te le ":@{0-9a-z"}" prÃ©cÃ©dent. Place d'abord le
+			curseur Ã  la ligne [adr] (dÃ©faut : ligne courante).
 			{Vi : uniquement dans certaines versions}
 
 ==============================================================================
 4. Utiliser des scripts Vim				*using-scripts*
 
-Pour écrire un script Vim, voir le chapitre 41 du Manuel de l'utilisateur
+Pour Ã©crire un script Vim, voir le chapitre 41 du Manuel de l'utilisateur
 |usr_41.txt|.
 
 					*:so* *:source* *load-vim-script*
 :so[urce] {fichier}	Lit des commandes Ex depuis {fichier}. Ce sont des
-			commandes qui débutent par ':'.
+			commandes qui dÃ©butent par ':'.
 
 :so[urce]! {fichier}	Lit des commandes Vim depuis {fichier}. Ce sont des
-			commandes qui sont exécutées en mode Normal, comme si
+			commandes qui sont exÃ©cutÃ©es en mode Normal, comme si
 			vous les tapiez.
-			Utilisé après |:global|, |:argdo|, |:windo|, |:bufdo|,
+			UtilisÃ© aprÃ¨s |:global|, |:argdo|, |:windo|, |:bufdo|,
 			dans une boucle ou si une autre commande suit,
-			l'affichage ne sera pas mis à jour pendant l'exécution
+			l'affichage ne sera pas mis Ã  jour pendant l'exÃ©cution
 			des commandes.
 			{absent de Vi}
 
 							*:ru* *:runtime*
 :ru[ntime][!] {fichier} ...
 			Lit des commandes Ex depuis {fichier} dans chaque
-			répertoire donné par 'runtimepath'. Il n'y a pas
+			rÃ©pertoire donnÃ© par 'runtimepath'. Il n'y a pas
 			d'erreur pour un fichier inexistant. Exemple : >
 				:runtime syntax/c.vim
 <
-			Il peut exister plusieurs arguments {fichier}, séparés
-			par des espaces. Chaque fichier est recherché dans le
-			premier répertoire dans 'runtimepath' d'abord, dans le
-			deuxième ensuite, etc. Utilisez une contre-oblique
+			Il peut exister plusieurs arguments {fichier}, sÃ©parÃ©s
+			par des espaces. Chaque fichier est recherchÃ© dans le
+			premier rÃ©pertoire dans 'runtimepath' d'abord, dans le
+			deuxiÃ¨me ensuite, etc. Utilisez une contre-oblique
 			pour inclure un espace dans {fichier} (mais il est
-			préférable de ne pas utiliser d'espaces dans un nom de
+			prÃ©fÃ©rable de ne pas utiliser d'espaces dans un nom de
 			fichier, cela est souvent source de confusion).
 
-			Si [!] est inclus, tous les fichiers trouvés seront
-			sourcés ; sinon, seul le premier le sera.
+			Si [!] est inclus, tous les fichiers trouvÃ©s seront
+			sourcÃ©s ; sinon, seul le premier le sera.
 
-			Si {fichier} contient des caractères d'englobement,
-			ceux-ci seront étendus à tous les fichiers
+			Si {fichier} contient des caractÃ¨res d'englobement,
+			ceux-ci seront Ã©tendus Ã  tous les fichiers
 			correspondants. Exemple : >
 				:runtime! plugin/*.vim
 <			C'est ce que Vim utilise pour charger les fichiers de
-			greffons au démarrage. Cette commande >
+			greffons au dÃ©marrage. Cette commande >
 				:runtime plugin/*.vim
-<			sourcerait uniquement le premier fichier trouvé.
+<			sourcerait uniquement le premier fichier trouvÃ©.
 
-			Si 'verbose' vaut un ou plus, un message est émis si
-			aucun fichier n'est trouvé.
-			Si 'verbose' vaut deux ou plus, un message est émis à
-			chaque fichier trouvé.
+			Si 'verbose' vaut un ou plus, un message est Ã©mis si
+			aucun fichier n'est trouvÃ©.
+			Si 'verbose' vaut deux ou plus, un message est Ã©mis Ã 
+			chaque fichier trouvÃ©.
 			{absent de Vi}
 
 					*:scripte* *:scriptencoding* *E167*
 :scripte[ncoding] [encodage]
-			Spécifie l'encodage de caractères utilisé dans le
+			SpÃ©cifie l'encodage de caractÃ¨res utilisÃ© dans le
 			script. Les lignes suivantes seront converties
-			de [encodage] à la valeur de l'option 'encoding', si
-			elle est différente. Exemples : >
+			de [encodage] Ã  la valeur de l'option 'encoding', si
+			elle est diffÃ©rente. Exemples : >
 				:scriptencoding iso-8859-5
 				:scriptencoding cp932
 <
 			Si [encodage] est vide, aucune conversion ne sera
-			faite. Cela peut être utilisé pour limiter une
-			conversion à une plage de lignes : >
+			faite. Cela peut Ãªtre utilisÃ© pour limiter une
+			conversion Ã  une plage de lignes : >
 				:scriptencoding euc-jp
-<				... lignes à convertir ... >
+<				... lignes Ã  convertir ... >
 				:scriptencoding
 <				... lignes non converties ...
 
-			Si la conversion n'est pas supportée par le système,
-			elle n'est pas effectuée et il n'y aura pas de message
+			Si la conversion n'est pas supportÃ©e par le systÃ¨me,
+			elle n'est pas effectuÃ©e et il n'y aura pas de message
 			d'erreur.
 
 			N'utilisez pas "ucs-2" ou "ucs-4", les scripts ne
-			peuvent pas être dans ces encodages (ils
+			peuvent pas Ãªtre dans ces encodages (ils
 			contiendraient des octets NUL).
 
-			Si compilé sans la fonctionnalité |+multi_byte|, cette
-			commande est ignorée.
+			Si compilÃ© sans la fonctionnalitÃ© |+multi_byte|, cette
+			commande est ignorÃ©e.
 			{absent de Vi}
 
 						*:scrip* *:scriptnames*
-:scrip[tnames]		Liste tous les noms des scripts sourcés, dans l'ordre
-			où ils ont été sourcés. Le nombre est utilisé pour
+:scrip[tnames]		Liste tous les noms des scripts sourcÃ©s, dans l'ordre
+			oÃ¹ ils ont Ã©tÃ© sourcÃ©s. Le nombre est utilisÃ© pour
 			l'ID script |<SID>|.
-			{absent de Vi} {uniquement si compilé avec la
-			fonctionnalité |+eval|}
+			{absent de Vi} {uniquement si compilÃ© avec la
+			fonctionnalitÃ© |+eval|}
 
 						*:fini* *:finish* *E168*
-:fini[sh]		Arrête le sourcement d'un script. Peut être utilisé
+:fini[sh]		ArrÃªte le sourcement d'un script. Peut Ãªtre utilisÃ©
 			uniquement dans un fichier de script Vim. C'est un
 			moyen rapide de sauter le reste du fichier.
-			Si cette commande est utilisée après un |:try| mais
-			avant le |:finally| correspondant (si présent), les
+			Si cette commande est utilisÃ©e aprÃ¨s un |:try| mais
+			avant le |:finally| correspondant (si prÃ©sent), les
 			commandes suivant le ":finally" jusqu'au |:endtry|
-			correspondant sont exécutées en premier. Ce procédé
-			s'applique à tous les ":try" imbriqués dans le script.
-			Le ":endtry" le plus extérieur arrête alors le
+			correspondant sont exÃ©cutÃ©es en premier. Ce procÃ©dÃ©
+			s'applique Ã  tous les ":try" imbriquÃ©s dans le script.
+			Le ":endtry" le plus extÃ©rieur arrÃªte alors le
 			sourcement du script.
 			{absent de Vi}
 
-Toutes les commandes et séquences de commandes peuvent être répétées en les
-plaçant dans un registre nommé, puis en l'exécutant. Il y a deux façons de
+Toutes les commandes et sÃ©quences de commandes peuvent Ãªtre rÃ©pÃ©tÃ©es en les
+plaÃ§ant dans un registre nommÃ©, puis en l'exÃ©cutant. Il y a deux faÃ§ons de
 placer des commandes dans un registre :
 - Utiliser la commande d'enregistrement "q". Vous tapez les commandes une
-  première fois, et en même temps qu'elles sont exécutées, elles sont écrites
+  premiÃ¨re fois, et en mÃªme temps qu'elles sont exÃ©cutÃ©es, elles sont Ã©crites
   dans un registre. C'est pratique car vous voyez ce que vous faites. En cas
-  d'erreur, collez le registre dans le fichier, éditez la séquence de
-  commandes et coupez-la dans le registre à nouveau. Vous pouvez poursuivre
+  d'erreur, collez le registre dans le fichier, Ã©ditez la sÃ©quence de
+  commandes et coupez-la dans le registre Ã  nouveau. Vous pouvez poursuivre
   l'enregistrement en ajoutant dans le registre (utilisez une majuscule).
-- Couper ou copier la séquence de commande dans le registre.
+- Couper ou copier la sÃ©quence de commande dans le registre.
 
-Les séquences de commandes les plus utilisées peuvent être associées à une
+Les sÃ©quences de commandes les plus utilisÃ©es peuvent Ãªtre associÃ©es Ã  une
 touche Fonction avec la commande ":map".
 
-On peut également placer les commandes dans un fichier et les exécuter avec la
-commande ":source!". Utile pour de longues séquences de commandes. Cela peut
-être combiné avec la commande ":map!", pour associer des commandes complexes à
+On peut Ã©galement placer les commandes dans un fichier et les exÃ©cuter avec la
+commande ":source!". Utile pour de longues sÃ©quences de commandes. Cela peut
+Ãªtre combinÃ© avec la commande ":map!", pour associer des commandes complexes Ã 
 une touche Fonction.
 
 La commande ":source" lit des commandes Ex depuis un fichier ligne par ligne.
-Si une entrée clavier est nécessaire, vous devrez l'effectuer.
-   La commande ":source!" lit depuis un fichier de script caractère par
-caractère. Chaque caractère est interprété comme si vous veniez de le taper.
+Si une entrÃ©e clavier est nÃ©cessaire, vous devrez l'effectuer.
+   La commande ":source!" lit depuis un fichier de script caractÃ¨re par
+caractÃ¨re. Chaque caractÃ¨re est interprÃ©tÃ© comme si vous veniez de le taper.
 
 Exemple : si vous utilisez une commande ":!ls", vous obtenez une invite
-Appuyez-sur-entrée |hit-enter|. Si vous sourcez un fichier contenant la ligne
-"!ls" avec ":source", vous devrez donc saisir <Entree> vous-même. Mais si vous
-sourcez un fichier contenant ":!ls" avec ":source!", les caractères suivants
-dans ce fichier sont lus jusqu'à ce qu'un <CR> soit trouvé. Vous n'aurez pas à
-saisir <CR> vous-même, à moins que ":!ls" ne soit la dernière ligne du
+Appuyez-sur-entrÃ©e |hit-enter|. Si vous sourcez un fichier contenant la ligne
+"!ls" avec ":source", vous devrez donc saisir <Entree> vous-mÃªme. Mais si vous
+sourcez un fichier contenant ":!ls" avec ":source!", les caractÃ¨res suivants
+dans ce fichier sont lus jusqu'Ã  ce qu'un <CR> soit trouvÃ©. Vous n'aurez pas Ã 
+saisir <CR> vous-mÃªme, Ã  moins que ":!ls" ne soit la derniÃ¨re ligne du
 fichier.
 
 Il est possible d'inclure des commandes ":source[!]" dans le fichier de
-script, de telle sorte que vous pouvez gérer une arborescence de fichiers
-sourcés. La commande ":source" peut être appelée aussi profondément que le
-nombre de fichiers qui peuvent être ouverts en même temps (15 environ). La
-commande ":source!" peut être appelée jusqu'à 15 niveaux de profondeur.
+script, de telle sorte que vous pouvez gÃ©rer une arborescence de fichiers
+sourcÃ©s. La commande ":source" peut Ãªtre appelÃ©e aussi profondÃ©ment que le
+nombre de fichiers qui peuvent Ãªtre ouverts en mÃªme temps (15 environ). La
+commande ":source!" peut Ãªtre appelÃ©e jusqu'Ã  15 niveaux de profondeur.
 
-Vous pouvez utilisez la chaîne "<sfile>" (littéralement, sans touche spéciale)
-à l'intérieur du fichier sourcé aux endroits où un nom de fichier est attendu.
-Elle sera remplacée par le nom du fichier sourcé. Par exemple, s'il y a un
-fichier "autre.vimrc" dans le même répertoire que votre fichier ".vimrc", vous
+Vous pouvez utilisez la chaÃ®ne "<sfile>" (littÃ©ralement, sans touche spÃ©ciale)
+Ã  l'intÃ©rieur du fichier sourcÃ© aux endroits oÃ¹ un nom de fichier est attendu.
+Elle sera remplacÃ©e par le nom du fichier sourcÃ©. Par exemple, s'il y a un
+fichier "autre.vimrc" dans le mÃªme rÃ©pertoire que votre fichier ".vimrc", vous
 pouvez le sourcez depuis votre fichier ".vimrc" avec cette commande : >
 	:source <sfile>:h/autre.vimrc
 
-Dans les fichiers de script, les codes de touches dépendants du terminal sont
-représentés par des codes sur deux caractères indépendants du terminal. Cela
-signifie qu'ils pourront être utilisés de la même manière par différents types
-de terminaux. Le premier caractère d'un code de touche est 0x80 ou 128,
-affiché à l'écran par "~@" ; le second peut être trouvé dans la liste
-|key-notation|. N'importe lequel de ces codes peut également être entré avec
-la commande CTRL-V suivie par les trois chiffres de la valeur décimale du
+Dans les fichiers de script, les codes de touches dÃ©pendants du terminal sont
+reprÃ©sentÃ©s par des codes sur deux caractÃ¨res indÃ©pendants du terminal. Cela
+signifie qu'ils pourront Ãªtre utilisÃ©s de la mÃªme maniÃ¨re par diffÃ©rents types
+de terminaux. Le premier caractÃ¨re d'un code de touche est 0x80 ou 128,
+affichÃ© Ã  l'Ã©cran par "~@" ; le second peut Ãªtre trouvÃ© dans la liste
+|key-notation|. N'importe lequel de ces codes peut Ã©galement Ãªtre entrÃ© avec
+la commande CTRL-V suivie par les trois chiffres de la valeur dÃ©cimale du
 code. Cela ne fonctionne PAS pour les codes termcap <t_xx>, qui ne peuvent
-être utilisés que dans les mappages.
+Ãªtre utilisÃ©s que dans les mappages.
 
 						*:source_crnl* *W15*
 MS-DOS, Win32 et OS/2 : les fichiers lus avec ":source" ont normalement des
 <EOL> en <CR><NL>. Ceux-ci fonctionnent toujours. Si vous utilisez un fichier
-avec des <EOL> en <NL> (un fichier créé sous Unix, par exemple), cela sera
-supporté si 'fileformats' n'est pas vide et que la première ligne du fichier
-ne se termine pas par un <CR>. Cela échouera donc si la première première
-ligne contient quelque chose comme ":map <F1> :help^M", où "^M" est un <CR>.
-Si la première ligne se termine par un <CR> mais pas les suivantes, vous
-obtiendrez un message d'erreur, car vous perdrez le <CR> de la première ligne.
+avec des <EOL> en <NL> (un fichier crÃ©Ã© sous Unix, par exemple), cela sera
+supportÃ© si 'fileformats' n'est pas vide et que la premiÃ¨re ligne du fichier
+ne se termine pas par un <CR>. Cela Ã©chouera donc si la premiÃ¨re premiÃ¨re
+ligne contient quelque chose comme ":map <F1> :help^M", oÃ¹ "^M" est un <CR>.
+Si la premiÃ¨re ligne se termine par un <CR> mais pas les suivantes, vous
+obtiendrez un message d'erreur, car vous perdrez le <CR> de la premiÃ¨re ligne.
 
 Macintosh : les fichiers lus avec ":source" ont normalement des <EOL> en <CR>.
 Ceux-ci fonctionnent toujours. Si vous utilisez un fichier avec des <EOL> en
-<NL> (un fichier créé sous Unix, par exemple), cela sera supporté si
-'fileformats' n'est pas vide et que la première ligne du fichier ne se termine
-pas par un <CR>. Faites attention à ne pas utiliser de fichiers avec des
-coupures de lignes en <NL> qui auraient un <CR> dans la première ligne.
+<NL> (un fichier crÃ©Ã© sous Unix, par exemple), cela sera supportÃ© si
+'fileformats' n'est pas vide et que la premiÃ¨re ligne du fichier ne se termine
+pas par un <CR>. Faites attention Ã  ne pas utiliser de fichiers avec des
+coupures de lignes en <NL> qui auraient un <CR> dans la premiÃ¨re ligne.
 
-Autres systèmes : Vim suppose que les fichiers sourcés ont normalement des
+Autres systÃ¨mes : Vim suppose que les fichiers sourcÃ©s ont normalement des
 <EOL> en <NL>. Ceux-ci fonctionnent toujours. Si vous utilisez un fichier avec
-des <EOL> en <CR><NL> (un fichier créé sous MS-DOS, par exemple), toutes les
-lignes incluront un <CR> final. Cela peut poser des problèmes pour certaines
-commandes (les mappages, p. ex.). Il n'y a pas de détection automatique des
-<EOL>, car il est courant de débuter un fichier par une ligne qui définit un
-mappage se terminant par un <CR>, ce qui fausserait une détection.
+des <EOL> en <CR><NL> (un fichier crÃ©Ã© sous MS-DOS, par exemple), toutes les
+lignes incluront un <CR> final. Cela peut poser des problÃ¨mes pour certaines
+commandes (les mappages, p. ex.). Il n'y a pas de dÃ©tection automatique des
+<EOL>, car il est courant de dÃ©buter un fichier par une ligne qui dÃ©finit un
+mappage se terminant par un <CR>, ce qui fausserait une dÃ©tection.
 
 						*line-continuation*
-Les lignes longues dans un fichier de script de commandes Ex sourcé avec
-":source" peuvent être coupées si l'on appose un symbole de continuation de
-ligne '\' (contre-oblique) au début de la ligne suivante. Il peut y avoir des
-espaces blancs avant ce symbole, ils sont ignorés.
+Les lignes longues dans un fichier de script de commandes Ex sourcÃ© avec
+":source" peuvent Ãªtre coupÃ©es si l'on appose un symbole de continuation de
+ligne '\' (contre-oblique) au dÃ©but de la ligne suivante. Il peut y avoir des
+espaces blancs avant ce symbole, ils sont ignorÃ©s.
 
 Par exemple, les lignes >
 	:set comments=sr:/*,mb:*,el:*/,
@@ -338,32 +338,32 @@ Par exemple, les lignes >
 		     \:%,
 		     \n:>,
 		     \fb:-
-sont interprétées comme si elles avaient été données en une seule ligne : >
+sont interprÃ©tÃ©es comme si elles avaient Ã©tÃ© donnÃ©es en une seule ligne : >
 	:set comments=sr:/*,mb:*,el:*/,://,b:#,:%,n:>,fb:-
 
-Tous les espaces blancs en début de ligne précédant une contre-oblique sont
-ignorés. NOTE : Ce blanc surnuméraire précédant la contre-oblique ne peut
-néanmoins pas être inséré librement ; son insertion ou non dépend de la
-position où une commande a été coupée.
+Tous les espaces blancs en dÃ©but de ligne prÃ©cÃ©dant une contre-oblique sont
+ignorÃ©s. NOTE : Ce blanc surnumÃ©raire prÃ©cÃ©dant la contre-oblique ne peut
+nÃ©anmoins pas Ãªtre insÃ©rÃ© librement ; son insertion ou non dÃ©pend de la
+position oÃ¹ une commande a Ã©tÃ© coupÃ©e.
 
-Il existe un problème avec les commandes ":append" et ":insert" : >
+Il existe un problÃ¨me avec les commandes ":append" et ":insert" : >
 	:1append
 	\blabla
 	.
-La contre-oblique est interprétée comme un symbole de continuation de ligne,
-ce qui équivaut à la commande : >
+La contre-oblique est interprÃ©tÃ©e comme un symbole de continuation de ligne,
+ce qui Ã©quivaut Ã  la commande : >
 	:1appendblabla
 	.
-Pour éviter cela, ajoutez le drapeau 'C' à l'option 'cpoptions' : >
+Pour Ã©viter cela, ajoutez le drapeau 'C' Ã  l'option 'cpoptions' : >
 	:set cpo+=C
 	:1append
 	\blabla
 	.
 	:set cpo-=C
 
-NOTE : Lorsque les commandes sont à l'intérieur d'une fonction, vous devez
-ajouter le drapeau 'C' lors de la définition de la fonction, il ne sera pas
-pris en compte lors de l'exécution. >
+NOTE : Lorsque les commandes sont Ã  l'intÃ©rieur d'une fonction, vous devez
+ajouter le drapeau 'C' lors de la dÃ©finition de la fonction, il ne sera pas
+pris en compte lors de l'exÃ©cution. >
 	:set cpo+=C
 	:function Zorglub()
 	:1append
@@ -377,195 +377,195 @@ Remarque :  La plupart des programmes utilisent une contre-oblique en fin
 	    n'est pas compatible Vi. Par exemple, pour ce mappage Vi : >
 		    :map xx  blabla\
 <	    C'est pourquoi c'est le placement inhabituel de la contre-oblique
-	    en début de ligne qui est utilisé.
+	    en dÃ©but de ligne qui est utilisÃ©.
 
 ==============================================================================
-5. Déboguer des scripts					*debug-scripts*
+5. DÃ©boguer des scripts					*debug-scripts*
 
-En plus des messages explicites que vous pouvez ajouter à vos scripts pour
-suivre leur exécution, Vim met à votre disposition un mode débogage. Cela vous
-permet de parcourir un fichier sourcé ou une fonction utilisateur et d'y
-placer des points d'arrêts.
+En plus des messages explicites que vous pouvez ajouter Ã  vos scripts pour
+suivre leur exÃ©cution, Vim met Ã  votre disposition un mode dÃ©bogage. Cela vous
+permet de parcourir un fichier sourcÃ© ou une fonction utilisateur et d'y
+placer des points d'arrÃªts.
 
-NOTE : Le mode débogage est loin d'être parfait. Le débogage aura des effets
+NOTE : Le mode dÃ©bogage est loin d'Ãªtre parfait. Le dÃ©bogage aura des effets
 de bord sur le fonctionnement de Vim. Vous ne pouvez pas l'utiliser pour tous
-les débogages. Par exemple, l'écran est altéré par l'affichage des messages
-de débogage. {Vi n'a pas de mode débogage}
+les dÃ©bogages. Par exemple, l'Ã©cran est altÃ©rÃ© par l'affichage des messages
+de dÃ©bogage. {Vi n'a pas de mode dÃ©bogage}
 
-En sus du mode débogage, vous pouvez aussi modifier la valeur de l'option
+En sus du mode dÃ©bogage, vous pouvez aussi modifier la valeur de l'option
 'verbose' : plus ce nombre est grand, plus vous obtiendrez de messages
 d'informations sur ce que Vim est en train de faire.
 
 
-LANCER LE MODE DÉBOGAGE					*debug-mode*
+LANCER LE MODE DÃ‰BOGAGE					*debug-mode*
 
-Pour entrer en mode débogage, utilisez une de ces méthodes :
+Pour entrer en mode dÃ©bogage, utilisez une de ces mÃ©thodes :
 
 1. Lancer Vim avec l'argument |-D| : >
 	vim -D fichier.txt
-<  Le débogage débutera dès que le premier fichier vimrc sera sourcé. C'est
-   utile pour suivre ce qui ce passe au démarrage de Vim. Cela aura cependant
+<  Le dÃ©bogage dÃ©butera dÃ¨s que le premier fichier vimrc sera sourcÃ©. C'est
+   utile pour suivre ce qui ce passe au dÃ©marrage de Vim. Cela aura cependant
    pour effet de bord de faire fixer le mode du terminal avant la fin des
-   initialisations, avec des résultats imprévisibles.
-   Pour une version uniquement IHM graphique (Windows, Macintosh), le débogage
-   débutera dès que la fenêtre IHM graphique sera ouverte. Pour que cela
-   survienne plus tôt, ajoutez une une commande ":gui" dans votre fichier
+   initialisations, avec des rÃ©sultats imprÃ©visibles.
+   Pour une version uniquement IHM graphique (Windows, Macintosh), le dÃ©bogage
+   dÃ©butera dÃ¨s que la fenÃªtre IHM graphique sera ouverte. Pour que cela
+   survienne plus tÃ´t, ajoutez une une commande ":gui" dans votre fichier
    vimrc.
 							*:debug*
-2. Lancer une commande précédée de ":debug". Le débogage s'effectuera
-   uniquement lors de l'exécution de la commande. C'est utile pour déboguer un
-   script particulier ou une fonction utilisateur ; également pour des scripts
-   et fonctions appelés par des autocommandes. Exemple : >
+2. Lancer une commande prÃ©cÃ©dÃ©e de ":debug". Le dÃ©bogage s'effectuera
+   uniquement lors de l'exÃ©cution de la commande. C'est utile pour dÃ©boguer un
+   script particulier ou une fonction utilisateur ; Ã©galement pour des scripts
+   et fonctions appelÃ©s par des autocommandes. Exemple : >
 	:debug edit test.txt.gz
 
-3. Placer un point d'arrêt dans un fichier sourcé ou une fonction utilisateur.
+3. Placer un point d'arrÃªt dans un fichier sourcÃ© ou une fonction utilisateur.
    Vous pouvez faire cela depuis le shell : >
 	vim -c "breakadd file */explorer.vim" .
-<  Cela lancera Vim et l'arrêtera à la première ligne du script
-   "explorer.vim". Des points d'arrêts peuvent également être placés si l'on
-   est en mode débogage.
+<  Cela lancera Vim et l'arrÃªtera Ã  la premiÃ¨re ligne du script
+   "explorer.vim". Des points d'arrÃªts peuvent Ã©galement Ãªtre placÃ©s si l'on
+   est en mode dÃ©bogage.
 
-En mode débogage, toute commande est affichée avant d'être exécutée. Les
+En mode dÃ©bogage, toute commande est affichÃ©e avant d'Ãªtre exÃ©cutÃ©e. Les
 lignes de commentaires, les lignes vides et les lignes qui ne sont pas
-exécutées sont sautées. Lorsqu'une ligne contient deux commandes séparées par
-'|', chaque commande sera affichée séparément.
+exÃ©cutÃ©es sont sautÃ©es. Lorsqu'une ligne contient deux commandes sÃ©parÃ©es par
+'|', chaque commande sera affichÃ©e sÃ©parÃ©ment.
 
 
-MODE DÉBOGAGE
+MODE DÃ‰BOGAGE
 
-En mode débogage, les commandes Ex usuelles peuvent être utilisées. Par
+En mode dÃ©bogage, les commandes Ex usuelles peuvent Ãªtre utilisÃ©es. Par
 exemple, pour obtenir la valeur d'une variable : >
 	echo idx
-À l'intérieur d'une fonction utilisateur, cela affichera la valeur de la
-variable locale "idx". Préfixez "g:" pour obtenir la valeur d'une variable
+Ã€ l'intÃ©rieur d'une fonction utilisateur, cela affichera la valeur de la
+variable locale "idx". PrÃ©fixez "g:" pour obtenir la valeur d'une variable
 globale : >
 	echo g:idx
-Toutes les commandes sont exécutées dans le contexte de la fonction ou du
+Toutes les commandes sont exÃ©cutÃ©es dans le contexte de la fonction ou du
 script courant. Vous pouvez aussi fixer des options (par exemple, fixer ou
-désactiver l'option 'verbose' vous permet de contrôler ce qui se passe, mais
-vous voudrez certainement la fixer juste avant l'exécution des lignes par
-lesquelles vous êtes intéressé) : >
+dÃ©sactiver l'option 'verbose' vous permet de contrÃ´ler ce qui se passe, mais
+vous voudrez certainement la fixer juste avant l'exÃ©cution des lignes par
+lesquelles vous Ãªtes intÃ©ressÃ©) : >
 	:set verbose=20
 
-Les commandes qui nécessitent la mise à jour de l'écran devraient être
-évitées, car leurs effets ne seront pas visibles avant que vous n'ayez quitté
-le mode débogage. Par exemple >
+Les commandes qui nÃ©cessitent la mise Ã  jour de l'Ã©cran devraient Ãªtre
+Ã©vitÃ©es, car leurs effets ne seront pas visibles avant que vous n'ayez quittÃ©
+le mode dÃ©bogage. Par exemple >
 	:help
 n'apportera pas beaucoup d'aide...
 
-Il existe un historique de ligne de commande spécifique pour le mode débogage.
+Il existe un historique de ligne de commande spÃ©cifique pour le mode dÃ©bogage.
 
-Le numéro de ligne d'une fonction est relatif au début de la fonction. Si
-vous avez du mal à calculer votre position, éditez le fichier qui définit la
-fonction dans un autre Vim, recherchez le début de la fonction et tapez "99j"
-(en remplaçant 99 par le numéro de ligne convenant).
+Le numÃ©ro de ligne d'une fonction est relatif au dÃ©but de la fonction. Si
+vous avez du mal Ã  calculer votre position, Ã©ditez le fichier qui dÃ©finit la
+fonction dans un autre Vim, recherchez le dÃ©but de la fonction et tapez "99j"
+(en remplaÃ§ant 99 par le numÃ©ro de ligne convenant).
 
-En outre, ces commandes peuvent être utilisées :
+En outre, ces commandes peuvent Ãªtre utilisÃ©es :
 							*>cont*
-	cont	    Continue l'exécution jusqu'à ce que le point d'arrêt
+	cont	    Continue l'exÃ©cution jusqu'Ã  ce que le point d'arrÃªt
 		    suivant soit atteint.
 							*>quit*
-	quit	    Arrête l'exécution. C'est identique à CTRL-C, certaines
-		    tâches pourront continuer de s'exécuter (tout n'est pas
-		    stoppé). S'arrête toujours au point d'arrêt suivant.
+	quit	    ArrÃªte l'exÃ©cution. C'est identique Ã  CTRL-C, certaines
+		    tÃ¢ches pourront continuer de s'exÃ©cuter (tout n'est pas
+		    stoppÃ©). S'arrÃªte toujours au point d'arrÃªt suivant.
 							*>next*
-	next	    Exécute la commande et revient en mode débogage
+	next	    ExÃ©cute la commande et revient en mode dÃ©bogage
 		    lorsqu'elle est finie. N'entre pas dans les fonctions
-		    utilisateur appelées et les fichiers sourcés.
+		    utilisateur appelÃ©es et les fichiers sourcÃ©s.
 							*>step*
-	step	    Exécute la commande et revient en mode débogage pour la
+	step	    ExÃ©cute la commande et revient en mode dÃ©bogage pour la
 		    commande suivante. Entre dans les fonctions utilisateur
-		    appelées et les fichiers sourcés.
+		    appelÃ©es et les fichiers sourcÃ©s.
 							*>interrupt*
-	interrupt   C'est identique à CTRL-C, mais contrairement à ">quit"
-		    fait revenir en mode débogage pour la prochaine commande
-		    exécutée. Utile pour tester |:finally| et |:catch| sur des
+	interrupt   C'est identique Ã  CTRL-C, mais contrairement Ã  ">quit"
+		    fait revenir en mode dÃ©bogage pour la prochaine commande
+		    exÃ©cutÃ©e. Utile pour tester |:finally| et |:catch| sur des
 		    exceptions d'interruption.
 							*>finish*
 	finish	    Quitte la fonction utilisateur ou le script courant et
-		    revient en mode débogage pour la commande après celle qui
-		    l'a sourcé ou appelé.
+		    revient en mode dÃ©bogage pour la commande aprÃ¨s celle qui
+		    l'a sourcÃ© ou appelÃ©.
 
-À propos de ces commandes additionnelles en mode débogage :
-- Il n'y a pas de complètement sur la ligne de commande.
-- Vous pouvez les abréger jusqu'à un seul caractère : "c", "n", "s" et "f".
-- La saisie de <CR> répétera la commande précédente. Si vous faites une autre
-  commande, cela n'aura pas lieu (ce que vous souhaitez répéter n'étant pas
+Ã€ propos de ces commandes additionnelles en mode dÃ©bogage :
+- Il n'y a pas de complÃ¨tement sur la ligne de commande.
+- Vous pouvez les abrÃ©ger jusqu'Ã  un seul caractÃ¨re : "c", "n", "s" et "f".
+- La saisie de <CR> rÃ©pÃ©tera la commande prÃ©cÃ©dente. Si vous faites une autre
+  commande, cela n'aura pas lieu (ce que vous souhaitez rÃ©pÃ©ter n'Ã©tant pas
   clair).
-- Si vous voulez utiliser la commande Ex du même nom, préfixez un
-  deux-points : ":cont", ":next", ":finish" (ou leurs abréviations).
+- Si vous voulez utiliser la commande Ex du mÃªme nom, prÃ©fixez un
+  deux-points : ":cont", ":next", ":finish" (ou leurs abrÃ©viations).
 
 
-DÉFINIR DES POINT D'ARRÊTS
+DÃ‰FINIR DES POINT D'ARRÃŠTS
 						*:breaka* *:breakadd*
 :breaka[dd] func [nol] {nom}
-		Place un point d'arrêt dans une fonction. Exemple : >
+		Place un point d'arrÃªt dans une fonction. Exemple : >
 			:breakadd func Explore
-<		Ne teste pas la validité du nom de la fonction, ainsi le point
-		d'arrêt peut être placé avant que la fonction ne soit définie.
+<		Ne teste pas la validitÃ© du nom de la fonction, ainsi le point
+		d'arrÃªt peut Ãªtre placÃ© avant que la fonction ne soit dÃ©finie.
 
 :breaka[dd] file [nol] {nom}
-		Place un point d'arrêt dans un fichier sourcé. Exemple : >
+		Place un point d'arrÃªt dans un fichier sourcÃ©. Exemple : >
 			:breakadd file 43 .vimrc
 
-L'argument optionnel [nol] désigne le numéro de ligne du point d'arrêt. Vim
-s'arrêtera sur ou après cette ligne. Si omis, la ligne 1 est utilisée.
+L'argument optionnel [nol] dÃ©signe le numÃ©ro de ligne du point d'arrÃªt. Vim
+s'arrÃªtera sur ou aprÃ¨s cette ligne. Si omis, la ligne 1 est utilisÃ©e.
 
 {nom} est un motif correspondant au nom de la fonction ou du fichier. Le motif
-est identique à celui utilisé avec les autocommandes. Il doit exister une
-correspondance entière (comme si le motif débutait par "^" et se finissait par
-"$"). Un "*" correspond à n'importe quelle séquence de caractères.
-'ignorecase' n'est pas pris en compte, mais "\c" peut être utilisé dans le
-motif pour le rendre insensible à la casse |/\c|. N'incluez pas les
-parenthèses "()" dans le nom de la fonction !
+est identique Ã  celui utilisÃ© avec les autocommandes. Il doit exister une
+correspondance entiÃ¨re (comme si le motif dÃ©butait par "^" et se finissait par
+"$"). Un "*" correspond Ã  n'importe quelle sÃ©quence de caractÃ¨res.
+'ignorecase' n'est pas pris en compte, mais "\c" peut Ãªtre utilisÃ© dans le
+motif pour le rendre insensible Ã  la casse |/\c|. N'incluez pas les
+parenthÃ¨ses "()" dans le nom de la fonction !
 
-Pour les fichiers sourcés, la correspondance porte sur le nom de fichier
+Pour les fichiers sourcÃ©s, la correspondance porte sur le nom de fichier
 complet. Exemples : >
 	:breakadd file explorer
-ne correspond à rien, car le chemin est manquant. >
+ne correspond Ã  rien, car le chemin est manquant. >
 	:breakadd file *explorer.vim
-correspond à ".../plugin/explorer.vim" et ".../plugin/iexplorer.vim". >
+correspond Ã  ".../plugin/explorer.vim" et ".../plugin/iexplorer.vim". >
 	:breakadd file */explorer.vim
-correspond à ".../plugin/explorer.vim" uniquement.
+correspond Ã  ".../plugin/explorer.vim" uniquement.
 
-Pour les fonctions, la correspondance porte sur le nom tel qu'il est affiché
+Pour les fonctions, la correspondance porte sur le nom tel qu'il est affichÃ©
 par la sortie de la commande ":functiun". Pour les fonctions locales, cela
-signifie que quelque chose comme "<SNR>99_" est préfixé.
+signifie que quelque chose comme "<SNR>99_" est prÃ©fixÃ©.
 
 
-SUPPRIMER DES POINT D'ARRÊTS
+SUPPRIMER DES POINT D'ARRÃŠTS
 						*:breakd* *:breakdel* *E161*
 :breakd[el] {no}
-		Supprime le point d'arrêt {no}. Utilisez |:breaklist| pour
-		connaître le numéro de tous les points d'arrêts.
+		Supprime le point d'arrÃªt {no}. Utilisez |:breaklist| pour
+		connaÃ®tre le numÃ©ro de tous les points d'arrÃªts.
 
 :breakd[el] func [nol] {nom}
-		Supprime un point d'arrêt dans une fonction.
+		Supprime un point d'arrÃªt dans une fonction.
 
 :breakd[el] file [nol] {nom}
-		Supprime un point d'arrêt dans un fichier sourcé.
+		Supprime un point d'arrÃªt dans un fichier sourcÃ©.
 
-Si [nol] est omis, le premier point d'arrêt dans la fonction ou le fichier est
-supprimé.
+Si [nol] est omis, le premier point d'arrÃªt dans la fonction ou le fichier est
+supprimÃ©.
 
-Le {nom} doit être exactement le même que celui entré avec la commande
-":breakadd". "explorer", "*explorer.vim" et "*explorer*" sont différents.
+Le {nom} doit Ãªtre exactement le mÃªme que celui entrÃ© avec la commande
+":breakadd". "explorer", "*explorer.vim" et "*explorer*" sont diffÃ©rents.
 
 
-LISTER LES POINT D'ARRÊTS
+LISTER LES POINT D'ARRÃŠTS
 						*:breakl* *:breaklist*
-:breakl[ist]	Liste tous les points d'arrêts.
+:breakl[ist]	Liste tous les points d'arrÃªts.
 
 
 DIVERS
 						*:debugg* *:debuggreedy*
-:debugg[reedy]	Lit les commandes du mode débogage depuis le flux d'entrée
+:debugg[reedy]	Lit les commandes du mode dÃ©bogage depuis le flux d'entrÃ©e
 		normal, au lieu de les obtenir directement de l'utilisateur.
 		Utile uniquement pour les scripts de test. Exemple : >
 			echo 'q^Mq' | vim -e -s -c debuggreedy -c 'breakadd file script.vim' -S script.vim
 
-:0debugg[reedy]	Annule ":debuggreedy" : obtient les commandes du mode débogage
-		directement de l'utilisateur, toute saisie précédente est
-		ignorée.
+:0debugg[reedy]	Annule ":debuggreedy" : obtient les commandes du mode dÃ©bogage
+		directement de l'utilisateur, toute saisie prÃ©cÃ©dente est
+		ignorÃ©e.
 
  vim:tw=78:ts=8:ft=help:norl:

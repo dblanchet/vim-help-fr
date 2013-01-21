@@ -2,86 +2,86 @@
 
 	       MANUEL de l'UTILISATEUR VIM - par Bram Moolenaar
 
-			  Se déplacer dans le texte
+			  Se dÃ©placer dans le texte
 
 
-Avant de pouvoir insérer ou supprimer du texte, le curseur doit être amené au
+Avant de pouvoir insÃ©rer ou supprimer du texte, le curseur doit Ãªtre amenÃ© au
 bon endroit. Vim dispose de nombreuses commandes pour ce faire. Dans ce
 chapitre, nous ferons le tour des plus importantes. Vous trouverez une liste
 de ces commandes aux sections |Q_lr| et suivantes. XXX
 
-|03.1|	Se déplacer d'un ou plusieurs mots
-|03.2|	Se déplacer au début/à la fin d'une ligne
-|03.3|	Se déplacer jusqu'à un caractère
-|03.4|	Sauter à la parenthèse appariée
-|03.5|	Se déplacer sur une ligne particulière
-|03.6|	Savoir où vous êtes
-|03.7|	Défilement de texte
+|03.1|	Se dÃ©placer d'un ou plusieurs mots
+|03.2|	Se dÃ©placer au dÃ©but/Ã  la fin d'une ligne
+|03.3|	Se dÃ©placer jusqu'Ã  un caractÃ¨re
+|03.4|	Sauter Ã  la parenthÃ¨se appariÃ©e
+|03.5|	Se dÃ©placer sur une ligne particuliÃ¨re
+|03.6|	Savoir oÃ¹ vous Ãªtes
+|03.7|	DÃ©filement de texte
 |03.8|	Recherches simples
 |03.9|	Motifs de recherche simples
 |03.10|	Utiliser les marques
 
   Chapitre suivant : |usr_04.txt|  Effectuer des modifications mineures
-Chapitre précédent : |usr_02.txt|  Premiers pas dans Vim
-Table des matières : |usr_toc.txt|
+Chapitre prÃ©cÃ©dent : |usr_02.txt|  Premiers pas dans Vim
+Table des matiÃ¨res : |usr_toc.txt|
 
 ==============================================================================
-*03.1*	Se déplacer d'un ou plusieurs mots
+*03.1*	Se dÃ©placer d'un ou plusieurs mots
 
-Pour déplacer le curseur d'un mot vers l'avant, utilisez la commande "w"
+Pour dÃ©placer le curseur d'un mot vers l'avant, utilisez la commande "w"
 ["Word"]. Comme avec la plupart des commandes Vim, vous pouvez utiliser un
-quantificateur en préfixe pour vous déplacer de plusieurs mots. Par exemple,
-"3w" déplace de trois mots. Ce schéma montre comment ça marche :
+quantificateur en prÃ©fixe pour vous dÃ©placer de plusieurs mots. Par exemple,
+"3w" dÃ©place de trois mots. Ce schÃ©ma montre comment Ã§a marche :
 
 	Ceci est une ligne qui sert comme exemple ~
 	 ---->--->--->-------------->
 	   w   w   w	    3w
 
-Notez que "w" amène au début du mot suivant s'il est déjà sur le début d'un
+Notez que "w" amÃ¨ne au dÃ©but du mot suivant s'il est dÃ©jÃ  sur le dÃ©but d'un
 mot.
-   La commande "b" ["Back"] déplace vers l'arrière au début du mot précédent :
+   La commande "b" ["Back"] dÃ©place vers l'arriÃ¨re au dÃ©but du mot prÃ©cÃ©dent :
 
 	Ceci est une ligne qui sert comme exemple ~
 	<----<---<---<---------<---
 	   b   b   b	  2b      b
 
-Il y a aussi la commande "e" ["End"] qui amène à la fin du mot suivant, et
-"ge", qui amène à la fin du mot précédent :
+Il y a aussi la commande "e" ["End"] qui amÃ¨ne Ã  la fin du mot suivant, et
+"ge", qui amÃ¨ne Ã  la fin du mot prÃ©cÃ©dent :
 
 	Ceci est une ligne qui sert comme exemple ~
 	   <---	   <-----      --->	  ------>
 	     ge       ge	e	     e
 
-Si vous êtes sur le dernier mot d'une ligne, la commande "w" vous amènera au
-premier mot de la ligne suivante. Vous pouvez ainsi vous déplacer dans un
-paragraphe bien plus rapidement qu'en utilisant "l". "b" fonctionne de la même
-façon, mais en sens inverse.
+Si vous Ãªtes sur le dernier mot d'une ligne, la commande "w" vous amÃ¨nera au
+premier mot de la ligne suivante. Vous pouvez ainsi vous dÃ©placer dans un
+paragraphe bien plus rapidement qu'en utilisant "l". "b" fonctionne de la mÃªme
+faÃ§on, mais en sens inverse.
 
-Un mot se termine par un caractère de non-mot, comme ".", "-", ")" ou "'".
-Pour modifier la définition d'un mot selon Vim, voir l'option 'iskeyword'.
-   Il est également possible de se déplacer par MOTS, c.-à-d. par mots séparés
+Un mot se termine par un caractÃ¨re de non-mot, comme ".", "-", ")" ou "'".
+Pour modifier la dÃ©finition d'un mot selon Vim, voir l'option 'iskeyword'.
+   Il est Ã©galement possible de se dÃ©placer par MOTS, c.-Ã -d. par mots sÃ©parÃ©s
 par des espaces blancs. Ce ne sont pas des mots au sens normal, c'est pourquoi
-des majuscules sont employées. Les commandes pour se déplacer par MOTS sont
-également en majuscules, comme vous pouvez le voir ci-dessous :
+des majuscules sont employÃ©es. Les commandes pour se dÃ©placer par MOTS sont
+Ã©galement en majuscules, comme vous pouvez le voir ci-dessous :
 
 		  ge	   b	       w       w		    e
 		<---	  <-	      --->   ---->		   --->
-	Ceci est'une ligne, avec des mots-séparés/spécialement (et plus). ~
+	Ceci est'une ligne, avec des mots-sÃ©parÃ©s/spÃ©cialement (et plus). ~
 	   <-------- <------	      ------------------------->   ----->
 	       gE	B			  W		     E
 
-Avec ce mélange de commandes minuscules et majuscules, vous pouvez rapidement
-vous déplacer vers l'avant et vers l'arrière dans un paragraphe.
+Avec ce mÃ©lange de commandes minuscules et majuscules, vous pouvez rapidement
+vous dÃ©placer vers l'avant et vers l'arriÃ¨re dans un paragraphe.
 
 ==============================================================================
-*03.2*	Se déplacer au début/à la fin d'une ligne
+*03.2*	Se dÃ©placer au dÃ©but/Ã  la fin d'une ligne
 
-La commande "$" amène le curseur à la fin d'une ligne. Si votre clavier
-dispose d'une touche <Fin>, elle fera la même chose.
+La commande "$" amÃ¨ne le curseur Ã  la fin d'une ligne. Si votre clavier
+dispose d'une touche <Fin>, elle fera la mÃªme chose.
 
-La commande "^" amène le curseur sur le premier caractère non-blanc d'une
-ligne. La commande "0" (zéro) amène au tout premier caractère d'une ligne. La
-touche <Debut> fait la même chose. Avec un schéma :
+La commande "^" amÃ¨ne le curseur sur le premier caractÃ¨re non-blanc d'une
+ligne. La commande "0" (zÃ©ro) amÃ¨ne au tout premier caractÃ¨re d'une ligne. La
+touche <Debut> fait la mÃªme chose. Avec un schÃ©ma :
 
 		    ^
 	     <------------
@@ -92,67 +92,67 @@ touche <Debut> fait la même chose. Avec un schéma :
 (Les "....." symbolisent ici des espaces blancs.)
 
 La commande "$" admet un quantificateur, comme la plupart des commandes de
-déplacement. Mais se déplacer plusieurs fois vers la fin de la ligne n'a pas
-de sens. C'est pourquoi l'éditeur amène vers la fin d'une autre ligne. Par
-exemple, "1$" vous amène à la fin de la première ligne (celle sur laquelle
-vous êtes), "2$" à la fin de la ligne suivante, et ainsi de suite.
+dÃ©placement. Mais se dÃ©placer plusieurs fois vers la fin de la ligne n'a pas
+de sens. C'est pourquoi l'Ã©diteur amÃ¨ne vers la fin d'une autre ligne. Par
+exemple, "1$" vous amÃ¨ne Ã  la fin de la premiÃ¨re ligne (celle sur laquelle
+vous Ãªtes), "2$" Ã  la fin de la ligne suivante, et ainsi de suite.
    La commande "0" n'admet pas de quantificateur, car le "0" serait compris
 dans le quantificateur. Curieusement, l'utilisation d'un quantificateur avec
 "^" ne produit aucun effet.
 
 ==============================================================================
-*03.3*	Se déplacer jusqu'à un caractère
+*03.3*	Se dÃ©placer jusqu'Ã  un caractÃ¨re
 
 Une des commandes de mouvement les plus utiles est la commande de recherche de
-caractère simple. La commande "fx" ["Find"] recherche vers l'avant le
-caractère simple 'x'.
-   Par exemple, vous êtes au début de la ligne suivante. Supposons que vous
+caractÃ¨re simple. La commande "fx" ["Find"] recherche vers l'avant le
+caractÃ¨re simple 'x'.
+   Par exemple, vous Ãªtes au dÃ©but de la ligne suivante. Supposons que vous
 vouliez aller au 'h' de "humaine". Tapez simplement la commande fh et le
-curseur sera positionné sur le 'h' :
+curseur sera positionnÃ© sur le 'h' :
 
     L'erreur est humaine. Pour vraiment se planter, il faut un ordinateur. ~
     ------------->-------------------->
 	  fh		  ft
 
-Vous pouvez également voir que la commande "ft" déplace le curseur à la fin du
+Vous pouvez Ã©galement voir que la commande "ft" dÃ©place le curseur Ã  la fin du
 mot "vraiment".
-   Vous pouvez spécifier un quantificateur ; ainsi, vous pouvez allez jusqu'au
+   Vous pouvez spÃ©cifier un quantificateur ; ainsi, vous pouvez allez jusqu'au
 'e' de "se" avec la commande "3fe" :
 
     L'erreur est humaine. Pour vraiment se planter, il faut un ordinateur. ~
 		 ------------------------>
 			   3fe
 
-La commande "F" recherche vers l'arrière :
+La commande "F" recherche vers l'arriÃ¨re :
 
     L'erreur est humaine. Pour vraiment se planter, il faut un ordinateur. ~
 		 <------------------------
 			    Fh
 
-La commande "tx" ["To"] fonctionne comme "fx", mais elle s'arrête un caractère
-avant le caractère recherché. La version arrière de cette commande est "Tx".
+La commande "tx" ["To"] fonctionne comme "fx", mais elle s'arrÃªte un caractÃ¨re
+avant le caractÃ¨re recherchÃ©. La version arriÃ¨re de cette commande est "Tx".
 
     L'erreur est humaine. Pour vraiment se planter, il faut un ordinateur. ~
 		  <------------  --------------->
 			Th	        tr
 
-Ces quatre commandes peuvent être répétées avec ";". "," répète dans la
-direction opposée. Le curseur n'est jamais déplacé sur une autre ligne. Même
+Ces quatre commandes peuvent Ãªtre rÃ©pÃ©tÃ©es avec ";". "," rÃ©pÃ¨te dans la
+direction opposÃ©e. Le curseur n'est jamais dÃ©placÃ© sur une autre ligne. MÃªme
 pas lorsque la phrase continue.
 
-Parfois, vous commencez une recherche et réalisez seulement après que vous
-avez tapé une mauvaise commande. Par exemple, vous avez utilisé "f" pour
-rechercher vers l'arrière, au lieu de "F". Pour abandonner une recherche,
-pressez <Echap>. Ainsi, "f<Echap>" est une recherche vers l'avant abandonnée,
-et ne fait rien. NOTE : <Echap> annule la plupart des opérations, pas
+Parfois, vous commencez une recherche et rÃ©alisez seulement aprÃ¨s que vous
+avez tapÃ© une mauvaise commande. Par exemple, vous avez utilisÃ© "f" pour
+rechercher vers l'arriÃ¨re, au lieu de "F". Pour abandonner une recherche,
+pressez <Echap>. Ainsi, "f<Echap>" est une recherche vers l'avant abandonnÃ©e,
+et ne fait rien. NOTE : <Echap> annule la plupart des opÃ©rations, pas
 seulement les recherches.
 
 ==============================================================================
-*03.4*	Sauter à la parenthèse appariée
+*03.4*	Sauter Ã  la parenthÃ¨se appariÃ©e
 
-Quand on écrit un programme, on se perd souvent dans des constructions de
-parenthèses imbriquées. La commande "%" est alors très pratique : elle amène à
-la parenthèse appariée. Si le curseur est sur un '(', il ira au ')'
+Quand on Ã©crit un programme, on se perd souvent dans des constructions de
+parenthÃ¨ses imbriquÃ©es. La commande "%" est alors trÃ¨s pratique : elle amÃ¨ne Ã 
+la parenthÃ¨se appariÃ©e. Si le curseur est sur un '(', il ira au ')'
 correspondant. S'il est sur un ')', au '(' correspondant.
 
 		    %
@@ -161,43 +161,43 @@ correspondant. S'il est sur un ')', au '(' correspondant.
 	   <---------------->
 		    %
 
-Ceci marche également pour les paires [] et {}. (On peut le définir avec
+Ceci marche Ã©galement pour les paires [] et {}. (On peut le dÃ©finir avec
 l'option 'matchpairs'.)
 
-Quand le curseur n'est pas sur un caractère utile, "%" recherchera vers
-l'avant pour en trouver un. Ainsi, si le curseur est au début de la ligne du
-précédent exemple, "%" recherchera vers l'avant et trouvera le premier '('. Il
-sautera ensuite à son appariement :
+Quand le curseur n'est pas sur un caractÃ¨re utile, "%" recherchera vers
+l'avant pour en trouver un. Ainsi, si le curseur est au dÃ©but de la ligne du
+prÃ©cÃ©dent exemple, "%" recherchera vers l'avant et trouvera le premier '('. Il
+sautera ensuite Ã  son appariement :
 
 	if (a == (b * c) / d) ~
 	---+---------------->
 		  %
 
 ==============================================================================
-*03.5*	Se déplacer sur une ligne particulière
+*03.5*	Se dÃ©placer sur une ligne particuliÃ¨re
 
-Si vous êtes un programmeur C ou C++, vous devez être familier avec des
+Si vous Ãªtes un programmeur C ou C++, vous devez Ãªtre familier avec des
 messages d'erreurs de ce type :
 
 	prog.c:33: j   undeclared (first use in this function) ~
 
 Ou (traduit) :
 
-	prog.c:33: j   non déclaré (première utilisation dans cette fonction) ~
+	prog.c:33: j   non dÃ©clarÃ© (premiÃ¨re utilisation dans cette fonction) ~
 
-Ceci vous informe d'un problème à résoudre à la ligne 33. Mais comment vous
-rendre sur cette ligne 33 ? Une solution consisterait à taper "9999k" pour se
-rendre au début du fichier, puis "32j" pour descendre de 32 lignes. Ce n'est
-pas une très bonne méthode, mais elle marche. Il est largement préférable
-d'utiliser la commande "G". Avec un quantificateur, cette commande vous amène
-au numéro de ligne donné. Par exemple, "33G" vous place sur la ligne 33. (Pour
+Ceci vous informe d'un problÃ¨me Ã  rÃ©soudre Ã  la ligne 33. Mais comment vous
+rendre sur cette ligne 33 ? Une solution consisterait Ã  taper "9999k" pour se
+rendre au dÃ©but du fichier, puis "32j" pour descendre de 32 lignes. Ce n'est
+pas une trÃ¨s bonne mÃ©thode, mais elle marche. Il est largement prÃ©fÃ©rable
+d'utiliser la commande "G". Avec un quantificateur, cette commande vous amÃ¨ne
+au numÃ©ro de ligne donnÃ©. Par exemple, "33G" vous place sur la ligne 33. (Pour
 une utilisation plus efficace de la liste d'erreurs du compilateur, voir
-|usr_30.txt| à propos de la commande ":make".)
-   Sans argument, "G" vous amène à la fin du fichier. Pour remonter rapidement
-au début, utilisez "gg". "1G" marchera aussi, mais c'est un peu plus difficile
-à taper.
+|usr_30.txt| Ã  propos de la commande ":make".)
+   Sans argument, "G" vous amÃ¨ne Ã  la fin du fichier. Pour remonter rapidement
+au dÃ©but, utilisez "gg". "1G" marchera aussi, mais c'est un peu plus difficile
+Ã  taper.
 
-	    |	première ligne d'un fichier   ^
+	    |	premiÃ¨re ligne d'un fichier   ^
 	    |	du texte du texte du texte    |
 	    |	du texte du texte du texte    |  gg
 	7G  |	du texte du texte du texte    |
@@ -206,15 +206,15 @@ au début, utilisez "gg". "1G" marchera aussi, mais c'est un peu plus difficile
 	    V	du texte du texte du texte    |
 		du texte du texte du texte    |  G
 		du texte du texte du texte    |
-		dernière ligne d'un fichier   V
+		derniÃ¨re ligne d'un fichier   V
 
-Une autre façon de se déplacer vers une ligne est d'utiliser la commande "%"
-avec un quantificateur. Par exemple, "50%" vous amène à la moitié du fichier ;
-"90%", à proximité de la fin.
+Une autre faÃ§on de se dÃ©placer vers une ligne est d'utiliser la commande "%"
+avec un quantificateur. Par exemple, "50%" vous amÃ¨ne Ã  la moitiÃ© du fichier ;
+"90%", Ã  proximitÃ© de la fin.
 
-Ce qui précède suppose que vous voulez vous déplacer sur une ligne spécifique
+Ce qui prÃ©cÃ¨de suppose que vous voulez vous dÃ©placer sur une ligne spÃ©cifique
 dans le fichier, que celle-ci soit visible ou non. Et si vous voulez vous
-déplacer sur une des lignes que vous pouvez voir ? Ce schéma montre les trois
+dÃ©placer sur une des lignes que vous pouvez voir ? Ce schÃ©ma montre les trois
 commandes que vous pouvez utiliser :
 
 		+---------------------------+
@@ -232,41 +232,41 @@ commandes que vous pouvez utiliser :
 [N.D.T. : "H" est mis pour "Home", "M" pour "Middle" et "L" pour "Last".]
 
 ==============================================================================
-*03.6*	Savoir où vous êtes
+*03.6*	Savoir oÃ¹ vous Ãªtes
 
-Pour savoir où vous êtes dans un fichier, il y a trois solutions :
+Pour savoir oÃ¹ vous Ãªtes dans un fichier, il y a trois solutions :
 
 1. Utiliser la commande CTRL-G. Vous obtiendrez un message comme celui-ci (en
-   supposant que l'option 'ruler' soit désactivée) :
+   supposant que l'option 'ruler' soit dÃ©sactivÃ©e) :
 
 	"usr_03.txt" line 233 of 650 --35%-- col 45-52 ~
 
-   Ceci affiche le nom du fichier que vous éditez, le numéro de la ligne où se
-   trouve le curseur, le nombre total de lignes, le pourcentage de défilement
-   du fichier et la colonne où se trouve le curseur.
-      Parfois, vous remarquerez que le numéro de colonne est en deux parties.
-   Par exemple, "col 2-9". Ceci indique que le curseur est positionné sur le
-   second caractère, mais comme le caractère un est une tabulation, occupant
-   au total huit espaces de colonnes, la colonne d'écran est la neuvième.
+   Ceci affiche le nom du fichier que vous Ã©ditez, le numÃ©ro de la ligne oÃ¹ se
+   trouve le curseur, le nombre total de lignes, le pourcentage de dÃ©filement
+   du fichier et la colonne oÃ¹ se trouve le curseur.
+      Parfois, vous remarquerez que le numÃ©ro de colonne est en deux parties.
+   Par exemple, "col 2-9". Ceci indique que le curseur est positionnÃ© sur le
+   second caractÃ¨re, mais comme le caractÃ¨re un est une tabulation, occupant
+   au total huit espaces de colonnes, la colonne d'Ã©cran est la neuviÃ¨me.
 
-2. Activer l'option 'number'. Cela affichera un numéro de ligne devant chaque
+2. Activer l'option 'number'. Cela affichera un numÃ©ro de ligne devant chaque
    ligne : >
 
 	:set number
 <
-   Pour la désactiver à nouveau : >
+   Pour la dÃ©sactiver Ã  nouveau : >
 
 	:set nonumber
 <
-   Comme 'number' est une option booléenne, préfixer "no" à son nom a comme
-   effet de la désactiver. Une option booléenne a deux valeurs uniquement,
-   soit elle est activée, soit désactivée.
-      Vim a de nombreuses options. En plus des booléennes, il y a des options
-   avec des valeurs numériques ou de type chaîne. Vous en rencontrerez des
-   exemples au fur et à mesure qu'elles seront utilisées.
+   Comme 'number' est une option boolÃ©enne, prÃ©fixer "no" Ã  son nom a comme
+   effet de la dÃ©sactiver. Une option boolÃ©enne a deux valeurs uniquement,
+   soit elle est activÃ©e, soit dÃ©sactivÃ©e.
+      Vim a de nombreuses options. En plus des boolÃ©ennes, il y a des options
+   avec des valeurs numÃ©riques ou de type chaÃ®ne. Vous en rencontrerez des
+   exemples au fur et Ã  mesure qu'elles seront utilisÃ©es.
 
-3. Activer l'option 'ruler'. Ceci affichera une « règle » dans le coin en bas
-   et à droite de la fenêtre Vim, donnant la position du curseur : >
+3. Activer l'option 'ruler'. Ceci affichera une Â« rÃ¨gle Â» dans le coin en bas
+   et Ã  droite de la fenÃªtre Vim, donnant la position du curseur : >
 
 	:set ruler
 
@@ -274,16 +274,16 @@ L'utilisation de 'ruler' a l'avantage de ne pas prendre beaucoup de place,
 donc de vous laisser plus d'espace pour votre texte.
 
 ==============================================================================
-*03.7*	Défilement de texte
+*03.7*	DÃ©filement de texte
 
-La commande CTRL-U ["Up"] fait défiler d'un demi-écran de texte vers le bas.
-En fait, on peut voir cela comme si l'on visionnait le texte à travers une
-fenêtre et que cette fenêtre était déplacée d'une demi-fenêtre vers le haut.
-Ainsi, la fenêtre remonte par rapport au texte, revenant en arrière dans le
-fichier. Ne vous inquiétez pas si vous trouvez cela un peu confus : la plupart
-des utilisateurs ont le même problème.
-   La commande CTRL-D ["Down"] déplace la fenêtre de visionnage d'un
-demi-écran vers le bas, c.-à-d. qu'elle fait défiler le texte d'un demi-écran
+La commande CTRL-U ["Up"] fait dÃ©filer d'un demi-Ã©cran de texte vers le bas.
+En fait, on peut voir cela comme si l'on visionnait le texte Ã  travers une
+fenÃªtre et que cette fenÃªtre Ã©tait dÃ©placÃ©e d'une demi-fenÃªtre vers le haut.
+Ainsi, la fenÃªtre remonte par rapport au texte, revenant en arriÃ¨re dans le
+fichier. Ne vous inquiÃ©tez pas si vous trouvez cela un peu confus : la plupart
+des utilisateurs ont le mÃªme problÃ¨me.
+   La commande CTRL-D ["Down"] dÃ©place la fenÃªtre de visionnage d'un
+demi-Ã©cran vers le bas, c.-Ã -d. qu'elle fait dÃ©filer le texte d'un demi-Ã©cran
 vers le haut.
 
 				       +----------------+
@@ -304,17 +304,17 @@ vers le haut.
 				       | exemple	|
 				       +----------------+
 
-Pour défiler d'une seule ligne à la fois, utilisez CTRL-E ["Extra line"]
-(défilement vers le haut) et CTRL-Y (défilement vers le bas). (Si vous
-utilisez des mappages de touches compatibles MS-Windows, CTRL-Y sera affecté
-à la restauration plutôt qu'au défilement.)
+Pour dÃ©filer d'une seule ligne Ã  la fois, utilisez CTRL-E ["Extra line"]
+(dÃ©filement vers le haut) et CTRL-Y (dÃ©filement vers le bas). (Si vous
+utilisez des mappages de touches compatibles MS-Windows, CTRL-Y sera affectÃ©
+Ã  la restauration plutÃ´t qu'au dÃ©filement.)
 
-Pour défiler vers l'avant d'un écran entier (sauf pour deux lignes), utilisez
-CTRL-F ["Forward"]. Pour défiler vers l'arrière, CTRL-B ["Backward"] est la
-commande à utiliser.
+Pour dÃ©filer vers l'avant d'un Ã©cran entier (sauf pour deux lignes), utilisez
+CTRL-F ["Forward"]. Pour dÃ©filer vers l'arriÃ¨re, CTRL-B ["Backward"] est la
+commande Ã  utiliser.
 
-Il arrive fréquemment qu'après être descendu de nombreuses lignes avec "j",
-votre curseur soit en bas de l'écran. Pour voir le texte autour de la ligne
+Il arrive frÃ©quemment qu'aprÃ¨s Ãªtre descendu de nombreuses lignes avec "j",
+votre curseur soit en bas de l'Ã©cran. Pour voir le texte autour de la ligne
 courante, vous pouvez utiliser la commande "zz" :
 
 	+------------------+		 +------------------+
@@ -327,50 +327,50 @@ courante, vous pouvez utiliser la commande "zz" :
 	| ligne du curseur |		 | du texte	    |
 	+------------------+		 +------------------+
 
-La commande "zt" ["Top"] place la ligne du curseur en haut de l'écran, et "zb"
+La commande "zt" ["Top"] place la ligne du curseur en haut de l'Ã©cran, et "zb"
 ["Bottom"] en bas.
-   Il existe quelques commandes de défilement supplémentaires, voir |Q_sc|.
+   Il existe quelques commandes de dÃ©filement supplÃ©mentaires, voir |Q_sc|.
 Pour conserver toujours quelques lignes de contexte autour du curseur,
 utilisez l'option 'scrolloff'.
 
 ==============================================================================
 *03.8*	Recherches simples
 
-Pour rechercher une chaîne, utilisez la commande "/chaîne". Par exemple, pour
+Pour rechercher une chaÃ®ne, utilisez la commande "/chaÃ®ne". Par exemple, pour
 trouver le mot "include", utilisez la commande : >
 
 	/include
 
-Vous remarquerez que quand vous tapez le "/", le curseur saute à la dernière
-ligne de la fenêtre Vim, comme avec les commandes deux-points. C'est là que
-vous entrez la chaîne. Vous pouvez utiliser la touche de retour arrière
-(flèche vers l'arrière ou <RetArr>) pour effectuer des corrections. Utilisez
-aussi les touches fléchées <Gauche> et <Droite> si nécessaires.
-   Pressez <Entree> pour exécuter la commande.
+Vous remarquerez que quand vous tapez le "/", le curseur saute Ã  la derniÃ¨re
+ligne de la fenÃªtre Vim, comme avec les commandes deux-points. C'est lÃ  que
+vous entrez la chaÃ®ne. Vous pouvez utiliser la touche de retour arriÃ¨re
+(flÃ¨che vers l'arriÃ¨re ou <RetArr>) pour effectuer des corrections. Utilisez
+aussi les touches flÃ©chÃ©es <Gauche> et <Droite> si nÃ©cessaires.
+   Pressez <Entree> pour exÃ©cuter la commande.
 
 	NOTE :
-	Les caractères .*[]^%/\?~$ ont une signification spéciale. Si vous
-	voulez les utiliser dans une recherche, faites-les précéder par un
+	Les caractÃ¨res .*[]^%/\?~$ ont une signification spÃ©ciale. Si vous
+	voulez les utiliser dans une recherche, faites-les prÃ©cÃ©der par un
 	'\'. Voir plus bas.
 
-Pour trouver la prochaine occurrence de la même chaîne, utilisez la commande
-"n" ["Next"]. Entrez ceci pour trouver le premier "#include" après le
+Pour trouver la prochaine occurrence de la mÃªme chaÃ®ne, utilisez la commande
+"n" ["Next"]. Entrez ceci pour trouver le premier "#include" aprÃ¨s le
 curseur : >
 
 	/#include
 
-Puis tapez "n" plusieurs fois. Vous vous déplacerez sur chaque "#include" dans
+Puis tapez "n" plusieurs fois. Vous vous dÃ©placerez sur chaque "#include" dans
 le texte. Vous pouvez aussi utiliser un quantificateur si vous savez quelle
-occurrence vous désirez. Ainsi, "3n" va à la troisième occurrence. Il n'est
+occurrence vous dÃ©sirez. Ainsi, "3n" va Ã  la troisiÃ¨me occurrence. Il n'est
 pas possible d'utiliser de quantificateur avec "/".
 
-La commande "?" marche comme "/", mais cherche vers l'arrière : >
+La commande "?" marche comme "/", mais cherche vers l'arriÃ¨re : >
 
 	?mot
 
-La commande "N" répète la dernière recherche dans la direction opposée.
-L'utilisation de "N" après une commande "/" fait rechercher vers l'arrière, et
-vers l'avant après "?".
+La commande "N" rÃ©pÃ¨te la derniÃ¨re recherche dans la direction opposÃ©e.
+L'utilisation de "N" aprÃ¨s une commande "/" fait rechercher vers l'arriÃ¨re, et
+vers l'avant aprÃ¨s "?".
 
 
 IGNORER LA CASSE
@@ -381,8 +381,8 @@ activez l'option 'ignorecase' : >
 
 	:set ignorecase
 
-Si vous recherchez maintenant "mot", vous trouverez également "Mot" et "MOT".
-Pour faire respecter la casse à nouveau : >
+Si vous recherchez maintenant "mot", vous trouverez Ã©galement "Mot" et "MOT".
+Pour faire respecter la casse Ã  nouveau : >
 
 	:set noignorecase
 
@@ -395,233 +395,233 @@ Supposons que vous fassiez trois recherches : >
 	/deux
 	/trois
 
-Lançons maintenant une recherche avec un simple "/" sans presser <Entree>. Si
-vous pressez <Haut> (la touche fléchée), Vim place "/trois" sur la ligne de
+LanÃ§ons maintenant une recherche avec un simple "/" sans presser <Entree>. Si
+vous pressez <Haut> (la touche flÃ©chÃ©e), Vim place "/trois" sur la ligne de
 commande. Presser <Entree> maintenant rechercherait "trois". Mais si vous
-utilisez <Haut> à la place, Vim changera la ligne de commande en "/deux". Une
-autre pression sur <Haut> vous amènera à "/un".
-   Vous pouvez également presser la touche fléchée <Bas>, pour parcourir
+utilisez <Haut> Ã  la place, Vim changera la ligne de commande en "/deux". Une
+autre pression sur <Haut> vous amÃ¨nera Ã  "/un".
+   Vous pouvez Ã©galement presser la touche flÃ©chÃ©e <Bas>, pour parcourir
 l'historique des commandes de recherche en sens inverse.
 
-Si vous voulez réutiliser un motif de recherche dont vous connaissez le
-début, vous pouvez entrer ce début avant d'utiliser <Haut>. Avec l'exemple
-précédent, vous pouvez taper /d<Haut>" et Vim placera "/deux" sur la ligne de
+Si vous voulez rÃ©utiliser un motif de recherche dont vous connaissez le
+dÃ©but, vous pouvez entrer ce dÃ©but avant d'utiliser <Haut>. Avec l'exemple
+prÃ©cÃ©dent, vous pouvez taper /d<Haut>" et Vim placera "/deux" sur la ligne de
 commande.
 
-Les commandes débutant par ':' ont également un historique. Cela vous permet
-de rappeler une commande précédente et de l'exécuter à nouveau. Ces deux
-historiques sont indépendants.
+Les commandes dÃ©butant par ':' ont Ã©galement un historique. Cela vous permet
+de rappeler une commande prÃ©cÃ©dente et de l'exÃ©cuter Ã  nouveau. Ces deux
+historiques sont indÃ©pendants.
 
 
 RECHERCHER UN MOT DANS LE TEXTE
 
 Supposons que vous voyiez le mot "LeTresLongNomDeFonction" dans le texte, et
 que vous vouliez trouver sa prochaine occurrence. Vous pourriez taper
-"/LeTresLongNomDeFonction", mais c'est plutôt long à saisir. D'autant que si
+"/LeTresLongNomDeFonction", mais c'est plutÃ´t long Ã  saisir. D'autant que si
 vous commettez une erreur de frappe, Vim ne le trouvera pas.
    Il y a un moyen plus facile : placez le curseur sur le mot et utilisez la
-commande "*". Vim récupérera le mot sous le curseur et l'utilisera comme
-chaîne de recherche.
-   La commande "#" fait la même chose, dans la direction opposée. Vous pouvez
-aussi utiliser un quantificateur : "3*" recherche la troisième occurrence du
+commande "*". Vim rÃ©cupÃ©rera le mot sous le curseur et l'utilisera comme
+chaÃ®ne de recherche.
+   La commande "#" fait la mÃªme chose, dans la direction opposÃ©e. Vous pouvez
+aussi utiliser un quantificateur : "3*" recherche la troisiÃ¨me occurrence du
 mot sous le curseur.
 
 
 RECHERCHER DES MOTS ENTIERS
 
-Si vous tapez "/les", cela correspondra aussi à "leste". Pour trouver
+Si vous tapez "/les", cela correspondra aussi Ã  "leste". Pour trouver
 uniquement les mots qui se terminent par "les", utilisez : >
 
 	/les\>
 
-Le "\>" est un élément spécial qui correspond uniquement à la fin d'un mot. De
-la même façon, "\<" correspond uniquement au début d'un mot. Ainsi, pour
+Le "\>" est un Ã©lÃ©ment spÃ©cial qui correspond uniquement Ã  la fin d'un mot. De
+la mÃªme faÃ§on, "\<" correspond uniquement au dÃ©but d'un mot. Ainsi, pour
 rechercher uniquement le mot "les" : >
 
 	/\<les\>
 
-Ceci ne correspond pas à "leste" ni à "telles". Notez que les commandes "*" et
-"#" utilisent ces éléments de début-de-mot et de fin-de-mot pour trouver
+Ceci ne correspond pas Ã  "leste" ni Ã  "telles". Notez que les commandes "*" et
+"#" utilisent ces Ã©lÃ©ments de dÃ©but-de-mot et de fin-de-mot pour trouver
 uniquement des mots entiers (vous pouvez utiliser "g*" et "g#" pour trouver
 des correspondances partielles).
 
 
 SURBRILLANCE DES CORRESPONDANCES
 
-En éditant un programme, vous rencontrez une variable appelée "num". Vous
-souhaitez vérifier où elle est utilisée. Vous pourriez déplacer le curseur sur
+En Ã©ditant un programme, vous rencontrez une variable appelÃ©e "num". Vous
+souhaitez vÃ©rifier oÃ¹ elle est utilisÃ©e. Vous pourriez dÃ©placer le curseur sur
 "num", utiliser la commande "*" et pressez "n" pour parcourir toutes les
 correspondances.
    Il existe un autre moyen. Tapez cette commande : >
 
 	:set hlsearch
 
-À présent, si vous recherchez "num", Vim mettra toutes les correspondances en
-surbrillance. C'est une très bonne façon de voir où la variable est utilisée,
+Ã€ prÃ©sent, si vous recherchez "num", Vim mettra toutes les correspondances en
+surbrillance. C'est une trÃ¨s bonne faÃ§on de voir oÃ¹ la variable est utilisÃ©e,
 sans qu'il faille taper de commandes.
-   Pour désactiver ce mécanisme : >
+   Pour dÃ©sactiver ce mÃ©canisme : >
 
 	:set nohlsearch
 
-Vous devrez ensuite le réactiver si vous voulez l'utiliser pour la prochaine
+Vous devrez ensuite le rÃ©activer si vous voulez l'utiliser pour la prochaine
 commande de recherche. Si vous souhaitez simplement supprimer la surbrillance,
 utilisez cette commande : >
 
 	:nohlsearch
 
-Ceci ne désactive pas l'option. Seule la surbrillance est affectée. Dès que
-vous exécuterez une autre commande de recherche, la surbrillance sera à
+Ceci ne dÃ©sactive pas l'option. Seule la surbrillance est affectÃ©e. DÃ¨s que
+vous exÃ©cuterez une autre commande de recherche, la surbrillance sera Ã 
 nouveau fonctionnelle.
-   Fonctionne également pour les commandes "n" et "N".
+   Fonctionne Ã©galement pour les commandes "n" et "N".
 
 
-PARAMÉTRER LES RECHERCHES
+PARAMÃ‰TRER LES RECHERCHES
 
 Il existe plusieurs options qui modifient le comportement de la recherche.
 Voici les plus importantes : >
 
 	:set incsearch
 
-Ceci fait afficher à Vim la correspondance pour la chaîne pendant que vous
-la tapez. Utilisez cette option pour vérifier que vous entrez bien la bonne
-chaîne de recherche. Puis pressez <Entree> pour vraiment sauter à l'endroit
-voulu. Ou tapez en plus pour changer la chaîne de recherche. >
+Ceci fait afficher Ã  Vim la correspondance pour la chaÃ®ne pendant que vous
+la tapez. Utilisez cette option pour vÃ©rifier que vous entrez bien la bonne
+chaÃ®ne de recherche. Puis pressez <Entree> pour vraiment sauter Ã  l'endroit
+voulu. Ou tapez en plus pour changer la chaÃ®ne de recherche. >
 
 	:set nowrapscan
 
-Ceci fait arrêter la recherche à la fin du fichier. Ou au début du fichier, si
-vous effectuez une recherche vers l'arrière. L'option 'wrapscan' est activée
-par défaut, la recherche bouclera donc à la fin du fichier.
+Ceci fait arrÃªter la recherche Ã  la fin du fichier. Ou au dÃ©but du fichier, si
+vous effectuez une recherche vers l'arriÃ¨re. L'option 'wrapscan' est activÃ©e
+par dÃ©faut, la recherche bouclera donc Ã  la fin du fichier.
 
 
-INTERMÈDE XXX
+INTERMÃˆDE XXX
 
-Si vous appréciez une des options mentionnées ci-dessus et l'activez à chaque
+Si vous apprÃ©ciez une des options mentionnÃ©es ci-dessus et l'activez Ã  chaque
 fois que vous utilisez Vim, vous pouvez placer cette commande dans votre
-fichier de démarrage Vim.
-   Éditez le fichier, comme mentionné à |not-compatible|. Ou utilisez cette
+fichier de dÃ©marrage Vim.
+   Ã‰ditez le fichier, comme mentionnÃ© Ã  |not-compatible|. Ou utilisez cette
 commande pour trouver son emplacement : >
 
 	:scriptnames
 
-Éditez le fichier avec, par exemple : >
+Ã‰ditez le fichier avec, par exemple : >
 
 	:edit ~/.vimrc
 
 Puis ajouter une ligne avec la commande pour activer une option, exactement
-comme si vous l'aviez tapé dans Vim. Exemple : >
+comme si vous l'aviez tapÃ© dans Vim. Exemple : >
 
 	Go:set hlsearch<Echap>
 
-"G" amène à la fin du fichier. "o" ouvre une nouvelle ligne, où vous entrez la
+"G" amÃ¨ne Ã  la fin du fichier. "o" ouvre une nouvelle ligne, oÃ¹ vous entrez la
 commande ":set". Vous quittez le mode Insertion avec <Echap>. Enfin,
 enregistrez le fichier puis quittez : >
 
 	ZZ
 
-Quand vous relancerez Vim, l'option 'hlsearch' sera déjà activée.
+Quand vous relancerez Vim, l'option 'hlsearch' sera dÃ©jÃ  activÃ©e.
 
 ==============================================================================
 *03.9*	Motifs de recherche simples
 
-L'éditeur Vim utilise des expressions rationnelles pour spécifier les chaînes
-à rechercher. Les expressions rationnelles forment un outil particulièrement
-concis et puissant pour définir un motif de recherche. Malheureusement, cette
-puissance a un prix et les expressions rationnelles sont un peu complexes à
+L'Ã©diteur Vim utilise des expressions rationnelles pour spÃ©cifier les chaÃ®nes
+Ã  rechercher. Les expressions rationnelles forment un outil particuliÃ¨rement
+concis et puissant pour dÃ©finir un motif de recherche. Malheureusement, cette
+puissance a un prix et les expressions rationnelles sont un peu complexes Ã 
 utiliser.
    Dans cette section, nous n'en aborderons que quelques-unes parmi les
 essentielles. Lisez le chapitre 27 pour en savoir plus sur les motifs et les
-commandes de recherche |usr_27.txt|. Pour un exposé complet : |pattern|.
+commandes de recherche |usr_27.txt|. Pour un exposÃ© complet : |pattern|.
 
 
-DÉBUT ET FIN D'UNE LIGNE
+DÃ‰BUT ET FIN D'UNE LIGNE
 
-Le caractère '^' correspond au début d'une ligne. Sur un clavier
-anglo-américain, vous le trouverez au-dessus du '6' [N.D.T. : AltGr + 9 sur un
-clavier français]. Le motif "include" correspond au mot "include" n'importe où
+Le caractÃ¨re '^' correspond au dÃ©but d'une ligne. Sur un clavier
+anglo-amÃ©ricain, vous le trouverez au-dessus du '6' [N.D.T. : AltGr + 9 sur un
+clavier franÃ§ais]. Le motif "include" correspond au mot "include" n'importe oÃ¹
 dans la ligne. Mais le motif "^include" correspond au mot "include" uniquement
-s'il est au début d'une ligne.
-   Le caractère '$' correspond à la fin d'une ligne. Ainsi, "pas$" correspond
-au mot "pas" uniquement s'il est à la fin d'une ligne.
+s'il est au dÃ©but d'une ligne.
+   Le caractÃ¨re '$' correspond Ã  la fin d'une ligne. Ainsi, "pas$" correspond
+au mot "pas" uniquement s'il est Ã  la fin d'une ligne.
 
-Dans la ligne d'exemple ci-dessous, marquons avec des 'x' les endroits où
+Dans la ligne d'exemple ci-dessous, marquons avec des 'x' les endroits oÃ¹
 "premier" correspond :
 
-	premier de cordée, premier-né, jeune premier ~
+	premier de cordÃ©e, premier-nÃ©, jeune premier ~
 	xxxxxxx		   xxxxxxx           xxxxxxx
 
 Avec "/premier$", on trouve cette correspondance :
 
-	premier de cordée, premier-né, jeune premier ~
+	premier de cordÃ©e, premier-nÃ©, jeune premier ~
 					     xxxxxxx
 
 Et celle-ci avec "^premier" :
 
-	premier de cordée, premier-né, jeune premier ~
+	premier de cordÃ©e, premier-nÃ©, jeune premier ~
 	xxxxxxx
 
-Vous pouvez essayer de rechercher "/^premier$", cela correspondra juste à une
+Vous pouvez essayer de rechercher "/^premier$", cela correspondra juste Ã  une
 ligne contenant simplement "premier". Les espaces blancs sont importants dans
-ce cas, ainsi, si une ligne contient un espace après le mot, comme "premier ",
+ce cas, ainsi, si une ligne contient un espace aprÃ¨s le mot, comme "premier ",
 le motif ne correspondra pas.
 
 
-CORRESPONDRE À N'IMPORTE QUEL CARACTÈRE SIMPLE
+CORRESPONDRE Ã€ N'IMPORTE QUEL CARACTÃˆRE SIMPLE
 
-Le caractère '.' (point) correspond à n'importe quel caractère simple. Par
-exemple, le motif "c.l" correspond à n'importe quelle chaîne dont le premier
-caractère est un 'c', le troisième un 'l', et le second peut être n'importe
+Le caractÃ¨re '.' (point) correspond Ã  n'importe quel caractÃ¨re simple. Par
+exemple, le motif "c.l" correspond Ã  n'importe quelle chaÃ®ne dont le premier
+caractÃ¨re est un 'c', le troisiÃ¨me un 'l', et le second peut Ãªtre n'importe
 lequel. Exemple :
 
 	Le recel en faux cols de faucilles est marteau. ~
 	     xxx	 xxx	    xxx
 
 
-CORRESPONDRE À DES CARACTÈRES SPÉCIAUX
+CORRESPONDRE Ã€ DES CARACTÃˆRES SPÃ‰CIAUX
 
-Si vous voulez correspondre à un point littéral, vous devrez annuler sa
-signification spéciale en le faisant précéder d'une contre-oblique.
+Si vous voulez correspondre Ã  un point littÃ©ral, vous devrez annuler sa
+signification spÃ©ciale en le faisant prÃ©cÃ©der d'une contre-oblique.
    Si vous recherchez "au.", vous trouverez ces correspondances :
 
 	Le recel en faux cols de faucilles est marteau. ~
 		     xxx	  xxx		    xxx
 
-Mais si vous utilisez "au\.", seule la dernière correspondance sera trouvée.
+Mais si vous utilisez "au\.", seule la derniÃ¨re correspondance sera trouvÃ©e.
 
 ==============================================================================
 *03.10*	Utiliser les marques
 
-Quand vous sautez à une position avec la commande "G", Vim mémorise la
-position d'avant ce saut. Cette position est appelée une marque. Pour revenir
-à votre position de départ, utilisez cette commande : >
+Quand vous sautez Ã  une position avec la commande "G", Vim mÃ©morise la
+position d'avant ce saut. Cette position est appelÃ©e une marque. Pour revenir
+Ã  votre position de dÃ©part, utilisez cette commande : >
 
 	``
 
 Le ` est une contre-apostrophe, ou apostrophe inverse.
-   Si vous utilisez la même commande une seconde fois, vous reviendrez à la
-position de départ. Cela est dû au fait que la commande "`" est un saut en
-elle-même et que la position d'avant ce saut est mémorisée.
+   Si vous utilisez la mÃªme commande une seconde fois, vous reviendrez Ã  la
+position de dÃ©part. Cela est dÃ» au fait que la commande "`" est un saut en
+elle-mÃªme et que la position d'avant ce saut est mÃ©morisÃ©e.
 
-En règle générale, à chaque fois que vous utilisez une commande qui peut
-déplacer le curseur ailleurs que dans la ligne courante, on appelle cela un
-saut. Les commandes de recherche "/" et "n" en font partie (indépendamment de
-l'éloignement de la correspondance). Mais pas les commandes de recherche de
-caractères "fx" et "tx", ou de déplacement par mots "w" et "e".
-   De plus, "j" et "k" ne sont pas considérés comme des sauts. Même quand vous
-utilisez un quantificateur pour déplacer le curseur assez loin.
+En rÃ¨gle gÃ©nÃ©rale, Ã  chaque fois que vous utilisez une commande qui peut
+dÃ©placer le curseur ailleurs que dans la ligne courante, on appelle cela un
+saut. Les commandes de recherche "/" et "n" en font partie (indÃ©pendamment de
+l'Ã©loignement de la correspondance). Mais pas les commandes de recherche de
+caractÃ¨res "fx" et "tx", ou de dÃ©placement par mots "w" et "e".
+   De plus, "j" et "k" ne sont pas considÃ©rÃ©s comme des sauts. MÃªme quand vous
+utilisez un quantificateur pour dÃ©placer le curseur assez loin.
 
-La commande "``" revient à la position précédant le dernier saut. La commande
+La commande "``" revient Ã  la position prÃ©cÃ©dant le dernier saut. La commande
 CTRL-O ["Older"] saute aux plus anciennes positions. CTRL-I revient ensuite
-aux plus récentes positions. Prenons cette séquence de commandes : >
+aux plus rÃ©centes positions. Prenons cette sÃ©quence de commandes : >
 
 	33G
 	/^Vo
 	CTRL-O
 
-Vous sautez d'abord à la ligne 33, puis recherchez une ligne qui débute par
-"Vo". Ensuite, CTRL-O vous ramène à la ligne 33. Un autre CTRL-O vous
-ramènerait d'où vous avez commencé. Si vous utilisez maintenant CTRL-I, vous
-êtes à nouveau à la ligne 33. Et à la correspondance de "^Vo" avec un autre
+Vous sautez d'abord Ã  la ligne 33, puis recherchez une ligne qui dÃ©bute par
+"Vo". Ensuite, CTRL-O vous ramÃ¨ne Ã  la ligne 33. Un autre CTRL-O vous
+ramÃ¨nerait d'oÃ¹ vous avez commencÃ©. Si vous utilisez maintenant CTRL-I, vous
+Ãªtes Ã  nouveau Ã  la ligne 33. Et Ã  la correspondance de "^Vo" avec un autre
 CTRL-I.
 
 	     |	texte d'exemple  ^	     |
@@ -630,36 +630,36 @@ CTRL-I.
 	     V	ligne 33 texte   ^	     V
 	     |	texte d'exemple  |	     |
 	/^Vo |	texte d'exemple  | CTRL-O    | CTRL-I
-	     V	Vous êtes ici    |	     V
+	     V	Vous Ãªtes ici    |	     V
 		texte d'exemple
 
 	NOTE :
-	CTRL-I est identique à <Tab>.
+	CTRL-I est identique Ã  <Tab>.
 
 La commande ":jumps" donne la liste des positions vers lesquelles vous avez
-sauté. La dernière entrée que vous avez utilisée est repérée par un '>'.
+sautÃ©. La derniÃ¨re entrÃ©e que vous avez utilisÃ©e est repÃ©rÃ©e par un '>'.
 
 
-MARQUES NOMMÉES
+MARQUES NOMMÃ‰ES
 
 Vim vous permet de placer vos propres marques dans le texte. La commande "ma"
 marque la position sous le curseur avec la marque 'a'. Vous pouvez placer 26
-marques (de 'a' à 'z') dans votre texte. Elles ne sont pas visibles, il s'agit
-juste de positions que Vim garde en mémoire.
-   Pour aller à une marque, utilisez la commande `{marque}, où {marque}
-désigne la lettre de la marque. Par exemple, pour aller à la marque 'a' : >
+marques (de 'a' Ã  'z') dans votre texte. Elles ne sont pas visibles, il s'agit
+juste de positions que Vim garde en mÃ©moire.
+   Pour aller Ã  une marque, utilisez la commande `{marque}, oÃ¹ {marque}
+dÃ©signe la lettre de la marque. Par exemple, pour aller Ã  la marque 'a' : >
 
 	`a
 
-La commande '{marque} (avec une apostrophe simple) vous amène au début de la
-ligne contenant la marque. Cela diffère de `{marque}, qui vous amène à la
-colonne marquée.
+La commande '{marque} (avec une apostrophe simple) vous amÃ¨ne au dÃ©but de la
+ligne contenant la marque. Cela diffÃ¨re de `{marque}, qui vous amÃ¨ne Ã  la
+colonne marquÃ©e.
 
-Les marques peuvent se révéler très utiles quand vous travaillez sur deux
-parties différentes d'un même fichier. Supposons que vous ayez du texte vers
-le début du fichier que vous souhaitez pouvoir consulter, tandis que vous
+Les marques peuvent se rÃ©vÃ©ler trÃ¨s utiles quand vous travaillez sur deux
+parties diffÃ©rentes d'un mÃªme fichier. Supposons que vous ayez du texte vers
+le dÃ©but du fichier que vous souhaitez pouvoir consulter, tandis que vous
 travaillez sur du texte vers la fin du fichier.
-   Déplacez-vous sur le texte du début et placez-y la marque 'd' (début) : >
+   DÃ©placez-vous sur le texte du dÃ©but et placez-y la marque 'd' (dÃ©but) : >
 
 	md
 
@@ -668,25 +668,25 @@ Puis allez au texte sur lequel vous devez travailler et placez-y la marque
 
 	mf
 
-Maintenant, vous pouvez vaquer à votre travail, et quand vous voudrez jeter un
-coup d'oeil sur le début du fichier, utilisez ceci : >
+Maintenant, vous pouvez vaquer Ã  votre travail, et quand vous voudrez jeter un
+coup d'oeil sur le dÃ©but du fichier, utilisez ceci : >
 
 	'd
 
-Puis vous pouvez utiliser '' pour revenir en arrière où vous étiez, ou 'f pour
-sauter au texte où vous travailliez vers la fin.
-   L'utilisation de 'd' pour le début et 'f' pour la fin n'a pas de
-signification particulière : c'est un simple moyen mnémotechnique.
+Puis vous pouvez utiliser '' pour revenir en arriÃ¨re oÃ¹ vous Ã©tiez, ou 'f pour
+sauter au texte oÃ¹ vous travailliez vers la fin.
+   L'utilisation de 'd' pour le dÃ©but et 'f' pour la fin n'a pas de
+signification particuliÃ¨re : c'est un simple moyen mnÃ©motechnique.
 
 Vous pouvez utiliser cette commande pour obtenir la liste des marques : >
 
 	:marks
 
-Vous remarquerez plusieurs marques spéciales. Notamment celles-ci :
+Vous remarquerez plusieurs marques spÃ©ciales. Notamment celles-ci :
 
 	'	position du curseur avant de faire un saut
-	"	position du curseur lors de la dernière édition du fichier
-	[	début du dernier changement
+	"	position du curseur lors de la derniÃ¨re Ã©dition du fichier
+	[	dÃ©but du dernier changement
 	]	fin du dernier changement
 
 ==============================================================================

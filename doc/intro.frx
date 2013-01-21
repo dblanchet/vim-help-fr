@@ -1,111 +1,111 @@
 *intro.txt*	Pour Vim version 6.2.
 
 
-		 MANUEL de RÉFÉRENCE VIM - par Bram Moolenaar
+		 MANUEL de RÃ‰FÃ‰RENCE VIM - par Bram Moolenaar
 
 
-Introduction à Vim					*ref* *reference*
+Introduction Ã  Vim					*ref* *reference*
 
 1. Introduction				|intro|
 2. Vim sur Internet			|internet|
 3. Contributeurs			|credits|
 4. Notations				|notation|
-5. Introduction aux modes d'édition	|vim-modes-intro|
-6. Passer d'un mode à un autre		|mode-switching|
-7. Contenu d'une fenêtre		|window-contents|
-8. Définitions				|definitions|
+5. Introduction aux modes d'Ã©dition	|vim-modes-intro|
+6. Passer d'un mode Ã  un autre		|mode-switching|
+7. Contenu d'une fenÃªtre		|window-contents|
+8. DÃ©finitions				|definitions|
 
 ==============================================================================
 1. Introduction						*intro*
 
-VIM est l'acronyme de « VI aMélioré » ["Vi IMproved"]. Ce fut d'abord « Vi
-IMité » ["Vi IMitation"], mais il apporte tellement d'améliorations qu'un
-changement de nom a paru approprié. Vim est un éditeur de texte qui reconnaît
+VIM est l'acronyme de Â« VI aMÃ©liorÃ© Â» ["Vi IMproved"]. Ce fut d'abord Â« Vi
+IMitÃ© Â» ["Vi IMitation"], mais il apporte tellement d'amÃ©liorations qu'un
+changement de nom a paru appropriÃ©. Vim est un Ã©diteur de texte qui reconnaÃ®t
 presque toutes les commandes du programme Unix `vi` et en apporte de
-(nombreuses) nouvelles. Il se révèle particulièrement efficace pour l'édition
+(nombreuses) nouvelles. Il se rÃ©vÃ¨le particuliÃ¨rement efficace pour l'Ã©dition
 de programmes et autres fichiers texte.
    Toutes les commandes passent par le clavier. Cela a l'avantage de vous
-permettre de conserver les mains dessus et de garder les yeux sur l'écran.
+permettre de conserver les mains dessus et de garder les yeux sur l'Ã©cran.
 Pour ceux qui le souhaitent, il existe un support de la souris ainsi qu'une
 version IHM graphique (interface graphique), pourvue de menus et d'ascenseurs
 (voir |gui.txt|).
 
 Vous trouverez un sommaire de ce manuel dans le fichier "help.txt", |help.txt|.
-On peut y accéder à partir de Vim grâce aux touches <Aide> ou <F1>, ou par la
+On peut y accÃ©der Ã  partir de Vim grÃ¢ce aux touches <Aide> ou <F1>, ou par la
 commande |:help| (tapez simplement ":help", sans barres ni apostrophes).
-   L'option 'helpfile' peut être fixée pour définir le nom du sommaire de
-l'aide, au cas où il ne serait pas situé à son emplacement par défaut. Vous
+   L'option 'helpfile' peut Ãªtre fixÃ©e pour dÃ©finir le nom du sommaire de
+l'aide, au cas oÃ¹ il ne serait pas situÃ© Ã  son emplacement par dÃ©faut. Vous
 pouvez sauter vers chaque sujet comme avec des marqueurs : utilisez CTRL-]
-pour vous rendre au sujet sous le curseur, et CTRL-T pour revenir en arrière.
+pour vous rendre au sujet sous le curseur, et CTRL-T pour revenir en arriÃ¨re.
 
-Tout au long de ce manuel, les différences entre Vi et Vim sont mentionnées
-entre accolades, de cette manière : {Vi n'a pas d'aide en ligne}. Se reporter
-à |vi_diff.txt| pour un résumé des différences entre Vim et Vi.
+Tout au long de ce manuel, les diffÃ©rences entre Vi et Vim sont mentionnÃ©es
+entre accolades, de cette maniÃ¨re : {Vi n'a pas d'aide en ligne}. Se reporter
+Ã  |vi_diff.txt| pour un rÃ©sumÃ© des diffÃ©rences entre Vim et Vi.
 
-Ce manuel couvre les implantations de Vim sur différentes machines. Il peut y
-avoir de légères différences d'un ordinateur (ou d'un terminal) à un autre. En
-plus des remarques soulevées dans la suite de ce fichier, il existe un
-document séparé pour chaque système supporté, voir |sys-file-list|.
+Ce manuel couvre les implantations de Vim sur diffÃ©rentes machines. Il peut y
+avoir de lÃ©gÃ¨res diffÃ©rences d'un ordinateur (ou d'un terminal) Ã  un autre. En
+plus des remarques soulevÃ©es dans la suite de ce fichier, il existe un
+document sÃ©parÃ© pour chaque systÃ¨me supportÃ©, voir |sys-file-list|.
 
-Ce manuel est une référence pour toutes les commandes et options de Vim. Ce
-n'est pas une introduction à l'utilisation de Vi ou Vim, certains passages se
-révélant ardus. Pour les débutants, il existe un |tutor|iel pour s'initier par
-la pratique. Pour apprendre à utiliser Vim, lisez le Manuel de l'utilisateur
+Ce manuel est une rÃ©fÃ©rence pour toutes les commandes et options de Vim. Ce
+n'est pas une introduction Ã  l'utilisation de Vi ou Vim, certains passages se
+rÃ©vÃ©lant ardus. Pour les dÃ©butants, il existe un |tutor|iel pour s'initier par
+la pratique. Pour apprendre Ã  utiliser Vim, lisez le Manuel de l'utilisateur
 |usr_toc.txt|.
 
-Il existe de nombreux livres sur Vi qui consacrent une section aux débutants.
+Il existe de nombreux livres sur Vi qui consacrent une section aux dÃ©butants.
 En voici deux que je recommande :
 
-	« Vim -- Vi Improved » par Steve Oualline
+	Â« Vim -- Vi Improved Â» par Steve Oualline
 
-Il s'agit du tout premier livre entièrement dédié à Vim. Il conviendra
-parfaitement aux débutants. Les commandes les plus fréquemment utilisées sont
-décrites avec des illustrations et des exemples. Les moins fréquentes sont
-également détaillées et les fonctionnalités les plus pointues sont résumées.
-Il comporte un index détaillé et une référence abrégée. Certaines parties de
-ce livre ont été incluses dans le Manuel de l'utilisateur |frombook|.
-   Publié chez New Riders Publishing. ISBN : 0735710015.
+Il s'agit du tout premier livre entiÃ¨rement dÃ©diÃ© Ã  Vim. Il conviendra
+parfaitement aux dÃ©butants. Les commandes les plus frÃ©quemment utilisÃ©es sont
+dÃ©crites avec des illustrations et des exemples. Les moins frÃ©quentes sont
+Ã©galement dÃ©taillÃ©es et les fonctionnalitÃ©s les plus pointues sont rÃ©sumÃ©es.
+Il comporte un index dÃ©taillÃ© et une rÃ©fÃ©rence abrÃ©gÃ©e. Certaines parties de
+ce livre ont Ã©tÃ© incluses dans le Manuel de l'utilisateur |frombook|.
+   PubliÃ© chez New Riders Publishing. ISBN : 0735710015.
    Pour plus d'informations, vous pouvez consulter :
 	http://vim.iccf-holland.org/
 	http://www.vim.org/iccf/click5.html
 
 
-	« Learning the Vi editor » par Linda Lamb et Arnold Robbins
+	Â« Learning the Vi editor Â» par Linda Lamb et Arnold Robbins
 
-C'est un livre sur Vi qui consacre un chapitre à Vim (dans sa sixième
-édition). Les premiers pas dans Vi sont très bien expliqués. Les commandes
-spécifiques à Vim sont seulement mentionnées brièvement. Une traduction
-allemande est disponible. [N.D.T. : Pas de traduction française, hélas ! ni
-pour l'ouvrage précédent.]
-   Publié chez O'Reilly. ISBN : 1-56592-426-6.
+C'est un livre sur Vi qui consacre un chapitre Ã  Vim (dans sa sixiÃ¨me
+Ã©dition). Les premiers pas dans Vi sont trÃ¨s bien expliquÃ©s. Les commandes
+spÃ©cifiques Ã  Vim sont seulement mentionnÃ©es briÃ¨vement. Une traduction
+allemande est disponible. [N.D.T. : Pas de traduction franÃ§aise, hÃ©las ! ni
+pour l'ouvrage prÃ©cÃ©dent.]
+   PubliÃ© chez O'Reilly. ISBN : 1-56592-426-6.
 
 ==============================================================================
 2. Vim sur Internet					*internet*
 
 [N.D.T. : Dans toute cette section, et sauf indication contraire explicite,
-les sites, forums, listes de diffusion et adresses électroniques sont à usage
+les sites, forums, listes de diffusion et adresses Ã©lectroniques sont Ã  usage
 anglophone exclusivement.]
 
 
 SUR LA TOILE   			*www* *faq* *FAQ* *distribution* *download*
 
-Le site de Vim apporte les informations les plus récentes. On y trouve aussi
-des liens vers la dernière version de Vim disponible. La FAQ est une « Foire
-Aux Questions », à consulter en cas de problèmes.
+Le site de Vim apporte les informations les plus rÃ©centes. On y trouve aussi
+des liens vers la derniÃ¨re version de Vim disponible. La FAQ est une Â« Foire
+Aux Questions Â», Ã  consulter en cas de problÃ¨mes.
 
 	Page d'accueil de Vim :	    http://vim.sf.net/
 	Site de Sven sur Vim :	    http://www.vim.org/
-	Dernières nouvelles :	    http://www.vim.org/news.html
+	DerniÃ¨res nouvelles :	    http://www.vim.org/news.html
 	FAQ de Vim :		    http://www.vim.org/faq/
-	Téléchargement :	    ftp://ftp.vim.org/pub/vim/MIRRORS
+	TÃ©lÃ©chargement :	    ftp://ftp.vim.org/pub/vim/MIRRORS
 
 
 SUR LES FORUMS						*news* *usenet*
 
-Il existe un forum de discussion où il est question de Vim :
+Il existe un forum de discussion oÃ¹ il est question de Vim :
 	comp.editors
-Consultez "http://www.vim.org/usenet.html". Ce groupe est aussi utilisé pour
-d'autres éditeurs. Si vous postez au sujet de Vim, n'oubliez pas de le
+Consultez "http://www.vim.org/usenet.html". Ce groupe est aussi utilisÃ© pour
+d'autres Ã©diteurs. Si vous postez au sujet de Vim, n'oubliez pas de le
 mentionner.
 
 
@@ -114,38 +114,38 @@ SUR LES LISTES DE DIFFUSION				*mail-list* *maillist*
 Il existe plusieurs listes de diffusion traitant de Vim :
 <vim@vim.org>
 	Discussions sur l'utilisation des versions existantes : mappages
-	utiles, questions, réponses, où trouver une version spécifique, etc.
+	utiles, questions, rÃ©ponses, oÃ¹ trouver une version spÃ©cifique, etc.
 <vim-dev@vim.org>					*vim-dev* *vimdev*
-	Discussions sur les changements à apporter : nouvelles
-	fonctionnalités, portages, rustines, versions béta-test, etc.
+	Discussions sur les changements Ã  apporter : nouvelles
+	fonctionnalitÃ©s, portages, rustines, versions bÃ©ta-test, etc.
 <vim-announce@vim.org>					*vim-announce*
 	Annonces des nouvelles moutures de Vim, ainsi que des versions
-	béta-test et des portages vers différents systèmes.
+	bÃ©ta-test et des portages vers diffÃ©rents systÃ¨mes.
 <vim-multibyte@vim.org>					*vim-multibyte*
-	Discussions sur l'utilisation et les améliorations à apporter pour
-	l'édition de texte multi-octets avec Vim.
+	Discussions sur l'utilisation et les amÃ©liorations Ã  apporter pour
+	l'Ã©dition de texte multi-octets avec Vim.
 <vim-mac@vim.org>					*vim-mac*
-	Discussions sur l'utilisation et les améliorations à apporter à la
+	Discussions sur l'utilisation et les amÃ©liorations Ã  apporter Ã  la
 	version Macintosh de Vim.
 
 Consultez "http://www.vim.org/mail.html".
 
 NOTES :
-- Vous ne pouvez poster dans ces listes que si vous y êtes abonné !
+- Vous ne pouvez poster dans ces listes que si vous y Ãªtes abonnÃ© !
 - Vous devez envoyer vos messages avec l'adresse depuis laquelle vous vous
-  êtes abonné (pour éviter le pollupostage).
-- La taille des messages est limitée à 40000 caractères.
+  Ãªtes abonnÃ© (pour Ã©viter le pollupostage).
+- La taille des messages est limitÃ©e Ã  40000 caractÃ¨res.
 
 							*subscribe-maillist*
-Si vous désirez vous abonner, envoyez un message à :
+Si vous dÃ©sirez vous abonner, envoyez un message Ã  :
 	<vim-help@vim.org>
 Assurez-vous que le champ "From:" de votre courrier est correct. Ensuite, le
-serveur contacté vous donnera l'aide nécessaire pour vous abonner.
+serveur contactÃ© vous donnera l'aide nÃ©cessaire pour vous abonner.
 
-Ce même serveur vous permet de récupérer les anciens messages, ainsi qu'un
+Ce mÃªme serveur vous permet de rÃ©cupÃ©rer les anciens messages, ainsi qu'un
 index des messages. Interrogez vim-help pour le mode d'emploi.
 
-Les archives sont conservées sur :			*maillist-archive*
+Les archives sont conservÃ©es sur :			*maillist-archive*
 	http://groups.yahoo.com/group/vim/
 	http://groups.yahoo.com/group/vimdev/
 	http://groups.yahoo.com/group/vimannounce/
@@ -153,90 +153,90 @@ Les archives sont conservées sur :			*maillist-archive*
 	http://groups.yahoo.com/group/vim-mac/
 
 Une autre archive est disponible sur "http://www.somelist.com/", dans la
-section « Éditeurs » (le site est en français, les messages en anglais).
+section Â« Ã‰diteurs Â» (le site est en franÃ§ais, les messages en anglais).
 
 
-Listes de diffusion supplémentaires :
+Listes de diffusion supplÃ©mentaires :
 
 <vim-fr@club.voila.fr>				*french-maillist* *vim-fr*
-	Liste sur Vim en français ! Abonnez-vous en envoyant un message à :
+	Liste sur Vim en franÃ§ais ! Abonnez-vous en envoyant un message Ã  :
 		<vim-fr-subscribe@club.voila.fr>
 	Ou allez sur "http://groups.yahoo.com/group/vim-fr/".
 
 
 RAPPORTS DE BOGUES			*bugs* *bug-reports* *bugreport.vim*
 
-Envoyez vos rapports de bogues à : Vim bugs <bugs@vim.org>.
-   Il ne s'agit pas d'une liste de diffusion, mais le message est redirigé
-vers le responsable de Vim. Soyez concis S.V.P. ; le temps passé à répondre au
-courriel ampute d'autant celui consacré à l'amélioration de Vim. Donnez
-toujours un exemple reproductible et tentez de déterminer quels agents ou
-paramètres ont une influence sur l'apparition du problème. Essayez sur
-différentes machines si possible et... envoyez-moi des rustines si vous
+Envoyez vos rapports de bogues Ã  : Vim bugs <bugs@vim.org>.
+   Il ne s'agit pas d'une liste de diffusion, mais le message est redirigÃ©
+vers le responsable de Vim. Soyez concis S.V.P. ; le temps passÃ© Ã  rÃ©pondre au
+courriel ampute d'autant celui consacrÃ© Ã  l'amÃ©lioration de Vim. Donnez
+toujours un exemple reproductible et tentez de dÃ©terminer quels agents ou
+paramÃ¨tres ont une influence sur l'apparition du problÃ¨me. Essayez sur
+diffÃ©rentes machines si possible et... envoyez-moi des rustines si vous
 pouvez !
 
 En cas de doute, lancez : >
 	:so $VIMRUNTIME/bugreport.vim
-Ceci créera un fichier "bugreport.txt" dans le répertoire courant, regroupant
+Ceci crÃ©era un fichier "bugreport.txt" dans le rÃ©pertoire courant, regroupant
 de nombreuses informations sur votre environnement. Assurez-vous qu'il ne
-contienne aucune donnée confidentielle avant de l'envoyer !
+contienne aucune donnÃ©e confidentielle avant de l'envoyer !
 
 							*debug-vim*
 Lorsque Vim plante dans l'un des fichiers de test, et que vous utilisez le
-compilateur GCC, voilà ce que vous pouvez faire pour déterminer l'endroit
+compilateur GCC, voilÃ  ce que vous pouvez faire pour dÃ©terminer l'endroit
 exact du plantage :
 
-1° Compilez Vim avec l'option "-g" (il y a une ligne dans le fichier Makefile
-   pour cela, que vous pouvez décommentez).
+1Â° Compilez Vim avec l'option "-g" (il y a une ligne dans le fichier Makefile
+   pour cela, que vous pouvez dÃ©commentez).
 
-2° Exécutez ces commandes (remplacez "11" par le test ayant échoué) : >
+2Â° ExÃ©cutez ces commandes (remplacez "11" par le test ayant Ã©chouÃ©) : >
 	cd testdir
 	gdb ../vim
 	run -u unix.vim -U NONE -s dotest.in test11.in
 
-3° Repérez l'endroit du plantage (`gdb` devrait émettre un message).
+3Â° RepÃ©rez l'endroit du plantage (`gdb` devrait Ã©mettre un message).
 
-4° Demandez une trace de la pile avec `gdb` par cette commande : >
+4Â° Demandez une trace de la pile avec `gdb` par cette commande : >
 	where
-<  Vous pouvez examiner les différents endroits de la trace de la pile avec : >
+<  Vous pouvez examiner les diffÃ©rents endroits de la trace de la pile avec : >
 	frame 3
 <  Remplacez "3" par un des nombres dans la trace de la pile.
 
 							*year-2000* *Y2K*
-Comme Vim n'utilise pas de date en interne pour l'édition, aucun problème lié
-au bogue de l'an 2000 n'est à craindre. Vim utilise les dates sous forme de
-secondes écoulées depuis le 1er janvier 1970 : elles servent au contrôle de
-l'horodatage du fichier édité et du fichier d'échange, ce qui n'est pas
+Comme Vim n'utilise pas de date en interne pour l'Ã©dition, aucun problÃ¨me liÃ©
+au bogue de l'an 2000 n'est Ã  craindre. Vim utilise les dates sous forme de
+secondes Ã©coulÃ©es depuis le 1er janvier 1970 : elles servent au contrÃ´le de
+l'horodatage du fichier Ã©ditÃ© et du fichier d'Ã©change, ce qui n'est pas
 critique et devrait seulement produire quelques messages.
 
-Il se peut qu'il y ait un problème en l'an 2038, lorsque les secondes
-dépasseront les capacités d'un entier 32 bits. Cela dépend du compilateur, des
-bibliothèques et du système d'exploitation. En particulier, time_t et la
-fonction ctime() sont utilisés. Et time_t est enregistré sur quatre octets
-dans le fichier d'échange. Mais cela sert uniquement à afficher une date/heure
-pour le recouvrement, et n'affecte pas l'édition normale.
+Il se peut qu'il y ait un problÃ¨me en l'an 2038, lorsque les secondes
+dÃ©passeront les capacitÃ©s d'un entier 32 bits. Cela dÃ©pend du compilateur, des
+bibliothÃ¨ques et du systÃ¨me d'exploitation. En particulier, time_t et la
+fonction ctime() sont utilisÃ©s. Et time_t est enregistrÃ© sur quatre octets
+dans le fichier d'Ã©change. Mais cela sert uniquement Ã  afficher une date/heure
+pour le recouvrement, et n'affecte pas l'Ã©dition normale.
 
-La fonction Vim strftime() utilise directement la fonction système strftime().
-localtime() utilise la fonction système time(). getftime() utilise le temps
-retourné par la fonction système stat(). Si les bibliothèques de votre système
-supportent le passage à l'an 2000, alors Vim aussi.
+La fonction Vim strftime() utilise directement la fonction systÃ¨me strftime().
+localtime() utilise la fonction systÃ¨me time(). getftime() utilise le temps
+retournÃ© par la fonction systÃ¨me stat(). Si les bibliothÃ¨ques de votre systÃ¨me
+supportent le passage Ã  l'an 2000, alors Vim aussi.
 
-L'utilisateur peut créer des scripts Vim qui utilisent des commandes externes.
-Ces commandes pourraient alors introduire des problèmes liés à l'an 2000, mais
-qui ne proviendraient pas réellement de Vim.
+L'utilisateur peut crÃ©er des scripts Vim qui utilisent des commandes externes.
+Ces commandes pourraient alors introduire des problÃ¨mes liÃ©s Ã  l'an 2000, mais
+qui ne proviendraient pas rÃ©ellement de Vim.
 
 ==============================================================================
 3. Contributeurs					*credits* *author*
 
-La plus grande partie de Vim a été écrite par Bram Moolenaar <Bram@vim.org>.
+La plus grande partie de Vim a Ã©tÃ© Ã©crite par Bram Moolenaar <Bram@vim.org>.
 
-La documentation dérive partiellement de plusieurs manuels sur Vi écrits par :
+La documentation dÃ©rive partiellement de plusieurs manuels sur Vi Ã©crits par :
 	W. N. Joy
 	Alan P. W. Hewett
 	Mark Horton
 
-L'éditeur Vim est basé sur Stevie et inclut (des idées) d'autres logiciels,
-grâce au travail des personnes ci-mentionnées. D'autres personnes ont apporté
+L'Ã©diteur Vim est basÃ© sur Stevie et inclut (des idÃ©es) d'autres logiciels,
+grÃ¢ce au travail des personnes ci-mentionnÃ©es. D'autres personnes ont apportÃ©
 de l'aide en m'envoyant des rustines, des suggestions, ou en donnant leur avis
 sur ce qu'ils trouvaient bien et moins bien dans Vim.
 
@@ -247,25 +247,25 @@ gens !
 	Zoltan Arpadffy		travail sur le portage VMS
 	Tony Andrews		Stevie
 	Gert van Antwerpen	changements pour DJGPP sur MS-DOS
-	Berkeley DB(3)		idées pour la mise en oeuvre des fichiers
-				   d'échange
+	Berkeley DB(3)		idÃ©es pour la mise en oeuvre des fichiers
+				   d'Ã©change
 	Keith Bostic		Nvi
-	Walter Briscoe		mises à jour des Makefile, diverses rustines
-	Ralf Brown		bibliothèque SPAWNO pour MS-DOS
+	Walter Briscoe		mises Ã  jour des Makefile, diverses rustines
+	Ralf Brown		bibliothÃ¨que SPAWNO pour MS-DOS
 	Robert Colon		nombreuses remarques utiles
-	Marcin Dalecki		portage de l'IHM graphique GTK+, icônes de la
+	Marcin Dalecki		portage de l'IHM graphique GTK+, icÃ´nes de la
 				   barre d'outils, gettext()
 	Kayhan Demirel		envoi de nouvelles de l'Ouganda
-	Chris et John Downey	Xvi (idées pour le multi-fenêtrage)
+	Chris et John Downey	Xvi (idÃ©es pour le multi-fenÃªtrage)
 	Henk Elbers		premier portage VMS
-	Eric Fischer		portage Mac, 'cindent' et autres améliorations
-	Benji Fisher		réponses à de nombreuses questions
+	Eric Fischer		portage Mac, 'cindent' et autres amÃ©liorations
+	Benji Fisher		rÃ©ponses Ã  de nombreuses questions
 				   d'utilisateurs
 	Bill Foster		portage de l'IHM graphique Athena
-	Loic Grenie		Xvi (idées pour le multi-fenêtrage)
+	Loic Grenie		Xvi (idÃ©es pour le multi-fenÃªtrage)
 	Sven Guckes		maintenance des pages WWW sur Vim
 	Darren Hiebert		programme "Exuberant ctags"
-	Bruce Hunsaker		amélioration du portage VMS
+	Bruce Hunsaker		amÃ©lioration du portage VMS
 	Andy Kahn		support cscope, portage de l'IHM graphique GTK+
 	Oezguer Kesim		maintenance des listes de diffusion sur Vim
 	Axel Kielhorn		travail sur le portage Macintosh
@@ -274,22 +274,22 @@ gens !
 	Sergey Laskavy		aide pour Vim en provenance de Moscou
 	Felix von Leitner	maintenance des listes de diffusion sur Vim
 	David Leonard		portage des extensions Python pour Unix
-	Avner Lottem		édition de droite à gauche
+	Avner Lottem		Ã©dition de droite Ã  gauche
 	Flemming Madsen		client/serveur X11, diverses rustines et
-				   fonctionnalités
+				   fonctionnalitÃ©s
 	MicroSoft		don d'une copie de DevStudio pour compiler Vim
 	Paul Moore		extensions de l'interface Python, nombreuses
 				   rustines
 	Katsuhito Nagano	travail sur les versions muti-octets
 	Sung-Hyun Nam		travail sur les versions muti-octets
-	Vince Negri		améliorations pour Win32 (IHM graphique et
+	Vince Negri		amÃ©liorations pour Win32 (IHM graphique et
 				   console)
 	Steve Oualline		auteur du premier livre sur Vim |frombook|
 	George V. Reilly	portage Win32, bases de l'IHM graphique Win32
 	Stephen Riehm		collectionneur de bogues
 	Stefan Roemer		diverses rustines, aide aux utilisateurs
 	Ralf Schandl		portage IBM OS/390
-	Olaf Seibert		versions DICE et BeBox, amélioration des exprat
+	Olaf Seibert		versions DICE et BeBox, amÃ©lioration des exprat
 	Mortaza Shiran		rustines farsi
 	Peter da Silva		termlib
 	Paul Slootman		portage OS/2
@@ -299,391 +299,391 @@ gens !
 	G. R. (Fred) Walter	Stevie
 	Sven Verdoolaege	interface Perl
 	Mike Williams		impression PostScript
-	Robert Webb		complètement de la ligne de commande, versions
+	Robert Webb		complÃ¨tement de la ligne de commande, versions
 				   IHM graphiques, nombreuses rustines
 	Ingo Wilken		interface Tcl
-	Juergen Weigert		version Lattice, améliorations AUX, portages
+	Juergen Weigert		version Lattice, amÃ©liorations AUX, portages
 				   UNIX et MS-DOS, autoconf
-	Stefan « Sec » Zehl	maintenance de vim.org
+	Stefan Â« Sec Â» Zehl	maintenance de vim.org
 
-Je tiens également à remercier tous ceux qui m'ont envoyé des rapports de
+Je tiens Ã©galement Ã  remercier tous ceux qui m'ont envoyÃ© des rapports de
 bogues et suggestions. La liste est trop longue pour les mentionner tous ici.
-Mais Vim n'eût jamais été le même sans leurs idées : ils le font vivre !
+Mais Vim n'eÃ»t jamais Ã©tÃ© le mÃªme sans leurs idÃ©es : ils le font vivre !
 
 
-Cette documentation contient plusieurs références à d'autres versions de Vi :
+Cette documentation contient plusieurs rÃ©fÃ©rences Ã  d'autres versions de Vi :
 							*Vi*
-Vi	« L'original ». Sans plus de détails, c'est la version de Vi qui
+Vi	Â« L'original Â». Sans plus de dÃ©tails, c'est la version de Vi qui
 	est apparue dans Sun OS 4.x. ":version" renvoie "Version 3.7, 6/7/85".
-	D'autres versions sont parfois mentionnées. Existe seulement sous
+	D'autres versions sont parfois mentionnÃ©es. Existe seulement sous
 	Unix. Le code source n'est disponible qu'avec une licence. Pour plus
 	d'informations sur Vi, consultez :
 		http://vi-editor.org/
 							*Posix*
-Posix	Provient de l'« IEEE standard 1003.2, Part 2: Shell and utilities ».
-	Communément appelé « Posix ». C'est une description textuelle du
-	comportement auquel Vi est censé se conformer.
-	La version utilisée est une pré-version de début 1996, ainsi toutes
-	les remarques sont « supposées conformes à » Posix. Certains détails
-	pourraient cependant s'en écarter...
+Posix	Provient de l'Â« IEEE standard 1003.2, Part 2: Shell and utilities Â».
+	CommunÃ©ment appelÃ© Â« Posix Â». C'est une description textuelle du
+	comportement auquel Vi est censÃ© se conformer.
+	La version utilisÃ©e est une prÃ©-version de dÃ©but 1996, ainsi toutes
+	les remarques sont Â« supposÃ©es conformes Ã  Â» Posix. Certains dÃ©tails
+	pourraient cependant s'en Ã©carter...
 							*Nvi*
-Nvi	Le « Nouveau » Vi. Clone de Vi distribué avec BSD 4.4 et FreeBSD. Très
-	bonne compatibilité avec le Vi original, avec quelques extensions. La
-	version utilisée est 1.79. ":version" renvoie "Version 1.79
-	(10/23/96)". Il n'y a pas eu de version sortie ces dernières années,
-	bien qu'il existe une version de développement (1.81).
+Nvi	Le Â« Nouveau Â» Vi. Clone de Vi distribuÃ© avec BSD 4.4 et FreeBSD. TrÃ¨s
+	bonne compatibilitÃ© avec le Vi original, avec quelques extensions. La
+	version utilisÃ©e est 1.79. ":version" renvoie "Version 1.79
+	(10/23/96)". Il n'y a pas eu de version sortie ces derniÃ¨res annÃ©es,
+	bien qu'il existe une version de dÃ©veloppement (1.81).
 	Le code source est librement disponible.
 							*Elvis*
-Elvis	Un autre clone de Vi, réalisé par Steve Kirkendall. Très compact, mais
-	pas aussi souple que Vim. La version utilisée est la 2.1. Son
-	développement se poursuit.
+Elvis	Un autre clone de Vi, rÃ©alisÃ© par Steve Kirkendall. TrÃ¨s compact, mais
+	pas aussi souple que Vim. La version utilisÃ©e est la 2.1. Son
+	dÃ©veloppement se poursuit.
 	Le code source est librement disponible.
 
 ==============================================================================
 4. Notations						*notation*
 
 Si la coloration syntaxique est active lorsque vous lisez ce manuel, le texte
-non littéral est en général mis en surbrillance selon le groupe Special. Ceci
-concerne les éléments entre [], {} et <>, et du type CTRL-X.
+non littÃ©ral est en gÃ©nÃ©ral mis en surbrillance selon le groupe Special. Ceci
+concerne les Ã©lÃ©ments entre [], {} et <>, et du type CTRL-X.
 
-NOTE : Vim utilise tous les caractères disponibles pour les commandes.
+NOTE : Vim utilise tous les caractÃ¨res disponibles pour les commandes.
 Parfois, [], {} et <> feront partie de ce que vous devez tapez, mais parfois
-pas, le contexte devrait écarter toute ambiguïté.
+pas, le contexte devrait Ã©carter toute ambiguÃ¯tÃ©.
 
 
-[]		Les caractères entre crochets sont optionnels.
+[]		Les caractÃ¨res entre crochets sont optionnels.
 
 					*count* *[count]* *[quant]* *E489*
-[quant]		« Quantificateur » : un nombre optionnel qui peut précéder une
-		commande afin d'en multiplier ou itérer les effets. Si aucun
-		nombre n'est donné, c'est 1 qui est utilisé par défaut, sauf
+[quant]		Â« Quantificateur Â» : un nombre optionnel qui peut prÃ©cÃ©der une
+		commande afin d'en multiplier ou itÃ©rer les effets. Si aucun
+		nombre n'est donnÃ©, c'est 1 qui est utilisÃ© par dÃ©faut, sauf
 		indication contraire. NOTE : Dans ce manuel, [quant]
-		n'apparaît pas dans la description, mais dans l'explication
+		n'apparaÃ®t pas dans la description, mais dans l'explication
 		d'une commande, afin de faciliter une recherche rapide. Si
-		l'option 'showcmd' est activée, la saisie (partielle) d'un
-		quantificateur est affichée au bas de l'écran. Vous pouvez
+		l'option 'showcmd' est activÃ©e, la saisie (partielle) d'un
+		quantificateur est affichÃ©e au bas de l'Ã©cran. Vous pouvez
 		utiliser <Suppr> pour effacer le dernier chiffre (|N<Del>|).
 
 							*[quotex]*
-["x]		Désigne un registre optionnel où le texte est mémorisé. Voir
-		|registers|. Le x est un caractère unique compris entre 'a' et
+["x]		DÃ©signe un registre optionnel oÃ¹ le texte est mÃ©morisÃ©. Voir
+		|registers|. Le x est un caractÃ¨re unique compris entre 'a' et
 		'z' ou 'A' et 'Z' ou '"', et dans certains cas (commandes de
 		collage) entre '0' et '9', '%', '#', ou autres. Les lettres
-		majuscules et minuscules désignent le même registre, mais
-		l'emploi des minuscules écrase le contenu précédent du
+		majuscules et minuscules dÃ©signent le mÃªme registre, mais
+		l'emploi des minuscules Ã©crase le contenu prÃ©cÃ©dent du
 		registre, tandis que celui des majuscules ajoute le nouveau
-		texte à la suite du précédent. Sans l'argument « "x » (ou avec
-		« "" »), le texte est mémorisé dans le registre sans nom.
+		texte Ã  la suite du prÃ©cÃ©dent. Sans l'argument Â« "x Â» (ou avec
+		Â« "" Â»), le texte est mÃ©morisÃ© dans le registre sans nom.
 
 							*{}*
-{}		Les accolades désignent les arguments obligatoires d'une
+{}		Les accolades dÃ©signent les arguments obligatoires d'une
 		commande, qui peuvent prendre plusieurs valeurs possibles. Les
-		différences entre Vim et Vi sont également indiquées entre
-		accolades (le contexte lève toute ambiguïté).
+		diffÃ©rences entre Vim et Vi sont Ã©galement indiquÃ©es entre
+		accolades (le contexte lÃ¨ve toute ambiguÃ¯tÃ©).
 
 							*{char1-char2}*
-{car1-car2}	Un caractère unique dans la plage de car1 à car2. Par exemple,
-		{a-z} désigne une lettre minuscule. Il est possible de
-		concaténer plusieurs plages (par exemple, {a-zA-Z0-9} désigne
-		un caractère alphanumérique).
+{car1-car2}	Un caractÃ¨re unique dans la plage de car1 Ã  car2. Par exemple,
+		{a-z} dÃ©signe une lettre minuscule. Il est possible de
+		concatÃ©ner plusieurs plages (par exemple, {a-zA-Z0-9} dÃ©signe
+		un caractÃ¨re alphanumÃ©rique).
 
 							*{motion}* *{mouv}*
-{mouv}		Une commande qui déplace le curseur. Elles sont détaillées
+{mouv}		Une commande qui dÃ©place le curseur. Elles sont dÃ©taillÃ©es
 		dans |motion.txt|. Exemples :
-			w	    au début du mot suivant
+			w	    au dÃ©but du mot suivant
 			4j	    quatre lignes plus bas
-			/Le<CR>	    à la prochaine occurrence de "Le"
-		Cette notation est utilisée après un opérateur (voir
+			/Le<CR>	    Ã  la prochaine occurrence de "Le"
+		Cette notation est utilisÃ©e aprÃ¨s un opÃ©rateur (voir
 		|operator|) pour couvrir le texte sur lequel la commande doit
-		opérer.
-		- Si le {mouv}ement inclut un quantificateur et l'opérateur
-		  aussi, ces deux nombres sont multipliés. Par exemple, "2d3w"
+		opÃ©rer.
+		- Si le {mouv}ement inclut un quantificateur et l'opÃ©rateur
+		  aussi, ces deux nombres sont multipliÃ©s. Par exemple, "2d3w"
 		  coupe six mots.
-		- Le {mouv}ement peut aussi être un clic de la souris.
-		  Cependant, cela n'est pas supporté par tous les terminaux.
-		- La commande ":omap" permet de définir des mappages
-		  utilisables quand un opérateur est en suspens.
-		- Les commandes Ex peuvent être utilisées pour déplacer le
+		- Le {mouv}ement peut aussi Ãªtre un clic de la souris.
+		  Cependant, cela n'est pas supportÃ© par tous les terminaux.
+		- La commande ":omap" permet de dÃ©finir des mappages
+		  utilisables quand un opÃ©rateur est en suspens.
+		- Les commandes Ex peuvent Ãªtre utilisÃ©es pour dÃ©placer le
 		  curseur. C'est utile pour appeler une fonction qui effectue
 		  un mouvement complexe. Le mouvement sera toujours exclusif
-		  par caractères, indépendamment de la commande ":" utilisée.
+		  par caractÃ¨res, indÃ©pendamment de la commande ":" utilisÃ©e.
 		  Cela implique qu'il sera impossible d'inclure le dernier
-		  caractère d'une ligne sans la coupure de ligne (à moins que
-		  'virtualedit' ne soit fixé).
-		  Si la commande Ex modifie du texte avant la position d'où
-		  l'opérateur avait débuté, ou fait sauter vers un autre
-		  tampon, le résultat est imprévisible. Il est possible de
-		  changer du texte situé plus bas. Il est possible de sauter
+		  caractÃ¨re d'une ligne sans la coupure de ligne (Ã  moins que
+		  'virtualedit' ne soit fixÃ©).
+		  Si la commande Ex modifie du texte avant la position d'oÃ¹
+		  l'opÃ©rateur avait dÃ©butÃ©, ou fait sauter vers un autre
+		  tampon, le rÃ©sultat est imprÃ©visible. Il est possible de
+		  changer du texte situÃ© plus bas. Il est possible de sauter
 		  vers un autre tampon si le tampon courant n'est pas
-		  déchargé.
+		  dÃ©chargÃ©.
 
 							*{Visual}* *{Visuel}*
-{Visuel}	Une zone de texte sélectionné. Elle commence à l'appel des
+{Visuel}	Une zone de texte sÃ©lectionnÃ©. Elle commence Ã  l'appel des
 		commandes "v", "V", ou CTRL-V, puis n'importe quelle commande
-		déplaçant le curseur peut être utilisée pour changer la fin de
-		la zone de sélection.
-		Utile avant un opérateur |operator| pour mettre en
-		surbrillance le texte sur lequel la commande doit opérer.
+		dÃ©plaÃ§ant le curseur peut Ãªtre utilisÃ©e pour changer la fin de
+		la zone de sÃ©lection.
+		Utile avant un opÃ©rateur |operator| pour mettre en
+		surbrillance le texte sur lequel la commande doit opÃ©rer.
 		Voir |Visual-Mode|.
 
 							*<character>*
-<caractere>	Un caractère spécial du tableau ci-dessous, éventuellement
-		avec un modificateur, ou un caractère ASCII avec modificateur.
+<caractere>	Un caractÃ¨re spÃ©cial du tableau ci-dessous, Ã©ventuellement
+		avec un modificateur, ou un caractÃ¨re ASCII avec modificateur.
 
 							*'character'*
-'c'		Un caractère ASCII unique.
+'c'		Un caractÃ¨re ASCII unique.
 
 							*CTRL-{char}*
-CTRL-{car}	La séquence clavier CTRL-{car} (tapez {car} en maintenant la
-		touche Ctrl enfoncée). La casse de {car} est ignorée, de sorte
-		que CTRL-A et CTRL-a sont équivalents. (Mais comme sur
+CTRL-{car}	La sÃ©quence clavier CTRL-{car} (tapez {car} en maintenant la
+		touche Ctrl enfoncÃ©e). La casse de {car} est ignorÃ©e, de sorte
+		que CTRL-A et CTRL-a sont Ã©quivalents. (Mais comme sur
 		certains terminaux l'utilisation de Maj produit un code
-		différent, évitez de l'utiliser.)
+		diffÃ©rent, Ã©vitez de l'utiliser.)
 
 							*'option'*
-'option'	Une option (ou paramètre interne) dont on peut fixer la valeur
-		est donnée entre apostrophes. Voir |options|.
+'option'	Une option (ou paramÃ¨tre interne) dont on peut fixer la valeur
+		est donnÃ©e entre apostrophes. Voir |options|.
 
 							*quotecommandquote*
-"commande"	Une référence à une commande qu'on peut entrer au clavier est
-		donnée entre doubles-apostrophes.
+"commande"	Une rÃ©fÃ©rence Ã  une commande qu'on peut entrer au clavier est
+		donnÃ©e entre doubles-apostrophes.
 
 					*key-notation* *key-codes* *keycodes*
-Ces noms et notations pour les touches du clavier sont utilisés dans la
-documentation. Ils sont également employables avec la commande ":map" (pour
-insérer le nom d'une touche, pressez CTRL-K suivi de la touche souhaitée).
+Ces noms et notations pour les touches du clavier sont utilisÃ©s dans la
+documentation. Ils sont Ã©galement employables avec la commande ":map" (pour
+insÃ©rer le nom d'une touche, pressez CTRL-K suivi de la touche souhaitÃ©e).
 
-NOTATION	SIGNIFICATION	    ÉQUIVALENT	VALEUR DÉCIMALE         ~
+NOTATION	SIGNIFICATION	    Ã‰QUIVALENT	VALEUR DÃ‰CIMALE         ~
 ------------------------------------------------------------------------
-<Nul>		caractère NUL		CTRL-@	  0 (représenté par 10) *<Nul>*
-<BS>		retour arrière		CTRL-H	  8	*backspace*
+<Nul>		caractÃ¨re NUL		CTRL-@	  0 (reprÃ©sentÃ© par 10) *<Nul>*
+<BS>		retour arriÃ¨re		CTRL-H	  8	*backspace*
 <Tab>		tabulation		CTRL-I	  9	*tab* *Tab*
 							*linefeed*
-<NL>		saut-de-ligne		CTRL-J	 10 (utilisé pour <Nul>)
+<NL>		saut-de-ligne		CTRL-J	 10 (utilisÃ© pour <Nul>)
 <FF>		saut-de-page		CTRL-L	 12	*formfeed*
 <CR>		retour chariot		CTRL-M	 13	*carriage-return*
 <Return>	comme <CR>				*<Return>*
-<Enter>		entrée, comme <CR>			*<Enter>*
-<Esc>		échappement		CTRL-[	 27	*escape* *<Esc>*
+<Enter>		entrÃ©e, comme <CR>			*<Enter>*
+<Esc>		Ã©chappement		CTRL-[	 27	*escape* *<Esc>*
 <Space>		espace				 32	*space*
-<lt>		inférieur-à		<	 60	*<lt>*
+<lt>		infÃ©rieur-Ã 		<	 60	*<lt>*
 <Bslash>	contre-oblique		\	 92	*backslash* *<Bslash>*
 <Bar>		barre verticale		|	124	*<Bar>*
 <Del>		suppression			127
-<CSI>		introduction séquence	ALT-Esc 155	*<CSI>*
-		   de contrôle (CSI)
+<CSI>		introduction sÃ©quence	ALT-Esc 155	*<CSI>*
+		   de contrÃ´le (CSI)
 <xCSI>		CSI saisie dans l'IHM graphique		*<xCSI>*
 
-<EOL>		fin-de-ligne (défini par <CR>, <LF>	*<EOL>*
-		   ou <CR><LF>, selon les systèmes et 'fileformat')
+<EOL>		fin-de-ligne (dÃ©fini par <CR>, <LF>	*<EOL>*
+		   ou <CR><LF>, selon les systÃ¨mes et 'fileformat')
 
-<Up>		flèche-haut			*cursor-up* *cursor_up*
-<Down>		flèche-bas			*cursor-down* *cursor_down*
-<Left>		flèche-gauche			*cursor-left* *cursor_left*
-<Right>		flèche-droite			*cursor-right* *cursor_right*
-<S-Up>		majuscule + flèche-haut
-<S-Down>	majuscule + flèche-bas
-<S-Left>	majuscule + flèche-gauche
-<S-Right>	majuscule + flèche-droite
-<C-Left>	contrôle + flèche-gauche
-<C-Right>	contrôle + flèche-droite
+<Up>		flÃ¨che-haut			*cursor-up* *cursor_up*
+<Down>		flÃ¨che-bas			*cursor-down* *cursor_down*
+<Left>		flÃ¨che-gauche			*cursor-left* *cursor_left*
+<Right>		flÃ¨che-droite			*cursor-right* *cursor_right*
+<S-Up>		majuscule + flÃ¨che-haut
+<S-Down>	majuscule + flÃ¨che-bas
+<S-Left>	majuscule + flÃ¨che-gauche
+<S-Right>	majuscule + flÃ¨che-droite
+<C-Left>	contrÃ´le + flÃ¨che-gauche
+<C-Right>	contrÃ´le + flÃ¨che-droite
 
-<F1> - <F12>	touches de fonction de 1 à 12	*function_key* *function-key*
-<S-F1> - <S-F12> majuscule + fonction de 1 à 12	*<S-F1>*
+<F1> - <F12>	touches de fonction de 1 Ã  12	*function_key* *function-key*
+<S-F1> - <S-F12> majuscule + fonction de 1 Ã  12	*<S-F1>*
 <Help>		touche aide
 <Undo>		touche annulation
 <Insert>	touche insertion
 <Home>		orig				*home*
 <End>		fin				*end*
-<PageUp>	page-préc			*page_up* *page-up*
+<PageUp>	page-prÃ©c			*page_up* *page-up*
 <PageDown>	page-suiv			*page_down* *page-down*
 
-PAVÉ NUMÉRIQUE :
-<kHome>		pavé orig (en haut à gauche)		*keypad-home*
-<kEnd>		pavé fin (en bas à gauche)		*keypad-end*
-<kPageUp>	pavé page-préc (en haut à droite)	*keypad-page-up*
-<kPageDown>	pavé page-suiv (en bas à droite)	*keypad-page-down*
-<kPlus>		pavé +					*keypad-plus*
-<kMinus>	pavé -					*keypad-minus*
-<kMultiply>	pavé *					*keypad-multiply*
-<kDivide>	pavé /					*keypad-divide*
-<kEnter>	pavé entrée				*keypad-enter*
-<kPoint>	pavé point décimal			*keypad-point*
-<k0> - <k9>	pavé 0 à 9				*keypad-0* *keypad-9*
+PAVÃ‰ NUMÃ‰RIQUE :
+<kHome>		pavÃ© orig (en haut Ã  gauche)		*keypad-home*
+<kEnd>		pavÃ© fin (en bas Ã  gauche)		*keypad-end*
+<kPageUp>	pavÃ© page-prÃ©c (en haut Ã  droite)	*keypad-page-up*
+<kPageDown>	pavÃ© page-suiv (en bas Ã  droite)	*keypad-page-down*
+<kPlus>		pavÃ© +					*keypad-plus*
+<kMinus>	pavÃ© -					*keypad-minus*
+<kMultiply>	pavÃ© *					*keypad-multiply*
+<kDivide>	pavÃ© /					*keypad-divide*
+<kEnter>	pavÃ© entrÃ©e				*keypad-enter*
+<kPoint>	pavÃ© point dÃ©cimal			*keypad-point*
+<k0> - <k9>	pavÃ© 0 Ã  9				*keypad-0* *keypad-9*
 
 MODIFICATEURS :
 <S-...>		majuscule + touche			*shift* *<S-*
-<C-...>		contrôle + touche			*control* *ctrl* *<C-*
-<M-...>		alt + touche ou méta + touche		*meta* *alt* *<M-*
+<C-...>		contrÃ´le + touche			*control* *ctrl* *<C-*
+<M-...>		alt + touche ou mÃ©ta + touche		*meta* *alt* *<M-*
 <A-...>		comme <M-...>				*<A-*
 <D-...>		commande + touche (Mac uniquement)	*<D-*
 
-<t_xx>		touche représentée par l'entrée termcap "xx"
+<t_xx>		touche reprÃ©sentÃ©e par l'entrÃ©e termcap "xx"
 ------------------------------------------------------------------------
 
-NOTE : Les combinaisons Maj + touches fléchées, ainsi que les touches <Aide>
+NOTE : Les combinaisons Maj + touches flÃ©chÃ©es, ainsi que les touches <Aide>
 et <Annul>, ne sont disponibles que sur un petit nombre de terminaux. Sur
-Amiga, Maj + F10 produit un code (CSI) qui est également utilisé par des
-séquences claviers. Il sera reconnu uniquement après la saisie d'une touche
-supplémentaire.
+Amiga, Maj + F10 produit un code (CSI) qui est Ã©galement utilisÃ© par des
+sÃ©quences claviers. Il sera reconnu uniquement aprÃ¨s la saisie d'une touche
+supplÃ©mentaire.
 
 NOTE : Il existe deux codes pour la touche de suppression (Suppr). 127 est la
-valeur ASCII décimale de cette touche, qui sera toujours reconnue. Certaines
+valeur ASCII dÃ©cimale de cette touche, qui sera toujours reconnue. Certaines
 touches de suppression envoient une autre valeur, auquel cas cette valeur est
-obtenue par l'entrée termcap "kD". Les deux valeurs ont le même effet. Voir
+obtenue par l'entrÃ©e termcap "kD". Les deux valeurs ont le mÃªme effet. Voir
 aussi |:fixdel|.
 
-NOTE : Les touches du pavé numérique sont utilisées de la même façon que les
-touches « normales » correspondantes. Par exemple, <pDebut> produit le même
+NOTE : Les touches du pavÃ© numÃ©rique sont utilisÃ©es de la mÃªme faÃ§on que les
+touches Â« normales Â» correspondantes. Par exemple, <pDebut> produit le mÃªme
 effet que <Debut>.
-   Si une touche du pavé envoie le même code que son équivalent « normal »,
-elle sera reconnue elle-même comme « normale », c'est-à-dire n'appartenant pas
-au pavé numérique. Par exemple, si <pDebut> envoie le même code que <Debut>,
-lorsque <pDebut> sera pressé, Vim croira que <Debut> a été pressé. Dans ce
+   Si une touche du pavÃ© envoie le mÃªme code que son Ã©quivalent Â« normal Â»,
+elle sera reconnue elle-mÃªme comme Â« normale Â», c'est-Ã -dire n'appartenant pas
+au pavÃ© numÃ©rique. Par exemple, si <pDebut> envoie le mÃªme code que <Debut>,
+lorsque <pDebut> sera pressÃ©, Vim croira que <Debut> a Ã©tÃ© pressÃ©. Dans ce
 cas, le mappage de <pDebut> ne fonctionnera pas.
 
 							*<>*
-Les exemples donnés utilisent souvent la notation <>. Elle permet de clarifier
-les choses, et peut généralement être saisie littéralement, par exemple avec
-la commande ":map". Les règles en sont :
-1. Tous les caractères imprimables sont saisis directement, sauf '\'
-   (contre-oblique) et '<' (inférieur-à).
-2. Une contre-oblique est représentée par "\\" (contre-oblique double), ou
+Les exemples donnÃ©s utilisent souvent la notation <>. Elle permet de clarifier
+les choses, et peut gÃ©nÃ©ralement Ãªtre saisie littÃ©ralement, par exemple avec
+la commande ":map". Les rÃ¨gles en sont :
+1. Tous les caractÃ¨res imprimables sont saisis directement, sauf '\'
+   (contre-oblique) et '<' (infÃ©rieur-Ã ).
+2. Une contre-oblique est reprÃ©sentÃ©e par "\\" (contre-oblique double), ou
    "<Bslash>".
-3. Un '<' est représenté par "\<" ou "<lt>". Lorsque aucune confusion n'est
-   possible, un '<' peut être saisi directement.
-4. "<touche>" représente la touche spéciale précisée. Le détail de cette
-   notation est explicité dans le tableau ci-dessus. Quelques exemples :
-	<Esc>		touche Échap
+3. Un '<' est reprÃ©sentÃ© par "\<" ou "<lt>". Lorsque aucune confusion n'est
+   possible, un '<' peut Ãªtre saisi directement.
+4. "<touche>" reprÃ©sente la touche spÃ©ciale prÃ©cisÃ©e. Le dÃ©tail de cette
+   notation est explicitÃ© dans le tableau ci-dessus. Quelques exemples :
+	<Esc>		touche Ã‰chap
 	<C-G>		CTRL-G
-	<Up>		touche fléchée haut
-	<C-LeftMouse>	Contrôle + clic gauche de la souris
+	<Up>		touche flÃ©chÃ©e haut
+	<C-LeftMouse>	ContrÃ´le + clic gauche de la souris
 	<S-F11>		Maj + F11
-	<M-a>		Alt + a ('a' avec le 8e bit positionné)
-	<M-a>		Alt + A ('A' avec le 8e bit positionné)
-	<t_kd>		entrée termcap "kd" (touche fléchée bas)
+	<M-a>		Alt + a ('a' avec le 8e bit positionnÃ©)
+	<M-a>		Alt + A ('A' avec le 8e bit positionnÃ©)
+	<t_kd>		entrÃ©e termcap "kd" (touche flÃ©chÃ©e bas)
 
 Si vous souhaitez utiliser pleinement la notation <> dans Vim, assurez-vous
-que le drapeau '<' soit exclu de 'cpoptions' (ce qui est le cas par défaut
-lorsque 'compatible' n'est pas activé). >
+que le drapeau '<' soit exclu de 'cpoptions' (ce qui est le cas par dÃ©faut
+lorsque 'compatible' n'est pas activÃ©). >
 	:set cpo-=<
-La notation <> utilise <lt> comme caractère d'échappement. Une contre-oblique
+La notation <> utilise <lt> comme caractÃ¨re d'Ã©chappement. Une contre-oblique
 ('\') fonctionnera aussi, mais uniquement lorsque 'cpoptions' n'inclut pas le
 drapeau 'B'.
 
-Exemples pour mapper CTRL-H au six caractères "<Home>" : >
+Exemples pour mapper CTRL-H au six caractÃ¨res "<Home>" : >
 	:imap <C-H> \<Home>
 	:imap <C-H> <lt>Home>
-La première ligne marche uniquement lorsque le drapeau 'B' est exclu de
+La premiÃ¨re ligne marche uniquement lorsque le drapeau 'B' est exclu de
 'cpoptions'. La seconde marchera toujours.
 
-Pour obtenir un "<lt>" littéral dans un mappage : >
+Pour obtenir un "<lt>" littÃ©ral dans un mappage : >
 	:map <C-L> <lt>lt>
 
-Pour les commandes de mappages, d'abréviations et de menus, vous pouvez soit
+Pour les commandes de mappages, d'abrÃ©viations et de menus, vous pouvez soit
 copier-coller ces exemples et les employer directement, soit les taper
-littéralement, y compris les caractères '<' et '>'. Mais cela ne fonctionnera
+littÃ©ralement, y compris les caractÃ¨res '<' et '>'. Mais cela ne fonctionnera
 PAS pour les autres commandes, telles que ":set" et ":autocmd" !
 
 ==============================================================================
-5. Introduction aux modes d'édition		*vim-modes-intro* *vim-modes*
+5. Introduction aux modes d'Ã©dition		*vim-modes-intro* *vim-modes*
 
 Vim distingue six modes de BASE :
 
 					*Normal* *Normal-mode* *command-mode*
 Mode Normal		En mode Normal, vous pouvez entrer toutes les
-			commandes normales de l'éditeur. Au lancement, vous
+			commandes normales de l'Ã©diteur. Au lancement, vous
 			vous trouvez dans ce mode (sauf si l'option
-			'insertmode' est activée, voir ci-dessous). Également
-			appelé mode Commande.
+			'insertmode' est activÃ©e, voir ci-dessous). Ã‰galement
+			appelÃ© mode Commande.
 
 Mode Visuel		Comme le mode Normal, mais les commandes de
-			déplacement délimitent une zone Visuel. Quand une
-			commande ne servant pas au déplacement est saisie,
-			elle est exécutée pour cette seule zone. Voir
+			dÃ©placement dÃ©limitent une zone Visuel. Quand une
+			commande ne servant pas au dÃ©placement est saisie,
+			elle est exÃ©cutÃ©e pour cette seule zone. Voir
 			|Visual-mode|.
-			Si l'option 'showmode' est activée, "-- VISUAL --" est
-			affiché au bas de la fenêtre.
+			Si l'option 'showmode' est activÃ©e, "-- VISUAL --" est
+			affichÃ© au bas de la fenÃªtre.
 
-Mode Sélection		Ce mode se rapproche du mode sélection de MS-Windows.
-			Saisir un caractère imprimable coupe la sélection et
+Mode SÃ©lection		Ce mode se rapproche du mode sÃ©lection de MS-Windows.
+			Saisir un caractÃ¨re imprimable coupe la sÃ©lection et
 			lance le mode Insertion. Voir |Select-mode|.
-			Si l'option 'showmode' est activée, "-- SELECT --" est
-			affiché au bas de la fenêtre.
+			Si l'option 'showmode' est activÃ©e, "-- SELECT --" est
+			affichÃ© au bas de la fenÃªtre.
 
-Mode Insertion		En mode Insertion, le texte saisi est inséré dans le
+Mode Insertion		En mode Insertion, le texte saisi est insÃ©rÃ© dans le
 			tampon courant. Voir |Insert-mode|.
-			Si l'option 'showmode' est activée, "-- INSERT --" est
-			affiché au bas de la fenêtre.
+			Si l'option 'showmode' est activÃ©e, "-- INSERT --" est
+			affichÃ© au bas de la fenÃªtre.
 
 Mode Ligne-de-commande
-Mode Lignecmd		En mode Ligne-de-commande (souvent abrégé en
+Mode Lignecmd		En mode Ligne-de-commande (souvent abrÃ©gÃ© en
 			Lignecmd), on peut entrer une ligne de texte au bas de
-			la fenêtre. Elle sert pour les commandes Ex (":"), les
+			la fenÃªtre. Elle sert pour les commandes Ex (":"), les
 			commandes de recherche de motifs ("?" et "/") et les
 			commandes de filtre ("!"). Voir |Cmdline-mode|.
 
 Mode Ex			Comme en mode Ligne-de-commande, mais reste en mode Ex
-			après l'exécution d'une commande. Édition de la ligne
-			de commande très rudimentaire. Voir |Ex-mode|.
+			aprÃ¨s l'exÃ©cution d'une commande. Ã‰dition de la ligne
+			de commande trÃ¨s rudimentaire. Voir |Ex-mode|.
 
 
-Il y a cinq modes SUPPLÉMENTAIRES. Ce sont des variantes des premiers :
+Il y a cinq modes SUPPLÃ‰MENTAIRES. Ce sont des variantes des premiers :
 
 				    *Operator-pending* *Operator-pending-mode*
-Mode Opérateur-en-cours	Comme le mode Normal, mais après le début de la saisie
-			d'un opérateur, quand Vim est en attente d'un
-			{mouv}ement précisant la plage sur laquelle il doit
-			opérer.
+Mode OpÃ©rateur-en-cours	Comme le mode Normal, mais aprÃ¨s le dÃ©but de la saisie
+			d'un opÃ©rateur, quand Vim est en attente d'un
+			{mouv}ement prÃ©cisant la plage sur laquelle il doit
+			opÃ©rer.
 
 Mode Remplacement	Le mode Remplacement est un comportement particulier
 			du mode Insertion. On peut tout y faire comme en mode
-			Insertion, mais pour chaque caractère saisi, un
-			caractère du texte existant est supprimé. Voir
+			Insertion, mais pour chaque caractÃ¨re saisi, un
+			caractÃ¨re du texte existant est supprimÃ©. Voir
 			|Replace-mode|.
-			Si l'option 'showmode' est activée, "-- REPLACE --"
-			est affiché au bas de la fenêtre.
+			Si l'option 'showmode' est activÃ©e, "-- REPLACE --"
+			est affichÃ© au bas de la fenÃªtre.
 
 Mode Insertion Normal	On y entre en saisissant CTRL-O en mode Insertion.
-			Identique au mode Normal, mais après l'exécution d'une
+			Identique au mode Normal, mais aprÃ¨s l'exÃ©cution d'une
 			commande, Vim revient en mode Insertion.
-			Si l'option 'showmode' est activée, "-- (insert) --"
-			est affiché au bas de la fenêtre.
+			Si l'option 'showmode' est activÃ©e, "-- (insert) --"
+			est affichÃ© au bas de la fenÃªtre.
 
-Mode Insertion Visuel	On y entre en lançant une sélection Visuel depuis le
+Mode Insertion Visuel	On y entre en lanÃ§ant une sÃ©lection Visuel depuis le
 			mode Insertion, p. ex., en tapant CTRL-O puis "v", "V"
-			ou CTRL-V. À la fin de la sélection Visuel, Vim
+			ou CTRL-V. Ã€ la fin de la sÃ©lection Visuel, Vim
 			revient en mode Insertion.
-			Si 'showmode' est activé, "-- (insert) VISUAL --" est
-			affiché au bas de la fenêtre.
+			Si 'showmode' est activÃ©, "-- (insert) VISUAL --" est
+			affichÃ© au bas de la fenÃªtre.
 
-Mode Insertion Sélection
-			On y entre en lançant le mode Sélection en mode
+Mode Insertion SÃ©lection
+			On y entre en lanÃ§ant le mode SÃ©lection en mode
 			Insertion, p. ex. en faisant glisser la souris ou avec
-			<S-Droite>. À la fin du mode Sélection, Vim revient en
+			<S-Droite>. Ã€ la fin du mode SÃ©lection, Vim revient en
 			mode Insertion.
-			Si 'showmode' est activé, "-- (insert) SELECT --" est
-			affiché au bas de la fenêtre.
+			Si 'showmode' est activÃ©, "-- (insert) SELECT --" est
+			affichÃ© au bas de la fenÃªtre.
 
 ==============================================================================
-6. Passer d'un mode à un autre				*mode-switching*
+6. Passer d'un mode Ã  un autre				*mode-switching*
 
 Si pour n'importe quelle raison vous ignorez dans quel mode vous vous trouvez,
 vous pouvez toujours retourner en mode Normal en tapant deux fois <Echap>.
 Cela ne fonctionne pas en mode Ex, utilisez alors ":visual".
-   Vous saurez que vous êtes revenu en mode Normal lorsque vous aurez vu
-l'écran clignoter ou entendu un bip après avoir tapé <Echap>. Cependant, si
-vous pressez <Echap> après avoir utilisé CTRL-O en mode Insertion, vous aurez
-un bip mais resterez en mode Insertion (pour en sortir, tapez <Echap> à
+   Vous saurez que vous Ãªtes revenu en mode Normal lorsque vous aurez vu
+l'Ã©cran clignoter ou entendu un bip aprÃ¨s avoir tapÃ© <Echap>. Cependant, si
+vous pressez <Echap> aprÃ¨s avoir utilisÃ© CTRL-O en mode Insertion, vous aurez
+un bip mais resterez en mode Insertion (pour en sortir, tapez <Echap> Ã 
 nouveau).
 
 							*i_esc*
 	    ... AU MODE							      ~
-	    Normal  Visuel  Sélection  Insertion  Remplacement  Lignecmd  Ex  ~
+	    Normal  Visuel  SÃ©lection  Insertion  Remplacement  Lignecmd  Ex  ~
 DU MODE ...								      ~
 Normal		    v V ^V	*4	   *1	       R	: / ? !   Q
 Visuel	      *2		^G	   c C	       --	   :      --
-Sélection     *5    ^O ^G		   *6	       --	   --     --
+SÃ©lection     *5    ^O ^G		   *6	       --	   --     --
 Insertion    <Echap>  --	--		     <Inser>       --	  --
 Remplacement <Echap>  --	--	 <Inser>		   --     --
 Lignecmd      *3      --	--	 :start	       --	          --
@@ -694,58 +694,58 @@ Ex	      :vi     --	--	   --	       --	   --
 *1 On peut passer du mode Normal au mode Insertion par une des commandes "i",
    "I", "a", "A", "o", "O", "c", "C", "s" ou S".
 *2 On passe du mode Visuel au mode Normal en donnant une commande ne servant
-   pas au déplacement, et qui sera exécutée, ou en tapant <Echap>, "v", "V" ou
+   pas au dÃ©placement, et qui sera exÃ©cutÃ©e, ou en tapant <Echap>, "v", "V" ou
    CTRL-V (voir |v_v|), qui quittent le mode Visuel sans effet de bord.
 *3 On peut passer du mode Ligne-de-commande au mode Normal en :
-   - tapant <CR> ou <NL>, qui exécutent la commande saisie ;
-   - effaçant toute la ligne (p. ex. avec CTRL-U) et en tapant un <RetArr>
+   - tapant <CR> ou <NL>, qui exÃ©cutent la commande saisie ;
+   - effaÃ§ant toute la ligne (p. ex. avec CTRL-U) et en tapant un <RetArr>
      final ;
    - tapant CTRL-C ou <Echap>, qui quittent le mode Ligne-de-commande sans
-     exécuter la commande.
-   Dans le dernier cas, <Echap> peut être le caractère défini par l'option
-   'wildchar', auquel cas il activera le complètement en mode Lignecmd. Pour
-   passer outre, saisir <Echap> à nouveau. {Vi : <Echap> exécute la ligne de
+     exÃ©cuter la commande.
+   Dans le dernier cas, <Echap> peut Ãªtre le caractÃ¨re dÃ©fini par l'option
+   'wildchar', auquel cas il activera le complÃ¨tement en mode Lignecmd. Pour
+   passer outre, saisir <Echap> Ã  nouveau. {Vi : <Echap> exÃ©cute la ligne de
    commande. C'est inattendu pour la plupart des utilisateurs, c'est pourquoi
-   Vim ne réagit pas ainsi. Mais quand <Echap> est utilisé dans un mappage, la
-   ligne de commande est exécutée. Si vous souhaitez imiter le comportement de
+   Vim ne rÃ©agit pas ainsi. Mais quand <Echap> est utilisÃ© dans un mappage, la
+   ligne de commande est exÃ©cutÃ©e. Si vous souhaitez imiter le comportement de
    Vi quand vous tapez <Echap>, utilisez ":cmap ^V<Echap> ^V^M"}
-*4 On passe du mode Normal au mode Sélection en :
-   - sélectionnant du texte avec la souris, si 'selectmode' contient "mouse" ;
-   - entrant un caractère de commande non-imprimable pour déplacer le curseur
-     pendant que la touche Maj est pressée, si 'selectmode' contient "key" ;
+*4 On passe du mode Normal au mode SÃ©lection en :
+   - sÃ©lectionnant du texte avec la souris, si 'selectmode' contient "mouse" ;
+   - entrant un caractÃ¨re de commande non-imprimable pour dÃ©placer le curseur
+     pendant que la touche Maj est pressÃ©e, si 'selectmode' contient "key" ;
    - utilisant "v", "V" ou CTRL-V, si 'selectmode' contient "cmd" ;
    - utilisant "gh", "gH" ou "g CTRL-H" |g_CTRL-H|.
-*5 On passe du mode Sélection au mode Normal en entrant un caractère de
-   commande non-imprimable pour déplacer le curseur, sans appuyer sur la
+*5 On passe du mode SÃ©lection au mode Normal en entrant un caractÃ¨re de
+   commande non-imprimable pour dÃ©placer le curseur, sans appuyer sur la
    touche Maj.
-*6 On passe du mode Sélection au mode Insertion en tapant un caractère
-   imprimable. La sélection est coupée et le caractère inséré.
+*6 On passe du mode SÃ©lection au mode Insertion en tapant un caractÃ¨re
+   imprimable. La sÃ©lection est coupÃ©e et le caractÃ¨re insÃ©rÃ©.
 
-Si l'option 'insertmode' est activée, l'édition débutera en mode Insertion.
+Si l'option 'insertmode' est activÃ©e, l'Ã©dition dÃ©butera en mode Insertion.
 
 	*CTRL-\_CTRL-N* *i_CTRL-\_CTRL-N* *c_CTRL-\_CTRL-N* *v_CTRL-\_CTRL-N*
 De plus, la commande "CTRL-\ CTRL-N" ou <C-\><C-N> permet de revenir en mode
-Normal depuis n'importe quel autre mode. Ceci peut être utile pour s'assurer
-que Vim est bien en mode Normal, sans émettre de bip comme avec <Echap>.
-Néanmoins, cela ne marche pas en mode Ex.
+Normal depuis n'importe quel autre mode. Ceci peut Ãªtre utile pour s'assurer
+que Vim est bien en mode Normal, sans Ã©mettre de bip comme avec <Echap>.
+NÃ©anmoins, cela ne marche pas en mode Ex.
 
 	*CTRL-\_CTRL-G* *i_CTRL-\_CTRL-G* *c_CTRL-\_CTRL-G* *v_CTRL-\_CTRL-G*
 La commande "CTRL-\ CTRL-G" ou <C-\><C-G> permet de passer en mode Insertion
-quand 'insertmode' est activé. Sinon, elle fera revenir en mode Normal. Ceci
-peut être utile pour s'assurer que Vim est bien dans le mode indiqué par
+quand 'insertmode' est activÃ©. Sinon, elle fera revenir en mode Normal. Ceci
+peut Ãªtre utile pour s'assurer que Vim est bien dans le mode indiquÃ© par
 'insertmode', si l'on ignore le mode courant.
 
 				    *Q* *mode-Ex* *Ex-mode* *Ex* *EX* *E501*
-Q		Passe en mode Ex. C'est à peu près comme taper des commandes
-		":" les unes après les autres, excepté que :
-		- il n'y a pas à ressaisir ":" ;
-		- l'écran n'est pas rafraîchi après chaque commande ;
-		- les commandes d'édition du mode Lignecmd sont inopérantes ;
-		- les mappages et abréviations sont inaccessibles.
-		En fait, vous éditez les lignes avec les commandes d'édition
-		de ligne « standard » (<Suppr> ou <RetArr> pour effacer,
+Q		Passe en mode Ex. C'est Ã  peu prÃ¨s comme taper des commandes
+		":" les unes aprÃ¨s les autres, exceptÃ© que :
+		- il n'y a pas Ã  ressaisir ":" ;
+		- l'Ã©cran n'est pas rafraÃ®chi aprÃ¨s chaque commande ;
+		- les commandes d'Ã©dition du mode Lignecmd sont inopÃ©rantes ;
+		- les mappages et abrÃ©viations sont inaccessibles.
+		En fait, vous Ã©ditez les lignes avec les commandes d'Ã©dition
+		de ligne Â« standard Â» (<Suppr> ou <RetArr> pour effacer,
 		CTRL-U pour supprimer toute la ligne).
-		Vim entrera par défaut dans ce mode si `ex` est invoqué sur la
+		Vim entrera par dÃ©faut dans ce mode si `ex` est invoquÃ© sur la
 		ligne de commande.
 		Utilisez la commande ":vi" |:visual| pour quitter le mode Ex.
 		NOTE : Dans les anciennes versions de Vim, "Q" mettait en
@@ -755,213 +755,213 @@ Q		Passe en mode Ex. C'est à peu près comme taper des commandes
 
 							*gQ*
 gQ		Passe en mode Ex, mais se comporte comme si on tapait des
-		commandes ":" à la suite. Les commandes d'édition, de
-		complètement, etc. du mode Lignecmd sont disponibles.
+		commandes ":" Ã  la suite. Les commandes d'Ã©dition, de
+		complÃ¨tement, etc. du mode Lignecmd sont disponibles.
 		Utilisez la commande ":vi" |:visual| pour quitter le mode Ex.
 		{absent de Vi}
 
 ==============================================================================
-7. Contenu d'une fenêtre				*window-contents*
+7. Contenu d'une fenÃªtre				*window-contents*
 
-En mode Normal et Insertion/Remplacement, l'écran de la fenêtre affiche le
-contenu du tampon : « tel écran/tel écrit » [WYSIWYG : "What You See Is What
+En mode Normal et Insertion/Remplacement, l'Ã©cran de la fenÃªtre affiche le
+contenu du tampon : Â« tel Ã©cran/tel Ã©crit Â» [WYSIWYG : "What You See Is What
 You Get"]. Il y a deux exceptions :
-- lorsque l'option 'cpotions' contient '$' et que la modification est confinée
-  à une seule ligne, le texte n'est pas directement supprimé mais un '$' est
-  placé au dernier caractère modifié ;
-- lors de l'insertion du texte dans une fenêtre, les autres fenêtres affichant
-  le même texte ne sont mises à jour que lorsque l'insertion est terminée.
-  {Vi : l'écran n'est pas toujours mis à jour pour les terminaux lents}
+- lorsque l'option 'cpotions' contient '$' et que la modification est confinÃ©e
+  Ã  une seule ligne, le texte n'est pas directement supprimÃ© mais un '$' est
+  placÃ© au dernier caractÃ¨re modifiÃ© ;
+- lors de l'insertion du texte dans une fenÃªtre, les autres fenÃªtres affichant
+  le mÃªme texte ne sont mises Ã  jour que lorsque l'insertion est terminÃ©e.
+  {Vi : l'Ã©cran n'est pas toujours mis Ã  jour pour les terminaux lents}
 
-Les lignes plus longues que la largeur de la fenêtre seront enroulées, à moins
-que l'option 'wrap' ne soit désactivée (voir ci-dessous). L'option 'linebreak'
-peut être activée pour permettre d'enrouler une ligne à un caractère d'espace.
+Les lignes plus longues que la largeur de la fenÃªtre seront enroulÃ©es, Ã  moins
+que l'option 'wrap' ne soit dÃ©sactivÃ©e (voir ci-dessous). L'option 'linebreak'
+peut Ãªtre activÃ©e pour permettre d'enrouler une ligne Ã  un caractÃ¨re d'espace.
 
-S'il reste de la place après la dernière ligne du tampon, Vim affichera '~'
-dans la première colonne de chacune des dernières lignes du tampon, comme
+S'il reste de la place aprÃ¨s la derniÃ¨re ligne du tampon, Vim affichera '~'
+dans la premiÃ¨re colonne de chacune des derniÃ¨res lignes du tampon, comme
 ceci :
 
 	+-----------------------+
-	|pénultième ligne	|
-	|dernière ligne		|
+	|pÃ©nultiÃ¨me ligne	|
+	|derniÃ¨re ligne		|
 	|~			|
 	|~			|
 	+-----------------------+
 
-Ainsi, les lignes débutant par '~' indiquent que la fin du tampon est
+Ainsi, les lignes dÃ©butant par '~' indiquent que la fin du tampon est
 atteinte.
 
-Si la dernière ligne d'une fenêtre en dépasse, Vim l'indiquera par un '@' dans
-la première colonne des dernières lignes de la fenêtre, comme ceci :
+Si la derniÃ¨re ligne d'une fenÃªtre en dÃ©passe, Vim l'indiquera par un '@' dans
+la premiÃ¨re colonne des derniÃ¨res lignes de la fenÃªtre, comme ceci :
 
 	+-----------------------+
-	|première ligne		|
-	|deuxième ligne		|
+	|premiÃ¨re ligne		|
+	|deuxiÃ¨me ligne		|
 	|@			|
 	|@			|
 	+-----------------------+
 
-Ainsi, les lignes débutant par '@' indiquent une ligne qui ne rentre pas dans
-le restant de la fenêtre.
+Ainsi, les lignes dÃ©butant par '@' indiquent une ligne qui ne rentre pas dans
+le restant de la fenÃªtre.
 
-Lorsque le drapeau "lastline" est présent dans l'option 'display', le
-caractère '@' ne sera pas visible sur côté gauche de la fenêtre. Si la
-dernière ligne dépasse de l'écran, seule la partie qui rentre dedans sera
-affichée et ses trois derniers caractères seront remplacés par "@@@", comme
+Lorsque le drapeau "lastline" est prÃ©sent dans l'option 'display', le
+caractÃ¨re '@' ne sera pas visible sur cÃ´tÃ© gauche de la fenÃªtre. Si la
+derniÃ¨re ligne dÃ©passe de l'Ã©cran, seule la partie qui rentre dedans sera
+affichÃ©e et ses trois derniers caractÃ¨res seront remplacÃ©s par "@@@", comme
 ceci :
 
 	+-----------------------+
-	|première ligne		|
-	|deuxième ligne		|
-	|une ligne très longue q|
-	|ui dépasse de la fen@@@|
+	|premiÃ¨re ligne		|
+	|deuxiÃ¨me ligne		|
+	|une ligne trÃ¨s longue q|
+	|ui dÃ©passe de la fen@@@|
 	+-----------------------+
 
-Il existe une situation spéciale dans le cas où une seule ligne est trop
-longue pour rentrer dans la fenêtre : dans ce cas, Vim affichera seulement une
-partie de la ligne, autour de la position du curseur. Aucun caractère spécial
-ne sera employé, afin que vous puissiez éditer n'importe quelle partie de
+Il existe une situation spÃ©ciale dans le cas oÃ¹ une seule ligne est trop
+longue pour rentrer dans la fenÃªtre : dans ce cas, Vim affichera seulement une
+partie de la ligne, autour de la position du curseur. Aucun caractÃ¨re spÃ©cial
+ne sera employÃ©, afin que vous puissiez Ã©diter n'importe quelle partie de
 cette ligne.
-{Vi renvoie une « erreur interne » pour les lignes qui ne rentrent pas dans
-une fenêtre}
+{Vi renvoie une Â« erreur interne Â» pour les lignes qui ne rentrent pas dans
+une fenÃªtre}
 
-Le drapeau '@' dans l'option 'highlight' peut être utilisé pour mettre en
-surbrillance les caractères '@' et '~', afin de les distinguer des caractères
+Le drapeau '@' dans l'option 'highlight' peut Ãªtre utilisÃ© pour mettre en
+surbrillance les caractÃ¨res '@' et '~', afin de les distinguer des caractÃ¨res
 du texte d'un tampon.
 
-L'option 'showbreak' contient la chaîne à afficher au début des lignes
-enroulées.
+L'option 'showbreak' contient la chaÃ®ne Ã  afficher au dÃ©but des lignes
+enroulÃ©es.
 
 							*wrap-off*
-Si l'option 'wrap' est désactivée, les lignes longues ne seront pas enroulées.
-Seule la partie qui rentre dans l'écran sera affichée. Si le curseur est
-déplacé sur une partie non affichée de la ligne, l'écran défilera
-horizontalement. L'avantage de cette méthode est que les colonnes sont
-affichées telles qu'elles sont et que les lignes dépassant de l'écran peuvent
-être éditées normalement. L'inconvénient est que vous ne pouvez visualiser le
-contenu de vos lignes en une seule fois. L'option 'sidescroll' peut être fixée
-au nombre minimal de colonnes à faire défiler. {Vi n'a pas d'option 'wrap'}
+Si l'option 'wrap' est dÃ©sactivÃ©e, les lignes longues ne seront pas enroulÃ©es.
+Seule la partie qui rentre dans l'Ã©cran sera affichÃ©e. Si le curseur est
+dÃ©placÃ© sur une partie non affichÃ©e de la ligne, l'Ã©cran dÃ©filera
+horizontalement. L'avantage de cette mÃ©thode est que les colonnes sont
+affichÃ©es telles qu'elles sont et que les lignes dÃ©passant de l'Ã©cran peuvent
+Ãªtre Ã©ditÃ©es normalement. L'inconvÃ©nient est que vous ne pouvez visualiser le
+contenu de vos lignes en une seule fois. L'option 'sidescroll' peut Ãªtre fixÃ©e
+au nombre minimal de colonnes Ã  faire dÃ©filer. {Vi n'a pas d'option 'wrap'}
 
-Tous les caractères ASCII normaux sont affichés directement sur l'écran. <Tab>
-est remplacé par le nombre d'espaces qu'il recouvre. Certains caractères
-non-imprimables sont représentés par "^{car}", où {car} est le caractère
-non-imprimable majoré de 64. Ainsi, le caractère 7 (bip) sera représenté par
-"^G". Les caractères entre 127 et 160 sont eux représentés par "~{car}", où
-{car} est le caractère minoré de 64. Ces caractères occupent plus d'une
-colonne physique sur l'écran. Le curseur peut être placé uniquement sur la
-première.
+Tous les caractÃ¨res ASCII normaux sont affichÃ©s directement sur l'Ã©cran. <Tab>
+est remplacÃ© par le nombre d'espaces qu'il recouvre. Certains caractÃ¨res
+non-imprimables sont reprÃ©sentÃ©s par "^{car}", oÃ¹ {car} est le caractÃ¨re
+non-imprimable majorÃ© de 64. Ainsi, le caractÃ¨re 7 (bip) sera reprÃ©sentÃ© par
+"^G". Les caractÃ¨res entre 127 et 160 sont eux reprÃ©sentÃ©s par "~{car}", oÃ¹
+{car} est le caractÃ¨re minorÃ© de 64. Ces caractÃ¨res occupent plus d'une
+colonne physique sur l'Ã©cran. Le curseur peut Ãªtre placÃ© uniquement sur la
+premiÃ¨re.
 
-Si vous fixez l'option 'number', chaque ligne sera précédée de son numéro.
-Astuce : Si vous ne voulez pas voir se mêler les lignes enroulées et les
-numéros de lignes, fixez l'option 'showbreak' à huit espaces, comme ceci : >
+Si vous fixez l'option 'number', chaque ligne sera prÃ©cÃ©dÃ©e de son numÃ©ro.
+Astuce : Si vous ne voulez pas voir se mÃªler les lignes enroulÃ©es et les
+numÃ©ros de lignes, fixez l'option 'showbreak' Ã  huit espaces, comme ceci : >
 	:set showbreak=\ \ \ \ \ \ \ \ 
 [N.D.T. : Notez bien l'espace final.]
 
-Si vous activez l'option 'list', le caractère <Tab> ne sera pas représenté par
-des espaces, mais par "^I". Un '$' sera placé en fin de ligne, de telle sorte
-que vous puissiez repérer des espaces superflus.
+Si vous activez l'option 'list', le caractÃ¨re <Tab> ne sera pas reprÃ©sentÃ© par
+des espaces, mais par "^I". Un '$' sera placÃ© en fin de ligne, de telle sorte
+que vous puissiez repÃ©rer des espaces superflus.
 
-En mode Ligne-de-commande, seule la ligne de commande elle-même est affichée
-correctement. Le contenu du tampon est rafraîchi dès le retour en mode Normal.
+En mode Ligne-de-commande, seule la ligne de commande elle-mÃªme est affichÃ©e
+correctement. Le contenu du tampon est rafraÃ®chi dÃ¨s le retour en mode Normal.
 
-La dernière ligne de la fenêtre est utilisée pour les messages d'état et
-autres. Les messages d'état ne sont affichés que si une option est activée :
+La derniÃ¨re ligne de la fenÃªtre est utilisÃ©e pour les messages d'Ã©tat et
+autres. Les messages d'Ã©tat ne sont affichÃ©s que si une option est activÃ©e :
 
-	MESSAGE D'ÉTAT   	 OPTION       DÉFAUT      DÉFAUT UNIX  ~
-	mode courant		 'showmode'   activé      activé
-	caractères de commande   'showcmd'    activé      désactivé
-	position du curseur	 'ruler'      désactivé   désactivé
+	MESSAGE D'Ã‰TAT   	 OPTION       DÃ‰FAUT      DÃ‰FAUT UNIX  ~
+	mode courant		 'showmode'   activÃ©      activÃ©
+	caractÃ¨res de commande   'showcmd'    activÃ©      dÃ©sactivÃ©
+	position du curseur	 'ruler'      dÃ©sactivÃ©   dÃ©sactivÃ©
 
 Le mode courant est "-- INSERT --" ou "-- REPLACE --", voir |'showmode'|. Les
-caractères de commande sont ceux qui ont été saisis mais pas encore exécutés.
-{Vi n'affiche pas les caractères de commande ni la position du curseur}
+caractÃ¨res de commande sont ceux qui ont Ã©tÃ© saisis mais pas encore exÃ©cutÃ©s.
+{Vi n'affiche pas les caractÃ¨res de commande ni la position du curseur}
 
-Si votre terminal est lent, vous pouvez désactiver ces différents messages
-pour accélérer l'édition : >
+Si votre terminal est lent, vous pouvez dÃ©sactiver ces diffÃ©rents messages
+pour accÃ©lÃ©rer l'Ã©dition : >
 	:set nosc noru nosm
 
-En cas d'erreur, un message d'erreur sera affiché pendant une seconde au moins
-(en vidéo inverse). {Vi : les messages d'erreurs peuvent être effacés par
+En cas d'erreur, un message d'erreur sera affichÃ© pendant une seconde au moins
+(en vidÃ©o inverse). {Vi : les messages d'erreurs peuvent Ãªtre effacÃ©s par
 d'autres messages avant que vous n'ayez pu les lire}
 
-Certaines commandes affichent le nombre de lignes modifiées. Il est possible
-de préciser le seuil à partir duquel ce message devra s'afficher grâce à
-l'option 'report' (défaut : 2).
+Certaines commandes affichent le nombre de lignes modifiÃ©es. Il est possible
+de prÃ©ciser le seuil Ã  partir duquel ce message devra s'afficher grÃ¢ce Ã 
+l'option 'report' (dÃ©faut : 2).
 
-Sur Amiga, Vim s'exécutera dans une fenêtre CLI. La barre de titre affichera
-« Vim », suivi du nom complet du fichier courant. Lors du redimensionnement de
-la fenêtre, Vim la rafraîchira automatiquement. Vous pouvez la rendre aussi
-petite que vous le souhaitez, mais si vous exagérez, aucune ligne ne rentrera
-dans l'écran ! Gardez au moins 40 colonnes de largeur pour pouvoir lire la
-plupart des messages sur la dernière ligne.
+Sur Amiga, Vim s'exÃ©cutera dans une fenÃªtre CLI. La barre de titre affichera
+Â« Vim Â», suivi du nom complet du fichier courant. Lors du redimensionnement de
+la fenÃªtre, Vim la rafraÃ®chira automatiquement. Vous pouvez la rendre aussi
+petite que vous le souhaitez, mais si vous exagÃ©rez, aucune ligne ne rentrera
+dans l'Ã©cran ! Gardez au moins 40 colonnes de largeur pour pouvoir lire la
+plupart des messages sur la derniÃ¨re ligne.
 
-Sur la plupart des systèmes Unix, le redimensionnement de la fenêtre est
-détecté et correctement supporté par Vim. {Vi ne le supporte pas}
+Sur la plupart des systÃ¨mes Unix, le redimensionnement de la fenÃªtre est
+dÃ©tectÃ© et correctement supportÃ© par Vim. {Vi ne le supporte pas}
 
 ==============================================================================
-8. Définitions						    *definitions*
+8. DÃ©finitions						    *definitions*
 
-écran		    Toute la zone que Vim utilise pour son travail. Cela peut
-		    être la fenêtre d'un émulateur de terminal.
-		    Également appelé la « fenêtre Vim ».
+Ã©cran		    Toute la zone que Vim utilise pour son travail. Cela peut
+		    Ãªtre la fenÃªtre d'un Ã©mulateur de terminal.
+		    Ã‰galement appelÃ© la Â« fenÃªtre Vim Â».
 
-fenêtre		    Une vue sur un tampon.
+fenÃªtre		    Une vue sur un tampon.
 
-Un écran contient une ou plusieurs fenêtres, séparées par des lignes d'état,
+Un Ã©cran contient une ou plusieurs fenÃªtres, sÃ©parÃ©es par des lignes d'Ã©tat,
 et une ligne de commande tout en bas.
 
 	+---------------------------------+
-	| fenêtre 1	 | fenêtre 2	  |  }
+	| fenÃªtre 1	 | fenÃªtre 2	  |  }
 	|		 |		  |  }
 	|		 |		  |  }
-	|= ligne d'état =|= ligne d'état =|  }
-	| fenêtre 3			  |  } écran
+	|= ligne d'Ã©tat =|= ligne d'Ã©tat =|  }
+	| fenÃªtre 3			  |  } Ã©cran
 	|				  |  }
 	|				  |  }
-	|========== ligne d'état =========|  }
+	|========== ligne d'Ã©tat =========|  }
 	| ligne de commande		  |  }
 	+---------------------------------+
 
-La ligne de commande est également utilisée pour les messages. Ils décalent
-l'écran vers le haut quand ils n'ont pas assez de place.
+La ligne de commande est Ã©galement utilisÃ©e pour les messages. Ils dÃ©calent
+l'Ã©cran vers le haut quand ils n'ont pas assez de place.
 
-Il existe quatre différents types de lignes :
+Il existe quatre diffÃ©rents types de lignes :
 
 lignes de tampon    Les lignes dans le tampon. Ce sont les lignes telles
-		    qu'elles sont lues/écrites dans un fichier. Elles peuvent
-		    contenir plusieurs milliers de caractères.
+		    qu'elles sont lues/Ã©crites dans un fichier. Elles peuvent
+		    contenir plusieurs milliers de caractÃ¨res.
 
-lignes logiques	    Les lignes de tampon avec les replis fermés. Les lignes de
-		    tampon dans un repli fermé comptent pour une seule ligne
+lignes logiques	    Les lignes de tampon avec les replis fermÃ©s. Les lignes de
+		    tampon dans un repli fermÃ© comptent pour une seule ligne
 		    logique : "+-- 99 lines folded". Elles peuvent contenir
-		    plusieurs milliers de caractères.
+		    plusieurs milliers de caractÃ¨res.
 
-lignes de fenêtre   Les lignes affichées dans une fenêtre : une plage de
+lignes de fenÃªtre   Les lignes affichÃ©es dans une fenÃªtre : une plage de
 		    lignes logiques en tenant compte des enroulements, des
-		    césures, etc. Elles ne peuvent pas faire plus que la la
-		    largeur de la fenêtre, ce qui dépasse est enroulé ou
-		    tronqué.
+		    cÃ©sures, etc. Elles ne peuvent pas faire plus que la la
+		    largeur de la fenÃªtre, ce qui dÃ©passe est enroulÃ© ou
+		    tronquÃ©.
 
-lignes d'écran      Les lignes de l'écran utilisées par Vim : comprend les
-		    lignes de fenêtre de toutes les fenêtres, en ajoutant les
-		    lignes d'état et la ligne de commande. Elles ne peuvent
-		    pas faire plus que ce que la largeur de l'écran permet.
+lignes d'Ã©cran      Les lignes de l'Ã©cran utilisÃ©es par Vim : comprend les
+		    lignes de fenÃªtre de toutes les fenÃªtres, en ajoutant les
+		    lignes d'Ã©tat et la ligne de commande. Elles ne peuvent
+		    pas faire plus que ce que la largeur de l'Ã©cran permet.
 		    Lorsque la ligne de commande manque de place, elle est
-		    enroulée et les lignes d'écran défilent vers le haut.
+		    enroulÃ©e et les lignes d'Ã©cran dÃ©filent vers le haut.
 
-LIGNES DE TAMPON   LIGNES LOGIQUES   LIGNES DE FENÊTRE   LIGNES D'ÉCRAN	    ~
+LIGNES DE TAMPON   LIGNES LOGIQUES   LIGNES DE FENÃŠTRE   LIGNES D'Ã‰CRAN	    ~
 1. un		   1. un	     1. +-- repli	 1. +-- repli
 2. deux		   2. +-- repli      2. cinq		 2. cinq
 3. trois	   3. cinq	     3. six		 3. six
 4. quatre   	   4. six	     4. sept		 4. sept
-5. cinq		   5. sept				 5. = ligne d'état =
+5. cinq		   5. sept				 5. = ligne d'Ã©tat =
 6. six							 6. aaa
 7. sept							 7. bbb
 							 8. ccc ccc c
 1. aaa		   1. aaa	     1. aaa		 9. cc
 2. bbb		   2. bbb	     2. bbb		10. ddd
 3. ccc ccc ccc	   3. ccc ccc ccc    3. ccc ccc c	11. ~ 
-4. ddd		   4. ddd	     4. cc		12. = ligne d'état =
+4. ddd		   4. ddd	     4. cc		12. = ligne d'Ã©tat =
 				     5. ddd		13. (ligne de commande)
 				     6. ~ 
 

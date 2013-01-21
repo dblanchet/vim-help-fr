@@ -1,7 +1,7 @@
 *undo.txt*      Pour Vim version 6.2.
 
 
-		 MANUEL de RÉFÉRENCE VIM - par Bram Moolenaar
+		 MANUEL de RÃ‰FÃ‰RENCE VIM - par Bram Moolenaar
 
 
 Annuler et restaurer					*undo-redo*
@@ -9,7 +9,7 @@ Annuler et restaurer					*undo-redo*
 Consultez la section |02.5| du Manuel de l'utilisateur pour une introduction.
 
 1. Commandes d'annulation/restauration	    |undo-commands|
-2. Deux méthodes d'annulation		    |undo-two-ways|
+2. Deux mÃ©thodes d'annulation		    |undo-two-ways|
 3. Remarques sur l'annulation		    |undo-remarks|
 
 ==============================================================================
@@ -22,112 +22,112 @@ u			Annule [quant] changements. {Vi : un seul niveau}
 :u[ndo]			Annule un changement. {Vi : un seul niveau}
 
 							*CTRL-R*
-CTRL-R			Restaure [quant] changements qui ont été annulés.
-			{Vi : rafraîchit l'écran}
+CTRL-R			Restaure [quant] changements qui ont Ã©tÃ© annulÃ©s.
+			{Vi : rafraÃ®chit l'Ã©cran}
 
 							*:red* *:redo* *redo*
-:red[o]			Restaure un changement qui a été annulé.
+:red[o]			Restaure un changement qui a Ã©tÃ© annulÃ©.
 			{Vi : pas de restauration}
 
 							*U*
-U			Annule tous les derniers changements opérés sur une
-			ligne. {Vi : tant qu'on ne l'a pas quittée}
+U			Annule tous les derniers changements opÃ©rÃ©s sur une
+			ligne. {Vi : tant qu'on ne l'a pas quittÃ©e}
 
-Les derniers changements sont mémorisés. Vous pouvez utiliser les commandes
-d'annulation/restauration ci-dessus pour revenir au texte tel qu'il était
+Les derniers changements sont mÃ©morisÃ©s. Vous pouvez utiliser les commandes
+d'annulation/restauration ci-dessus pour revenir au texte tel qu'il Ã©tait
 avant chaque changement. Vous pouvez aussi restaurer chaque changement, en
 revenant au texte d'avant chaque annulation.
 
-La commande "U" est traitée comme n'importe quelle autre commande par les
+La commande "U" est traitÃ©e comme n'importe quelle autre commande par les
 commandes d'annulation/restauration. Ainsi, une commande "u" annule une
 commande "U", et une commande CTRL-R la restaure. Si vous utilisez ensemble
 des commandes "U", "u" et CTRL-R, vous remarquerez que la commande "U"
-restaurera l'état d'une ligne d'avant la précédente commande "U". Cela peut
-être troublant. Essayez-la pour vous y habituer.
-   La commande "U" marquera toujours le tampon comme modifié. Si "U" ramène le
-tampon tel qu'il était sans les changements, il est considéré modifié tout de
-même. Utilisez "u" pour annuler des changements jusqu'à ce que le tampon se
-retrouve inchangé.
+restaurera l'Ã©tat d'une ligne d'avant la prÃ©cÃ©dente commande "U". Cela peut
+Ãªtre troublant. Essayez-la pour vous y habituer.
+   La commande "U" marquera toujours le tampon comme modifiÃ©. Si "U" ramÃ¨ne le
+tampon tel qu'il Ã©tait sans les changements, il est considÃ©rÃ© modifiÃ© tout de
+mÃªme. Utilisez "u" pour annuler des changements jusqu'Ã  ce que le tampon se
+retrouve inchangÃ©.
 
 ==============================================================================
-2. Deux méthodes d'annulation				*undo-two-ways*
+2. Deux mÃ©thodes d'annulation				*undo-two-ways*
 
-La façon dont fonctionnent les commandes d'annulation/restauration dépend de
-la présence du drapeau 'u' dans 'cpoptions'. Il y a une méthode propre à Vim
-(si 'u' est exclu) et une compatible Vi (si 'u' est inclus). Dans la méthode
-Vim, "uu" annule deux changements. Dans la méthode compatible Vi, "uu" ne fait
+La faÃ§on dont fonctionnent les commandes d'annulation/restauration dÃ©pend de
+la prÃ©sence du drapeau 'u' dans 'cpoptions'. Il y a une mÃ©thode propre Ã  Vim
+(si 'u' est exclu) et une compatible Vi (si 'u' est inclus). Dans la mÃ©thode
+Vim, "uu" annule deux changements. Dans la mÃ©thode compatible Vi, "uu" ne fait
 rien (annule une annulation).
 
-'u' exclu, la méthode Vim :
+'u' exclu, la mÃ©thode Vim :
 ---------------------------
 Vous pouvez remonter dans le temps avec la commande d'annulation. Vous pouvez
 ensuite ravancer dans le temps avec la commande de restauration. Si vous
-faites un nouveau changement après une commande d'annulation, la restauration
+faites un nouveau changement aprÃ¨s une commande d'annulation, la restauration
 ne sera plus possible.
 
-'u' inclus, la méthode compatible Vi :
+'u' inclus, la mÃ©thode compatible Vi :
 --------------------------------------
-La commande d'annulation annule le changement précédent, mais aussi la
-commande d'annulation précédente. La commande de restauration répète la
-commande d'annulation précédente. Elle ne répétera PAS une commande de
+La commande d'annulation annule le changement prÃ©cÃ©dent, mais aussi la
+commande d'annulation prÃ©cÃ©dente. La commande de restauration rÃ©pÃ¨te la
+commande d'annulation prÃ©cÃ©dente. Elle ne rÃ©pÃ©tera PAS une commande de
 changement (utilisez "." pour cela).
 
-	EXEMPLES     MÉTHODE VIM	MÉTHODE COMPATIBLE VI  ~
+	EXEMPLES     MÃ‰THODE VIM	MÃ‰THODE COMPATIBLE VI  ~
 	"uu"	     annule deux fois	(rien)
 	"u CTRL-R"   (rien)		annule deux fois
 
-Remarque :  Nvi utilise la commande "." à la place de CTRL-R. Malheureusement,
+Remarque :  Nvi utilise la commande "." Ã  la place de CTRL-R. Malheureusement,
 	    cela n'est pas compatible Vi. Par exemple, "dwdwu." coupe deux
 	    mots dans Vi, mais ne fait rien dans Nvi.
 
 ==============================================================================
 3. Remarques sur l'annulation				*undo-remarks*
 
-Le nombre de changements mémorisé peut être modifié avec l'option
-'undolevels'. Si elle est nulle, la méthode compatible Vi sera toujours
-utilisée. Si elle est négative, aucune annulation ne sera possible (utile pour
-si vous manquez de mémoire).
+Le nombre de changements mÃ©morisÃ© peut Ãªtre modifiÃ© avec l'option
+'undolevels'. Si elle est nulle, la mÃ©thode compatible Vi sera toujours
+utilisÃ©e. Si elle est nÃ©gative, aucune annulation ne sera possible (utile pour
+si vous manquez de mÃ©moire).
 
-Les marques dans le tampon ('a à 'z) sont également mémorisées et restaurées,
-en même temps que le texte. {Vi procède d'une manière légèrement différente}
+Les marques dans le tampon ('a Ã  'z) sont Ã©galement mÃ©morisÃ©es et restaurÃ©es,
+en mÃªme temps que le texte. {Vi procÃ¨de d'une maniÃ¨re lÃ©gÃ¨rement diffÃ©rente}
 
-Quand tous les changements ont été annulés, le tampon n'est plus considéré
-comme modifié. Il est alors possible de quitter Vim avec ":q" au lieu de
+Quand tous les changements ont Ã©tÃ© annulÃ©s, le tampon n'est plus considÃ©rÃ©
+comme modifiÃ©. Il est alors possible de quitter Vim avec ":q" au lieu de
 ":q!". Cela est {absent de Vi}.
-   NOTE : Cela est relatif à la dernière écriture du tampon. Saisir "u" après
-":w" modifie en fait le tampon par rapport à ce qui a été enregistré, il est
-alors considéré comme modifié.
+   NOTE : Cela est relatif Ã  la derniÃ¨re Ã©criture du tampon. Saisir "u" aprÃ¨s
+":w" modifie en fait le tampon par rapport Ã  ce qui a Ã©tÃ© enregistrÃ©, il est
+alors considÃ©rÃ© comme modifiÃ©.
 
-Lorsque le repliage manuel |folding| est utilisé, les replis ne sont pas
-mémorisés et restaurés. Seuls les changements confinés à l'intérieur d'un
-repli le laisseront tel qu'il était, car les première et dernière lignes du
-repli n'ont pas été changées.
+Lorsque le repliage manuel |folding| est utilisÃ©, les replis ne sont pas
+mÃ©morisÃ©s et restaurÃ©s. Seuls les changements confinÃ©s Ã  l'intÃ©rieur d'un
+repli le laisseront tel qu'il Ã©tait, car les premiÃ¨re et derniÃ¨re lignes du
+repli n'ont pas Ã©tÃ© changÃ©es.
 
-Les registres numérotés peuvent aussi être utilisés pour annuler des coupages.
-Chaque coupage que vous faites est placé dans le registre "1. Le contenu du
-registre "1 est décalé dans le "2, etc. Le contenu du registre "9 est perdu.
-Vous pouvez maintenant récupérer le texte le plus récemment coupé avec la
-commande de collage : « "1P » (et si le texte coupé était le résultat de la
-dernière opération de coupage/copie, "P" ou "p" fonctionnent également, car
-elles collent le contenu du registre sans nom). Vous pouvez récupérer le texte
-d'il y a trois coupages avec « "3P ».
+Les registres numÃ©rotÃ©s peuvent aussi Ãªtre utilisÃ©s pour annuler des coupages.
+Chaque coupage que vous faites est placÃ© dans le registre "1. Le contenu du
+registre "1 est dÃ©calÃ© dans le "2, etc. Le contenu du registre "9 est perdu.
+Vous pouvez maintenant rÃ©cupÃ©rer le texte le plus rÃ©cemment coupÃ© avec la
+commande de collage : Â« "1P Â» (et si le texte coupÃ© Ã©tait le rÃ©sultat de la
+derniÃ¨re opÃ©ration de coupage/copie, "P" ou "p" fonctionnent Ã©galement, car
+elles collent le contenu du registre sans nom). Vous pouvez rÃ©cupÃ©rer le texte
+d'il y a trois coupages avec Â« "3P Â».
 
 						*redo-register*
-Si vous voulez récupérer plus d'une partie de texte coupé, vous pouvez
-utiliser une propriété particulière de la commande de répétition "." : elle
-permet d'augmenter le numéro du registre utilisé. Ainsi, si vous tapez d'abord
-« "1P », la commande "." suivante donnera « "2P ». En répétant cela, vous
-pourrez insérer tous les registres numérotés consécutivement.
+Si vous voulez rÃ©cupÃ©rer plus d'une partie de texte coupÃ©, vous pouvez
+utiliser une propriÃ©tÃ© particuliÃ¨re de la commande de rÃ©pÃ©tition "." : elle
+permet d'augmenter le numÃ©ro du registre utilisÃ©. Ainsi, si vous tapez d'abord
+Â« "1P Â», la commande "." suivante donnera Â« "2P Â». En rÃ©pÃ©tant cela, vous
+pourrez insÃ©rer tous les registres numÃ©rotÃ©s consÃ©cutivement.
 
-Exemple : si vous avez coupé du texte avec >
+Exemple : si vous avez coupÃ© du texte avec >
 	dd....
-il pourra être restauré avec : >
+il pourra Ãªtre restaurÃ© avec : >
 	"1P....
 
-Si vous ignorez dans quel registre un texte coupé se trouve, vous pouvez
+Si vous ignorez dans quel registre un texte coupÃ© se trouve, vous pouvez
 utiliser la commande ":display". Alternativement, vous pouvez essayer le
-premier registre avec « "1P » ; si ce n'est pas le bon, saisissez "u.". Cela
-supprimera le contenu du premier collage et répétera la commande de collage
-avec le second registre. Répétez ainsi "u." jusqu'au registre désiré.
+premier registre avec Â« "1P Â» ; si ce n'est pas le bon, saisissez "u.". Cela
+supprimera le contenu du premier collage et rÃ©pÃ©tera la commande de collage
+avec le second registre. RÃ©pÃ©tez ainsi "u." jusqu'au registre dÃ©sirÃ©.
 
  vim:tw=78:ts=8:ft=help:norl:

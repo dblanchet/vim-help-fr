@@ -5,14 +5,14 @@
 		   Effectuer des modifications importantes
 
 
-Le chapitre 4 expliquait différentes méthodes pour effectuer des modifications
+Le chapitre 4 expliquait diffÃ©rentes mÃ©thodes pour effectuer des modifications
 mineures. Ce chapitre va plus loin, et montre comment des modifications
-peuvent être répétées ou comment elles peuvent affecter des pans entiers de
-texte ; comment le mode Visuel peut être utilisé pour exécuter diverses
+peuvent Ãªtre rÃ©pÃ©tÃ©es ou comment elles peuvent affecter des pans entiers de
+texte ; comment le mode Visuel peut Ãªtre utilisÃ© pour exÃ©cuter diverses
 actions sur des blocs de texte ; ou comment employer un programme externe pour
-accomplir des choses vraiment compliquées.
+accomplir des choses vraiment compliquÃ©es.
 
-|10.1|	Enregistrement de commandes et exécution différée XXX
+|10.1|	Enregistrement de commandes et exÃ©cution diffÃ©rÃ©e XXX
 |10.2|	Substitution
 |10.3|	Plages des commandes ":"
 |10.4|	La commande ":global"
@@ -22,24 +22,24 @@ accomplir des choses vraiment compliquées.
 |10.8|	Changement de casse
 |10.9|	Utiliser un programme externe
 
-  Chapitre suivant : |usr_11.txt|  Recouvrement après un plantage
-Chapitre précédent : |usr_09.txt|  Utiliser l'interface graphique
-Table des matières : |usr_toc.txt|
+  Chapitre suivant : |usr_11.txt|  Recouvrement aprÃ¨s un plantage
+Chapitre prÃ©cÃ©dent : |usr_09.txt|  Utiliser l'interface graphique
+Table des matiÃ¨res : |usr_toc.txt|
 
 ==============================================================================
-*10.1*	Enregistrement de commandes et exécution différée
+*10.1*	Enregistrement de commandes et exÃ©cution diffÃ©rÃ©e
 
-La commande "." répète le dernier changement simple. Mais dans le cas où vous
-souhaitez faire quelque chose de plus élaboré ? C'est là qu'intervient
-l'enregistrement de commandes. Trois étapes sont nécessaires :
+La commande "." rÃ©pÃ¨te le dernier changement simple. Mais dans le cas oÃ¹ vous
+souhaitez faire quelque chose de plus Ã©laborÃ© ? C'est lÃ  qu'intervient
+l'enregistrement de commandes. Trois Ã©tapes sont nÃ©cessaires :
 
-1° Utilisez la commande "q{registre}" pour commencer l'enregistrement de votre
-   saisie dans le registre nommé {registre}. Ce nom doit être compris entre
+1Â° Utilisez la commande "q{registre}" pour commencer l'enregistrement de votre
+   saisie dans le registre nommÃ© {registre}. Ce nom doit Ãªtre compris entre
    'a' et 'z' ;
-2° Entrez vos commandes ;
-3° Pour terminer l'enregistrement, pressez "q" à nouveau (sans rien d'autre).
+2Â° Entrez vos commandes ;
+3Â° Pour terminer l'enregistrement, pressez "q" Ã  nouveau (sans rien d'autre).
 
-Vous pouvez ensuite exécuter la macro créée en tapant la commande
+Vous pouvez ensuite exÃ©cuter la macro crÃ©Ã©e en tapant la commande
 "@{registre}".
 
 Illustrons notre propos par un exemple : vous disposez d'une liste de noms de
@@ -50,162 +50,162 @@ fichiers comme celle-ci
 	unistd.h ~
 	stdlib.h ~
 
-et vous souhaitez obtenir ce résultat :
+et vous souhaitez obtenir ce rÃ©sultat :
 
 	#include "stdio.h" ~
 	#include "fcntl.h" ~
 	#include "unistd.h" ~
 	#include "stdlib.h" ~
 
-Pour cela, commencez par aller au premier caractère de la première ligne. Puis
-exécutez les commandes suivantes :
+Pour cela, commencez par aller au premier caractÃ¨re de la premiÃ¨re ligne. Puis
+exÃ©cutez les commandes suivantes :
 
 	qa			Commence l'enregistrement d'une macro dans le
 				registre 'a'.
-	^			Va au début de la ligne.
-	i#include "<Echap>	Insère la chaîne  #include "  au début de la
+	^			Va au dÃ©but de la ligne.
+	i#include "<Echap>	InsÃ¨re la chaÃ®ne  #include "  au dÃ©but de la
 				ligne.
-	$			Va à la fin de la ligne.
-	a"<Echap>		Ajoute le caractère double-apostrophe (") à la
+	$			Va Ã  la fin de la ligne.
+	a"<Echap>		Ajoute le caractÃ¨re double-apostrophe (") Ã  la
 				fin de la ligne.
-	j			Passe à la ligne suivante.
+	j			Passe Ã  la ligne suivante.
 	q			Termine l'enregistrement de la macro.
 
-Après l'avoir effectuée une première fois, vous pouvez répéter la modification
+AprÃ¨s l'avoir effectuÃ©e une premiÃ¨re fois, vous pouvez rÃ©pÃ©ter la modification
 en tapant la commande "@a" trois fois.
-   La commande "@a" peut être précédée par un quantificateur, indiquant le
-nombre de fois que la macro devra être exécutée. Dans notre exemple, vous
+   La commande "@a" peut Ãªtre prÃ©cÃ©dÃ©e par un quantificateur, indiquant le
+nombre de fois que la macro devra Ãªtre exÃ©cutÃ©e. Dans notre exemple, vous
 pourriez taper : >
 
 	3@a
 
 
-DÉPLACEMENT ET EXÉCUTION
+DÃ‰PLACEMENT ET EXÃ‰CUTION
 
-Les lignes que vous souhaitez modifier peuvent être placées à divers endroits.
-Il vous suffit d'amener le curseur jusqu'à chaque emplacement et d'utiliser la
-commande "@a". Après la première fois, vous pouvez utiliser simplement "@@".
-C'est un peu plus rapide à taper. Si vous exécutez par la suite le registre
+Les lignes que vous souhaitez modifier peuvent Ãªtre placÃ©es Ã  divers endroits.
+Il vous suffit d'amener le curseur jusqu'Ã  chaque emplacement et d'utiliser la
+commande "@a". AprÃ¨s la premiÃ¨re fois, vous pouvez utiliser simplement "@@".
+C'est un peu plus rapide Ã  taper. Si vous exÃ©cutez par la suite le registre
 'b' avec "@b", le prochain "@@" utilisera le registre 'b'.
-   Si vous comparez la méthode d'exécution différée XXX avec l'utilisation de ".",
-vous remarquerez plusieurs différences. Tout d'abord, "." ne peut répéter
-qu'une seule modification. L'exemple ci-dessus nous a montré que "@a" pouvait
-effectuer plusieurs modifications, et permettait de se déplacer dans le texte.
-Ensuite, "." ne peut mémoriser que la toute dernière modification. L'exécution
-d'un registre vous permet de faire autant de changements que vous désirez,
-puis d'utiliser "@a" pour exécuter les commandes enregistrées. Enfin, vous
-pouvez utiliser 26 registres différents. Vous pouvez donc mémoriser 26
-séquences de commandes différentes pour exécution. XXX paragr.
+   Si vous comparez la mÃ©thode d'exÃ©cution diffÃ©rÃ©e XXX avec l'utilisation de ".",
+vous remarquerez plusieurs diffÃ©rences. Tout d'abord, "." ne peut rÃ©pÃ©ter
+qu'une seule modification. L'exemple ci-dessus nous a montrÃ© que "@a" pouvait
+effectuer plusieurs modifications, et permettait de se dÃ©placer dans le texte.
+Ensuite, "." ne peut mÃ©moriser que la toute derniÃ¨re modification. L'exÃ©cution
+d'un registre vous permet de faire autant de changements que vous dÃ©sirez,
+puis d'utiliser "@a" pour exÃ©cuter les commandes enregistrÃ©es. Enfin, vous
+pouvez utiliser 26 registres diffÃ©rents. Vous pouvez donc mÃ©moriser 26
+sÃ©quences de commandes diffÃ©rentes pour exÃ©cution. XXX paragr.
 
 
 UTILISER LES REGISTRES
 
-Les registres utilisés pour l'enregistrement de commandes sont les mêmes que
-ceux utilisés pour les commandes de copier-coller. Vous pouvez donc les
-manipuler à votre convenance.
-   Supposons que vous ayez enregistré une séquence de commandes dans le
+Les registres utilisÃ©s pour l'enregistrement de commandes sont les mÃªmes que
+ceux utilisÃ©s pour les commandes de copier-coller. Vous pouvez donc les
+manipuler Ã  votre convenance.
+   Supposons que vous ayez enregistrÃ© une sÃ©quence de commandes dans le
 registre 'n' ; vous remarquez en utilisant "@n" que vous avez commis une
-erreur. Vous pourriez ressaisir la séquence à nouveau, mais rien ne vous
-prémunira d'une autre erreur. Utilisez plutôt cette astuce :
+erreur. Vous pourriez ressaisir la sÃ©quence Ã  nouveau, mais rien ne vous
+prÃ©munira d'une autre erreur. Utilisez plutÃ´t cette astuce :
 
-	G			Va à la fin du fichier.
-	o<Echap>		Crée une ligne vide (temporaire).
+	G			Va Ã  la fin du fichier.
+	o<Echap>		CrÃ©e une ligne vide (temporaire).
 	"np			Colle le contenu du registre 'n'. Les
 				commandes saisies apparaissent ainsi comme du
 				texte dans le fichier.
-	{edition}		Rectifiez les commandes erronées. Cela revient
-				à une simple édition de texte.
-	0			Va au début de la ligne.
-	"ny$			Colle les commandes corrigées dans le registre
+	{edition}		Rectifiez les commandes erronÃ©es. Cela revient
+				Ã  une simple Ã©dition de texte.
+	0			Va au dÃ©but de la ligne.
+	"ny$			Colle les commandes corrigÃ©es dans le registre
 				'n'.
 	dd			Supprime la ligne temporaire.
 
-Vous pouvez ensuite exécuter les commandes corrigées avec "@n". (Si votre
-séquence de commandes inclut des coupures de lignes, ajustez les deux derniers
-éléments de cet exemple pour prendre toutes les lignes en compte.)
+Vous pouvez ensuite exÃ©cuter les commandes corrigÃ©es avec "@n". (Si votre
+sÃ©quence de commandes inclut des coupures de lignes, ajustez les deux derniers
+Ã©lÃ©ments de cet exemple pour prendre toutes les lignes en compte.)
 
 
-AJOUTER À UN REGISTRE
+AJOUTER Ã€ UN REGISTRE
 
-Jusqu'à présent, nous n'avons utilisé que des lettres minuscules pour les noms
-de registres. Pour ajouter à un registre, utilisez une lettre majuscule.
-   Supposons que vous ayez enregistré une commande pour changer un mot dans le
+Jusqu'Ã  prÃ©sent, nous n'avons utilisÃ© que des lettres minuscules pour les noms
+de registres. Pour ajouter Ã  un registre, utilisez une lettre majuscule.
+   Supposons que vous ayez enregistrÃ© une commande pour changer un mot dans le
 registre 'c'. Elle fonctionne bien, mais vous souhaiteriez en plus rechercher
-le prochain mot à changer. Vous pouvez faire pour cela : >
+le prochain mot Ã  changer. Vous pouvez faire pour cela : >
 
 	qC/mot<Entree>q
 
-Cette séquence débute par "qC", pour faire ajouter les commandes qui suivent
+Cette sÃ©quence dÃ©bute par "qC", pour faire ajouter les commandes qui suivent
 dans le registre 'c'. Utiliser un nom de registre en majuscule revient en fait
-à ajouter au registre minuscule correspondant.
+Ã  ajouter au registre minuscule correspondant.
 
 Cela marche aussi bien pour l'enregistrement de commandes que pour le
 copier-coller. Par exemple, vous souhaitez collecter un certain nombre de
-lignes dans le registre 'a'. Copiez d'abord la première ligne avec >
+lignes dans le registre 'a'. Copiez d'abord la premiÃ¨re ligne avec >
 
 	"aY
 
-puis allez sur la deuxième ligne et faites : >
+puis allez sur la deuxiÃ¨me ligne et faites : >
 
 	"AY
 
-Répétez cette commande pour chaque ligne souhaitée. Au final, le registre 'a'
-contiendra toutes ces lignes, dans l'ordre où vous les avez copiées.
+RÃ©pÃ©tez cette commande pour chaque ligne souhaitÃ©e. Au final, le registre 'a'
+contiendra toutes ces lignes, dans l'ordre oÃ¹ vous les avez copiÃ©es.
 
 ==============================================================================
 *10.2*	Substitution
 
-La commande ":substitute" permet de remplacer une chaîne de caractères sur une
-plage de lignes donnée. Elle s'emploie comme suit : >
+La commande ":substitute" permet de remplacer une chaÃ®ne de caractÃ¨res sur une
+plage de lignes donnÃ©e. Elle s'emploie comme suit : >
 
 	:[plage]substitute/source/cible/[drapeaux]
 
-Cette commande change la chaîne "source" en chaîne "cible" dans les lignes de
-spécifiées par [plage]. Par exemple, vous pouvez changer "Monsieur" en
+Cette commande change la chaÃ®ne "source" en chaÃ®ne "cible" dans les lignes de
+spÃ©cifiÃ©es par [plage]. Par exemple, vous pouvez changer "Monsieur" en
 "Madame" dans toutes les lignes avec cette commande : >
 
 	:%substitute/Monsieur/Madame/
 <
 	NOTE :
-	La commande ":substitute" n'est presque jamais saisie entièrement. La
-	plupart du temps, les utilisateurs préfèrent utiliser la version
-	abrégée ":s". Vous retrouverez cette dernière dans ce qui suit.
+	La commande ":substitute" n'est presque jamais saisie entiÃ¨rement. La
+	plupart du temps, les utilisateurs prÃ©fÃ¨rent utiliser la version
+	abrÃ©gÃ©e ":s". Vous retrouverez cette derniÃ¨re dans ce qui suit.
 
-Le '%' après le deux-points indique que la commande agira sur toutes les
+Le '%' aprÃ¨s le deux-points indique que la commande agira sur toutes les
 lignes. Sans plage, ":s" n'agit que sur la ligne courante. Pour plus
 d'informations sur les plages, lisez la section suivante |10.3|.
 
-Par défaut, la commande ":substitute" ne change que la première occurrence de
-chaque ligne. Par exemple, la commande précédente change la ligne
+Par dÃ©faut, la commande ":substitute" ne change que la premiÃ¨re occurrence de
+chaque ligne. Par exemple, la commande prÃ©cÃ©dente change la ligne
 
-	Monsieur Dupont a critiqué Monsieur Durand ce matin. ~
+	Monsieur Dupont a critiquÃ© Monsieur Durand ce matin. ~
 
 en :
 
-	Madame Dupont a critiqué Monsieur Durand ce matin. ~
+	Madame Dupont a critiquÃ© Monsieur Durand ce matin. ~
 
 Pour changer toutes les occurrences d'une ligne, vous devez ajouter le drapeau
-'g' (pour « global »). La commande >
+'g' (pour Â« global Â»). La commande >
 
 	:%s/Monsieur/Madame/g
 
-donne comme résultat (en utilisant la ligne originale) :
+donne comme rÃ©sultat (en utilisant la ligne originale) :
 
-	Madame Dupont a critiqué Madame Durand ce matin. ~
+	Madame Dupont a critiquÃ© Madame Durand ce matin. ~
 
 Parmi les autres drapeaux, on retrouve 'p' (pour "print"), qui oblige la
-commande ":substitute" à afficher chaque ligne qu'elle change. Le drapeau 'c'
-(« confirmer ») permet d'obtenir une invite de confirmation avant chaque
+commande ":substitute" Ã  afficher chaque ligne qu'elle change. Le drapeau 'c'
+(Â« confirmer Â») permet d'obtenir une invite de confirmation avant chaque
 substitution. Entrez la commande suivante : >
 
 	:%s/Monsieur/Madame/c
 
-Vim trouvera la première occurrence de "Monsieur" et indiquera le texte qu'il
-s'apprête à modifier XXX, avec l'invite suivante :
+Vim trouvera la premiÃ¨re occurrence de "Monsieur" et indiquera le texte qu'il
+s'apprÃªte Ã  modifier XXX, avec l'invite suivante :
 
 	replace with Madame (y/n/a/q/l/^E/^Y)? ~
 
-À partir de là, vous disposez de plusieurs possibilités :
+Ã€ partir de lÃ , vous disposez de plusieurs possibilitÃ©s :
 
 	y	      Oui ; effectuer ce changement.			["Yes"]
 	n	      Non ; sauter ce changement.
@@ -213,20 +213,20 @@ s'apprête à modifier XXX, avec l'invite suivante :
 		      sans autre confirmation.				["All"]
 	q	      Quitter ; ne faire aucun autre changement.
 	l	      Dernier ; effectuer ce changement puis quitter.  ["Last"]
-	CTRL-E	      Faire défiler le texte d'une ligne vers le haut.
-	CTRL-Y	      Faire défiler le texte d'une ligne vers le bas.
+	CTRL-E	      Faire dÃ©filer le texte d'une ligne vers le haut.
+	CTRL-Y	      Faire dÃ©filer le texte d'une ligne vers le bas.
 
 
 La partie "source" de la commande ":substitute" est en fait un motif, comme
-ceux qui sont utilisés dans une commande de recherche.
-   Par exemple, cette commande ne remplace "ceci" que lorsqu'il apparaît au
-début d'une ligne : >
+ceux qui sont utilisÃ©s dans une commande de recherche.
+   Par exemple, cette commande ne remplace "ceci" que lorsqu'il apparaÃ®t au
+dÃ©but d'une ligne : >
 
 	:s/^ceci/cela/
 
 Si dans votre substitution la partie "source" ou "cible" contient une oblique,
-vous devrez la faire précéder par une contre-oblique. Pour éviter cela, vous
-pouvez aussi utiliser un caractère de séparation autre que l'oblique. Un plus,
+vous devrez la faire prÃ©cÃ©der par une contre-oblique. Pour Ã©viter cela, vous
+pouvez aussi utiliser un caractÃ¨re de sÃ©paration autre que l'oblique. Un plus,
 par exemple : >
 
 	:s+un/deux+un ou deux+
@@ -235,90 +235,90 @@ par exemple : >
 *10.3*	Plages des commandes ":"
 
 La commande ":substitute", comme de nombreuses autres commandes ":", peut
-n'être appliquée que sur un échantillon de lignes. On parle alors de plage.
-   La forme élémentaire d'une plage est "{nombre},{nombre}". Par exemple : >
+n'Ãªtre appliquÃ©e que sur un Ã©chantillon de lignes. On parle alors de plage.
+   La forme Ã©lÃ©mentaire d'une plage est "{nombre},{nombre}". Par exemple : >
 
 	:1,5s/toto/titi/g
 
-Ceci n'opère la substitution que sur les lignes de 1 à 5 (incluse). La plage
-est toujours placée avant la commande.
+Ceci n'opÃ¨re la substitution que sur les lignes de 1 Ã  5 (incluse). La plage
+est toujours placÃ©e avant la commande.
 
-Il est également possible d'utiliser un nombre seul, pour ne désigner qu'une
-ligne spécifique : >
+Il est Ã©galement possible d'utiliser un nombre seul, pour ne dÃ©signer qu'une
+ligne spÃ©cifique : >
 
 	:54s/zorglub/bulgroz/
 
-Certaines commandes s'appliquent au fichier entier lorsque vous ne précisez
-pas de plage. Pour les limiter à la ligne courante, l'adresse "." peut être
-utilisée. La commande ":write" est ainsi. Sans plage, elle enregistre tout le
+Certaines commandes s'appliquent au fichier entier lorsque vous ne prÃ©cisez
+pas de plage. Pour les limiter Ã  la ligne courante, l'adresse "." peut Ãªtre
+utilisÃ©e. La commande ":write" est ainsi. Sans plage, elle enregistre tout le
 fichier. Pour ne lui faire enregistrer que la ligne courante dans un fichier,
 utilisez : >
 
 	:.write autre_fichier
 
-La première ligne porte toujours le numéro un. Mais la dernière ligne ? Elle
-peut être désignée par le caractère '$'. Par exemple, pour effectuer une
+La premiÃ¨re ligne porte toujours le numÃ©ro un. Mais la derniÃ¨re ligne ? Elle
+peut Ãªtre dÃ©signÃ©e par le caractÃ¨re '$'. Par exemple, pour effectuer une
 substitution dans les lignes comprises entre la position actuelle et la fin du
 fichier : >
 
 	:.,$s/oui/non/
 
-La plage "%" que nous avons utilisée plusieurs fois précédemment n'est qu'un
-raccourci pour "1,$" : de la première à la dernière ligne.
+La plage "%" que nous avons utilisÃ©e plusieurs fois prÃ©cÃ©demment n'est qu'un
+raccourci pour "1,$" : de la premiÃ¨re Ã  la derniÃ¨re ligne.
 
 
 UTILISER UN MOTIF DANS UNE PLAGE
 
-Supposons que vous éditiez un chapitre de livre et souhaitiez remplacer toutes
+Supposons que vous Ã©ditiez un chapitre de livre et souhaitiez remplacer toutes
 les occurrences de "vert" par "bleu". Mais uniquement dans ce chapitre, pas
 dans les autres. Vous savez que seuls les commencements de chapitres utilisent
-le mot "Chapitre" dans la première colonne. Cette commande pourra alors
+le mot "Chapitre" dans la premiÃ¨re colonne. Cette commande pourra alors
 convenir : >
 
 	:?^Chapitre?,/^Chapitre/s=vert=bleu=g
 
-Vous pouvez constater que deux motifs de recherche sont utilisés. Le premier,
-"?^Chapitre?", trouve la dernière ligne au-dessus de la position courante qui
-correspond à ce motif. Une plage de forme "?motif?" permet donc d'effectuer
-une recherche vers l'arrière. De même, "/^Chapitre/" recherche vers l'avant le
-prochain début de chapitre.
-   Pour éviter toute ambiguïté avec les obliques, le caractère '=' a été
-utilisé dans la commande de substitution. Mais une oblique ou n'importe quel
-caractère aurait parfaitement fonctionné.
+Vous pouvez constater que deux motifs de recherche sont utilisÃ©s. Le premier,
+"?^Chapitre?", trouve la derniÃ¨re ligne au-dessus de la position courante qui
+correspond Ã  ce motif. Une plage de forme "?motif?" permet donc d'effectuer
+une recherche vers l'arriÃ¨re. De mÃªme, "/^Chapitre/" recherche vers l'avant le
+prochain dÃ©but de chapitre.
+   Pour Ã©viter toute ambiguÃ¯tÃ© avec les obliques, le caractÃ¨re '=' a Ã©tÃ©
+utilisÃ© dans la commande de substitution. Mais une oblique ou n'importe quel
+caractÃ¨re aurait parfaitement fonctionnÃ©.
 
 
 AJOUTER ET SOUSTRAIRE XXX pas parlant
 
-La commande donnée ci-dessus contient une légère erreur : si le titre du
-prochain chapitre inclut "vert", le terme sera remplacé avec les autres. C'est
-peut-être ce que vous souhaitez, mais dans le cas contraire ? Vous pouvez
-alors utiliser un décalage.
-   Pour rechercher un motif et s'arrêter à la ligne juste au-dessus : >
+La commande donnÃ©e ci-dessus contient une lÃ©gÃ¨re erreur : si le titre du
+prochain chapitre inclut "vert", le terme sera remplacÃ© avec les autres. C'est
+peut-Ãªtre ce que vous souhaitez, mais dans le cas contraire ? Vous pouvez
+alors utiliser un dÃ©calage.
+   Pour rechercher un motif et s'arrÃªter Ã  la ligne juste au-dessus : >
 
 	/Chapitre/-1
 
-Vous pouvez utiliser n'importe quel nombre à la place de 1. Pour s'arrêter à
-la deuxième ligne sous la correspondance : >
+Vous pouvez utiliser n'importe quel nombre Ã  la place de 1. Pour s'arrÃªter Ã 
+la deuxiÃ¨me ligne sous la correspondance : >
 
 	/Chapitre/+2
 
-Les décalages peuvent aussi être combinés avec les autres éléments autorisés
-dans une plage. Considérons par exemple : >
+Les dÃ©calages peuvent aussi Ãªtre combinÃ©s avec les autres Ã©lÃ©ments autorisÃ©s
+dans une plage. ConsidÃ©rons par exemple : >
 
 	:.+3,$-5
 
-Ceci désigne la plage qui débute trois lignes sous la position courante et se
-termine cinq lignes avant la dernière ligne du fichier.
+Ceci dÃ©signe la plage qui dÃ©bute trois lignes sous la position courante et se
+termine cinq lignes avant la derniÃ¨re ligne du fichier.
 
 
 UTILISER LES MARQUES
 
-Plutôt que d'essayer de déterminer les numéros de lignes correspondant à
+PlutÃ´t que d'essayer de dÃ©terminer les numÃ©ros de lignes correspondant Ã 
 certaines positions, les retenir et les donner dans une plage, vous pouvez
 utiliser les marques.
-   Nous avons déjà vu au chapitre 3 comment positionner des marques. Par
-exemple, utilisez "md" pour marquer le début d'un passage, et "mf" pour la
-fin. Vous pouvez ensuite utiliser cette plage pour désigner les lignes
+   Nous avons dÃ©jÃ  vu au chapitre 3 comment positionner des marques. Par
+exemple, utilisez "md" pour marquer le dÃ©but d'un passage, et "mf" pour la
+fin. Vous pouvez ensuite utiliser cette plage pour dÃ©signer les lignes
 comprises entre ces deux marques (lignes contenant les marques incluses) : >
 
 	:'d,'f
@@ -326,109 +326,109 @@ comprises entre ces deux marques (lignes contenant les marques incluses) : >
 
 MODE VISUEL ET PLAGES
 
-Si vous sélectionnez du texte en mode Visuel puis pressez ":" pour passer sur
+Si vous sÃ©lectionnez du texte en mode Visuel puis pressez ":" pour passer sur
 la ligne de commande, vous y verrez s'afficher :
 
 	:'<,'> ~
 
 Saisissez maintenant une commande : elle s'appliquera sur la plage de lignes
-qui a été sélectionnée visuellement.
+qui a Ã©tÃ© sÃ©lectionnÃ©e visuellement.
 
 	NOTE :
-	Si le mode Visuel ne sélectionne qu'une partie de ligne ou un bloc de
-	texte (avec CTRL-V), les commandes ":" s'apliqueront quand même sur
-	les lignes entières. Cela pourra changer dans les versions ultérieures
+	Si le mode Visuel ne sÃ©lectionne qu'une partie de ligne ou un bloc de
+	texte (avec CTRL-V), les commandes ":" s'apliqueront quand mÃªme sur
+	les lignes entiÃ¨res. Cela pourra changer dans les versions ultÃ©rieures
 	de Vim.
 
-Les éléments '< et '> sont bien des marques, placées au début et à la fin de
-la sélection Visuel. Elles restent à leur position jusqu'à ce qu'une autre
-sélection Visuel ne soit effectuée. Vous pouvez donc utiliser la commande
-"'<" pour sauter à la position où la zone Visuel débutait. Et vous pouvez
-mélanger les marques avec d'autres éléments : >
+Les Ã©lÃ©ments '< et '> sont bien des marques, placÃ©es au dÃ©but et Ã  la fin de
+la sÃ©lection Visuel. Elles restent Ã  leur position jusqu'Ã  ce qu'une autre
+sÃ©lection Visuel ne soit effectuÃ©e. Vous pouvez donc utiliser la commande
+"'<" pour sauter Ã  la position oÃ¹ la zone Visuel dÃ©butait. Et vous pouvez
+mÃ©langer les marques avec d'autres Ã©lÃ©ments : >
 
 	:'>,$
 
-Ceci désigne les lignes comprises entre la fin de la zone Visuel et la fin du
+Ceci dÃ©signe les lignes comprises entre la fin de la zone Visuel et la fin du
 fichier.
 
 
 UN CERTAIN NOMBRE DE LIGNES
 
-Quand vous connaissez le nombre de lignes à modifier, vous pouvez taper
+Quand vous connaissez le nombre de lignes Ã  modifier, vous pouvez taper
 directement ce nombre suivi de ":". Par exemple, si vous tapez "5:", vous
 obtiendrez :
 
 	:.,.+4 ~
 
-Vous pouvez ensuite entrer la commande à utiliser. Elle opérera sur la plage
-"." (ligne courante) à ".+4" (quatre lignes plus bas). Soit cinq lignes en
+Vous pouvez ensuite entrer la commande Ã  utiliser. Elle opÃ©rera sur la plage
+"." (ligne courante) Ã  ".+4" (quatre lignes plus bas). Soit cinq lignes en
 tout.
 
 ==============================================================================
 *10.4*	La commande ":global"
 
 La commande ":global" est une des plus polyvalentes de Vim. Elle permet de
-trouver les correspondances d'un motif et d'y exécuter une commande. Sa forme
-générale est : >
+trouver les correspondances d'un motif et d'y exÃ©cuter une commande. Sa forme
+gÃ©nÃ©rale est : >
 
 	:[plage]global/{motif}/{commande}
 
 Il y a certains points communs avec la commande ":substitute". Mais au lieu de
 remplacer le texte correspondant par un autre texte, la commande {commande}
-est exécutée.
+est exÃ©cutÃ©e.
 
 	NOTE :
-	La commande exécutée par ":global" doit être une commande débutant par
-	un deux-points. Les commandes du mode Normal ne peuvent pas être
-	utilisées directement : une construction avec la commande |:normal|
-	sera nécessaire.
+	La commande exÃ©cutÃ©e par ":global" doit Ãªtre une commande dÃ©butant par
+	un deux-points. Les commandes du mode Normal ne peuvent pas Ãªtre
+	utilisÃ©es directement : une construction avec la commande |:normal|
+	sera nÃ©cessaire.
 
 Supposons que vous souhaitiez changer "gloubi" en "boulga", mais uniquement
-dans des commentaires de style C++. Ces commentaires débutent par "//".
+dans des commentaires de style C++. Ces commentaires dÃ©butent par "//".
 Utilisez : >
 
 	:g+//+s/gloubi/boulga/g
 
-Cette commande débute par ":g". C'est un raccourci pour ":global", tout comme
-":s" est un raccourci pour ":substitute". Vient ensuite le motif, encadré par
-des caractères plus. En effet, le motif recherché contenant une oblique, il
-est préférable en terme de lisibilité d'utiliser un plus comme séparateur. En
-dernière position se trouve la commande de substitution, qui remplace "gloubi"
+Cette commande dÃ©bute par ":g". C'est un raccourci pour ":global", tout comme
+":s" est un raccourci pour ":substitute". Vient ensuite le motif, encadrÃ© par
+des caractÃ¨res plus. En effet, le motif recherchÃ© contenant une oblique, il
+est prÃ©fÃ©rable en terme de lisibilitÃ© d'utiliser un plus comme sÃ©parateur. En
+derniÃ¨re position se trouve la commande de substitution, qui remplace "gloubi"
 par "boulga".
-   La plage par défaut pour la commande ":global" est le fichier entier. C'est
-pourquoi aucune plage n'a été donnée dans cet exemple. Cela diffère de
+   La plage par dÃ©faut pour la commande ":global" est le fichier entier. C'est
+pourquoi aucune plage n'a Ã©tÃ© donnÃ©e dans cet exemple. Cela diffÃ¨re de
 ":substitute", qui ne fonctionne que sur une seule ligne sans plage.
-   La commande présentée n'est pas parfaite, dans la mesure où elle opérera
+   La commande prÃ©sentÃ©e n'est pas parfaite, dans la mesure oÃ¹ elle opÃ©rera
 aussi sur les lignes contenant "//" en leur sein, et que la substitution
 pourra avoir lieu avant le "//".
 
-Comme avec ":substitute", n'importe quel motif peut être employé. Vous pourrez
-utiliser des motifs plus complexes à mesure où vous apprendrez à les
-maîtriser.
+Comme avec ":substitute", n'importe quel motif peut Ãªtre employÃ©. Vous pourrez
+utiliser des motifs plus complexes Ã  mesure oÃ¹ vous apprendrez Ã  les
+maÃ®triser.
 
 ==============================================================================
 *10.5*	Mode Visuel-bloc
 
-Vous pouvez utiliser CTRL-V pour commencer la sélection d'une zone
-rectangulaire (ou bloc) de texte. Plusieurs commandes se comportent de façon
-spéciale avec un bloc de texte.
+Vous pouvez utiliser CTRL-V pour commencer la sÃ©lection d'une zone
+rectangulaire (ou bloc) de texte. Plusieurs commandes se comportent de faÃ§on
+spÃ©ciale avec un bloc de texte.
 
-C'est le cas notamment de la commande "$" : la zone Visuel sera étendue
-jusqu'à la fin de chaque ligne sélectionnée, même si la ligne courante est
-plus courte. Cela reste effectif jusqu'à ce que vous utilisiez une commande de
-mouvement qui déplace le curseur horizontalement. Ainsi, "j" préservera cette
-sélection, mais pas "h".
+C'est le cas notamment de la commande "$" : la zone Visuel sera Ã©tendue
+jusqu'Ã  la fin de chaque ligne sÃ©lectionnÃ©e, mÃªme si la ligne courante est
+plus courte. Cela reste effectif jusqu'Ã  ce que vous utilisiez une commande de
+mouvement qui dÃ©place le curseur horizontalement. Ainsi, "j" prÃ©servera cette
+sÃ©lection, mais pas "h".
 
 
-INSÉRER DU TEXTE
+INSÃ‰RER DU TEXTE
 
-La commande "I{chaine}<Echap>" insère le texte {chaine} dans chaque ligne,
-juste à gauche du bloc Visuel. Commencez par presser CTRL-V pour passer en
-mode Visuel-bloc. Déplacez ensuite le curseur pour définir votre bloc. Puis
-tapez "I" pour passer en mode Insertion, suivi du texte à insérer. Lors de la
-saisie, le texte n'apparaît que sur la première ligne.
-   Après que vous aurez pressé <Echap> pour terminer l'insertion, le texte
-sera inséré automatiquement dans les lignes restantes contenues dans la zone
+La commande "I{chaine}<Echap>" insÃ¨re le texte {chaine} dans chaque ligne,
+juste Ã  gauche du bloc Visuel. Commencez par presser CTRL-V pour passer en
+mode Visuel-bloc. DÃ©placez ensuite le curseur pour dÃ©finir votre bloc. Puis
+tapez "I" pour passer en mode Insertion, suivi du texte Ã  insÃ©rer. Lors de la
+saisie, le texte n'apparaÃ®t que sur la premiÃ¨re ligne.
+   AprÃ¨s que vous aurez pressÃ© <Echap> pour terminer l'insertion, le texte
+sera insÃ©rÃ© automatiquement dans les lignes restantes contenues dans la zone
 Visuel. Exemple :
 
 	include un ~ XXX pertinent ?
@@ -437,7 +437,7 @@ Visuel. Exemple :
 	include quatre ~
 
 Amenez le curseur sur le 'u' de "un" et pressez CTRL-V. Descendez avec "3j"
-jusqu'à "quatre". Vous disposez à présent d'un bloc traversant quatre lignes.
+jusqu'Ã  "quatre". Vous disposez Ã  prÃ©sent d'un bloc traversant quatre lignes.
 Tapez alors : >
 
 	Imodule.<Echap>
@@ -450,15 +450,15 @@ Vous obtiendrez :
 	include module.quatre ~
 
 Si le bloc traverse des lignes courtes qui n'apparaissent pas dans la
-sélection, le texte n'est pas inséré dans ces ligne. Par exemple, créez un
-bloc Visuel qui comprendra le mot "longue" des première et dernière lignes de
-ce texte (aucun caractère ne sera sélectionné dans la deuxième ligne) :
+sÃ©lection, le texte n'est pas insÃ©rÃ© dans ces ligne. Par exemple, crÃ©ez un
+bloc Visuel qui comprendra le mot "longue" des premiÃ¨re et derniÃ¨re lignes de
+ce texte (aucun caractÃ¨re ne sera sÃ©lectionnÃ© dans la deuxiÃ¨me ligne) :
 
 	Voici une longue ligne ~
 	Une courte ~
 	Une autre longue ligne ~
 
-		  ^^^^^^  bloc sélectionné
+		  ^^^^^^  bloc sÃ©lectionnÃ©
 
 Utilisez maintenant la commande "Ibien <Echap>". Vous obtiendrez :
 
@@ -466,72 +466,72 @@ Utilisez maintenant la commande "Ibien <Echap>". Vous obtiendrez :
 	Une courte ~
 	Une autre bien longue ligne ~
 
-Rien n'a été inséré dans la ligne courte.
+Rien n'a Ã©tÃ© insÃ©rÃ© dans la ligne courte.
 
-Si la chaîne que vous insérez contient un saut-de-ligne, le "I" se comportera
+Si la chaÃ®ne que vous insÃ©rez contient un saut-de-ligne, le "I" se comportera
 exactement comme une commande d'insertion normale et n'affectera que la
-première ligne du bloc.
+premiÃ¨re ligne du bloc.
 
-La commande "A" fonctionne pareillement, sauf qu'elle ajoute à la fin du côté
+La commande "A" fonctionne pareillement, sauf qu'elle ajoute Ã  la fin du cÃ´tÃ©
 droit du bloc.
-   Il y a un cas particulier pour "A" : sélectionnez un bloc Visuel et
-utilisez "$" pour étendre le bloc jusqu'à la fin de chaque ligne. Si vous
-utilisez "A" maintenant, le texte sera ajouté à la fin de chaque ligne.
-   Partons de l'exemple précédent : si vous tapez "$A XYZ<Echap>, vous
-obtiendrez ce résultat :
+   Il y a un cas particulier pour "A" : sÃ©lectionnez un bloc Visuel et
+utilisez "$" pour Ã©tendre le bloc jusqu'Ã  la fin de chaque ligne. Si vous
+utilisez "A" maintenant, le texte sera ajoutÃ© Ã  la fin de chaque ligne.
+   Partons de l'exemple prÃ©cÃ©dent : si vous tapez "$A XYZ<Echap>, vous
+obtiendrez ce rÃ©sultat :
 
 	Voici une longue ligne XYZ ~
 	Une courte XYZ ~
 	Une autre longue ligne XYZ ~
 
-Il est vraiment nécessaire d'utiliser la commande "$" pour cela. Vim se
-rappelle de son utilisation. Si vous effectuez la même sélection en déplaçant
-le curseur avec d'autres commandes de mouvement jusqu'à la fin de la ligne la
-plus longue, vous n'obtiendrez pas le même résultat.
+Il est vraiment nÃ©cessaire d'utiliser la commande "$" pour cela. Vim se
+rappelle de son utilisation. Si vous effectuez la mÃªme sÃ©lection en dÃ©plaÃ§ant
+le curseur avec d'autres commandes de mouvement jusqu'Ã  la fin de la ligne la
+plus longue, vous n'obtiendrez pas le mÃªme rÃ©sultat.
 
 
 CHANGER DU TEXTE
 
 En mode Visuel-bloc, la commande "c" coupe le bloc et fait passer en mode
-Insertion pour permettre la saisie d'une chaîne. La chaîne sera insérée dans
+Insertion pour permettre la saisie d'une chaÃ®ne. La chaÃ®ne sera insÃ©rÃ©e dans
 chaque ligne du bloc.
-   En repartant de la même sélection que ci-dessus (mots "longue") et en
+   En repartant de la mÃªme sÃ©lection que ci-dessus (mots "longue") et en
 tapant "c_LONGUE_<Echap>", vous obtiendrez ceci :
 
 	Voici une _LONGUE_ ligne ~
 	Une courte ~
 	Une autre _LONGUE_ ligne ~
 
-Comme avec "I", la ligne courte n'est pas modifiée. De même, vous ne pouvez
-pas insérer de saut-de-ligne dans le nouveau texte.
+Comme avec "I", la ligne courte n'est pas modifiÃ©e. De mÃªme, vous ne pouvez
+pas insÃ©rer de saut-de-ligne dans le nouveau texte.
 
-La commande "C" coupe le texte depuis le côté gauche du bloc jusqu'à la fin de
+La commande "C" coupe le texte depuis le cÃ´tÃ© gauche du bloc jusqu'Ã  la fin de
 la ligne. Elle fait ensuite passer en mode Insertion pour permettre la saisie
-d'une chaîne, qui sera ajoutée à la fin de chaque ligne.
-   En repartant toujours de la même sélection et en tapant "Cnouvelle
+d'une chaÃ®ne, qui sera ajoutÃ©e Ã  la fin de chaque ligne.
+   En repartant toujours de la mÃªme sÃ©lection et en tapant "Cnouvelle
 phrase<Echap>", vous obtiendrez :
 
 	Voici une nouvelle phrase ~
 	Une courte ~
 	Une autre nouvelle phrase ~
 
-Remarquez bien que, même si seul le mot "longue" avait été sélectionné, tout
-le texte qui suivait a été effacé sans distinction. Seule la position du côté
+Remarquez bien que, mÃªme si seul le mot "longue" avait Ã©tÃ© sÃ©lectionnÃ©, tout
+le texte qui suivait a Ã©tÃ© effacÃ© sans distinction. Seule la position du cÃ´tÃ©
 gauche du bloc Visuel est donc prise en compte.
    Encore une fois, les lignes courtes qui n'apparaissent pas dans le bloc
 restent intactes.
 
-Autres commandes permettant de modifier des caractères dans un bloc Visuel :
+Autres commandes permettant de modifier des caractÃ¨res dans un bloc Visuel :
 
 	~	inverse la casse		    (a -> A  et A -> a)
 	U	passe en majuscules ["Uppercase"]   (a -> A  et A -> A)
 	u	passe en minuscules		    (a -> a  et A -> a)
 
 
-REMPLIR AVEC UN CARACTÈRE
+REMPLIR AVEC UN CARACTÃˆRE
 
-Pour remplir le bloc entier avec un caractère, utilisez la commande "r".
-Toujours avec le même exemple, en tapant "rx", vous obtiendrez :
+Pour remplir le bloc entier avec un caractÃ¨re, utilisez la commande "r".
+Toujours avec le mÃªme exemple, en tapant "rx", vous obtiendrez :
 
 	Voici une xxxxxx ligne ~
 	Une courte ~
@@ -539,200 +539,200 @@ Toujours avec le même exemple, en tapant "rx", vous obtiendrez :
 
 
 	NOTE :
-	Si vous souhaitez inclure des caractères après la fin des lignes dans
-	le bloc, voyez la fonctionnalité 'virtualedit' au chapitre 25.
+	Si vous souhaitez inclure des caractÃ¨res aprÃ¨s la fin des lignes dans
+	le bloc, voyez la fonctionnalitÃ© 'virtualedit' au chapitre 25.
 
 
-DÉCALER DU TEXTE
+DÃ‰CALER DU TEXTE
 
-La commande ">" décale le texte sélectionné d'un pas d'indentation vers la
-droite, et insère un espace blanc. Le décalage se fait à l'endroit où se situe
-le côté gauche du bloc Visuel.
-   Toujours avec le même exemple, ">" produit ce résultat :
+La commande ">" dÃ©cale le texte sÃ©lectionnÃ© d'un pas d'indentation vers la
+droite, et insÃ¨re un espace blanc. Le dÃ©calage se fait Ã  l'endroit oÃ¹ se situe
+le cÃ´tÃ© gauche du bloc Visuel.
+   Toujours avec le mÃªme exemple, ">" produit ce rÃ©sultat :
 
 	Voici une	  longue ligne ~
 	Une courte ~
 	Une autre	  longue ligne ~
 
-Le pas d'indentation est spécifié via l'option 'shiftwidth'. Si vous préférez
+Le pas d'indentation est spÃ©cifiÃ© via l'option 'shiftwidth'. Si vous prÃ©fÃ©rez
 utiliser 4 espaces, faites : >
 
 	:set shiftwidth=4
 
 La commande "<" supprime l'espace blanc sur un pas d'indentation depuis le
-côté gauche du bloc. Cette commande est limitée par le texte présent aux
-positions concernées ; ainsi, si l'espace blanc fait moins d'un pas
+cÃ´tÃ© gauche du bloc. Cette commande est limitÃ©e par le texte prÃ©sent aux
+positions concernÃ©es ; ainsi, si l'espace blanc fait moins d'un pas
 d'indentation de large, la commande se contentera de ce qu'elle peut.
 
 
 FUSIONNER DES LIGNES
 
-La commande "J" fusionne toutes les lignes sélectionnées en une seule.
+La commande "J" fusionne toutes les lignes sÃ©lectionnÃ©es en une seule.
 Autrement dit, elle supprime les coupures de lignes. En fait, l'espace blanc
-final, la coupure de ligne et l'espace blanc initial sont remplacés par un
+final, la coupure de ligne et l'espace blanc initial sont remplacÃ©s par un
 unique espace.
 Two spaces are used after a line XXX ou sentence ??? ending (that can be
 changed with the 'joinspaces' option).
-   En reprenant l'exemple auquel nous sommes désormais habitués, et en tapant
+   En reprenant l'exemple auquel nous sommes dÃ©sormais habituÃ©s, et en tapant
 "J", on obtient :
 
 	Voici une longue ligne Une courte Une autre longue ligne ~
 
-Il n'est pas nécessaire d'utiliser une sélection par blocs pour la commande
-"J" : elle fonctionnera exactement de la même façon avec des sélections faites
+Il n'est pas nÃ©cessaire d'utiliser une sÃ©lection par blocs pour la commande
+"J" : elle fonctionnera exactement de la mÃªme faÃ§on avec des sÃ©lections faites
 avec "v" ou "V".
 
-Si vous ne souhaitez pas que l'espace blanc soit modifié, utilisez la commande
+Si vous ne souhaitez pas que l'espace blanc soit modifiÃ©, utilisez la commande
 "gJ".
 
 ==============================================================================
 *10.6*	Lire et enregistrer une partie de fichier
 
-Lors de la rédaction d'un courriel, il est parfois pratique d'inclure un autre
-fichier : cela peut être effectué grâce à la commande ":read {nomfichier}". Le
-contenu du fichier est placé sous la ligne du curseur.
+Lors de la rÃ©daction d'un courriel, il est parfois pratique d'inclure un autre
+fichier : cela peut Ãªtre effectuÃ© grÃ¢ce Ã  la commande ":read {nomfichier}". Le
+contenu du fichier est placÃ© sous la ligne du curseur.
    Partons de ce texte :
 
 	Bonjour David, ~
-	Voici la rustine qui corrige le problème constaté : ~
+	Voici la rustine qui corrige le problÃ¨me constatÃ© : ~
 	Salutations, Fabien. ~
 
-Amenez le curseur sur la deuxième ligne et tapez : >
+Amenez le curseur sur la deuxiÃ¨me ligne et tapez : >
 
 	:read rustine
 
-Le fichier nommé "rustine" sera inséré, ce qui donnera :
+Le fichier nommÃ© "rustine" sera insÃ©rÃ©, ce qui donnera :
 
 	Bonjour David, ~
-	Voici la rustine qui corrige le problème constaté : ~
+	Voici la rustine qui corrige le problÃ¨me constatÃ© : ~
 	2c2 ~
 	<	for (i = 0; i <= total; ++i) ~
 	--- ~
 	>	for (i = 0; i < total; ++i) ~
 	Salutations, Fabien. ~
 
-La commande ":read" accepte une plage. Le fichier sera placé sous la ligne
-correspondant au dernier numéro de la plage. Ainsi, ":$r rustine" ajoutera le
-fichier "rustine" à la fin du fichier courant.
-   Comment faire si vous souhaitez placer le fichier au-dessus de la première
-ligne ? Utilisez pour cela le numéro de ligne zéro. Cette ligne n'existant pas
+La commande ":read" accepte une plage. Le fichier sera placÃ© sous la ligne
+correspondant au dernier numÃ©ro de la plage. Ainsi, ":$r rustine" ajoutera le
+fichier "rustine" Ã  la fin du fichier courant.
+   Comment faire si vous souhaitez placer le fichier au-dessus de la premiÃ¨re
+ligne ? Utilisez pour cela le numÃ©ro de ligne zÃ©ro. Cette ligne n'existant pas
 vraiment, vous obtiendrez un message en l'utilisant avec la plupart des
 commandes. Mais cela marchera pour la commande en question : >
 
 	:0read rustine
 
-Le fichier "rustine" sera placé en tête du fichier courant.
+Le fichier "rustine" sera placÃ© en tÃªte du fichier courant.
 
 
 ENREGISTRER UNE PLAGE DE LIGNES
 
 Pour enregistrer une plage de lignes dans un fichier, la commande ":write"
-peut être utilisée. Sans plage, cette commande enregistre le fichier entier.
-Avec une plage, elle n'enregistre que les lignes spécifiées : >
+peut Ãªtre utilisÃ©e. Sans plage, cette commande enregistre le fichier entier.
+Avec une plage, elle n'enregistre que les lignes spÃ©cifiÃ©es : >
 
 	:.,$write tempo
 
-Ceci enregistre les lignes depuis la position du curseur jusqu'à la fin du
-fichier dans le fichier "tempo". Si ce fichier existe déjà, vous obtiendrez un
-message d'erreur. Vim vous empêche ainsi d'écraser un fichier existant par
-accident. Si vous souhaitez vraiment passer outre et écraser le fichier,
+Ceci enregistre les lignes depuis la position du curseur jusqu'Ã  la fin du
+fichier dans le fichier "tempo". Si ce fichier existe dÃ©jÃ , vous obtiendrez un
+message d'erreur. Vim vous empÃªche ainsi d'Ã©craser un fichier existant par
+accident. Si vous souhaitez vraiment passer outre et Ã©craser le fichier,
 ajoutez '!' : >
 
 	:.,$write! tempo
 
-ATTENTION : Le '!' doit suivre immédiatement la commande ":write", sans espace
+ATTENTION : Le '!' doit suivre immÃ©diatement la commande ":write", sans espace
 blanc. Sans cela, la commande devient une commande de filtre (ce cas est
-abordé à la fin de ce chapitre).
+abordÃ© Ã  la fin de ce chapitre).
 
 
-AJOUTER À LA FIN D'UN FICHIER
+AJOUTER Ã€ LA FIN D'UN FICHIER
 
-Dans la première section de ce chapitre, nous avons vu comment placer un
-certain nombre de lignes dans un registre. Il est possible de faire de même
-dans un fichier. Enregistrez la première ligne avec cette commande : >
+Dans la premiÃ¨re section de ce chapitre, nous avons vu comment placer un
+certain nombre de lignes dans un registre. Il est possible de faire de mÃªme
+dans un fichier. Enregistrez la premiÃ¨re ligne avec cette commande : >
 
 	:.write pot-pourri
 
-Placez-vous à présent sur la deuxième ligne que vous souhaitez récupérer, et
+Placez-vous Ã  prÃ©sent sur la deuxiÃ¨me ligne que vous souhaitez rÃ©cupÃ©rer, et
 tapez ceci : >
 
 	:.write >>pot-pourri
 
-Le ">>" indique la commande ":write" que le fichier "pot-pourri" existe déjà,
-et qu'il convient d'ajouter à suite plutôt d'en écraser le contenu. Cette
-opération peut être répétée autant de fois que vous voulez.
+Le ">>" indique la commande ":write" que le fichier "pot-pourri" existe dÃ©jÃ ,
+et qu'il convient d'ajouter Ã  suite plutÃ´t d'en Ã©craser le contenu. Cette
+opÃ©ration peut Ãªtre rÃ©pÃ©tÃ©e autant de fois que vous voulez.
 
 ==============================================================================
 *10.7*	Mise en forme de texte
 
-Quand on saisit du texte brut, il est souvent préférable de voir chaque ligne
-s'adapter automatiquement à la largeur de la fenêtre. Pour cela, fixez
+Quand on saisit du texte brut, il est souvent prÃ©fÃ©rable de voir chaque ligne
+s'adapter automatiquement Ã  la largeur de la fenÃªtre. Pour cela, fixez
 l'option 'textwidth' : >
 
 	:set textwidth=72
 
-Vous vous souvenez peut-être que dans le fichier vimrc d'exemple, cette
-commande était utilisée pour tous les fichiers texte. Ainsi, si vous utilisez
-ce fichier vimrc, vous utilisez déjà (implicitement) ce paramètre. Pour
-contrôler la valeur courante de 'textwidth' : >
+Vous vous souvenez peut-Ãªtre que dans le fichier vimrc d'exemple, cette
+commande Ã©tait utilisÃ©e pour tous les fichiers texte. Ainsi, si vous utilisez
+ce fichier vimrc, vous utilisez dÃ©jÃ  (implicitement) ce paramÃ¨tre. Pour
+contrÃ´ler la valeur courante de 'textwidth' : >
 
 	:set textwidth
 
-Avec notre exemple, les lignes seront coupées automatiquement pour ne pas
-dépasser la limite de 72 caractères. Mais si vous rajoutez du texte au milieu
+Avec notre exemple, les lignes seront coupÃ©es automatiquement pour ne pas
+dÃ©passer la limite de 72 caractÃ¨res. Mais si vous rajoutez du texte au milieu
 d'une ligne, ou que vous supprimez des mots, vos lignes deviendront ou trop
 longues ou trop courtes. Vim doesn't automatically reformat the text XXX fo-a.
-   Pour indiquer à Vim de mettre en forme le paragraphe courant : >
+   Pour indiquer Ã  Vim de mettre en forme le paragraphe courant : >
 
 	gqap
 
-Cette séquence débute par la commande "gq", qui est un opérateur. Vient
-ensuite "ap", l'objet textuel qui désigne « un paragraphe » ["A Paragraph"].
-Chaque paragraphe est séparé du suivant par une ligne vide.
+Cette sÃ©quence dÃ©bute par la commande "gq", qui est un opÃ©rateur. Vient
+ensuite "ap", l'objet textuel qui dÃ©signe Â« un paragraphe Â» ["A Paragraph"].
+Chaque paragraphe est sÃ©parÃ© du suivant par une ligne vide.
 
 	NOTE :
 	Une ligne blanche, qui contient un espace blanc, n'est PAS un
-	séparateur de paragraphes. Ce cas est souvent difficile à déceler !
+	sÃ©parateur de paragraphes. Ce cas est souvent difficile Ã  dÃ©celer !
 
-Vous pouvez utiliser n'importe quel mouvement ou objet textuel à la place de
-"ap". Si vos paragraphes sont bien séparés, vous pouvez utiliser cette
+Vous pouvez utiliser n'importe quel mouvement ou objet textuel Ã  la place de
+"ap". Si vos paragraphes sont bien sÃ©parÃ©s, vous pouvez utiliser cette
 commande pour mettre en forme le fichier entier : >
 
 	gggqG
 
-"gg" vous amène à la première ligne, "gq" est l'opérateur de mise en forme et
-"G" le mouvement qui saute à la dernière ligne.
+"gg" vous amÃ¨ne Ã  la premiÃ¨re ligne, "gq" est l'opÃ©rateur de mise en forme et
+"G" le mouvement qui saute Ã  la derniÃ¨re ligne.
 
-Dans le cas où vos paragraphes ne sont pas clairement définis, vous pouvez
-sélectionner manuellement les lignes à mettre en forme. Placez le curseur sur
-la première ligne à traiter et saisissez la commande "gqj". Cela met en forme
-la ligne courante et la suivante. Si la première était trop courte, le début
-de la seconde la complétera ; si elle était trop longue, le surplus passera
-sur la ligne suivante. Le curseur est ensuite laissé sur la seconde ligne.
-Vous pouvez alors utiliser "." pour répéter la commande, autant que fois qu'il
-y a de lignes à mettre en forme.
+Dans le cas oÃ¹ vos paragraphes ne sont pas clairement dÃ©finis, vous pouvez
+sÃ©lectionner manuellement les lignes Ã  mettre en forme. Placez le curseur sur
+la premiÃ¨re ligne Ã  traiter et saisissez la commande "gqj". Cela met en forme
+la ligne courante et la suivante. Si la premiÃ¨re Ã©tait trop courte, le dÃ©but
+de la seconde la complÃ©tera ; si elle Ã©tait trop longue, le surplus passera
+sur la ligne suivante. Le curseur est ensuite laissÃ© sur la seconde ligne.
+Vous pouvez alors utiliser "." pour rÃ©pÃ©ter la commande, autant que fois qu'il
+y a de lignes Ã  mettre en forme.
 
 ==============================================================================
 *10.8*	Changement de casse
 
 Supposons que dans votre texte, les titres de sections sont en minuscules.
-Vous souhaitez passer le mot « titre » en majuscules. Utilisez pour cela
-l'opérateur "gU". Avec le curseur dans la première colonne :
+Vous souhaitez passer le mot Â« titre Â» en majuscules. Utilisez pour cela
+l'opÃ©rateur "gU". Avec le curseur dans la premiÃ¨re colonne :
 
 			      gUw
 	titre de section     ---->	TITRE de section ~
 
-L'opérateur "gu" fait exactement le contraire :
+L'opÃ©rateur "gu" fait exactement le contraire :
 
 			      guw
 	TITRE de section     ---->	titre de section ~
 
 Vous pouvez en outre utiliser "g~" pour inverser la casse. Toutes ces
-commandes sont des opérateurs, et peuvent être employés en conjonction avec
+commandes sont des opÃ©rateurs, et peuvent Ãªtre employÃ©s en conjonction avec
 des mouvements, des objets textuels ou en mode Visuel.
-   Pour faire qu'un opérateur s'applique sur des lignes entières, doublez-le.
-L'opérateur de coupage est "d", ainsi pour couper une ligne, utilisez "dd". De
-même, "gugu" passe une ligne entière en minuscules. Il est possible d'utiliser
+   Pour faire qu'un opÃ©rateur s'applique sur des lignes entiÃ¨res, doublez-le.
+L'opÃ©rateur de coupage est "d", ainsi pour couper une ligne, utilisez "dd". De
+mÃªme, "gugu" passe une ligne entiÃ¨re en minuscules. Il est possible d'utiliser
 le raccourci "guu". D'autres raccourcis sont disponibles, comme "gUU pour
 ""gUgU" et "g~~" pour "g~g~". Exemple :
 
@@ -742,38 +742,38 @@ le raccourci "guu". D'autres raccourcis sont disponibles, comme "gUU pour
 ==============================================================================
 *10.9*	Utiliser un programme externe
 
-Vim dispose d'un ensemble de commandes très puissant, qui permet presque tout.
-Mais il y a des cas où il est préférable d'employer une commande externe.
+Vim dispose d'un ensemble de commandes trÃ¨s puissant, qui permet presque tout.
+Mais il y a des cas oÃ¹ il est prÃ©fÃ©rable d'employer une commande externe.
    La commande "!{mouv}{programme}" prend un passage de texte et le filtre
-avec un programme externe. En d'autres termes, elle exécute la commande
-système donnée par {programme} en lui passant le texte couvert par {mouv} en
-entrée. La sortie de cette commande remplace ensuite le passage sélectionné.
-   Cette explication n'est probablement pas très claire si vous n'êtes pas
+avec un programme externe. En d'autres termes, elle exÃ©cute la commande
+systÃ¨me donnÃ©e par {programme} en lui passant le texte couvert par {mouv} en
+entrÃ©e. La sortie de cette commande remplace ensuite le passage sÃ©lectionnÃ©.
+   Cette explication n'est probablement pas trÃ¨s claire si vous n'Ãªtes pas
 familier avec les filtres Unix ; prenons donc un exemple. La commande `sort`
-permet de trier un fichier. Si vous exécutez la commande suivante, le fichier
-"entree.txt" sera trié et enregistré dans "sortie.txt" (cela fonctionne aussi
+permet de trier un fichier. Si vous exÃ©cutez la commande suivante, le fichier
+"entree.txt" sera triÃ© et enregistrÃ© dans "sortie.txt" (cela fonctionne aussi
 bien sur Unix que sur MS-Windows) : >
 
 	sort <entree.txt >sortie.txt
 
-Faisons maintenant la même chose dans Vim. Supposons que vous souhaitiez trier
-les cinq premières lignes : placez d'abord le curseur sur la ligne 1, puis
-exécutez cette commande : >
+Faisons maintenant la mÃªme chose dans Vim. Supposons que vous souhaitiez trier
+les cinq premiÃ¨res lignes : placez d'abord le curseur sur la ligne 1, puis
+exÃ©cutez cette commande : >
 
 	!5G
 
-Le '!' indique à Vim que allez effectuer une opération de filtrage. L'éditeur
-suppose alors qu'un mouvement va suivre, pour indiquer la partie du fichier à
-traiter. La commande "5G" indique à Vim d'aller à la ligne 5 : la commande de
-filtre opérera donc sur les lignes de 1 (ligne courante) à 5.
+Le '!' indique Ã  Vim que allez effectuer une opÃ©ration de filtrage. L'Ã©diteur
+suppose alors qu'un mouvement va suivre, pour indiquer la partie du fichier Ã 
+traiter. La commande "5G" indique Ã  Vim d'aller Ã  la ligne 5 : la commande de
+filtre opÃ©rera donc sur les lignes de 1 (ligne courante) Ã  5.
    Lorsque commence la saisie d'une commande de filtrage, le curseur passe en
-bas de l'écran où le caractère d'invite '!' s'affiche. Vous pouvez ensuite
+bas de l'Ã©cran oÃ¹ le caractÃ¨re d'invite '!' s'affiche. Vous pouvez ensuite
 entrer le nom du programme de filtre, "sort" dans notre cas. La commande
-complète se présente donc ainsi : >
+complÃ¨te se prÃ©sente donc ainsi : >
 
 	!5Gsort<Entree>
 
-La commande `sort` sera alors exécutée sur les cinq premières lignes. La
+La commande `sort` sera alors exÃ©cutÃ©e sur les cinq premiÃ¨res lignes. La
 sortie du programme remplacera lesdites lignes.
 
 	ligne 55		      ligne 11
@@ -781,43 +781,43 @@ sortie du programme remplacera lesdites lignes.
 	ligne 11	    -->	      ligne 33
 	ligne 22		      ligne 44
 	ligne 44		      ligne 55
-	dernière ligne		      dernière ligne
+	derniÃ¨re ligne		      derniÃ¨re ligne
 
 La commande "!!" filtre la ligne courante. Sur Unix, la commande `date`
 affiche l'heure et la date actuelle. "!!date<Entree>" remplace la ligne
 courante par la sortie de `date`. C'est pratique pour dater un fichier.
 
 
-EN CAS DE PROBLÈME
+EN CAS DE PROBLÃˆME
 
-Lancer un shell, lui envoyer des informations et récupérer sa sortie nécessite
-que Vim sache précisément comment ce shell fonctionne. Si vous rencontrez des
-problèmes de filtrage, vérifiez les valeurs de ces options :
+Lancer un shell, lui envoyer des informations et rÃ©cupÃ©rer sa sortie nÃ©cessite
+que Vim sache prÃ©cisÃ©ment comment ce shell fonctionne. Si vous rencontrez des
+problÃ¨mes de filtrage, vÃ©rifiez les valeurs de ces options :
 
-	'shell'		programme utilisé par Vim pour exécuter les commandes
+	'shell'		programme utilisÃ© par Vim pour exÃ©cuter les commandes
 			   externes
-	'shellcmdflag'	argument(s) passé(s) au shell avant la commande
-	'shellquote'	caractère(s) de protection à utiliser pour la commande
-	'shellxquote'	caractère(s) de protection à utiliser pour la commande
+	'shellcmdflag'	argument(s) passÃ©(s) au shell avant la commande
+	'shellquote'	caractÃ¨re(s) de protection Ã  utiliser pour la commande
+	'shellxquote'	caractÃ¨re(s) de protection Ã  utiliser pour la commande
 			   et la redirection
-	'shelltype'	type du shell (uniquement pour systèmes Amiga)
+	'shelltype'	type du shell (uniquement pour systÃ¨mes Amiga)
 	'shellslash'	utilise des obliques simples dans la commande
-			   (uniquement pour systèmes MS-Windows et apparentés)
-	'shellredir'	chaîne utilisée pour écrire la sortie de la commande
+			   (uniquement pour systÃ¨mes MS-Windows et apparentÃ©s)
+	'shellredir'	chaÃ®ne utilisÃ©e pour Ã©crire la sortie de la commande
 			   dans un fichier
 
-Sur Unix, on ne rencontre presque jamais de problèmes, car il y a deux
+Sur Unix, on ne rencontre presque jamais de problÃ¨mes, car il y a deux
 familles de shells : "sh" et "csh". Vim se base sur la valeur de 'shell' pour
-fixer les autres options en conséquence, selon qu'il trouve la chaîne "csh"
+fixer les autres options en consÃ©quence, selon qu'il trouve la chaÃ®ne "csh"
 dans 'shell' ou non.
-   Sur MS-Windows en revanche, il existe de nombreux shells différents, et il
-sera probablement nécessaire d'ajuster les options pour pouvoir utiliser le
-filtrage. Reportez-vous à l'aide de chaque option pour plus d'informations.
+   Sur MS-Windows en revanche, il existe de nombreux shells diffÃ©rents, et il
+sera probablement nÃ©cessaire d'ajuster les options pour pouvoir utiliser le
+filtrage. Reportez-vous Ã  l'aide de chaque option pour plus d'informations.
 
 
 LIRE LA SORTIE D'UNE COMMANDE
 
-Pour insérer le contenu du répertoire courant dans le fichier, utilisez >
+Pour insÃ©rer le contenu du rÃ©pertoire courant dans le fichier, utilisez >
 
 	:read !ls
 
@@ -827,58 +827,58 @@ sur Unix, et >
 
 sur MS-Windows. >
 
-La sortie de la commande `ls` ou `dir` est récupérée et insérée dans le texte,
-sous le curseur. C'est assez semblable à la lecture d'un fichier, sauf que le
-'!' est utilisé pour indiquer à Vim qu'une commande suit.
-   La commande peut avoir des arguments. Et une plage peut être utilisée pour
-indiquer où Vim doit placer la sortie : >
+La sortie de la commande `ls` ou `dir` est rÃ©cupÃ©rÃ©e et insÃ©rÃ©e dans le texte,
+sous le curseur. C'est assez semblable Ã  la lecture d'un fichier, sauf que le
+'!' est utilisÃ© pour indiquer Ã  Vim qu'une commande suit.
+   La commande peut avoir des arguments. Et une plage peut Ãªtre utilisÃ©e pour
+indiquer oÃ¹ Vim doit placer la sortie : >
 
 	:0read !date -u
 
-Ceci affiche l'heure et la date courante en Temps Universel au début du
-fichier. (Évidemment, cela suppose que votre commande `date` accepte
-l'argument "-u".) Remarquez la différence avec l'utilisation de "!!date" :
-cette commande remplaçait une ligne, tandis que ":read !date" insérera une
+Ceci affiche l'heure et la date courante en Temps Universel au dÃ©but du
+fichier. (Ã‰videmment, cela suppose que votre commande `date` accepte
+l'argument "-u".) Remarquez la diffÃ©rence avec l'utilisation de "!!date" :
+cette commande remplaÃ§ait une ligne, tandis que ":read !date" insÃ©rera une
 ligne.
 
 
-PASSER DU TEXTE À UNE COMMANDE
+PASSER DU TEXTE Ã€ UNE COMMANDE
 
 La commande Unix `wc` permet de compter des mots. Pour compter les mots dans
 le fichier courant : >
 
 	:write !wc
 
-C'est la même commande d'enregistrement que précédemment, mais à la place d'un
-nom de fichier, un '!' est utilisé suivi du nom d'une commande externe. Le
-texte enregistré sera passé à la commande spécifiée en entrée standard. La
-réponse pourrait être celle-ci :
+C'est la mÃªme commande d'enregistrement que prÃ©cÃ©demment, mais Ã  la place d'un
+nom de fichier, un '!' est utilisÃ© suivi du nom d'une commande externe. Le
+texte enregistrÃ© sera passÃ© Ã  la commande spÃ©cifiÃ©e en entrÃ©e standard. La
+rÃ©ponse pourrait Ãªtre celle-ci :
 
        4      47     249 ~
 
-La sortie de `wc` n'est pas très explicite... Il faut en fait comprendre qu'il
-y a 4 lignes, 47 mots et 249 caractères.
+La sortie de `wc` n'est pas trÃ¨s explicite... Il faut en fait comprendre qu'il
+y a 4 lignes, 47 mots et 249 caractÃ¨res.
 
-Attention à ne pas confondre cet exemple avec : >
+Attention Ã  ne pas confondre cet exemple avec : >
 
 	:write! wc
 
-Ceci enregistrera le fichier "wc" dans le répertoire courant, en écrasant si
-nécessaire. L'espace blanc est ici décisif !
+Ceci enregistrera le fichier "wc" dans le rÃ©pertoire courant, en Ã©crasant si
+nÃ©cessaire. L'espace blanc est ici dÃ©cisif !
 
 
-RAFRAÎCHIR L'ÉCRAN
+RAFRAÃCHIR L'Ã‰CRAN
 
-Si la commande externe produit un message d'erreur, l'affichage risque d'être
-sali. Par défaut, Vim essaie de procéder « au plus juste », c'est-à-dire qu'il
-ne rafraîchit que les parties d'écran qu'il sait devoir être rafraîchies -- et
-il ne peut pas savoir ce qu'un autre programme a pu écrire. Pour forcer Vim à
-rafraîchir l'écran, utilisez donc : >
+Si la commande externe produit un message d'erreur, l'affichage risque d'Ãªtre
+sali. Par dÃ©faut, Vim essaie de procÃ©der Â« au plus juste Â», c'est-Ã -dire qu'il
+ne rafraÃ®chit que les parties d'Ã©cran qu'il sait devoir Ãªtre rafraÃ®chies -- et
+il ne peut pas savoir ce qu'un autre programme a pu Ã©crire. Pour forcer Vim Ã 
+rafraÃ®chir l'Ã©cran, utilisez donc : >
 
 	CTRL-L
 
 ==============================================================================
 
-Chapitre suivant : |usr_11.txt|  Recouvrement après un plantage
+Chapitre suivant : |usr_11.txt|  Recouvrement aprÃ¨s un plantage
 
 Copyright : voir |manual-copyright|  vim:tw=78:ts=8:ft=help:norl:

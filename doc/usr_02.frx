@@ -5,37 +5,37 @@
 			    Premiers pas dans Vim
 
 
-Ce chapitre donne les informations nécessaires pour éditer un fichier avec
-Vim. Ni très bien ni très vite, mais vous pourrez éditer. Prenez un peu de
+Ce chapitre donne les informations nÃ©cessaires pour Ã©diter un fichier avec
+Vim. Ni trÃ¨s bien ni trÃ¨s vite, mais vous pourrez Ã©diter. Prenez un peu de
 temps pour vous exercer avec ces commandes, elles constituent la base de tout
 ce qui suit.
 
-|02.1|	Lancer Vim pour la première fois
-|02.2|	Insérer du texte
-|02.3|	Se déplacer
-|02.4|	Effacer des caractères
+|02.1|	Lancer Vim pour la premiÃ¨re fois
+|02.2|	InsÃ©rer du texte
+|02.3|	Se dÃ©placer
+|02.4|	Effacer des caractÃ¨res
 |02.5|	Annuler et restaurer
-|02.6|	Autres commandes d'édition
+|02.6|	Autres commandes d'Ã©dition
 |02.7|	Quitter
 |02.8|	Trouver de l'aide
 
-  Chapitre suivant : |usr_03.txt|  Se déplacer dans le texte
-Chapitre précédent : |usr_01.txt|  Introduction aux manuels
-Table des matières : |usr_toc.txt|
+  Chapitre suivant : |usr_03.txt|  Se dÃ©placer dans le texte
+Chapitre prÃ©cÃ©dent : |usr_01.txt|  Introduction aux manuels
+Table des matiÃ¨res : |usr_toc.txt|
 
 ==============================================================================
-*02.1*	Lancer Vim pour la première fois
+*02.1*	Lancer Vim pour la premiÃ¨re fois
 
 Pour lancer Vim, entrez cette commande : >
 
 	gvim fichier.txt
 
-Sous Unix, vous pouvez taper ceci après n'importe quelle invite de commande.
-Si vous utilisez MS-Windows, ouvrez une fenêtre d'invite de commande MS-DOS et
+Sous Unix, vous pouvez taper ceci aprÃ¨s n'importe quelle invite de commande.
+Si vous utilisez MS-Windows, ouvrez une fenÃªtre d'invite de commande MS-DOS et
 entrez la commande.
-   Dans tous les cas, Vim lance l'édition d'un fichier nommé "fichier.txt".
-Comme il s'agit d'un nouveau fichier, vous verrez une fenêtre vide. Votre
-écran devrait ressembler à ceci :
+   Dans tous les cas, Vim lance l'Ã©dition d'un fichier nommÃ© "fichier.txt".
+Comme il s'agit d'un nouveau fichier, vous verrez une fenÃªtre vide. Votre
+Ã©cran devrait ressembler Ã  ceci :
 
 	+---------------------------------------+
 	|#					|
@@ -45,11 +45,11 @@ Comme il s'agit d'un nouveau fichier, vous verrez une fenêtre vide. Votre
 	|~					|
 	|"fichier.txt" [New file]		|
 	+---------------------------------------+
-	   ("#" représente la position du curseur.)
+	   ("#" reprÃ©sente la position du curseur.)
 
 Les tildes ('~') indiquent des lignes qui ne font pas partie du fichier. En
-d'autres termes, quand Vim n'a plus de lignes à afficher, il affiche des
-tildes. Au bas de l'écran, une ligne de message indique que le fichier
+d'autres termes, quand Vim n'a plus de lignes Ã  afficher, il affiche des
+tildes. Au bas de l'Ã©cran, une ligne de message indique que le fichier
 s'appelle "fichier.txt" et que c'est un nouveau fichier. Ce message
 d'information est temporaire et de nouvelles informations viendront le
 remplacer.
@@ -57,39 +57,39 @@ remplacer.
 
 LA COMMANDE VIM
 
-La commande gvim provoque la création d'une nouvelle fenêtre pour l'édition.
+La commande gvim provoque la crÃ©ation d'une nouvelle fenÃªtre pour l'Ã©dition.
 Si vous utilisez cette commande >
 
 	vim fichier.txt
 
-l'édition se déroulera à l'intérieur de votre fenêtre de commande.
-C'est-à-dire que si vous travaillez dans un xterm, Vim utilisera votre fenêtre
-xterm ; si vous utilisez une fenêtre d'invite de commande MS-DOS sous
-MS-Windows, l'édition se déroulera dedans. Le texte dans la fenêtre sera
-identique pour les deux versions, mais avec gvim, vous pouvez bénéficier de
-fonctionnalités supplémentaires, telle que la barre de menus. Nous y
-reviendrons ultérieurement.
+l'Ã©dition se dÃ©roulera Ã  l'intÃ©rieur de votre fenÃªtre de commande.
+C'est-Ã -dire que si vous travaillez dans un xterm, Vim utilisera votre fenÃªtre
+xterm ; si vous utilisez une fenÃªtre d'invite de commande MS-DOS sous
+MS-Windows, l'Ã©dition se dÃ©roulera dedans. Le texte dans la fenÃªtre sera
+identique pour les deux versions, mais avec gvim, vous pouvez bÃ©nÃ©ficier de
+fonctionnalitÃ©s supplÃ©mentaires, telle que la barre de menus. Nous y
+reviendrons ultÃ©rieurement.
 
 ==============================================================================
-*02.2*	Insérer du texte
+*02.2*	InsÃ©rer du texte
 
-Vim est un éditeur modal. Cela signifie qu'il se comportera différemment selon
-le mode dans lequel vous êtes. Les deux modes de base sont le mode Normal et
-le mode Insertion. En mode Normal, les caractères que vous tapez sont des
-commandes. En mode Insertion, les caractères sont insérés en tant que texte.
-   Comme vous venez juste de lancer Vim, il sera en mode Normal (par défaut).
-Pour lancer le mode Insertion, tapez la commande "i" ('i' comme Insérer). Vous
-pouvez ensuite entrer du texte : il sera inséré dans le fichier. Ne vous
-inquiétez pas si vous faites des erreurs : vous pourrez les corriger plus
+Vim est un Ã©diteur modal. Cela signifie qu'il se comportera diffÃ©remment selon
+le mode dans lequel vous Ãªtes. Les deux modes de base sont le mode Normal et
+le mode Insertion. En mode Normal, les caractÃ¨res que vous tapez sont des
+commandes. En mode Insertion, les caractÃ¨res sont insÃ©rÃ©s en tant que texte.
+   Comme vous venez juste de lancer Vim, il sera en mode Normal (par dÃ©faut).
+Pour lancer le mode Insertion, tapez la commande "i" ('i' comme InsÃ©rer). Vous
+pouvez ensuite entrer du texte : il sera insÃ©rÃ© dans le fichier. Ne vous
+inquiÃ©tez pas si vous faites des erreurs : vous pourrez les corriger plus
 tard. Pour entrer l'adage suivant, voici ce qu'il faut taper : >
 
 	iUn petit chez soi vaut mieux
 	Qu'un grand chez les autres
 
-Après avoir tapé "mieux", pressez la touche <Entree> pour commencer une
+AprÃ¨s avoir tapÃ© "mieux", pressez la touche <Entree> pour commencer une
 nouvelle ligne. Finalement, pressez la touche <Echap> pour quitter le mode
 Insertion et revenir en mode Normal. Vous avez maintenant deux lignes de texte
-dans votre fenêtre Vim :
+dans votre fenÃªtre Vim :
 
 	+---------------------------------------+
 	|Un petit chez soi vaut mieux		|
@@ -102,17 +102,17 @@ dans votre fenêtre Vim :
 
 QUEL EST LE MODE COURANT ?
 
-Pour voir dans quel mode vous êtes, tapez cette commande : >
+Pour voir dans quel mode vous Ãªtes, tapez cette commande : >
 
 	:set showmode
 
 Vous remarquerez que quand vous tapez le deux-points, Vim place le curseur sur
-la dernière ligne de la fenêtre. C'est l'endroit où vous pouvez entrer les
-commandes deux-points (commandes qui débutent par ':'). Terminez cette
+la derniÃ¨re ligne de la fenÃªtre. C'est l'endroit oÃ¹ vous pouvez entrer les
+commandes deux-points (commandes qui dÃ©butent par ':'). Terminez cette
 commande en pressant la touche <Entree> (toutes les commandes deux-points se
 terminent de la sorte).
-   À présent, si vous tapez la commande "i", Vim affichera "--INSERT--" au bas
-de la fenêtre. Ceci indique que vous êtes en mode Insertion.
+   Ã€ prÃ©sent, si vous tapez la commande "i", Vim affichera "--INSERT--" au bas
+de la fenÃªtre. Ceci indique que vous Ãªtes en mode Insertion.
 
 	+---------------------------------------+
 	|Un petit chez soi vaut mieux		|
@@ -122,23 +122,23 @@ de la fenêtre. Ceci indique que vous êtes en mode Insertion.
 	|-- INSERT --				|
 	+---------------------------------------+
 
-Si vous pressez <Echap> pour revenir en mode Normal, la dernière ligne sera
-effacée.
+Si vous pressez <Echap> pour revenir en mode Normal, la derniÃ¨re ligne sera
+effacÃ©e.
 
 
 EN CAS DE FAUSSE MANOEUVRE
 
-Un des problèmes souvent rencontré par les novices est la confusion des modes,
-causée par l'oubli du mode courant ou par la saisie accidentelle d'une
+Un des problÃ¨mes souvent rencontrÃ© par les novices est la confusion des modes,
+causÃ©e par l'oubli du mode courant ou par la saisie accidentelle d'une
 commande qui fait basculer dans un mode. Pour revenir en mode Normal, quel que
-soit le mode dans lequel vous êtes, pressez la touche <Echap>. Parfois, vous
-devrez la presser deux fois. Si Vim émet un bip, c'est que vous êtes déjà en
+soit le mode dans lequel vous Ãªtes, pressez la touche <Echap>. Parfois, vous
+devrez la presser deux fois. Si Vim Ã©met un bip, c'est que vous Ãªtes dÃ©jÃ  en
 mode Normal.
 
 ==============================================================================
-*02.3*	Se déplacer
+*02.3*	Se dÃ©placer
 
-Après être revenu en mode Normal, vous pouvez vous déplacer dans le texte en
+AprÃ¨s Ãªtre revenu en mode Normal, vous pouvez vous dÃ©placer dans le texte en
 utilisant ces touches :
 
 	h   gauche					    *hjkl*
@@ -146,23 +146,23 @@ utilisant ces touches :
 	k   haut
 	l   droite
 
-Au premier abord, il peut sembler que ces commandes aient été choisies un peu
-au hasard. Après tout, qui a déjà utilisé "l" mis pour droite ? Il existe en
-fait une bonne raison pour expliquer ces choix : le déplacement du curseur est
-l'action la plus courante dans un éditeur de texte, et ces touches se trouvent
-alignées juste sous votre main droite. En d'autres termes, ces commandes sont
-placées là où vous pouvez accéder le plus rapidement (en particulier si vous
+Au premier abord, il peut sembler que ces commandes aient Ã©tÃ© choisies un peu
+au hasard. AprÃ¨s tout, qui a dÃ©jÃ  utilisÃ© "l" mis pour droite ? Il existe en
+fait une bonne raison pour expliquer ces choix : le dÃ©placement du curseur est
+l'action la plus courante dans un Ã©diteur de texte, et ces touches se trouvent
+alignÃ©es juste sous votre main droite. En d'autres termes, ces commandes sont
+placÃ©es lÃ  oÃ¹ vous pouvez accÃ©der le plus rapidement (en particulier si vous
 tapez avec vos dix doigts).
 
 	NOTE :
-	Vous pouvez aussi déplacer le curseur en utilisant les touches
-	fléchées. Mais si vous faites cela, vous ralentissez grandement votre
-	édition car pour atteindre les touches fléchées, vous devez déplacer
-	votre main du pavé texte au pavé curseur. En supposant que vous le
+	Vous pouvez aussi dÃ©placer le curseur en utilisant les touches
+	flÃ©chÃ©es. Mais si vous faites cela, vous ralentissez grandement votre
+	Ã©dition car pour atteindre les touches flÃ©chÃ©es, vous devez dÃ©placer
+	votre main du pavÃ© texte au pavÃ© curseur. En supposant que vous le
 	fassiez plusieurs centaines de fois en une heure, vous perdriez un
-	temps considérable.
-	   De plus, il existe des claviers qui sont dépourvus de touches
-	fléchées, ou qui les situent à des emplacements inhabituels ; savoir
+	temps considÃ©rable.
+	   De plus, il existe des claviers qui sont dÃ©pourvus de touches
+	flÃ©chÃ©es, ou qui les situent Ã  des emplacements inhabituels ; savoir
 	utiliser les touches hjkl vous rendra un grand service dans ces
 	situations.
 
@@ -174,14 +174,14 @@ un dessin : >
 		   h     l
 		     j
 
-La meilleure façon d'apprendre ces commandes est de pratiquer. Utilisez la
-commande "i" pour insérer des lignes supplémentaires de texte. Puis utilisez
-les touches hjkl pour vous déplacer et insérer un mot quelque part. N'oubliez
+La meilleure faÃ§on d'apprendre ces commandes est de pratiquer. Utilisez la
+commande "i" pour insÃ©rer des lignes supplÃ©mentaires de texte. Puis utilisez
+les touches hjkl pour vous dÃ©placer et insÃ©rer un mot quelque part. N'oubliez
 pas de presser <Echap> pour revenir en mode Normal. Le tutoriel |vimtutor| est
-également un bon moyen pour vous entraîner.
+Ã©galement un bon moyen pour vous entraÃ®ner.
 
 Pour les utilisateurs japonais, Hiroshi Iwatani propose ce moyen
-mnémotechnique :
+mnÃ©motechnique :
 
 			    Komsomolsk
 				^
@@ -189,16 +189,16 @@ mnémotechnique :
 	       Huan Ho      <--- --->  Los Angeles
 	   (Fleuve Jaune)	|
 				v
-			      Java (l'île, pas le langage de programmation)
+			      Java (l'Ã®le, pas le langage de programmation)
 
 ==============================================================================
-*02.4*	Effacer des caractères
+*02.4*	Effacer des caractÃ¨res
 
-Pour effacer un caractère [N.D.T. : en fait, le couper], amenez le curseur
-dessus et tapez "x". (C'est un héritage des anciennes machines à écrire, quand
+Pour effacer un caractÃ¨re [N.D.T. : en fait, le couper], amenez le curseur
+dessus et tapez "x". (C'est un hÃ©ritage des anciennes machines Ã  Ã©crire, quand
 on biffait du texte en tapant xxxx en surfrappe.) Par exemple, amenez le
-curseur au début de la première ligne et tapez "xxxxxxxxx" (neuf 'x') pour
-effacer "Un petit ". Le résultat devrait ressembler à ceci :
+curseur au dÃ©but de la premiÃ¨re ligne et tapez "xxxxxxxxx" (neuf 'x') pour
+effacer "Un petit ". Le rÃ©sultat devrait ressembler Ã  ceci :
 
 	+---------------------------------------+
 	|chez soi vaut mieux			|
@@ -208,11 +208,11 @@ effacer "Un petit ". Le résultat devrait ressembler à ceci :
 	|					|
 	+---------------------------------------+
 
-À présent vous pouvez insérer un nouveau texte, en tapant par exemple : >
+Ã€ prÃ©sent vous pouvez insÃ©rer un nouveau texte, en tapant par exemple : >
 
 	iUn moyen <Echap>
 
-Ceci lance une insertion (le "i"), insère les mots "Un moyen ", puis quitte le
+Ceci lance une insertion (le "i"), insÃ¨re les mots "Un moyen ", puis quitte le
 mode Insertion (le <Echap> final). On obtient :
 
 	+---------------------------------------+
@@ -226,8 +226,8 @@ mode Insertion (le <Echap> final). On obtient :
 
 SUPPRIMER UNE LIGNE
 
-Pour effacer une ligne entière [N.D.T. : la couper], utilisez la commande "dd"
-["Delete"]. La ligne suivante sera alors déplacée vers le haut pour combler le
+Pour effacer une ligne entiÃ¨re [N.D.T. : la couper], utilisez la commande "dd"
+["Delete"]. La ligne suivante sera alors dÃ©placÃ©e vers le haut pour combler le
 vide :
 
 	+---------------------------------------+
@@ -242,24 +242,24 @@ vide :
 SUPPRIMER UNE COUPURE DE LIGNE
 
 Vim peut fusionner deux lignes ensemble, ce qui signifie que la coupure de
-ligne les séparant sera supprimée. Utilisez la commande "J" ["Join"] pour
+ligne les sÃ©parant sera supprimÃ©e. Utilisez la commande "J" ["Join"] pour
 cela. Prenez ces deux lignes :
 
 	Un petit chez soi vaut ~
 	mieux ~
 
-Amenez le curseur sur la première ligne et pressez "J" :
+Amenez le curseur sur la premiÃ¨re ligne et pressez "J" :
 
 	Un petit chez soi vaut mieux ~
 
 ==============================================================================
 *02.5*	Annuler et restaurer
 
-Supposons que vous ayez effacé trop de texte. Vous pourriez bien sûr le
-saisir à nouveau, mais un moyen plus facile existe. La commande "u" ["Undo"]
-annule la dernière édition. Par exemple : après avoir utilisé "dd" pour
-effacer la première ligne, "u" la ramènera.
-   Un autre exemple : placez le curseur sur le 'U' de la première ligne :
+Supposons que vous ayez effacÃ© trop de texte. Vous pourriez bien sÃ»r le
+saisir Ã  nouveau, mais un moyen plus facile existe. La commande "u" ["Undo"]
+annule la derniÃ¨re Ã©dition. Par exemple : aprÃ¨s avoir utilisÃ© "dd" pour
+effacer la premiÃ¨re ligne, "u" la ramÃ¨nera.
+   Un autre exemple : placez le curseur sur le 'U' de la premiÃ¨re ligne :
 
 	Un petit chez soi vaut mieux ~
 
@@ -267,13 +267,13 @@ Tapez maintenant "xxxxxxxx" pour effacer "Un petit". Vous obtenez :
 
 	 chez soi vaut mieux ~
 
-Tapez "u" pour annuler le dernier effacement. Celui-ci avait effacé le 't',
-donc l'annulation restaurera ce caractère :
+Tapez "u" pour annuler le dernier effacement. Celui-ci avait effacÃ© le 't',
+donc l'annulation restaurera ce caractÃ¨re :
 
 	t chez soi vaut mieux ~
 
-Les commandes "u" suivantes restaureront les caractères du plus récemment au
-plus anciennement effacé. On aura donc d'abord le 'i' :
+Les commandes "u" suivantes restaureront les caractÃ¨res du plus rÃ©cemment au
+plus anciennement effacÃ©. On aura donc d'abord le 'i' :
 
 	it chez soi vaut mieux ~
 
@@ -287,26 +287,26 @@ Et ainsi de suite :
 	Un petit chez soi vaut mieux ~
 
 	NOTE :
-	Si vous tapez "u" deux fois et que vous retombez sur le même texte,
-	c'est que Vim est configuré pour fonctionner de façon compatible Vi.
-	Reportez-vous à |not-compatible| pour régler ce problème.
-	   Cette section suppose que vous utilisez « la méthode Vim ». Si vous
-	préférez la bonne vieille méthode Vi, vous devrez faire attention à de
-	petites différences de comportement.
+	Si vous tapez "u" deux fois et que vous retombez sur le mÃªme texte,
+	c'est que Vim est configurÃ© pour fonctionner de faÃ§on compatible Vi.
+	Reportez-vous Ã  |not-compatible| pour rÃ©gler ce problÃ¨me.
+	   Cette section suppose que vous utilisez Â« la mÃ©thode Vim Â». Si vous
+	prÃ©fÃ©rez la bonne vieille mÃ©thode Vi, vous devrez faire attention Ã  de
+	petites diffÃ©rences de comportement.
 
 
 RESTAURER
 
 Si vous annulez un trop grand nombre de fois, vous pouvez presser CTRL-R
-["Redo"] pour inverser la commande précédente. En d'autres termes, cela annule
+["Redo"] pour inverser la commande prÃ©cÃ©dente. En d'autres termes, cela annule
 l'annulation. Pour le voir en pratique, pressez CTRL-R deux fois. Les
-caractères 'U' et 'n' disparaîtront :
+caractÃ¨res 'U' et 'n' disparaÃ®tront :
 
 	 petit chez soi vaut mieux ~
 
-Il existe une version spéciale de commande d'annulation, la commande "U"
-["Undo line"]. Elle annule tous les changements effectués sur la dernière
-ligne éditée. Taper cette commande deux fois annule le précédent "U".
+Il existe une version spÃ©ciale de commande d'annulation, la commande "U"
+["Undo line"]. Elle annule tous les changements effectuÃ©s sur la derniÃ¨re
+ligne Ã©ditÃ©e. Taper cette commande deux fois annule le prÃ©cÃ©dent "U".
 
 	Un petit chez soi vaut mieux ~
 			      xxxxxx	    Supprime " mieux"
@@ -318,46 +318,46 @@ ligne éditée. Taper cette commande deux fois annule le précédent "U".
 					    Annule "U" avec "u"
 	Un petit vaut ~
 
-La commande "U" est un changement en elle-même, elle peut donc être annulée
-avec "u" et restaurée avec CTRL-R. Cela peut paraître compliqué, mais soyez
-sans crainte : avec "u" et CTRL-R, vous pouvez revenir à n'importe quelle
-situation précédente.
+La commande "U" est un changement en elle-mÃªme, elle peut donc Ãªtre annulÃ©e
+avec "u" et restaurÃ©e avec CTRL-R. Cela peut paraÃ®tre compliquÃ©, mais soyez
+sans crainte : avec "u" et CTRL-R, vous pouvez revenir Ã  n'importe quelle
+situation prÃ©cÃ©dente.
 
 ==============================================================================
-*02.6*	Autres commandes d'édition
+*02.6*	Autres commandes d'Ã©dition
 
 Vim dispose de nombreuses commandes pour changer du texte. Voir |Q_in| et
-ci-dessous. Vous trouverez ici les plus utilisées.
+ci-dessous. Vous trouverez ici les plus utilisÃ©es.
 
 
 AJOUTER DU TEXTE
 
-La commande "i" insère un caractère avant la position du curseur. Cela marche
-bien ; mais comment faire quand vous voulez ajouter du texte à la fin de la
-ligne ? Pour cela, vous devez insérer du texte après le curseur. C'est
+La commande "i" insÃ¨re un caractÃ¨re avant la position du curseur. Cela marche
+bien ; mais comment faire quand vous voulez ajouter du texte Ã  la fin de la
+ligne ? Pour cela, vous devez insÃ©rer du texte aprÃ¨s le curseur. C'est
 possible avec la commande "a" ["Append"].
    Par exemple, pour changer la ligne
 
-	L'idéal restant un grand chez soi ! ~
+	L'idÃ©al restant un grand chez soi ! ~
 en
-	L'idéal restant un grand chez soi... ~
+	L'idÃ©al restant un grand chez soi... ~
 
-amenez le curseur sur le point d'exclamation à la fin de la ligne. Puis tapez
-"xx" pour effacer ce point d'exclamation et l'espace précédent. Le curseur est
-à présent placé à la fin de la ligne, sur le 'i' de "soi". Tapez >
+amenez le curseur sur le point d'exclamation Ã  la fin de la ligne. Puis tapez
+"xx" pour effacer ce point d'exclamation et l'espace prÃ©cÃ©dent. Le curseur est
+Ã  prÃ©sent placÃ© Ã  la fin de la ligne, sur le 'i' de "soi". Tapez >
 
 	a...<Echap>
 
-pour ajouter trois points de suspension après le 'i' de "soi" :
+pour ajouter trois points de suspension aprÃ¨s le 'i' de "soi" :
 
-	L'idéal restant un grand chez soi... ~
+	L'idÃ©al restant un grand chez soi... ~
 
 
 OUVRIR UNE NOUVELLE LIGNE
 
-La commande "o" crée une nouvelle ligne vide sous le curseur et lance le mode
+La commande "o" crÃ©e une nouvelle ligne vide sous le curseur et lance le mode
 Insertion. Vous pouvez ensuite entrer du texte dans cette nouvelle ligne.
-   Supposons que le curseur soit quelque part dans la première de ces deux
+   Supposons que le curseur soit quelque part dans la premiÃ¨re de ces deux
 lignes :
 
 	Un petit chez soi vaut mieux ~
@@ -367,7 +367,7 @@ Maintenant, si vous utilisez la commande "o" et tapez du texte >
 
 	o(Surtout avec Vim)<Echap>
 
-vous obtenez le résultat suivant :
+vous obtenez le rÃ©sultat suivant :
 
 	Un petit chez soi vaut mieux ~
 	(Surtout avec Vim) ~
@@ -380,12 +380,12 @@ UTILISER UN QUANTIFICATEUR
 
 Supposons que vous vouliez remonter de neuf lignes. Vous pouvez taper
 "kkkkkkkkk", ou bien entrer la commande "9k". En fait, vous pouvez faire
-précéder de nombreuses commandes par un nombre, appelé quantificateur. Un
-peu plus haut dans ce chapitre, par exemple, nous avons ajouté trois points de
-suspension à la fin d'une ligne avec "a...<Echap>". Mais on aurait également
-pu faire "3a.<Echap>". Le nombre 3 indique à la commande qui suit de tripler
-son effet. De la même façon, pour effacer trois caractères, utilisez la
-commande "3x". Le quantificateur vient toujours avant la commande à laquelle
+prÃ©cÃ©der de nombreuses commandes par un nombre, appelÃ© quantificateur. Un
+peu plus haut dans ce chapitre, par exemple, nous avons ajoutÃ© trois points de
+suspension Ã  la fin d'une ligne avec "a...<Echap>". Mais on aurait Ã©galement
+pu faire "3a.<Echap>". Le nombre 3 indique Ã  la commande qui suit de tripler
+son effet. De la mÃªme faÃ§on, pour effacer trois caractÃ¨res, utilisez la
+commande "3x". Le quantificateur vient toujours avant la commande Ã  laquelle
 il s'applique.
 
 ==============================================================================
@@ -395,75 +395,75 @@ Pour quitter, utilisez la commande "ZZ". Cette commande enregistre le fichier
 et quitte.
 
 	NOTE :
-	Contrairement à de nombreux autres éditeurs, Vim ne crée pas
+	Contrairement Ã  de nombreux autres Ã©diteurs, Vim ne crÃ©e pas
 	automatiquement de fichier de sauvegarde. Si vous tapez "ZZ", vos
-	changements seront enregistrés et vous ne pourrez plus revenir en
-	arrière. Vous pouvez configurer Vim pour qu'il crée des fichiers de
+	changements seront enregistrÃ©s et vous ne pourrez plus revenir en
+	arriÃ¨re. Vous pouvez configurer Vim pour qu'il crÃ©e des fichiers de
 	sauvegarde, voir |07.4|.
 
 
 IGNORER LES CHANGEMENTS
 
-Parfois, on effectue toute une série de changements et puis on réalise que,
-vraiment, les choses étaient mieux avant. Pas de problème, Vim a une commande
+Parfois, on effectue toute une sÃ©rie de changements et puis on rÃ©alise que,
+vraiment, les choses Ã©taient mieux avant. Pas de problÃ¨me, Vim a une commande
 pour quitter-et-jeter-les-changements. Il s'agit de : >
 
 	:q!
 
 N'oubliez pas de presser <Entree> pour terminer la commande.
 
-Pour ceux que les détails intéressent, les trois parties de cette commande
+Pour ceux que les dÃ©tails intÃ©ressent, les trois parties de cette commande
 sont le deux-points (':'), qui fait basculer sur la ligne de commande ; la
-commande 'q', qui demande à l'éditeur de quitter ; et le modificateur '!', qui
+commande 'q', qui demande Ã  l'Ã©diteur de quitter ; et le modificateur '!', qui
 force la commande.
-   Forcer la commande est nécessaire, car Vim est réticent à la perte de
-changements. Si vous aviez simplement tapé ":q", Vim aurait affiché un message
-d'erreur et refusé de quitter :
+   Forcer la commande est nÃ©cessaire, car Vim est rÃ©ticent Ã  la perte de
+changements. Si vous aviez simplement tapÃ© ":q", Vim aurait affichÃ© un message
+d'erreur et refusÃ© de quitter :
 
 	E37: No write since last change (use ! to override) ~
 
-En utilisant '!', vous dites en quelque sorte à Vim : « Je sais que ce que je
-fais a l'air idiot, mais je suis un grand garçon et je veux vraiment le
-faire. »
+En utilisant '!', vous dites en quelque sorte Ã  Vim : Â« Je sais que ce que je
+fais a l'air idiot, mais je suis un grand garÃ§on et je veux vraiment le
+faire. Â»
 
-Si vous voulez continuer l'édition avec Vim : la commande ":e!" rechargera la
+Si vous voulez continuer l'Ã©dition avec Vim : la commande ":e!" rechargera la
 version originale du fichier.
 
 ==============================================================================
 *02.8*	Trouver de l'aide
 
-Tout ce que vous avez toujours voulu savoir sur Vim peut être trouvé dans les
+Tout ce que vous avez toujours voulu savoir sur Vim peut Ãªtre trouvÃ© dans les
 fichiers d'aide de Vim. N'ayez pas peur de demander !
-   Pour obtenir une aide générique, utilisez cette commande : >
+   Pour obtenir une aide gÃ©nÃ©rique, utilisez cette commande : >
 
 	:help
 
-Vous pouvez aussi utiliser la première touche de fonction, <F1>. Si votre
-clavier a une touche <Aide>, elle devrait également fonctionner.
-   Si vous ne donnez pas de sujet, ":help" affiche la fenêtre d'aide
-générique. Les créateurs de Vim ont conçu le système d'aide de façon
-particulièrement ingénieuse (ou particulièrement paresseuse) : la fenêtre
-d'aide est une simple fenêtre d'édition. Vous pouvez donc utiliser toutes les
-commandes normales de Vim pour vous déplacer dans l'aide. Ainsi "h", "j", "k",
-et "l" déplacent à gauche, bas, haut et droite.
-   Pour quitter la fenêtre d'aide, utilisez la même commande que pour quitter
-l'éditeur : "ZZ". Cela fermera juste la fenêtre d'aide, mais ne quittera pas
+Vous pouvez aussi utiliser la premiÃ¨re touche de fonction, <F1>. Si votre
+clavier a une touche <Aide>, elle devrait Ã©galement fonctionner.
+   Si vous ne donnez pas de sujet, ":help" affiche la fenÃªtre d'aide
+gÃ©nÃ©rique. Les crÃ©ateurs de Vim ont conÃ§u le systÃ¨me d'aide de faÃ§on
+particuliÃ¨rement ingÃ©nieuse (ou particuliÃ¨rement paresseuse) : la fenÃªtre
+d'aide est une simple fenÃªtre d'Ã©dition. Vous pouvez donc utiliser toutes les
+commandes normales de Vim pour vous dÃ©placer dans l'aide. Ainsi "h", "j", "k",
+et "l" dÃ©placent Ã  gauche, bas, haut et droite.
+   Pour quitter la fenÃªtre d'aide, utilisez la mÃªme commande que pour quitter
+l'Ã©diteur : "ZZ". Cela fermera juste la fenÃªtre d'aide, mais ne quittera pas
 Vim.
 
-En lisant le texte de l'aide, vous remarquerez que certains mots sont encadrés
-par des barres verticales (par exemple, |help|). Ceci représente un hyperlien.
-Si vous placez le curseur n'importe où entre les barres et pressez CTRL-]
-(sauter vers un marqueur), le système d'aide vous amènera au sujet en
+En lisant le texte de l'aide, vous remarquerez que certains mots sont encadrÃ©s
+par des barres verticales (par exemple, |help|). Ceci reprÃ©sente un hyperlien.
+Si vous placez le curseur n'importe oÃ¹ entre les barres et pressez CTRL-]
+(sauter vers un marqueur), le systÃ¨me d'aide vous amÃ¨nera au sujet en
 question. (Pour des raisons que nous n'aborderons pas ici, la terminologie
-qu'utilise Vim pour hyperlien est marqueur. Ainsi, CTRL-] saute à
-l'emplacement du marqueur donné par le mot sous le curseur.)
-   Après plusieurs sauts, vous voudrez peut-être revenir en arrière. CTRL-T
-(dépile le marqueur) vous ramène à la position précédente. CTRL-O (saute à une
-position plus ancienne) fonctionne également très bien ici.
-   Au sommet de l'écran d'aide, vous verrez la notation *help.txt*. Ce nom
-entre caractères '*' est utilisé par le système d'aide pour définir un
+qu'utilise Vim pour hyperlien est marqueur. Ainsi, CTRL-] saute Ã 
+l'emplacement du marqueur donnÃ© par le mot sous le curseur.)
+   AprÃ¨s plusieurs sauts, vous voudrez peut-Ãªtre revenir en arriÃ¨re. CTRL-T
+(dÃ©pile le marqueur) vous ramÃ¨ne Ã  la position prÃ©cÃ©dente. CTRL-O (saute Ã  une
+position plus ancienne) fonctionne Ã©galement trÃ¨s bien ici.
+   Au sommet de l'Ã©cran d'aide, vous verrez la notation *help.txt*. Ce nom
+entre caractÃ¨res '*' est utilisÃ© par le systÃ¨me d'aide pour dÃ©finir un
 marqueur (cible de l'hyperlien).
-   Voir |29.1| pour plus de détails sur l'utilisation des marqueurs.
+   Voir |29.1| pour plus de dÃ©tails sur l'utilisation des marqueurs.
 
 Pour obtenir de l'aide sur un sujet particulier, utilisez la commande
 suivante : >
@@ -482,25 +482,25 @@ Pour avoir un index complet de toutes les commandes Vim, tapez : >
 
 	:help index
 
-Quand vous recherchez de l'aide sur une commande avec un caractère de contrôle
-(par exemple, CTRL-A), vous devez l'épeler avec le préfixe "CTRL-". >
+Quand vous recherchez de l'aide sur une commande avec un caractÃ¨re de contrÃ´le
+(par exemple, CTRL-A), vous devez l'Ã©peler avec le prÃ©fixe "CTRL-". >
 
 	:help CTRL-A
 
-L'éditeur Vim a de nombreux modes différents. Par défaut, le système d'aide
+L'Ã©diteur Vim a de nombreux modes diffÃ©rents. Par dÃ©faut, le systÃ¨me d'aide
 donne les commandes du mode Normal. Par exemple, la commande suivante donne
 l'aide de la commande CTRL-H du mode Normal : >
 
 	:help CTRL-H
 
-Pour préciser un autre mode, utilisez un préfixe. Par exemple, utilisez "i_"
-pour une commande du mode Insertion. Pour connaître l'action de CTRL-H dans ce
+Pour prÃ©ciser un autre mode, utilisez un prÃ©fixe. Par exemple, utilisez "i_"
+pour une commande du mode Insertion. Pour connaÃ®tre l'action de CTRL-H dans ce
 mode, entrez : >
 
 	:help i_CTRL-H
 
-Quand vous lancez l'éditeur Vim, vous pouvez utiliser plusieurs arguments de
-commande. Ils débutent tous par un tiret ('-'). Pour savoir ce que fait
+Quand vous lancez l'Ã©diteur Vim, vous pouvez utiliser plusieurs arguments de
+commande. Ils dÃ©butent tous par un tiret ('-'). Pour savoir ce que fait
 l'argument -t, par exemple, utilisez la commande : >
 
 	:help -t
@@ -512,11 +512,11 @@ encadrer son nom entre apostrophes simples. Par exemple, pour l'option
 
 	:help 'number'
 
-Pour voir un tableau regroupant tous les préfixes des modes, consultez
+Pour voir un tableau regroupant tous les prÃ©fixes des modes, consultez
 |help-context|.
 
-Les touches spéciales sont encadrées par des chevrons : '<' et '>'. Ainsi,
-pour trouver de l'aide sur la touche flèche-haut en mode Insertion, utilisez
+Les touches spÃ©ciales sont encadrÃ©es par des chevrons : '<' et '>'. Ainsi,
+pour trouver de l'aide sur la touche flÃ¨che-haut en mode Insertion, utilisez
 cette commande : >
 
 	:help i_<Haut>
@@ -525,13 +525,13 @@ Si vous voyez un message d'erreur que vous ne comprenez pas, par exemple
 
 	E37: No write since last change (use ! to override) ~
 
-vous pouvez utiliser son numéro d'ID (au début du message) pour obtenir une
+vous pouvez utiliser son numÃ©ro d'ID (au dÃ©but du message) pour obtenir une
 aide dessus : >
 
 	:help E37
 
 ==============================================================================
 
-Chapitre suivant : |usr_03.txt|  Se déplacer dans le texte
+Chapitre suivant : |usr_03.txt|  Se dÃ©placer dans le texte
 
 Copyright : voir |manual-copyright|  vim:tw=78:ts=8:ft=help:norl:

@@ -1,4 +1,4 @@
-*usr_12.txt*	Pour Vim version 6.1.  Dernière modification : 23 oct 2001
+*usr_12.txt*	Pour Vim version 6.1.  DerniÃ¨re modification : 23 oct 2001
 
 	     MANUEL de l'UTILISATEUR VIM - par Bram Moolenaar
 
@@ -6,8 +6,8 @@
 
 
 Vim peut quasiment tout faire, simplement en combinant quelques commandes.
-Dans ce chapitre, quelques-unes de ces combinaisons seront présentées. Elles
-utilisent les commandes abordées dans les chapitres précédents ainsi que
+Dans ce chapitre, quelques-unes de ces combinaisons seront prÃ©sentÃ©es. Elles
+utilisent les commandes abordÃ©es dans les chapitres prÃ©cÃ©dents ainsi que
 quelques nouvelles.
 
 |12.1|	Remplacer un mot
@@ -19,36 +19,36 @@ quelques nouvelles.
 |12.7|	Supprimer les blancs superflus
 |12.8|	Trouver les occurrences d'un mot
 
-  Chapitre suivant : |usr_20.txt|  Édition rapide de la ligne de commande
-Chapitre précédent : |usr_11.txt|  Recouvrement après un plantage
-Table des matières : |usr_toc.txt|
+  Chapitre suivant : |usr_20.txt|  Ã‰dition rapide de la ligne de commande
+Chapitre prÃ©cÃ©dent : |usr_11.txt|  Recouvrement aprÃ¨s un plantage
+Table des matiÃ¨res : |usr_toc.txt|
 
 ==============================================================================
 *12.1*	Remplacer un mot
 
-La commande de substitution peut être utilisée pour remplacer toutes les 
+La commande de substitution peut Ãªtre utilisÃ©e pour remplacer toutes les 
 occurrences d'un mot par un autre : >
 
 	:%s/jour/nuit/g
 
-La plage '%' indique que l'expression doit être remplacée dans toutes les 
-lignes. Le drapeau 'g' à la fin de la commande indique de remplacer toutes les 
-occurrences d'une ligne, et non pas simplement la première.
+La plage '%' indique que l'expression doit Ãªtre remplacÃ©e dans toutes les 
+lignes. Le drapeau 'g' Ã  la fin de la commande indique de remplacer toutes les 
+occurrences d'une ligne, et non pas simplement la premiÃ¨re.
    Cette commande ne conviendra pas si votre fichier contient "bonjour". 
-Cette chaîne serait en effet remplacée par "bonnuit". Pour éviter cela,
-utilisez "\<" pour correspondre au début d'un mot : >
+Cette chaÃ®ne serait en effet remplacÃ©e par "bonnuit". Pour Ã©viter cela,
+utilisez "\<" pour correspondre au dÃ©but d'un mot : >
 
 	:%s/\<jour/nuit/g
 
 
-Évidemment, cela restera incorrect pour remplacer "journée".  Utilisez "\>"
-pour correspondre à la fin d'un mot : >
+Ã‰videmment, cela restera incorrect pour remplacer "journÃ©e".  Utilisez "\>"
+pour correspondre Ã  la fin d'un mot : >
 
 	:%s/\<jour\>/nuit/g
 
-Si vous programmez, vous souhaiterez peut-être remplacer "jour" dans les
-commentaires, mais pas dans votre code. Comme cela n'est pas aisé à
-spécifier un commentaire, ajouter le drapeau 'c' pour obtenir une demande
+Si vous programmez, vous souhaiterez peut-Ãªtre remplacer "jour" dans les
+commentaires, mais pas dans votre code. Comme cela n'est pas aisÃ© Ã 
+spÃ©cifier un commentaire, ajouter le drapeau 'c' pour obtenir une demande
 de confirmation avant chaque remplacement : >
 
 	:%s/\<jour\>/nuit/gc
@@ -57,17 +57,17 @@ de confirmation avant chaque remplacement : >
 REMPLACER DANS PLUSIEURS FICHIERS
 
 Supposez que vous souhaitiez remplacer un mot dans plusieurs fichiers. Vous
-pouvez éditer chaque fichier, et taper la commande manuellement. Il est
-pourtant bien plus rapide d'utiliser l'enregistrement et la ré-exécution.
-   Par exemple, vous disposez d'un répertoire contenant des fichiers C++, qui
-finissent tous par ".cpp". Il y a une fonction nommée "RenvoieReponse" que vous
+pouvez Ã©diter chaque fichier, et taper la commande manuellement. Il est
+pourtant bien plus rapide d'utiliser l'enregistrement et la rÃ©-exÃ©cution.
+   Par exemple, vous disposez d'un rÃ©pertoire contenant des fichiers C++, qui
+finissent tous par ".cpp". Il y a une fonction nommÃ©e "RenvoieReponse" que vous
 voulez renommer en "RenvoieQuestion".
 
-	vim *.cpp		Démarre Vim, avec pour liste des arguments la
+	vim *.cpp		DÃ©marre Vim, avec pour liste des arguments la
 				liste qui contient tous les noms des fichiers.
-				Vous êtes maintenant dans le premier fichier.
+				Vous Ãªtes maintenant dans le premier fichier.
 				
-	qq			Débute l'enregistrement dans le registre 'q'.
+	qq			DÃ©bute l'enregistrement dans le registre 'q'.
 	
 	:%s/\<RenvoieReponse\>/RenvoieQuestion/g
 				Fait les remplacements dans le premier
@@ -77,31 +77,31 @@ voulez renommer en "RenvoieQuestion".
 	
 	q			Termine l'enregistrement.
 	
-	@q			Éxécute le registre 'q'.  Cela va ré-exécuter 
+	@q			Ã‰xÃ©cute le registre 'q'.  Cela va rÃ©-exÃ©cuter 
 				la substitution et la commande ":wnext". Vous
-				pouvez vérifier que cela ne produit pas de 
+				pouvez vÃ©rifier que cela ne produit pas de 
 				message d'erreur.
 				
-	999@q			Éxécute le registre 'q' sur les fichiers
+	999@q			Ã‰xÃ©cute le registre 'q' sur les fichiers
 				restants.
 
-Arrivé dans le dernier fichier, vous obtenez un message d'erreur puisque
-":wnext" ne peut pas passer au fichier suivant. Cela termine l'exécution et le
-tour est joué.
+ArrivÃ© dans le dernier fichier, vous obtenez un message d'erreur puisque
+":wnext" ne peut pas passer au fichier suivant. Cela termine l'exÃ©cution et le
+tour est jouÃ©.
 
 	NOTE :
-	Lors de la reexécution, toute erreur termine l'exécution. Aussi,
+	Lors de la reexÃ©cution, toute erreur termine l'exÃ©cution. Aussi,
 	faites bien attention de ne pas obtenir de message d'erreur lors de
 	l'enregistrement.
 
 Il y a une exception : si un fichier .cpp ne contient pas le mot
-"RenvoieReponse", vous obtiendrez une erreur et le remplacement s'arrêtera. Pour
-éviter cela, ajoutez le drapeau 'e' à la commande de substitution : >
+"RenvoieReponse", vous obtiendrez une erreur et le remplacement s'arrÃªtera. Pour
+Ã©viter cela, ajoutez le drapeau 'e' Ã  la commande de substitution : >
 
 	:%s/\<GetResp\>/GetAnswer/ge
 
-Le 'e' indique à la commande ":substitute" de ne pas provoquer une erreur si
-aucune correspondance n'est trouvée.
+Le 'e' indique Ã  la commande ":substitute" de ne pas provoquer une erreur si
+aucune correspondance n'est trouvÃ©e.
 
 ==============================================================================
 *12.2*	Remplacer "Dernier, Premier" par "Premier Dernier"
@@ -116,35 +116,35 @@ Vous voulez les changer en :
 	Pierre Martin ~
 	Alexandre Dupond ~
 
-Cela peut être réalisé simplement en une seule commande : >
+Cela peut Ãªtre rÃ©alisÃ© simplement en une seule commande : >
 
 	:%s/\([^,]*\), \(.*\)/\2 \1/
 
-Séparons cela en deux parties. Évidemment, cela démarre par une commande de
-substitution. Le "%" est la plage des lignes, qui désigne le fichier entier.
-Ainsi, la substitution sera effectuée sur chaque ligne du fichier. 
-   Les arguments de la commande de substitution sont "/chaîne1/chaîne2/". Les
-obliques ('/') séparent le motif "source" de la chaîne "cible". Voici une 
+SÃ©parons cela en deux parties. Ã‰videmment, cela dÃ©marre par une commande de
+substitution. Le "%" est la plage des lignes, qui dÃ©signe le fichier entier.
+Ainsi, la substitution sera effectuÃ©e sur chaque ligne du fichier. 
+   Les arguments de la commande de substitution sont "/chaÃ®ne1/chaÃ®ne2/". Les
+obliques ('/') sÃ©parent le motif "source" de la chaÃ®ne "cible". Voici une 
 dissection du motif "source" :
    
    							\([^,]*\), \(.*\) ~
 
-La première partie entre \( \) correspond au nom	\(     \)
-  - n'importe quel caractère excepté la virgule 	  [^,]
+La premiÃ¨re partie entre \( \) correspond au nom	\(     \)
+  - n'importe quel caractÃ¨re exceptÃ© la virgule 	  [^,]
   - n'importe quel nombre de fois	        	      *
-Correspond littéralement à une virgule et un espace		 ,<Espace>
-La seconde partie entre \( \) correspond au prénom		   \(  \)
-  - n'importe quel caractère		     			     .
+Correspond littÃ©ralement Ã  une virgule et un espace		 ,<Espace>
+La seconde partie entre \( \) correspond au prÃ©nom		   \(  \)
+  - n'importe quel caractÃ¨re		     			     .
   - n'importe quel nombre de fois				      *
 
 Dans la partie cible, nous avons "\2" et "\1". Cela s'appelle des
-post-références.  Elles font référence au texte correspondant à une partie 
-entre \( \) de la chaîne à remplacer.  "\2" fait référence au texte correspon-
-dant au second "\( \)", donc le prénom.  "\1" fait référence au premier \( \), 
+post-rÃ©fÃ©rences.  Elles font rÃ©fÃ©rence au texte correspondant Ã  une partie 
+entre \( \) de la chaÃ®ne Ã  remplacer.  "\2" fait rÃ©fÃ©rence au texte correspon-
+dant au second "\( \)", donc le prÃ©nom.  "\1" fait rÃ©fÃ©rence au premier \( \), 
 donc le nom.
-   Vous pouvez utiliser jusqu'à neuf post-références dans la partie "cible" d'
+   Vous pouvez utiliser jusqu'Ã  neuf post-rÃ©fÃ©rences dans la partie "cible" d'
 une commande de substitution. "\0" permet de faire correspondre l'ensemble du
-motif. Il existe aussi quelques autres fonctionnalités disponibles
+motif. Il existe aussi quelques autres fonctionnalitÃ©s disponibles
 pour la commande de substitution, consultez |sub-replace-special|.
 
 ==============================================================================
@@ -168,13 +168,13 @@ Pour trier cette liste, filtrez le texte avec la commande externe "sort" : >
 	j
 	:.,/^$/-1!sort
 
-La première instruction permet de positionner le curseur sur la première ligne
-où "OBJS" est la première chaîne de la ligne. Ensuite, "j" fait descendre d'une
-ligne puis les lignes sont filtrées jusqu'à ce que la ligne suivante soit une 
-ligne vide. Vous pouvez aussi sélectionner les lignes en mode Visuel et utiliser
-ensuite "!sort". Cela est plus facile à taper, mais demande plus de travail 
+La premiÃ¨re instruction permet de positionner le curseur sur la premiÃ¨re ligne
+oÃ¹ "OBJS" est la premiÃ¨re chaÃ®ne de la ligne. Ensuite, "j" fait descendre d'une
+ligne puis les lignes sont filtrÃ©es jusqu'Ã  ce que la ligne suivante soit une 
+ligne vide. Vous pouvez aussi sÃ©lectionner les lignes en mode Visuel et utiliser
+ensuite "!sort". Cela est plus facile Ã  taper, mais demande plus de travail 
 lorsque vous avez beaucoup de lignes.
-   Le résultat est le suivant :
+   Le rÃ©sultat est le suivant :
 
 	OBJS = \ ~
 		backup.o ~
@@ -187,212 +187,212 @@ lorsque vous avez beaucoup de lignes.
 		version.o \ ~
 
 
-Remarquez qu'une contre-oblique ('\') est utilisée à la fin de chaque ligne 
-pour indiquer que la ligne continue. Après le tri, cela est faux ! La ligne 
-contenant "backup.o" qui était à la fin n'avait pas de contre-oblique. 
-Maintenant que cette ligne a été déplacée à un autre endroit, elle doit finir
+Remarquez qu'une contre-oblique ('\') est utilisÃ©e Ã  la fin de chaque ligne 
+pour indiquer que la ligne continue. AprÃ¨s le tri, cela est faux ! La ligne 
+contenant "backup.o" qui Ã©tait Ã  la fin n'avait pas de contre-oblique. 
+Maintenant que cette ligne a Ã©tÃ© dÃ©placÃ©e Ã  un autre endroit, elle doit finir
 par une contre-oblique.
    La solution la plus simple est de rajouter la contre-oblique avec "A
-\<Echap>".  Vous pouvez garder la contre-oblique de la dernière ligne, si vous 
-êtes sûr qu'une ligne vide vient immédiatement après. De cette façon, vous n'
-aurez plus jamais ce problème.
+\<Echap>".  Vous pouvez garder la contre-oblique de la derniÃ¨re ligne, si vous 
+Ãªtes sÃ»r qu'une ligne vide vient immÃ©diatement aprÃ¨s. De cette faÃ§on, vous n'
+aurez plus jamais ce problÃ¨me.
 
 ==============================================================================
 *12.4*	Inverser l'ordre des lignes
 
-La commande |:global| peut être combinée avec la commande |:move| pour
-déplacer toutes les lignes avant la première, dans l'ordre inverse. La
+La commande |:global| peut Ãªtre combinÃ©e avec la commande |:move| pour
+dÃ©placer toutes les lignes avant la premiÃ¨re, dans l'ordre inverse. La
 commande est : >
 
 	:global/^/m 0
 
-Ou sous forme simplifiée : >
+Ou sous forme simplifiÃ©e : >
 
 	:g/^/m 0
 
-L'expression rationnelle "^" correspond au début de la ligne (même si la ligne
-est vide). La commande |:move| déplace la ligne correspondante après la 
-mythique zero-ième ligne, ainsi, la ligne courante devient la première ligne.
-Comme la commande |:global| ne prend pas en compte le changement des numéros
-de ligne, |:global| effectue le déplacement pour toutes les lignes restantes
-du fichier, et les amène à la première ligne.
+L'expression rationnelle "^" correspond au dÃ©but de la ligne (mÃªme si la ligne
+est vide). La commande |:move| dÃ©place la ligne correspondante aprÃ¨s la 
+mythique zero-iÃ¨me ligne, ainsi, la ligne courante devient la premiÃ¨re ligne.
+Comme la commande |:global| ne prend pas en compte le changement des numÃ©ros
+de ligne, |:global| effectue le dÃ©placement pour toutes les lignes restantes
+du fichier, et les amÃ¨ne Ã  la premiÃ¨re ligne.
 
-Cela marche aussi sur une plage de lignes. Tout d'abord, déplacez-vous
-au-dessus de la première ligne de la plage et marquez-la avec "mt". Ensuite,
-déplacez le curseur jusqu'à la dernière ligne de la plage et tapez : >
+Cela marche aussi sur une plage de lignes. Tout d'abord, dÃ©placez-vous
+au-dessus de la premiÃ¨re ligne de la plage et marquez-la avec "mt". Ensuite,
+dÃ©placez le curseur jusqu'Ã  la derniÃ¨re ligne de la plage et tapez : >
 
 	:'t+1,.g/^/m 't
 
 ==============================================================================
 *12.5*	Compter les mots
 
-Vous aurez peut-être à écrire un texte avec un nombre de mots maximum. Vim
+Vous aurez peut-Ãªtre Ã  Ã©crire un texte avec un nombre de mots maximum. Vim
 peut compter les mots pour vous.
-   Lorsque vous souhaitez connaître le nombre de mots dans un fichier entier, 
+   Lorsque vous souhaitez connaÃ®tre le nombre de mots dans un fichier entier, 
 utilisez cette commande : >
 
 	g CTRL-G
 
-Ne tapez pas d'espace après le 'g', cet espace permet simplement d'améliorer
-la lisibilité de la commande.
-   Le résultat ressemble à :
+Ne tapez pas d'espace aprÃ¨s le 'g', cet espace permet simplement d'amÃ©liorer
+la lisibilitÃ© de la commande.
+   Le rÃ©sultat ressemble Ã  :
 
 	Col 1 of 0; Line 141 of 157; Word 748 of 774; Byte 4489 of 4976 ~
 
-Vous pouvez voir le mot sur lequel vous êtes (748), et le nombre total de mots
+Vous pouvez voir le mot sur lequel vous Ãªtes (748), et le nombre total de mots
 dans le fichier (774).
 
-Si le texte ne concerne qu'une partie d'un fichier, vous pourriez vous déplacer 
-au début de ce texte, taper "g CTRL-G", en notant l'index du mot courant, puis 
-aller à la fin du texte et taper une nouvelle fois "g CTRL-G". Par différence
+Si le texte ne concerne qu'une partie d'un fichier, vous pourriez vous dÃ©placer 
+au dÃ©but de ce texte, taper "g CTRL-G", en notant l'index du mot courant, puis 
+aller Ã  la fin du texte et taper une nouvelle fois "g CTRL-G". Par diffÃ©rence
 entre les deux index, vous obtiendriez le nombre de mots dans votre texte. 
    C'est un bon exercice, mais il existe un moyen plus simple. Avec le mode
-Visuel, sélectionnez le texte dans lequel vous voulez compter le nombre de
+Visuel, sÃ©lectionnez le texte dans lequel vous voulez compter le nombre de
 mots, puis tapez "g CTRL-G". Cela donne :
 
 	Selected 5 of 293 Lines; 70 of 1884 Words; 359 of 10928 Bytes ~
 
-Pour d'autres moyens de compter les mots, les lignes ou d'autres élements,
+Pour d'autres moyens de compter les mots, les lignes ou d'autres Ã©lements,
 voir |count-items|.
 
 ==============================================================================
 *12.6*	Trouver une page de manuel				*find-manpage*
 
-Lorsque vous écrivez un script shell ou un programme en C, vous souhaitez par-
+Lorsque vous Ã©crivez un script shell ou un programme en C, vous souhaitez par-
 fois trouver la page de manuel d'une commande ou d'une fonction (cela concerne
-Unix ).  Il existe une moyen très simple : déplacez le curseur sur le mot
+Unix ).  Il existe une moyen trÃ¨s simple : dÃ©placez le curseur sur le mot
 dont vous souhaitez obtenir l'aide et tapez : >
 
 	K
 
-Vim exécutera le programme externe "man" avec le mot courant comme argument. Si
-la page de manuel est trouvée, elle est affichée. La visionneuse normale est 
-utilisé pour faire défiler le texte (souvent le programme "more"). Lorsque
-vous arrivez à la fin de la page de manuel, <Entree> vous permettra de revenir
+Vim exÃ©cutera le programme externe "man" avec le mot courant comme argument. Si
+la page de manuel est trouvÃ©e, elle est affichÃ©e. La visionneuse normale est 
+utilisÃ© pour faire dÃ©filer le texte (souvent le programme "more"). Lorsque
+vous arrivez Ã  la fin de la page de manuel, <Entree> vous permettra de revenir
 dans Vim.
 
-L'inconvénient est que vous ne pouvez pas voir en même temps la page de manuel
-et le texte que vous éditez. Il y a une astuce pour afficher la page de manuel
-dans une fenêtre Vim.  Tout d'abord, chargez le greffon de type de fichier
+L'inconvÃ©nient est que vous ne pouvez pas voir en mÃªme temps la page de manuel
+et le texte que vous Ã©ditez. Il y a une astuce pour afficher la page de manuel
+dans une fenÃªtre Vim.  Tout d'abord, chargez le greffon de type de fichier
 "man" : >
 
 	:source $VIMRUNTIME/ftplugin/man.vim
 
 Placez cette commande dans votre fichier vimrc si vous utilisez souvent 
-cette fonctionnalité. Maintenant, vous pouvez utiliser la commande ":Man"
-pour ouvrir une fenêtre sur une page de manuel : >
+cette fonctionnalitÃ©. Maintenant, vous pouvez utiliser la commande ":Man"
+pour ouvrir une fenÃªtre sur une page de manuel : >
 
 	:Man csh
 
-Vous pouvez faire défiler le texte, et le texte est mis en surbrillance. Cela 
+Vous pouvez faire dÃ©filer le texte, et le texte est mis en surbrillance. Cela 
 vous permet de trouver l'aide que vous recherchiez. Utilisez "CTRL-W w" pour 
-passer dans la fenêtre où vous éditiez votre code.
-   Pour trouver une page de manuel dans une section spécifique, placez le
-numéro de la section en premier. Par exemple, pour rechercher la commande
+passer dans la fenÃªtre oÃ¹ vous Ã©ditiez votre code.
+   Pour trouver une page de manuel dans une section spÃ©cifique, placez le
+numÃ©ro de la section en premier. Par exemple, pour rechercher la commande
 "echo" dans la section 3 : >
 
 	:Man 3 echo
 
-Pour sauter à une autre page de manuel, généralement indiquée dans le texte 
-sous la forme "commande(1)", tapez CTRL-] lorsque vous êtes dessus. Les
-commandes ":Man" utiliseront la même fenêtre.
+Pour sauter Ã  une autre page de manuel, gÃ©nÃ©ralement indiquÃ©e dans le texte 
+sous la forme "commande(1)", tapez CTRL-] lorsque vous Ãªtes dessus. Les
+commandes ":Man" utiliseront la mÃªme fenÃªtre.
 
-Pour afficher une page de manuel pour le mot situé sous le curseur, utilisez : >
+Pour afficher une page de manuel pour le mot situÃ© sous le curseur, utilisez : >
 
 	\K
 
-(Si vous redéfinissez <Leader>, utilisez-le à la place du '\').
-Par exemple, si vous désirez connaître la valeur de retour de "strstr()" en
-éditant la ligne suivante
+(Si vous redÃ©finissez <Leader>, utilisez-le Ã  la place du '\').
+Par exemple, si vous dÃ©sirez connaÃ®tre la valeur de retour de "strstr()" en
+Ã©ditant la ligne suivante
 
 	if (strstr(input, "aap") == ) ~
 
-déplacez le curseur sur "strstr" et tapez "\K". Une fenêtre s'ouvrira en
+dÃ©placez le curseur sur "strstr" et tapez "\K". Une fenÃªtre s'ouvrira en
 affichant la page de manuel de strstr().
 
 ==============================================================================
 *12.7*	Supprimer les blancs superflus
 
-Certaines personnes trouvent que les espaces et les tabulations situés à la fin
-des lignes sont sans utilité, gâchent de la place, ou sont même disgracieux. 
-Pour supprimer ces espaces blancs à la fin de chaque ligne, utilisez la commande
+Certaines personnes trouvent que les espaces et les tabulations situÃ©s Ã  la fin
+des lignes sont sans utilitÃ©, gÃ¢chent de la place, ou sont mÃªme disgracieux. 
+Pour supprimer ces espaces blancs Ã  la fin de chaque ligne, utilisez la commande
 suivante : >
 
 	:%s/\s\+$//
 
-La plage de ligne "%" est utilisée, cette commande sera donc valable sur
+La plage de ligne "%" est utilisÃ©e, cette commande sera donc valable sur
 l'ensemble du fichier. Le motif auquel correspond la commande de substitution
-est "\s\+$". Cela correspond aux caractères blancs (\s), 1 ou plus (\+),
-avant la fin de la ligne ($). L'utilisation de ces expressions régulières sera
-détaillée dans |usr_27.txt|.
+est "\s\+$". Cela correspond aux caractÃ¨res blancs (\s), 1 ou plus (\+),
+avant la fin de la ligne ($). L'utilisation de ces expressions rÃ©guliÃ¨res sera
+dÃ©taillÃ©e dans |usr_27.txt|.
    La partie cible de la commande de substitution est vide : "//". Ainsi, on 
-remplace par une chaîne vide, supprimant effectivement l'espace blanc corres-
+remplace par une chaÃ®ne vide, supprimant effectivement l'espace blanc corres-
 pondant.
 
-Un autre cas d'inutilité des espaces se produit lorsqu'ils sont placés juste
-avant une tabulation.  La plupart du temps, ils peuvent être supprimés sans
+Un autre cas d'inutilitÃ© des espaces se produit lorsqu'ils sont placÃ©s juste
+avant une tabulation.  La plupart du temps, ils peuvent Ãªtre supprimÃ©s sans
 modifier la largeur de l'espace blanc. Mais pas toujours ! Aussi, le mieux que vous puissiez faire est de le faire manuellement. Utilisez cette commande de recherche : >
 
 	/ 	
 
 Vous ne pouvez pas le voir, mais il y a un espace avant une tabulation dans
 cette commande : "/<Espace><Tab>". Utilisez alors "x" pour effacer l'espace et
-vérifiez que la largeur de la tabulation n'est pas modifiée. Vous devrez
-peut-être insérer une nouvelle tabulation si c'est le cas. Tapez "n" pour
-trouver la prochaine correspondance. Répétez cette opération jusqu'à ce
-qu'aucune autre correspondance ne puisse être trouvée.
+vÃ©rifiez que la largeur de la tabulation n'est pas modifiÃ©e. Vous devrez
+peut-Ãªtre insÃ©rer une nouvelle tabulation si c'est le cas. Tapez "n" pour
+trouver la prochaine correspondance. RÃ©pÃ©tez cette opÃ©ration jusqu'Ã  ce
+qu'aucune autre correspondance ne puisse Ãªtre trouvÃ©e.
 
 ==============================================================================
 *12.8*	Trouver les occurrences d'un mot
 
-Si vous êtes un utilisateur d'Unix, vous pouvez utiliser Vim en combinaison avec
-la commande grep pour éditer tous les fichiers qui contiennent un mot en parti-
-culier. C'est extrêmement utile si vous travaillez sur un programme et que vous
-voulez voir ou éditer tous les fichiers qui contiennent une variable spécifique.
-   Par exemple, supposez que vous vouliez éditer tous les fichiers C qui
+Si vous Ãªtes un utilisateur d'Unix, vous pouvez utiliser Vim en combinaison avec
+la commande grep pour Ã©diter tous les fichiers qui contiennent un mot en parti-
+culier. C'est extrÃªmement utile si vous travaillez sur un programme et que vous
+voulez voir ou Ã©diter tous les fichiers qui contiennent une variable spÃ©cifique.
+   Par exemple, supposez que vous vouliez Ã©diter tous les fichiers C qui
 contiennent le mot "compteurs". Utilisez la commande : >
 
 	vim `grep -l compteurs *.c`
 
-Etudions cette commande en détail. La commande recherche au travers d'un ensem-
-ble de fichiers un mot en particulier. Comme l'argument -l est utilisé, la com-
+Etudions cette commande en dÃ©tail. La commande recherche au travers d'un ensem-
+ble de fichiers un mot en particulier. Comme l'argument -l est utilisÃ©, la com-
 mande va simplement lister les fichiers contenant le mot, sans imprimer les
-lignes correspondantes. Le mot recherché est "compteurs". En fait, il pourrait 
+lignes correspondantes. Le mot recherchÃ© est "compteurs". En fait, il pourrait 
 s'agir de n'importe quelle expression rationnelle. (Remarque : grep utilise des
 expressions rationnelles qui ne sont pas exactement celles de Vim)
-  La commande est entourée de contre-apostrophes (`).  Cela indique au shell 
-Unix d'exécuter cette commande et de faire comme si la sortie de la commande 
-avait été entrée sur la commande initiale. Aussi, la commande grep renvoie une
-liste de fichiers, et ces fichiers sont placés sur la ligne de commande de
-Vim. Vim éditera donc la liste de fichiers renvoyés par la commande grep. Vous 
+  La commande est entourÃ©e de contre-apostrophes (`).  Cela indique au shell 
+Unix d'exÃ©cuter cette commande et de faire comme si la sortie de la commande 
+avait Ã©tÃ© entrÃ©e sur la commande initiale. Aussi, la commande grep renvoie une
+liste de fichiers, et ces fichiers sont placÃ©s sur la ligne de commande de
+Vim. Vim Ã©ditera donc la liste de fichiers renvoyÃ©s par la commande grep. Vous 
 pouvez alors utiliser des commandes telles que ":next" et ":first" pour naviguer
 de fichier en fichier.
 
 
 TROUVER TOUTES LES LIGNES
 
-La commande ci-dessus permet de trouver tous les fichiers concernés par
-l'apparition d'un mot. Mais vous devez encore trouver ce mot à l'intérieur des
+La commande ci-dessus permet de trouver tous les fichiers concernÃ©s par
+l'apparition d'un mot. Mais vous devez encore trouver ce mot Ã  l'intÃ©rieur des
 fichiers.
-   Vim possède une commande interne pour rechercher une chaîne particulière dansun ensemble de fichiers une chaîne particulière. Si vous voulez trouver toutes 
+   Vim possÃ¨de une commande interne pour rechercher une chaÃ®ne particuliÃ¨re dansun ensemble de fichiers une chaÃ®ne particuliÃ¨re. Si vous voulez trouver toutes 
 les occurrences de "chaine_erreur" dans tous les fichiers C, par exemple, entrez
 la commande suivante : >
 
 	:grep chaine_erreur *.c
 
-Cela demande à Vim de rechercher la chaîne "chaine_erreur" dans tous les
-fichiers spécifiés (*.c). L'éditeur ouvrira alors le premier fichier où une
-correspondance a été trouvée et positionnera le curseur sur la première ligne
-correspondante. Pour aller à la prochaine correspondance (indépendamment du
-fichier), utilisez la commande ":cnext". Pour aller à la correspondance 
-précédente utilisez la commande ":cprev". Utilisez ":clist" pour voir toutes 
+Cela demande Ã  Vim de rechercher la chaÃ®ne "chaine_erreur" dans tous les
+fichiers spÃ©cifiÃ©s (*.c). L'Ã©diteur ouvrira alors le premier fichier oÃ¹ une
+correspondance a Ã©tÃ© trouvÃ©e et positionnera le curseur sur la premiÃ¨re ligne
+correspondante. Pour aller Ã  la prochaine correspondance (indÃ©pendamment du
+fichier), utilisez la commande ":cnext". Pour aller Ã  la correspondance 
+prÃ©cÃ©dente utilisez la commande ":cprev". Utilisez ":clist" pour voir toutes 
 les correspondances et les fichiers dans lesquelles elles se trouvent.
    La commande ":grep" utilise la commande externe grep (sur Unix) ou findstr
-(sur Windows). Vous pouvez modifier ce paramètre de configuration en
+(sur Windows). Vous pouvez modifier ce paramÃ¨tre de configuration en
 modifiant l'option 'grepprg'.
 
 ==============================================================================
 
-Chapitre suivant : |usr_20.txt|  Édition rapide de la ligne de commande
+Chapitre suivant : |usr_20.txt|  Ã‰dition rapide de la ligne de commande
 
 Copyright : voir |manual-copyright|  vim:tw=78:ts=8:ft=help:norl:

@@ -1,19 +1,19 @@
 *diff.txt*      Pour Vim version 6.2.
 
 
-		 MANUEL de RÉFÉRENCE VIM - par Bram Moolenaar
+		 MANUEL de RÃ‰FÃ‰RENCE VIM - par Bram Moolenaar
 
 
 				    *diff* *vimdiff* *gvimdiff* *diff-mode*
-Ce fichier décrit la fonctionnalité |+diff|, qui permet de mettre en évidence
-les différences entre deux ou trois versions d'un même fichier.
+Ce fichier dÃ©crit la fonctionnalitÃ© |+diff|, qui permet de mettre en Ã©vidence
+les diffÃ©rences entre deux ou trois versions d'un mÃªme fichier.
 
-Les bases sont abordées dans la section |08.7| du Manuel de l'utilisateur.
+Les bases sont abordÃ©es dans la section |08.7| du Manuel de l'utilisateur.
 
 1. Lancer le mode diff		    |vimdiff|
-2. Visualiser les différences	    |view-diffs|
-3. Sauter aux différences	    |jumpto-diffs|
-4. Copier des différences	    |copy-diffs|
+2. Visualiser les diffÃ©rences	    |view-diffs|
+3. Sauter aux diffÃ©rences	    |jumpto-diffs|
+4. Copier des diffÃ©rences	    |copy-diffs|
 5. Options du mode diff		    |diff-options|
 
 {absent de Vi}
@@ -21,255 +21,255 @@ Les bases sont abordées dans la section |08.7| du Manuel de l'utilisateur.
 ==============================================================================
 1. Lancer le mode diff
 
-La façon la plus simple de lancer le mode diff est d'invoquer la commande
-`vimdiff`. Elle lance Vim comme d'habitude, en le paramétrant pour visualiser
-les différences entre les arguments. >
+La faÃ§on la plus simple de lancer le mode diff est d'invoquer la commande
+`vimdiff`. Elle lance Vim comme d'habitude, en le paramÃ©trant pour visualiser
+les diffÃ©rences entre les arguments. >
 
 	vimdiff fichier1 fichier2 [fichier3 [fichier4]]
 
-Ceci équivaut à : >
+Ceci Ã©quivaut Ã  : >
 
 	vim -d fichier1 fichier2 [fichier3 [fichier4]]
 
-Vous pouvez également utiliser `gvimdiff` ou `vim -g` : l'IHM graphique est
-alors activée. Ou encore `viewdiff` ou `gviewdiff` : Vim est lancé en mode
-lecture seule. Un 'r' peut être préfixé pour le mode restreint (voir |-Z|).
+Vous pouvez Ã©galement utiliser `gvimdiff` ou `vim -g` : l'IHM graphique est
+alors activÃ©e. Ou encore `viewdiff` ou `gviewdiff` : Vim est lancÃ© en mode
+lecture seule. Un 'r' peut Ãªtre prÃ©fixÃ© pour le mode restreint (voir |-Z|).
 
-Le deuxième argument et ceux qui suivent peuvent être un nom de répertoire.
-Vim ajoutera alors le nom de fichier du premier argument au nom du répertoire
+Le deuxiÃ¨me argument et ceux qui suivent peuvent Ãªtre un nom de rÃ©pertoire.
+Vim ajoutera alors le nom de fichier du premier argument au nom du rÃ©pertoire
 pour trouver le fichier.
 
 Cela fonctionne uniquement quand une commande standard `diff` est disponible.
 Voir 'diffexpr'.
 
-En mode diff, Vim ouvre une fenêtre pour chacun des fichiers, comme si
-l'argument de commande |-O| était utilisé. Cela crée un partage vertical. Si
-vous préférez un partage horizontal, ajoutez l'argument |-o| : >
+En mode diff, Vim ouvre une fenÃªtre pour chacun des fichiers, comme si
+l'argument de commande |-O| Ã©tait utilisÃ©. Cela crÃ©e un partage vertical. Si
+vous prÃ©fÃ©rez un partage horizontal, ajoutez l'argument |-o| : >
 
 	vimdiff -o fichier1 fichier2 [fichier3]
 
-Dans chaque fichier édité, ces options sont fixées :
+Dans chaque fichier Ã©ditÃ©, ces options sont fixÃ©es :
 
-	'diff'		activé
-	'scrollbind'	activé
+	'diff'		activÃ©
+	'scrollbind'	activÃ©
 	'scrollopt'	inclut "hor"
-	'wrap'		désactivé
+	'wrap'		dÃ©sactivÃ©
 	'foldmethod'	"diff"
 	'foldcolumn'	2
 
-Ces options sont locales aux fenêtres. Ainsi, si vous ouvrez une nouvelle
-fenêtre ou que vous éditez un autre fichier, elles sont remises à leurs
+Ces options sont locales aux fenÃªtres. Ainsi, si vous ouvrez une nouvelle
+fenÃªtre ou que vous Ã©ditez un autre fichier, elles sont remises Ã  leurs
 valeurs globales.
 
-Les différences affichées sont en fait les différences dans le tampon. Ainsi,
-si vous faites des changements après le chargement d'un fichier, ils seront
-pris en compte lors de l'affichage des différences. Vous devrez cependant
-mettre à jour ces différences avec ":diffupdate", tous les changements ne sont
-pas immédiatement pris en compte.
+Les diffÃ©rences affichÃ©es sont en fait les diffÃ©rences dans le tampon. Ainsi,
+si vous faites des changements aprÃ¨s le chargement d'un fichier, ils seront
+pris en compte lors de l'affichage des diffÃ©rences. Vous devrez cependant
+mettre Ã  jour ces diffÃ©rences avec ":diffupdate", tous les changements ne sont
+pas immÃ©diatement pris en compte.
 
-Vous pouvez spécifier des paramétrages spéciaux pour le mode diff dans votre
+Vous pouvez spÃ©cifier des paramÃ©trages spÃ©ciaux pour le mode diff dans votre
 fichier vimrc. Utilisez une construction comme celle-ci : >
 
 	if &diff
-	    paramètres en mode diff
+	    paramÃ¨tres en mode diff
 	else
-	    paramètres en mode non-diff
+	    paramÃ¨tres en mode non-diff
 	endif
 
-Si vous êtes déjà dans Vim, vous pouvez lancer le mode diff de trois façons :
+Si vous Ãªtes dÃ©jÃ  dans Vim, vous pouvez lancer le mode diff de trois faÃ§ons :
 
 							*E98*
 							*:diffs* *:diffsplit*
 :diffs[plit] {nomfich}
-		Ouvre une nouvelle fenêtre pour le fichier {nomfich}. Les
-		options sont fixées comme avec `vimdiff` pour les fenêtres
+		Ouvre une nouvelle fenÃªtre pour le fichier {nomfich}. Les
+		options sont fixÃ©es comme avec `vimdiff` pour les fenÃªtres
 		courante et nouvellement ouverte. Voir aussi 'diffexpr'.
 
 							*:difft* *:diffthis*
-:difft[his]	Associe la fenêtre courante aux fenêtres diff. Les options
-		sont fixées comme avec `vimdiff`.
+:difft[his]	Associe la fenÃªtre courante aux fenÃªtres diff. Les options
+		sont fixÃ©es comme avec `vimdiff`.
 
 							*:diffp* *:diffpatch*
 :diffp[atch] {fichrustine}
-		Utilise le tampon courant, lui applique les différences
-		trouvées dans {fichrustine} et ouvre un tampon contenant le
-		résultat. Les options sont fixées comme avec `vimdiff`.
-		{fichrustine} peut être dans n'importe quel format reconnu par
-		le programme `patch` ou supporté par 'patchexpr'.
-		NOTE : {fichrustine} ne doit contenir les différences que pour
+		Utilise le tampon courant, lui applique les diffÃ©rences
+		trouvÃ©es dans {fichrustine} et ouvre un tampon contenant le
+		rÃ©sultat. Les options sont fixÃ©es comme avec `vimdiff`.
+		{fichrustine} peut Ãªtre dans n'importe quel format reconnu par
+		le programme `patch` ou supportÃ© par 'patchexpr'.
+		NOTE : {fichrustine} ne doit contenir les diffÃ©rences que pour
 		un seul fichier, le fichier courant. Si {fichrustine} contient
-		les différences pour d'autres fichiers, les conséquences sont
-		imprévisibles. Vim changera de répertoire pour "/tmp" afin
-		d'éviter que les fichiers dans le répertoire courant ne soient
-		accidentellement modifiés. Mais divers fichiers ".rej"
-		pourraient cependant être créés. Et lorsque des noms de
-		chemins absolus sont utilisés, ces fichiers risquent d'être
-		modifiés de toute façon.
+		les diffÃ©rences pour d'autres fichiers, les consÃ©quences sont
+		imprÃ©visibles. Vim changera de rÃ©pertoire pour "/tmp" afin
+		d'Ã©viter que les fichiers dans le rÃ©pertoire courant ne soient
+		accidentellement modifiÃ©s. Mais divers fichiers ".rej"
+		pourraient cependant Ãªtre crÃ©Ã©s. Et lorsque des noms de
+		chemins absolus sont utilisÃ©s, ces fichiers risquent d'Ãªtre
+		modifiÃ©s de toute faÃ§on.
 
-Pour que ces commandes utilisent un partage vertical, préfixez |:vertical|.
+Pour que ces commandes utilisent un partage vertical, prÃ©fixez |:vertical|.
 Exemples : >
 
 	:vert diffsplit main.c~
 	:vert diffpatch /tmp/diff
 <
 							*E96*
-Il peut y avoir jusqu'à quatre tampons avec l'option 'diff' activée.
+Il peut y avoir jusqu'Ã  quatre tampons avec l'option 'diff' activÃ©e.
 
-Comme les valeurs des options sont mémorisées avec le tampon, vous pouvez
-éditer un autre fichier pendant un moment, revenir au fichier précédent et
-vous retrouver à nouveau en mode diff. Si vous ne voulez plus le mode diff,
-désactivez l'option 'diff'. Débarrassez-vous de même de la colonne de repli : >
+Comme les valeurs des options sont mÃ©morisÃ©es avec le tampon, vous pouvez
+Ã©diter un autre fichier pendant un moment, revenir au fichier prÃ©cÃ©dent et
+vous retrouver Ã  nouveau en mode diff. Si vous ne voulez plus le mode diff,
+dÃ©sactivez l'option 'diff'. DÃ©barrassez-vous de mÃªme de la colonne de repli : >
 
 	:set nodiff
 	:set foldcolumn=0
 
 ==============================================================================
-2. Visualiser les différences				*view-diffs*
+2. Visualiser les diffÃ©rences				*view-diffs*
 
-En mode diff, les fenêtres diff affichent le même texte, mais avec les
-différences en surbrillance. Quand vous faites défiler du texte dans une
-fenêtre, l'option 'scrollbind' fera également défiler le texte dans les autres
-fenêtres. Avec le partage vertical, le texte devrait être aligné correctement.
+En mode diff, les fenÃªtres diff affichent le mÃªme texte, mais avec les
+diffÃ©rences en surbrillance. Quand vous faites dÃ©filer du texte dans une
+fenÃªtre, l'option 'scrollbind' fera Ã©galement dÃ©filer le texte dans les autres
+fenÃªtres. Avec le partage vertical, le texte devrait Ãªtre alignÃ© correctement.
 
-L'alignement du texte sera faussé si :
-- 'wrap' est activé, certaines lignes sont enroulées et occupent deux lignes
-  d'écran ou plus ;
-- des replis sont ouverts dans une fenêtre mais pas dans une autre ;
-- 'scrollbind' est désactivé ;
-- des changements ont été apportés au texte ;
-- "filler" n'est pas inclus dans 'diffopt', et des lignes insérées/supprimées
-  décalent l'alignement.
+L'alignement du texte sera faussÃ© si :
+- 'wrap' est activÃ©, certaines lignes sont enroulÃ©es et occupent deux lignes
+  d'Ã©cran ou plus ;
+- des replis sont ouverts dans une fenÃªtre mais pas dans une autre ;
+- 'scrollbind' est dÃ©sactivÃ© ;
+- des changements ont Ã©tÃ© apportÃ©s au texte ;
+- "filler" n'est pas inclus dans 'diffopt', et des lignes insÃ©rÃ©es/supprimÃ©es
+  dÃ©calent l'alignement.
 
-Tous les tampons édités dans une fenêtre où l'option 'diff' est activée seront
-associés au mode diff. Cela vaut aussi pour les tampons cachés. Ils devront
-d'abord avoir été édités dans une fenêtre pour que ce soit possible.
+Tous les tampons Ã©ditÃ©s dans une fenÃªtre oÃ¹ l'option 'diff' est activÃ©e seront
+associÃ©s au mode diff. Cela vaut aussi pour les tampons cachÃ©s. Ils devront
+d'abord avoir Ã©tÃ© Ã©ditÃ©s dans une fenÃªtre pour que ce soit possible.
 
-L'option 'diff' étant locale à une fenêtre, il est possible de visualiser le
-même tampon en mode diff dans une fenêtre et « normal » dans une autre. Il est
-également possible de visualiser les changements que vous avez effectués sur
-un tampon, mais comme Vim interdit d'avoir deux tampons pour le même fichier,
-vous devrez préalablement faire une copie du fichier original et comparer avec
+L'option 'diff' Ã©tant locale Ã  une fenÃªtre, il est possible de visualiser le
+mÃªme tampon en mode diff dans une fenÃªtre et Â« normal Â» dans une autre. Il est
+Ã©galement possible de visualiser les changements que vous avez effectuÃ©s sur
+un tampon, mais comme Vim interdit d'avoir deux tampons pour le mÃªme fichier,
+vous devrez prÃ©alablement faire une copie du fichier original et comparer avec
 elle. Par exemple : >
 
 	:!cp % fichtemp
 	:diffsplit fichtemp
 
-Un tampon déchargé ne peut pas être utilisé pour le mode diff. Mais cela
-fonctionne avec les tampons cachés. Vous pouvez utiliser ":hide" pour fermer
-une fenêtre sans décharger le tampon.
+Un tampon dÃ©chargÃ© ne peut pas Ãªtre utilisÃ© pour le mode diff. Mais cela
+fonctionne avec les tampons cachÃ©s. Vous pouvez utiliser ":hide" pour fermer
+une fenÃªtre sans dÃ©charger le tampon.
 
 
 						*:diffu* *:diffupdate*
-Vim essaie de garder les différences à jour quand vous apportez des
-modifications au texte. Ce sont essentiellement les lignes insérées ou
-supprimées qui sont prises en compte. Mais les changements à l'intérieur d'une
-ligne ou d'autres modifications plus complexes n'entraîneront pas de mise à
-jour des différences. Pour forcer cette mise à jour, utilisez : >
+Vim essaie de garder les diffÃ©rences Ã  jour quand vous apportez des
+modifications au texte. Ce sont essentiellement les lignes insÃ©rÃ©es ou
+supprimÃ©es qui sont prises en compte. Mais les changements Ã  l'intÃ©rieur d'une
+ligne ou d'autres modifications plus complexes n'entraÃ®neront pas de mise Ã 
+jour des diffÃ©rences. Pour forcer cette mise Ã  jour, utilisez : >
 
 	:diffupdate
 
 
-Vim affichera des lignes de remplissage pour les lignes absentes d'une fenêtre
-mais présentes dans une autre. Ces lignes ont été insérées dans un autre
-fichier ou supprimées dans celui-ci. Si vous enlevez "filler" de l'option
+Vim affichera des lignes de remplissage pour les lignes absentes d'une fenÃªtre
+mais prÃ©sentes dans une autre. Ces lignes ont Ã©tÃ© insÃ©rÃ©es dans un autre
+fichier ou supprimÃ©es dans celui-ci. Si vous enlevez "filler" de l'option
 'diffopt', Vim n'utilisera pas de lignes de remplissage.
 
 
-Des replis sont utilisés pour masquer le texte qui n'est pas modifié. Voir
-|folding| pour toutes les commandes qui peuvent être utilisées avec les
+Des replis sont utilisÃ©s pour masquer le texte qui n'est pas modifiÃ©. Voir
+|folding| pour toutes les commandes qui peuvent Ãªtre utilisÃ©es avec les
 replis.
 
-Le nombre de lignes de contexte encadrant une différence qui n'est pas inclus
-dans un repli peut être fixé avec l'option 'diffopt'. Par exemple, pour
+Le nombre de lignes de contexte encadrant une diffÃ©rence qui n'est pas inclus
+dans un repli peut Ãªtre fixÃ© avec l'option 'diffopt'. Par exemple, pour
 utiliser trois lignes de contexte : >
 
 	:set diffopt=filler,context:3
 
 
-Les différences sont mises en surbrillance selon ces groupes :
+Les diffÃ©rences sont mises en surbrillance selon ces groupes :
 
-|hl-DiffAdd|	  DiffAdd	Lignes ajoutées (insérées). Ces lignes sont
-				présentes dans ce tampon, mais pas dans
+|hl-DiffAdd|	  DiffAdd	Lignes ajoutÃ©es (insÃ©rÃ©es). Ces lignes sont
+				prÃ©sentes dans ce tampon, mais pas dans
 				l'autre.
-|hl-DiffChange|	  DiffChange	Lignes modifiées.
-|hl-DiffText|	  DiffText	Texte modifié à l'intérieur d'une Ligne
-				modifiée. Vim recherche les premier et dernier
-				caractères qui sont différents (en commençant
+|hl-DiffChange|	  DiffChange	Lignes modifiÃ©es.
+|hl-DiffText|	  DiffText	Texte modifiÃ© Ã  l'intÃ©rieur d'une Ligne
+				modifiÃ©e. Vim recherche les premier et dernier
+				caractÃ¨res qui sont diffÃ©rents (en commenÃ§ant
 				depuis la fin de la ligne). Le texte entre ces
 				deux positions est mis en surbrillance. Cela
-				implique que des parties non modifiées entre
+				implique que des parties non modifiÃ©es entre
 				ces positions seront mises en surbrillance
-				malgré tout.
-|hl-DiffDelete|	  DiffDelete	Lignes supprimées. Également nommées lignes de
+				malgrÃ© tout.
+|hl-DiffDelete|	  DiffDelete	Lignes supprimÃ©es. Ã‰galement nommÃ©es lignes de
 				remplissage, car elles n'existent pas vraiment
 				dans ce tampon.
 
 ==============================================================================
-3. Sauter aux différences				*jumpto-diffs*
+3. Sauter aux diffÃ©rences				*jumpto-diffs*
 
-Deux commandes peuvent être utilisées pour sauter aux différences :
+Deux commandes peuvent Ãªtre utilisÃ©es pour sauter aux diffÃ©rences :
 
 							*[c*
-[c		Saute vers l'arrière au début de la différence précédente. Si
-		un quantificateur est donné, le fait autant de fois.
+[c		Saute vers l'arriÃ¨re au dÃ©but de la diffÃ©rence prÃ©cÃ©dente. Si
+		un quantificateur est donnÃ©, le fait autant de fois.
 
 							*]c*
-]c		Saute vers l'avant au début de la différence suivante. Si un
-		quantificateur est donné, le fait autant de fois.
+]c		Saute vers l'avant au dÃ©but de la diffÃ©rence suivante. Si un
+		quantificateur est donnÃ©, le fait autant de fois.
 
-Une erreur est émise quand il n'y a pas de changement vers lequel sauter.
+Une erreur est Ã©mise quand il n'y a pas de changement vers lequel sauter.
 
 ==============================================================================
-4. Copier des différences	*copy-diffs* *E99* *E100* *E101* *E102* *E103*
+4. Copier des diffÃ©rences	*copy-diffs* *E99* *E100* *E101* *E102* *E103*
 
 Il existe deux commandes pour copier du texte d'un tampon dans un autre. Les
-tampons ainsi obtenus seront identiques sur la plage de texte spécifiée.
+tampons ainsi obtenus seront identiques sur la plage de texte spÃ©cifiÃ©e.
 
 							*:diffg* *:diffget*
 :[plage]diffg[et] [tampspec]
-		Modifie le tampon courant pour annuler une différence avec un
-		autre tampon. Si [tampspec] est donné, ce tampon est utilisé.
+		Modifie le tampon courant pour annuler une diffÃ©rence avec un
+		autre tampon. Si [tampspec] est donnÃ©, ce tampon est utilisÃ©.
 		Sinon, cette commande ne fonctionne que s'il y a un autre
 		tampon en mode diff.
 		Voir ci-dessous pour [plage].
 
 							*:diffpu* *:diffput*
 :[plage]diffpu[t] [tampspec]
-		Modifie l'autre tampon pour annuler une différence avec le
+		Modifie l'autre tampon pour annuler une diffÃ©rence avec le
 		tampon courant. Comme ":diffget", mais c'est l'autre tampon
-		qui est modifié au lieu du courant.
+		qui est modifiÃ© au lieu du courant.
 		Voir ci-dessous pour [plage].
 
 							*do*
 do		Comme ":diffget" sans argument ni plage. "do" est choisi en
-		remplacement de "dg", qui ne peut pas être utilisé ici !
+		remplacement de "dg", qui ne peut pas Ãªtre utilisÃ© ici !
 								     ["Obtain"]
 
 							*dp*
 dp		Comme ":diffput" sans plage ni argument.
 
-Quand aucune [plage] n'est donnée, la différence à la position du curseur ou
-juste au-dessus est affectée. Lorsqu'une plage est utilisée, Vim essaie de
-n'opérer que sur les lignes spécifiées. Quand il y a des lignes supprimées,
+Quand aucune [plage] n'est donnÃ©e, la diffÃ©rence Ã  la position du curseur ou
+juste au-dessus est affectÃ©e. Lorsqu'une plage est utilisÃ©e, Vim essaie de
+n'opÃ©rer que sur les lignes spÃ©cifiÃ©es. Quand il y a des lignes supprimÃ©es,
 cela n'est pas toujours possible.
 
-L'argument [tampspec] ci-dessus peut être un numéro de tampon, un motif pour
+L'argument [tampspec] ci-dessus peut Ãªtre un numÃ©ro de tampon, un motif pour
 un nom de tampon ou une partie d'un nom de tampon. Exemples :
 
 	:diffget	    utilise l'autre tampon en mode diff
 	:diffget 3	    utilise le tampon 3
-	:diffget v2	    utilise le tampon qui correspond à "v2" et est en
+	:diffget v2	    utilise le tampon qui correspond Ã  "v2" et est en
 			       mode diff (p. ex., "fichier.c.v2")
 
-NOTE : Les lignes supprimées sont affichées, mais ne comptent pas comme des
-lignes de texte. Vous ne pouvez pas y déplacer le curseur. Pour remplir les
-lignes supprimées avec les lignes d'un autre tampon, utilisez ":diffget" sur
+NOTE : Les lignes supprimÃ©es sont affichÃ©es, mais ne comptent pas comme des
+lignes de texte. Vous ne pouvez pas y dÃ©placer le curseur. Pour remplir les
+lignes supprimÃ©es avec les lignes d'un autre tampon, utilisez ":diffget" sur
 la ligne au-dessous d'elles.
 
-Il peut y avoir des lignes supprimées sous la dernière ligne du tampon. Pour
+Il peut y avoir des lignes supprimÃ©es sous la derniÃ¨re ligne du tampon. Pour
 pouvoir importer ces lignes depuis un autre tampon, il est permis d'utiliser
-le dernier numéro de ligne plus un. Cette commande importe toutes les
-différences depuis l'autre tampon : >
+le dernier numÃ©ro de ligne plus un. Cette commande importe toutes les
+diffÃ©rences depuis l'autre tampon : >
 
 	:1,$+1diffget
 
@@ -279,21 +279,21 @@ différences depuis l'autre tampon : >
 Voir aussi |'diffopt'| et l'item "diff" de |'fillchars'|.
 
 
-TROUVER LES DIFFÉRENCES					*diff-diffexpr*
+TROUVER LES DIFFÃ‰RENCES					*diff-diffexpr*
 
-L'option 'diffexpr' peut être fixée pour utiliser un programme autre que le
+L'option 'diffexpr' peut Ãªtre fixÃ©e pour utiliser un programme autre que le
 programme standard `diff` pour comparer deux fichiers et en trouver les
-différences.
+diffÃ©rences.
 
 Lorsque 'diffexpr' est vide, Vim utilise cette commande pour trouver les
-différences entre "fichier1" et "fichier2" : >
+diffÃ©rences entre "fichier1" et "fichier2" : >
 
 	diff fichier1 fichier2 > fichsortie
 
-Le '>' est remplacé par la valeur de 'shellredir'.
+Le '>' est remplacÃ© par la valeur de 'shellredir'.
 
-La sortie de `diff` doit être une différence de style Ed normal. N'utilisez
-pas de différence contextuelle. Voici un exemple du format attendu par Vim :
+La sortie de `diff` doit Ãªtre une diffÃ©rence de style Ed normal. N'utilisez
+pas de diffÃ©rence contextuelle. Voici un exemple du format attendu par Vim :
 
 	1a2 ~
 	> bbb ~
@@ -304,23 +304,23 @@ pas de différence contextuelle. Voici un exemple du format attendu par Vim :
 	--- ~
 	> ggg ~
 
-L'élément "1a2" ajoute la ligne "bbb".
-L'élément "4d4" supprime la ligne "111".
-L'élément '7c7" remplace la ligne "GGG" par "ggg".
+L'Ã©lÃ©ment "1a2" ajoute la ligne "bbb".
+L'Ã©lÃ©ment "4d4" supprime la ligne "111".
+L'Ã©lÃ©ment '7c7" remplace la ligne "GGG" par "ggg".
 
 Lorsque 'diffexpr' n'est pas vide, Vim l'utilise pour obtenir un fichier diff
-dans le format susmentionné. Ces variables définissent les noms de fichiers à
+dans le format susmentionnÃ©. Ces variables dÃ©finissent les noms de fichiers Ã 
 utiliser :
 
 	v:fname_in	    fichier original
-	v:fname_new	    nouvelle version du même fichier
+	v:fname_new	    nouvelle version du mÃªme fichier
 	v:fname_out	    fichier diff produit
 
-De surcroît, 'diffexpr' prendra en compte l'inclusion de "icase" et "iwhite"
+De surcroÃ®t, 'diffexpr' prendra en compte l'inclusion de "icase" et "iwhite"
 dans l'option 'diffopt'. 'diffexpr' ne peut pas changer la valeur de 'lines'
 ni de 'columns'.
 
-Exemple (produit le même effet que lorsque 'diffexpr' est vide, mais en
+Exemple (produit le mÃªme effet que lorsque 'diffexpr' est vide, mais en
 ajoutant le drapeau "-a" pour forcer la comparaison en tant que texte) : >
 
 	set diffexpr=MonDiff()
@@ -339,17 +339,17 @@ ajoutant le drapeau "-a" pour forcer la comparaison en tant que texte) : >
 							*E97*
 Vim fait un test pour voir si la sortie de `diff` semble correcte. Si ce n'est
 pas le cas, vous obtiendrez un message d'erreur. Causes possibles :
-- le programme `diff` n'a pas pu être exécuté ;
-- le programme `diff` ne produit pas des différences de style Ed normal (voir
+- le programme `diff` n'a pas pu Ãªtre exÃ©cutÃ© ;
+- le programme `diff` ne produit pas des diffÃ©rences de style Ed normal (voir
   ci-dessus) ;
-- les options 'shell' et associées ne sont pas fixées correctement ; vérifiez
+- les options 'shell' et associÃ©es ne sont pas fixÃ©es correctement ; vÃ©rifiez
   si une commande de filtre fonctionne avec quelque chose comme ":!sort" ;
 - vous utilisez 'diffexpr' et cela ne marche pas.
 
 
 UTILISER DES RUSTINES					*diff-patchexpr*
 
-L'option 'patchexpr' peut être fixée pour utiliser autre chose que le
+L'option 'patchexpr' peut Ãªtre fixÃ©e pour utiliser autre chose que le
 programme standard `patch`.
 
 Lorsque 'patchexpr' est vide, Vim appelle le programme `patch` comme suit : >
@@ -358,17 +358,17 @@ Lorsque 'patchexpr' est vide, Vim appelle le programme `patch` comme suit : >
 
 Cela devrait bien fonctionner avec la plupart des versions du programme
 `patch`. NOTE : Un retour chariot au milieu d'une ligne pourrait poser des
-problèmes, il est interprété comme une coupure de ligne.
+problÃ¨mes, il est interprÃ©tÃ© comme une coupure de ligne.
 
-Si la valeur par défaut ne marche pas pour vous, fixez 'patchexpr' à une
-expression qui aura le même effet. Ces variables définissent les noms de
-fichiers à utiliser :
+Si la valeur par dÃ©faut ne marche pas pour vous, fixez 'patchexpr' Ã  une
+expression qui aura le mÃªme effet. Ces variables dÃ©finissent les noms de
+fichiers Ã  utiliser :
 
 	v:fname_in	    fichier original
 	v:fname_diff	    fichier rustine
-	v:fname_out	    fichier produit (auquel on a appliqué la rustine)
+	v:fname_out	    fichier produit (auquel on a appliquÃ© la rustine)
 
-Exemple (produit le même effet que lorsque 'patchexpr' est vide) : >
+Exemple (produit le mÃªme effet que lorsque 'patchexpr' est vide) : >
 
 	let patchexpr=MonPatch
 	function MonPatch
@@ -377,13 +377,13 @@ Exemple (produit le même effet que lorsque 'patchexpr' est vide) : >
 	endfunction
 
 Assurez-vous que l'utilisation du programme `patch` n'a pas des effets de
-bord indésirables. Par exemple, contrôlez qu'il n'y ait pas de fichiers
-supplémentaires produits, que vous devriez alors supprimer. Le programme doit
+bord indÃ©sirables. Par exemple, contrÃ´lez qu'il n'y ait pas de fichiers
+supplÃ©mentaires produits, que vous devriez alors supprimer. Le programme doit
 se contenter d'appliquer la rustine, et rien d'autre.
-   Vim changera le répertoire pour "/tmp" ou un autre répertoire temporaire
-avant l'évaluation de 'patchexpr'. Cela permet théoriquement d'éviter que les
-fichiers du répertoire courant ne soient modifiés accidentellement. Vim
-supprimera aussi les fichiers débutant par v:fname_in et se terminant par
+   Vim changera le rÃ©pertoire pour "/tmp" ou un autre rÃ©pertoire temporaire
+avant l'Ã©valuation de 'patchexpr'. Cela permet thÃ©oriquement d'Ã©viter que les
+fichiers du rÃ©pertoire courant ne soient modifiÃ©s accidentellement. Vim
+supprimera aussi les fichiers dÃ©butant par v:fname_in et se terminant par
 ".rej" et ".orig".
 
  vim:tw=78:ts=8:ft=help:norl:

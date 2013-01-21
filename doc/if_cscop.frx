@@ -1,105 +1,105 @@
-*if_cscop.txt*  Pour Vim version 6.2.  Dernière modification : 24 mai 2003
+*if_cscop.txt*  Pour Vim version 6.2.  DerniÃ¨re modification : 24 mai 2003
 
 
-		   MANUEL de RÉFÉRENCE VIM - par Andy Kahn
+		   MANUEL de RÃ‰FÃ‰RENCE VIM - par Andy Kahn
 
 
 							*cscope* *Cscope*
 Ce document explique comment utiliser l'interface Cscope de Vim.
 
-Cscope est un outil similaire à ctags, mais voyez-le plutôt comme un ctags
-sous amphétamines, car il est capable de bien plus. Dans Vim, sauter au
-résultat d'une requête Cscope est aussi aisé que de sauter vers n'importe quel
-marqueur ; le résultat est mémorisé sur la pile de marqueurs de sorte qu'avec
-des mappages appropriés, vous pouvez sauter d'avant en arrière entre les
+Cscope est un outil similaire Ã  ctags, mais voyez-le plutÃ´t comme un ctags
+sous amphÃ©tamines, car il est capable de bien plus. Dans Vim, sauter au
+rÃ©sultat d'une requÃªte Cscope est aussi aisÃ© que de sauter vers n'importe quel
+marqueur ; le rÃ©sultat est mÃ©morisÃ© sur la pile de marqueurs de sorte qu'avec
+des mappages appropriÃ©s, vous pouvez sauter d'avant en arriÃ¨re entre les
 fonctions comme vous le feriez normalement avec des marqueurs |tags|.
 
-1. Introduction à Cscope			|cscope-intro|
-2. Commandes liées à Cscope			|cscope-commands|
+1. Introduction Ã  Cscope			|cscope-intro|
+2. Commandes liÃ©es Ã  Cscope			|cscope-commands|
 3. Options de Cscope				|cscope-options|
 4. Utiliser Cscope dans Vim			|cscope-howtouse|
 5. Limitations					|cscope-limitations|
 6. Suggestions					|cscope-suggestions|
-7. Disponibilité de Cscope et information	|cscope-info|
+7. DisponibilitÃ© de Cscope et information	|cscope-info|
 
 Disponible sur Unix et Win32 uniquement.
 {absent de Vi}
 
 ==============================================================================
-1. Introduction à Cscope				*cscope-intro*
+1. Introduction Ã  Cscope				*cscope-intro*
 
-Le texte suivant est tiré d'une version de la page de manuel de Cscope :
+Le texte suivant est tirÃ© d'une version de la page de manuel de Cscope :
 
 				    -----
 
-    Cscope est un outil interactif orienté écran qui vous aide à :
+    Cscope est un outil interactif orientÃ© Ã©cran qui vous aide Ã  :
 
-	Apprendre comment un programme C fonctionne sans avoir à feuilleter
-	sans cesse un épais listing.
+	Apprendre comment un programme C fonctionne sans avoir Ã  feuilleter
+	sans cesse un Ã©pais listing.
 
-	Localiser la section de code à modifier pour corriger un bogue, sans
-	avoir à connaître le programme complet.
+	Localiser la section de code Ã  modifier pour corriger un bogue, sans
+	avoir Ã  connaÃ®tre le programme complet.
 
-	Analyser l'effet d'un changement éventuel, comme d'ajouter une valeur
+	Analyser l'effet d'un changement Ã©ventuel, comme d'ajouter une valeur
 	dans une variable de type enum.
 
-	Vérifier qu'un changement a bien été appliqué dans tous les fichiers
-	sources, comme d'ajouter un argument à une fonction existante.
+	VÃ©rifier qu'un changement a bien Ã©tÃ© appliquÃ© dans tous les fichiers
+	sources, comme d'ajouter un argument Ã  une fonction existante.
 
 	Renommer une variable globale dans tous les fichiers sources.
 
-	Changer une valeur en un symbole du préprocesseur dans les lignes
-	sélectionnées d'un fichier.
+	Changer une valeur en un symbole du prÃ©processeur dans les lignes
+	sÃ©lectionnÃ©es d'un fichier.
 
-    Il est conçu pour répondre à des questions comme :
-	Où ce symbole est-il utilisé ?
-	Où est-il défini ?
-	Où cette variable a-t-elle pris cette valeur ?
-	Quelle est la définition de ce symbole global ?
-	Où est cette fonction dans les fichiers sources ?
+    Il est conÃ§u pour rÃ©pondre Ã  des questions comme :
+	OÃ¹ ce symbole est-il utilisÃ© ?
+	OÃ¹ est-il dÃ©fini ?
+	OÃ¹ cette variable a-t-elle pris cette valeur ?
+	Quelle est la dÃ©finition de ce symbole global ?
+	OÃ¹ est cette fonction dans les fichiers sources ?
 	Quelles sont les fonctions qui appellent cette fonction ?
-	Quelles sont les fonctions appelées par cette fonction ?
-	D'où provient le message "espace insuffisant" ?
-	Où est ce fichier dans l'aborescence des répertoires ?
-	Quels sont les fichiers qui incluent ce fichier d'en-tête ?
+	Quelles sont les fonctions appelÃ©es par cette fonction ?
+	D'oÃ¹ provient le message "espace insuffisant" ?
+	OÃ¹ est ce fichier dans l'aborescence des rÃ©pertoires ?
+	Quels sont les fichiers qui incluent ce fichier d'en-tÃªte ?
 
-    Cscope répond à ces questions à partir d'une base de données de symboles
-    qu'il construit la première fois qu'il est utilisé à partir des fichiers
-    sources. Lors d'un appel ultérieur, Cscope reconstruit la base de données
-    seulement si un ou plusieurs fichiers sources ont été modifiés ou que leur
-    liste a changé. Quand la base de données est reconstruite, les données
-    concernant les fichiers inchangés sont copiées depuis l'ancienne base, ce
+    Cscope rÃ©pond Ã  ces questions Ã  partir d'une base de donnÃ©es de symboles
+    qu'il construit la premiÃ¨re fois qu'il est utilisÃ© Ã  partir des fichiers
+    sources. Lors d'un appel ultÃ©rieur, Cscope reconstruit la base de donnÃ©es
+    seulement si un ou plusieurs fichiers sources ont Ã©tÃ© modifiÃ©s ou que leur
+    liste a changÃ©. Quand la base de donnÃ©es est reconstruite, les donnÃ©es
+    concernant les fichiers inchangÃ©s sont copiÃ©es depuis l'ancienne base, ce
     qui rend la reconstruction bien plus rapide que la construction initiale.
 
 				    -----
 
-Quand Cscope est invoqué normalement, vous obtenez un plein écran de sélection
-vous permettant de lancer une requête pour l'une des questions ci-dessus.
-Toutefois, une fois qu'une correspondance a été trouvée pour votre demande et
-que vous avez ouvert votre éditeur sur le fichier contenant cette
+Quand Cscope est invoquÃ© normalement, vous obtenez un plein Ã©cran de sÃ©lection
+vous permettant de lancer une requÃªte pour l'une des questions ci-dessus.
+Toutefois, une fois qu'une correspondance a Ã©tÃ© trouvÃ©e pour votre demande et
+que vous avez ouvert votre Ã©diteur sur le fichier contenant cette
 correspondance, il ne vous est pas possible de simplement sauter de marqueur
 en marqueur comme vous le feriez normalement avec les commandes CTRL-] ou
 ":tag" de vi.
 
 L'interface Cscope de Vim invoque `cscope` par son interface en ligne de
-commande et analyse la sortie retournée pour la requête. Au final, les
-résultats de la requête Cscope sont empilés comme des marqueurs traditionnels,
-de sorte que vous pouvez sauter jusqu'à eux comme vous le feriez normalement
+commande et analyse la sortie retournÃ©e pour la requÃªte. Au final, les
+rÃ©sultats de la requÃªte Cscope sont empilÃ©s comme des marqueurs traditionnels,
+de sorte que vous pouvez sauter jusqu'Ã  eux comme vous le feriez normalement
 (avec Ctrl-] or ":tag"), puis retourner en vidant la pile des marqueurs avec
-CTRL-T. (Notez toutefois que vous ne sauterez pas réellement vers un marqueur
+CTRL-T. (Notez toutefois que vous ne sauterez pas rÃ©ellement vers un marqueur
 Cscope en faisant CTRL-] ou ":tag" sans remapper ces commandes ou sans activer
 une option. Voir les sections suivantes sur le fonctionnement de l'interface
 Cscope et les conseils d'utilisation.)
 
 ==============================================================================
-2. Commandes liées à Cscope				*cscope-commands*
+2. Commandes liÃ©es Ã  Cscope				*cscope-commands*
 
 					*:cscope* *:cs* *:scs* *:scscope*
 					*E259* *E262* *E561* *E560*
-Il est possible d'accèder à toutes les commandes Cscope au travers des
-sous-options de la commande Cscope principale ":cscope". Son abréviation la
-plus courte en est ":cs". La commande ":scscope" fait la même chose en plus de
-partager la fenêtre.
+Il est possible d'accÃ¨der Ã  toutes les commandes Cscope au travers des
+sous-options de la commande Cscope principale ":cscope". Son abrÃ©viation la
+plus courte en est ":cs". La commande ":scscope" fait la mÃªme chose en plus de
+partager la fenÃªtre.
 
 Les sous-commandes disponibles sont :
 
@@ -109,10 +109,10 @@ Les sous-commandes disponibles sont :
 
 	USAGE   :cs add {fichier|rep} [pre-chemin] [drapeaux]
 
-	    [pre-chemin] est le chemin utilisé avec l'option -P de `cscope`.
+	    [pre-chemin] est le chemin utilisÃ© avec l'option -P de `cscope`.
 
-	    [drapeaux] sont des drapeaux supplémentaires que vous pouvez
-	    passer à `cscope`.
+	    [drapeaux] sont des drapeaux supplÃ©mentaires que vous pouvez
+	    passer Ã  `cscope`.
 
 	EXEMPLES >
 	    :cscope add /usr/local/cdb/cscope.out
@@ -121,20 +121,20 @@ Les sous-commandes disponibles sont :
 <
 						*cscope-find* *cs-find*
 						*E565* *E567*
-    find  : lance une requête cscope. Toutes les types de requête Cscope sont
+    find  : lance une requÃªte cscope. Toutes les types de requÃªte Cscope sont
 	    disponibles sauf l'option #5 ("Change this grep pattern" [N.D.T. :
 	    "Changer ce motif grep"]).
 
 	USAGE   :cs find {typerequete} {nom}
 
-	    {typerequete} correspond aux numéros de l'interface en ligne de
-	    commande de `cscope`, ainsi qu'aux commandes par défaut de nvi :
+	    {typerequete} correspond aux numÃ©ros de l'interface en ligne de
+	    commande de `cscope`, ainsi qu'aux commandes par dÃ©faut de nvi :
 
 		0 ou s : trouver ce symbole C
-		1 ou g : trouver cette définition
-		2 ou d : trouver les fonctions appelées par cette fonction
+		1 ou g : trouver cette dÃ©finition
+		2 ou d : trouver les fonctions appelÃ©es par cette fonction
 		3 ou c : trouver les fonctions qui appellent cette fonction
-		4 ou t : trouver cette chaîne de caractères
+		4 ou t : trouver cette chaÃ®ne de caractÃ¨res
 		6 ou e : trouver ce motif compatible `egrep`
 		7 ou f : trouver ce fichier
 		8 ou i : trouver les fichiers #incluant ce fichier
@@ -143,14 +143,14 @@ Les sous-commandes disponibles sont :
 	    :cscope find c vim_free
 	    :cscope find 3 vim_free
 <
-	    Ces deux exemples réalisent la même requête. >
+	    Ces deux exemples rÃ©alisent la mÃªme requÃªte. >
 
 	    :cscope find 0 DEFAULT_TERM
 <
-	    L'exécution de cet exemple sur le code source de Vim 5.1 produit
+	    L'exÃ©cution de cet exemple sur le code source de Vim 5.1 produit
 	    la sortie suivante :
 
-	    Étiquette cscope: DEFAULT_TERM ~
+	    Ã‰tiquette cscope: DEFAULT_TERM ~
 	       #   ligne nom-fichier / context / ligne ~
 	       1   1009  vim-5.1-gtk/src/term.c <<GLOBAL>> ~
 			 #define DEFAULT_TERM (char_u *)"amiga" ~
@@ -184,16 +184,16 @@ Les sous-commandes disponibles sont :
 			 p = find_builtin_term(DEFAULT_TERM); ~
 	    Entrez le no choisi (<CR> pour annuler): ~
 
-	    La sortie présente différentes informations :
+	    La sortie prÃ©sente diffÃ©rentes informations :
 
-	    1. Le numéro de marqueur (il y en a 15 dans cet exemple).
-	    2. Le numéro de la ligne dans laquelle le marqueur est trouvé.
-	    3. Le nom du fichier dans lequel le marqueur est trouvé.
-	    4. La portée du marqueur (par exemple, global, ou le nom de la
+	    1. Le numÃ©ro de marqueur (il y en a 15 dans cet exemple).
+	    2. Le numÃ©ro de la ligne dans laquelle le marqueur est trouvÃ©.
+	    3. Le nom du fichier dans lequel le marqueur est trouvÃ©.
+	    4. La portÃ©e du marqueur (par exemple, global, ou le nom de la
 	       fonction qui le contient).
-	    5. La ligne elle-même.
+	    5. La ligne elle-mÃªme.
 
-    help  : affiche un résumé des commandes.
+    help  : affiche un rÃ©sumÃ© des commandes.
 
 	    USAGE   :cs help
 
@@ -202,14 +202,14 @@ Les sous-commandes disponibles sont :
 
 	    USAGE   :cs kill {numero|nompartiel}
 
-	    Pour fermer une connexion Cscope, le numéro de connexion ou un nom
-	    partiel doit être spécifié. Un nom partiel est simplement toute
-	    partie du chemin de la base Cscope. À utiliser avec précaution !
+	    Pour fermer une connexion Cscope, le numÃ©ro de connexion ou un nom
+	    partiel doit Ãªtre spÃ©cifiÃ©. Un nom partiel est simplement toute
+	    partie du chemin de la base Cscope. Ã€ utiliser avec prÃ©caution !
 
-	    Si le numéro de connexion est -1, TOUTES les connexions Cscope
-	    seront fermées.
+	    Si le numÃ©ro de connexion est -1, TOUTES les connexions Cscope
+	    seront fermÃ©es.
 
-    reset : réinitialise toutes les connexions Cscope.
+    reset : rÃ©initialise toutes les connexions Cscope.
 
 	    USAGE   :cs reset
 
@@ -218,193 +218,193 @@ Les sous-commandes disponibles sont :
 	    USAGE   :cs show
 
 							*:cstag* *E257* *E562*
-Si vous utilisez à la fois Cscope et ctags, |:cstag| vous permet de choisir
+Si vous utilisez Ã  la fois Cscope et ctags, |:cstag| vous permet de choisir
 l'un ou l'autre avant de faire le saut. Par exemple, vous pouvez choisir de
-chercher d'abord une correspondance dans vos bases de données Cscope puis, en
-cas d'échec, dans le fichier de marqueurs généré par `ctags`. L'ordre dans
-lequel la recherche est effectuée est déterminé par la valeur de |csto|. Voir
-|cscope-options| pour plus de détails .
+chercher d'abord une correspondance dans vos bases de donnÃ©es Cscope puis, en
+cas d'Ã©chec, dans le fichier de marqueurs gÃ©nÃ©rÃ© par `ctags`. L'ordre dans
+lequel la recherche est effectuÃ©e est dÃ©terminÃ© par la valeur de |csto|. Voir
+|cscope-options| pour plus de dÃ©tails .
 
-|:cstag| réalise l'équivalent de ":cs find g" sur l'identifiant lors d'une
+|:cstag| rÃ©alise l'Ã©quivalent de ":cs find g" sur l'identifiant lors d'une
 recherche dans les bases Cscope.
 
-|:cstag| réalise l'équivalent de |:tjump| sur l'identifiant lors d'une
+|:cstag| rÃ©alise l'Ã©quivalent de |:tjump| sur l'identifiant lors d'une
 recherche dans les fichiers de marqueurs.
 
 ==============================================================================
 3. Options de Cscope					*cscope-options*
 
-Utilisez la commande |:set| pour fixer toutes les options relatives à Cscope.
-Idéalement, vous devriez le faire dans l'un de vos fichiers de démarrage (par
-exemple, ".vimrc"). Certaines variables liées à Cscope ne sont valides qu'à
-l'intérieur du |.vimrc|. Les fixer après que vim a démarré n'aura aucun
+Utilisez la commande |:set| pour fixer toutes les options relatives Ã  Cscope.
+IdÃ©alement, vous devriez le faire dans l'un de vos fichiers de dÃ©marrage (par
+exemple, ".vimrc"). Certaines variables liÃ©es Ã  Cscope ne sont valides qu'Ã 
+l'intÃ©rieur du |.vimrc|. Les fixer aprÃ¨s que vim a dÃ©marrÃ© n'aura aucun
 effet !
 
 							*cscopeprg* *csprg*
-'cscopeprg' indique la commande pour exécuter `cscope`. La valeur par défault
+'cscopeprg' indique la commande pour exÃ©cuter `cscope`. La valeur par dÃ©fault
 est "cscope". Par exemple : >
 
 	:set csprg=/usr/local/bin/cscope
 <
 						*cscopequickfix* *csqf* *E469*
-{uniquement si compilé avec la fonctionnalité |+quickfix|}
-'cscopequickfix' indique si la fenêtre quickfix est utilisée pour afficher
-les résulats de `cscope`. C'est une liste de valeur séparées par des
-virgules. Chaque élément consiste en une commande de recherche (s, g, d, c,
+{uniquement si compilÃ© avec la fonctionnalitÃ© |+quickfix|}
+'cscopequickfix' indique si la fenÃªtre quickfix est utilisÃ©e pour afficher
+les rÃ©sulats de `cscope`. C'est une liste de valeur sÃ©parÃ©es par des
+virgules. Chaque Ã©lÃ©ment consiste en une commande de recherche (s, g, d, c,
 t, e, f ou i |cscope-find|) et un drapeau (+, - ou 0). '+' indique que les
-résultats doivent être ajoutés dans la fenêtre quickfix. '-' entraine
-l'effacement des résultats précédents. La fenêtre quickfix n'est pas utilisée
-si le drapeau '0' est spécifié ou en l'absence de commande. La recherche est
-effectuée jusqu'à la première occurrence d'une commande. La valeur par défaut
-est "" (ne pas utiliser quickfix). La valeur suivante est intéressante :
+rÃ©sultats doivent Ãªtre ajoutÃ©s dans la fenÃªtre quickfix. '-' entraine
+l'effacement des rÃ©sultats prÃ©cÃ©dents. La fenÃªtre quickfix n'est pas utilisÃ©e
+si le drapeau '0' est spÃ©cifiÃ© ou en l'absence de commande. La recherche est
+effectuÃ©e jusqu'Ã  la premiÃ¨re occurrence d'une commande. La valeur par dÃ©faut
+est "" (ne pas utiliser quickfix). La valeur suivante est intÃ©ressante :
 "s-,c-,d-,i-,t-,e-".
 
 						*cscopetag* *cst*
-Si 'cscopetag' est activée, les commandes ":tag" et CTRL-], ainsi que "vim -t"
-utiliseront toujours |:cstag| au lieu du comportement par défaut de ":tag".
+Si 'cscopetag' est activÃ©e, les commandes ":tag" et CTRL-], ainsi que "vim -t"
+utiliseront toujours |:cstag| au lieu du comportement par dÃ©faut de ":tag".
 En pratique, en activant 'cst', vous chercherez toujours dans vos bases
-Cscope et dans vos fichiers de marqueurs. Cette option est desactivée par
-défaut. Exemples : >
+Cscope et dans vos fichiers de marqueurs. Cette option est desactivÃ©e par
+dÃ©faut. Exemples : >
 
 	:set cst
 	:set nocst
 <
 						*cscopetagorder* *csto*
-La valeur de 'csto' détermine l'ordre dans lequel |:cstag| effectue une
-recherche. Si 'csto' vaut zéro, la recherche est d'abord effectuée dans les
-bases Cscope, puis dans les fichiers de marqueurs générés par `ctags` si
-aucune correspondance n'a été trouvé avec Cscope. Si 'csto' vaut un, la
-recherche est d'abord effectuée dans les fichiers de marqueurs et ensuite dans
-les bases Cscope. La valeur par défaut est zéro. Exemples : >
+La valeur de 'csto' dÃ©termine l'ordre dans lequel |:cstag| effectue une
+recherche. Si 'csto' vaut zÃ©ro, la recherche est d'abord effectuÃ©e dans les
+bases Cscope, puis dans les fichiers de marqueurs gÃ©nÃ©rÃ©s par `ctags` si
+aucune correspondance n'a Ã©tÃ© trouvÃ© avec Cscope. Si 'csto' vaut un, la
+recherche est d'abord effectuÃ©e dans les fichiers de marqueurs et ensuite dans
+les bases Cscope. La valeur par dÃ©faut est zÃ©ro. Exemples : >
 
 	:set csto=0
 	:set csto=1
 <
 						*cscopeverbose* *csverb*
-Si 'cscopeverbose' n'est pas activé (état par défaut), aucun message ne sera
-affiché pour rendre compte du succès ou de l'échec de l'ajout d'une base
-Cscope. Idéalement, vous devriez desactiver cette option dans votre |.vimrc|
-avant d'ajouter une base Cscope, puis l'activer après les ajouts. À partir de
-là, quand vous ajoutez des bases de données depuis Vim, vous obtiendrez un
-message constructif (avec un peu de chance) en cas d'échec de l'ajout d'une
+Si 'cscopeverbose' n'est pas activÃ© (Ã©tat par dÃ©faut), aucun message ne sera
+affichÃ© pour rendre compte du succÃ¨s ou de l'Ã©chec de l'ajout d'une base
+Cscope. IdÃ©alement, vous devriez desactiver cette option dans votre |.vimrc|
+avant d'ajouter une base Cscope, puis l'activer aprÃ¨s les ajouts. Ã€ partir de
+lÃ , quand vous ajoutez des bases de donnÃ©es depuis Vim, vous obtiendrez un
+message constructif (avec un peu de chance) en cas d'Ã©chec de l'ajout d'une
 base. Exemples : >
 
 	:set csverb
 	:set nocsverb
 <
 						*cscopepathcomp* *cspc*
-La valeur de 'cspc' détermine combien d'éléments d'un chemin de fichier
-afficher. Avec la valeur par défaut de zéro, le chemin entier est affiché. La
+La valeur de 'cspc' dÃ©termine combien d'Ã©lÃ©ments d'un chemin de fichier
+afficher. Avec la valeur par dÃ©faut de zÃ©ro, le chemin entier est affichÃ©. La
 valeur 1 n'affichera que le nom du fichier sans chemin. Les autres valeurs
-affichent autant d'éléments.
+affichent autant d'Ã©lÃ©ments.
 
 Exemple : >
 
 	:set cspc=3
 
-affichera les trois derniers éléments du chemin de fichier, dont le nom de
-fichier lui-même. ( "/a/b/c/d/f/g/h.c" sera affiché "f/g/h.c" )
+affichera les trois derniers Ã©lÃ©ments du chemin de fichier, dont le nom de
+fichier lui-mÃªme. ( "/a/b/c/d/f/g/h.c" sera affichÃ© "f/g/h.c" )
 
 ==============================================================================
 4. Utiliser Cscope dans Vim				*cscope-howtouse*
 
-La première chose que vous avez besoin de faire est de créer une base de
-données Cscope avec vos fichiers sources. Dans le cas le plus basique, faites
-"cscope -b". Référez-vous à la page de manuel de `cscope` pour plus de
-détails.
+La premiÃ¨re chose que vous avez besoin de faire est de crÃ©er une base de
+donnÃ©es Cscope avec vos fichiers sources. Dans le cas le plus basique, faites
+"cscope -b". RÃ©fÃ©rez-vous Ã  la page de manuel de `cscope` pour plus de
+dÃ©tails.
 
-En suppposant que vous avez déjà une base Cscope, vous devez "ajouter" cette
-base à Vim. Ceci ouvre une connexion avec `cscope` et permet à Vim d'y
-accéder. Vous pouvez faire ceci dans votre fichier ".vimrc", ou le faire
-manuellement après le démarrage de Vim. Par example, pour ajouter la base
+En suppposant que vous avez dÃ©jÃ  une base Cscope, vous devez "ajouter" cette
+base Ã  Vim. Ceci ouvre une connexion avec `cscope` et permet Ã  Vim d'y
+accÃ©der. Vous pouvez faire ceci dans votre fichier ".vimrc", ou le faire
+manuellement aprÃ¨s le dÃ©marrage de Vim. Par example, pour ajouter la base
 "cscope.out", vous devriez faire : >
 
 	:cs add cscope.out
 <
-Vous pouvez vérifier le résultat en exécutant ":cs show". Ceci produira une
-sortie ressemblant à :
+Vous pouvez vÃ©rifier le rÃ©sultat en exÃ©cutant ":cs show". Ceci produira une
+sortie ressemblant Ã  :
 
-	 # pid    nom dans base de données            insérer chemin   ~
+	 # pid    nom dans base de donnÃ©es            insÃ©rer chemin   ~
 	 0 28806  cscope.out                          <none> ~
 
-NOTE : Du fait de limitations des bibliothèques Microsoft, la version Win32
-donne 0 au lieu du PID réel.
+NOTE : Du fait de limitations des bibliothÃ¨ques Microsoft, la version Win32
+donne 0 au lieu du PID rÃ©el.
 
-Une fois qu'une connexion Cscope est établie, vous pouvez lancer des requêtes
-Cscope et les résultats vous seront affichés. Les requêtes sont construites en
+Une fois qu'une connexion Cscope est Ã©tablie, vous pouvez lancer des requÃªtes
+Cscope et les rÃ©sultats vous seront affichÃ©s. Les requÃªtes sont construites en
 utilisant la commande ":cs find".
 
 Par exemple : >
 
 	:cs find g ALIGN_SIZE
 
-Cela peut devenir pénible, car la saisie de ces commandes représente
+Cela peut devenir pÃ©nible, car la saisie de ces commandes reprÃ©sente
 rapidement un volume de frappe significatif. Heureusement, il est possible
-d'éviter cet inconvénient en mappant des raccourcis clavier. Voir
+d'Ã©viter cet inconvÃ©nient en mappant des raccourcis clavier. Voir
 |cscope-suggestions| pour des suggestions.
 
-Si les résultats ne retournent qu'une seule correspondance, vous y serez
-immédiatement envoyé. S'il y en a plusieurs, vous obtiendrez un écran de
-sélection vous invitant à choisir celle où vous voulez vous rendre. Après
-avoir sauté à ce nouvel emplacement, utilisez simplement CTRL-T pour retourner
-au précédent.
+Si les rÃ©sultats ne retournent qu'une seule correspondance, vous y serez
+immÃ©diatement envoyÃ©. S'il y en a plusieurs, vous obtiendrez un Ã©cran de
+sÃ©lection vous invitant Ã  choisir celle oÃ¹ vous voulez vous rendre. AprÃ¨s
+avoir sautÃ© Ã  ce nouvel emplacement, utilisez simplement CTRL-T pour retourner
+au prÃ©cÃ©dent.
 
 ==============================================================================
 5. Limitations						*cscope-limitations*
 
-Le support de Cscope pour Vim n'est disponible que sur les systèmes disposant
-des appels système suivants : fork(), pipe(), execl(), waitpid(). Par
-conséquent, il est principalement limité aux systèmes de la famille Unix.
+Le support de Cscope pour Vim n'est disponible que sur les systÃ¨mes disposant
+des appels systÃ¨me suivants : fork(), pipe(), execl(), waitpid(). Par
+consÃ©quent, il est principalement limitÃ© aux systÃ¨mes de la famille Unix.
 
-Le support de Cscope fonctionne également avec Win32. Pour plus d'informations
+Le support de Cscope fonctionne Ã©galement avec Win32. Pour plus d'informations
 et une version Win32 de Cscope :
 
 	http://iamphet.nm.ru/cscope/index.html ~
 
-Il existe deux limitations codées en dur :
+Il existe deux limitations codÃ©es en dur :
 
-    1. Le nombre maximal de connexions Cscope simultanées est de 8. Vous en
-       faut-il réellement davantage ?
+    1. Le nombre maximal de connexions Cscope simultanÃ©es est de 8. Vous en
+       faut-il rÃ©ellement davantage ?
 
-    2. Exécuter la commande |:tjump| quand |:cstag| recherche dans des
+    2. ExÃ©cuter la commande |:tjump| quand |:cstag| recherche dans des
        fichiers de marqueurs n'est pas configurable (par exemple, vous ne
-       pouvez pas faire un |:tselect| à la place).
+       pouvez pas faire un |:tselect| Ã  la place).
 
 ==============================================================================
 6. Suggestions						*cscope-suggestions*
 
 Ajouter les lignes suivantes dans votre fichier ".vimrc" (ajuster les chemins
-d'accès selon votre système) : >
+d'accÃ¨s selon votre systÃ¨me) : >
 
 	if has("cscope")
 		set csprg=/usr/local/bin/cscope
 		set csto=0
 		set cst
 		set nocsverb
-		" Ajouter la base du répertoire courant.
+		" Ajouter la base du rÃ©pertoire courant.
 		if filereadable("cscope.out")
 		    cs add cscope.out
-		" Sinon ajouter la base désignée par l'environnement.
+		" Sinon ajouter la base dÃ©signÃ©e par l'environnement.
 		elseif $CSCOPE_DB != ""
 		    cs add $CSCOPE_DB
 		endif
 		set csverb
 	endif
 
-En activant 'cscopetag', nous remplaçons toutes les appels de la commande
+En activant 'cscopetag', nous remplaÃ§ons toutes les appels de la commande
 ":tag" par ":cstag". Ceci inclut ":tag", CTRL-] et "vim -t". En faisant ainsi,
 les commandes habituelles pour les marqueurs cherchent non seulement dans les
-fichiers de marqueurs générés par `ctags`, mais aussi dans les bases de
-données générées par Cscope.
+fichiers de marqueurs gÃ©nÃ©rÃ©s par `ctags`, mais aussi dans les bases de
+donnÃ©es gÃ©nÃ©rÃ©es par Cscope.
 
 Certains utilisateurs peuvent vouloir conserver le comportement habituel et
-avoir un raccourci différent pour accéder à ":cstag". Par exemple, il est
-possible de redéfinir CTRL-_ (soulignement) en ":cstag" avec la commande
+avoir un raccourci diffÃ©rent pour accÃ©der Ã  ":cstag". Par exemple, il est
+possible de redÃ©finir CTRL-_ (soulignement) en ":cstag" avec la commande
 suivante : >
 
 	map <C-_> :cstag <C-R>=expand("<cword>")<CR><CR>
 
-Deux requêtes Cscope d'usage très général (utilisant ":cs find") sont la
+Deux requÃªtes Cscope d'usage trÃ¨s gÃ©nÃ©ral (utilisant ":cs find") sont la
 recherche de toutes les fonctions appelant une certaine fonction et la
 recherche de toutes les occurrences d'un symbole C particulier. Pour cela,
 vous pouvez utiliser les mappages suivants : >
@@ -414,9 +414,9 @@ vous pouvez utiliser les mappages suivants : >
 
 Ces mappages pour CTRL-] (crochet droit) et CTRL-\ (contre-oblique) vous
 permettent de placer le curseur sur le nom de la fonction ou le symbole C
-et de demander rapidement à Cscope de rechercher des correspondances.
+et de demander rapidement Ã  Cscope de rechercher des correspondances.
 
-Vous pouvez aussi utiliser le principe suivant, inspiré par le tutoriel
+Vous pouvez aussi utiliser le principe suivant, inspirÃ© par le tutoriel
 Vim/Cscope, que vous trouverez sur la page d'accueil de Cscope
 (http://cscope.sourceforge.net/) : >
 
@@ -430,8 +430,8 @@ Vim/Cscope, que vous trouverez sur la page d'accueil de Cscope
 	nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 	" En tapant CTRL-<Espace> avant le type de la recherche,
-	" la fenêtre Vim est séparée horizontalement, et les résultats
-	" de la recherche sont dirigés vers la nouvelle fenêtre.
+	" la fenÃªtre Vim est sÃ©parÃ©e horizontalement, et les rÃ©sultats
+	" de la recherche sont dirigÃ©s vers la nouvelle fenÃªtre.
 
 	nmap <C-Space>s :scs find s <C-R>=expand("<cword>")<CR><CR>
 	nmap <C-Space>g :scs find g <C-R>=expand("<cword>")<CR><CR>
@@ -443,7 +443,7 @@ Vim/Cscope, que vous trouverez sur la page d'accueil de Cscope
 	nmap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
 
 	" En tapant *deux fois* CTRL-<Espace> avant le type de la recherche,
-	" le partage de la fenêtre Vim est vertical au lieu d'horizontal.
+	" le partage de la fenÃªtre Vim est vertical au lieu d'horizontal.
 
 	nmap <C-Space><C-Space>s
 		\:vert scs find s <C-R>=expand("<cword>")<CR><CR>
@@ -461,57 +461,57 @@ Vim/Cscope, que vous trouverez sur la page d'accueil de Cscope
 		\:vert scs find d <C-R>=expand("<cword>")<CR><CR>
 
 ==============================================================================
-7. Disponibilité de Cscope et information		*cscope-info*
+7. DisponibilitÃ© de Cscope et information		*cscope-info*
 
-Si vous n'avez pas déjà Cscope (parce qu'il n'était pas fourni avec votre
-compilateur ou avec la distribution de votre système d'exploitation), vous
-pouvez le télécharger librement sur :
+Si vous n'avez pas dÃ©jÃ  Cscope (parce qu'il n'Ã©tait pas fourni avec votre
+compilateur ou avec la distribution de votre systÃ¨me d'exploitation), vous
+pouvez le tÃ©lÃ©charger librement sur :
 
 	http://cscope.sourceforge.net/ ~
 
-Il est proposé par SCO sous licence BSD.
+Il est proposÃ© par SCO sous licence BSD.
 
-Si vous voulez une version plus récente de Cscope, vous devrez probablement
+Si vous voulez une version plus rÃ©cente de Cscope, vous devrez probablement
 l'acheter. Selon la (vieille) documentation de nvi :
 
 	Vous pouvez acheter une version source 13.3 avec une licence sans
-	restriction pour 400 USD auprès de AT&T Software Solutions en appelant
+	restriction pour 400 USD auprÃ¨s de AT&T Software Solutions en appelant
 	(USA) +1-800-462-8146.
 
-Aussi, vous pouvez télécharger Cscope 13.x et mlcscope 14.x (multi-lingual
-cscope qui supporte C, C++, Java, lex, yacc, les listes de points d'arrêt,
+Aussi, vous pouvez tÃ©lÃ©charger Cscope 13.x et mlcscope 14.x (multi-lingual
+cscope qui supporte C, C++, Java, lex, yacc, les listes de points d'arrÃªt,
 Ingres et SDL) depuis la page des paquetages "World-Wide Exptools Open
 Source" sur :
 
 	http://www.bell-labs.com/project/wwexptools/packages.html ~
 
 Sur Solaris 2.x, si vous avez la licence du compilateur C, vous disposez aussi
-de Cscope. Les deux sont placés dans "/opt/SUNWspro/bin".
+de Cscope. Les deux sont placÃ©s dans "/opt/SUNWspro/bin".
 
-Les développeurs travaillant sur SGI peuvent également l'obtenir. Un fichier
-tardist peut être trouvé sur :
+Les dÃ©veloppeurs travaillant sur SGI peuvent Ã©galement l'obtenir. Un fichier
+tardist peut Ãªtre trouvÃ© sur :
 
 	ftp://ftp.openage.com/pub/Sgi/Binaries/Cscope-13_3_tardist.gz ~
 	https://toolbox.sgi.com/toolbox/utilities/cscope/ ~
 
-Le deuxième lien est pour ceux qui disposent d'un mot de passe pour la SGI
+Le deuxiÃ¨me lien est pour ceux qui disposent d'un mot de passe pour la SGI
 toolbox.
 
-Il existe sur Internet une version plus très jeune d'un clone de Cscope
-(appelé "cs"). Pour diverses raisons, cette version n'est pas supportée par
+Il existe sur Internet une version plus trÃ¨s jeune d'un clone de Cscope
+(appelÃ© "cs"). Pour diverses raisons, cette version n'est pas supportÃ©e par
 Vim.
 
-Le support et l'interface Cscope de Vim ont été originalement écrits par
+Le support et l'interface Cscope de Vim ont Ã©tÃ© originalement Ã©crits par
 Andy Kahn <ackahn@netapp.com>. La structure initiale (ainsi qu'un tout petit
-peu de code) a été repris de l'interface entre Cscope et nvi puis adapté.
-Merci de lui rapporter tout problème, suggestion, rustine et cie que vous
-pourriez rencontrer/développer dans votre usage quotidien de Cscope à partir
+peu de code) a Ã©tÃ© repris de l'interface entre Cscope et nvi puis adaptÃ©.
+Merci de lui rapporter tout problÃ¨me, suggestion, rustine et cie que vous
+pourriez rencontrer/dÃ©velopper dans votre usage quotidien de Cscope Ã  partir
 de Vim.
 
 							*cscope-win32*
 Pour la version Win32 de Cscope, voir http://iamphet.nm.ru/cscope/index.html.
 
-Le support Win32 a été ajouté Sergey Khorev <khorev@softlab.ru>. Contactez-le
-si vous rencontrez des problèmes spécifiques à Win32.
+Le support Win32 a Ã©tÃ© ajoutÃ© Sergey Khorev <khorev@softlab.ru>. Contactez-le
+si vous rencontrez des problÃ¨mes spÃ©cifiques Ã  Win32.
 
  vim:tw=78:ts=8:ft=help:norl:

@@ -1,88 +1,88 @@
-*os_qnx.txt*    Pour Vim version 6.2.  DerniËre modification : 17 sep 2001
+*os_qnx.txt*    Pour Vim version 6.2.  Derni√®re modification : 17 sep 2001
 
 
-		   MANUEL de R…F…RENCE VIM - Julian Kinraid
+		   MANUEL de R√âF√âRENCE VIM - Julian Kinraid
 
 
 							*QNX* *qnx*
-Ce fichier documente les particularitÈs de Vim sur QNX.
+Ce fichier documente les particularit√©s de Vim sur QNX.
 
-1. GÈnÈral			|qnx-general|
+1. G√©n√©ral			|qnx-general|
 2. Compiler Vim			|qnx-compiling|
 3. Support du terminal		|qnx-terminal|
 4. IHM graphique Photon		|photon-gui|
 5. Polices Photon		|photon-fonts|
-6. Bogues & t‚ches ‡ effectuer
+6. Bogues & t√¢ches √† effectuer
 
 ==============================================================================
-1. GÈnÈral						*qnx-general*
+1. G√©n√©ral						*qnx-general*
 
-Sur QNX, Vim se comporte trËs similairement aux autres version Unix.
+Sur QNX, Vim se comporte tr√®s similairement aux autres version Unix.
 |os_unix.txt|
 
 ==============================================================================
 2. Compiler Vim						*qnx-compiling*
 
-Vim peut Ítre compilÈ en utilisant la mÈthode standard : `configure` puis
+Vim peut √™tre compil√© en utilisant la m√©thode standard : `configure` puis
 `make`. Si vous souhaitez compiler le support de X11, passez l'option
-"--with-x" ‡ `configure`. Sinon, lancez "./configure" sans aucun argument, ou
+"--with-x" √† `configure`. Sinon, lancez "./configure" sans aucun argument, ou
 avec "--enable-gui=photon" pour compiler le support de l'IHM graphique Photon.
-Utilisez "./configure --help" pour connaÓtre les fonctionnalitÈs que vous
-pouvez activer ou dÈsactiver.
+Utilisez "./configure --help" pour conna√Ætre les fonctionnalit√©s que vous
+pouvez activer ou d√©sactiver.
 
 ==============================================================================
 3. Support du Terminal					*qnx-terminal*
 
 Vim offre le support de la souris et du presse-papier dans un pterm si les
-options correspondantes sont compilÈes, ce qui est normalement le cas.
+options correspondantes sont compil√©es, ce qui est normalement le cas.
 
 Les options qui affectent le support de la souris sont |'mouse'| et
 |'ttymouse'|. Lors de l'utilisation de la souris, seul le cliquer/glisser
-simple avec le bouton gauche ou droit est supportÈ. Si vous maintenez Maj,
-Ctrl ou Alt enfoncÈ lors du dÈplacement de la souris, pterm prendra lui-mÍme
-en charge la souris. Cela effectuera une sÈlection, distincte des actions et
+simple avec le bouton gauche ou droit est support√©. Si vous maintenez Maj,
+Ctrl ou Alt enfonc√© lors du d√©placement de la souris, pterm prendra lui-m√™me
+en charge la souris. Cela effectuera une s√©lection, distincte des actions et
 des traitements de Vim.
 
 Quand la souris est disponible, vous pouvez appuyer sur Alt-ClicDroit pour
-ouvrir le menu pterm. Pour dÈsactiver la souris dans Vim, affectez une chaÓne
-vide ‡ l'option 'mouse' : >
+ouvrir le menu pterm. Pour d√©sactiver la souris dans Vim, affectez une cha√Æne
+vide √† l'option 'mouse' : >
 
 	:set mouse=
 
 ==============================================================================
 4. IHM graphique Photon					*photon-gui*
 
-Pour dÈmarrer l'IHM graphique de Vim, vous devez lancez soit "gvim", soit "vim
--g", sinon la version console s'exÈcute. Pour plus d'informations, voir 
+Pour d√©marrer l'IHM graphique de Vim, vous devez lancez soit "gvim", soit "vim
+-g", sinon la version console s'ex√©cute. Pour plus d'informations, voir 
 |gui-x11-start|.
 
-FonctionnalitÈs supportÈes :
+Fonctionnalit√©s support√©es :
 	Commande ":browse"				|:browse|
 	Commande ":confirm"				|:confirm|
 	Clignotement du curseur				|'guicursor'|
-	Menus, menus contextuels, prioritÈs des menus	|:menu|
+	Menus, menus contextuels, priorit√©s des menus	|:menu|
 							|popup-menu|
 							|menu-priority|
 	Barre d'outils					|gui-toolbar|
 							|'toolbar'|
-	SÈlecteur de polices (":set guifont=*")		|photon-fonts|
+	S√©lecteur de polices (":set guifont=*")		|photon-fonts|
 	Le focus suit la souris				|'mousefocus'|
 	Masquage de la souris				|'mousehide'|
 	Apparence du pointeur de la souris		|'mouseshape'|
 	Presse-papiers					|gui-clipboard|
 
-FonctionnalitÈs non terminÈes :
-	Support des modes spÈcifiques d'internationalisation, tels que les
+Fonctionnalit√©s non termin√©es :
+	Support des modes sp√©cifiques d'internationalisation, tels que les
 	modes Farsi ou Hebrew
-	Support d'encodages diffÈrents
+	Support d'encodages diff√©rents
 
 	Ce fichier d'aide
 
-FonctionnalitÈs non supportÈes :
-	FenÍtre Rechercher/Remplacer			|:promptfind|
-	Menus dÈtachables
+Fonctionnalit√©s non support√©es :
+	Fen√™tre Rechercher/Remplacer			|:promptfind|
+	Menus d√©tachables
 
-	D'autres encore auxquelles je n'ai pas pensÈ, et qui par consÈquent
+	D'autres encore auxquelles je n'ai pas pens√©, et qui par cons√©quent
 	ne figurent pas dans cette liste.
 
 ==============================================================================
@@ -92,25 +92,25 @@ Vous choisissez la police de l'IHM graphique avec l'option 'guifont' : >
 
 	:set guifont=Lucida\ Terminal
 
-La police choisie doit Ítre une police ‡ espacement constant, et tous les
-espaces du nom de la police doivent Ítre protÈgÈs par un '\'. La police par
-dÈfaut est "PC Terminal", en taille 8. L'utilisation de '*' comme nom de
-police ouvre le sÈlecteur de polices standard de Photon, dans lequel vous
+La police choisie doit √™tre une police √† espacement constant, et tous les
+espaces du nom de la police doivent √™tre prot√©g√©s par un '\'. La police par
+d√©faut est "PC Terminal", en taille 8. L'utilisation de '*' comme nom de
+police ouvre le s√©lecteur de polices standard de Photon, dans lequel vous
 pouvez choisir une police.
 
-¿ la suite du nom, vous pouvez inclure des paramËtres optionnels pour
-contrÙler la taille et le style de la police. Ils sont sÈparÈs par des ':'.
+√Ä la suite du nom, vous pouvez inclure des param√®tres optionnels pour
+contr√¥ler la taille et le style de la police. Ils sont s√©par√©s par des ':'.
 Toutes les polices ne supportent pas l'ensemble des styles disponibles.
 
-Les paramËtres disponibles sont :
+Les param√®tres disponibles sont :
 	s{taille}	Fixe la {taille} de la police
 	b		Style gras
-	a		Utiliser l'anti-crÈnelage
+	a		Utiliser l'anti-cr√©nelage
 	i		Style italique
 
 Exemples :
 
-Choisir la police "monospace" en taille 10 avec l'anti-crÈnelage : >
+Choisir la police "monospace" en taille 10 avec l'anti-cr√©nelage : >
 
 	:set guifont=monospace:s10:a
 
@@ -118,28 +118,28 @@ Choisir la police "Courier" en taille 12, grasse et italique : >
 
 	:set guifont=Courier:s12:b:i
 
-Choisir une police avec le sÈlecteur graphique : >
+Choisir une police avec le s√©lecteur graphique : >
 
 	:set guifont=*
 
 ==============================================================================
-6. Bogues & t‚ches ‡ effectuer
+6. Bogues & t√¢ches √† effectuer
 
 Bogues :
-	- Petit problËme rÈsiduel avec la surbrillance des menus.
+	- Petit probl√®me r√©siduel avec la surbrillance des menus.
 	- Lors de l'utilisation de phditto/phinows/etc., si vous employez une
 	  police qui ne supporte pas l'attribut gras, quand Vim tente de
 	  dessiner du texte gras, l'affichage est sali.
 	- Il est parfois difficile de voir le curseur.
-	- De nombreux problËmes mineures et corrigibles :)
+	- De nombreux probl√®mes mineures et corrigibles :)
 
-¿ faire :
-	- AmÈliorer le support multi-lingue.
-	- Options pour choisir la police utilisÈe dans le menu et la barre
+√Ä faire :
+	- Am√©liorer le support multi-lingue.
+	- Options pour choisir la police utilis√©e dans le menu et la barre
 	  d'outils.
 	- Dialogue Rechercher/Remplacer.
-	- La fonctionnalitÈ client/serveur.
-	- Possiblement les menus dÈtachables.
+	- La fonctionnalit√© client/serveur.
+	- Possiblement les menus d√©tachables.
 
 	- Remplacer fork() par spawn() lors du lancement d'un programme
 	  externe.

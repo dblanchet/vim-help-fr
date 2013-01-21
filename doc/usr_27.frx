@@ -1,56 +1,56 @@
-*usr_27.txt*    Pour Vim version 6.2.  Dernière modification : 31 déc 2001
+*usr_27.txt*    Pour Vim version 6.2.  DerniÃ¨re modification : 31 dÃ©c 2001
 
 	       MANUEL de l'UTILISATEUR VIM - par Bram Moolenaar
 
 		       Motifs et commandes de recherche
 
 
-Dans le chapitre 3, quelques motifs de recherche simples ont été mentionnés
+Dans le chapitre 3, quelques motifs de recherche simples ont Ã©tÃ© mentionnÃ©s
 |03.9|. Vim peut effectuer des recherches bien plus complexes. Ce chapitre
-explicite les plus utilisées d'entre elles. Vous pouvez trouver le détail de
-leurs spécifications ici : |pattern|.
+explicite les plus utilisÃ©es d'entre elles. Vous pouvez trouver le dÃ©tail de
+leurs spÃ©cifications ici : |pattern|.
 
 |27.1|  Ignorer la casse
-|27.2|  Boucler à la fin du fichier
-|27.3|  Décalages
+|27.2|  Boucler Ã  la fin du fichier
+|27.3|  DÃ©calages
 |27.4|  Correspondre plusieurs fois
 |27.5|  Alternatives
-|27.6|  Collections de caractères
-|27.7|  Classes de caractères
+|27.6|  Collections de caractÃ¨res
+|27.7|  Classes de caractÃ¨res
 |27.8|  Chercher une coupure de ligne
 |27.9|  Exemples
 
   Chapitre suivant : |usr_28.txt|  Utiliser les replis
-Chapitre précédent : |usr_26.txt|  Répéter des commandes
-Table des matières : |usr_toc.txt|
+Chapitre prÃ©cÃ©dent : |usr_26.txt|  RÃ©pÃ©ter des commandes
+Table des matiÃ¨res : |usr_toc.txt|
 
 ==============================================================================
 *27.1*  Ignorer la casse
 
-Par défaut, les recherches de Vim sont sensibles à la casse. Par conséquent,
-"inclus", "INCLUS", et "Inclus" sont considérés comme trois mots différents et
+Par dÃ©faut, les recherches de Vim sont sensibles Ã  la casse. Par consÃ©quent,
+"inclus", "INCLUS", et "Inclus" sont considÃ©rÃ©s comme trois mots diffÃ©rents et
 une recherche ne correspondra qu'avec l'un d'entre eux.
    Activez l'option 'ignorecase' : >
 
 	:set ignorecase
 
-Cherchez à nouveau "inclus", vous trouverez maintenant aussi "Inclus",
+Cherchez Ã  nouveau "inclus", vous trouverez maintenant aussi "Inclus",
 "INCLUS" et "InClUs" (activez l'option 'hlsearch' pour voir d'un coup d'oeil
-les endroits où le motif correspond).
-   Vous pouvez désactiver cette option avec : >
+les endroits oÃ¹ le motif correspond).
+   Vous pouvez dÃ©sactiver cette option avec : >
 
 	:set noignorecase
 
-Mais conservons-la activée, et cherchons "INCLUS". Vous trouverez le même
+Mais conservons-la activÃ©e, et cherchons "INCLUS". Vous trouverez le mÃªme
 texte qu'en cherchant "inclus". Activez maintenant l'option 'smartcase' : >
 
 	:set ignorecase smartcase
 
 Si vous utilisez un motif contenant au moins une majuscule, la recherche
-devient sensible à la casse. L'idée, c'est qu'il ne vous était pas nécessaire
-de taper une majuscule ; par conséquent, si vous l'avez fait, c'est que vous
+devient sensible Ã  la casse. L'idÃ©e, c'est qu'il ne vous Ã©tait pas nÃ©cessaire
+de taper une majuscule ; par consÃ©quent, si vous l'avez fait, c'est que vous
 recherchez une correspondance qui respecte la casse. Malin, non ?
-   Avec ces deux options activées, vous trouverez ces correspondances :
+   Avec ces deux options activÃ©es, vous trouverez ces correspondances :
 
 	MOTIF		CORRESPOND AVEC ~
 	mot		mot, Mot, MOT, MoT, etc.
@@ -61,10 +61,10 @@ recherchez une correspondance qui respecte la casse. Malin, non ?
 
 CASSE DANS UN MOTIF
 
-Si vous voulez ignorer la casse pour un motif en particulier, préfixez-le avec
-la chaîne "\c". À l'inverse, l'utilisation de "\C" obligera la recherche à
+Si vous voulez ignorer la casse pour un motif en particulier, prÃ©fixez-le avec
+la chaÃ®ne "\c". Ã€ l'inverse, l'utilisation de "\C" obligera la recherche Ã 
 respecter la casse. Ce type d'indication prend le pas sur les options
-'ignorecase' et 'smartcase' : quand "\c" ou "\C" est utilisé, leur valeur
+'ignorecase' et 'smartcase' : quand "\c" ou "\C" est utilisÃ©, leur valeur
 n'est pas prise en compte.
 
 	MOTIF		CORRESPOND AVEC ~
@@ -73,159 +73,159 @@ n'est pas prise en compte.
 	\cmot		mot, Mot, MOT, MoT, etc.
 	\cMot		mot, Mot, MOT, MoT, etc.
 
-Le grand avantage à l'utilisation de "\c" et "\C" est qu'ils font partie du
-motif. Ainsi, si vous répétez un motif de l'historique de recherche, la même
-contrainte interviendra, même si les options 'ignorecase' ou 'smartcase' ont
-été changées entre temps.
+Le grand avantage Ã  l'utilisation de "\c" et "\C" est qu'ils font partie du
+motif. Ainsi, si vous rÃ©pÃ©tez un motif de l'historique de recherche, la mÃªme
+contrainte interviendra, mÃªme si les options 'ignorecase' ou 'smartcase' ont
+Ã©tÃ© changÃ©es entre temps.
 
 	NOTE :
-	L'utilisation d'éléments "\" dans les motifs de recherche dépend
+	L'utilisation d'Ã©lÃ©ments "\" dans les motifs de recherche dÃ©pend
 	de l'option 'magic'. Dans ce chapitre, nous supposons que l'option
-	'magic' est activée, ce qui est la configuration standard et
-	recommandée. Si vous la désactivez, de nombreux motifs de recherche
+	'magic' est activÃ©e, ce qui est la configuration standard et
+	recommandÃ©e. Si vous la dÃ©sactivez, de nombreux motifs de recherche
 	deviendront alors invalides.
 
 	NOTE :
-	Si votre recherche prend plus de temps qu'escompté, vous pouvez
+	Si votre recherche prend plus de temps qu'escomptÃ©, vous pouvez
 	l'interrompre avec CTRL-C sur Unix et CTRL-Break sur MS-DOS et
 	MS-Windows.
 
 ==============================================================================
-*27.2*  Boucler à la fin du fichier
+*27.2*  Boucler Ã  la fin du fichier
 
-Par défaut, la recherche vers l'avant d'une chaîne de caractères commence à la
+Par dÃ©faut, la recherche vers l'avant d'une chaÃ®ne de caractÃ¨res commence Ã  la
 position actuelle du curseur. Elle se poursuit ensuite vers la fin du fichier.
-Si, à ce moment, aucune correspondance n'est trouvée, la recherche continue
-depuis le début du fichier jusqu'à la position actuelle du curseur.
-   Gardez à l'esprit qu'en utilisant plusieurs fois "n" pour rechercher la
-correspondance suivante, vous finirez par revenir à la première correspondance
-trouvée. Si vous l'oubliez, vous allez chercher éternellement ! Pour vous
+Si, Ã  ce moment, aucune correspondance n'est trouvÃ©e, la recherche continue
+depuis le dÃ©but du fichier jusqu'Ã  la position actuelle du curseur.
+   Gardez Ã  l'esprit qu'en utilisant plusieurs fois "n" pour rechercher la
+correspondance suivante, vous finirez par revenir Ã  la premiÃ¨re correspondance
+trouvÃ©e. Si vous l'oubliez, vous allez chercher Ã©ternellement ! Pour vous
 guider, Vim affiche ce message :
 
 	La recherche a atteint la BAS, et continue en HAUT ~
 
 Si vous utilisez la commande "?" pour chercher dans l'autre sens, vous
-obtiendrez plutôt ce message :
+obtiendrez plutÃ´t ce message :
 
 	La recherche a atteint le HAUT, et continue en BAS ~
 
-Vous ne pouvez cependant pas savoir quand vous êtes revenu à la première
-correspondance trouvée. Une manière de le savoir consiste à activer l'option
+Vous ne pouvez cependant pas savoir quand vous Ãªtes revenu Ã  la premiÃ¨re
+correspondance trouvÃ©e. Une maniÃ¨re de le savoir consiste Ã  activer l'option
 'ruler' : >
 
 	:set ruler
 
-Vim affichera la position du curseur en bas à droite de la fenêtre (dans la
-ligne d'état, s'il y en a une). Elle ressemble à ceci :
+Vim affichera la position du curseur en bas Ã  droite de la fenÃªtre (dans la
+ligne d'Ã©tat, s'il y en a une). Elle ressemble Ã  ceci :
 
 	101,29       84% ~
 
-Le premier nombre est le numéro de la ligne du curseur. Mémorisez ce numéro en
-commençant la recherche, de façon à savoir quand vous reviendrez à la position
+Le premier nombre est le numÃ©ro de la ligne du curseur. MÃ©morisez ce numÃ©ro en
+commenÃ§ant la recherche, de faÃ§on Ã  savoir quand vous reviendrez Ã  la position
 initiale.
 
 
 NE PAS BOUCLER
 
-Pour désactiver la poursuite de la recherche au début du fichier quand la fin
+Pour dÃ©sactiver la poursuite de la recherche au dÃ©but du fichier quand la fin
 est atteinte, utilisez cette commande : >
 
 	:set nowrapscan
 
-Dès lors, quand la recherche atteint la fin du fichier, un message d'erreur
-apparaît :
+DÃ¨s lors, quand la recherche atteint la fin du fichier, un message d'erreur
+apparaÃ®t :
 
 	E385: la recherche a atteint le BAS sans trouver: mot ~
 
-De cette façon, vous pouvez trouver toutes les correspondances en allant au
-début du fichier avec la commande "gg" et en poursuivant la recherche jusqu'à
+De cette faÃ§on, vous pouvez trouver toutes les correspondances en allant au
+dÃ©but du fichier avec la commande "gg" et en poursuivant la recherche jusqu'Ã 
 l'obtention de ce message.
    Si vous cherchez dans l'autre sens avec "?", le message sera :
 
 	E384: la recherche a atteint le HAUT sans trouver: mot ~
 
 ==============================================================================
-*27.3*  Décalages
+*27.3*  DÃ©calages
 
-Par défaut, la commande de recherche laisse le curseur au début de la
-correspondance. Vous pouvez demander à Vim de laisser le curseur ailleurs en
-spécifiant un décalage. Pour la recherche vers l'avant avec la commande "/",
-le décalage est spécifié en ajoutant une oblique (/) suivie du décalage
-souhaité : >
+Par dÃ©faut, la commande de recherche laisse le curseur au dÃ©but de la
+correspondance. Vous pouvez demander Ã  Vim de laisser le curseur ailleurs en
+spÃ©cifiant un dÃ©calage. Pour la recherche vers l'avant avec la commande "/",
+le dÃ©calage est spÃ©cifiÃ© en ajoutant une oblique (/) suivie du dÃ©calage
+souhaitÃ© : >
 
-	/défaut/2
+	/dÃ©faut/2
 
-Cette commande cherche le motif "défaut" et place le curseur au début de la
-deuxième ligne qui suit la correspondance. En utilisant cette commande sur le
-paragraphe qui précède, Vim trouve le mot "défaut" dans la première ligne. Le
-curseur est alors placé deux lignes plus bas, sur "spécifiant".
+Cette commande cherche le motif "dÃ©faut" et place le curseur au dÃ©but de la
+deuxiÃ¨me ligne qui suit la correspondance. En utilisant cette commande sur le
+paragraphe qui prÃ©cÃ¨de, Vim trouve le mot "dÃ©faut" dans la premiÃ¨re ligne. Le
+curseur est alors placÃ© deux lignes plus bas, sur "spÃ©cifiant".
 
-Si le décalage est juste un nombre, le curseur sera positionné autant de
-lignes plus bas par rapport à la correspondance trouvée. Le décalage peut être
-positif ou négatif. S'il est positif, le curseur est déplacé d'autant de
-lignes vers le bas, et vers le haut s'il est négatif.
+Si le dÃ©calage est juste un nombre, le curseur sera positionnÃ© autant de
+lignes plus bas par rapport Ã  la correspondance trouvÃ©e. Le dÃ©calage peut Ãªtre
+positif ou nÃ©gatif. S'il est positif, le curseur est dÃ©placÃ© d'autant de
+lignes vers le bas, et vers le haut s'il est nÃ©gatif.
 
 
-DÉCALAGES EN CARACTÈRES
+DÃ‰CALAGES EN CARACTÃˆRES
 
-Le décalage "e" indique un décalage par rapport à la fin ["end"] de la
-correspondance. Il déplace le curseur sur le dernier caractère de la
+Le dÃ©calage "e" indique un dÃ©calage par rapport Ã  la fin ["end"] de la
+correspondance. Il dÃ©place le curseur sur le dernier caractÃ¨re de la
 correspondance. La commande : >
 
 	/const/e
 
 place le curseur sur le 't' de "const".
-   Depuis cette position, l'ajout d'un nombre déplace le curseur vers l'avant
-d'autant de caractères. Cette commande place le curseur sur le caractère qui
+   Depuis cette position, l'ajout d'un nombre dÃ©place le curseur vers l'avant
+d'autant de caractÃ¨res. Cette commande place le curseur sur le caractÃ¨re qui
 suit la correspondance : >
 
 	/const/e+1
 
-Un nombre positif déplace le curseur vers la droite, un nombre négatif vers la
+Un nombre positif dÃ©place le curseur vers la droite, un nombre nÃ©gatif vers la
 gauche. Par exemple : >
 
 	/const/e-1
 
-déplace le curseur sur le 's' de "const".
+dÃ©place le curseur sur le 's' de "const".
 
-Si le décalage commence par "b", le curseur est placé au début ["begin"] de la
+Si le dÃ©calage commence par "b", le curseur est placÃ© au dÃ©but ["begin"] de la
 correspondance. Ce n'est pas vraiment utile, puisque ne pas mettre "b" produit
-le même résultat. Il n'est utile que quand un nombre est ajouté ou soustrait.
-Le curseur est alors déplacé d'autant de caractères vers l'avant ou vers
-l'arrière. Par exemple : >
+le mÃªme rÃ©sultat. Il n'est utile que quand un nombre est ajoutÃ© ou soustrait.
+Le curseur est alors dÃ©placÃ© d'autant de caractÃ¨res vers l'avant ou vers
+l'arriÃ¨re. Par exemple : >
 
 	/const/b+2
 
-place le curseur au début de la correspondance, puis le déplace de deux
-caractères vers la droite. Il arrive ainsi sur le "n".
+place le curseur au dÃ©but de la correspondance, puis le dÃ©place de deux
+caractÃ¨res vers la droite. Il arrive ainsi sur le "n".
 
 
-RÉPÉTER
+RÃ‰PÃ‰TER
 
-Pour répéter la recherche avec le motif précédemment utilisé mais avec un
-décalage différent, omettez le motif : >
+Pour rÃ©pÃ©ter la recherche avec le motif prÃ©cÃ©demment utilisÃ© mais avec un
+dÃ©calage diffÃ©rent, omettez le motif : >
 
 	/ceci
 	//e
 
-est équivalent à : >
+est Ã©quivalent Ã  : >
 
 	/ceci/e
 
-Pour la répéter avec le même décalage : >
+Pour la rÃ©pÃ©ter avec le mÃªme dÃ©calage : >
 
 	/
 
-"n" fait la même chose. Pour répéter la recherche sans le décalage utilisé
-précédemment : >
+"n" fait la mÃªme chose. Pour rÃ©pÃ©ter la recherche sans le dÃ©calage utilisÃ©
+prÃ©cÃ©demment : >
 
 	//
 
 
-RECHERCHER VERS L'ARRIÈRE
+RECHERCHER VERS L'ARRIÃˆRE
 
-La commande "?" utilise les décalages de la même façon, mais vous devez
-utiliser un "?" pour séparer le décalage du motif, au lieu d'un "/" : >
+La commande "?" utilise les dÃ©calages de la mÃªme faÃ§on, mais vous devez
+utiliser un "?" pour sÃ©parer le dÃ©calage du motif, au lieu d'un "/" : >
 
 	?const?e-2
 
@@ -233,103 +233,103 @@ Le "b" et le "e" gardent leur signification, ils ne changent pas de direction
 avec le "?".
 
 
-POSITION DE DÉPART
+POSITION DE DÃ‰PART
 
-Quand vous commencez une recherche, elle débute normalement à la position du
-curseur. Quand vous spécifiez un décalage en lignes, cela peut poser des
-problèmes. Par exemple : >
+Quand vous commencez une recherche, elle dÃ©bute normalement Ã  la position du
+curseur. Quand vous spÃ©cifiez un dÃ©calage en lignes, cela peut poser des
+problÃ¨mes. Par exemple : >
 
 	/const/-2
 
 Ceci cherche le prochain mot "const" puis remonte de deux lignes. Si vous
-utilisez "n" pour chercher à nouveau, Vim repart de la même position et
-retrouve le même "const" ! En utilisant le même décalage, vous retourneriez à
-votre position de départ, et ainsi de suite : vous seriez coincé.
-   Ce pourrait être pire : supposez qu'il existe une autre correspondance avec
-"const" sur la ligne suivante. Répéter la recherche vers l'avant trouverait
+utilisez "n" pour chercher Ã  nouveau, Vim repart de la mÃªme position et
+retrouve le mÃªme "const" ! En utilisant le mÃªme dÃ©calage, vous retourneriez Ã 
+votre position de dÃ©part, et ainsi de suite : vous seriez coincÃ©.
+   Ce pourrait Ãªtre pire : supposez qu'il existe une autre correspondance avec
+"const" sur la ligne suivante. RÃ©pÃ©ter la recherche vers l'avant trouverait
 cette correspondance et reculerait le curseur de deux lignes : le curseur
-irait en fait vers l'arrière !
+irait en fait vers l'arriÃ¨re !
 
-Quand vous spécifiez un décalage en caractères, Vim compense. De cette façon,
-la recherche commence quelques caractères avant ou après, pour éviter de
-retrouver la même correspondance.
+Quand vous spÃ©cifiez un dÃ©calage en caractÃ¨res, Vim compense. De cette faÃ§on,
+la recherche commence quelques caractÃ¨res avant ou aprÃ¨s, pour Ã©viter de
+retrouver la mÃªme correspondance.
 
 ==============================================================================
 *27.4*  Correspondre plusieurs fois
 
-L'élément "*" indique que l'élément qui le précède peut figurer un nombre
-indéfini de fois. Ainsi, la commande : >
+L'Ã©lÃ©ment "*" indique que l'Ã©lÃ©ment qui le prÃ©cÃ¨de peut figurer un nombre
+indÃ©fini de fois. Ainsi, la commande : >
 
 	/a*
 
-cherche "a", "aa", "aaa", etc. Mais aussi "" (la chaîne vide), parce que 
-« zéro fois » est également valide.
-   "*" ne s'applique qu'au caractère qui le précède. Ainsi "ab*" correspond
-avec "a", "ab", "abb", "abbb", etc. Pour qu'une chaîne entière corresponde
-plusieurs fois, elle doit être regroupée en un élément unique. C'est possible
-en utilisant "\(" avant et "\)" après cette chaîne. Ainsi : >
+cherche "a", "aa", "aaa", etc. Mais aussi "" (la chaÃ®ne vide), parce que 
+Â« zÃ©ro fois Â» est Ã©galement valide.
+   "*" ne s'applique qu'au caractÃ¨re qui le prÃ©cÃ¨de. Ainsi "ab*" correspond
+avec "a", "ab", "abb", "abbb", etc. Pour qu'une chaÃ®ne entiÃ¨re corresponde
+plusieurs fois, elle doit Ãªtre regroupÃ©e en un Ã©lÃ©ment unique. C'est possible
+en utilisant "\(" avant et "\)" aprÃ¨s cette chaÃ®ne. Ainsi : >
 
 	/\(ab\)*
 
 correspond avec : "ab", "abab", "ababab", etc. Et aussi avec "".
 
-Pour ne pas correspondre avec la chaîne vide, utilisez "\+". Cela impose à
-l'élément qui le précède de correspondre au moins une fois. >
+Pour ne pas correspondre avec la chaÃ®ne vide, utilisez "\+". Cela impose Ã 
+l'Ã©lÃ©ment qui le prÃ©cÃ¨de de correspondre au moins une fois. >
 
 	/ab\+
 
 trouve "ab", "abb", "abbb", etc. "a" ne correspond pas s'il n'est pas suivi
 par "b".
 
-Pour correspondre optionnellement avec un élément, utilisez "\=". Exemple : >
+Pour correspondre optionnellement avec un Ã©lÃ©ment, utilisez "\=". Exemple : >
 
 	/onglets\=
 
 trouve "onglet" et "onglets".
 
 
-NOMBRE PRÉCIS DE CORRESPONDANCES
+NOMBRE PRÃ‰CIS DE CORRESPONDANCES
 
-Pour correspondre avec un nombre précis d'éléments, utilisez la forme
-"\{n,m}". "n" et "m" représentent des nombres. L'élément qui la précède devra
+Pour correspondre avec un nombre prÃ©cis d'Ã©lÃ©ments, utilisez la forme
+"\{n,m}". "n" et "m" reprÃ©sentent des nombres. L'Ã©lÃ©ment qui la prÃ©cÃ¨de devra
 correspondre entre "n" et "m" fois (inclus). Exemple : >
 
 	/ab\{3,5}
 
 trouve "abbb", "abbbb" and "abbbbb".
-   Si vous omettez "n", sa valeur par défaut est zéro. Quand "m" est omis, il
-vaut l'infini par défaut. Quand ",m" est omis, l'élément correspond exactement
+   Si vous omettez "n", sa valeur par dÃ©faut est zÃ©ro. Quand "m" est omis, il
+vaut l'infini par dÃ©faut. Quand ",m" est omis, l'Ã©lÃ©ment correspond exactement
 "n" fois. Exemples :
 
 
 	MOTIF		NOMBRE DE CORRESPONDANCES ~
 	\{,4}		0, 1, 2, 3 ou 4
 	\{3,}		3, 4, 5, etc.
-	\{0,1}		0 ou 1, équivalent à \=
-	\{0,}		0 ou plus, équivalent à *
-	\{1,}		1 ou plus, équivalent à \+
+	\{0,1}		0 ou 1, Ã©quivalent Ã  \=
+	\{0,}		0 ou plus, Ã©quivalent Ã  *
+	\{1,}		1 ou plus, Ã©quivalent Ã  \+
 	\{3}		3
 
 
 CORRESPONDRE AUSSI PEU QUE POSSIBLE
 
-Jusqu'ici, les éléments correspondaient avec autant de caractères qu'ils
-pouvaient trouver. Pour correspondre avec aussi peu de caractères que
-possible, utilisez "\{-n,m}". Le fonctionnement est le même que "\{n,m}", sauf
-que dans ce cas, le plus petit nombre de correspondances est trouvé.
+Jusqu'ici, les Ã©lÃ©ments correspondaient avec autant de caractÃ¨res qu'ils
+pouvaient trouver. Pour correspondre avec aussi peu de caractÃ¨res que
+possible, utilisez "\{-n,m}". Le fonctionnement est le mÃªme que "\{n,m}", sauf
+que dans ce cas, le plus petit nombre de correspondances est trouvÃ©.
    Par exemple, utiliser : >
 
 	/ab\{-1,3}
 
 trouvera "ab" dans "abbb". En fait, il ne correspondra jamais avec plus d'un
 'b', parce qu'il n'y a aucune raison d'en trouver plus. Il faut quelque
-chose de plus pour forcer le système à correspondre avec davantage de
-caractères que la limite inférieure.
-   La même règle s'applique lors de l'omission de "n" ou de "m". Il est même
+chose de plus pour forcer le systÃ¨me Ã  correspondre avec davantage de
+caractÃ¨res que la limite infÃ©rieure.
+   La mÃªme rÃ¨gle s'applique lors de l'omission de "n" ou de "m". Il est mÃªme
 possible d'enlever les deux nombres, ce qui donne "\{-}". Cela fait
-correspondre le motif zéro fois ou plus, le moins de fois possible. Cet
-élément pris isolément correspond toujours zéro fois : il n'est utile que s'il
-est combiné à autre chose. Par exemple : >
+correspondre le motif zÃ©ro fois ou plus, le moins de fois possible. Cet
+Ã©lÃ©ment pris isolÃ©ment correspond toujours zÃ©ro fois : il n'est utile que s'il
+est combinÃ© Ã  autre chose. Par exemple : >
 
 	/a.\{-}b
 
@@ -337,23 +337,23 @@ Ceci correspond avec "axb" dans "axbxb". Si on utilise ce motif : >
 
 	/a.*b
 
-La correspondance ferait autant de caractères que possible pour ".*", elle
+La correspondance ferait autant de caractÃ¨res que possible pour ".*", elle
 correspondrait donc avec "axbxb" comme un tout.
 
 ==============================================================================
 *27.5*  Alternatives
 
-L'opérateur "ou" ["or"] dans un motif est "\|". Exemple : >
+L'opÃ©rateur "ou" ["or"] dans un motif est "\|". Exemple : >
 
 	/zorg\|lub
 
-Ce motif correspond avec "zorg" ou "lub". Plusieurs alternatives peuvent être
-concaténées :
+Ce motif correspond avec "zorg" ou "lub". Plusieurs alternatives peuvent Ãªtre
+concatÃ©nÃ©es :
 >
 	/un\|deux\|trois
 
 cherche "un", "deux" ou "trois".
-   Pour que ce type de motif corresponde plusieurs fois, il doit être placé
+   Pour que ce type de motif corresponde plusieurs fois, il doit Ãªtre placÃ©
 entre "\(" et "\)" : >
 
 	/\(zorg\|lub\)\+
@@ -365,8 +365,8 @@ cherche "zorg", "zorglub", "zorgzorg", "lubzorglub", etc.
 
 cherche "finsi", "fintantque" et "finpour".
 
-"\&" est un élément similaire. Il oblige les deux alternatives à correspondre
-à la même position. La correspondance qui en résulte est la dernière
+"\&" est un Ã©lÃ©ment similaire. Il oblige les deux alternatives Ã  correspondre
+Ã  la mÃªme position. La correspondance qui en rÃ©sulte est la derniÃ¨re
 alternative. Exemple : >
 
 	/toujours\&...
@@ -374,29 +374,29 @@ alternative. Exemple : >
 correspond avec "tou" dans "toujours", mais pas dans "toupet".
 
 ==============================================================================
-*27.6*  Collections de caractères
+*27.6*  Collections de caractÃ¨res
 
 Pour trouver "a", "b" ou "c", vous pourriez utiliser "/a\|b\|c". Quand vous
-voulez correspondre avec toutes les lettres de "a" à "z", cela devient
-laborieux. Il existe une méthode plus rapide : >
+voulez correspondre avec toutes les lettres de "a" Ã  "z", cela devient
+laborieux. Il existe une mÃ©thode plus rapide : >
 
 	/[a-z]
 
-La construction [] ne correspond qu'avec un seul caractère. À l'intérieur,
-vous précisez les caractères qui peuvent correspondre. Vous pouvez inclure une
-liste de caractères, de cette façon : >
+La construction [] ne correspond qu'avec un seul caractÃ¨re. Ã€ l'intÃ©rieur,
+vous prÃ©cisez les caractÃ¨res qui peuvent correspondre. Vous pouvez inclure une
+liste de caractÃ¨res, de cette faÃ§on : >
 
 	/[0123456789abcdef]
 
-Ceci trouvera n'importe lequel des caractères désignés. Quand les caractères
-sont consécutifs, vous pouvez spécifier une plage. "0-3" signifie "0123".
-"w-z" signifie "wxyz". Ainsi, la commande précédente peut être abrégée par : >
+Ceci trouvera n'importe lequel des caractÃ¨res dÃ©signÃ©s. Quand les caractÃ¨res
+sont consÃ©cutifs, vous pouvez spÃ©cifier une plage. "0-3" signifie "0123".
+"w-z" signifie "wxyz". Ainsi, la commande prÃ©cÃ©dente peut Ãªtre abrÃ©gÃ©e par : >
 
 	/[0-9a-f]
 
-Pour chercher le caractère "-" lui-même, mentionnez-le en premier ou en
-dernier. Les caractères spéciaux suivants sont acceptés pour faciliter leur
-utilisation dans une collection (ils peuvent être utilisés partout dans le
+Pour chercher le caractÃ¨re "-" lui-mÃªme, mentionnez-le en premier ou en
+dernier. Les caractÃ¨res spÃ©ciaux suivants sont acceptÃ©s pour faciliter leur
+utilisation dans une collection (ils peuvent Ãªtre utilisÃ©s partout dans le
 motif de recherche) :
 
 	\e	<Esc>
@@ -404,15 +404,15 @@ motif de recherche) :
 	\r	<CR>
 	\b	<BS>
 
-Il existe quelques cas particuliers supplémentaires avec les collections [],
-reportez-vous à |/[]| pour plus de détails.
+Il existe quelques cas particuliers supplÃ©mentaires avec les collections [],
+reportez-vous Ã  |/[]| pour plus de dÃ©tails.
 
 
-COLLECTIONS COMPLÉMENTAIRES
+COLLECTIONS COMPLÃ‰MENTAIRES
 
-Pour éviter la correspondance avec un caractère particulier, utilisez "^" au
-début de la collection. L'élément [] correspond alors avec n'importe quel
-caractère, sauf les caractères spécifiés. Exemple : >
+Pour Ã©viter la correspondance avec un caractÃ¨re particulier, utilisez "^" au
+dÃ©but de la collection. L'Ã©lÃ©ment [] correspond alors avec n'importe quel
+caractÃ¨re, sauf les caractÃ¨res spÃ©cifiÃ©s. Exemple : >
 
 	/"[^"]*"
 <
@@ -424,97 +424,97 @@ caractère, sauf les caractères spécifiés. Exemple : >
 Ceci trouve "foo" et "3!x", avec les doubles-apostrophes.
 
 
-COLLECTIONS PRÉDÉFINIES
+COLLECTIONS PRÃ‰DÃ‰FINIES
 
-Certaines collections sont utilisées très fréquemment. Vim fournit des
-raccourcis pour les désigner. Par exemple, la commande >
+Certaines collections sont utilisÃ©es trÃ¨s frÃ©quemment. Vim fournit des
+raccourcis pour les dÃ©signer. Par exemple, la commande >
 
 	/\a
 
-trouve les caractères alphabétiques. C'est équivalent à "/[a-zA-Z]". En voici
+trouve les caractÃ¨res alphabÃ©tiques. C'est Ã©quivalent Ã  "/[a-zA-Z]". En voici
 quelques autres :
 
-	ÉLÉMENT	CORRESPOND AVEC		    ÉQUIVALENT ~
+	Ã‰LÃ‰MENT	CORRESPOND AVEC		    Ã‰QUIVALENT ~
 	\d	chiffre			    [0-9]
 	\D	non-chiffre		    [^0-9]
 	\x	chiffre hexa		    [0-9a-fA-F]
 	\X	non-chiffre hexa	    [^0-9a-fA-F]
 	\s	espace blanc		    [	 ] (<Tab> et <Espace>)
 	\S	non-espace blanc	    [^	 ] (ni <Tab> ni <Espace>)
-	\l	alphabétique minuscule	    [a-z]
-	\L	non-alphabétique minuscule  [^a-z]
-	\u	alphabétique majuscule	    [A-Z]
-	\U	non-alphabétique majuscule  [^A-Z]
+	\l	alphabÃ©tique minuscule	    [a-z]
+	\L	non-alphabÃ©tique minuscule  [^a-z]
+	\u	alphabÃ©tique majuscule	    [A-Z]
+	\U	non-alphabÃ©tique majuscule  [^A-Z]
 
 	NOTE :
-	Utiliser ces collections prédéfines est bien plus rapide que préciser
-	la collection des caractères qu'elles représentent. Ces éléments ne
-	peuvent cependant pas être utilisés entre []. Ainsi, "[\d\l]" ne
-	fonctionne PAS pour désigner un chiffre ou un alphabétique minuscule.
-	Utilisez "\(\d\|\l\)" à la place.
+	Utiliser ces collections prÃ©dÃ©fines est bien plus rapide que prÃ©ciser
+	la collection des caractÃ¨res qu'elles reprÃ©sentent. Ces Ã©lÃ©ments ne
+	peuvent cependant pas Ãªtre utilisÃ©s entre []. Ainsi, "[\d\l]" ne
+	fonctionne PAS pour dÃ©signer un chiffre ou un alphabÃ©tique minuscule.
+	Utilisez "\(\d\|\l\)" Ã  la place.
 
-Reportez-vous à |/\s| pour la liste complète des collections.
+Reportez-vous Ã  |/\s| pour la liste complÃ¨te des collections.
 
 ==============================================================================
-*27.7*  Classes de caractères
+*27.7*  Classes de caractÃ¨res
 
-Les collections de caractères correspondent à un jeu fixé de caractères. Une
-classe de caractères est semblable, mais avec une différence essentielle : le
-jeu de caractères peut être redéfini sans changer le motif de recherche.
+Les collections de caractÃ¨res correspondent Ã  un jeu fixÃ© de caractÃ¨res. Une
+classe de caractÃ¨res est semblable, mais avec une diffÃ©rence essentielle : le
+jeu de caractÃ¨res peut Ãªtre redÃ©fini sans changer le motif de recherche.
    Par exemple, cherchez ce motif : >
 
 	/\f\+
 
-Le "\f" désigne un caractère de noms de fichier. Ainsi, le motif précédent
-correspond avec une séquence de caractères qui peut représenter un nom de
+Le "\f" dÃ©signe un caractÃ¨re de noms de fichier. Ainsi, le motif prÃ©cÃ©dent
+correspond avec une sÃ©quence de caractÃ¨res qui peut reprÃ©senter un nom de
 fichier.
-   Les caractères qui peuvent être inclus dans un nom de fichier dépendent de
-votre système d'exploitation. Sur MS-Windows, la contre-oblique (\) en fait
-partie, mais pas sur Unix. L'option 'isfname' permet de les spécifier. La
-valeur par défaut pour Unix est : >
+   Les caractÃ¨res qui peuvent Ãªtre inclus dans un nom de fichier dÃ©pendent de
+votre systÃ¨me d'exploitation. Sur MS-Windows, la contre-oblique (\) en fait
+partie, mais pas sur Unix. L'option 'isfname' permet de les spÃ©cifier. La
+valeur par dÃ©faut pour Unix est : >
 
 	:set isfname
 <	isfname=@,48-57,/,.,-,_,+,,,#,$,%,~,= ~
 
-Pour d'autres systèmes d'exploitation, la valeur par défaut est différente.
-Vous pouvez ainsi écrire un motif de recherche avec "\f" pour correspondre
-avec un nom de fichier, et il sera automatiquement adapté au système
+Pour d'autres systÃ¨mes d'exploitation, la valeur par dÃ©faut est diffÃ©rente.
+Vous pouvez ainsi Ã©crire un motif de recherche avec "\f" pour correspondre
+avec un nom de fichier, et il sera automatiquement adaptÃ© au systÃ¨me
 d'exploitation que vous utilisez.
 
 	NOTE :
-	En fait, Unix autorise l'utilisation d'à peu près n'importe quel
-	caractère dans un nom de fichier, y compris l'espace. Inclure ces
-	caractères dans 'isfname' serait théoriquement correct, mais trouver
+	En fait, Unix autorise l'utilisation d'Ã  peu prÃ¨s n'importe quel
+	caractÃ¨re dans un nom de fichier, y compris l'espace. Inclure ces
+	caractÃ¨res dans 'isfname' serait thÃ©oriquement correct, mais trouver
 	la fin d'un nom de fichier dans un texte deviendrait impossible. C'est
-	pourquoi la valeur par défaut de 'isfname' (mentionnée plus haut) est
+	pourquoi la valeur par dÃ©faut de 'isfname' (mentionnÃ©e plus haut) est
 	un compromis.
 
-Les classes de caractères sont :
+Les classes de caractÃ¨res sont :
 
-	ÉLÉMENT	CORRESPOND AVEC			OPTION ~
-	\i	caractère d'identifiant		'isident'
+	Ã‰LÃ‰MENT	CORRESPOND AVEC			OPTION ~
+	\i	caractÃ¨re d'identifiant		'isident'
 	\I	comme \i, sans les chiffres
-	\k	caractère de mot-clé		'iskeyword'
+	\k	caractÃ¨re de mot-clÃ©		'iskeyword'
 	\K	comme \k, sans les chiffres
-	\p	caractère imprimable		'isprint'
+	\p	caractÃ¨re imprimable		'isprint'
 	\P	comme \p, sans les chiffres
-	\f	caractère de nom de fichier	'isfname'
+	\f	caractÃ¨re de nom de fichier	'isfname'
 	\F	comme \f, sans les chiffres
 
 ==============================================================================
 *27.8*  Chercher une coupure de ligne
 
-Vim peut trouver un motif contenant une coupure de ligne. Il faut préciser où
-cette coupure se produit, car tous les motifs mentionnés jusqu'ici ne
+Vim peut trouver un motif contenant une coupure de ligne. Il faut prÃ©ciser oÃ¹
+cette coupure se produit, car tous les motifs mentionnÃ©s jusqu'ici ne
 correspondent pas avec une coupure de ligne.
-   Pour identifier une coupure de ligne à une position particulière, utilisez
-l'élément "\n" : >
+   Pour identifier une coupure de ligne Ã  une position particuliÃ¨re, utilisez
+l'Ã©lÃ©ment "\n" : >
 
 	/le\nmot
 
-Ceci correspondra à une ligne qui finit par "le" et une autre ligne commençant
+Ceci correspondra Ã  une ligne qui finit par "le" et une autre ligne commenÃ§ant
 par "mot". Pour trouver aussi "le mot", il vous faut correspondre avec une
-coupure de ligne ou un espace. Pour ce faire, utilisez l'élément "\_s" : >
+coupure de ligne ou un espace. Pour ce faire, utilisez l'Ã©lÃ©ment "\_s" : >
 
 	/le\_smot
 
@@ -522,81 +522,81 @@ Pour autoriser un nombre arbitraire d'espaces : >
 
 	/le\_s\+mot
 
-Ceci trouve aussi quand "le    " est à la fin de la ligne et "    mot" au
-début de celle qui suit.
+Ceci trouve aussi quand "le    " est Ã  la fin de la ligne et "    mot" au
+dÃ©but de celle qui suit.
 
 "\s" correspond avec un espace blanc, "\_s" avec un espace blanc ou une
-coupure de ligne. De la même façon, "\a" correspond avec un caractère
-alphabétique, et "\_a" avec un caractère alphabétique ou une coupure de ligne.
-Les autres collections et classes de caractères peuvent être modifiées de la
-même façon en insérant un "_".
+coupure de ligne. De la mÃªme faÃ§on, "\a" correspond avec un caractÃ¨re
+alphabÃ©tique, et "\_a" avec un caractÃ¨re alphabÃ©tique ou une coupure de ligne.
+Les autres collections et classes de caractÃ¨res peuvent Ãªtre modifiÃ©es de la
+mÃªme faÃ§on en insÃ©rant un "_".
 
-Il est possible de faire correspondre de nombreux autres éléments avec une
-coupure de ligne en les faisant précéder de "\_". Par exemple, "\_."
-correspond avec n'importe quel caractère ou avec une coupure de ligne.
+Il est possible de faire correspondre de nombreux autres Ã©lÃ©ments avec une
+coupure de ligne en les faisant prÃ©cÃ©der de "\_". Par exemple, "\_."
+correspond avec n'importe quel caractÃ¨re ou avec une coupure de ligne.
 
 	NOTE :
-	Le motif "\_.*" correspond jusqu'à la fin du fichier. Soyez prudent,
-	il peut ralentir considérablement les commandes de recherche.
+	Le motif "\_.*" correspond jusqu'Ã  la fin du fichier. Soyez prudent,
+	il peut ralentir considÃ©rablement les commandes de recherche.
 
 Un autre exemple, "\_[]", une collection qui inclut une coupure de ligne : >
 
 	/"\_[^"]*"
 
-Ceci trouve un texte entre doubles-apostrophes qui peut être réparti sur
+Ceci trouve un texte entre doubles-apostrophes qui peut Ãªtre rÃ©parti sur
 plusieurs lignes.
 
 ==============================================================================
 *27.9*  Exemples
 
-Voici quelques motifs de recherche qui pourraient vous être utiles. Ils
-illustrent la manière dont les éléments mentionnés précédemment peuvent être
-combinés.
+Voici quelques motifs de recherche qui pourraient vous Ãªtre utiles. Ils
+illustrent la maniÃ¨re dont les Ã©lÃ©ments mentionnÃ©s prÃ©cÃ©demment peuvent Ãªtre
+combinÃ©s.
 
 
 TROUVER UNE PLAQUE D'IMMATRICULATION CALIFORNIENNE
 
 "1MGU103" est un exemple de plaque d'immatriculation. Elle comporte un
 chiffre, suivi de trois lettres majuscules puis de trois chiffres. Vous pouvez
-saisir cette séquence directement dans un motif de recherche : >
+saisir cette sÃ©quence directement dans un motif de recherche : >
 
 	/\d\u\u\u\d\d\d
 
-Une autre façon de faire consiste à spécifier le nombre de chiffres (trois) et
+Une autre faÃ§on de faire consiste Ã  spÃ©cifier le nombre de chiffres (trois) et
 de lettres (trois) : >
 
 	/\d\u\{3}\d\{3}
 
-En utilisant des collections [] à la place : >
+En utilisant des collections [] Ã  la place : >
 
 	/[0-9][A-Z]\{3}[0-9]\{3}
 
 Laquelle utiliser ? Celle dont vous vous souviendrez le plus facilement. Une
-technique basique et facile à mémoriser vaut mieux qu'une technique élaborée
-dont on ne se souvient pas. Si vous vous les rappelez toutes, alors évitez la
-dernière, qui est plus longue à taper et à exécuter.
+technique basique et facile Ã  mÃ©moriser vaut mieux qu'une technique Ã©laborÃ©e
+dont on ne se souvient pas. Si vous vous les rappelez toutes, alors Ã©vitez la
+derniÃ¨re, qui est plus longue Ã  taper et Ã  exÃ©cuter.
 
 
 TROUVER UN IDENTIFIANT
 
 Dans les programmes en C (et dans de nombreux autres langages de
-programmation), un identifiant débute par une lettre, et la suite est
-constituée de lettres et chiffres. Les caractères de soulignement (_) peuvent
-aussi être utilisés. Il est possible de les trouver avec : >
+programmation), un identifiant dÃ©bute par une lettre, et la suite est
+constituÃ©e de lettres et chiffres. Les caractÃ¨res de soulignement (_) peuvent
+aussi Ãªtre utilisÃ©s. Il est possible de les trouver avec : >
 
 	/\<\h\w*\>
 
-"\<" et "\>" sont utilisés pour ne trouver que les mots entiers. "\h" signifie
+"\<" et "\>" sont utilisÃ©s pour ne trouver que les mots entiers. "\h" signifie
 "[A-Za-z_]" et "\w", "[0-9A-Za-z_]".
 
 	NOTE :
-	"\<" et "\>" dépendent de l'option 'iskeyword'. Si elle inclut "-",
-	par exemple, alors "ident-" ne sera pas trouvé. Pour éviter cela,
+	"\<" et "\>" dÃ©pendent de l'option 'iskeyword'. Si elle inclut "-",
+	par exemple, alors "ident-" ne sera pas trouvÃ©. Pour Ã©viter cela,
 	utilisez : >
 
 		/\w\@<!\h\w*\w\@!
 <
-	Cela assure que "\w" ne correspond pas avant ou après l'identifiant.
+	Cela assure que "\w" ne correspond pas avant ou aprÃ¨s l'identifiant.
 	Voir |/\@<!| et |/\@!|.
 
 ==============================================================================

@@ -1,7 +1,7 @@
-*if_ruby.txt*   Pour Vim version 6.2.  Dernière modification : 25 oct 2001
+*if_ruby.txt*   Pour Vim version 6.2.  DerniÃ¨re modification : 25 oct 2001
 
 
-		  MANUEL de RÉFÉRENCE VIM - par Shugo Maeda
+		  MANUEL de RÃ‰FÃ‰RENCE VIM - par Shugo Maeda
 
 
 L'interface Ruby de Vim					*ruby* *Ruby*
@@ -14,10 +14,10 @@ L'interface Ruby de Vim					*ruby* *Ruby*
 
 					    *E266* *E267* *E268* *E269*
 					    *E270* *E271* *E272* *E273*
-L'interface Ruby ne fonctionne que si Vim a été compilé avec la fonctionnalité
+L'interface Ruby ne fonctionne que si Vim a Ã©tÃ© compilÃ© avec la fonctionnalitÃ©
 |+ruby|.
 
-Pour MS-Windows, vous pouvez trouver la bibliothèque Ruby sur :
+Pour MS-Windows, vous pouvez trouver la bibliothÃ¨que Ruby sur :
 
 	http://www.dm4lab.to/~usa/ruby_en.html ~
 
@@ -27,20 +27,20 @@ Pour MS-Windows, vous pouvez trouver la bibliothèque Ruby sur :
 1. Commandes						*ruby-commands*
 
 							*:ruby* *:rub*
-:rub[y] {cmd}		Exécute la commmande Ruby {cmd}.
+:rub[y] {cmd}		ExÃ©cute la commmande Ruby {cmd}.
 
 :rub[y] << {motifdefin}
 {script}
 {motifdefin}
-			Exécute le script Ruby {script}.
-			{motifdefin} ne doit PAS être précédé par un
+			ExÃ©cute le script Ruby {script}.
+			{motifdefin} ne doit PAS Ãªtre prÃ©cÃ©dÃ© par un
 			quelconque espace blanc. Si {motifdefin} est omis, le
-			motif par défaut est un point '.', comme pour les
+			motif par dÃ©faut est un point '.', comme pour les
 			commandes |:append| et |:insert| commands. Cette forme
 			de la commande |:ruby| est pratique pour inclure du
 			code Ruby dans les scripts Vim.
 			NOTE : cette commande ne fonctionne pas si la
-			fonctionnalité Ruby n'a pas été compilée. Pour éviter
+			fonctionnalitÃ© Ruby n'a pas Ã©tÃ© compilÃ©e. Pour Ã©viter
 			des erreurs, voir |script-here|.
 
 Exemple de script Vim : >
@@ -61,44 +61,44 @@ Exemple de script Vim : >
 	endfunction
 <
 						*:rubydo* *:rubyd* *E265*
-:[plage]rubyd[o] {cmd}	Évalue la commande Ruby {cmd} pour chaque ligne de
-			[plage], avec $_ fixé au tour à tour au texte de
+:[plage]rubyd[o] {cmd}	Ã‰value la commande Ruby {cmd} pour chaque ligne de
+			[plage], avec $_ fixÃ© au tour Ã  tour au texte de
 			chauqe ligne, et sans <EOL> final. Fixer $_ va changer
 			le texte, mais notez qu'il est impossible d'ajouter ou
 			de supprimer des lignes en utilisant cette commande.
-			La valeur par défaut de [plage] est la totalité du
+			La valeur par dÃ©faut de [plage] est la totalitÃ© du
 			fichier : "1,$".
 
 							*:rubyfile* *:rubyf*
-:rubyf[ile] {fichier}	Exécute le script Ruby contenu dans {fichier}. L'effet
-			est identique à ":ruby load 'fichier'", mais permet le
-			complètement du nom de fichier.
+:rubyf[ile] {fichier}	ExÃ©cute le script Ruby contenu dans {fichier}. L'effet
+			est identique Ã  ":ruby load 'fichier'", mais permet le
+			complÃ¨tement du nom de fichier.
 
-L'exécution de commandes Ruby est impossible dans le bac à sable |sandbox|.
+L'exÃ©cution de commandes Ruby est impossible dans le bac Ã  sable |sandbox|.
 
 ==============================================================================
 2. Le module VIM					*ruby-vim*
 
-Le code Ruby accède à toutes les fonctionnalités de vim via le module "VIM".
+Le code Ruby accÃ¨de Ã  toutes les fonctionnalitÃ©s de vim via le module "VIM".
 
-Résumé : >
+RÃ©sumÃ© : >
 	print "Hello"			# affiche un message
-	VIM.command(cmd)		# exécute une commande Ex
-	num = VIM::Window.count		# récupère le numéro d'une fenêtre
-	w = VIM::Window[n]		# récupère la fenêtre numérotée "n"
-	cw = VIM::Window.current	# récupère la fenêtre courante
-	num = VIM::Buffer.count		# récupère le nombre de tampons
-	b = VIM::Buffer[n]		# récupère le tampon numéroté "n"
-	cb = VIM::Buffer.current	# récupère le tampon courant
-	w.height = lines		# fixe la hauteur de la fenêtre
+	VIM.command(cmd)		# exÃ©cute une commande Ex
+	num = VIM::Window.count		# rÃ©cupÃ¨re le numÃ©ro d'une fenÃªtre
+	w = VIM::Window[n]		# rÃ©cupÃ¨re la fenÃªtre numÃ©rotÃ©e "n"
+	cw = VIM::Window.current	# rÃ©cupÃ¨re la fenÃªtre courante
+	num = VIM::Buffer.count		# rÃ©cupÃ¨re le nombre de tampons
+	b = VIM::Buffer[n]		# rÃ©cupÃ¨re le tampon numÃ©rotÃ© "n"
+	cb = VIM::Buffer.current	# rÃ©cupÃ¨re le tampon courant
+	w.height = lines		# fixe la hauteur de la fenÃªtre
 	w.cursor = [row, col]		# fixe la position du curseur
-	pos = w.cursor			# récupère un tableau [ligne, colonne]
-	name = b.name			# récupère le nom de fichier du tampon
-	line = b[n]			# récupère une ligne du tampon
-	num = b.count			# récupère le nombre de lignes
+	pos = w.cursor			# rÃ©cupÃ¨re un tableau [ligne, colonne]
+	name = b.name			# rÃ©cupÃ¨re le nom de fichier du tampon
+	line = b[n]			# rÃ©cupÃ¨re une ligne du tampon
+	num = b.count			# rÃ©cupÃ¨re le nombre de lignes
 	b[n] = str			# modifie une ligne dans le tampon
 	b.delete(n)			# supprime une ligne
-	b.append(n, str)		# Ajoute une ligne après la n-ième
+	b.append(n, str)		# Ajoute une ligne aprÃ¨s la n-iÃ¨me
 <
 Fonctions du module :
 
@@ -108,64 +108,64 @@ VIM::message({msg})
 
 							*ruby-set_option*
 VIM::set_option({arg})
-	Fixe une option Vim. {arg} peut être n'importe quel argument que la
+	Fixe une option Vim. {arg} peut Ãªtre n'importe quel argument que la
 	commande ":set" est susceptible d'accepter. Notez que cela signifie
-	que les espaces ne sont pas autorisés dans l'argument ! Voir |:set|.
+	que les espaces ne sont pas autorisÃ©s dans l'argument ! Voir |:set|.
 
 							*ruby-command*
 VIM::command({cmd})
-	Exécutes la commande Ex {cmd}.
+	ExÃ©cutes la commande Ex {cmd}.
 
 							*ruby-evaluate*
 VIM::evaluate({expr})
-	Évalue {expr} en utilisant l'évaluateur d'expression interne de Vim
-	(voir |expression|). Retourne le résultat sous la forme d'une chaîne.
+	Ã‰value {expr} en utilisant l'Ã©valuateur d'expression interne de Vim
+	(voir |expression|). Retourne le rÃ©sultat sous la forme d'une chaÃ®ne.
 
 ==============================================================================
 3. Objet VIM::Buffer					*ruby-buffer*
 
-Les tampons Vim sont représentés par des objets VIM::Buffer.
+Les tampons Vim sont reprÃ©sentÃ©s par des objets VIM::Buffer.
 
-Méthodes de classe :
+MÃ©thodes de classe :
 
 current		Retourne l'objet du tampon courant.
 count		Retourne le nombre de tampons.
-self[{n}]	Retourne l'objet du tampon numéroté {n}. Le premier tampon
-		porte le numéro 0.
+self[{n}]	Retourne l'objet du tampon numÃ©rotÃ© {n}. Le premier tampon
+		porte le numÃ©ro 0.
 
-Méthodes :
+MÃ©thodes :
 
 name		Retourne le nom du tampon.
-number		Retourne le numéro du tampon.
+number		Retourne le numÃ©ro du tampon.
 count		Retourne le nombre de lignes.
 length		Retourne le nombre de lignes.
-self[{n}]	Retourne une ligne du tampon. {n} est le numéro de la ligne.
+self[{n}]	Retourne une ligne du tampon. {n} est le numÃ©ro de la ligne.
 self[{n}] = {chaine}
-		Modifie une ligne dans le tampon. {n} est le numéro de la
+		Modifie une ligne dans le tampon. {n} est le numÃ©ro de la
 		   ligne.
-delete({n})	Supprime une ligne dans le tampon. {n} est le numéro de la
+delete({n})	Supprime une ligne dans le tampon. {n} est le numÃ©ro de la
 		   ligne.
 append({n}, {chaine})
-		Ajoute une ligne après la ligne numérotée {n}.
+		Ajoute une ligne aprÃ¨s la ligne numÃ©rotÃ©e {n}.
 
 ==============================================================================
 4. Objet VIM::Window					*ruby-window*
 
-Les fenêtres Vim sont représentés par des objets VIM::Window.
+Les fenÃªtres Vim sont reprÃ©sentÃ©s par des objets VIM::Window.
 
-Méthodes de classe :
+MÃ©thodes de classe :
 
-current		Retourne l'objet de la fenêtre courante.
-count		Retourne le nombre de fenêtres.
-self[{n}]	Retourne l'objet de la fenêtre numérotée {n}. Le première
-		fenêtre porte le numéro 0.
+current		Retourne l'objet de la fenÃªtre courante.
+count		Retourne le nombre de fenÃªtres.
+self[{n}]	Retourne l'objet de la fenÃªtre numÃ©rotÃ©e {n}. Le premiÃ¨re
+		fenÃªtre porte le numÃ©ro 0.
 
-Méthodes :
+MÃ©thodes :
 
-buffer		Retourne le tampon affiché dans la fenêtre.
-height		Retourne le hauteur de la fenêtre.
-height = {n}	Fixe la hauteur de la fenêtre à {n}.
-cursor		Retourne un tableau [ligne, colonne] à la position du curseur.
+buffer		Retourne le tampon affichÃ© dans la fenÃªtre.
+height		Retourne le hauteur de la fenÃªtre.
+height = {n}	Fixe la hauteur de la fenÃªtre Ã  {n}.
+cursor		Retourne un tableau [ligne, colonne] Ã  la position du curseur.
 cursor = [{ligne}, {colonne}]
 		Fixe la position du curseur : {ligne} et {colonne}.
 
@@ -174,7 +174,7 @@ cursor = [{ligne}, {colonne}]
 
 L'interface propose deux variables globales :
 
-$curwin		L'objet de la fenêtre courante.
+$curwin		L'objet de la fenÃªtre courante.
 $curbuf		L'objet du tampon courant.
 
 ==============================================================================

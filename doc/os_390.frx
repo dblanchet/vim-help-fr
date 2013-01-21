@@ -1,18 +1,18 @@
-*os_390.txt*    Pour Vim version 6.2.  Dernière modification : 24 mai 2003
+*os_390.txt*    Pour Vim version 6.2.  DerniÃ¨re modification : 24 mai 2003
 
 
-		  MANUEL de RÉFÉRENCE VIM - par Ralf Schandl
+		  MANUEL de RÃ‰FÃ‰RENCE VIM - par Ralf Schandl
 
 
 					*zOS* *z/OS* *OS390* *os390* *MVS*
-Ce fichier documente les particularités de la version z/OS UNIX de Vim.
+Ce fichier documente les particularitÃ©s de la version z/OS UNIX de Vim.
 
 1. Open Source sur z/OS UNIX		|zOS-open-source|
-2. Vos remarques nous intéressent	|zOS-feedback|
+2. Vos remarques nous intÃ©ressent	|zOS-feedback|
 3. Compiler Vim pour z/OS UNIX		|zOS-building|
-4. Scripts dépendant de ASCII/EBCDIC	|zOS-has-ebcdic|
-5. Problèmes xterm			|zOS-xterm|
-6. Problèmes Motif			|zOS-Motif|
+4. Scripts dÃ©pendant de ASCII/EBCDIC	|zOS-has-ebcdic|
+5. ProblÃ¨mes xterm			|zOS-xterm|
+6. ProblÃ¨mes Motif			|zOS-Motif|
 7  Bogues				|zOS-Bugs|
 8. Faiblesses connues			|zOS-weaknesses|
 9. Modifications			|zOS-changes|
@@ -20,20 +20,20 @@ Ce fichier documente les particularités de la version z/OS UNIX de Vim.
 
 AVERTISSEMENT ~
 
-Nous sommes des employés de IBM, mais IBM n'est pas responsable de ce portage.
-Il s'agit d'un passe-temps personnel, dont le résulat est mis à disposition
-dans l'espoir qu'il puisse servir à d'autres.
+Nous sommes des employÃ©s de IBM, mais IBM n'est pas responsable de ce portage.
+Il s'agit d'un passe-temps personnel, dont le rÃ©sulat est mis Ã  disposition
+dans l'espoir qu'il puisse servir Ã  d'autres.
 
-Veuillez noter que ce logiciel n'a été soumis à AUCUN des tests IBM officiels
-et est publié EN L'ÉTAT. Merci de ne pas contacter IBM pour le support de ce
+Veuillez noter que ce logiciel n'a Ã©tÃ© soumis Ã  AUCUN des tests IBM officiels
+et est publiÃ© EN L'Ã‰TAT. Merci de ne pas contacter IBM pour le support de ce
 logiciel, car ce n'est pas un composant officiel des produits IBM. IL N'EST
-PAS SUPPORTÉ, GARANTI, OU LIÉ À IBM DE QUELLE QUE MANIÈRE QUE CE SOIT.
+PAS SUPPORTÃ‰, GARANTI, OU LIÃ‰ Ã€ IBM DE QUELLE QUE MANIÃˆRE QUE CE SOIT.
 
 
 CONTRIBUTEURS ~
 
-Le portage sur z/OS UNIX de Vim a été réalisé par Ralf Schandl pour le Redbook
-IBM mentionné plus bas.
+Le portage sur z/OS UNIX de Vim a Ã©tÃ© rÃ©alisÃ© par Ralf Schandl pour le Redbook
+IBM mentionnÃ© plus bas.
 
 Modifications, rapports de bogues, voire les deux, par :
 
@@ -41,12 +41,12 @@ Modifications, rapports de bogues, voire les deux, par :
 	Anthony Giorgio <agiorgio@fastmail.fm>
 	et bien d'autres
 
-Ce document a été écrit par Ralf Schandl et relu par Anthony Giorgio.
+Ce document a Ã©tÃ© Ã©crit par Ralf Schandl et relu par Anthony Giorgio.
 
 ==============================================================================
 1. Open Source sur z/OS UNIX		*OS390-open-source* *zOS-open-source*
 
-Si vous êtes intéressé par d'autres logiciels Open Source sur z/OS UNIX,
+Si vous Ãªtes intÃ©ressÃ© par d'autres logiciels Open Source sur z/OS UNIX,
 jetez un oeil au Redbook IBM suivant :
 
     Mike MacIsaac et al
@@ -55,35 +55,35 @@ jetez un oeil au Redbook IBM suivant :
     ISBN: 0738424633
 
 Vous pouvez trouver davantage d'informations, commander un exemplaire ou
-télécharger une version PDF des Redbooks IBM sur :
+tÃ©lÃ©charger une version PDF des Redbooks IBM sur :
 
 	    http://www.redbooks.ibm.com
 
 ==============================================================================
-2. Vos remarques nous intéressent	*OS390-feedback* *zOS-feedback*
+2. Vos remarques nous intÃ©ressent	*OS390-feedback* *zOS-feedback*
 
 Vim devrait compiler, lier et fonctionner directement sur un mainframe IBM
-z/OS UNIX standard. Personnellement, je l'ai utilisé sur des machines z/OS
-V1R2 et V1R3 sans aucun problème.
+z/OS UNIX standard. Personnellement, je l'ai utilisÃ© sur des machines z/OS
+V1R2 et V1R3 sans aucun problÃ¨me.
 
-De nombreuses modifications ont dû être apportées au code pour porter Vim sur
-z/OS UNIX. Comme la plupart des logiciels UNIX, Vim contient des dépendances
-fortes avec l'ASCII. Il est possible que j'aie manqué une dépendance, ou
-alors que de nouvelles dépendances aient été introduites lors de l'ajout d'une
-fonctionnalité ou la correction d'un bogue. La plupart des programmeurs ne
-sont tout simplement pas conscients des problèmes de conversion ASCII/EBCDIC.
-Si vous rencontrez des difficultés semblant provenir de ce type de problème,
-n'hésitez pas à nous contacter à l'adresse électronique mentionnée plus haut.
+De nombreuses modifications ont dÃ» Ãªtre apportÃ©es au code pour porter Vim sur
+z/OS UNIX. Comme la plupart des logiciels UNIX, Vim contient des dÃ©pendances
+fortes avec l'ASCII. Il est possible que j'aie manquÃ© une dÃ©pendance, ou
+alors que de nouvelles dÃ©pendances aient Ã©tÃ© introduites lors de l'ajout d'une
+fonctionnalitÃ© ou la correction d'un bogue. La plupart des programmeurs ne
+sont tout simplement pas conscients des problÃ¨mes de conversion ASCII/EBCDIC.
+Si vous rencontrez des difficultÃ©s semblant provenir de ce type de problÃ¨me,
+n'hÃ©sitez pas Ã  nous contacter Ã  l'adresse Ã©lectronique mentionnÃ©e plus haut.
 
-L'un des indices trahissant un problème de conversion ASCII/EBCDIC est la
-corruption de l'affichage avec des caractères « non-imprimables ». Par
-exemple, à un moment, le signal sonore était défaillant dans Vim. À chaque
-fois que Vim tentait de faire bipper le terminal, un caractère ASCII 0x07
-était affiché. Cela fonctionne pourtant bien sur la plupart des terminaux,
-mais pas sur les terminaux EBCDIC. La bonne solution était de définir une
-valeur différente pour le caractère du signal sonore sur les systèmes EBCDIC.
+L'un des indices trahissant un problÃ¨me de conversion ASCII/EBCDIC est la
+corruption de l'affichage avec des caractÃ¨res Â« non-imprimables Â». Par
+exemple, Ã  un moment, le signal sonore Ã©tait dÃ©faillant dans Vim. Ã€ chaque
+fois que Vim tentait de faire bipper le terminal, un caractÃ¨re ASCII 0x07
+Ã©tait affichÃ©. Cela fonctionne pourtant bien sur la plupart des terminaux,
+mais pas sur les terminaux EBCDIC. La bonne solution Ã©tait de dÃ©finir une
+valeur diffÃ©rente pour le caractÃ¨re du signal sonore sur les systÃ¨mes EBCDIC.
 
-N'oubliez pas, la communauté ne peut corriger un bogue que si elle en a
+N'oubliez pas, la communautÃ© ne peut corriger un bogue que si elle en a
 connaissance. Ne comptez pas sur quelqu'un d'autre pour le rapporter !
 Consultez la section |bug-reports|.
 
@@ -91,19 +91,19 @@ Consultez la section |bug-reports|.
 3. Compiler Vim pour z/OS UNIX		*OS390-building* *zOS-building*
 
 
-UN MOT SUR LE CODE DE DÉBOGAGE ~
+UN MOT SUR LE CODE DE DÃ‰BOGAGE ~
 
-L'exécution normale de `configure` ajoute le drapeau "-g" dans les options du
-compilateur, pour inclure des informations de débogage dans l'exécutable. Ces
-informations sont normalement supprimées de l'exécutable avec la commande
+L'exÃ©cution normale de `configure` ajoute le drapeau "-g" dans les options du
+compilateur, pour inclure des informations de dÃ©bogage dans l'exÃ©cutable. Ces
+informations sont normalement supprimÃ©es de l'exÃ©cutable avec la commande
 `strip` lors de son installation. Sur z/OS, il n'est pas possible de supprimer
-ces informations de l'exécutable. La commande `strip` existe sur z/OS et est
-appelée lors de l'installation, mais elle ne fait rien. Elle est équivalente à
-la commande `touch`. Cela est dû à la manière dont les symboles de débogages
-sont enregistrés dans les objets générés par le compilateur.
+ces informations de l'exÃ©cutable. La commande `strip` existe sur z/OS et est
+appelÃ©e lors de l'installation, mais elle ne fait rien. Elle est Ã©quivalente Ã 
+la commande `touch`. Cela est dÃ» Ã  la maniÃ¨re dont les symboles de dÃ©bogages
+sont enregistrÃ©s dans les objets gÃ©nÃ©rÃ©s par le compilateur.
 
-Si vous souhaitez compiler Vim sans le code de débogage, exportez la variable
-d'environnement CFLAGS contenant une chaîne vide avant d'appeler le script
+Si vous souhaitez compiler Vim sans le code de dÃ©bogage, exportez la variable
+d'environnement CFLAGS contenant une chaÃ®ne vide avant d'appeler le script
 `configure` : >
 >
 	export CFLAGS=""
@@ -112,10 +112,10 @@ d'environnement CFLAGS contenant une chaîne vide avant d'appeler le script
 COMPILATION SANS X11 ~
 
 NOTE : Utilisez `cc` pour compiler Vim. Le compilateur c89 dispose d'une
-vérification syntaxique plus stricte et ne compilera pas Vim proprement.
+vÃ©rification syntaxique plus stricte et ne compilera pas Vim proprement.
 
-Si vous compilez Vim sans le support de X11, la compilation comme l'édition de
-liens se déroulent sans problème. N'oubliez pas d'exporter _CC_CCMODE=1 avant
+Si vous compilez Vim sans le support de X11, la compilation comme l'Ã©dition de
+liens se dÃ©roulent sans problÃ¨me. N'oubliez pas d'exporter _CC_CCMODE=1 avant
 d'invoquer `configure` et `make`. >
 >
 	$ export _CC_CCMODE=1
@@ -124,8 +124,8 @@ d'invoquer `configure` et `make`. >
 	$ make test
 <
 Remarques sur les tests :
-- Test 11 échouera si `gzip` n'est pas installé.
-- Test 42 échouera, car Vim sur z/OS ne supporte pas la fonctionnalité
+- Test 11 Ã©chouera si `gzip` n'est pas installÃ©.
+- Test 42 Ã©chouera, car Vim sur z/OS ne supporte pas la fonctionnalitÃ©
   multi-octets. (David Moore : "ne supporte pas _encore_ ! :-) Je vais
   voir ce que je peux faire.")
 >
@@ -134,11 +134,11 @@ Remarques sur les tests :
 
 COMPILATION AVEC X11 ~
 
-Il existe deux façons de compiler Vim avec le support de X11. Vous pouvez lier
-statiquement l'exécutable avec les bibliothèques X11 ou lui faire utiliser les
-bibliothèques X11 dynamiques. Dans le premier cas, il a une taille assez
-colossale (environ 13 Mo), alors qu'il est bien plus petit dans le second (à
-peu près 4,5 Mo).
+Il existe deux faÃ§ons de compiler Vim avec le support de X11. Vous pouvez lier
+statiquement l'exÃ©cutable avec les bibliothÃ¨ques X11 ou lui faire utiliser les
+bibliothÃ¨ques X11 dynamiques. Dans le premier cas, il a une taille assez
+colossale (environ 13 Mo), alors qu'il est bien plus petit dans le second (Ã 
+peu prÃ¨s 4,5 Mo).
 
 Voici ce qu'il vous faut faire pour compiler avec Motif :
 
@@ -147,11 +147,11 @@ Voici ce qu'il vous faut faire pour compiler avec Motif :
 	$ configure --with-features=big --enable-gui=motif
 	$ make
 <
-     Vim est alors lié de manière statique aux bibliothèques X11.
+     Vim est alors liÃ© de maniÃ¨re statique aux bibliothÃ¨ques X11.
 
   b) Liaison dynamique :
-     Compilez Vim comme indiqué pour la liaison statique. Puis modifiez le
-     contenu du fichier "auto/link.sed" en ajoutant les lignes suivantes à la
+     Compilez Vim comme indiquÃ© pour la liaison statique. Puis modifiez le
+     contenu du fichier "auto/link.sed" en ajoutant les lignes suivantes Ã  la
      fin : >
 
 	s%-lXm  *%/usr/lib/Xm.x %g
@@ -164,17 +164,17 @@ Voici ce qu'il vous faut faire pour compiler avec Motif :
 	$ rm vim
 	$ make
 <
-     Vim est alors lié aux bibliothèques dynamiques X11.
+     Vim est alors liÃ© aux bibliothÃ¨ques dynamiques X11.
 
 Consultez les fichiers "Makefile" et "link.sh" pour en savoir plus sur
 l'utilisation de "link.sed".
 
 ==============================================================================
-4. Scripts dépendants de ASCII/EBCDIC	*OS390-has-ebcdic* *zOS-has-ebcdic*
+4. Scripts dÃ©pendants de ASCII/EBCDIC	*OS390-has-ebcdic* *zOS-has-ebcdic*
 
-La fonctionnalité "ebcdic" a été ajoutée dans le langage de script interne.
-Grace à elle, vous pouvez corriger les scripts dépendants de l'ASCII de cette
-manière :
+La fonctionnalitÃ© "ebcdic" a Ã©tÃ© ajoutÃ©e dans le langage de script interne.
+Grace Ã  elle, vous pouvez corriger les scripts dÃ©pendants de l'ASCII de cette
+maniÃ¨re :
 >
     if has("ebcdic")
 	let espace = 64
@@ -183,152 +183,152 @@ manière :
     endif
 <
 ==============================================================================
-5. Problèmes xterm			*OS390-xterm* *zOS-xterm*
+5. ProblÃ¨mes xterm			*OS390-xterm* *zOS-xterm*
 
-NOTE : Ce problème est résolu depuis la version 6.1b.
+NOTE : Ce problÃ¨me est rÃ©solu depuis la version 6.1b.
 
-J'ai constaté un problème avec xterm sur z/OS UNIX. Le code du terminal pour
-déplacer le curseur vers la gauche est erroné dans la base de données termlib.
-Enfin, peut-être pas erroné, mais il ne fonctionnait pas avec la coloration
-syntaxique Vim et le déplacement du curseur sur la ligne de commande.
+J'ai constatÃ© un problÃ¨me avec xterm sur z/OS UNIX. Le code du terminal pour
+dÃ©placer le curseur vers la gauche est erronÃ© dans la base de donnÃ©es termlib.
+Enfin, peut-Ãªtre pas erronÃ©, mais il ne fonctionnait pas avec la coloration
+syntaxique Vim et le dÃ©placement du curseur sur la ligne de commande.
 
 Si la coloration est corrompue pendant que vous tapez, mais qu'elle est
-correcte après un rafraîchissement de l'écran avec <C-L> ou si vous ne pouvez
-pas déplacer le curseur vers la gauche à l'aide la touche fléchée sur la ligne
+correcte aprÃ¨s un rafraÃ®chissement de l'Ã©cran avec <C-L> ou si vous ne pouvez
+pas dÃ©placer le curseur vers la gauche Ã  l'aide la touche flÃ©chÃ©e sur la ligne
 de commande, essayez d'ajouter >
 
 	:set t_le=^H
 <
-dans votre fichier ".vimrc". NOTE : "^H" est une unique caractère. Tapez
+dans votre fichier ".vimrc". NOTE : "^H" est une unique caractÃ¨re. Tapez
 <C-V><C-H> pour l'obtenir.
 
 ==============================================================================
-6. Problèmes Motif			*OS390-Motif* *zOS-Motif*
+6. ProblÃ¨mes Motif			*OS390-Motif* *zOS-Motif*
 
-Il semble que lors du portage de la bibliothèque Motif vers zOS, la conversion
-de EBCDIC vers ASCII des raccourcis clavier pour les menus déroulants ait été
-oubliée. Même après une tentative de conversion des menus à la main, les
+Il semble que lors du portage de la bibliothÃ¨que Motif vers zOS, la conversion
+de EBCDIC vers ASCII des raccourcis clavier pour les menus dÃ©roulants ait Ã©tÃ©
+oubliÃ©e. MÃªme aprÃ¨s une tentative de conversion des menus Ã  la main, les
 raccourcis clavier continuaient de ne fonctionner que pour l'ouverture des
-menus (par exemple <Alt-F> pour ouvrir le menu Fichier). Il n'était toujours
-pas possible d'ouvrir les éléments du menu (par exemple <Alt-O> pour ouvrir un
-sélecteur de fichiers).
+menus (par exemple <Alt-F> pour ouvrir le menu Fichier). Il n'Ã©tait toujours
+pas possible d'ouvrir les Ã©lÃ©ments du menu (par exemple <Alt-O> pour ouvrir un
+sÃ©lecteur de fichiers).
 
-Aucune solution n'a été trouvée pour le moment.
+Aucune solution n'a Ã©tÃ© trouvÃ©e pour le moment.
 
 ==============================================================================
 7. Bogues				*OS390-bugs* *zOS-Bugs*
 
-- Vim bloquera à chaque fois qu'une grande quantité de texte sera sélectionnée
-  en mode Visuel par bloc. Il est possible que cela soit dû à un problème de
-  corruption de la mémoire. NOTE : Cela se produit dans la version console
+- Vim bloquera Ã  chaque fois qu'une grande quantitÃ© de texte sera sÃ©lectionnÃ©e
+  en mode Visuel par bloc. Il est possible que cela soit dÃ» Ã  un problÃ¨me de
+  corruption de la mÃ©moire. NOTE : Cela se produit dans la version console
   comme dans la version graphique.
 
 ==============================================================================
 8. Faiblesses connues			*OS390-weaknesses* *zOS-weaknesses*
 
 - Pas de recherche binaire dans les fichiers de marqueurs.
-  Le programme `/bin/sort` trie par valeur ASCII par défaut. Ce programme est
-  utilisé par `ctags` pour ordonner les marqueurs. Il est possible qu'il
-  existe une version de `ctags` effectuant cette tâche correctement, mais il
+  Le programme `/bin/sort` trie par valeur ASCII par dÃ©faut. Ce programme est
+  utilisÃ© par `ctags` pour ordonner les marqueurs. Il est possible qu'il
+  existe une version de `ctags` effectuant cette tÃ¢che correctement, mais il
   n'y a aucune certitude. De fait, il semble que cette restriction soit
   permanente.
 
-- Le support du multi-octets (utf-8) ne fonctionne pas ; il est désactivé lors
+- Le support du multi-octets (utf-8) ne fonctionne pas ; il est dÃ©sactivÃ© lors
   de la compilation. |multibyte|
 
 - L'interface |cscope| ne fonctionne pas avec la version de cscope que nous
   utilisons sur notre mainframe. Nous disposons de la version 15.0b12, qui
-  provoque le blocage de Vim lors de la commande ":cscope add". Je présume que
+  provoque le blocage de Vim lors de la commande ":cscope add". Je prÃ©sume que
   le format binaire de la base cscope n'est celui auquel Vim s'attend. J'ai
-  tenté de porter la dernière version de cscope (15.3) sur z/OS, mais sans
-  succès. Si quelqu'un est intéressé pour tenter la chose, qu'il me tienne au
-  courant s'il obtient des résultats.
+  tentÃ© de porter la derniÃ¨re version de cscope (15.3) sur z/OS, mais sans
+  succÃ¨s. Si quelqu'un est intÃ©ressÃ© pour tenter la chose, qu'il me tienne au
+  courant s'il obtient des rÃ©sultats.
 
-- Pas de support de Glib/GTK. Je ne suis pas parvenu à compiler la Glib sur
+- Pas de support de Glib/GTK. Je ne suis pas parvenu Ã  compiler la Glib sur
   z/OS UNIX. Cela signifie que vous allez devoir vivre sans la jolie barre
   d'outils GTK+.
 
-Non testé :
+Non testÃ© :
     - interface Perl		|perl|
     - saisie de l'hangul	|hangul|
     - chiffrement		|encryption|
     - Langmap			|'langmap'|
     - support de Python		|Python|
-    - mode de droite-à-gauche	|'rightleft'|
+    - mode de droite-Ã -gauche	|'rightleft'|
     - interface SNiFF+		|sniff|
     - interface TCL		|tcl|
     ...
 
-Si vous essayez certaines de ces fonctionnalités et qu'elles fonctionnent,
+Si vous essayez certaines de ces fonctionnalitÃ©s et qu'elles fonctionnent,
 merci de nous le signaler !
 
 ==============================================================================
 9. Modifications			*OS390-changes*	*zOS-changes*
 
-Ce qui suit est un court résumé des modifications apportées au portage de Vim
-sur z/OS. Il ne s'agit pas de la liste exhaustive des changements effectués
+Ce qui suit est un court rÃ©sumÃ© des modifications apportÃ©es au portage de Vim
+sur z/OS. Il ne s'agit pas de la liste exhaustive des changements effectuÃ©s
 sur le code de base.
 
 6.1b (beta) :
-  KS_LE dans "term.c" changé en "\b" au lieu de "\010". Cela corrige les
-  problèmes de corruption de l'écran dans gvim rapportés par Anthony Giorgio.
+  KS_LE dans "term.c" changÃ© en "\b" au lieu de "\010". Cela corrige les
+  problÃ¨mes de corruption de l'Ã©cran dans gvim rapportÃ©s par Anthony Giorgio.
 
-  Anthony Giorgio a mis ce document à jour :
-	- Passage de OS/390 à z/OS aux endroits appropriés. IBM a décidé de
-	  renommer tous ses serveurs et systèmes d'exploitation. z/OS et
-	  OS/390 sont le même produit, mais la numérotation des versions a été
-	  remise à zéro avec le changement de nom (par exemple OS/390 V2R11 ==
+  Anthony Giorgio a mis ce document Ã  jour :
+	- Passage de OS/390 Ã  z/OS aux endroits appropriÃ©s. IBM a dÃ©cidÃ© de
+	  renommer tous ses serveurs et systÃ¨mes d'exploitation. z/OS et
+	  OS/390 sont le mÃªme produit, mais la numÃ©rotation des versions a Ã©tÃ©
+	  remise Ã  zÃ©ro avec le changement de nom (par exemple OS/390 V2R11 ==
 	  z/OS V1R1).
-	- Ajout d'informations à propos de la deuxième édition du Redbook IBM
+	- Ajout d'informations Ã  propos de la deuxiÃ¨me Ã©dition du Redbook IBM
 	  sur l'Open Source.
-	- Déplacement des informations sur le Redbook dans une section
-	  séparée.
+	- DÃ©placement des informations sur le Redbook dans une section
+	  sÃ©parÃ©e.
 	- Diverses retouches et modifications.
-	- Mise à jour du passage sur les tests.
+	- Mise Ã  jour du passage sur les tests.
 
 6.0au :
   Modification du "configure.in".
   Modification de la documentation.
-  Anthony Giorgio a corrigé le problème du signal sonore.
+  Anthony Giorgio a corrigÃ© le problÃ¨me du signal sonore.
 
-  David Moore a trouvé plusieurs problèmes, corrigés par Bram et/ou David dans
+  David Moore a trouvÃ© plusieurs problÃ¨mes, corrigÃ©s par Bram et/ou David dans
   cette version.
 
 6.0q (alpha) :
   Changements mineurs pour nrformats=alpha. Voir |'nrformats'|.
-  Problème avec la touche codée en dur représentant la livre anglaise. Ajout
+  ProblÃ¨me avec la touche codÃ©e en dur reprÃ©sentant la livre anglaise. Ajout
   d'un #define dans "ascii.h".
-  Désactivation du multi-octets pour EBCDIC dans "feature.h".
+  DÃ©sactivation du multi-octets pour EBCDIC dans "feature.h".
 
 6.0f (alpha) :
-  Première compilation de Vim 6 sur z/OS UNIX. Quelques modifications mineures
-  étaient requises.
+  PremiÃ¨re compilation de Vim 6 sur z/OS UNIX. Quelques modifications mineures
+  Ã©taient requises.
 
-  J'ai finalement trouvé pourquoi `make` depuis le répertoire de base ne
+  J'ai finalement trouvÃ© pourquoi `make` depuis le rÃ©pertoire de base ne
   fonctionnait pas (je ne devais pas avoir les yeux en face des trous). Le
   Makefile contenait une liste de cibles dans une seule ligne. Sur tous les
-  autres UNIX, la macro $@ retourne la première cible de cette liste, alors
-  que sur z/OS UNIX, elle retourne la dernière :-(.
+  autres UNIX, la macro $@ retourne la premiÃ¨re cible de cette liste, alors
+  que sur z/OS UNIX, elle retourne la derniÃ¨re :-(.
 
 5.6-390d :
   Mise au propre de quelques bidouillages.
 
 5.6-390c :
-  Les sources ont été greppées et chaque point impliquant un caractère dans
-  une opération a été examiné. J'espère maintenant avoir trouvé tous les
-  endroits concernés par les conversion EBCDIC/ASCII, mais bon...
+  Les sources ont Ã©tÃ© greppÃ©es et chaque point impliquant un caractÃ¨re dans
+  une opÃ©ration a Ã©tÃ© examinÃ©. J'espÃ¨re maintenant avoir trouvÃ© tous les
+  endroits concernÃ©s par les conversion EBCDIC/ASCII, mais bon...
 
   Correction :
     - Message d'avertissement dans do_fixdel().
-    - Conversion des séquences Ctrl-Car en noms symboliques (par exemple ^h en
+    - Conversion des sÃ©quences Ctrl-Car en noms symboliques (par exemple ^h en
       CTRL-H) pour l'aide (":help").
     - Copier/couper/... dans un registre.
     - Commande ":register".
     - Enregistrement des registres dans viminfo.
-    - Tableau d'accès rapide dans findoptions().
-    - Mode Sélection avec "g^H".
-    - tgetstr(), pour obtenir un chaîne décrivant les capacités du terminal,
-      Echap et Ctrl étaient erronés. (Non usité sur OS/390 UNIX)
+    - Tableau d'accÃ¨s rapide dans findoptions().
+    - Mode SÃ©lection avec "g^H".
+    - tgetstr(), pour obtenir un chaÃ®ne dÃ©crivant les capacitÃ©s du terminal,
+      Echap et Ctrl Ã©taient erronÃ©s. (Non usitÃ© sur OS/390 UNIX)
 
   ctags :
     - Ajout du support des trigrammes (used in prolog of system header files)
@@ -340,33 +340,33 @@ sur le code de base.
   Modifications :
     - "configure.in" :
 	- Ajout de tests pour OS/390 UNIX.
-	- Ajout d'options spéciales pour le compilateur et l'éditeur de liens
+	- Ajout d'options spÃ©ciales pour le compilateur et l'Ã©diteur de liens
 	  si la compilation avec X11 est requise.
     - "configure" :
-	- Après sa création par `autoconf`, il est édité à la main pour que le
-	  test de ICEConnectionNumber fonctionne. Ce problème est dû à
+	- AprÃ¨s sa crÃ©ation par `autoconf`, il est Ã©ditÃ© Ã  la main pour que le
+	  test de ICEConnectionNumber fonctionne. Ce problÃ¨me est dÃ» Ã 
 	  `autoconf`. OS/390 UNIX requiert -lX11 pour cela.
     - "Makefile"
-	- Ne pas inclure les répertoires des bibliothèques ("-L...") dans la
+	- Ne pas inclure les rÃ©pertoires des bibliothÃ¨ques ("-L...") dans la
 	  variable ALL_LIBS. Utilisation de notre propre variable ALL_LIB_DIRS
-	  à la place. Un compilateur entièrement conforme à POSIX ne doit pas
-	  accepter des objets/bibliothèques et des options mélangées. À
-	  présent, l'éditeur de liens peut êre appelé de cette manière :
+	  Ã  la place. Un compilateur entiÃ¨rement conforme Ã  POSIX ne doit pas
+	  accepter des objets/bibliothÃ¨ques et des options mÃ©langÃ©es. Ã€
+	  prÃ©sent, l'Ã©diteur de liens peut Ãªre appelÃ© de cette maniÃ¨re :
 		$(CC) $(LDFLAGS) $(ALL_LIB_DIRS) $(OBJ) $(ALL_LIBS)
 
   Corrections :
     - Impossible de saisir des doubles-apostrophes.
-      Dépendance ASCII oubliée lors de la configuration du terminal.
-      En ASCII, 127 est le caractère d'effacement ; en EBCDIC codepage 1024,
+      DÃ©pendance ASCII oubliÃ©e lors de la configuration du terminal.
+      En ASCII, 127 est le caractÃ¨re d'effacement ; en EBCDIC codepage 1024,
       la valeur 127 correspond au double-apostrophe.
-    - ":fixdel" corrigé.
+    - ":fixdel" corrigÃ©.
 
 5.6-390a :
-  Première version alpha pour OS/390 UNIX.
+  PremiÃ¨re version alpha pour OS/390 UNIX.
 
   Ajout :
-    - La fonctionnalité "ebcdic" est ajoutée au langage de script interne.
-      Elle peut être testée en utilisant la fonction has() du langage de
+    - La fonctionnalitÃ© "ebcdic" est ajoutÃ©e au langage de script interne.
+      Elle peut Ãªtre testÃ©e en utilisant la fonction has() du langage de
       script.
 
  vim:tw=78:fo=tcq2:ts=8:ft=help:norl:

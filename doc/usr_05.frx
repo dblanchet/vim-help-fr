@@ -2,103 +2,103 @@
 
 	       MANUEL de l'UTILISATEUR VIM - par Bram Moolenaar
 
-			    Fixer ses préférences
+			    Fixer ses prÃ©fÃ©rences
 
 
-Vim peut être personnalisé afin de fonctionner comme vous le désirez. Ce
-chapitre vous montre comment faire démarrer Vim avec des options fixées à
-différentes valeurs, ajouter des greffons pour étendre les fonctionnalités de
-base, ou encore définir vos propres macros.
+Vim peut Ãªtre personnalisÃ© afin de fonctionner comme vous le dÃ©sirez. Ce
+chapitre vous montre comment faire dÃ©marrer Vim avec des options fixÃ©es Ã 
+diffÃ©rentes valeurs, ajouter des greffons pour Ã©tendre les fonctionnalitÃ©s de
+base, ou encore dÃ©finir vos propres macros.
 
 |05.1|	Le fichier vimrc
-|05.2|	Le fichier vimrc d'exemple expliqué
+|05.2|	Le fichier vimrc d'exemple expliquÃ©
 |05.3|	Mappages simples
 |05.4|	Ajouter un greffon
 |05.5|	Ajouter un fichier d'aide
-|05.6|	La fenêtre option-window
-|05.7|	Options les plus utilisées
+|05.6|	La fenÃªtre option-window
+|05.7|	Options les plus utilisÃ©es
 
   Chapitre suivant : |usr_06.txt|  Utiliser la coloration syntaxique
-Chapitre précédent : |usr_04.txt|  Effectuer des modifications mineures
-Table des matières : |usr_toc.txt|
+Chapitre prÃ©cÃ©dent : |usr_04.txt|  Effectuer des modifications mineures
+Table des matiÃ¨res : |usr_toc.txt|
 
 ==============================================================================
 *05.1*	Le fichier vimrc				    *vimrc-intro*
 
-Vous êtes probablement fatigué de devoir taper des commandes que vous utilisez
-très souvent. Pour pouvoir démarrer avec tous vos paramètres d'options et
-mappages favoris, vous pouvez les écrire dans ce qu'on appelle un fichier
-vimrc. Vim lit ce fichier à chaque fois qu'il est lancé.
+Vous Ãªtes probablement fatiguÃ© de devoir taper des commandes que vous utilisez
+trÃ¨s souvent. Pour pouvoir dÃ©marrer avec tous vos paramÃ¨tres d'options et
+mappages favoris, vous pouvez les Ã©crire dans ce qu'on appelle un fichier
+vimrc. Vim lit ce fichier Ã  chaque fois qu'il est lancÃ©.
 
-Si vous avez du mal à trouver votre fichier vimrc, utilisez cette commande : >
+Si vous avez du mal Ã  trouver votre fichier vimrc, utilisez cette commande : >
 
 	:scriptnames
 
-Un des premiers fichiers de la liste devrait être nommé ".vimrc" ou "_vimrc",
-et être placé dans votre répertoire personnel.
-   Si vous n'avez pas encore de fichier vimrc, voir |vimrc| pour déterminer où
-vous pouvez créer un tel fichier. La commande ":version" mentionne également
+Un des premiers fichiers de la liste devrait Ãªtre nommÃ© ".vimrc" ou "_vimrc",
+et Ãªtre placÃ© dans votre rÃ©pertoire personnel.
+   Si vous n'avez pas encore de fichier vimrc, voir |vimrc| pour dÃ©terminer oÃ¹
+vous pouvez crÃ©er un tel fichier. La commande ":version" mentionne Ã©galement
 le nom du fichier vimrc utilisateur que Vim recherche.
 
-Pour Unix, ce fichier est toujours utilisé :
+Pour Unix, ce fichier est toujours utilisÃ© :
 
 	~/.vimrc ~
 
-Pour MS-DOS et MS-Windows, c'est très souvent un de ceux-là :
+Pour MS-DOS et MS-Windows, c'est trÃ¨s souvent un de ceux-lÃ  :
 
 	$HOME/_vimrc ~
 	$VIM/_vimrc ~
 
-Le fichier vimrc peut contenir toutes les commandes que vous tapez après un
+Le fichier vimrc peut contenir toutes les commandes que vous tapez aprÃ¨s un
 deux-points. Les plus simples sont celles pour fixer des options. Par exemple,
-si vous souhaitez que Vim démarre toujours avec l'option 'incsearch' activée,
-ajoutez cette ligne à votre fichier vimrc : >
+si vous souhaitez que Vim dÃ©marre toujours avec l'option 'incsearch' activÃ©e,
+ajoutez cette ligne Ã  votre fichier vimrc : >
 
 	set incsearch
 
-Elle ne prendra effet que lors du prochain redémarrage de Vim. Plus tard, nous
+Elle ne prendra effet que lors du prochain redÃ©marrage de Vim. Plus tard, nous
 verrons comment faire cela sans quitter Vim.
 
-Ce chapitre donne uniquement les éléments de base. Pour plus d'informations
-sur l'écriture d'un fichier de script Vim : |usr_41.txt|.
+Ce chapitre donne uniquement les Ã©lÃ©ments de base. Pour plus d'informations
+sur l'Ã©criture d'un fichier de script Vim : |usr_41.txt|.
 
 ==============================================================================
-*05.2*	Le fichier vimrc d'exemple expliqué		*vimrc_example.vim*
+*05.2*	Le fichier vimrc d'exemple expliquÃ©		*vimrc_example.vim*
 
-Dans le premier chapitre, il était expliqué comment le fichier vimrc d'exemple
-(inclus dans la distribution Vim) pouvait être utilisé pour faire démarrer Vim
-en mode non compatible Vi (voir |not-compatible|). Le fichier peut être trouvé
+Dans le premier chapitre, il Ã©tait expliquÃ© comment le fichier vimrc d'exemple
+(inclus dans la distribution Vim) pouvait Ãªtre utilisÃ© pour faire dÃ©marrer Vim
+en mode non compatible Vi (voir |not-compatible|). Le fichier peut Ãªtre trouvÃ©
 ici :
 
 	$VIMRUNTIME/vimrc_example.vim ~
 
-Dans cette section, nous expliquerons les diverses commandes utilisées dans ce
-fichier. Cela devrait vous permettre de fixer vos propres préférences. Tout ne
-sera pas expliqué cependant. Utilisez la commande ":help" pour obtenir un
-complément d'information.
+Dans cette section, nous expliquerons les diverses commandes utilisÃ©es dans ce
+fichier. Cela devrait vous permettre de fixer vos propres prÃ©fÃ©rences. Tout ne
+sera pas expliquÃ© cependant. Utilisez la commande ":help" pour obtenir un
+complÃ©ment d'information.
 
 >
 	set nocompatible
 
-Comme déjà vu au premier chapitre, ces manuels supposent que Vim fonctionne de
-façon améliorée, et donc pas totalement compatible Vi. L'option 'compatible'
-doit être désactivée afin que cela soit pris en compte, ce que fait cette
+Comme dÃ©jÃ  vu au premier chapitre, ces manuels supposent que Vim fonctionne de
+faÃ§on amÃ©liorÃ©e, et donc pas totalement compatible Vi. L'option 'compatible'
+doit Ãªtre dÃ©sactivÃ©e afin que cela soit pris en compte, ce que fait cette
 commande.
 
 >
 	set backspace=indent,eol,start
 
-Ceci spécifie où <RetArr> (retour arrière) est autorisé en mode Insertion pour
-supprimer le caractère devant le curseur. Les trois items, séparés par des
-virgules, autorisent Vim à supprimer l'espace blanc au début d'une ligne, à
-supprimer une coupure de ligne et aussi les caractères avant la position d'où
-l'insertion avait débuté.
+Ceci spÃ©cifie oÃ¹ <RetArr> (retour arriÃ¨re) est autorisÃ© en mode Insertion pour
+supprimer le caractÃ¨re devant le curseur. Les trois items, sÃ©parÃ©s par des
+virgules, autorisent Vim Ã  supprimer l'espace blanc au dÃ©but d'une ligne, Ã 
+supprimer une coupure de ligne et aussi les caractÃ¨res avant la position d'oÃ¹
+l'insertion avait dÃ©butÃ©.
 
 >
 	set autoindent
 
-Ceci fait utiliser à Vim l'indentation de la ligne précédente pour une ligne
-nouvellement créée. Ainsi, il y a le même nombre d'espaces blancs avant la
+Ceci fait utiliser Ã  Vim l'indentation de la ligne prÃ©cÃ©dente pour une ligne
+nouvellement crÃ©Ã©e. Ainsi, il y a le mÃªme nombre d'espaces blancs avant la
 nouvelle ligne. Par exemple, quand vous pressez <Entree> en mode Insertion, et
 quand vous utilisez la commande "o" pour ouvrir une nouvelle ligne.
 
@@ -109,40 +109,40 @@ quand vous utilisez la commande "o" pour ouvrir une nouvelle ligne.
 	  set backup
 	endif
 
-Ceci dit à Vim de créer une copie de sauvegarde d'un fichier quand on
-l'écrase. Mais pas sur les systèmes VMS, car les anciennes versions des
-fichiers sont déjà sauvegardées. Le fichier de sauvegarde aura le même nom que
-le fichier original avec '~' suffixé. Voir |07.4|.
+Ceci dit Ã  Vim de crÃ©er une copie de sauvegarde d'un fichier quand on
+l'Ã©crase. Mais pas sur les systÃ¨mes VMS, car les anciennes versions des
+fichiers sont dÃ©jÃ  sauvegardÃ©es. Le fichier de sauvegarde aura le mÃªme nom que
+le fichier original avec '~' suffixÃ©. Voir |07.4|.
 
 >
 	set history=50
 
 Garde la trace de 50 commandes et 50 motifs de recherche dans l'historique.
-Utilisez une autre valeur si vous voulez mémoriser plus ou moins de lignes.
+Utilisez une autre valeur si vous voulez mÃ©moriser plus ou moins de lignes.
 
 >
 	set ruler
 
-Affiche toujours la position courante au sein du fichier (ou « règle »), dans
-le coin en bas à droite de la fenêtre Vim.
+Affiche toujours la position courante au sein du fichier (ou Â« rÃ¨gle Â»), dans
+le coin en bas Ã  droite de la fenÃªtre Vim.
 
 >
 	set showcmd
 
-Affiche une commande incomplète dans le coin en bas à droite de la fenêtre
-Vim, à gauche de la règle. Par exemple, quand vous tapez "2f", Vim est en
-attente d'un caractère à rechercher et "2f" est affiché. Si vous pressez alors
-"w", la commande "2fw" est exécutée et le "2f" affiché est enlevé.
+Affiche une commande incomplÃ¨te dans le coin en bas Ã  droite de la fenÃªtre
+Vim, Ã  gauche de la rÃ¨gle. Par exemple, quand vous tapez "2f", Vim est en
+attente d'un caractÃ¨re Ã  rechercher et "2f" est affichÃ©. Si vous pressez alors
+"w", la commande "2fw" est exÃ©cutÃ©e et le "2f" affichÃ© est enlevÃ©.
 
 	+-------------------------------------------------+
-	|texte dans la fenêtre Vim			  |
+	|texte dans la fenÃªtre Vim			  |
 	|~						  |
 	|~						  |
 	|-- VISUEL --			2f     43,8   17% |
 	+-------------------------------------------------+
 	 ^^^^^^^^^^^^		     ^^^^^^^^^ ^^^^^^^^^^^
 	  'showmode'		     'showcmd'	 'ruler'
-	  mode actif		   cmd en cours   règle
+	  mode actif		   cmd en cours   rÃ¨gle
 
 >
 	set incsearch
@@ -153,21 +153,21 @@ le tapez.
 >
 	map Q gq
 
-Ceci définit un mappage de touches. Ce sujet est abordé dans la section
-suivante. Celui-ci définit la commande "Q" pour effectuer la mise en forme
-accomplie avec l'opérateur "gq". Ce comportement était d'ailleurs celui de Vim
-avant la version 5.0. Désormais, la commande "Q" lance le mode Ex, mais vous
+Ceci dÃ©finit un mappage de touches. Ce sujet est abordÃ© dans la section
+suivante. Celui-ci dÃ©finit la commande "Q" pour effectuer la mise en forme
+accomplie avec l'opÃ©rateur "gq". Ce comportement Ã©tait d'ailleurs celui de Vim
+avant la version 5.0. DÃ©sormais, la commande "Q" lance le mode Ex, mais vous
 ne devriez pas en avoir besoin.
 
 >
 	vnoremap p <Esc>:let current_reg = @"<CR>gvs<C-R>=current_reg<CR><Esc>
 
-Ce mappage est complexe. Son fonctionnement ne sera pas expliqué ici. Son
-action consiste à faire que "p" en mode Visuel écrase le texte sélectionné
-avec le texte précédemment copié. Vous pouvez voir que les mappages peuvent
-être utilisés pour faire des choses assez sophistiquées. Il s'agit pourtant
-toujours d'une séquence de commandes, qui sera exécutée comme si vous l'aviez
-tapée.
+Ce mappage est complexe. Son fonctionnement ne sera pas expliquÃ© ici. Son
+action consiste Ã  faire que "p" en mode Visuel Ã©crase le texte sÃ©lectionnÃ©
+avec le texte prÃ©cÃ©demment copiÃ©. Vous pouvez voir que les mappages peuvent
+Ãªtre utilisÃ©s pour faire des choses assez sophistiquÃ©es. Il s'agit pourtant
+toujours d'une sÃ©quence de commandes, qui sera exÃ©cutÃ©e comme si vous l'aviez
+tapÃ©e.
 
 >
 	if &t_Co > 2 || has("gui_running")
@@ -176,46 +176,46 @@ tapée.
 	endif
 
 Ceci active la coloration syntaxique, mais uniquement si les couleurs sont
-disponibles. Et l'option 'hlsearch' dit à Vim de mettre en surbrillance les
-correspondances du dernier motif de recherche utilisé. La commande "if" est
-très utile pour fixer des options quand certaines conditions sont remplies.
+disponibles. Et l'option 'hlsearch' dit Ã  Vim de mettre en surbrillance les
+correspondances du dernier motif de recherche utilisÃ©. La commande "if" est
+trÃ¨s utile pour fixer des options quand certaines conditions sont remplies.
 Pour en savoir plus sur ce sujet : |usr_41.txt|.
 
 							*vimrc-filetype*  >
 	filetype plugin indent on
 
-Ceci active trois mécanismes intelligents :
+Ceci active trois mÃ©canismes intelligents :
 1. Le typage de fichier.
-   À chaque fois que vous commencez l'édition d'un fichier, Vim essaie de
-   deviner de quel type de fichier il s'agit. Quand vous éditez "main.c", Vim
-   voit l'extension ".c" et en déduit qu'il s'agit du type de fichier "c".
-   Quand vous éditez un fichier qui débute par "#!/bin/sh", Vim reconnaîtra
+   Ã€ chaque fois que vous commencez l'Ã©dition d'un fichier, Vim essaie de
+   deviner de quel type de fichier il s'agit. Quand vous Ã©ditez "main.c", Vim
+   voit l'extension ".c" et en dÃ©duit qu'il s'agit du type de fichier "c".
+   Quand vous Ã©ditez un fichier qui dÃ©bute par "#!/bin/sh", Vim reconnaÃ®tra
    qu'il s'agit du type de fichier "sh".
-   La détection du type de fichier est utilisée pour la coloration syntaxique
-   et les deux autres mécanismes ci-dessous.
+   La dÃ©tection du type de fichier est utilisÃ©e pour la coloration syntaxique
+   et les deux autres mÃ©canismes ci-dessous.
    Voir |filetypes|.
 2. Les greffons de types de fichiers.
-   De nombreux types de fichiers différents sont édités avec des options
-   différentes. Par exemple, Quand vous éditez un fichier "c", il est très
+   De nombreux types de fichiers diffÃ©rents sont Ã©ditÃ©s avec des options
+   diffÃ©rentes. Par exemple, Quand vous Ã©ditez un fichier "c", il est trÃ¨s
    utile d'activer l'option 'cindent' pour indenter automatiquement les
-   lignes. Dans Vim, ces paramétrages d'options couramment utilisées sont
+   lignes. Dans Vim, ces paramÃ©trages d'options couramment utilisÃ©es sont
    inclus dans les greffons de types de fichiers. Vous pouvez aussi ajouter
    vos propres greffons |write-filetype-plugin|.
 3. Les fichiers d'indentation.
-   Quand vous éditez des programmes, l'indentation d'une ligne peut souvent
-   être calculée automatiquement. Vim est livré avec des règles de calcul
+   Quand vous Ã©ditez des programmes, l'indentation d'une ligne peut souvent
+   Ãªtre calculÃ©e automatiquement. Vim est livrÃ© avec des rÃ¨gles de calcul
    d'indentation pour un certain nombre de types de fichiers. Voir
    |:filetype-indent-on| et 'indentexpr'.
 
 >
 	autocmd FileType text setlocal textwidth=78
 
-Ceci fera couper le texte à Vim afin d'éviter que les lignes ne dépassent 78
-caractères. Mais uniquement pour les fichiers de type texte brut. Cette ligne
-se décompose en deux parties :
+Ceci fera couper le texte Ã  Vim afin d'Ã©viter que les lignes ne dÃ©passent 78
+caractÃ¨res. Mais uniquement pour les fichiers de type texte brut. Cette ligne
+se dÃ©compose en deux parties :
 - "autocmd FileType text" est une autocommande : quand le type de fichier est
-  fixé à "text", la commande suivante est automatiquement exécutée.
-- "setlocal textwidth=78" fixe l'option 'textwidth' à 78, mais localement à un
+  fixÃ© Ã  "text", la commande suivante est automatiquement exÃ©cutÃ©e.
+- "setlocal textwidth=78" fixe l'option 'textwidth' Ã  78, mais localement Ã  un
   fichier uniquement.
 
 >
@@ -224,57 +224,57 @@ se décompose en deux parties :
 	    \   exe "normal g`\"" |
 	    \ endif
 
-Une autre autocommande. Celle-ci est utilisée après la lecture de chaque
+Une autre autocommande. Celle-ci est utilisÃ©e aprÃ¨s la lecture de chaque
 fichier. Les commandes complexes qui suivent testent si la marque '" est
-définie et y sautent le cas échéant. La contre-oblique au début d'une ligne
-est utilisée pour continuer la commande de la ligne précédente. Cela évite
-qu'une ligne ne devienne trop longue. Voir |line-continuation|. Ce mécanisme
+dÃ©finie et y sautent le cas Ã©chÃ©ant. La contre-oblique au dÃ©but d'une ligne
+est utilisÃ©e pour continuer la commande de la ligne prÃ©cÃ©dente. Cela Ã©vite
+qu'une ligne ne devienne trop longue. Voir |line-continuation|. Ce mÃ©canisme
 fonctionne uniquement dans un fichier de script Vim, pas quand on tape des
 commandes sur la ligne de commande.
 
 ==============================================================================
 *05.3*	Mappages simples
 
-Un mappage vous permet de lier un ensemble de commandes de Vim à une simple
+Un mappage vous permet de lier un ensemble de commandes de Vim Ã  une simple
 touche. Supposons que vous vouliez encadrer certains mots par une paire
 d'accolades (par exemple, changer "argument" en "{argument}"). Avec la
-commande ":map", vous pouvez assigner cette action à la touche F5. Utilisez
+commande ":map", vous pouvez assigner cette action Ã  la touche F5. Utilisez
 pour cela la commande suivante : >
 
 	:map <F5> i{<Esc>ea}<Esc>
 <
 	NOTE :
 	Quand vous saisissez cette commande, vous devez entrer <F5> en tapant
-	quatre caractères littéraux. De même, <Esc> n'est pas entré en
-	pressant la touche <Echap>, mais en tapant les cinq caractères. Faites
-	attention à cette distinction quand vous lisez le manuel !
+	quatre caractÃ¨res littÃ©raux. De mÃªme, <Esc> n'est pas entrÃ© en
+	pressant la touche <Echap>, mais en tapant les cinq caractÃ¨res. Faites
+	attention Ã  cette distinction quand vous lisez le manuel !
 
 Dissection :
     <F5>	La touche de fonction F5. C'est la touche qui provoque
-		l'exécution de la commande dès qu'elle est pressée.
+		l'exÃ©cution de la commande dÃ¨s qu'elle est pressÃ©e.
 
-    i{<Esc>	Insère le caractère '{'. <Esc> fait quitter le mode Insertion.
+    i{<Esc>	InsÃ¨re le caractÃ¨re '{'. <Esc> fait quitter le mode Insertion.
 
-    e		Va à la fin du mot.
+    e		Va Ã  la fin du mot.
 
     a}<Esc>	Ajoute '}' au mot.
 
-Après l'exécution de ce mappage, tout ce que vous avez à faire pour encadrer
-un mot avec {} est de placer le curseur sur le premier caractère et de presser
+AprÃ¨s l'exÃ©cution de ce mappage, tout ce que vous avez Ã  faire pour encadrer
+un mot avec {} est de placer le curseur sur le premier caractÃ¨re et de presser
 la touche F5.
 
-Dans cet exemple, la touche de déclenchement est une touche simple ; cela peut
-être n'importe quelle chaîne. Mais si vous utilisez une commande Vim
-existante, celle-ci ne sera plus disponible. Mieux vaut éviter cela.
-   La contre-oblique est une touche qui peut être utilisée dans les mappages.
-Comme vous voudrez probablement définir plus d'un mappage, ajoutez-y d'autres
-caractères. Par exemple, essayez le mappage "\p" pour mettre un mot entre
-parenthèses et "\a" pour le mettre entre accolades : >
+Dans cet exemple, la touche de dÃ©clenchement est une touche simple ; cela peut
+Ãªtre n'importe quelle chaÃ®ne. Mais si vous utilisez une commande Vim
+existante, celle-ci ne sera plus disponible. Mieux vaut Ã©viter cela.
+   La contre-oblique est une touche qui peut Ãªtre utilisÃ©e dans les mappages.
+Comme vous voudrez probablement dÃ©finir plus d'un mappage, ajoutez-y d'autres
+caractÃ¨res. Par exemple, essayez le mappage "\p" pour mettre un mot entre
+parenthÃ¨ses et "\a" pour le mettre entre accolades : >
 
 	:map \p i(<Esc>ea)<Esc>
 	:map \a i{<Esc>ea}<Esc>
 
-Vous devez saisir '\' et 'p' l'un après l'autre assez rapidement, afin que Vim
+Vous devez saisir '\' et 'p' l'un aprÃ¨s l'autre assez rapidement, afin que Vim
 reconnaisse qu'il faut les apparier.
 
 La commande ":map" (sans arguments) liste tous vos mappages courants. Au moins
@@ -284,19 +284,19 @@ les mappages.
 ==============================================================================
 *05.4*	Ajouter un greffon				*add-plugin* *plugin*
 
-Les fonctionnalités de Vim peuvent être étendues par l'ajout de greffons. Un
+Les fonctionnalitÃ©s de Vim peuvent Ãªtre Ã©tendues par l'ajout de greffons. Un
 greffon n'est rien d'autre qu'un fichier de script Vim qui est automatiquement
-chargé au démarrage. Vous pouvez en ajouter un très facilement en le déposant
-dans votre répertoire "plugin".
+chargÃ© au dÃ©marrage. Vous pouvez en ajouter un trÃ¨s facilement en le dÃ©posant
+dans votre rÃ©pertoire "plugin".
 
-{uniquement si compilé avec la fonctionnalité |+eval|}
+{uniquement si compilÃ© avec la fonctionnalitÃ© |+eval|}
 
 Il existe deux types de greffons :
 - les greffons globaux : pour tous les fichiers ;
 - les greffons de types de fichiers : uniquement pour les fichiers d'un type
-  spécifique.
+  spÃ©cifique.
 
-Les greffons globaux seront abordés en premier, puis ceux de type de fichier
+Les greffons globaux seront abordÃ©s en premier, puis ceux de type de fichier
 |add-filetype-plugin|.
 
 
@@ -304,35 +304,35 @@ GREFFONS GLOBAUX					*standard-plugin*
 
 Quand vous lancez Vim, il chargera automatiquement un certain nombre de
 greffons globaux. Vous n'avez pas besoin d'intervenir. Ils ajouteront des
-fonctionnalités dont la plupart des utilisateurs souhaitent bénéficier, mais
-qui ont été développées sous forme de scripts Vim plutôt que d'être compilées
+fonctionnalitÃ©s dont la plupart des utilisateurs souhaitent bÃ©nÃ©ficier, mais
+qui ont Ã©tÃ© dÃ©veloppÃ©es sous forme de scripts Vim plutÃ´t que d'Ãªtre compilÃ©es
 avec lui. La liste de ces greffons standards est disponible dans le fichier
 d'aide principal |standard-plugin-list|. Voir aussi |load-plugins|.
 
 							*add-global-plugin*
-Vous pouvez ajouter un greffon global pour définir une fonctionnalité qui
-devra toujours être présente quand vous utiliserez Vim. Il n'y a que deux
-choses à faire pour ajouter un tel greffon :
-1° Se procurer une copie du greffon ;
-2° La déposer dans le bon répertoire.
+Vous pouvez ajouter un greffon global pour dÃ©finir une fonctionnalitÃ© qui
+devra toujours Ãªtre prÃ©sente quand vous utiliserez Vim. Il n'y a que deux
+choses Ã  faire pour ajouter un tel greffon :
+1Â° Se procurer une copie du greffon ;
+2Â° La dÃ©poser dans le bon rÃ©pertoire.
 
 
 SE PROCURER DES GREFFONS GLOBAUX
 
-Où peut-on trouver ces greffons ?
-- Certains sont livrés avec Vim. Vous les trouverez dans le répertoire
-  "$VIMRUNTIME/macros" et ses sous-répertoires.
-- Vous pouvez en télécharger sur Internet, voir "http://vim.sf.net/".
-- Certains sont postés dans les listes de diffusion de Vim |maillist|.
-- Vous pouvez aussi en écrire vous-même, voir |write-plugin|.
+OÃ¹ peut-on trouver ces greffons ?
+- Certains sont livrÃ©s avec Vim. Vous les trouverez dans le rÃ©pertoire
+  "$VIMRUNTIME/macros" et ses sous-rÃ©pertoires.
+- Vous pouvez en tÃ©lÃ©charger sur Internet, voir "http://vim.sf.net/".
+- Certains sont postÃ©s dans les listes de diffusion de Vim |maillist|.
+- Vous pouvez aussi en Ã©crire vous-mÃªme, voir |write-plugin|.
 
 
 UTILISER UN GREFFON GLOBAL
 
-Lisez d'abord le texte dans le greffon lui-même, pour vous informer de
-conditions spéciales. Puis copiez le fichier dans votre répertoire "plugin" :
+Lisez d'abord le texte dans le greffon lui-mÃªme, pour vous informer de
+conditions spÃ©ciales. Puis copiez le fichier dans votre rÃ©pertoire "plugin" :
 
-	SYSTÈME	     RÉPERTOIRE "plugin"  ~
+	SYSTÃˆME	     RÃ‰PERTOIRE "plugin"  ~
 	Unix	     ~/.vim/plugin/
 	PC et OS/2   $HOME/vimfiles/plugin ou $VIM/vimfiles/plugin
 	Amiga	     s:vimfiles/plugin
@@ -340,20 +340,20 @@ conditions spéciales. Puis copiez le fichier dans votre répertoire "plugin" :
 	Mac OS X     ~/.vim/plugin/
 	RISC OS	     Choices:vimfiles.plugin
 
-Exemple pour Unix (en supposant que vous n'ayez pas encore de répertoire
+Exemple pour Unix (en supposant que vous n'ayez pas encore de rÃ©pertoire
 "plugin") : >
 
 	mkdir ~/.vim
 	mkdir ~/.vim/plugin
 	cp /usr/local/share/vim/vim60/macros/justify.vim ~/.vim/plugin
 
-Et c'est tout ! Vous pouvez à présent utiliser les commandes définies dans le
+Et c'est tout ! Vous pouvez Ã  prÃ©sent utiliser les commandes dÃ©finies dans le
 greffon "justify.vim" pour justifier votre texte.
 
 
 GREFFONS DE TYPE DE FICHIER		*add-filetype-plugin* *ftplugins*
 
-La distribution Vim est livrée avec de nombreux greffons pour différents types
+La distribution Vim est livrÃ©e avec de nombreux greffons pour diffÃ©rents types
 de fichiers. Vous pouvez les activer avec la commande : >
 
 	:filetype plugin on
@@ -362,15 +362,15 @@ Et c'est tout ! Voir |vimrc-filetype|.
 
 S'il vous manque un greffon pour un type de fichier que vous utilisez, ou que
 vous en trouvez un meilleur, vous pouvez l'ajouter. Il n'y a que deux choses
-à faire pour ajouter un greffon de type de fichier :
-1° Se procurer une copie du greffon ;
-2° La déposer dans le bon répertoire.
+Ã  faire pour ajouter un greffon de type de fichier :
+1Â° Se procurer une copie du greffon ;
+2Â° La dÃ©poser dans le bon rÃ©pertoire.
 
 
 SE PROCURER DES GREFFONS DE TYPE DE FICHIER
 
-Vous pouvez les trouver aux mêmes endroits que les greffons globaux. Vérifiez
-qu'un type de fichier est bien mentionné, afin de pouvoir faire la distinction
+Vous pouvez les trouver aux mÃªmes endroits que les greffons globaux. VÃ©rifiez
+qu'un type de fichier est bien mentionnÃ©, afin de pouvoir faire la distinction
 entre un greffon global et un de type de fichier. Les scripts dans
 "$VIMRUNTIME/macros" sont globaux, les greffons de types de fichiers sont dans
 "$VIMRUNTIME/ftplugin".
@@ -378,97 +378,97 @@ entre un greffon global et un de type de fichier. Les scripts dans
 
 UTILISER UN GREFFON DE TYPE DE FICHIER			*ftplugin-name*
 
-Vous pouvez ajouter un greffon de type de fichier en le déposant dans le bon
-répertoire. Le nom de ce répertoire est le même que celui mentionné plus haut
-pour les répertoires globaux, mais en remplaçant "plugin" par "ftplugin".
-   Supposons que vous ayez trouvé un greffon pour le type de fichier
-"travail" et que vous soyez sous Unix. Pour déplacer ce fichier dans votre
-répertoire "ftplugin" : >
+Vous pouvez ajouter un greffon de type de fichier en le dÃ©posant dans le bon
+rÃ©pertoire. Le nom de ce rÃ©pertoire est le mÃªme que celui mentionnÃ© plus haut
+pour les rÃ©pertoires globaux, mais en remplaÃ§ant "plugin" par "ftplugin".
+   Supposons que vous ayez trouvÃ© un greffon pour le type de fichier
+"travail" et que vous soyez sous Unix. Pour dÃ©placer ce fichier dans votre
+rÃ©pertoire "ftplugin" : >
 
 	mv fichier ~/.vim/ftplugin/travail.vim
 
-Si ce fichier existe déjà, c'est que vous disposez déjà d'un greffon pour
-"travail". Vérifiez alors que le greffon existant ne rentre pas en conflit
-avec celui que vous ajoutez. Le cas échéant, vous pouvez renommer votre
+Si ce fichier existe dÃ©jÃ , c'est que vous disposez dÃ©jÃ  d'un greffon pour
+"travail". VÃ©rifiez alors que le greffon existant ne rentre pas en conflit
+avec celui que vous ajoutez. Le cas Ã©chÃ©ant, vous pouvez renommer votre
 nouveau greffon : >
 
 	mv fichier ~/.vim/ftplugin/travail_bis.vim
 
-Le souligné ('_') est utilisé pour séparer le nom du type de fichier du reste,
-qui peut correspondre à n'importe quoi. Si vous aviez utilisé
-"autretravail.vim" cela n'aurait pas marché, cela aurait été chargé pour le
+Le soulignÃ© ('_') est utilisÃ© pour sÃ©parer le nom du type de fichier du reste,
+qui peut correspondre Ã  n'importe quoi. Si vous aviez utilisÃ©
+"autretravail.vim" cela n'aurait pas marchÃ©, cela aurait Ã©tÃ© chargÃ© pour le
 type de fichier "autretravail".
 
 Sous MS-DOS, vous ne pouvez pas utiliser des noms de fichiers longs. Vous
-rencontreriez donc des problèmes si vous utilisiez un deuxième greffon et que
-le nom du type de fichier dépassait six caractères. Vous pouvez utiliser un
-répertoire supplémentaire pour surmonter cela : >
+rencontreriez donc des problÃ¨mes si vous utilisiez un deuxiÃ¨me greffon et que
+le nom du type de fichier dÃ©passait six caractÃ¨res. Vous pouvez utiliser un
+rÃ©pertoire supplÃ©mentaire pour surmonter cela : >
 
 	mkdir $VIM/vimfiles/ftplugin/fortran
 	copy fichier $VIM/vimfiles/ftplugin/fortran/bis.vim
 
-Les noms génériques utilisés pour les greffons de types de fichiers sont :
+Les noms gÃ©nÃ©riques utilisÃ©s pour les greffons de types de fichiers sont :
 
 	ftplugin/<typefich>.vim ~
 	ftplugin/<typefich>_<nom>.vim ~
 	ftplugin/<typefich>/<nom>.vim ~
 
-Où "<nom>" désigne n'importe quelle chaîne que vous voulez.
+OÃ¹ "<nom>" dÃ©signe n'importe quelle chaÃ®ne que vous voulez.
    Exemples pour le type de fichier "travail" sous Unix :
 
 	~/.vim/ftplugin/travail.vim ~
 	~/.vim/ftplugin/travail_def.vim ~
 	~/.vim/ftplugin/travail/mappages.vim ~
 
-La partie <typefich> désigne le nom du type de fichier pour lequel le greffon
-est utilisé. Seuls les fichiers de ce type utiliseront les paramètres de ce
+La partie <typefich> dÃ©signe le nom du type de fichier pour lequel le greffon
+est utilisÃ©. Seuls les fichiers de ce type utiliseront les paramÃ¨tres de ce
 greffon. La partie <nom> du fichier de greffon n'est pas significative, elle
-sert à pouvoir disposer de plusieurs greffons pour le même type de fichier.
+sert Ã  pouvoir disposer de plusieurs greffons pour le mÃªme type de fichier.
 NOTE : Le nom du greffon doit toujours se terminer par ".vim".
 
 
-À lire aussi :
+Ã€ lire aussi :
 |filetype-plugins|	Documentation sur les greffons de types de fichiers
-			et informations pour éviter que le mappages ne posent
-			problème.
-|load-plugins|		Chargement des greffons globaux au démarrage.
-|ftplugin-overrule|	Recouvrir les spécifications d'un greffon global.
-|write-plugin|		Comment écrire un greffon ?
+			et informations pour Ã©viter que le mappages ne posent
+			problÃ¨me.
+|load-plugins|		Chargement des greffons globaux au dÃ©marrage.
+|ftplugin-overrule|	Recouvrir les spÃ©cifications d'un greffon global.
+|write-plugin|		Comment Ã©crire un greffon ?
 |plugin-details|	Plus d'informations sur l'utilisation des greffons, ou
 			quand votre greffon ne fonctionne pas.
 
 ==============================================================================
 *05.5*	Ajouter un fichier d'aide	*add-local-help* *matchit-install*
 
-Avec un peu de chance, le greffon que vous venez d'installer était distribué
+Avec un peu de chance, le greffon que vous venez d'installer Ã©tait distribuÃ©
 avec un fichier d'aide. Nous allons voir comment installer ce fichier d'aide,
 afin que vous puissiez trouver rapidement de l'aide pour votre nouveau
 greffon.
    Prenons comme exemple le greffon "matchit.vim" (il est inclus dans la
 distribution Vim). Ce greffon permet d'utiliser la commande "%" pour sauter
-aux balises HTML appariées, aux if/else/endif dans les scripts Vim, etc. Il
-est très utile, bien qu'il ne soit pas compatible avec les versions
-antérieures (c'est d'ailleurs pour cela qu'il n'est pas activé par défaut).
+aux balises HTML appariÃ©es, aux if/else/endif dans les scripts Vim, etc. Il
+est trÃ¨s utile, bien qu'il ne soit pas compatible avec les versions
+antÃ©rieures (c'est d'ailleurs pour cela qu'il n'est pas activÃ© par dÃ©faut).
    Ce greffon dispose de sa propre documentation : "matchit.txt". Mais copions
-tout d'abord le greffon dans le bon répertoire. Cette fois-ci, nous le ferons
+tout d'abord le greffon dans le bon rÃ©pertoire. Cette fois-ci, nous le ferons
 depuis Vim, de telle sorte qu'on pourra utiliser $VIMRUNTIME. (Vous pouvez
-sauter les commandes `mkdir` si vous disposez déjà des répertoires.) >
+sauter les commandes `mkdir` si vous disposez dÃ©jÃ  des rÃ©pertoires.) >
 
 	:!mkdir ~/.vim
 	:!mkdir ~/.vim/plugin
 	:!cp $VIMRUNTIME/macros/matchit.vim ~/.vim/plugin
 
-Créons maintenant un répertoire "doc" dans un des répertoires de
+CrÃ©ons maintenant un rÃ©pertoire "doc" dans un des rÃ©pertoires de
 'runtimepath' : >
 
 	:!mkdir ~/.vim/doc
 
-Copions le fichier d'aide dans le répertoire "doc" : >
+Copions le fichier d'aide dans le rÃ©pertoire "doc" : >
 
 	:!cp $VIMRUNTIME/macros/matchit.txt ~/.vim/doc
 
-À présent, utilisons le mécanisme qui vous permettra de sauter vers les sujets
-de votre nouveau fichier d'aide : générons un fichier de marqueurs local avec
+Ã€ prÃ©sent, utilisons le mÃ©canisme qui vous permettra de sauter vers les sujets
+de votre nouveau fichier d'aide : gÃ©nÃ©rons un fichier de marqueurs local avec
 la commande |:helptags| : >
 
 	:helptags ~/.vim/doc
@@ -483,28 +483,28 @@ d'ajouter.
 
 	:help local-additions
 
-Les lignes de titre des fichiers d'aide locaux sont automagiquement ajoutés à
-cette section. Vous pouvez ainsi voir quels fichiers d'aide locaux ont été
-ajoutés et sauter vers eux grâce aux marqueurs.
+Les lignes de titre des fichiers d'aide locaux sont automagiquement ajoutÃ©s Ã 
+cette section. Vous pouvez ainsi voir quels fichiers d'aide locaux ont Ã©tÃ©
+ajoutÃ©s et sauter vers eux grÃ¢ce aux marqueurs.
 
-Pour écrire un fichier d'aide local, voir |write-local-help|.
+Pour Ã©crire un fichier d'aide local, voir |write-local-help|.
 
 ==============================================================================
-*05.6*	La fenêtre option-window
+*05.6*	La fenÃªtre option-window
 
-Si vous êtes à la recherche d'une option qui fasse ce que vous voulez, vous
-pouvez consulter la documentation à |options|. Vous pouvez aussi utiliser
+Si vous Ãªtes Ã  la recherche d'une option qui fasse ce que vous voulez, vous
+pouvez consulter la documentation Ã  |options|. Vous pouvez aussi utiliser
 cette commande : >
 
 	:options
 
-Ceci ouvre une nouvelle fenêtre, avec une liste d'options données avec une
-explication d'une seule ligne. Les options sont groupées par sujets. Amenez le
-curseur sur un sujet et pressez <Entree> pour y sauter. Pressez <Entree> à
-nouveau pour revenir en arrière. Ou utilisez CTRL-O.
+Ceci ouvre une nouvelle fenÃªtre, avec une liste d'options donnÃ©es avec une
+explication d'une seule ligne. Les options sont groupÃ©es par sujets. Amenez le
+curseur sur un sujet et pressez <Entree> pour y sauter. Pressez <Entree> Ã 
+nouveau pour revenir en arriÃ¨re. Ou utilisez CTRL-O.
 
 Vous pouvez changer la valeur d'une option. Par exemple, sautez vers le sujet
-"displaying text" XXX. Puis faites descendre le curseur jusqu'à cette ligne :
+"displaying text" XXX. Puis faites descendre le curseur jusqu'Ã  cette ligne :
 
 	set wrap	nowrap ~
 
@@ -512,153 +512,153 @@ Quand vous tapez <Entree>, la ligne devient :
 
 	set nowrap	wrap ~
 
-L'option a été désactivée.
+L'option a Ã©tÃ© dÃ©sactivÃ©e.
 
 Juste au-dessus de cette ligne, vous trouverez une courte description de
 l'option 'wrap'. Amenez le curseur sur cette ligne. Tapez maintenant <Entree>
-et vous sauterez vers l'aide complète de l'option 'wrap'. Utilisez CTRL-O pour
-revenir en arrière.
+et vous sauterez vers l'aide complÃ¨te de l'option 'wrap'. Utilisez CTRL-O pour
+revenir en arriÃ¨re.
 
-Pour les options qui prennent un nombre ou une chaîne en argument, vous pouvez
-éditer la valeur ; puis presser <Entree> pour appliquer la nouvelle valeur.
-Par exemple, déplacez le curseur quelques lignes plus haut jusqu'à cette
+Pour les options qui prennent un nombre ou une chaÃ®ne en argument, vous pouvez
+Ã©diter la valeur ; puis presser <Entree> pour appliquer la nouvelle valeur.
+Par exemple, dÃ©placez le curseur quelques lignes plus haut jusqu'Ã  cette
 ligne :
 
 	set so=0 ~
 
-Placez le curseur sur le zéro avec "$". Changez-le en cinq avec "r5". Puis
-pressez <Entree> pour appliquer la nouvelle valeur. En vous déplaçant un peu,
-vous remarquerez que le texte commence à défiler avant que n'atteignez le bord
-de la fenêtre. C'est ce que fait l'option 'scrolloff', elle donne une position
-depuis le bord de la fenêtre où le défilement commence.
+Placez le curseur sur le zÃ©ro avec "$". Changez-le en cinq avec "r5". Puis
+pressez <Entree> pour appliquer la nouvelle valeur. En vous dÃ©plaÃ§ant un peu,
+vous remarquerez que le texte commence Ã  dÃ©filer avant que n'atteignez le bord
+de la fenÃªtre. C'est ce que fait l'option 'scrolloff', elle donne une position
+depuis le bord de la fenÃªtre oÃ¹ le dÃ©filement commence.
 
 ==============================================================================
-*05.7*	Options les plus utilisées
+*05.7*	Options les plus utilisÃ©es
 
-Il existe une vraie pléiade d'options. Vous n'en utiliserez qu'une petite
-partie. Certaines des plus utiles sont mentionnées ici. N'oubliez pas que vous
+Il existe une vraie plÃ©iade d'options. Vous n'en utiliserez qu'une petite
+partie. Certaines des plus utiles sont mentionnÃ©es ici. N'oubliez pas que vous
 pouvez obtenir plus d'aide sur ces options avec la commande ":help", en
 indiquant le nom de l'option entre apostrophes. Par exemple : >
 
 	:help 'wrap'
 
-Au cas où vous auriez donné une valeur aberrante à une option, vous pourrez
-toujours revenir à sa valeur par défaut en suffixant une esperluette ('&') au
+Au cas oÃ¹ vous auriez donnÃ© une valeur aberrante Ã  une option, vous pourrez
+toujours revenir Ã  sa valeur par dÃ©faut en suffixant une esperluette ('&') au
 nom de l'option. Exemple : >
 
 	:set iskeyword&
 
 
-LIGNES NON ENROULÉES
+LIGNES NON ENROULÃ‰ES
 
 Normalement, Vim enroule les lignes longues, afin que vous puissiez voir la
-totalité du texte. Mais il est parfois préférable de laisser le texte
-continuer à droite de la fenêtre. Vous devrez alors faire défiler le texte de
-gauche à droite pour voir la ligne entière. Désactivez l'enroulement avec
+totalitÃ© du texte. Mais il est parfois prÃ©fÃ©rable de laisser le texte
+continuer Ã  droite de la fenÃªtre. Vous devrez alors faire dÃ©filer le texte de
+gauche Ã  droite pour voir la ligne entiÃ¨re. DÃ©sactivez l'enroulement avec
 cette commande : >
 
 	:set nowrap
 
-Vim fera défiler automatiquement le texte quand vous voudrez vous déplacer sur
-des parties qui ne sont pas encore affichées. Pour garder dix caractères de
+Vim fera dÃ©filer automatiquement le texte quand vous voudrez vous dÃ©placer sur
+des parties qui ne sont pas encore affichÃ©es. Pour garder dix caractÃ¨res de
 contexte, faites ceci : >
 
 	:set sidescroll=10
 
-Le texte dans le fichier n'est pas modifié, seule la façon dont il est affiché
+Le texte dans le fichier n'est pas modifiÃ©, seule la faÃ§on dont il est affichÃ©
 changera.
 
 
-PASSER LIBREMENT D'UNE LIGNE À L'AUTRE
+PASSER LIBREMENT D'UNE LIGNE Ã€ L'AUTRE
 
-La plupart des commandes de déplacement s'arrêteront au début et à la fin
-d'une ligne. Vous pouvez changer cela grâce à l'option 'whichwrap'. Voici sa
-valeur par défaut : >
+La plupart des commandes de dÃ©placement s'arrÃªteront au dÃ©but et Ã  la fin
+d'une ligne. Vous pouvez changer cela grÃ¢ce Ã  l'option 'whichwrap'. Voici sa
+valeur par dÃ©faut : >
 
 	:set whichwrap=b,s
 
-Ceci autorise la touche <RetArr>, quand elle est pressée sur la première
-position d'une ligne, à remonter le curseur à la fin de la ligne précédente.
-Et la touche <Espace> à descendre de la fin d'une ligne au début de la ligne
+Ceci autorise la touche <RetArr>, quand elle est pressÃ©e sur la premiÃ¨re
+position d'une ligne, Ã  remonter le curseur Ã  la fin de la ligne prÃ©cÃ©dente.
+Et la touche <Espace> Ã  descendre de la fin d'une ligne au dÃ©but de la ligne
 suivante.
 
-Pour autoriser de la même façon les touches fléchées <Gauche> et <Droite>,
+Pour autoriser de la mÃªme faÃ§on les touches flÃ©chÃ©es <Gauche> et <Droite>,
 utilisez cette commande : >
 
 	:set whichwrap=b,s,<,>
 
 Ceci concerne exclusivement le mode Normal. Pour que <Gauche> et <Droite>
-fassent la même chose en mode Insertion : >
+fassent la mÃªme chose en mode Insertion : >
 
 	:set whichwrap=b,s,<,>,[,]
 
-Il existe quelques drapeaux supplémentaires qui peuvent être ajoutés, voir
+Il existe quelques drapeaux supplÃ©mentaires qui peuvent Ãªtre ajoutÃ©s, voir
 'whichwrap'.
 
 
 VISUALISER LES TABULATIONS
 
-Quand il y a des tabulations dans un fichier, vous ne pouvez pas voir où elles
+Quand il y a des tabulations dans un fichier, vous ne pouvez pas voir oÃ¹ elles
 sont. Pour les rendre visibles : >
 
 	:set list
 
-Maintenant, chaque tabulation est rendue par "^I". Et un '$' est affiché à la
-fin de chaque ligne, pour que vous puissiez repérer les espaces finaux qui ne
+Maintenant, chaque tabulation est rendue par "^I". Et un '$' est affichÃ© Ã  la
+fin de chaque ligne, pour que vous puissiez repÃ©rer les espaces finaux qui ne
 seraient pas visibles sans cela.
-   L'inconvénient, c'est que le résultat est plutôt laid quand il y a de
+   L'inconvÃ©nient, c'est que le rÃ©sultat est plutÃ´t laid quand il y a de
 nombreuses tabulations dans un fichier. Si vous avez un terminal couleur, ou
 que vous utilisez l'IHM graphique, Vim peut afficher les espaces et les
-tabulations comme des caractères en surbrillance. Utilisez l'option
+tabulations comme des caractÃ¨res en surbrillance. Utilisez l'option
 'listchars' : >
 
 	:set listchars=tab:>-,trail:-
 
 Maintenant, chaque tabulation est rendue par ">---" XXX, et chaque espace final
-par "-". Le résultat est plus probant, non ?
+par "-". Le rÃ©sultat est plus probant, non ?
 
 
-MOTS-CLÉS
+MOTS-CLÃ‰S
 
-L'option 'iskeyword' spécifie les caractères pouvant apparaître dans un mot : >
+L'option 'iskeyword' spÃ©cifie les caractÃ¨res pouvant apparaÃ®tre dans un mot : >
 
 	:set iskeyword
 <	  iskeyword=@,48-57,_,192-255 ~
 
-Le '@' est mis pour tous les caractères alphabétiques. "48-57" couvre tous
-les caractères de la plage ASCII 48 à 57 (ce sont les nombres de 0 à 9), et
-"192-255" couvre les caractères latins imprimables.
-   Parfois, vous voudrez inclure un tiret dans les mots-clés, afin que les
-commandes comme "w" considèrent « avant-garde » comme un seul mot. Vous pouvez
-procéder ainsi : >
+Le '@' est mis pour tous les caractÃ¨res alphabÃ©tiques. "48-57" couvre tous
+les caractÃ¨res de la plage ASCII 48 Ã  57 (ce sont les nombres de 0 Ã  9), et
+"192-255" couvre les caractÃ¨res latins imprimables.
+   Parfois, vous voudrez inclure un tiret dans les mots-clÃ©s, afin que les
+commandes comme "w" considÃ¨rent Â« avant-garde Â» comme un seul mot. Vous pouvez
+procÃ©der ainsi : >
 
 	:set iskeyword+=-
 	:set iskeyword
 <	  iskeyword=@,48-57,_,192-255,- ~
 
-Si vous observez la nouvelle valeur, vous verrez que Vim a ajouté une virgule
+Si vous observez la nouvelle valeur, vous verrez que Vim a ajoutÃ© une virgule
 pour vous.
-   Pour supprimer un caractère, utilisez "-=". Par exemple, pour supprimer le
-souligné : >
+   Pour supprimer un caractÃ¨re, utilisez "-=". Par exemple, pour supprimer le
+soulignÃ© : >
 
 	:set iskeyword-=_
 	:set iskeyword
 <	  iskeyword=@,48-57,192-255,- ~
 
-Cette fois, une virgule est automatiquement supprimée.
+Cette fois, une virgule est automatiquement supprimÃ©e.
 
 
 PLACE POUR LES MESSAGES
 
-Au lancement de Vim, il y a une ligne au bas de l'écran qui est utilisée pour
-les messages. Quand un message est long, soit il est tronqué (vous n'en verrez
-qu'une partie), soit il défile et vous devrez presser <Entree> pour continuer.
-   Vous pouvez fixer l'option 'cmdheight' au nombre de lignes à utiliser pour
+Au lancement de Vim, il y a une ligne au bas de l'Ã©cran qui est utilisÃ©e pour
+les messages. Quand un message est long, soit il est tronquÃ© (vous n'en verrez
+qu'une partie), soit il dÃ©file et vous devrez presser <Entree> pour continuer.
+   Vous pouvez fixer l'option 'cmdheight' au nombre de lignes Ã  utiliser pour
 l'affichage des messages. Exemple : >
 
 	:set cmdheight=3
 
-Ceci implique qu'il y aura moins de place pour l'édition du texte. Il faut
+Ceci implique qu'il y aura moins de place pour l'Ã©dition du texte. Il faut
 trouver le bon compromis.
 
 ==============================================================================

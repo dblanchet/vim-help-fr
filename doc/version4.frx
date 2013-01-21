@@ -1,109 +1,109 @@
 *version4.txt*  Pour Vim version 6.2.
 
 
-		 MANUEL de RÉFÉRENCE VIM - par Bram Moolenaar
+		 MANUEL de RÃ‰FÃ‰RENCE VIM - par Bram Moolenaar
 
 
-Ce document donne la liste des différences incompatibles entre Vim 3.0 et Vim
-4.0. Bien que seule la version 4.0 soit ici mentionnée, ce fichier couvre
-également les versions 4.1, 4.2, etc.
+Ce document donne la liste des diffÃ©rences incompatibles entre Vim 3.0 et Vim
+4.0. Bien que seule la version 4.0 soit ici mentionnÃ©e, ce fichier couvre
+Ã©galement les versions 4.1, 4.2, etc.
 
-Ce fichier est important pour toute personne se mettant à niveau depuis la
-version 3.0. Lisez-le attentivement pour éviter toute mauvaise surprise.
+Ce fichier est important pour toute personne se mettant Ã  niveau depuis la
+version 3.0. Lisez-le attentivement pour Ã©viter toute mauvaise surprise.
 
-Valeur par défaut de l'option 'backup' modifiée		|backup-changed|
-Extension des fichiers de sauvegarde modifiée		|backup-extension|
-Structure du fichier d'échange modifiée			|swapfile-changed|
-Argument "-w scriptS" modifié				|scriptout-changed|
+Valeur par dÃ©faut de l'option 'backup' modifiÃ©e		|backup-changed|
+Extension des fichiers de sauvegarde modifiÃ©e		|backup-extension|
+Structure du fichier d'Ã©change modifiÃ©e			|swapfile-changed|
+Argument "-w scriptS" modifiÃ©				|scriptout-changed|
 Touches RetArr et Suppr					|backspace-delete|
-Caractère d'échappement pour '|' modifié		|escape-bar|
-Codes clavier modifiés					|key-codes-changed|
-Options de terminal modifiées				|termcap-changed|
-Option 'errorformat' modifiée				|errorformat-changed|
-Option 'graphic' supprimée				|graphic-option-gone|
-Option 'yankendofline' supprimée			|ye-option-gone|
-Valeurs par défaut de 'icon' et 'title' modifiées	|icon-changed|
-Option 'highlight' modifiée				|highlight-changed|
-Noms courts de 'tildeop' et 'weirdinvert' changées      |short-name-changed|
+CaractÃ¨re d'Ã©chappement pour '|' modifiÃ©		|escape-bar|
+Codes clavier modifiÃ©s					|key-codes-changed|
+Options de terminal modifiÃ©es				|termcap-changed|
+Option 'errorformat' modifiÃ©e				|errorformat-changed|
+Option 'graphic' supprimÃ©e				|graphic-option-gone|
+Option 'yankendofline' supprimÃ©e			|ye-option-gone|
+Valeurs par dÃ©faut de 'icon' et 'title' modifiÃ©es	|icon-changed|
+Option 'highlight' modifiÃ©e				|highlight-changed|
+Noms courts de 'tildeop' et 'weirdinvert' changÃ©es      |short-name-changed|
 Utilisation de "v", "V" et CTRL-V en mode Visuel	|use-visual-cmds|
-CTRL-B supprimé en mode Insertion			|toggle-revins|
+CTRL-B supprimÃ© en mode Insertion			|toggle-revins|
 
 
-VALEUR PAR DÉFAUT DE L'OPTION 'backup' MODIFIÉE		*backup-changed*
+VALEUR PAR DÃ‰FAUT DE L'OPTION 'backup' MODIFIÃ‰E		*backup-changed*
 
-Jusque là, l'option 'backup' était activée par défaut. Cela avait pour
-conséquence la création d'un fichier de sauvegarde lors de l'écrasement du
+Jusque lÃ , l'option 'backup' Ã©tait activÃ©e par dÃ©faut. Cela avait pour
+consÃ©quence la crÃ©ation d'un fichier de sauvegarde lors de l'Ã©crasement du
 fichier original.
 
-'backup' est à présent désactivé par défaut. Dès que le fichier est écrit avec
-succès, le fichier de sauvegarde est effacé. Si vous souhaitez conserver le
+'backup' est Ã  prÃ©sent dÃ©sactivÃ© par dÃ©faut. DÃ¨s que le fichier est Ã©crit avec
+succÃ¨s, le fichier de sauvegarde est effacÃ©. Si vous souhaitez conserver le
 fichier de sauvegarde, activez 'backup' dans votre vimrc. La raison de ce
 changement est que de nombreuses personnes se sont plaintes que la persistance
-des fichiers de sauvegarde n'était pas compatible avec Vi. |'backup'|
+des fichiers de sauvegarde n'Ã©tait pas compatible avec Vi. |'backup'|
 
 
-EXTENSION DES FICHIERS DE SAUVEGARDE MODIFIÉE		*backup-extension*
+EXTENSION DES FICHIERS DE SAUVEGARDE MODIFIÃ‰E		*backup-extension*
 
-L'extension des fichiers de sauvegarde était ".bak". Mais comme d'autres
-programmes utilisent également cette extension et que certains utilisateurs
-font des copies possédant cette extension, elle a été changée pour la moins
-courante "~". La concision de cette extension constitue également un avantage,
-particulièrement pour qui travaille sur un système avec des noms de fichiers
+L'extension des fichiers de sauvegarde Ã©tait ".bak". Mais comme d'autres
+programmes utilisent Ã©galement cette extension et que certains utilisateurs
+font des copies possÃ©dant cette extension, elle a Ã©tÃ© changÃ©e pour la moins
+courante "~". La concision de cette extension constitue Ã©galement un avantage,
+particuliÃ¨rement pour qui travaille sur un systÃ¨me avec des noms de fichiers
 courts. Par exemple, sur MS-DOS, les fichiers de sauvegarde de "fichlong.c"
-et "fichlong.h" seraient devenus tout deux "fichlong.bak" ; à présent, ils
+et "fichlong.h" seraient devenus tout deux "fichlong.bak" ; Ã  prÃ©sent, ils
 deviennent "fichlong.c~" et "fichlong.h~".
 
-Si vous préférez utiliser ".bak", vous pouvez fixer l'option |'backupext'| : >
+Si vous prÃ©fÃ©rez utiliser ".bak", vous pouvez fixer l'option |'backupext'| : >
 	:set bex=.bak
 
 
-STRUCTURE DU FICHIER D'ÉCHANGE MODIFIÉE			*swapfile-changed*
+STRUCTURE DU FICHIER D'Ã‰CHANGE MODIFIÃ‰E			*swapfile-changed*
 
-Le contenu du fichier d'échange a été étendu avec plusieurs paramètres. Vim y
+Le contenu du fichier d'Ã©change a Ã©tÃ© Ã©tendu avec plusieurs paramÃ¨tres. Vim y
 enregistre le nom de l'utilisateur et d'autres informations relatives au
-fichier édité pour faciliter le recouvrement et pour permettre de déterminer
-la provenance du fichier d'échange. La première partie de ce fichier n'est pas
-compréhensible par une machine ayant un ordre des octets différent ou une
-taille différente pour les entiers (sizeof(int)). Si vous tentez de recouvrir
+fichier Ã©ditÃ© pour faciliter le recouvrement et pour permettre de dÃ©terminer
+la provenance du fichier d'Ã©change. La premiÃ¨re partie de ce fichier n'est pas
+comprÃ©hensible par une machine ayant un ordre des octets diffÃ©rent ou une
+taille diffÃ©rente pour les entiers (sizeof(int)). Si vous tentez de recouvrir
 un fichier sur une telle machine, vous obtiendrez un message d'erreur vous
 indiquant que ce n'est pas possible.
 
-À cause de cette modification, les fichiers d'échange ne sont pas
-interchangeables entre les versions 3.0 et 4.0. Si vous détenez un fichier
-d'échange d'une session anormalement terminée avec Vim 3.0, utilisez Vim 3.0
+Ã€ cause de cette modification, les fichiers d'Ã©change ne sont pas
+interchangeables entre les versions 3.0 et 4.0. Si vous dÃ©tenez un fichier
+d'Ã©change d'une session anormalement terminÃ©e avec Vim 3.0, utilisez Vim 3.0
 pour recouvrer le fichier -- n'utilisez pas Vim 4.0. |swap-file|
 
 
-ARGUMENT "-w scriptS" MODIFIÉ				*scriptout-changed*
+ARGUMENT "-w scriptS" MODIFIÃ‰				*scriptout-changed*
 
-`vim -w scriptS` permettait d'ajouter à la fin d'un script de sortie. Ce
-comportement étant illogique, un nouveau fichier est maintenant créé. Si un
-fichier existe déjà, il n'est pas écrasé (pour éviter de détruire les fichiers
-de ceux qui s'attendent au rajout). [Ceci a finalement été supprimé par la
+`vim -w scriptS` permettait d'ajouter Ã  la fin d'un script de sortie. Ce
+comportement Ã©tant illogique, un nouveau fichier est maintenant crÃ©Ã©. Si un
+fichier existe dÃ©jÃ , il n'est pas Ã©crasÃ© (pour Ã©viter de dÃ©truire les fichiers
+de ceux qui s'attendent au rajout). [Ceci a finalement Ã©tÃ© supprimÃ© par la
 suite.] |-w|
 
 
 TOUCHES RETARR ET SUPPR					*backspace-delete*
 
 Dans la version 3.0, les touches Suppr et RetArr fonctionnaient toutes deux
-comme un retour arrière en mode Insertion ; elles effaçaient le caractère à
+comme un retour arriÃ¨re en mode Insertion ; elles effaÃ§aient le caractÃ¨re Ã 
 gauche du curseur. Dans la version 4.0, la touche Suppr a une nouvelle
-fonction : elle efface le caractère sous le curseur, comme elle le fait dans
-la ligne de commande. Si le curseur est au delà de la fin de la ligne et que
-l'option 'bs' est activée, les deux lignes sont fusionnées. |<Del>| |i_<Del>|
+fonction : elle efface le caractÃ¨re sous le curseur, comme elle le fait dans
+la ligne de commande. Si le curseur est au delÃ  de la fin de la ligne et que
+l'option 'bs' est activÃ©e, les deux lignes sont fusionnÃ©es. |<Del>| |i_<Del>|
 
-Dans la version 3.0, la touche RetArr était toujours définie par CTRL-H et
+Dans la version 3.0, la touche RetArr Ã©tait toujours dÃ©finie par CTRL-H et
 Suppr par CTRL-?. Dans la version 4.0, les codes pour ces touches sont obtenus
-depuis termcap ou termlib, et ajustés à la valeur `stty erase` sur Unix. Cela
-aide les personnes qui définissent leur caractère d'effacement selon le
+depuis termcap ou termlib, et ajustÃ©s Ã  la valeur `stty erase` sur Unix. Cela
+aide les personnes qui dÃ©finissent leur caractÃ¨re d'effacement selon le
 clavier avec lequel ils travaillent. |<BS>| |i_<BS>|
 
-Si vous préférez que RetArr et Suppr conservent leur ancien comportement dans
+Si vous prÃ©fÃ©rez que RetArr et Suppr conservent leur ancien comportement dans
 le mode Insertion, ajoutez cette ligne dans votre vimrc : >
 
 	inoremap ^? ^H
 
-Probablement souhaiterez-vous également ajouter celles-ci, pour ajuster les
+Probablement souhaiterez-vous Ã©galement ajouter celles-ci, pour ajuster les
 valeurs de <RetArr> et <Suppr> : >
 
 	set t_kb=^H
@@ -114,45 +114,45 @@ valeurs de <RetArr> et <Suppr> : >
 
 Si la valeur de 't_kb' est correcte, mais pas celle de 't_kD', utilisez la
 commande ":fixdel". Elle fixera 't_kD' selon la valeur de 't_kb'. C'est utile
-si vous utilisez plusieurs terminaux différents. |:fixdel|
+si vous utilisez plusieurs terminaux diffÃ©rents. |:fixdel|
 
 Lorsque ^H n'est pas reconnu comme <RetArr> ou <Suppr>, il fonctionne comme un
-retour arrière.
+retour arriÃ¨re.
 
 
-CARACTÈRE D'ÉCHAPPEMENT POUR '|' MODIFIÉ			*escape-bar*
+CARACTÃˆRE D'Ã‰CHAPPEMENT POUR '|' MODIFIÃ‰			*escape-bar*
 
-Quand le drapeau 'b' est présent dans 'cpoptions', la contre-oblique ne peut
-pas être utilisée pour protéger '|' dans les mappages et les commandes
-d'abréviation, seul CTRL-V le peut. C'est compatible avec Vi. Si vous
-travaillez en mode compatible Vi et devez utiliser "\|" pour insérer une barre
-verticale dans un mappage, il est nécessaire de le remplacer par "^V|". Voir
+Quand le drapeau 'b' est prÃ©sent dans 'cpoptions', la contre-oblique ne peut
+pas Ãªtre utilisÃ©e pour protÃ©ger '|' dans les mappages et les commandes
+d'abrÃ©viation, seul CTRL-V le peut. C'est compatible avec Vi. Si vous
+travaillez en mode compatible Vi et devez utiliser "\|" pour insÃ©rer une barre
+verticale dans un mappage, il est nÃ©cessaire de le remplacer par "^V|". Voir
 |:bar|.
 
 
-CODES CLAVIER MODIFIÉS					*key-codes-changed*
+CODES CLAVIER MODIFIÃ‰S					*key-codes-changed*
 
-La représentation interne des codes clavier a radicalement changée. Dans la
-version 3.0, un code sur un octet était utilisé pour représenter une touche.
-Cela provoquait des problèmes avec les différents jeux de caractères qui
-utilisaient également ces codes. Dans la version 4.0, un code sur trois octets
-est employé, qui ne peut plus être confondu avec un caractère. |key-notation|
+La reprÃ©sentation interne des codes clavier a radicalement changÃ©e. Dans la
+version 3.0, un code sur un octet Ã©tait utilisÃ© pour reprÃ©senter une touche.
+Cela provoquait des problÃ¨mes avec les diffÃ©rents jeux de caractÃ¨res qui
+utilisaient Ã©galement ces codes. Dans la version 4.0, un code sur trois octets
+est employÃ©, qui ne peut plus Ãªtre confondu avec un caractÃ¨re. |key-notation|
 
-Si vous avez utilisé des codes clavier sur un octet dans votre vimrc pour vos
+Si vous avez utilisÃ© des codes clavier sur un octet dans votre vimrc pour vos
 mappages, vous devrez les remplacer par les codes de la version 4.0. Au lieu
 d'utiliser directement les codes sur trois octets, vous devriez utiliser leur
-représentation symbolique entre <>. Consultez le tableau ci-dessous. Ce
-dernier donne également l'ancien nom des touches, tel qu'il était utilisé dans
+reprÃ©sentation symbolique entre <>. Consultez le tableau ci-dessous. Ce
+dernier donne Ã©galement l'ancien nom des touches, tel qu'il Ã©tait utilisÃ© dans
 la documentation de la version 3.0.
 
-Les noms de touches entre <> peuvent être utilisés directement dans les
+Les noms de touches entre <> peuvent Ãªtre utilisÃ©s directement dans les
 mappages. Cela permet de copier/coller des exemples ou de les taper
-littéralement. La notation <> a été introduite dans ce but |<>|. Les drapeaux
-'B' et '<' ne doivent pas être présents dans 'cpoptions' pour que cela
+littÃ©ralement. La notation <> a Ã©tÃ© introduite dans ce but |<>|. Les drapeaux
+'B' et '<' ne doivent pas Ãªtre prÃ©sents dans 'cpoptions' pour que cela
 fonctionne |'cpoptions'|.
 
 ANCIEN NOM	NOUVEAU NOM	ANCIEN CODE	ANCIEN CODE MS-DOS ~
-				HEXA	DÉC	HEXA	DÉC	   ~
+				HEXA	DÃ‰C	HEXA	DÃ‰C	   ~
 <ESC>		<Esc>
 <TAB>		<Tab>
 <LF>		<NL> <NewLine> <LineFeed>
@@ -201,21 +201,21 @@ ANCIEN NOM	NOUVEAU NOM	ANCIEN CODE	ANCIEN CODE MS-DOS ~
 <HELP>		<Help>		0x9c	156     0xcc	204
 <UNDO>		<Undo>		0x9d	157     0xcd	205
 
-		(inusité)	0x9e	158     0xce	206
-		(inusité)	0x9f	159     0xcf	207
+		(inusitÃ©)	0x9e	158     0xce	206
+		(inusitÃ©)	0x9f	159     0xcf	207
 
 
-OPTIONS DE TERMINAL MODIFIÉES				*termcap-changed*
+OPTIONS DE TERMINAL MODIFIÃ‰ES				*termcap-changed*
 
-Les noms des options de terminal ont été changés pour correspondre aux noms
-des entrées termcap en rapport. Toutes les options de terminal ont maintenant
-un nom de la forme "t_xx", ou "xx" désigne le nom de l'entrée termcap.
-Normalement, ces options ne sont pas utilisées, à moins qu'une entrée termcap
-ne soit fausse ou incomplète, ou que vous n'utilisiez pas les paramètres de
-surbrillance par défaut. |terminal-options|
+Les noms des options de terminal ont Ã©tÃ© changÃ©s pour correspondre aux noms
+des entrÃ©es termcap en rapport. Toutes les options de terminal ont maintenant
+un nom de la forme "t_xx", ou "xx" dÃ©signe le nom de l'entrÃ©e termcap.
+Normalement, ces options ne sont pas utilisÃ©es, Ã  moins qu'une entrÃ©e termcap
+ne soit fausse ou incomplÃ¨te, ou que vous n'utilisiez pas les paramÃ¨tres de
+surbrillance par dÃ©faut. |terminal-options|
 
 NOTE : Pour certaines touches, il n'existe pas de nom termcap. Utilisez le
-notation <> à la place, elle fonctionnera dans tous les cas de figures.
+notation <> Ã  la place, elle fonctionnera dans tous les cas de figures.
 
 NOTE : 't_ti' est devenu 't_mr' (inversion de la sortie) et 't_ts' est devenu
 't_ti' (initialisation du mode du terminal). Soyez prudent lorsque vous
@@ -226,41 +226,41 @@ t_cdl	    t_DL		supprime plusieurs lignes	  *t_cdl*
 t_ci	    t_vi		curseur invisible		  *t_ci*
 t_cil	    t_AL		ajoute plusieurs lignes vides	  *t_cil*
 t_cm	    t_cm		placement du curseur
-t_cri	    t_RI		curseur plusieurs car. à droite	  *t_cri*
+t_cri	    t_RI		curseur plusieurs car. Ã  droite	  *t_cri*
 t_cv	    t_ve		curseur visible			  *t_cv*
-t_cvv	    t_vs		curseur très visible		  *t_cvv*
+t_cvv	    t_vs		curseur trÃ¨s visible		  *t_cvv*
 t_dl	    t_dl		supprime une ligne
-t_cs	    t_cs		définit une région de défilement
-t_ed	    t_cl		efface l'écran			  *t_ed*
-t_el	    t_ce		efface jusqu'à la fin de la ligne *t_el*
+t_cs	    t_cs		dÃ©finit une rÃ©gion de dÃ©filement
+t_ed	    t_cl		efface l'Ã©cran			  *t_ed*
+t_el	    t_ce		efface jusqu'Ã  la fin de la ligne *t_el*
 t_il	    t_al		ajoute une ligne vide		  *t_il*
-	    t_da		les lignes supérieures défilent vers le bas
-	    t_db		les lignes inférieures défilent vers le haut
-t_ke	    t_ke		sort le terminal du mode échappement clavier
-t_ks	    t_ks		met le terminal en mode échappement clavier
-t_ms	    t_ms		le curseur peut être déplacé en mode
-				   surligné/inverse
-t_se	    t_se		fin du mode surligné
-t_so	    t_so		mode surligné
+	    t_da		les lignes supÃ©rieures dÃ©filent vers le bas
+	    t_db		les lignes infÃ©rieures dÃ©filent vers le haut
+t_ke	    t_ke		sort le terminal du mode Ã©chappement clavier
+t_ks	    t_ks		met le terminal en mode Ã©chappement clavier
+t_ms	    t_ms		le curseur peut Ãªtre dÃ©placÃ© en mode
+				   surlignÃ©/inverse
+t_se	    t_se		fin du mode surlignÃ©
+t_so	    t_so		mode surlignÃ©
 t_ti	    t_mr		mode video inverse 
 t_tb	    t_md		mode gras			  *t_tb*
-t_tp	    t_me		mode normal (désactive t_mr,	  *t_tp*
+t_tp	    t_me		mode normal (dÃ©sactive t_mr,	  *t_tp*
 				   t_mb, t_md et couleur)
-t_sr	    t_sr		défilement inversé (vers l'arrière)
-t_te	    t_te		sort du mode « termcap »
-t_ts	    t_ti		entre en mode « termcap »	  *t_ts_old*
+t_sr	    t_sr		dÃ©filement inversÃ© (vers l'arriÃ¨re)
+t_te	    t_te		sort du mode Â« termcap Â»
+t_ts	    t_ti		entre en mode Â« termcap Â»	  *t_ts_old*
 t_vb	    t_vb		alarme visuelle
-t_csc	    t_CS		curseur relatif à région de	  *t_csc*
-				   défilement
+t_csc	    t_CS		curseur relatif Ã  rÃ©gion de	  *t_csc*
+				   dÃ©filement
 
-t_ku	    t_ku  <Up>		flèche haut
-t_kd	    t_kd  <Down>	flèche bas
-t_kr	    t_kr  <Right>	flèche droite
-t_kl	    t_kl  <Left>	flèche gauche
-t_sku		  <S-Up>	maj + flèche haut		  *t_sku*
-t_skd		  <S-Down>	maj + flèche bas		  *t_skd*
-t_skr	    t_%i  <S-Right>	maj + flèche droite		  *t_skr*
-t_skl	    t_#4  <S-Left>	maj + flèche gauche		  *t_skl*
+t_ku	    t_ku  <Up>		flÃ¨che haut
+t_kd	    t_kd  <Down>	flÃ¨che bas
+t_kr	    t_kr  <Right>	flÃ¨che droite
+t_kl	    t_kl  <Left>	flÃ¨che gauche
+t_sku		  <S-Up>	maj + flÃ¨che haut		  *t_sku*
+t_skd		  <S-Down>	maj + flÃ¨che bas		  *t_skd*
+t_skr	    t_%i  <S-Right>	maj + flÃ¨che droite		  *t_skr*
+t_skl	    t_#4  <S-Left>	maj + flÃ¨che gauche		  *t_skl*
 t_f1	    t_k1  <F1>		touche de fonction 1		  *t_f1*
 t_f2	    t_k2  <F2>		touche de fonction 2		  *t_f2*
 t_f3	    t_k3  <F3>		touche de fonction 3		  *t_f3*
@@ -285,86 +285,86 @@ t_help	    t_%1  <Help>	touche d'aide			  *t_help*
 t_undo	    t_&8  <Undo>	touche d'annulation		  *t_undo*
 
 
-OPTION 'errorformat' MODIFIÉE				*errorformat-changed*
+OPTION 'errorformat' MODIFIÃ‰E				*errorformat-changed*
 
-L'option 'errorformat' peut à présent contenir plusieurs formats, séparés par
-des virgules. Le premier format qui convient est employé. Les valeurs par
-défaut ont été choisies pour correspondre aux formats les plus courants.
+L'option 'errorformat' peut Ã  prÃ©sent contenir plusieurs formats, sÃ©parÃ©s par
+des virgules. Le premier format qui convient est employÃ©. Les valeurs par
+dÃ©faut ont Ã©tÃ© choisies pour correspondre aux formats les plus courants.
 |errorformat|
 
-Si l'un de vos formats contient une virgule, elle doit être précédée d'une
+Si l'un de vos formats contient une virgule, elle doit Ãªtre prÃ©cÃ©dÃ©e d'une
 contre-oblique. Tapez deux contre-obliques, car la commande ":set" en
-éliminera une.
+Ã©liminera une.
 
 
-OPTION 'graphic' SUPPRIMÉE				*graphic-option-gone*
+OPTION 'graphic' SUPPRIMÃ‰E				*graphic-option-gone*
 
-L'option 'graphic' était employée pour afficher les caractères compris entre
-'~' et 0xa0 directement à l'écran. C'est désormais l'option 'isprint' qui s'en
-charge, avec des possibilités étendues. Le paramétrage par défaut est
-conservé ; vous n'aurez à y toucher que si vous aviez précédemment activé
+L'option 'graphic' Ã©tait employÃ©e pour afficher les caractÃ¨res compris entre
+'~' et 0xa0 directement Ã  l'Ã©cran. C'est dÃ©sormais l'option 'isprint' qui s'en
+charge, avec des possibilitÃ©s Ã©tendues. Le paramÃ©trage par dÃ©faut est
+conservÃ© ; vous n'aurez Ã  y toucher que si vous aviez prÃ©cÃ©demment activÃ©
 l'option 'graphic' dans votre vimrc. |'isprint'|
 
 
-OPTION 'yankendofline' SUPPRIMÉE			*ye-option-gone*
+OPTION 'yankendofline' SUPPRIMÃ‰E			*ye-option-gone*
 
-L'option 'yankendofline' a été supprimée. En remplacement, vous pouvez
+L'option 'yankendofline' a Ã©tÃ© supprimÃ©e. En remplacement, vous pouvez
 simplement utiliser : >
 	:map Y y$
 
 
-VALEURS PAR DÉFAUT DE 'icon' ET 'title' MODIFIÉES	*icon-changed*
+VALEURS PAR DÃ‰FAUT DE 'icon' ET 'title' MODIFIÃ‰ES	*icon-changed*
 
-À présent, l'option 'title' est activée par défaut uniquement si le titre
-original peut être restauré. Cela permet d'éviter les titres "Merci de
-quitter Vim". Si vous les voulez quand même, ajoutez ":set title" dans votre
+Ã€ prÃ©sent, l'option 'title' est activÃ©e par dÃ©faut uniquement si le titre
+original peut Ãªtre restaurÃ©. Cela permet d'Ã©viter les titres "Merci de
+quitter Vim". Si vous les voulez quand mÃªme, ajoutez ":set title" dans votre
 vimrc. |'title'|
 
-Comme pour 'title', la valeur par défaut de 'icon' dépend désormais de la
-possibilité de restaurer le titre original de l'icône. Si vous n'appréciez pas
-que les titres de vos icônes soient modifiées, ajouter cette ligne dans votre
+Comme pour 'title', la valeur par dÃ©faut de 'icon' dÃ©pend dÃ©sormais de la
+possibilitÃ© de restaurer le titre original de l'icÃ´ne. Si vous n'apprÃ©ciez pas
+que les titres de vos icÃ´nes soient modifiÃ©es, ajouter cette ligne dans votre
 vimrc |'icon'| : >
 	:set noicon					
 
 
-OPTION 'highlight' MODIFIÉE				*highlight-changed*
+OPTION 'highlight' MODIFIÃ‰E				*highlight-changed*
 
-Le drapeau 'i' signifie à présent le mode d'affichage en italique, plutôt que
-video inverse. C'est le drapeau 'r' qui est utilisé pour l'inversion video, ce
-qui permettait précédemment 'i'. Normalement, vous ne devriez pas percevoir la
-différence, car le mode italique n'est pas supporté par la plupart des
-terminaux et que le mode vidéo inverse est utilisé comme solution de repli.
+Le drapeau 'i' signifie Ã  prÃ©sent le mode d'affichage en italique, plutÃ´t que
+video inverse. C'est le drapeau 'r' qui est utilisÃ© pour l'inversion video, ce
+qui permettait prÃ©cÃ©demment 'i'. Normalement, vous ne devriez pas percevoir la
+diffÃ©rence, car le mode italique n'est pas supportÃ© par la plupart des
+terminaux et que le mode vidÃ©o inverse est utilisÃ© comme solution de repli.
 |'highlight'|
 
 Lorsqu'une occasion est manquante dans 'highlight', le mode de la valeur par
-défaut pour 'highlight' est utilisé, au lieu du mode vidéo inverse.
+dÃ©faut pour 'highlight' est utilisÃ©, au lieu du mode vidÃ©o inverse.
 
 
-NOMS COURTS DE 'tildeop' ET 'weirdinvert' CHANGÉS	*short-name-changed*
+NOMS COURTS DE 'tildeop' ET 'weirdinvert' CHANGÃ‰S	*short-name-changed*
 -------------------------------------------------
 
-'to' (abréviation de 'tildeop') renommée en 'top'. |'tildeop'|
-'wi' (abréviation de 'weirdinvert') renommée en 'wiv'. |'weirdinvert'|
+'to' (abrÃ©viation de 'tildeop') renommÃ©e en 'top'. |'tildeop'|
+'wi' (abrÃ©viation de 'weirdinvert') renommÃ©e en 'wiv'. |'weirdinvert'|
 
-Ce changement a été opéré car Vi utilise 'wi' pour 'windows' et 'to' pour
+Ce changement a Ã©tÃ© opÃ©rÃ© car Vi utilise 'wi' pour 'windows' et 'to' pour
 'timeout'. Cela signifie que si vous tentez de fixer ces options, vous
-n'obtiendrez pas de messages d'erreurs, mais leurs effets seront différents.
+n'obtiendrez pas de messages d'erreurs, mais leurs effets seront diffÃ©rents.
 
 
 UTILISATION DE "v", "V" ET CTRL-V EN MODE VISUEL	*use-visual-cmds*
 
-En mode Visuel, "v", "V" et CTRL-V permettaient de quitter ce mode. À présent,
+En mode Visuel, "v", "V" et CTRL-V permettaient de quitter ce mode. Ã€ prÃ©sent,
 ce n'est plus le cas sauf si le type de mode Visuel correspond. Sans cela, le
-type de mode Visuel est changé. Maintenant, seul <Echap> vous permet en toutes
+type de mode Visuel est changÃ©. Maintenant, seul <Echap> vous permet en toutes
 circonstances de sortir du mode Visuel sans modifier quoi que ce soit. |v_V|
 
 
-CTRL-B SUPPRIMÉ EN MODE INSERTION			*toggle-revins*
+CTRL-B SUPPRIMÃ‰ EN MODE INSERTION			*toggle-revins*
 
 CTRL-B en mode Insertion permettait d'inverser l'option 'revins'. Si vous ne
-le saviez pas et tapiez accidentellement CTRL-B, il était très difficile de
+le saviez pas et tapiez accidentellement CTRL-B, il Ã©tait trÃ¨s difficile de
 trouver comment s'en sortir. Puisque peu de personnes utilisent cette
-fonctionnalité, elle est désactivée par défaut. Si vous souhaitez l'utiliser,
-définissez RIGHTLEFT dans "feature.h" avant la compilation. |'revins'|
+fonctionnalitÃ©, elle est dÃ©sactivÃ©e par dÃ©faut. Si vous souhaitez l'utiliser,
+dÃ©finissez RIGHTLEFT dans "feature.h" avant la compilation. |'revins'|
 
  vim:tw=78:ts=8:ft=help:norl:

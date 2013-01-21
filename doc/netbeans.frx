@@ -1,119 +1,119 @@
 *netbeans.txt*  Pour Vim version 6.2.
 
 
-		 MANUEL de R…F…RENCE VIM - par Gordon Prieur
+		 MANUEL de R√âF√âRENCE VIM - par Gordon Prieur
 
 
 						*netbeans* *netbeans-support*
-IntÈgration de Vim en tant qu'Èditeur externe de NetBeans
+Int√©gration de Vim en tant qu'√©diteur externe de NetBeans
 						
  1. Introduction					|netbeans-intro|
  2. Raccourcis clavier NetBeans				|netbeans-keybindings|
  3. Configurer Vim pour NetBeans			|netbeans-configure|
- 4. TÈlÈcharger NetBeans				|netbeans-download|
- 5. PrÈparer NetBeans pour Vim				|netbeans-preparation|
- 6. RÈcupÈrer le module External Editor			|obtaining-exted|
+ 4. T√©l√©charger NetBeans				|netbeans-download|
+ 5. Pr√©parer NetBeans pour Vim				|netbeans-preparation|
+ 6. R√©cup√©rer le module External Editor			|obtaining-exted|
  7. Configurer NetBeans pour fonctionner avec Vim	|netbeans-setup|
  8. Messages						|netbeans-messages|
  9. Lancer Vim depuis NetBeans				|netbeans-run|
 10. Protocole NetBeans					|netbeans-protocol|
-11. ProblËmes connus					|netbeans-problems|
+11. Probl√®mes connus					|netbeans-problems|
 
 {absent de Vi}
-{uniquement si compilÈ avec la fonctionnalitÈ |+netbeans_intg|}
+{uniquement si compil√© avec la fonctionnalit√© |+netbeans_intg|}
 
 ==============================================================================
 1. Introduction						*netbeans-intro*
 
-NetBeans est un Environnement de DÈveloppement IntÈgrÈ (EDI) ‡ code ouvert
-dÈveloppÈ conjointement par Sun Microsystems Inc. et la communautÈ de
-dÈveloppeurs netbeans.org. Initialement prÈvu pour Java, NetBeans s'est vu
-ajouter le support des langages C, C++ et Fortran dans ses derniËres versions.
+NetBeans est un Environnement de D√©veloppement Int√©gr√© (EDI) √† code ouvert
+d√©velopp√© conjointement par Sun Microsystems Inc. et la communaut√© de
+d√©veloppeurs netbeans.org. Initialement pr√©vu pour Java, NetBeans s'est vu
+ajouter le support des langages C, C++ et Fortran dans ses derni√®res versions.
 
 Pour plus d'informations, consultez la page d'accueil de NetBeans
 	http://www.netbeans.org
 ou le site NetBeans External Editor
 	http://externaleditor.netbeans.org.
 
-Sun Microsystems Inc. fournit Ègalement NetBeans sous le nom Sun ONE Studio.
+Sun Microsystems Inc. fournit √©galement NetBeans sous le nom Sun ONE Studio.
 Consultez http://www.sun.com pour plus d'informations en ce qui concerne ce
 produit.
 
-Les versions actuelles de NetBeans supportent complËtement le langage Java,
-mais ne proposent qu'un support limitÈ pour le C, le C++ et le Fortran. Les
+Les versions actuelles de NetBeans supportent compl√®tement le langage Java,
+mais ne proposent qu'un support limit√© pour le C, le C++ et le Fortran. Les
 versions actuelles de Sun ONE Studio proposent un support complet des langages
 Java, C, C++ et Fortran.
 
-L'interface NetBeans est Ègalement supportÈe par Agide, l'EDI graphique du
-projet A-A-P. Agide est trËs diffÈrent de NetBeans :
-- BasÈ sur Python plutÙt que sur Java, il est bien plus compact et dÈmarre
+L'interface NetBeans est √©galement support√©e par Agide, l'EDI graphique du
+projet A-A-P. Agide est tr√®s diff√©rent de NetBeans :
+- Bas√© sur Python plut√¥t que sur Java, il est bien plus compact et d√©marre
   plus rapidement.
 - Agide est un environnement applicatif dans lequel de nombreux outils
-  diffÈrents peuvent collaborer.
+  diff√©rents peuvent collaborer.
 Consultez le site Internet de A-A-P pour plus d'informations :
 	http://www.A-A-P.org
 
 ==============================================================================
 2. Raccourcis clavier NetBeans			*netbeans-keybindings*
 
-Vim reconnaÓt bon nombre des raccourcis exÈcutant les commandes NetBeans. Ce
-sont typiquement les combinaisons de touches Fonction. Pour exÈcuter une
+Vim reconna√Æt bon nombre des raccourcis ex√©cutant les commandes NetBeans. Ce
+sont typiquement les combinaisons de touches Fonction. Pour ex√©cuter une
 commande NetBeans, l'utilisateur doit appuyer sur la touche Pause puis sur un
 raccourci clavier NetBeans. Par exemple, pour compiler un fichier Java,
 le raccourci NetBeans est "F9". Ainsi, sous Vim, vous devrez appuyer sur
 "Pause F9" pour compiler un fichier Java. Pour placer/supprimer un point
-d'arrÍt sur la ligne courante, appuyez sur "Pause MAJ F8".
+d'arr√™t sur la ligne courante, appuyez sur "Pause MAJ F8".
 
-La touche Pause correspond ‡ la touche Fonction 21. Si votre touche Pause ne
-fonctionne pas et que vous voulez utiliser F8 ‡ la place, faite : >
+La touche Pause correspond √† la touche Fonction 21. Si votre touche Pause ne
+fonctionne pas et que vous voulez utiliser F8 √† la place, faite : >
 
 	:map <F8> <F21>
 
 Le module External Editor lit dynamiquement les raccourcis clavier NetBeans,
-ce qui devrait permettre ‡ Vim de disposer des derniers raccourcis, mÍme quand
+ce qui devrait permettre √† Vim de disposer des derniers raccourcis, m√™me quand
 NetBeans les modifie.
 
 ==============================================================================
 3. Configurer Vim pour NetBeans				*netbeans-configure*
 
-En lanÁant `configure` sans argument, l'interface NetBeans devrait Ítre
-activÈe. C'est-‡-dire qu'elle le sera si `configure` constate que votre
-systËme dispose de toutes les fonctionnalitÈs requises.
+En lan√ßant `configure` sans argument, l'interface NetBeans devrait √™tre
+activ√©e. C'est-√†-dire qu'elle le sera si `configure` constate que votre
+syst√®me dispose de toutes les fonctionnalit√©s requises.
 
-Dans le cas o˘ vous ne voulez pas de l'interface NetBeans, vous pouvez la
-dÈsactiver en dÈcommentant la ligne contenant "--disable-netbeans" dans le
+Dans le cas o√π vous ne voulez pas de l'interface NetBeans, vous pouvez la
+d√©sactiver en d√©commentant la ligne contenant "--disable-netbeans" dans le
 Makefile.
 
-Actuellement, cette intÈgration n'est supportÈe que par gvim, car NetBeans n'a
-aucun moyen de fournir un Èmulateur de terminal ‡ la commande `vim`. En outre,
+Actuellement, cette int√©gration n'est support√©e que par gvim, car NetBeans n'a
+aucun moyen de fournir un √©mulateur de terminal √† la commande `vim`. En outre,
 le support de l'IHM graphique n'est disponible que pour GTK+, GNOME et Motif.
 
-Si le support de Motif est souhaitÈ lors de la compilation, l'utilisateur doit
-fournir les bibliothËques XPM. Pour savoir comment rÈcupÈrer la derniËre
+Si le support de Motif est souhait√© lors de la compilation, l'utilisateur doit
+fournir les biblioth√®ques XPM. Pour savoir comment r√©cup√©rer la derni√®re
 version de XPM, voir |workshop-xpm|.
 
-Pour une aide plus complËte sur l'installation de Vim, lisez |usr_90.txt| dans
+Pour une aide plus compl√®te sur l'installation de Vim, lisez |usr_90.txt| dans
 le Manuel de l'utilisateur de Vim.
 
 ==============================================================================
-4. TÈlÈcharger NetBeans					*netbeans-download*
+4. T√©l√©charger NetBeans					*netbeans-download*
 
-L'EDI NetBeans est disponible en tÈlÈchargement sur netbeans.org. Vous pouvez
-tÈlÈcharger une version binaire, les sources, ou utiliser CVS pour rÈcupÈrer
-la branche de dÈveloppement courante. Si vous choisissez de tÈlÈcharger les
-sources, suivez les instructions de netbeans.org relatives ‡ la compilation.
+L'EDI NetBeans est disponible en t√©l√©chargement sur netbeans.org. Vous pouvez
+t√©l√©charger une version binaire, les sources, ou utiliser CVS pour r√©cup√©rer
+la branche de d√©veloppement courante. Si vous choisissez de t√©l√©charger les
+sources, suivez les instructions de netbeans.org relatives √† la compilation.
 
-Selon la version que vous tÈlÈchargez, il est possible que vous ayez besoin de
-rÈcupÈrer le module External Editor. Il s'agit du module permettant ‡ NetBeans
+Selon la version que vous t√©l√©chargez, il est possible que vous ayez besoin de
+r√©cup√©rer le module External Editor. Il s'agit du module permettant √† NetBeans
 de fonctionner avec gvim (ou xemacs :-). Consultez
-http://externaleditor.netbeans.org pour plus de dÈtails sur le tÈlÈchargement
+http://externaleditor.netbeans.org pour plus de d√©tails sur le t√©l√©chargement
 de ce module si votre version de NetBeans n'en dispose pas.
 
-Pour le support de C, C++ et Fortran, vous aurez Ègalement besoin du module
-cpp. Consultez http://cpp.netbeans.org pour plus d'informations ‡ propos de ce
+Pour le support de C, C++ et Fortran, vous aurez √©galement besoin du module
+cpp. Consultez http://cpp.netbeans.org pour plus d'informations √† propos de ce
 module.
 
-Vous pouvez aussi tÈlÈcharger Sun ONE Studio chez Sun Microsystems Inc. pour
+Vous pouvez aussi t√©l√©charger Sun ONE Studio chez Sun Microsystems Inc. pour
 un essai gratuit de 30 jours. Consultez http://www.sun.com pour de plus amples
 informations.
 
@@ -121,113 +121,113 @@ informations.
 5. Preparer NetBeans pour Vim				*netbeans-preparation*
 
 Pour que NetBeans fonctionne avec Vim, le module External Editor de NetBeans
-doit Ítre chargÈ et activÈ. Si vous utilisez Sun ONE Studio Enterprise
-Edition, ce module devrait Ítre chargÈ et activÈ. Si vous disposez d'une
+doit √™tre charg√© et activ√©. Si vous utilisez Sun ONE Studio Enterprise
+Edition, ce module devrait √™tre charg√© et activ√©. Si vous disposez d'une
 version de NetBeans, il est possible qu'il vous faille trouver un autre moyen
-d'obtenir ce module ‡ code ouvert.
+d'obtenir ce module √† code ouvert.
 
-Vous pouvez vÈrifier si vous avez ce module en ouvrant le dialogue
-Tools->Options et en allant jusqu'‡ la liste des "Modules" (IDE
-Configuration->System->Modules). Si la liste des modules indique une entrÈe
+Vous pouvez v√©rifier si vous avez ce module en ouvrant le dialogue
+Tools->Options et en allant jusqu'√† la liste des "Modules" (IDE
+Configuration->System->Modules). Si la liste des modules indique une entr√©e
 "External Editor", vous devez vous assurer que le module correspondant est
-activÈ (la propriÈtÈ "Enabled" devrait avoir la valeur "True"). Si la liste
+activ√© (la propri√©t√© "Enabled" devrait avoir la valeur "True"). Si la liste
 des modules ne contient pas "External Editor", voir la section suivante pour
 vous le procurer |obtaining-exted|.
 
 ==============================================================================
-6. RÈcupÈrer le module External Editor 			    *obtaining-exted*
+6. R√©cup√©rer le module External Editor 			    *obtaining-exted*
 
-Il y a deux maniËres de rÈcupÈrer le module External Editor. La plus simple
-est d'utiliser le NetBeans Update Center pour le tÈlÈcharger et l'installer.
+Il y a deux mani√®res de r√©cup√©rer le module External Editor. La plus simple
+est d'utiliser le NetBeans Update Center pour le t√©l√©charger et l'installer.
 Malheureusement, certaines versions ne disposent pas de ce module dans leur
-Update Center. Si vous ne pouvez pas le tÈlÈcharger via l'Update Center, vous
-devrez tÈlÈcharger les sources et compiler le module. Il est possible de
-rÈcupÈrer le module disponible dans le NetBeans Update Center, ce qui rend la
-compilation superflue. Reportez-vous Ègalement ‡
-http://externaleditor.netbeans.org pour les autres possibilitÈs.
+Update Center. Si vous ne pouvez pas le t√©l√©charger via l'Update Center, vous
+devrez t√©l√©charger les sources et compiler le module. Il est possible de
+r√©cup√©rer le module disponible dans le NetBeans Update Center, ce qui rend la
+compilation superflue. Reportez-vous √©galement √†
+http://externaleditor.netbeans.org pour les autres possibilit√©s.
 
-Pour tÈlÈcharger les sources du module External Editor via CVS et le compiler
-par vous-mÍme, consultez http://externaleditor.netbeans.org et
-http://www.netbeans.org. Malheureusement, cette procÈdure est loin d'Ítre
+Pour t√©l√©charger les sources du module External Editor via CVS et le compiler
+par vous-m√™me, consultez http://externaleditor.netbeans.org et
+http://www.netbeans.org. Malheureusement, cette proc√©dure est loin d'√™tre
 triviale.
 
 ==============================================================================
 7. Configurer NetBeans pour fonctionner avec Vim	    *netbeans-setup*
 
-En supposant que vous avez chargÈ et activÈ le module NetBeans External Editor
-de la maniËre dÈcrite dans |netbeans-preparation|, tout ce qu'il vous reste ‡
-faire est de vÈrifier que la ligne de commande gvim est convenablement
-configurÈe pour votre environnement.
+En supposant que vous avez charg√© et activ√© le module NetBeans External Editor
+de la mani√®re d√©crite dans |netbeans-preparation|, tout ce qu'il vous reste √†
+faire est de v√©rifier que la ligne de commande gvim est convenablement
+configur√©e pour votre environnement.
 
 Ouvrez le dialogue Tools->Options puis ouvrez la branche Editing.
-SÈlectionnez External Editor. Le panneau sur la droite devrait contenir un
+S√©lectionnez External Editor. Le panneau sur la droite devrait contenir un
 onglet Properties et un onglet Expert. Dans l'onglet Properties, assurez-vous
-que le champ "Editor Type" est bien fixÈ ‡ "Vim". Dans l'onglet Expert,
+que le champ "Editor Type" est bien fix√© √† "Vim". Dans l'onglet Expert,
 assurez-vous que le champ "Vim Command" est correct.
 
 Faites attention si vous modifiez la "Vim Command". Certaines options de la
-ligne de commande doivent Ítre prÈsentes pour que la connexion s'Ètablisse
-correctement. Vous pouvez changer le nom de la commande, mais restez-en l‡. Si
+ligne de commande doivent √™tre pr√©sentes pour que la connexion s'√©tablisse
+correctement. Vous pouvez changer le nom de la commande, mais restez-en l√†. Si
 votre gvim se trouve dans votre $PATH alors la "Vim Command" peut commencer
-par gvim. Si vous ne voulez pas que "gvim" soit recherchÈ dans votre $PATH,
-alors indiquez le chemin absolu dans la commande. ¿ partir de ce moment, vous
+par gvim. Si vous ne voulez pas que "gvim" soit recherch√© dans votre $PATH,
+alors indiquez le chemin absolu dans la commande. √Ä partir de ce moment, vous
 devriez obtenir un gvim pour chaque fichier source que vous ouvrez dans
 NetBeans.
 
 Si certains fichiers sont ouverts dans gvim et d'autres (avec une extension
-diffÈrente) avec l'Èditeur par dÈfaut de NetBeans, vous devriez vÈrifier le
-type MIME dans la propriÈtÈ "MIME Type" de l'onglet Expert. NetBeans utilise
-MIME et le module External Editor n'ouvrira que les types spÈcifiÈs dans cette
-propriÈtÈ.
+diff√©rente) avec l'√©diteur par d√©faut de NetBeans, vous devriez v√©rifier le
+type MIME dans la propri√©t√© "MIME Type" de l'onglet Expert. NetBeans utilise
+MIME et le module External Editor n'ouvrira que les types sp√©cifi√©s dans cette
+propri√©t√©.
 
 ==============================================================================
 8. Messages						*netbeans-messages*
 
-Ces messages sont spÈcifiques ‡ NetBeans :
+Ces messages sont sp√©cifiques √† NetBeans :
 
 							*E463*
-  Cette zone est verrouillÈe et ne peut Ítre modifiÈe ~
+  Cette zone est verrouill√©e et ne peut √™tre modifi√©e ~
 
-NetBeans dÈfinit des zones de texte verrouillÈes, que vous ne pouvez pas
+NetBeans d√©finit des zones de texte verrouill√©es, que vous ne pouvez pas
 modifier.
 
 ==============================================================================
 9. Lancer Vim depuis NetBeans				*netbeans-run*
 
-NetBeans dÈmarre Vim avec l'argument |-nb|. Voici sa forme complËte : >
+NetBeans d√©marre Vim avec l'argument |-nb|. Voici sa forme compl√®te : >
 
 	-nb:{hote}:{port}:{motpasse}
 
-{hote} dÈsigne le nom de la machine sur laquelle NetBeans fonctionne. Quand il
-est omis, la variable d'environnement __NETBEANS_HOST est utilisÈe, ou alors
+{hote} d√©signe le nom de la machine sur laquelle NetBeans fonctionne. Quand il
+est omis, la variable d'environnement __NETBEANS_HOST est utilis√©e, ou alors
 "localhost".
 
-{port} dÈsigne le numÈro de port pour NetBeans. Quand il est omis, la variable
-d'environnement __NETBEANS_SOCKET est utilisÈe, ou alors 3219.
+{port} d√©signe le num√©ro de port pour NetBeans. Quand il est omis, la variable
+d'environnement __NETBEANS_SOCKET est utilis√©e, ou alors 3219.
 
-{motpasse} dÈsigne le mot de passe pour se connecter ‡ NetBeans. Quand il est
-omis, la variable d'environnement __NETBEANS_VIM_PASSWORD est utilisÈe, ou
+{motpasse} d√©signe le mot de passe pour se connecter √† NetBeans. Quand il est
+omis, la variable d'environnement __NETBEANS_VIM_PASSWORD est utilis√©e, ou
 alors "changeme".
 
 ==============================================================================
 10. Protocole NetBeans					*netbeans-protocol*
 
 La communication entre NetBeans et Vim utilise des messages en texte brut. Ce
-protocole a ÈtÈ conÁu ‡ l'origine pour fonctionner avec le module External
+protocole a √©t√© con√ßu √† l'origine pour fonctionner avec le module External
 Editor de NetBeans (voir http://externaleditor.netbeans.org). Plus tard, il a
-ÈtÈ Ètendu pour fonctionner avec Agide (l'EDI graphique de A-A-P, voir
-http://www.a-a-p.org). Ces extensions ont ÈtÈ mises en place dans la 
+√©t√© √©tendu pour fonctionner avec Agide (l'EDI graphique de A-A-P, voir
+http://www.a-a-p.org). Ces extensions ont √©t√© mises en place dans la 
 version 2.1.
 
 Actuellement, les messages sont transmis au travers d'une socket. Comme ils
-sont en texte UTF-8 brut, ce protocole pourrait tout aussi bien Ítre utilisÈ
-avec n'importe quel autre mÈcanisme de communication.
+sont en texte UTF-8 brut, ce protocole pourrait tout aussi bien √™tre utilis√©
+avec n'importe quel autre m√©canisme de communication.
 
 10.1. Types de messages		|nb-messages|
 10.2. Arguments			|nb-terms|
 10.3. Commandes			|nb-commands|
-10.4. Fonctions et RÈponses	|nb-functions|
-10.5. …vÈnements		|nb-events|
+10.4. Fonctions et R√©ponses	|nb-functions|
+10.5. √âv√©nements		|nb-events|
 10.6. Messages particuliers	|nb-special|
 
 	*E627* *E628* *E629* *E630* *E631* *E632* *E633* *E634* *E635* *E636*
@@ -241,70 +241,70 @@ Ces erreurs se produisent quand un message transgresse le protocole.
 Il existe quatre types de messages :
 
     TYPE	SENS		 COMMENTAIRE ~
-    Commande	EDI -> Èditeur	 aucune rÈponse nÈcessaire
-    Fonction	EDI -> Èditeur	 l'Èditeur doit retourner une rÈponse
-    RÈponse	Èditeur -> EDI	 uniquement pour rÈpondre ‡ une Fonction
-    …vÈnement	Èditeur -> EDI	 aucune rÈponse nÈcessaire
+    Commande	EDI -> √©diteur	 aucune r√©ponse n√©cessaire
+    Fonction	EDI -> √©diteur	 l'√©diteur doit retourner une r√©ponse
+    R√©ponse	√©diteur -> EDI	 uniquement pour r√©pondre √† une Fonction
+    √âv√©nement	√©diteur -> EDI	 aucune r√©ponse n√©cessaire
 
-Un message est envoyÈ sous forme d'une ligne unique avec un caractËre
-saut-de-ligne final. Les arguments sont sÈparÈs par un simple espace. Le
-premier ÈlÈment du message dÈpend du type de message.
+Un message est envoy√© sous forme d'une ligne unique avec un caract√®re
+saut-de-ligne final. Les arguments sont s√©par√©s par un simple espace. Le
+premier √©l√©ment du message d√©pend du type de message.
 
-    TYPE	PREMIER …L…MENT		EXEMPLE ~
+    TYPE	PREMIER √âL√âMENT		EXEMPLE ~
     Commande	IDtamp:nom!noseq	11:showBalloon!123 "texte"
     Fonction	IDtamp:nom/noseq	11:getLength/123
-    RÈponse	noseq			123 5000
-    …vÈnement	IDtamp:nom=noseq	11:keyCommand=123 "S-F2"
+    R√©ponse	noseq			123 5000
+    √âv√©nement	IDtamp:nom=noseq	11:keyCommand=123 "S-F2"
 
 
 10.2. ARGUMENTS						*nb-terms*
 
-IDtamp		NumÈro de tampon. Un message peut concerner un tampon en
-		particulier ou Ítre gÈnÈrique. Les messages gÈnÈriques
+IDtamp		Num√©ro de tampon. Un message peut concerner un tampon en
+		particulier ou √™tre g√©n√©rique. Les messages g√©n√©riques
 		utilisent un IDtamp de 0. NOTE : Cet identifiant de tampon est
-		attribuÈ par l'EDI, il ne s'agit pas du numÈro de tampon Vim.
-		Le IDtamp doit Ítre un nombre toujours croissant, dÈmarrant ‡
+		attribu√© par l'EDI, il ne s'agit pas du num√©ro de tampon Vim.
+		Le IDtamp doit √™tre un nombre toujours croissant, d√©marrant √†
 		1.
 
-noseq		NumÈro de sÈquence. L'EDI utilise un numÈro de sÈquence pour
-		les Commandes et les Fonctions. Une RÈponse doit utiliser le
-		numÈro de sÈquence de la Fonction qui lui est associÈe. Le
-		numÈro de sÈquence 0 peut Ítre utilisÈ pour les …vÈnements (le
-		noseq de la derniËre Commande ou Fonction peut Ègalement Ítre
-		utilisÈ).
+noseq		Num√©ro de s√©quence. L'EDI utilise un num√©ro de s√©quence pour
+		les Commandes et les Fonctions. Une R√©ponse doit utiliser le
+		num√©ro de s√©quence de la Fonction qui lui est associ√©e. Le
+		num√©ro de s√©quence 0 peut √™tre utilis√© pour les √âv√©nements (le
+		noseq de la derni√®re Commande ou Fonction peut √©galement √™tre
+		utilis√©).
 
-chaÓne		Argument entre doubles-apostrophes. Le texte est codÈ en
+cha√Æne		Argument entre doubles-apostrophes. Le texte est cod√© en
 		UTF-8. Cela signifie que l'ASCII est transmis tel que. Les
-		caractËres spÈciaux sont reprÈsentÈs ‡ l'aide d'une
+		caract√®res sp√©ciaux sont repr√©sent√©s √† l'aide d'une
 		contre-oblique :
 			\"	double-apostrophe
 			\n	saut-de-ligne			    ["Newline"]
 			\r	retour chariot
-			\t	tabulation (fonctionne aussi littÈralement)
+			\t	tabulation (fonctionne aussi litt√©ralement)
 			\\	contre-oblique
-		Les octets NUL ne sont pas autorisÈs !
+		Les octets NUL ne sont pas autoris√©s !
 
-boolÈen		Argument avec deux valeurs possibles :
+bool√©en		Argument avec deux valeurs possibles :
 			T	vrai				       ["True"]
 			F	faux
 
-nombre		Nombre dÈcimal.
+nombre		Nombre d√©cimal.
 
-nbopt		Nombre dÈcimal, ou bien "none" (sans les doubles-apostrophes).
+nbopt		Nombre d√©cimal, ou bien "none" (sans les doubles-apostrophes).
 
-pos		Nombre dÈcimal indiquant une position en octets dans un
+pos		Nombre d√©cimal indiquant une position en octets dans un
 		tampon. Le premier octet a la position 0. Les coupures de
-		lignes sont comptÈes selon la maniËre dont elles apparaissent
+		lignes sont compt√©es selon la mani√®re dont elles apparaissent
 		dans le fichier (CR/LF compte pour deux octets). NOTE : Les
-		caractËres multi-octets sont comptÈs pour le nombre d'octets
+		caract√®res multi-octets sont compt√©s pour le nombre d'octets
 		qu'ils occupent.
 
-nol/col		Argument donnant une position avec un numÈro de ligne et un
-		numÈro de colonne. Les lignes commencent au numÈro 1, la
-		colonne reprÈsente la position en octets, dÈbutant ‡ 0. NOTE :
-		Les caractËres multi-octets comptent pour plusieurs colonnes.
+nol/col		Argument donnant une position avec un num√©ro de ligne et un
+		num√©ro de colonne. Les lignes commencent au num√©ro 1, la
+		colonne repr√©sente la position en octets, d√©butant √† 0. NOTE :
+		Les caract√®res multi-octets comptent pour plusieurs colonnes.
 
-cheminfich	Argument chaÓne : nom de fichier avec son chemin absolu.
+cheminfich	Argument cha√Æne : nom de fichier avec son chemin absolu.
 
 
 10.3. COMMANDES						*nb-commands*
@@ -317,179 +317,179 @@ actionSensitivity
 addAnno {noserie} {notype} {pos} {long}
 		Place une annotation dans le tampon.
 		Arguments :
-		   {noserie}   nombre	numÈro de sÈrie de cette annotation,
+		   {noserie}   nombre	num√©ro de s√©rie de cette annotation,
 					   utile pour la retirer par la suite
-		   {notype}    nombre	numÈro de sÈquence de l'annotation,
-					   dÈfinie avec defineAnnoType pour le
+		   {notype}    nombre	num√©ro de s√©quence de l'annotation,
+					   d√©finie avec defineAnnoType pour le
 					   tampon
 		   {pos}       nombre	position indiquant la place de
 					   l'annotation
-		   {long}      nombre	non utilisÈ
-		Dans la version 2.1, un argument de type nol/col peut Ítre
-		utilisÈ ‡ la place d'un nombre pour {pos}.
+		   {long}      nombre	non utilis√©
+		Dans la version 2.1, un argument de type nol/col peut √™tre
+		utilis√© √† la place d'un nombre pour {pos}.
 
 balloonResult {texte}
 		Non disponible.
 
-close		Ferme le tampon. Cela laisse sans tampon courant, trËs
-		dangereux ‡ utiliser !
+close		Ferme le tampon. Cela laisse sans tampon courant, tr√®s
+		dangereux √† utiliser !
 
-create		CrÈe un tampon sans nom. Remplace le tampon courant (il est
-		cachÈ s'il a ÈtÈ modifiÈ).
-		NetBeans l'utilise comme premiËre commande pour un fichier en
-		cours d'ouverture. La sÈquence des commandes pourrait Ítre :
+create		Cr√©e un tampon sans nom. Remplace le tampon courant (il est
+		cach√© s'il a √©t√© modifi√©).
+		NetBeans l'utilise comme premi√®re commande pour un fichier en
+		cours d'ouverture. La s√©quence des commandes pourrait √™tre :
 			create
-			setCaretListener	(ignorÈe)
+			setCaretListener	(ignor√©e)
 			setModified		(sans effet)
-			setContentType		(ignorÈe)
+			setContentType		(ignor√©e)
 			startDocumentListen
 			setTitle
 			setFullName
 
 defineAnnoType {notype} {nomtype} {bulle} {icone} {coulAV} {coulAR}
-		DÈfinit un type d'annotation pour le tampon.
+		D√©finit un type d'annotation pour le tampon.
 		Arguments :
-		   {notype}    nombre	numÈro de sÈquence (non utilisÈ)
-		   {nomtype}   chaÓne	nom identifiant cette annotation
-		   {bulle}     chaÓne	non utilisÈ
-		   {icone} chaÓne	nom du fichier icÙne
+		   {notype}    nombre	num√©ro de s√©quence (non utilis√©)
+		   {nomtype}   cha√Æne	nom identifiant cette annotation
+		   {bulle}     cha√Æne	non utilis√©
+		   {icone} cha√Æne	nom du fichier ic√¥ne
 		   {coulAV}    nbopt	couleur de premier plan de la ligne
-		   {coulAR}    nbopt	couleur d'arriËre-plan de la ligne
-		Vim va dÈfinir un symbole pour l'annotation.
-		Quand {coulAV} et {coulAR} sont tout deux Ègaux ‡ "none",
-		aucune surbrillance n'est appliquÈe ‡ la ligne (nouveautÈ de
+		   {coulAR}    nbopt	couleur d'arri√®re-plan de la ligne
+		Vim va d√©finir un symbole pour l'annotation.
+		Quand {coulAV} et {coulAR} sont tout deux √©gaux √† "none",
+		aucune surbrillance n'est appliqu√©e √† la ligne (nouveaut√© de
 		la version 2.1).
-		Quand {icone} est vide, aucun symbole n'est utilisÈ (nouveautÈ
-		de la version 2.1). Quand il fait un ou deux caractËres de
-		long, un symbole textuel est dÈfini (nouveautÈ de la version
+		Quand {icone} est vide, aucun symbole n'est utilis√© (nouveaut√©
+		de la version 2.1). Quand il fait un ou deux caract√®res de
+		long, un symbole textuel est d√©fini (nouveaut√© de la version
 		2.1).
-		NOTE : Les annotations sont dÈfinies sÈquentiellement, et le
-		numÈro de sÈquence est ensuite utilisÈ avec addAnno.
+		NOTE : Les annotations sont d√©finies s√©quentiellement, et le
+		num√©ro de s√©quence est ensuite utilis√© avec addAnno.
 
 editFile {cheminfich}
-		Fixe le nom du tampon et Èdite le fichier {cheminfich},
-		argument de type chaÓne.
-		ManiËre normale pour l'EDI de dire ‡ l'Èditeur d'Èditer un
-		fichier. Si l'EDI doit passer le texte du fichier ‡ l'Èditeur,
-		utilisez plutÙt ces commandes :
+		Fixe le nom du tampon et √©dite le fichier {cheminfich},
+		argument de type cha√Æne.
+		Mani√®re normale pour l'EDI de dire √† l'√©diteur d'√©diter un
+		fichier. Si l'EDI doit passer le texte du fichier √† l'√©diteur,
+		utilisez plut√¥t ces commandes :
 			setFullName
 			insert
 			initDone
-		NouveautÈ de la version 2.1.
+		Nouveaut√© de la version 2.1.
 
 enableBalloonEval
 		Non disponible.
 
-endAtomic	Fin d'une opÈration atomique. Les modifications entre
-		"startAtomic" et "endAtomic" peuvent Ítre annulÈes comme une
-		opÈration unique. Mais cela n'est pas encore disponible.
-		RafraÓchit l'affichage si nÈcessaire.
+endAtomic	Fin d'une op√©ration atomique. Les modifications entre
+		"startAtomic" et "endAtomic" peuvent √™tre annul√©es comme une
+		op√©ration unique. Mais cela n'est pas encore disponible.
+		Rafra√Æchit l'affichage si n√©cessaire.
 
 guard {pos} {long}
-		Marque une zone du tampon comme verrouillÈe. Cela signifie
-		qu'elle ne peut pas Ítre ÈditÈe. {pos} et {long} sont des
-		nombres dÈlimitant le texte ‡ verrouiller.
+		Marque une zone du tampon comme verrouill√©e. Cela signifie
+		qu'elle ne peut pas √™tre √©dit√©e. {pos} et {long} sont des
+		nombres d√©limitant le texte √† verrouiller.
 
-initDone	Indique que le tampon est prÍt. Le tampon concernÈ devient
-		implicitement le tampon courant. DÈclenche l'ÈvÈnement
+initDone	Indique que le tampon est pr√™t. Le tampon concern√© devient
+		implicitement le tampon courant. D√©clenche l'√©v√©nement
 		d'autocommande BufReadPost.
 
 moveAnnoToFront {noserie}
 		Non disponible.
 
 putBufferNumber {cheminfich}
-		Associe un numÈro de tampon au tampon Vim correspondant gr‚ce
-		au nom {cheminfich}, argument de type chaÓne. ¿ utiliser quand
-		l'Èditeur rapporte l'Èdition d'un autre fichier ‡ l'EDI et que
-		l'EDI a besoin de dire ‡ l'Èditeur quel numÈro de tampon
+		Associe un num√©ro de tampon au tampon Vim correspondant gr√¢ce
+		au nom {cheminfich}, argument de type cha√Æne. √Ä utiliser quand
+		l'√©diteur rapporte l'√©dition d'un autre fichier √† l'EDI et que
+		l'EDI a besoin de dire √† l'√©diteur quel num√©ro de tampon
 		utiliser pour ce fichier.
-		Indique Ègalement que le tampon est initialisÈ.
-		NouveautÈ de la version 2.1.
+		Indique √©galement que le tampon est initialis√©.
+		Nouveaut√© de la version 2.1.
 
-raise		AmËne l'Èditeur au premier plan.
-		NouveautÈ de la version 2.1.
+raise		Am√®ne l'√©diteur au premier plan.
+		Nouveaut√© de la version 2.1.
 
 removeAnno {noserie}
-		Retire une annotation placÈe dans le tampon.
-		{noserie} est le mÍme nombre que celui utilisÈ dans addAnno.
+		Retire une annotation plac√©e dans le tampon.
+		{noserie} est le m√™me nombre que celui utilis√© dans addAnno.
 
 setAsUser	Non disponible.
 
 setBufferNumber {cheminfich}
-		Associe un numÈro de tampon au tampon Vim correspondant au nom
-		{cheminfich}. ¿ utiliser quand l'Èditeur rapporte l'Èdition
-		d'un autre fichier ‡ l'EDI et que l'EDI a besoin de dire ‡
-		l'Èditeur quel numÈro de tampon il utilise pour ce fichier.
-		Par effet de bord, le tampon concernÈ devient le tampon
+		Associe un num√©ro de tampon au tampon Vim correspondant au nom
+		{cheminfich}. √Ä utiliser quand l'√©diteur rapporte l'√©dition
+		d'un autre fichier √† l'EDI et que l'EDI a besoin de dire √†
+		l'√©diteur quel num√©ro de tampon il utilise pour ce fichier.
+		Par effet de bord, le tampon concern√© devient le tampon
 		courant.
 		Voir "putBufferNumber" pour une commande plus utile.
 
 setContentType  Non disponible.
 
-setDot {pos}	Rend courant devient le tampon concernÈ et place le curseur ‡
-		la position spÈcifiÈe.
-		Dans la version 2.1, un argument de type nol/col peut Ítre
-		utilisÈ pour {pos}.
+setDot {pos}	Rend courant devient le tampon concern√© et place le curseur √†
+		la position sp√©cifi√©e.
+		Dans la version 2.1, un argument de type nol/col peut √™tre
+		utilis√© pour {pos}.
 
 setExitDelay {secondes}
-		Fixe le dÈlai avant de sortir ‡ {secondes}, de type nombre.
-		Ce dÈlai est utilisÈ pour permettre ‡ l'EDI de prendre les
-		choses en charge avant de sortir vraiment. Le dÈlai par dÈfaut
+		Fixe le d√©lai avant de sortir √† {secondes}, de type nombre.
+		Ce d√©lai est utilis√© pour permettre √† l'EDI de prendre les
+		choses en charge avant de sortir vraiment. Le d√©lai par d√©faut
 		est de 2 secondes.
-		NouveautÈ de la version 2.1.
+		Nouveaut√© de la version 2.1.
 
 setFullName {cheminfich}
-		Fixe le nom de fichier ‡ utiliser pour le tampon courant ‡
-		{cheminfich}, de type chaÓne.
-		UtilisÈ quand l'EDI souhaite Èditer un fichier sous le
-		contrÙle de l'EDI. Cela fait du tampon le tampon courant, mais
-		ne lit pas le fichier. La commande "insert" doit ensuite Ítre
-		utilisÈe pour obtenir le contenu.
+		Fixe le nom de fichier √† utiliser pour le tampon courant √†
+		{cheminfich}, de type cha√Æne.
+		Utilis√© quand l'EDI souhaite √©diter un fichier sous le
+		contr√¥le de l'EDI. Cela fait du tampon le tampon courant, mais
+		ne lit pas le fichier. La commande "insert" doit ensuite √™tre
+		utilis√©e pour obtenir le contenu.
 
 setLocAndSize	Non disponible.
 
 setMark		Non disponible.
 
 setModified {modifie}
-		Quand l'argument boolÈen {modifie} vaut "T", signale le tampon
-		comme modifiÈ. Quand il vaut "F", signale le tampon comme
-		non modifiÈ.
+		Quand l'argument bool√©en {modifie} vaut "T", signale le tampon
+		comme modifi√©. Quand il vaut "F", signale le tampon comme
+		non modifi√©.
 
 setReadOnly	Non disponible.
 
 setStyle	Non disponible.
 
-setTitle {nom}  Fixe le titre du tampon ‡ {nom}, de type chaÓne.
-		Le titre est uniquement destinÈ ‡ NetBeans, pas de Vim.
+setTitle {nom}  Fixe le titre du tampon √† {nom}, de type cha√Æne.
+		Le titre est uniquement destin√© √† NetBeans, pas de Vim.
 
 setVisible {visible}
-		Quand l'argument boolÈen {visible} vaut "T", va au tampon.
+		Quand l'argument bool√©en {visible} vaut "T", va au tampon.
 		Sans effet si "F".
 
 showBalloon {texte}
-		Affiche une bulle d'aide (fenÍtre contextuelle) sous le
-		pointeur de la souris, contenant {texte}, de type chaÓne. La
-		bulle d'aide devrait disparaÓtre quand la souris est dÈplacÈe
-		de plus de quelques pixels. NouveautÈ de la version 2.1.
+		Affiche une bulle d'aide (fen√™tre contextuelle) sous le
+		pointeur de la souris, contenant {texte}, de type cha√Æne. La
+		bulle d'aide devrait dispara√Ætre quand la souris est d√©plac√©e
+		de plus de quelques pixels. Nouveaut√© de la version 2.1.
 
 specialKeys	Non disponible.
 
-startAtomic	Commence une opÈration atomique. L'Ècran n'est pas rafraÓchi
-		tant que "endAtomic" n'est pas appelÈe.
+startAtomic	Commence une op√©ration atomique. L'√©cran n'est pas rafra√Æchi
+		tant que "endAtomic" n'est pas appel√©e.
 
 startCaretListen
 		Non disponible.
 
 startDocumentListen
-		Marque un tampon pour qu'il rapporte les changements ‡ l'EDI
-		avec les ÈvÈnements "insert" et "remove". Le comportement par
-		dÈfaut est de rapporter les changements.
+		Marque un tampon pour qu'il rapporte les changements √† l'EDI
+		avec les √©v√©nements "insert" et "remove". Le comportement par
+		d√©faut est de rapporter les changements.
 
 stopCaretListen
 		Non disponible.
 
 stopDocumentListen
-		Indique au tampon d'arrÍter de rapporter les changements ‡
+		Indique au tampon d'arr√™ter de rapporter les changements √†
 		l'EDI. Contraire de "startDocumentListen".
 
 unguard {pos} {long}
@@ -498,201 +498,201 @@ unguard {pos} {long}
 version		Non disponible.
 
 
-10.4. FONCTIONS ET R…PONSES				*nb-functions*
+10.4. FONCTIONS ET R√âPONSES				*nb-functions*
 
 getDot		Non disponible.
 
 getCursor	Retourne le tampon courant et la position du curseur.
-		La rÈponse est de la forme :
+		La r√©ponse est de la forme :
 			noseq IDtamp nol col pos
-		noseq  = numÈro de sÈquence de la fonction
+		noseq  = num√©ro de s√©quence de la fonction
 		IDtamp = identifiant du tampon courant (-1 si inconnu)
-		nol    = numÈro de la ligne du curseur (1 pour la premiËre)
-		col    = numÈro de la colonne du curseur (en octets, 0 pour la
-			 premiËre)
+		nol    = num√©ro de la ligne du curseur (1 pour la premi√®re)
+		col    = num√©ro de la colonne du curseur (en octets, 0 pour la
+			 premi√®re)
 		pos    = position du curseur dans le tampon (en octets)
-		NouveautÈ de la version 2.1.
+		Nouveaut√© de la version 2.1.
 
 getLength	Retourne la longueur du tampon en octets.
-		Exemple de rÈponse pour un tampon de 5000 octets :
+		Exemple de r√©ponse pour un tampon de 5000 octets :
 			123 5000
 		TODO : expliquer l'utilisation de la ligne partielle. XXX
 
 getMark		Non disponible.
 
-getModified	Lorsqu'un tampon est spÈcifiÈ : retourne 0 si le tampon n'a
-		pas ÈtÈ modifiÈ, 1 s'il a subi des modifications.
-		Lorsqu'aucun tampon n'est spÈcifiÈ (tampon 0) : retourne le
-		nombre de tampons modifiÈs. Quand le rÈsultat vaut 0, il est
-		parfaitement s˚r de dire ‡ Vim de quitter.
-		NouveautÈ de la version 2.1.
+getModified	Lorsqu'un tampon est sp√©cifi√© : retourne 0 si le tampon n'a
+		pas √©t√© modifi√©, 1 s'il a subi des modifications.
+		Lorsqu'aucun tampon n'est sp√©cifi√© (tampon 0) : retourne le
+		nombre de tampons modifi√©s. Quand le r√©sultat vaut 0, il est
+		parfaitement s√ªr de dire √† Vim de quitter.
+		Nouveaut√© de la version 2.1.
 
-getText		Retourne le contenu d'un tampon sous la forme d'une chaÓne.
-		Exemple de rÈponse pour un tampon contenant 2 lignes :
-			123 "premiËre ligne\nseconde ligne\n"
+getText		Retourne le contenu d'un tampon sous la forme d'une cha√Æne.
+		Exemple de r√©ponse pour un tampon contenant 2 lignes :
+			123 "premi√®re ligne\nseconde ligne\n"
 		NOTE : La documentation indique un argument de position et de
 		longueur, mais ils ne sont pas disponibles.
 
 insert {pos} {texte}
-		InsËre {texte} avant la position {pos}. {texte} est une
-		chaÓne et {pos} un nombre.
-		RÈponses possibles :
-			123		pas de problËme
-			123 !message	Èchec
-		NOTE : Le message de la rÈponse n'est pas mis entre
+		Ins√®re {texte} avant la position {pos}. {texte} est une
+		cha√Æne et {pos} un nombre.
+		R√©ponses possibles :
+			123		pas de probl√®me
+			123 !message	√©chec
+		NOTE : Le message de la r√©ponse n'est pas mis entre
 		doubles-apostrophes.
 
 remove {pos} {long}
-		Supprime {long} octets de texte ‡ la position {pos}. Ces deux
+		Supprime {long} octets de texte √† la position {pos}. Ces deux
 		arguments sont des nombres.
-		RÈponses possibles :
-			123		pas de problËme
-			123 !message	Èchec
-		NOTE : Le message de la rÈponse n'est pas mis entre
+		R√©ponses possibles :
+			123		pas de probl√®me
+			123 !message	√©chec
+		NOTE : Le message de la r√©ponse n'est pas mis entre
 		doubles-apostrophes.
 
-saveAndExit	Provoque l'Èquivalent Vim de ":confirm qall".
-		Si aucun fichier n'est modifiÈ ou que l'utilisateur n'annule
-		pas l'opÈration, Vim sort et aucune rÈponse n'est retournÈe.
-		L'EDI peut alors considÈrer la fermeture de la connexion
-		comme un rÈsultat positif.
-		Si l'utilisateur annule l'opÈration, le nombre de tampons
-		modifiÈs restant est retournÈ et Vim ne sort pas.
-		NouveautÈ de la version 2.1.
+saveAndExit	Provoque l'√©quivalent Vim de ":confirm qall".
+		Si aucun fichier n'est modifi√© ou que l'utilisateur n'annule
+		pas l'op√©ration, Vim sort et aucune r√©ponse n'est retourn√©e.
+		L'EDI peut alors consid√©rer la fermeture de la connexion
+		comme un r√©sultat positif.
+		Si l'utilisateur annule l'op√©ration, le nombre de tampons
+		modifi√©s restant est retourn√© et Vim ne sort pas.
+		Nouveaut√© de la version 2.1.
 		[N.D.T. : NetBeans prend en charge l'enregistrement du
 		fichier.]
 
 
-10.5. …V…NEMENTS						*nb-events*
+10.5. √âV√âNEMENTS						*nb-events*
 
 balloonEval {pos} {long} {type}
 		Le pointeur de la souris reste sur le texte un court instant.
-		Quand {long} vaut 0, il n'y a aucune sÈlection et le pointeur
-		est sur la position {pos}. Quand {long} est diffÈrent de 0, le
+		Quand {long} vaut 0, il n'y a aucune s√©lection et le pointeur
+		est sur la position {pos}. Quand {long} est diff√©rent de 0, le
 		texte entre les positions {pos} et {pos} + {long} est
-		sÈlectionnÈ.
-		N'est envoyÈ qu'aprËs que "enableBalloonEval" a ÈtÈ utilisÈ
+		s√©lectionn√©.
+		N'est envoy√© qu'apr√®s que "enableBalloonEval" a √©t√© utilis√©
 		pour le tampon.
-		{type} n'est pas dÈfini actuellement.
+		{type} n'est pas d√©fini actuellement.
 		Non disponible.
 
 balloonText {texte}
-		UtilisÈ quand 'ballooneval' est activÈ et que le pointeur de
+		Utilis√© quand 'ballooneval' est activ√© et que le pointeur de
 		la souris reste sur du texte pendant un moment. {texte} est
-		une chaÓne, correspondant au texte sous le curseur.
-		NouveautÈ de la version 2.1.
+		une cha√Æne, correspondant au texte sous le curseur.
+		Nouveaut√© de la version 2.1.
 
 fileClosed	Non disponible.
 
 fileModified	Non disponible.
 
 fileOpened {cheminfich} {ouvert} {modifie}
-		Un fichier a ÈtÈ ouvert par l'utilisateur.
+		Un fichier a √©t√© ouvert par l'utilisateur.
 		Arguments :
-		    {cheminfich}    chaÓne	nom du fichier
-		    {open}	    boolÈen	toujours "F"
-		    {modifie}	    boolÈen	toujours "F"
+		    {cheminfich}    cha√Æne	nom du fichier
+		    {open}	    bool√©en	toujours "F"
+		    {modifie}	    bool√©en	toujours "F"
 
 geometry {col} {lignes} {X} {Y}
-		Rapporte la taille et la position de la fenÍtre de l'Èditeur.
+		Rapporte la taille et la position de la fen√™tre de l'√©diteur.
 		Arguments :
 		    {col}	nombre	    nombre de colonnes de texte
 		    {lignes}	nombre	    nombre de lignes de texte
-		    {X}		nombre	    position sur l'Ècran en pixel 
-		    {Y}		nombre	    position sur l'Ècran en pixel 
+		    {X}		nombre	    position sur l'√©cran en pixel 
+		    {Y}		nombre	    position sur l'√©cran en pixel 
 		Ne fonctionne qu'avec Motif.
 
 insert {pos} {texte}
-		Le texte {texte} a ÈtÈ insÈrÈ dans Vim ‡ la position {pos}.
-		N'est envoyÈ que s'il est activÈ, voir "startDocumentListen".
+		Le texte {texte} a √©t√© ins√©r√© dans Vim √† la position {pos}.
+		N'est envoy√© que s'il est activ√©, voir "startDocumentListen".
 
 invokeAction	Non disponible.
 
 keyCommand {nomtouche}
-		Rapporte l'appui sur une touche spÈciale en donnant son nom
-		{nomtouche}, de type chaÓne.
-		Noms de touches supportÈs :
+		Rapporte l'appui sur une touche sp√©ciale en donnant son nom
+		{nomtouche}, de type cha√Æne.
+		Noms de touches support√©s :
 			F1		touche de fonction 1
 			F2		touche de fonction 2
 				...
 			F12		touche de fonction 12
 			' '		espace (sans les apostrophes)
 			!		point d'exclamation
-				...	tout autre caractËre ASCII imprimable
+				...	tout autre caract√®re ASCII imprimable
 			~		tilde
 			X		toute touche non reconnue
-		La touche peut Ítre prÈcÈdÈe par "C", "S" et/ou "M",
-		reprÈsentant les modificateurs ContrÙle, Maj ["Shift"] et MÈta
-		(Alt). Si un modificateur est spÈcifiÈ, un tiret est utilisÈ
-		pour le sÈparer du nom de la touche. Par exemple : "C-F2".
-		Les caractËres ASCII sont une nouveautÈ de la version 2.1.
+		La touche peut √™tre pr√©c√©d√©e par "C", "S" et/ou "M",
+		repr√©sentant les modificateurs Contr√¥le, Maj ["Shift"] et M√©ta
+		(Alt). Si un modificateur est sp√©cifi√©, un tiret est utilis√©
+		pour le s√©parer du nom de la touche. Par exemple : "C-F2".
+		Les caract√®res ASCII sont une nouveaut√© de la version 2.1.
 
 keyAtPos {nomtouche} {nol/col}
-		Comme {nomtouche}, mais rapporte aussi le numÈro de la ligne
+		Comme {nomtouche}, mais rapporte aussi le num√©ro de la ligne
 		et la colonne du curseur.
-		NouveautÈ de la version 2.1.
+		Nouveaut√© de la version 2.1.
 
-killed		Un fichier a ÈtÈ fermÈ par l'utilisateur. Uniquement pour les
-		fichiers auxquels l'EDI a attribuÈ un numÈro.
+killed		Un fichier a √©t√© ferm√© par l'utilisateur. Uniquement pour les
+		fichiers auxquels l'EDI a attribu√© un num√©ro.
 
 newDotAndMark {pos} {pos}
-		Rapporte la position du curseur comme Ètant ‡ {pos} octets
-		dans le tampon. EnvoyÈ uniquement avant un ÈvÈnement
+		Rapporte la position du curseur comme √©tant √† {pos} octets
+		dans le tampon. Envoy√© uniquement avant un √©v√©nement
 		"keyCommand".
 
 quit		Non disponible.
 
 remove {pos} {long}
-		Texte qui a ÈtÈ effacÈ dans Vim ‡ la position {pos} et de
+		Texte qui a √©t√© effac√© dans Vim √† la position {pos} et de
 		longueur {long}.
-		EnvoyÈ uniquement si activÈ, voir "startDocumentListen".
+		Envoy√© uniquement si activ√©, voir "startDocumentListen".
 
 revert		Non disponible.
 
-save		Le tampon est enregistrÈ et ‡ prÈsent considÈrÈ comme
-		non modifiÈ.
-		EnvoyÈ uniquement si activÈ, voir "startDocumentListen".
+save		Le tampon est enregistr√© et √† pr√©sent consid√©r√© comme
+		non modifi√©.
+		Envoy√© uniquement si activ√©, voir "startDocumentListen".
 
-startupDone	L'Èditeur a terminÈ sa phase de dÈmarrage et est prÍt ‡ Èditer
+startupDone	L'√©diteur a termin√© sa phase de d√©marrage et est pr√™t √† √©diter
 		des fichiers.
-		NouveautÈ de la version 2.1.
+		Nouveaut√© de la version 2.1.
 
-unmodified	Le tampon est ‡ prÈsent considÈrÈ comme non modifiÈ.
-		EnvoyÈ uniquement si activÈ, voir "startDocumentListen".
+unmodified	Le tampon est √† pr√©sent consid√©r√© comme non modifi√©.
+		Envoy√© uniquement si activ√©, voir "startDocumentListen".
 
-version {vers}	Rapporte la version du protocole supportÈe. Vim rapporte "2.1"
+version {vers}	Rapporte la version du protocole support√©e. Vim rapporte "2.1"
 		(avec les doubles-apostrophes).
 
 
-10.6. MESSAGES SP…CIAUX 				*nb-special*
+10.6. MESSAGES SP√âCIAUX 				*nb-special*
 
-Ces messages ne suivent pas les rËgles des messages prÈcÈdents. Ils se
-terminent par un caractËre saut-de-ligne.
+Ces messages ne suivent pas les r√®gles des messages pr√©c√©dents. Ils se
+terminent par un caract√®re saut-de-ligne.
 
-ACCEPT		Non utilisÈ.
+ACCEPT		Non utilis√©.
 
-AUTH {motpasse} …diteur -> EDI : premier message que l'Èditeur envoie ‡ l'EDI.
+AUTH {motpasse} √âditeur -> EDI : premier message que l'√©diteur envoie √† l'EDI.
 		Il doit contenir le mot de passe pour le serveur, tel qu'il
-		est spÈcifiÈ dans l'argument |-nb|. Ne pas utiliser de
+		est sp√©cifi√© dans l'argument |-nb|. Ne pas utiliser de
 		doubles-apostrophes !
 
-DISCONNECT	EDI -> Èditeur : rompt la connexion. Fait quitter l'Èditeur.
+DISCONNECT	EDI -> √©diteur : rompt la connexion. Fait quitter l'√©diteur.
 		L'EDI ne doit envoyer ce message que s'il n'y a aucune
-		modification non enregistrÈe.
+		modification non enregistr√©e.
 
-DETACH		EDI -> Èditeur : rompt la connexion sans provoquer la sortie
-		de l'Èditeur. UtilisÈ lorsque l'EDI sort sans faire quitter
-		l'Èditeur.
-		NouveautÈ de la version 2.1.
+DETACH		EDI -> √©diteur : rompt la connexion sans provoquer la sortie
+		de l'√©diteur. Utilis√© lorsque l'EDI sort sans faire quitter
+		l'√©diteur.
+		Nouveaut√© de la version 2.1.
 
-REJECT		Non utilisÈ.
+REJECT		Non utilis√©.
 
 ==============================================================================
-11. ProblËmes connus					*netbeans-problems*
+11. Probl√®mes connus					*netbeans-problems*
 
-Les octets NUL ne sont pas autorisÈs. Dans le sens Èditeur -> EDI, ils
-apparaÓtront comme des caractËres saut-de-ligne (NL). Dans le sens EDI ->
-Èditeur, il est impossible de les insÈrer.
+Les octets NUL ne sont pas autoris√©s. Dans le sens √©diteur -> EDI, ils
+appara√Ætront comme des caract√®res saut-de-ligne (NL). Dans le sens EDI ->
+√©diteur, il est impossible de les ins√©rer.
 
  vim:tw=78:ts=8:ft=help:norl:
 

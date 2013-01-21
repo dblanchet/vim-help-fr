@@ -1,15 +1,15 @@
 *pi_gzip.txt*   pour Vim version 6.1
 
-		MANUEL DE RÉFÉRENCE DE VIM -  par Bram Moolenaar
+		MANUEL DE RÃ‰FÃ‰RENCE DE VIM -  par Bram Moolenaar
 
 
-Éditer un fichier compressé avec Vim		*gzip* *bzip2* *compress*
+Ã‰diter un fichier compressÃ© avec Vim		*gzip* *bzip2* *compress*
 
 1. Commandes automatiques		|gzip-autocmd|
 
-La fonctionalité dont il est question est un plugin standard
+La fonctionalitÃ© dont il est question est un plugin standard
 (|standard-plugin|).
-Ce plugin n'est disponible que si 'compatible' n'es pas positionné.
+Ce plugin n'est disponible que si 'compatible' n'es pas positionnÃ©.
 Vous pouvez eviter de charger ce plugin en initialisant la variable
 "loaded_gzip": >
 	:let loaded_gzip = 1
@@ -27,16 +27,16 @@ lectures des fichiers comportant les extensions suivantes :
 	*.gz		gzip
 	*.bz2		bzip2
 
-En fait ce sont les seules choses que vous avez à savoir. Cette fonction n'a
+En fait ce sont les seules choses que vous avez Ã  savoir. Cette fonction n'a
 aucune option.
 
-Après avoir décompressé un fichier, le type du fichier sera à nouveau 
-derterminé. Ainsi le fichier "foo.c.gz" aura le type "c".
+AprÃ¨s avoir dÃ©compressÃ© un fichier, le type du fichier sera Ã  nouveau 
+derterminÃ©. Ainsi le fichier "foo.c.gz" aura le type "c".
 
-Si vous avez activé l'option 'patchmode', cela s'ajoutera après l'extension de
-la compression. Ainsi, l'édition d'un tel fichier n'activera pas la
-décompression automatique. Il vous faudra alors renommer le fichier pour la
-réactiver.
+Si vous avez activÃ© l'option 'patchmode', cela s'ajoutera aprÃ¨s l'extension de
+la compression. Ainsi, l'Ã©dition d'un tel fichier n'activera pas la
+dÃ©compression automatique. Il vous faudra alors renommer le fichier pour la
+rÃ©activer.
 
 ==============================================================================
  vim:tw=78:ts=8:ft=help:norl:

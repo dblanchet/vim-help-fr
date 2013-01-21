@@ -1,7 +1,7 @@
-*if_tcl.txt*    Pour Vim version 6.2.   Dernière modification : 25 oct 2001
+*if_tcl.txt*    Pour Vim version 6.2.   DerniÃ¨re modification : 25 oct 2001
 
 
-		  MANUEL de RÉFÉRENCE VIM - par Ingo Wilken
+		  MANUEL de RÃ‰FÃ‰RENCE VIM - par Ingo Wilken
 
 
 L'interface Tcl de Vim  				*tcl* *Tcl* *TCL*
@@ -9,36 +9,36 @@ L'interface Tcl de Vim  				*tcl* *Tcl* *TCL*
 1. Commandes				|tcl-ex-commands|
 2. Commandes Tcl			|tcl-commands|
 3. Variables Tcl			|tcl-variables|
-4. Commandes de fenêtre Tcl		|tcl-window-cmds|
+4. Commandes de fenÃªtre Tcl		|tcl-window-cmds|
 5. Commandes de tampon Tcl		|tcl-buffer-cmds|
 6. Divers -- sortie de Tcl		|tcl-misc|
-7. Bogues et problèmes connus		|tcl-bugs|
+7. Bogues et problÃ¨mes connus		|tcl-bugs|
 8. Exemples				|tcl-examples|
 
 {absent de Vi}						*E280* *E281*
-{uniquement si compilé avec la fonctionnalité |+tcl|}
+{uniquement si compilÃ© avec la fonctionnalitÃ© |+tcl|}
 
 AVERTISSEMENT : Il reste probablement des bogues. Merci d'envoyer les rapports
-de bogues, commentaires, idées, etc. à
+de bogues, commentaires, idÃ©es, etc. Ã 
 <Ingo.Wilken@informatik.uni-oldenburg.de>.
 
 ==============================================================================
 1. Commandes				    *tcl-ex-commands* *E571* *E572*
 
 							*:tcl* *:tc*
-:tc[l] {cmd}		Exécute la commande Tcl {cmd}.
+:tc[l] {cmd}		ExÃ©cute la commande Tcl {cmd}.
 
 :[plage]tc[l] << {balisefin}
 {script}
 {balisefin}
-			Exécute le script Tcl {script}.
+			ExÃ©cute le script Tcl {script}.
 			NOTE : cette commande ne fonctionne pas si la
-			fonctionnalité Tcl n'a pas été compilée. Pour éviter
+			fonctionnalitÃ© Tcl n'a pas Ã©tÃ© compilÃ©e. Pour Ã©viter
 			les erreurs en tentant de l'utiliser, voir
 			|script-here|.
 
-{balisefin} ne doit être précédé d'AUCUN espace. Si {balisefin} est omis après
-le "<<", un point ('.') doit être utilisé à la fin du {script}, comme pour les
+{balisefin} ne doit Ãªtre prÃ©cÃ©dÃ© d'AUCUN espace. Si {balisefin} est omis aprÃ¨s
+le "<<", un point ('.') doit Ãªtre utilisÃ© Ã  la fin du {script}, comme pour les
 commandes |:append| et |:insert|.
    Cette forme de la commande ":tcl" est surtout utile pour inclure du code
 Tcl.
@@ -54,100 +54,100 @@ Exemple : >
 <
 
 							*:tcldo* *:tcld*
-:[plage]tcld[o] {cmd}	Exécute la commande Tcl {cmd} pour chaque ligne dans
-			[plage], la variable "line" étant fixée au texte de
-			chaque ligne successivement, et "lnum" au numéro de
+:[plage]tcld[o] {cmd}	ExÃ©cute la commande Tcl {cmd} pour chaque ligne dans
+			[plage], la variable "line" Ã©tant fixÃ©e au texte de
+			chaque ligne successivement, et "lnum" au numÃ©ro de
 			chaque ligne. Si vous fixez "line", cela modifiera le
 			texte (NOTE : il n'est cependant pas possible
 			d'ajouter ni de supprimer des lignes avec cette
 			commande).
 			Si {cmd} renvoie une erreur, la commande est
-			interrompue. La valeur par défaut de la [plage] est le
+			interrompue. La valeur par dÃ©faut de la [plage] est le
 			fichier entier : "1,$".
 			Voir |tcl-var-line| et |tcl-var-lnum|. {absent de Vi}
 
 							*:tclfile* *:tclf*
-:tclf[ile] {fichier}	Exécute le script Tcl contenu dans {fichier}. C'est la
-			même chose que ":tcl source {fichier}", mais permet le
-			complètement du nom de fichier. {absent de Vi}
+:tclf[ile] {fichier}	ExÃ©cute le script Tcl contenu dans {fichier}. C'est la
+			mÃªme chose que ":tcl source {fichier}", mais permet le
+			complÃ¨tement du nom de fichier. {absent de Vi}
 
 
-NOTE : Les objets Tcl (tels que les variables) persistent d'une commande à
-l'autre, exactement comme dans l'interpréteur Tcl.
+NOTE : Les objets Tcl (tels que les variables) persistent d'une commande Ã 
+l'autre, exactement comme dans l'interprÃ©teur Tcl.
 
-L'exécution de commandes Tcl est impossible dans le bac à sable |sandbox|.
+L'exÃ©cution de commandes Tcl est impossible dans le bac Ã  sable |sandbox|.
 
 ==============================================================================
 2. Commandes Tcl					*tcl-commands*
 
-Le code Tcl réalise tous ses accès à Vim via des commandes de l'espace de
-nommage "::vim". Les commandes suivantes sont définies : >
+Le code Tcl rÃ©alise tous ses accÃ¨s Ã  Vim via des commandes de l'espace de
+nommage "::vim". Les commandes suivantes sont dÃ©finies : >
 
 	::vim::beep			# Devinez.
-	::vim::buffer {N}		# Crée une commande Tcl pour un
+	::vim::buffer {N}		# CrÃ©e une commande Tcl pour un
 					# tampon.
-	::vim::buffer list		# Crée des commandes Tcl pour tous les
+	::vim::buffer list		# CrÃ©e des commandes Tcl pour tous les
 					# tampons.
-	::vim::command [-quiet] {cmd}	# Exécute une commande Ex.
-	::vim::expr {expr}		# Utilise l'évaluateur d'expressions
+	::vim::command [-quiet] {cmd}	# ExÃ©cute une commande Ex.
+	::vim::expr {expr}		# Utilise l'Ã©valuateur d'expressions
 					# de Vim.
 	::vim::option {opt}		# Interroge une option Vim.
 	::vim::option {opt} {val}	# Fixe une option Vim.
-	::vim::window list		# Crée des commandes Tcl pour toutes
-					# les fenêtres.
+	::vim::window list		# CrÃ©e des commandes Tcl pour toutes
+					# les fenÃªtres.
 
 
 COMMANDES
 
 ::vim::beep						*tcl-beep*
-	Klaxon. Ne renvoie pas de résultat.
+	Klaxon. Ne renvoie pas de rÃ©sultat.
 
 ::vim::buffer {N}					*tcl-buffer*
 ::vim::buffer exists {N}
 ::vim::buffer list
-	Fournit un accès aux tampons de Vim. Avec un entier en argument, crée
+	Fournit un accÃ¨s aux tampons de Vim. Avec un entier en argument, crÃ©e
 	une commande de tampon (voir |tcl-buffer-cmds|) pour le tampon qui
-	porte ce numéro et retourne son nom comme résultat. Les numéros de
+	porte ce numÃ©ro et retourne son nom comme rÃ©sultat. Les numÃ©ros de
 	tampon invalides provoquent une erreur Tcl standard. Pour tester la
-	validité des numéros de tampon, les fonctions internes de Vim peuvent
-	être utilisées : >
+	validitÃ© des numÃ©ros de tampon, les fonctions internes de Vim peuvent
+	Ãªtre utilisÃ©es : >
 		set notamponmax [::vim::expr bufnr("$")]
 		set estvalide [::vim::expr "bufexists($n)"]
-<	Le paramètre "list" crée une commande de tampon pour chaque tampon
-	valide et renvoie la liste des noms de commandes comme résultat.
+<	Le paramÃ¨tre "list" crÃ©e une commande de tampon pour chaque tampon
+	valide et renvoie la liste des noms de commandes comme rÃ©sultat.
 	Exemple : >
 		set tampons [::vim::buffer list]
 		foreach t $tampons { $t append end "FIN !" }
-<	Le paramètre "exists" vérifie si un tampon existe pour le numéro
-	donné.
+<	Le paramÃ¨tre "exists" vÃ©rifie si un tampon existe pour le numÃ©ro
+	donnÃ©.
 	Exemple : >
 		if { [::vim::buffer exists $n] } { ::vim::command ":e #$n" }
-<	Cette commande sera peut-être remplacée par une variable dans les
+<	Cette commande sera peut-Ãªtre remplacÃ©e par une variable dans les
 	versions futures.
 	Voir aussi |tcl-var-current| pour le tampon courant.
 
 ::vim::command {cmd}					*tcl-command*
 ::vim::command -quiet {cmd}
-	Exécute la commande Vim (du mode Ex) {cmd}. Toute commande Ex qui
-	affecte un tampon ou une fenêtre utilise le tampon/la fenêtre
-	courante. Ne renvoie pas de résultat autre qu'un code d'erreur
-	standard Tcl. Après que la commande s'est terminée, la variable
-	"::vim::current" est mise à jour. Le drapeau "-quiet" supprime tout
+	ExÃ©cute la commande Vim (du mode Ex) {cmd}. Toute commande Ex qui
+	affecte un tampon ou une fenÃªtre utilise le tampon/la fenÃªtre
+	courante. Ne renvoie pas de rÃ©sultat autre qu'un code d'erreur
+	standard Tcl. AprÃ¨s que la commande s'est terminÃ©e, la variable
+	"::vim::current" est mise Ã  jour. Le drapeau "-quiet" supprime tout
 	message d'erreur de Vim.
 	Exemples : >
 		::vim::command "set ts=8"
 		::vim::command "%s/machin/truc/g"
-<	Pour exécuter des commandes du mode Normal, utilisez "normal" (voir
+<	Pour exÃ©cuter des commandes du mode Normal, utilisez "normal" (voir
 	|:normal|) : >
 		set cmd "jj"
 		::vim::command "normal $cmd"
 <	Voir aussi |tcl-window-command| et |tcl-buffer-command|.
 
 ::vim::expr {expr}					*tcl-expr*
-	Évalue l'expression {expr} en utilisant l'évaluateur d'expressions
+	Ã‰value l'expression {expr} en utilisant l'Ã©valuateur d'expressions
 	interne de Vim (voir |expression|). Toute expression qui porte sur une
-	propriété de tampon ou de fenêtre utilise le tampon/la fenêtre
-	courante. Renvoie le résultat sous forme de chaîne.
+	propriÃ©tÃ© de tampon ou de fenÃªtre utilise le tampon/la fenÃªtre
+	courante. Renvoie le rÃ©sultat sous forme de chaÃ®ne.
 	Exemple : >
 		set perl_disponible [::vim::expr has("perl")]
 <	Voir aussi |tcl-window-expr| et |tcl-buffer-expr|.
@@ -155,184 +155,184 @@ COMMANDES
 ::vim::option {opt}					*tcl-option*
 ::vim::option {opt} {val}
 	Sans second argument, interroge la valeur d'une option Vim. Avec cet
-	argument, fixe l'option Vim à {val} et renvoie l'ancienne valeur comme
-	résultat. Toute option marquée comme étant « locale à un tampon » ou
-	« locale à une fenêtre » affecte le tampon/la fenêtre courante. La
-	valeur globale n'est pas modifiée, utilisez la commande ":set" pour
-	cela. Pour les options booléennes, {val} devrait être "0" ou "1", ou
-	bien l'un des mots-clés "on", "off" ou "toggle" [N.D.T. : pour
-	« activé », « désactivé » et « inversé » respectivement]. Voir
+	argument, fixe l'option Vim Ã  {val} et renvoie l'ancienne valeur comme
+	rÃ©sultat. Toute option marquÃ©e comme Ã©tant Â« locale Ã  un tampon Â» ou
+	Â« locale Ã  une fenÃªtre Â» affecte le tampon/la fenÃªtre courante. La
+	valeur globale n'est pas modifiÃ©e, utilisez la commande ":set" pour
+	cela. Pour les options boolÃ©ennes, {val} devrait Ãªtre "0" ou "1", ou
+	bien l'un des mots-clÃ©s "on", "off" ou "toggle" [N.D.T. : pour
+	Â« activÃ© Â», Â« dÃ©sactivÃ© Â» et Â« inversÃ© Â» respectivement]. Voir
 	|option-summary| pour une liste des options.
 	Exemple : >
 		::vim::option ts 8
 <	Voir aussi |tcl-window-option| et |tcl-buffer-option|.
 
 ::vim::window {param}					*tcl-window*
-	Fournit un accès aux fenêtres de Vim. Actuellement, seul le paramètre
-	"list" est défini : crée une commande de fenêtre (voir
-	|tcl-window-cmds|) pour chaque fenêtre et renvoie une liste de noms de
-	commandes comme résultat.
+	Fournit un accÃ¨s aux fenÃªtres de Vim. Actuellement, seul le paramÃ¨tre
+	"list" est dÃ©fini : crÃ©e une commande de fenÃªtre (voir
+	|tcl-window-cmds|) pour chaque fenÃªtre et renvoie une liste de noms de
+	commandes comme rÃ©sultat.
 	Exemple : >
 		set fenetres [::vim::window list]
 		foreach f $fenetres { $f height 4 }
-<	Cette commande sera peut-être remplacée par une variable dans les
+<	Cette commande sera peut-Ãªtre remplacÃ©e par une variable dans les
 	versions futures.
-	Voir aussi |tcl-var-current| pour la fenêtre courante.
+	Voir aussi |tcl-var-current| pour la fenÃªtre courante.
 
 ==============================================================================
 3. Variables Tcl					*tcl-variables*
 
-L'espace de nommage "::vim" contient quelques variables. Elles sont créées
-quand l'interpréteur Tcl est appelé depuis Vim et écrites avec les valeurs
+L'espace de nommage "::vim" contient quelques variables. Elles sont crÃ©Ã©es
+quand l'interprÃ©teur Tcl est appelÃ© depuis Vim et Ã©crites avec les valeurs
 courantes. >
 
-	::vim::current		# tableau contenant les objets « courants »
-	::vim::lbase		# numéro de la première ligne
-	::vim::range		# tableau contenant les numéros de la plage
+	::vim::current		# tableau contenant les objets Â« courants Â»
+	::vim::lbase		# numÃ©ro de la premiÃ¨re ligne
+	::vim::range		# tableau contenant les numÃ©ros de la plage
 				# courante
-	line			# ligne courante en tant que chaîne
+	line			# ligne courante en tant que chaÃ®ne
 				# (":tcldo" uniquement)
-	lnum			# numéro de la ligne courante (":tcldo"
+	lnum			# numÃ©ro de la ligne courante (":tcldo"
 				# uniquement)
 
 
 VARIABLES
 
 ::vim::current						*tcl-var-current*
-	C'est un tableau fournissant un accès à divers objets « courants »
-	disponibles dans Vim. Le contenu de ce tableau est mis à jour après
-	que "::vim::command" a été appelé, puisque cela peut modifier les
-	paramètres actuels de Vim (p. ex., en effaçant le tampon courant).
-	L'élément "buffer" contient le nom de la commande de tampon pour le
-	tampon courant. Ceci peut être utilisé directement pour invoquer des
-	commandes de tampon (voir |tcl-buffer-cmds|). Cet élément est en
+	C'est un tableau fournissant un accÃ¨s Ã  divers objets Â« courants Â»
+	disponibles dans Vim. Le contenu de ce tableau est mis Ã  jour aprÃ¨s
+	que "::vim::command" a Ã©tÃ© appelÃ©, puisque cela peut modifier les
+	paramÃ¨tres actuels de Vim (p. ex., en effaÃ§ant le tampon courant).
+	L'Ã©lÃ©ment "buffer" contient le nom de la commande de tampon pour le
+	tampon courant. Ceci peut Ãªtre utilisÃ© directement pour invoquer des
+	commandes de tampon (voir |tcl-buffer-cmds|). Cet Ã©lÃ©ment est en
 	lecture seule.
 	Exemple : >
 		$::vim::current(buffer) insert begin "Bonjour monde"
-<	L'élément "window" contient le nom de la commande de fenêtre pour la
-	fenêtre courante. Ceci peut être utilisé directement pour invoquer des
-	commandes de fenêtre (voir |tcl-window-cmds|). Cet élément est en
+<	L'Ã©lÃ©ment "window" contient le nom de la commande de fenÃªtre pour la
+	fenÃªtre courante. Ceci peut Ãªtre utilisÃ© directement pour invoquer des
+	commandes de fenÃªtre (voir |tcl-window-cmds|). Cet Ã©lÃ©ment est en
 	lecture seule.
 	Exemple : >
 		$::vim::current(window) height 10
 
 ::vim::lbase						*tcl-var-lbase*
-	Cette variable contrôle la manière dont Tcl traite les numéros de
-	lignes. Si elle vaut '1', alors la numérotation des lignes et colonnes
-	commence à 1.
-	De cette manière, les numéros de lignes des commandes Tcl et des
+	Cette variable contrÃ´le la maniÃ¨re dont Tcl traite les numÃ©ros de
+	lignes. Si elle vaut '1', alors la numÃ©rotation des lignes et colonnes
+	commence Ã  1.
+	De cette maniÃ¨re, les numÃ©ros de lignes des commandes Tcl et des
 	expressions Vim sont compatibles. Si cette variable vaut '0', alors
-	les numéros de lignes et colonnes commencent à 0. C'est utile si vous
+	les numÃ©ros de lignes et colonnes commencent Ã  0. C'est utile si vous
 	voulez traiter un tampon comme une liste Tcl ou une ligne comme une
-	chaîne Tcl et utiliser des commandes Tcl standards qui retournent un
+	chaÃ®ne Tcl et utiliser des commandes Tcl standards qui retournent un
 	index ("lsort" ou "string first", par exemple). Cette variable vaut
-	'1' par défaut. Actuellement, toute valeur non nulle est traitée comme
-	un '1', mais vos scripts ne devraient pas compter là-dessus. Voir
+	'1' par dÃ©faut. Actuellement, toute valeur non nulle est traitÃ©e comme
+	un '1', mais vos scripts ne devraient pas compter lÃ -dessus. Voir
 	aussi |tcl-linenumbers|.
 
 ::vim::range						*tcl-var-range*
-	C'est un tableau avec trois éléments, "start", "begin" et "end". Il
-	contient les numéros des lignes de début et de fin de la plage
+	C'est un tableau avec trois Ã©lÃ©ments, "start", "begin" et "end". Il
+	contient les numÃ©ros des lignes de dÃ©but et de fin de la plage
 	courante. "begin" est un synonyme pour "start". Cette variable est en
 	lecture seule. Voir |tcl-examples|.
 
 line							*tcl-var-line*
 lnum							*tcl-var-lnum*
 	Ces variables globales ne sont disponibles que si la commande Ex
-	":tcldo" est en cours d'exécution. Elles contiennent le texte et le
-	numéro de la ligne courante. Lorsque la commande Tcl invoquée par
-	":tcldo" se termine, la ligne courante est fixée au contenu de la
-	variable "line", sauf si cette variable a été supprimée (avec "unset")
+	":tcldo" est en cours d'exÃ©cution. Elles contiennent le texte et le
+	numÃ©ro de la ligne courante. Lorsque la commande Tcl invoquÃ©e par
+	":tcldo" se termine, la ligne courante est fixÃ©e au contenu de la
+	variable "line", sauf si cette variable a Ã©tÃ© supprimÃ©e (avec "unset")
 	par la commande Tcl. La variable "lnum" est en lecture seule. Ces Ces
-	variables ne sont pas dans l'espace de nommage "::vim" de façon à
-	pouvoir être utilisées dans ":tcldo" sans trop de frappe (cela
-	changera peut-être dans des versions ultérieures).
+	variables ne sont pas dans l'espace de nommage "::vim" de faÃ§on Ã 
+	pouvoir Ãªtre utilisÃ©es dans ":tcldo" sans trop de frappe (cela
+	changera peut-Ãªtre dans des versions ultÃ©rieures).
 	Voir aussi |tcl-linenumbers|.
 
 ==============================================================================
-4. Commandes de fenêtre Tcl				*tcl-window-cmds*
+4. Commandes de fenÃªtre Tcl				*tcl-window-cmds*
 
-Les commandes de fenêtre représentent des fenêtres Vim. Elles sont créées par
+Les commandes de fenÃªtre reprÃ©sentent des fenÃªtres Vim. Elles sont crÃ©Ã©es par
 plusieurs commandes :
 	::vim::window list				|tcl-window|
-	le paramètre "windows" d'une cmd de tampon	|tcl-buffer-windows|
-La variable "::vim::current(window)" contient le nom de la commande de fenêtre
-pour la fenêtre courante. Une commande de fenêtre est automatiquement
-supprimée quand la fenêtre Vim correspondante est fermée.
+	le paramÃ¨tre "windows" d'une cmd de tampon	|tcl-buffer-windows|
+La variable "::vim::current(window)" contient le nom de la commande de fenÃªtre
+pour la fenÃªtre courante. Une commande de fenÃªtre est automatiquement
+supprimÃ©e quand la fenÃªtre Vim correspondante est fermÃ©e.
 
-Supposons que la commande de fenêtre soit contenue dans la variable Tcl "fen",
-c.-à-d. que "$fen" appelle la commande. Les paramètres suivants sont
+Supposons que la commande de fenÃªtre soit contenue dans la variable Tcl "fen",
+c.-Ã -d. que "$fen" appelle la commande. Les paramÃ¨tres suivants sont
 disponibles : >
 
-	$fen buffer		# Crée une commande Tcl pour le tampon
-				# de la fenêtre.
-	$fen command {cmd}	# Exécute la commande Ex dans le contexte
-				# de la fenêtre.
+	$fen buffer		# CrÃ©e une commande Tcl pour le tampon
+				# de la fenÃªtre.
+	$fen command {cmd}	# ExÃ©cute la commande Ex dans le contexte
+				# de la fenÃªtre.
 	$fen cursor		# Renvoie la position actuelle du curseur.
-	$fen cursor {var}	# Fixe la position du curseur à partir
+	$fen cursor {var}	# Fixe la position du curseur Ã  partir
 				# d'un tableau.
 	$fen cursor {l} {col}	# Fixe la position du curseur.
-	$fen delcmd {cmd}	# Appelle la commande Tcl à la fermeture de la
-				# fenêtre.
-	$fen expr {expr}	# Évalue une expression Vim dans le contexte
-				# de la fenêtre.
-	$fen height		# Renvoie la hauteur de la fenêtre.
-	$fen height {N}		# Fixe la hauteur de fenêtre.
+	$fen delcmd {cmd}	# Appelle la commande Tcl Ã  la fermeture de la
+				# fenÃªtre.
+	$fen expr {expr}	# Ã‰value une expression Vim dans le contexte
+				# de la fenÃªtre.
+	$fen height		# Renvoie la hauteur de la fenÃªtre.
+	$fen height {N}		# Fixe la hauteur de fenÃªtre.
 	$fen option {opt} [val]	# Interroge/fixe une option Vim dans le
-				# contexte de la fenêtre.
+				# contexte de la fenÃªtre.
 
 
-PARAMÈTRES
+PARAMÃˆTRES
 
 $fen buffer						*tcl-window-buffer*
-	Crée une commande Tcl pour le tampon de la fenêtre et renvoie son nom
-	comme résultat. Le nom devrait être enregistré dans une variable : >
+	CrÃ©e une commande Tcl pour le tampon de la fenÃªtre et renvoie son nom
+	comme rÃ©sultat. Le nom devrait Ãªtre enregistrÃ© dans une variable : >
 		set tamp [$fen buffer]
 <	"$tamp" est maintenant une commande Tcl valide. Voir |tcl-buffer-cmds|
-	pour les paramètres disponibles.
+	pour les paramÃ¨tres disponibles.
 
 $fen cursor						*tcl-window-cursor*
 $fen cursor {var}
 $fen cursor {l} {col}
 	Sans argument, renvoie la position actuelle du curseur sous forme de
-	chaîne de caractères. Ce qui peut être converti en un tableau Tcl : >
+	chaÃ®ne de caractÃ¨res. Ce qui peut Ãªtre converti en un tableau Tcl : >
 		array set ici [$fen cursor]
 <	"ici(row)" et "ici(column)" contiennent maintenant la position du
-	curseur. Avec un seul argument, celui-ci est interprété comme le nom
-	d'un tableau Tcl, qui doit contenir deux éléments "row" et "column".
-	Ceux-ci sont utilisés pour repositionner le curseur : >
+	curseur. Avec un seul argument, celui-ci est interprÃ©tÃ© comme le nom
+	d'un tableau Tcl, qui doit contenir deux Ã©lÃ©ments "row" et "column".
+	Ceux-ci sont utilisÃ©s pour repositionner le curseur : >
 		$fen cursor ici		;# pas $ici !
 <	Avec deux arguments, positionne le curseur aux ligne et colonne
-	spécifiées : >
+	spÃ©cifiÃ©es : >
 		$fen cursor $ici(row) $ici(column)
 <	Des positions invalides provoquent une erreur Tcl standard, qui peut
-	être interceptée avec "catch". Les valeurs des numéros de lignes et de
-	colonnes sont interprétées en fonction de la variable "::vim::lbase".
+	Ãªtre interceptÃ©e avec "catch". Les valeurs des numÃ©ros de lignes et de
+	colonnes sont interprÃ©tÃ©es en fonction de la variable "::vim::lbase".
 	Voir |tcl-var-lbase|.
 
 $fen delcmd {cmd}					*tcl-window-delcmd*
 	Enregistre {cmd} comme commande Tcl de rappel pour la suppression
-	de la fenêtre. Cette commande est exécutée (au niveau global) juste
-	avant que la fenêtre soit fermée. Les commandes complexes devraient
-	être construites avec "list" : >
-		$fen delcmd [list puts vimerr "fenêtre supprimée"]
+	de la fenÃªtre. Cette commande est exÃ©cutÃ©e (au niveau global) juste
+	avant que la fenÃªtre soit fermÃ©e. Les commandes complexes devraient
+	Ãªtre construites avec "list" : >
+		$fen delcmd [list puts vimerr "fenÃªtre supprimÃ©e"]
 <	Voir aussi |tcl-buffer-delcmd|.
 
 $fen height						*tcl-window-height*
 $fen height {N}
-	Sans argument, renvoie la hauteur actuelle de la fenêtre. Avec un
-	argument, essaie de fixer la hauteur de la fenêtre à {N}, puis renvoie
-	la nouvelle hauteur (qui peut être différente de {N}).
+	Sans argument, renvoie la hauteur actuelle de la fenÃªtre. Avec un
+	argument, essaie de fixer la hauteur de la fenÃªtre Ã  {N}, puis renvoie
+	la nouvelle hauteur (qui peut Ãªtre diffÃ©rente de {N}).
 
 $fen command [-quiet] {cmd}				*tcl-window-command*
 $fen expr {expr}				        *tcl-window-expr*
 $fen option {opt} [val]				        *tcl-window-option*
-	Ces commandes sont similaires à "::vim::command" etc., excepté que
-	tout est fait dans le contexte de la fenêtre représentée par $fen, à
-	la place de la fenêtre courante. Par exemple, si vous fixez une option
-	locale de fenêtre, cela affectera la fenêtre $fen. Tout ce qui affecte
-	ou interroge un tampon utilise le tampon affiché dans cette fenêtre
-	(c.-à-d. le tampon représenté par "$fen buffer"). Voir |tcl-command|,
+	Ces commandes sont similaires Ã  "::vim::command" etc., exceptÃ© que
+	tout est fait dans le contexte de la fenÃªtre reprÃ©sentÃ©e par $fen, Ã 
+	la place de la fenÃªtre courante. Par exemple, si vous fixez une option
+	locale de fenÃªtre, cela affectera la fenÃªtre $fen. Tout ce qui affecte
+	ou interroge un tampon utilise le tampon affichÃ© dans cette fenÃªtre
+	(c.-Ã -d. le tampon reprÃ©sentÃ© par "$fen buffer"). Voir |tcl-command|,
 	|tcl-expr| et |tcl-option| pour plus d'informations.
 	Exemple : >
 		$fen option number on
@@ -340,68 +340,68 @@ $fen option {opt} [val]				        *tcl-window-option*
 ==============================================================================
 5. Commandes de tampon Tcl				*tcl-buffer-cmds*
 
-Les commandes de tampon représentent des tampons Vim. Elles sont créées par
+Les commandes de tampon reprÃ©sentent des tampons Vim. Elles sont crÃ©Ã©es par
 plusieurs commandes :
 	::vim::buffer {N}				|tcl-buffer|
 	::vim::buffer list				|tcl-buffer|
-	le paramètre "buffer" d'une commande de fenêtre	|tcl-window-buffer|
+	le paramÃ¨tre "buffer" d'une commande de fenÃªtre	|tcl-window-buffer|
 La variable "::vim::current(buffer)" contient le nom de la commande de tampon
-pour le tampon courant. Une commande de tampon est automatiquement supprimée
-quand le tampon Vim correspondant l'est aussi. Dès que le contenu du tampon
-est modifié, toutes les marques dans le tampon sont automatiquement ajustées.
-Tout changement du contenu du tampon par une commande Tcl peut être annulé
+pour le tampon courant. Une commande de tampon est automatiquement supprimÃ©e
+quand le tampon Vim correspondant l'est aussi. DÃ¨s que le contenu du tampon
+est modifiÃ©, toutes les marques dans le tampon sont automatiquement ajustÃ©es.
+Tout changement du contenu du tampon par une commande Tcl peut Ãªtre annulÃ©
 avec la commande Vim ":undo" (voir |undo|).
 
-Supposons que le nom de la commande de tampon soit enregistrée dans la
-variable Tcl "tamp", c.-à-d. que "$tamp" appelle la commande. Les paramètres
+Supposons que le nom de la commande de tampon soit enregistrÃ©e dans la
+variable Tcl "tamp", c.-Ã -d. que "$tamp" appelle la commande. Les paramÃ¨tres
 suivants sont disponibles : >
 
-	$tamp append {N} {chaine}   # Ajoute une ligne au tampon, après la
+	$tamp append {N} {chaine}   # Ajoute une ligne au tampon, aprÃ¨s la
 				    # ligne {N}.
-	$tamp command {cmd}	    # Exécute la commande Ex dans le contexte
+	$tamp command {cmd}	    # ExÃ©cute la commande Ex dans le contexte
 				    # du tampon.
 	$tamp count		    # Renvoie le nombre de lignes du tampon.
 	$tamp delcmd {cmd}	    # Appelle la commande Tcl quand le tampon
-				    # est supprimé.
+				    # est supprimÃ©.
 	$tamp delete {N}	    # Supprime une ligne simple.
 	$tamp delete {N} {M}	    # Supprime plusieurs lignes.
-	$tamp expr {expr}	    # Évalue une expression Vim dans le
+	$tamp expr {expr}	    # Ã‰value une expression Vim dans le
 				    # contexte du tampon.
-	$tamp get {N}		    # Renvoie une ligne simple comme chaîne.
+	$tamp get {N}		    # Renvoie une ligne simple comme chaÃ®ne.
 	$tamp get {N} {M}	    # Renvoie plusieurs lignes comme liste.
-	$tamp insert {N} {chaine}   # Insère une ligne dans le tampon, comme
+	$tamp insert {N} {chaine}   # InsÃ¨re une ligne dans le tampon, comme
 				    # ligne {N}.
-	$tamp last		    # Renvoie le numéro de la dernière ligne
+	$tamp last		    # Renvoie le numÃ©ro de la derniÃ¨re ligne
 				    # du tampon.
 	$tamp mark {marque}	    # Renvoie la position d'une marque.
 	$tamp name		    # Renvoie le nom de fichier du tampon.
-	$tamp number		    # Renvoie le numéro du tampon.
+	$tamp number		    # Renvoie le numÃ©ro du tampon.
 	$tamp option {opt} [val]    # Interroge/fixe une option de Vim
 				    # dans le contexte du tampon.
 	$tamp set {N} {texte}	    # Remplace une ligne simple.
 	$tamp set {N} {M} {liste}   # Remplace plusieurs lignes.
-	$tamp windows		    # Crée des commandes Tcl pour les fenêtres
+	$tamp windows		    # CrÃ©e des commandes Tcl pour les fenÃªtres
 				    # du tampon.
 <
 							*tcl-linenumbers*
-La plupart des commandes de tampon prennent des numéros de ligne comme
-arguments. La manière dont Tcl traite ces numéros dépend de la variable
-"::vim::lbase" (voir |tcl-var-lbase|). À la place des numéros de ligne, il est
-également possible d'utiliser des mots-clés : "top", "start", "begin" ou
-"first" pour désigner la première ligne, "bottom", "end" ou "last" pour la
-dernière.
+La plupart des commandes de tampon prennent des numÃ©ros de ligne comme
+arguments. La maniÃ¨re dont Tcl traite ces numÃ©ros dÃ©pend de la variable
+"::vim::lbase" (voir |tcl-var-lbase|). Ã€ la place des numÃ©ros de ligne, il est
+Ã©galement possible d'utiliser des mots-clÃ©s : "top", "start", "begin" ou
+"first" pour dÃ©signer la premiÃ¨re ligne, "bottom", "end" ou "last" pour la
+derniÃ¨re.
 
 
-PARAMÈTRES
+PARAMÃˆTRES
 
 $tamp append {N} {chaine}				*tcl-buffer-append*
 $tamp insert {N} {chaine}				*tcl-buffer-insert*
-	Ajoute une ligne au tampon. Avec le paramètre "insert", la chaîne
-	devient la nouvelle ligne {N}, avec "append" elle est insérée après la
+	Ajoute une ligne au tampon. Avec le paramÃ¨tre "insert", la chaÃ®ne
+	devient la nouvelle ligne {N}, avec "append" elle est insÃ©rÃ©e aprÃ¨s la
 	ligne {N}. Exemple : >
-		$tamp insert top "Début du texte."
+		$tamp insert top "DÃ©but du texte."
 		$tamp append end "Fin du texte."
-<	Pour ajouter une liste de lignes à un tampon, utilisez une boucle : >
+<	Pour ajouter une liste de lignes Ã  un tampon, utilisez une boucle : >
 		foreach ligne $liste { $tamp append $no $ligne ; incr no }
 
 $tamp count						*tcl-buffer-count*
@@ -409,8 +409,8 @@ $tamp count						*tcl-buffer-count*
 
 $tamp delcmd {cmd}					*tcl-buffer-delcmd*
 	Enregistre {cmd} comme commande Tcl de rappel pour la suppression du
-	tampon. Cette commande est exécutée (au niveau global) juste avant que
-	le tampon soit supprimé. Les commandes complexes devraient être
+	tampon. Cette commande est exÃ©cutÃ©e (au niveau global) juste avant que
+	le tampon soit supprimÃ©. Les commandes complexes devraient Ãªtre
 	construites avec "list": >
 		$tamp delcmd [list \
 			puts vimerr "le tampon [$tamp number] a disparu"]
@@ -418,65 +418,65 @@ $tamp delcmd {cmd}					*tcl-buffer-delcmd*
 
 $tamp delete {N}					*tcl-buffer-delete*
 $tamp delete {N} {M}
-	Supprime la ligne {N} ou les lignes {N} à {M} du tampon.
-	Cet exemple supprime tout sauf la dernière ligne : >
+	Supprime la ligne {N} ou les lignes {N} Ã  {M} du tampon.
+	Cet exemple supprime tout sauf la derniÃ¨re ligne : >
 		$tamp delete first [expr [$tamp last] - 1]
 
 $tamp get {N}						*tcl-buffer-get*
 $tamp get {N} {M}
 	Renvoie une ou plusieurs lignes du tampon. Pour une ligne simple, le
-	résultat est une chaîne ; pour plusieurs lignes, une liste de chaînes.
+	rÃ©sultat est une chaÃ®ne ; pour plusieurs lignes, une liste de chaÃ®nes.
 	Exemple : >
 		set lignedebut [$tamp get top]
 
 $tamp last						*tcl-buffer-last*
-	Renvoie le numéro de ligne de la dernière ligne. Cette valeur dépend
+	Renvoie le numÃ©ro de ligne de la derniÃ¨re ligne. Cette valeur dÃ©pend
 	de la variable "::vim::lbase". Voir |tcl-var-lbase|.
 
 $tamp mark {marque}					*tcl-buffer-mark*
-	Renvoie la position de la marque nommée {marque} en tant que chaîne,
-	de la même façon que pour la position du curseur avec le paramètre
-	"cursor" d'une commande de fenêtre (voir |tcl-window-cursor|). Peut
-	être converti en un tableau Tcl : >
+	Renvoie la position de la marque nommÃ©e {marque} en tant que chaÃ®ne,
+	de la mÃªme faÃ§on que pour la position du curseur avec le paramÃ¨tre
+	"cursor" d'une commande de fenÃªtre (voir |tcl-window-cursor|). Peut
+	Ãªtre converti en un tableau Tcl : >
 		array set posmarque [$tamp mark "a"]
 <	"posmarque(column)" et "posmarque(row)" contiennent maintenant la
-	position de la marque. Si la marque n'est pas positionnée, cela
+	position de la marque. Si la marque n'est pas positionnÃ©e, cela
 	provoque une erreur Tcl standard.
 
 $tamp name
 	Renvoie le nom de fichier du tampon. Pour un tampon sans fichier, il
-	s'agit d'une chaîne vide.
+	s'agit d'une chaÃ®ne vide.
 
 $tamp number
-	Renvoie le numéro de ce tampon. Voir |:buffers|.
+	Renvoie le numÃ©ro de ce tampon. Voir |:buffers|.
 	Cet exemple supprime un tampon dans Vim : >
 		::vim::command "bdelete [$tamp number]"
 
 $tamp set {N} {chaine}					*tcl-buffer-set*
 $tamp set {N} {M} {liste}
 	Remplace une ou plusieurs lignes dans le tampon. Si la liste contient
-	plus d'éléments qu'il n'y a de lignes à remplacer, les lignes
-	excédentaires sont insérées dans le tampon. Si la liste contient moins
-	d'éléments, toute ligne non remplacée est supprimée du tampon.
+	plus d'Ã©lÃ©ments qu'il n'y a de lignes Ã  remplacer, les lignes
+	excÃ©dentaires sont insÃ©rÃ©es dans le tampon. Si la liste contient moins
+	d'Ã©lÃ©ments, toute ligne non remplacÃ©e est supprimÃ©e du tampon.
 
 $tamp windows						*tcl-buffer-windows*
-	Crée une commande de fenêtre pour chaque fenêtre affichant ce tampon,
-	et renvoie la liste des noms de commandes comme résultat.
+	CrÃ©e une commande de fenÃªtre pour chaque fenÃªtre affichant ce tampon,
+	et renvoie la liste des noms de commandes comme rÃ©sultat.
 	Exemple : >
 		set listefen [$tamp windows]
 		foreach fen $listefen { $fen height 4 }
-<	Voir |tcl-window-cmds| pour les paramètres disponibles.
+<	Voir |tcl-window-cmds| pour les paramÃ¨tres disponibles.
 
 $tamp command [-quiet] {cmd}				*tcl-buffer-command*
 $tamp expr {expr}					*tcl-buffer-expr*
 $tamp option {opt} [val]				*tcl-buffer-option*
-        Ces commandes sont similaires à "::vim::command" etc., excepté que
-        tout est fait dans le contexte du tampon représenté par $tamp, à la
+        Ces commandes sont similaires Ã  "::vim::command" etc., exceptÃ© que
+        tout est fait dans le contexte du tampon reprÃ©sentÃ© par $tamp, Ã  la
         place du tampon courant. Par exemple, si vous fixez une option locale
         de tampon, cela affectera le tampon $tamp. Tout ce qui affecte ou
-        interroge une fenêtre utilise la première fenêtre dans la liste des
-        fenêtres affichant ce tampon (c.-à-d. le premier élément de la liste
-        retournée par "$tamp windows"). Voir |tcl-command|, |tcl-expr| et
+        interroge une fenÃªtre utilise la premiÃ¨re fenÃªtre dans la liste des
+        fenÃªtres affichant ce tampon (c.-Ã -d. le premier Ã©lÃ©ment de la liste
+        retournÃ©e par "$tamp windows"). Voir |tcl-command|, |tcl-expr| et
         |tcl-option| pour plus d'informations.
 	Exemple : >
 		if { [$tamp option modified] } { $tamp command "w" }
@@ -484,45 +484,45 @@ $tamp option {opt} [val]				*tcl-buffer-option*
 ==============================================================================
 6. Divers -- sortie de Tcl				*tcl-misc*
 
-Les commandes Tcl standards "exit" et "catch" sont remplacées par des versions
-personnalisées. "exit" termine le script Tcl courant et retourne à Vim, qui
-supprime l'interpréteur Tcl. Un autre appel à ":tcl" crée donc un nouvel
-interpréteur Tcl. "exit" ne fait PAS quitter Vim ! "catch" fonctionne
-normalement, excepté qu'il n'empêche pas la terminaison du script avec "exit".
-Un code de sortie non nul fait renvoyer un code d'erreur à la commande Ex qui
-a invoqué le script Tcl.
+Les commandes Tcl standards "exit" et "catch" sont remplacÃ©es par des versions
+personnalisÃ©es. "exit" termine le script Tcl courant et retourne Ã  Vim, qui
+supprime l'interprÃ©teur Tcl. Un autre appel Ã  ":tcl" crÃ©e donc un nouvel
+interprÃ©teur Tcl. "exit" ne fait PAS quitter Vim ! "catch" fonctionne
+normalement, exceptÃ© qu'il n'empÃªche pas la terminaison du script avec "exit".
+Un code de sortie non nul fait renvoyer un code d'erreur Ã  la commande Ex qui
+a invoquÃ© le script Tcl.
 
 Deux nouveaux flux d'E/S sont disponibles dans Tcl, "vimout" et "vimerr". Tout
-envoi sur ces sorties est affiché dans la zone de messages de Vim, en tant que
+envoi sur ces sorties est affichÃ© dans la zone de messages de Vim, en tant que
 message d'information et d'erreur respectivement. Les flux de sortie standards
-stdout et stderr sont redirigées sur "vimout" et "vimerr", de telle sorte
-qu'une commande "puts" normale puisse être utilisée pour afficher des messages
+stdout et stderr sont redirigÃ©es sur "vimout" et "vimerr", de telle sorte
+qu'une commande "puts" normale puisse Ãªtre utilisÃ©e pour afficher des messages
 dans Vim.
 
 ==============================================================================
-7. Bogues et problèmes connus				*tcl-bugs*
+7. Bogues et problÃ¨mes connus				*tcl-bugs*
 
-L'appel d'une commande Ex Tcl depuis l'interpréteur Tcl (via "::vim::command")
-peut avoir des effets secondaires inattendus. La commande crée un nouvel
-interpréteur, qui a les mêmes capacités que l'interpréteur standard -- rendant
-"::vim::command" disponible dans un interpréteur esclave sécurisé et donc ce
-dernier n'est plus sécurisé. (Il serait trivial de bloquer les appels ":tcl*"
-imbriqués ou de s'assurer que de tels appels depuis un interpréteur sécurisé
-puissent créer que de nouveaux interpréteurs sécurisés, mais plutôt inutile --
-suivant la configuration de Vim, "::vim::command" est susceptible d'exécuter
+L'appel d'une commande Ex Tcl depuis l'interprÃ©teur Tcl (via "::vim::command")
+peut avoir des effets secondaires inattendus. La commande crÃ©e un nouvel
+interprÃ©teur, qui a les mÃªmes capacitÃ©s que l'interprÃ©teur standard -- rendant
+"::vim::command" disponible dans un interprÃ©teur esclave sÃ©curisÃ© et donc ce
+dernier n'est plus sÃ©curisÃ©. (Il serait trivial de bloquer les appels ":tcl*"
+imbriquÃ©s ou de s'assurer que de tels appels depuis un interprÃ©teur sÃ©curisÃ©
+puissent crÃ©er que de nouveaux interprÃ©teurs sÃ©curisÃ©s, mais plutÃ´t inutile --
+suivant la configuration de Vim, "::vim::command" est susceptible d'exÃ©cuter
 un code arbitraire dans un nombre quelconque d'autres langages de script.) Un
-appel d'"exit" de l'intérieur de ce nouvel interpréteur n'affecte pas l'ancien
-interpréteur ; il termine seulement le nouvel interpréteur, puis l'exécution
-du script de l'ancien interpréteur continue normalement.
+appel d'"exit" de l'intÃ©rieur de ce nouvel interprÃ©teur n'affecte pas l'ancien
+interprÃ©teur ; il termine seulement le nouvel interprÃ©teur, puis l'exÃ©cution
+du script de l'ancien interprÃ©teur continue normalement.
 
-L'entrée à partir de stdin n'est pas supportée actuellement.
+L'entrÃ©e Ã  partir de stdin n'est pas supportÃ©e actuellement.
 
 ==============================================================================
 8. Exemples						*tcl-examples*
 
-Voici quelques petits scripts Tcl (et peut-être utiles).
+Voici quelques petits scripts Tcl (et peut-Ãªtre utiles).
 
-Ce script trie les lignes du tampon dans sa totalité (supposons qu'il
+Ce script trie les lignes du tampon dans sa totalitÃ© (supposons qu'il
 contienne une liste de noms ou quelque chose de similaire) : >
 	set tampon $::vim::current(buffer)
 	set lignes [$tampon get top bottom]
@@ -530,8 +530,8 @@ contienne une liste de noms ou quelque chose de similaire) : >
 	$tampon set top bottom $lignes
 
 Ce script inverse l'ordre des lignes dans le tampon. Notez l'utilisation de
-"::vim::lbase" et "$tampon last" pour s'adapter à la numérotation des lignes
-(numéros des première et dernière lignes) : >
+"::vim::lbase" et "$tampon last" pour s'adapter Ã  la numÃ©rotation des lignes
+(numÃ©ros des premiÃ¨re et derniÃ¨re lignes) : >
 	set tampon $::vim::current(buffer)
 	set t $::vim::lbase
 	set b [$tampon last]
@@ -544,7 +544,7 @@ Ce script inverse l'ordre des lignes dans le tampon. Notez l'utilisation de
 	    incr b -1
 	}
 
-Ce script permet de numéroter chaque ligne de la plage courante : >
+Ce script permet de numÃ©roter chaque ligne de la plage courante : >
 	set tampon $::vim::current(buffer)
 	set i $::vim::range(start)
 	set n 1
@@ -554,12 +554,12 @@ Ce script permet de numéroter chaque ligne de la plage courante : >
 	    incr i ; incr n
 	}
 
-Il est possible d'obtenir rapidement la même chose avec deux commandes Ex, en
+Il est possible d'obtenir rapidement la mÃªme chose avec deux commandes Ex, en
 utilisant ":tcldo" : >
 	:tcl set n 1
 	:[plage]tcldo set line "$n\t$line" ; incr n
 
-Cette procédure exécute une commande Ex sur chaque tampon (idée volée à Ron
+Cette procÃ©dure exÃ©cute une commande Ex sur chaque tampon (idÃ©e volÃ©e Ã  Ron
 Aaron) : >
 	proc chaquetamp { cmd } {
 	    foreach t [::vim::buffer list] {
@@ -568,13 +568,13 @@ Aaron) : >
 	}
 Utilisez-la comme ceci : >
 	:tcl chaquetamp %s/machin/truc/g
-Faites cependant attention avec les chaînes Tcl et la substitution des
+Faites cependant attention avec les chaÃ®nes Tcl et la substitution des
 contre-obliques ('\'). Dans le doute, mettez les commandes Ex entre accolades.
 
 
-Si vous souhaitez ajouter des procédures Tcl permanentes à Vim, placez-les
+Si vous souhaitez ajouter des procÃ©dures Tcl permanentes Ã  Vim, placez-les
 simplement dans un fichier (p. ex. "~/.vimrc.tcl" sur les machines Unix) et
-ajoutez ces lignes à votre fichier de démarrage (habituellement "~/.vimrc" sur
+ajoutez ces lignes Ã  votre fichier de dÃ©marrage (habituellement "~/.vimrc" sur
 Unix) : >
 	if has("tcl")
 	    tclfile ~/.vimrc.tcl

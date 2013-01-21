@@ -1,61 +1,61 @@
-*usr_23.txt*	pour Vim version 6.2.  Dernière modification : 03 sep 2001
+*usr_23.txt*	pour Vim version 6.2.  DerniÃ¨re modification : 03 sep 2001
 
 	       MANUEL de l'UTILISATEUR VIM - par Bram Moolenaar
 
-			   Éditer d'autres fichiers
+			   Ã‰diter d'autres fichiers
 
 
-Ce chapitre traite de l'édition de fichiers qui ne sont pas des fichiers
-ordinaires. Avec Vim, vous pouvez éditer des fichiers compressés ou chiffrés.
+Ce chapitre traite de l'Ã©dition de fichiers qui ne sont pas des fichiers
+ordinaires. Avec Vim, vous pouvez Ã©diter des fichiers compressÃ©s ou chiffrÃ©s.
 Certains fichiers ne sont accessibles qu'au travers d'Internet. Avec quelques
-restrictions, les fichiers binaires peuvent également être édités.
+restrictions, les fichiers binaires peuvent Ã©galement Ãªtre Ã©ditÃ©s.
 
 |23.1|	Fichiers DOS, Mac et Unix
 |23.2|	Fichiers sur Internet
 |23.3|	Chiffrement
 |23.4|	Fichiers binaires
-|23.5|	Fichiers compressés
+|23.5|	Fichiers compressÃ©s
 
-  Chapitre suivant : |usr_24.txt|  Insérer rapidement
-Chapitre précédent : |usr_22.txt|  Trouver le fichier à éditer
-Table des matières : |usr_toc.txt|
+  Chapitre suivant : |usr_24.txt|  InsÃ©rer rapidement
+Chapitre prÃ©cÃ©dent : |usr_22.txt|  Trouver le fichier Ã  Ã©diter
+Table des matiÃ¨res : |usr_toc.txt|
 
 ==============================================================================
 *23.1*	Fichiers DOS, Mac et Unix
 
-Aux premiers temps de l'informatique, les anciennes machines « Télétype »
-utilisaient deux caractères pour débuter une nouvelle ligne. Un pour ramener
-le chariot à la position d'origine (retour chariot ["Carriage Return"], <CR>),
+Aux premiers temps de l'informatique, les anciennes machines Â« TÃ©lÃ©type Â»
+utilisaient deux caractÃ¨res pour dÃ©buter une nouvelle ligne. Un pour ramener
+le chariot Ã  la position d'origine (retour chariot ["Carriage Return"], <CR>),
 et un autre pour faire avancer le papier (saut-de-ligne ["Line Feed"], <LF>).
-   À l'apparition des ordinateurs, l'espace de stockage était cher. Certaines
-personnes décidèrent qu'elles n'avaient pas besoin de deux caractères pour une
+   Ã€ l'apparition des ordinateurs, l'espace de stockage Ã©tait cher. Certaines
+personnes dÃ©cidÃ¨rent qu'elles n'avaient pas besoin de deux caractÃ¨res pour une
 fin-de-ligne. Celles d'Unix choisirent d'utiliser <LF> (tout seul) comme
-fin-de-ligne. Celles d'Apple s'accordèrent sur <CR>. Et celles de MS-DOS (puis
-MS-Windows) décidèrent de conserver le bon vieux <CR><LF>.
-   Cela signifie que si vous tentez de passer un fichier d'un système à un
-autre, vous rencontrerez des problèmes avec les coupures de lignes. L'éditeur
-Vim reconnaît automatiquement les différents formats de fichiers et arrange
-discrètement les choses pour que tout se passe correctement.
-   L'option 'fileformats' contient les différents formats qui sont essayés
-quand un nouveau fichier est édité. Par exemple, la commande suivante indique
-à Vim de tenter d'abord le format Unix puis le format DOS : >
+fin-de-ligne. Celles d'Apple s'accordÃ¨rent sur <CR>. Et celles de MS-DOS (puis
+MS-Windows) dÃ©cidÃ¨rent de conserver le bon vieux <CR><LF>.
+   Cela signifie que si vous tentez de passer un fichier d'un systÃ¨me Ã  un
+autre, vous rencontrerez des problÃ¨mes avec les coupures de lignes. L'Ã©diteur
+Vim reconnaÃ®t automatiquement les diffÃ©rents formats de fichiers et arrange
+discrÃ¨tement les choses pour que tout se passe correctement.
+   L'option 'fileformats' contient les diffÃ©rents formats qui sont essayÃ©s
+quand un nouveau fichier est Ã©ditÃ©. Par exemple, la commande suivante indique
+Ã  Vim de tenter d'abord le format Unix puis le format DOS : >
 
 	:set fileformats=unix,dos
 
-Vous remarquerez le format dans le message que vous obtenez lors de l'édition
-d'un fichier. Vous ne voyez rien si vous éditez un fichier au format natif.
-Ainsi, l'édition d'un fichier Unix sur Unix ne produit aucune remarque. Mais
-si vous éditez un fichier DOS, Vim vous l'indiquera :
+Vous remarquerez le format dans le message que vous obtenez lors de l'Ã©dition
+d'un fichier. Vous ne voyez rien si vous Ã©ditez un fichier au format natif.
+Ainsi, l'Ã©dition d'un fichier Unix sur Unix ne produit aucune remarque. Mais
+si vous Ã©ditez un fichier DOS, Vim vous l'indiquera :
 
 	"/tmp/test" [dos] 3L, 71C ~
 
 Avec un fichier Mac, vous verriez "[mac]".
-   Le format de fichier détecté est stocké dans l'option 'fileformat'. Pour
-connaître le format utilisé, exécutez la commande suivante : >
+   Le format de fichier dÃ©tectÃ© est stockÃ© dans l'option 'fileformat'. Pour
+connaÃ®tre le format utilisÃ©, exÃ©cutez la commande suivante : >
 
 	:set fileformat?
 
-Les trois noms utilisés par Vim sont :
+Les trois noms utilisÃ©s par Vim sont :
 
 	unix		<LF>
 	dos		<CR><LF>
@@ -64,84 +64,84 @@ Les trois noms utilisés par Vim sont :
 
 UTILISER LE FORMAT MAC
 
-Sur Unix, <LF> est utilisé pour couper une ligne. Il n'est pas rare d'avoir un
-caractère <CR> au beau milieu d'une ligne. Incidemment, cela arrive assez
+Sur Unix, <LF> est utilisÃ© pour couper une ligne. Il n'est pas rare d'avoir un
+caractÃ¨re <CR> au beau milieu d'une ligne. Incidemment, cela arrive assez
 souvent dans les scripts Vi (et Vim).
-   Sur le Macintosh, où <CR> est le caractère pour couper une ligne, il est
-possible d'avoir des caractères <LF> au milieu d'une ligne.
-   Le résultat est qu'il est impossible d'être sûr à 100% qu'un fichier qui
-contient à la fois des caractères <CR> et des caractères <LF> est un fichier
-Unix ou Mac. Par conséquent, Vim suppose que sur Unix, vous n'éditerez
-probablement pas de fichiers Mac, et ne vérifie pas ce type de fichier. Pour
-vérifier tout de même ce type de fichier, ajoutez "mac" à 'fileformats' : >
+   Sur le Macintosh, oÃ¹ <CR> est le caractÃ¨re pour couper une ligne, il est
+possible d'avoir des caractÃ¨res <LF> au milieu d'une ligne.
+   Le rÃ©sultat est qu'il est impossible d'Ãªtre sÃ»r Ã  100% qu'un fichier qui
+contient Ã  la fois des caractÃ¨res <CR> et des caractÃ¨res <LF> est un fichier
+Unix ou Mac. Par consÃ©quent, Vim suppose que sur Unix, vous n'Ã©diterez
+probablement pas de fichiers Mac, et ne vÃ©rifie pas ce type de fichier. Pour
+vÃ©rifier tout de mÃªme ce type de fichier, ajoutez "mac" Ã  'fileformats' : >
 
 	:set fileformats+=mac
 
-Alors Vim tentera de déterminer le format du fichier. Soyez attentifs aux
-situations où Vim se trompe.
+Alors Vim tentera de dÃ©terminer le format du fichier. Soyez attentifs aux
+situations oÃ¹ Vim se trompe.
 
 
 FORCER LE FORMAT
 
-Si vous utilisez un bon vieux Vi et que vous tentez d'éditer un fichier au
-format DOS, vous verrez que chaque ligne se termine par un caractère ^M (^M
-correspond à <CR>). La détection automatique évite cela. Et si vous vouliez
-éditer un fichier de cette manière ? Alors vous devez forcer le format : >
+Si vous utilisez un bon vieux Vi et que vous tentez d'Ã©diter un fichier au
+format DOS, vous verrez que chaque ligne se termine par un caractÃ¨re ^M (^M
+correspond Ã  <CR>). La dÃ©tection automatique Ã©vite cela. Et si vous vouliez
+Ã©diter un fichier de cette maniÃ¨re ? Alors vous devez forcer le format : >
 
 	:edit ++ff=unix file.txt
 
-La chaîne "++" est un élément indiquant à Vim que le nom d'une option suit,
-dont la valeur qui remplace celle par défaut pour cette unique commande.
+La chaÃ®ne "++" est un Ã©lÃ©ment indiquant Ã  Vim que le nom d'une option suit,
+dont la valeur qui remplace celle par dÃ©faut pour cette unique commande.
 "++ff" signifie 'fileformat'. Vous pourriez aussi utiliser "++ff=mac" ou
 "++ff=dos".
    Cela ne fonctionne pas pour toutes les options, seules "++ff" et "++enc"
-sont actuellement implémentées. Les noms complets "++fileformat" et
-"++encoding" fonctionnent également.
+sont actuellement implÃ©mentÃ©es. Les noms complets "++fileformat" et
+"++encoding" fonctionnent Ã©galement.
 
 
 CONVERSION
 
 Vous pouvez utiliser l'option 'fileformat' pour convertir un format de fichier
-en un autre. Supposons, par exemple, que vous avez un fichier MS-DOS appelé
-"README.TXT" que vous souhaitez convertir au format Unix. Démarrez l'édition
+en un autre. Supposons, par exemple, que vous avez un fichier MS-DOS appelÃ©
+"README.TXT" que vous souhaitez convertir au format Unix. DÃ©marrez l'Ã©dition
 du fichier au format MS-DOS : >
 
 	vim README.TXT
 
-Vim va reconnaître un fichier au format DOS. Passez-le à présent au format de
+Vim va reconnaÃ®tre un fichier au format DOS. Passez-le Ã  prÃ©sent au format de
 fichier Unix : >
 
 	:set fileformat=unix
 	:write
 
-Le fichier est écrit au format Unix.
+Le fichier est Ã©crit au format Unix.
 
 ==============================================================================
 *23.2*	Fichiers sur Internet
 
-Quelqu'un vous envoie un message électronique, qui fait référence à un fichier
+Quelqu'un vous envoie un message Ã©lectronique, qui fait rÃ©fÃ©rence Ã  un fichier
 via une URL. Par exemple :
 
 	Les informations sont disponibles ici : ~
 		ftp://ftp.vim.org/pub/vim/README ~
 
-Vous pourriez démarrer un programme pour télécharger le fichier, l'enregistrer
-sur un disque local et enfin lancer Vim pour l'éditer.
+Vous pourriez dÃ©marrer un programme pour tÃ©lÃ©charger le fichier, l'enregistrer
+sur un disque local et enfin lancer Vim pour l'Ã©diter.
    Il existe un moyen bien plus simple. Placez le curseur sur l'un des
-caractères de l'URL. Puis utilisez cette commande : >
+caractÃ¨res de l'URL. Puis utilisez cette commande : >
 
 	gf
 
-Avec un peu de chance, Vim déterminera le programme à utiliser pour
-télécharger le fichier, le téléchargera et éditera la copie. Pour ouvrir le
-fichier dans une nouvelle fenêtre, utilisez CTRL-W f.
+Avec un peu de chance, Vim dÃ©terminera le programme Ã  utiliser pour
+tÃ©lÃ©charger le fichier, le tÃ©lÃ©chargera et Ã©ditera la copie. Pour ouvrir le
+fichier dans une nouvelle fenÃªtre, utilisez CTRL-W f.
    Si quelque chose se passe mal, vous obtiendrez un message d'erreur. Il est
-possible que l'URL soit erronée, que vous n'ayez pas la permission de lecture,
+possible que l'URL soit erronÃ©e, que vous n'ayez pas la permission de lecture,
 que la connexion soit inactive, etc. Il est malheureusement difficile de
-déterminer la cause de l'erreur. Vous préfèrerez alors peut-être tenter le
-téléchargement manuel du fichier.
+dÃ©terminer la cause de l'erreur. Vous prÃ©fÃ¨rerez alors peut-Ãªtre tenter le
+tÃ©lÃ©chargement manuel du fichier.
 
-L'accès à des fichiers au travers d'Internet fonctionne avec le greffon
+L'accÃ¨s Ã  des fichiers au travers d'Internet fonctionne avec le greffon
 "netrw". Actuellement, les URL avec les formats suivants sont reconnues :
 
 	ftp://		utilise `ftp`
@@ -149,143 +149,143 @@ L'accès à des fichiers au travers d'Internet fonctionne avec le greffon
 	scp://		utilise `scp`
 	http://		utilise `wget` (lecture seule)
 
-Vim n'assure pas les communications par lui-même, il repose sur la présence
-dans votre ordinateurs des programmes mentionnés ci-dessus. `ftp` et `rcp`
-sont présents sur la plupart des systèmes Unix. `scp` et `wget` peuvent
-nécessiter une installation.
+Vim n'assure pas les communications par lui-mÃªme, il repose sur la prÃ©sence
+dans votre ordinateurs des programmes mentionnÃ©s ci-dessus. `ftp` et `rcp`
+sont prÃ©sents sur la plupart des systÃ¨mes Unix. `scp` et `wget` peuvent
+nÃ©cessiter une installation.
 
-Vim détecte ces URL dans toutes les commandes qui lancent l'édition d'un
-nouveau fichier, par exemple ":edit" et ":split". Les commandes d'écriture
-fonctionnent également, à part pour "http://".
+Vim dÃ©tecte ces URL dans toutes les commandes qui lancent l'Ã©dition d'un
+nouveau fichier, par exemple ":edit" et ":split". Les commandes d'Ã©criture
+fonctionnent Ã©galement, Ã  part pour "http://".
 
 Pour davantage d'informations, notamment sur les mots de passe, voir |netrw|.
 
 ==============================================================================
 *23.3*	Chiffrement
 
-Il existe des informations que vous préférez garder pour vous. Par exemple,
-lors de l'écriture d'un test sur un ordinateur que des étudiants utilisent
-aussi. Vous ne voulez pas que des étudiants astucieux trouvent le moyen de
+Il existe des informations que vous prÃ©fÃ©rez garder pour vous. Par exemple,
+lors de l'Ã©criture d'un test sur un ordinateur que des Ã©tudiants utilisent
+aussi. Vous ne voulez pas que des Ã©tudiants astucieux trouvent le moyen de
 lire les questions avant que l'examen n'ait lieu. Vim peut chiffrer le texte
 pour vous, ce qui vous procure une certaine protection.
-   Pour lancer l'édition d'un nouveau fichier avec le chiffrement, utilisez
-l'argument "-x" pour démarrer Vim. Exemple : >
+   Pour lancer l'Ã©dition d'un nouveau fichier avec le chiffrement, utilisez
+l'argument "-x" pour dÃ©marrer Vim. Exemple : >
 
 	vim -x examen.txt
 
-Une invite vous demande la clé à utiliser pour le chiffrement et le
-déchiffrement du fichier :
+Une invite vous demande la clÃ© Ã  utiliser pour le chiffrement et le
+dÃ©chiffrement du fichier :
 
-	Tapez la clé d'encodage: ~
+	Tapez la clÃ© d'encodage: ~
 
-Saisissez alors soigneusement la clé secrète. Vous ne pouvez pas voir les
-caractères que vous tapez, ils sont remplacés par des étoiles. Pour éviter les
-situations fâcheuses où une faute de frappe pose problème, Vim vous demande
-de saisir à nouveau la clé :
+Saisissez alors soigneusement la clÃ© secrÃ¨te. Vous ne pouvez pas voir les
+caractÃ¨res que vous tapez, ils sont remplacÃ©s par des Ã©toiles. Pour Ã©viter les
+situations fÃ¢cheuses oÃ¹ une faute de frappe pose problÃ¨me, Vim vous demande
+de saisir Ã  nouveau la clÃ© :
 
-	Réentrez la même clé: ~
+	RÃ©entrez la mÃªme clÃ©: ~
 
-Vous pouvez maintenant éditer ce fichier normalement et y mettre tous vos
-secrets. Quand vous avez terminé l'édition du fichier et que vous dites à Vim
-de quitter, le fichier est chiffré puis écrit.
-   Quand vous éditez le fichier avec Vim, il vous demandera de saisir la même
-clé à nouveau. Vous n'avez pas besoin d'utiliser l'argument "-x". Vous pouvez
-aussi utiliser la commande ":edit" du mode Normal. Vim ajoute une chaîne
-spécifique au fichier, grâce à laquelle il sait que le fichier a été chiffré.
+Vous pouvez maintenant Ã©diter ce fichier normalement et y mettre tous vos
+secrets. Quand vous avez terminÃ© l'Ã©dition du fichier et que vous dites Ã  Vim
+de quitter, le fichier est chiffrÃ© puis Ã©crit.
+   Quand vous Ã©ditez le fichier avec Vim, il vous demandera de saisir la mÃªme
+clÃ© Ã  nouveau. Vous n'avez pas besoin d'utiliser l'argument "-x". Vous pouvez
+aussi utiliser la commande ":edit" du mode Normal. Vim ajoute une chaÃ®ne
+spÃ©cifique au fichier, grÃ¢ce Ã  laquelle il sait que le fichier a Ã©tÃ© chiffrÃ©.
    Si vous essayez de visualiser le fichier avec un autre programme, vous ne
-verrez que du bruit. De même, si vous éditez le fichier avec Vim et que vous
-saisissez une mauvaise clé, vous n'aurez que du bruit. Vim ne possède pas de
-mécanisme pour vérifier si la clé est la bonne (cela rend le cassage de la clé
+verrez que du bruit. De mÃªme, si vous Ã©ditez le fichier avec Vim et que vous
+saisissez une mauvaise clÃ©, vous n'aurez que du bruit. Vim ne possÃ¨de pas de
+mÃ©canisme pour vÃ©rifier si la clÃ© est la bonne (cela rend le cassage de la clÃ©
 plus difficile).
 
 
-ACTIVER OU DÉSACTIVER LE CHIFFREMENT
+ACTIVER OU DÃ‰SACTIVER LE CHIFFREMENT
 
-Pour désactiver le chiffrement d'un fichier, fixez l'option 'key' à une chaîne
+Pour dÃ©sactiver le chiffrement d'un fichier, fixez l'option 'key' Ã  une chaÃ®ne
 vide : >
 >
 	:set key=
 
-La prochaine écriture du fichier sera effectuée sans chiffrement.
-   Fixez l'option 'key' pour activer le chiffrement est une mauvaise idée, car
-le mot de passe apparaît en clair. N'importe qui pourrait le lire par dessus
-votre épaule.
-   Pour éviter ce problème, la commande ":X" a été créee. Elle vous demande
-une clé de chiffrement, comme le fait l'argument "-x" : >
+La prochaine Ã©criture du fichier sera effectuÃ©e sans chiffrement.
+   Fixez l'option 'key' pour activer le chiffrement est une mauvaise idÃ©e, car
+le mot de passe apparaÃ®t en clair. N'importe qui pourrait le lire par dessus
+votre Ã©paule.
+   Pour Ã©viter ce problÃ¨me, la commande ":X" a Ã©tÃ© crÃ©ee. Elle vous demande
+une clÃ© de chiffrement, comme le fait l'argument "-x" : >
 
 	:X
-	Tapez la clé d'encodage: ******
-	Réentrez la même clé: ******
+	Tapez la clÃ© d'encodage: ******
+	RÃ©entrez la mÃªme clÃ©: ******
 
 
 LIMITES DU CHIFFREMENT
 
-L'algorithme de chiffrement utilisé par Vim est faible. Il est suffisamment
-solide pour tenir à distance le menu fretin, mais certainement pas assez pour
-résister à un expert en chiffrement disposant du temps nécessaire. Soyez
-également conscient que le fichier d'échange n'est pas chiffré ; donc quand
-vous êtes en cours d'édition, une personne avec les privilèges du
-super-utilisateur peut lire le texte non chiffré dans ce fichier.
-   Une manière d'éviter que des personnes lisent votre fichier d'échange est
-de ne pas en utiliser. Si vous spécifiez l'argument "-n" sur la ligne de
-commande, aucun fichier d'échange n'est utilisé (à la place, Vim place tout en
-mémoire). Par exemple, pour éditer le fichier chiffré "fichier.txt" sans
-fichier d'échange, utilisez la commande suivante : >
+L'algorithme de chiffrement utilisÃ© par Vim est faible. Il est suffisamment
+solide pour tenir Ã  distance le menu fretin, mais certainement pas assez pour
+rÃ©sister Ã  un expert en chiffrement disposant du temps nÃ©cessaire. Soyez
+Ã©galement conscient que le fichier d'Ã©change n'est pas chiffrÃ© ; donc quand
+vous Ãªtes en cours d'Ã©dition, une personne avec les privilÃ¨ges du
+super-utilisateur peut lire le texte non chiffrÃ© dans ce fichier.
+   Une maniÃ¨re d'Ã©viter que des personnes lisent votre fichier d'Ã©change est
+de ne pas en utiliser. Si vous spÃ©cifiez l'argument "-n" sur la ligne de
+commande, aucun fichier d'Ã©change n'est utilisÃ© (Ã  la place, Vim place tout en
+mÃ©moire). Par exemple, pour Ã©diter le fichier chiffrÃ© "fichier.txt" sans
+fichier d'Ã©change, utilisez la commande suivante : >
 
 	vim -x -n fichier.txt
 
-Si l'édition est en cours, le fichier d'échange peut être désactivé avec : >
+Si l'Ã©dition est en cours, le fichier d'Ã©change peut Ãªtre dÃ©sactivÃ© avec : >
 
 	:setlocal noswapfile
 
-Comme il n'y a aucun fichier d'échange, le recouvrement est impossible.
+Comme il n'y a aucun fichier d'Ã©change, le recouvrement est impossible.
 Enregistrez le fichier un peu plus souvent pour limiter le risque de perdre
 vos modifications.
 
-Tant que le fichier est en mémoire, il n'est pas chiffré. Quiconque disposant
-des privilèges suffisants peut regarder dans la mémoire de l'éditeur et
-découvrir le contenu du fichier.
+Tant que le fichier est en mÃ©moire, il n'est pas chiffrÃ©. Quiconque disposant
+des privilÃ¨ges suffisants peut regarder dans la mÃ©moire de l'Ã©diteur et
+dÃ©couvrir le contenu du fichier.
    Si vous utilisez un fichier "viminfo", soyez conscient que le contenu des
-registres y est également écrit en clair.
-   Si vous voulez vraiment sécuriser le contenu d'un fichier, éditez-le
-uniquement sur ordinateur portable non connecté à un réseau, utilisez de bons
-outils de chiffrement et conservez l'ordinateur dans un endroit verrouillé
+registres y est Ã©galement Ã©crit en clair.
+   Si vous voulez vraiment sÃ©curiser le contenu d'un fichier, Ã©ditez-le
+uniquement sur ordinateur portable non connectÃ© Ã  un rÃ©seau, utilisez de bons
+outils de chiffrement et conservez l'ordinateur dans un endroit verrouillÃ©
 quand vous ne l'utilisez pas.
 
 ==============================================================================
 *23.4*	Fichiers binaires
 
-Vous pouvez éditer des fichiers binaires dans Vim. Vim n'a pas vraiment été
-réalisé pour cela, de ce fait, il existe quelques limitations. Mais vous
-pouvez lire un fichier, modifier un caractère et l'écrire, avec comme résultat
-qu'un seul caractère est modifié et que le reste du fichier est inchangé.
-   Pour être sûr que Vim n'utilise pas ses mécanismes évoluées à mauvais
+Vous pouvez Ã©diter des fichiers binaires dans Vim. Vim n'a pas vraiment Ã©tÃ©
+rÃ©alisÃ© pour cela, de ce fait, il existe quelques limitations. Mais vous
+pouvez lire un fichier, modifier un caractÃ¨re et l'Ã©crire, avec comme rÃ©sultat
+qu'un seul caractÃ¨re est modifiÃ© et que le reste du fichier est inchangÃ©.
+   Pour Ãªtre sÃ»r que Vim n'utilise pas ses mÃ©canismes Ã©voluÃ©es Ã  mauvais
 escient, ajoutez l'argument "-b" quand vous lancez Vim : >
 
 	vim -b fichierdonnees
 
-Cela active l'option 'binary'. Cela a pour conséquence d'éviter les effets de
-bord inattendus. Par exemple, 'textwidth' est fixé à 0, pour éviter la mise en
+Cela active l'option 'binary'. Cela a pour consÃ©quence d'Ã©viter les effets de
+bord inattendus. Par exemple, 'textwidth' est fixÃ© Ã  0, pour Ã©viter la mise en
 forme automatique des lignes. Et les fichiers sont toujours lus dans le format
 de fichier Unix.
 
-Le mode binaire peut être utilisé pour modifier un message dans un programme.
-Prenez soin de ne pas insérer ou effacer de caractère, cela perturberait très
+Le mode binaire peut Ãªtre utilisÃ© pour modifier un message dans un programme.
+Prenez soin de ne pas insÃ©rer ou effacer de caractÃ¨re, cela perturberait trÃ¨s
 gravement le fonctionnement du programme. Utilisez "R" pour passer en mode
 Remplacement.
 
-De nombreux caractères du fichier ne seront pas imprimables. Pour les
-visualiser sous forme hexadécimale : >
+De nombreux caractÃ¨res du fichier ne seront pas imprimables. Pour les
+visualiser sous forme hexadÃ©cimale : >
 
 	:set display=uhex
 
-Sinon, la commande "ga" permet de voir la valeur du caractère sous le curseur.
-La sortie, quand le curseur se trouve un caractère <Echap>, ressemble à ceci :
+Sinon, la commande "ga" permet de voir la valeur du caractÃ¨re sous le curseur.
+La sortie, quand le curseur se trouve un caractÃ¨re <Echap>, ressemble Ã  ceci :
 
 	<^[>  27,  Hex 1b,  Octal 033 ~
 
 Il se peut que le fichier contienne peu de coupures de ligne. Pour avoir une
-vision d'ensemble, désactivez l'option 'wrap' : >
+vision d'ensemble, dÃ©sactivez l'option 'wrap' : >
 
 	:set nowrap
 
@@ -302,8 +302,8 @@ La sortie est bavarde :
     Col 9-16 de 9-16; Ligne 277 de 330; Mot 1806 de 2058; Octet 10580 de 12206 ~
 
 Les deux derniers nombres sont la position en octets dans le fichier et le
-nombre total d'octets. Ces nombres prennent en compte la manière dont
-'fileformat' change le nombre d'octets utilisés pour les coupures de lignes.
+nombre total d'octets. Ces nombres prennent en compte la maniÃ¨re dont
+'fileformat' change le nombre d'octets utilisÃ©s pour les coupures de lignes.
     Pour aller sur un octet particulier du fichier, utilisez la commande "go".
 Par exemple, pour aller sur l'octet 2345 : >
 
@@ -312,54 +312,54 @@ Par exemple, pour aller sur l'octet 2345 : >
 
 UTILISER XXD
 
-Un véritable éditeur binaire affiche le texte de deux manières : tel qu'il est
-et mis en forme en hexadécimal. Vous pouvez le faire avec Vim en convertissant
+Un vÃ©ritable Ã©diteur binaire affiche le texte de deux maniÃ¨res : tel qu'il est
+et mis en forme en hexadÃ©cimal. Vous pouvez le faire avec Vim en convertissant
 d'abord le fichier avec le programme `xxd`. Il est fourni avec Vim.
-   Commencez par éditer le fichier en mode binaire : >
+   Commencez par Ã©diter le fichier en mode binaire : >
 
 	vim -b fichierdonnees
 
-À présent, convertissez le fichier dans sa représentation hexadécimale avec
+Ã€ prÃ©sent, convertissez le fichier dans sa reprÃ©sentation hexadÃ©cimale avec
 `xxd` : >
 
 	:%!xxd
 
-Le texte ressemblera à ceci :
+Le texte ressemblera Ã  ceci :
 
 	0000000: 1f8b 0808 39d7 173b 0203 7474 002b 4e49  ....9..;..tt.+NI ~
 	0000010: 4b2c 8660 eb9c ecac c462 eb94 345e 2e30  K,.`.....b..4^.0 ~
 	0000020: 373b 2731 0b22 0ca6 c1a2 d669 1035 39d9  7;'1.".....i.59. ~
 
-Vous pouvez maintenant voir et éditer le texte comme vous le souhaitez. Vim
-traite les informations comme du texte ordinaire. Modifier l'hexadécimal ne
-provoque pas la modification du caractère imprimable et inversement.
+Vous pouvez maintenant voir et Ã©diter le texte comme vous le souhaitez. Vim
+traite les informations comme du texte ordinaire. Modifier l'hexadÃ©cimal ne
+provoque pas la modification du caractÃ¨re imprimable et inversement.
    Finalement, effectez la conversion inverse avec : >
 >
 	:%!xxd -r
 
-Seules les modifications dans la partie hexadécimale sont prises en compte.
-Les modifications sur le texte imprimable situé à droite sont ignorées.
+Seules les modifications dans la partie hexadÃ©cimale sont prises en compte.
+Les modifications sur le texte imprimable situÃ© Ã  droite sont ignorÃ©es.
 
 Voir la page de manuel de `xxd` pour davantage d'informations.
 
 ==============================================================================
-*23.5*	Fichiers compressés
+*23.5*	Fichiers compressÃ©s
 
-C'est simple : vous pouvez éditer les fichiers compressés comme n'importe quel
-autre fichier. Le greffon "gzip" prend en charge la décompression du fichier
-quand vous l'éditez. Et le compresse à nouveau quand vous l'enregistrez.
-   Les méthodes de compression actuellement supportées sont :
+C'est simple : vous pouvez Ã©diter les fichiers compressÃ©s comme n'importe quel
+autre fichier. Le greffon "gzip" prend en charge la dÃ©compression du fichier
+quand vous l'Ã©ditez. Et le compresse Ã  nouveau quand vous l'enregistrez.
+   Les mÃ©thodes de compression actuellement supportÃ©es sont :
 
 	.Z	compress
 	.gz	gzip
 	.bz2	bzip2
 
-Vim utilise les programme mentionnés pour réaliser la compression et la
-décompression. Il est possible qu'il vous soit nécessaire d'installer ces
+Vim utilise les programme mentionnÃ©s pour rÃ©aliser la compression et la
+dÃ©compression. Il est possible qu'il vous soit nÃ©cessaire d'installer ces
 programmes auparavant.
 
 ==============================================================================
 
-Chapitre suivant : |usr_24.txt|  Insérer rapidement
+Chapitre suivant : |usr_24.txt|  InsÃ©rer rapidement
 
 Copyright : voir |manual-copyright|  vim:tw=78:ts=8:ft=help:norl:

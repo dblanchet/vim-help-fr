@@ -1,54 +1,54 @@
 *os_dos.txt*    Pour Vim version 6.2.
 
 
-		 MANUEL de R…F…RENCE VIM - par Bram Moolenaar
+		 MANUEL de R√âF√âRENCE VIM - par Bram Moolenaar
 
 
 							*dos* *DOS*
-Ce fichier dÈcrit les particularitÈs communes des versions MS-DOS et Win32 de
+Ce fichier d√©crit les particularit√©s communes des versions MS-DOS et Win32 de
 Vim. Voir aussi |os_win32.txt| et |os_msdos.txt|.
 
 1. Emplacement des fichiers		|dos-locations|
 2. Utilisation des contre-obliques	|dos-backslash|
 3. Mappages standards			|dos-standard-mappings|
-4. Rendu ‡ l'Ècran et couleurs		|dos-colors|
+4. Rendu √† l'√©cran et couleurs		|dos-colors|
 5. Formats des fichiers			|dos-file-formats|
 6. Commande ":cd"			|dos-:cd|
 7. Interruption				|dos-CTRL-Break|
 8. Fichiers temporaires			|dos-temp-files|
-9. Options par dÈfaut du shell		|dos-shell|
+9. Options par d√©faut du shell		|dos-shell|
 
 ==============================================================================
 1. Emplacement des fichiers				*dos-locations*
 
-Si vous conservez l'exÈcutable Vim dans le rÈpertoire qui contient les
-sous-rÈpertoires de l'aide et des fichiers de syntaxe ("help" et "syntax"),
-aucune manipulation particuliËre n'est requise pour que Vim fonctionne. Aucune
-entrÈe de registre ou variable d'environnement n'a besoin d'Ítre ajoutÈe.
-Assurez-vous simplement que ce rÈpertoire est dans le chemin de recherche, ou
+Si vous conservez l'ex√©cutable Vim dans le r√©pertoire qui contient les
+sous-r√©pertoires de l'aide et des fichiers de syntaxe ("help" et "syntax"),
+aucune manipulation particuli√®re n'est requise pour que Vim fonctionne. Aucune
+entr√©e de registre ou variable d'environnement n'a besoin d'√™tre ajout√©e.
+Assurez-vous simplement que ce r√©pertoire est dans le chemin de recherche, ou
 alors utilisez un raccourci sur le bureau.
 
-Vos fichiers vimrc ("_vimrc" et "_gvimrc") sont normalement situÈs dans le
-rÈpertoire parent des fichiers de support. Si vous voulez les mettre ailleurs,
-fixez la variable d'environnement $VIM sur le rÈpertoire qui les contient. Par
+Vos fichiers vimrc ("_vimrc" et "_gvimrc") sont normalement situ√©s dans le
+r√©pertoire parent des fichiers de support. Si vous voulez les mettre ailleurs,
+fixez la variable d'environnement $VIM sur le r√©pertoire qui les contient. Par
 exemple >
 	set VIM=C:\utilisateur\arthur
 trouvera "c:\utilisateur\arthur\_vimrc".
-NOTE : Ceci n'est nÈcessaire que lorsque l'ordinateur est utilisÈ par
+NOTE : Ceci n'est n√©cessaire que lorsque l'ordinateur est utilis√© par
 plusieurs personnes. Sinon, il est plus simple de laisser votre fichier vimrc
-‡ son emplacement par dÈfaut.
+√† son emplacement par d√©faut.
 
-Si vous dÈplacez l'exÈcutable ‡ un autre endroit, vous devez Ègalement
-fixer la variable d'environnement $VIM. Les fichiers de support seront trouvÈs
-‡ "$VIM/vim{version}". Par exemple >
+Si vous d√©placez l'ex√©cutable √† un autre endroit, vous devez √©galement
+fixer la variable d'environnement $VIM. Les fichiers de support seront trouv√©s
+√† "$VIM/vim{version}". Par exemple >
 	set VIM=E:\vim
 trouvera les fichiers de support dans "e:\vim\vim54".
-NOTE : Ceci n'est PAS recommandÈ. Il est prÈfÈrable de laisser l'exÈcutable
-dans le rÈpertoire de support.
+NOTE : Ceci n'est PAS recommand√©. Il est pr√©f√©rable de laisser l'ex√©cutable
+dans le r√©pertoire de support.
 
-Si vous souhaitez dÈplacer ‡ la fois votre exÈcutable ET vos fichiers "_vimrc"
-et "_gvimrc", vous devez fixer $VIM ‡ l'emplacement de vos fichiers vimrc, et
-fixer $VIMRUNTIME ‡ celui des fichiers de support. Par exemple >
+Si vous souhaitez d√©placer √† la fois votre ex√©cutable ET vos fichiers "_vimrc"
+et "_gvimrc", vous devez fixer $VIM √† l'emplacement de vos fichiers vimrc, et
+fixer $VIMRUNTIME √† celui des fichiers de support. Par exemple >
 	set VIM=C:\utilisateur\arthur
 	set VIMRUNTIME=E:\vim\vim54
 trouvera "c:\utilisateur\arthur\_vimrc" et les fichiers de support dans
@@ -60,34 +60,34 @@ Sous Windows 95, vous pouvez fixer $VIM dans votre fichier "C:\autoexec.bat".
 Par exemple : >
       set VIM=D:\vim
 Sous Windows NT, vous pouvez fixer les variables d'environnement pour chaque
-utilisateur sÈparement dans "DÈmarrer/ParamËtres/Panneau de configuration ->
-SystËme", ou par les propriÈtÈs dans le menu de "Mon ordinateur", dans
-l'onglet Environnement. [N.D.T : Cela diffËre sous Windows 2000]. XXX
+utilisateur s√©parement dans "D√©marrer/Param√®tres/Panneau de configuration ->
+Syst√®me", ou par les propri√©t√©s dans le menu de "Mon ordinateur", dans
+l'onglet Environnement. [N.D.T : Cela diff√®re sous Windows 2000]. XXX
 
 ==============================================================================
 2. Utilisation des contre-obliques			*dos-backslash*
 
 L'utilisation des contre-obliques ('\') dans les noms de fichiers peut poser
-un problËme. Vi rÈduit de moitiÈ le nombre de contre-obliques pour certaines
+un probl√®me. Vi r√©duit de moiti√© le nombre de contre-obliques pour certaines
 commandes. Vim est un peu plus souple et ne retire pas les contre-obliques
-d'un nom de fichier, par consÈquent ":e c:\truc\toto" fonctionne comme prÈvu.
-Mais lorsqu'une contre-oblique prÈcËde un caractËre spÈcial (espace, virgule,
+d'un nom de fichier, par cons√©quent ":e c:\truc\toto" fonctionne comme pr√©vu.
+Mais lorsqu'une contre-oblique pr√©c√®de un caract√®re sp√©cial (espace, virgule,
 contre-oblique, etc.), Vim la retire. Utilisez des obliques simples ('/') pour
-Èviter ces problËmes : ":e c:/truc/toto" fonctionne correctement. Vim remplace
-les obliques par des contre-obliques en interne pour Èviter les problËmes avec
+√©viter ces probl√®mes : ":e c:/truc/toto" fonctionne correctement. Vim remplace
+les obliques par des contre-obliques en interne pour √©viter les probl√®mes avec
 certains programmes MS-DOS et Win32.
 
-Si vous prÈfÈrez utiliser des obliques simples, activez l'option 'shellslash'.
+Si vous pr√©f√©rez utiliser des obliques simples, activez l'option 'shellslash'.
 Vim remplacera alors les contre-obliques par des obliques simples lors de
-l'expansion des noms de fichiers. C'est particuliËrement utile si vous
+l'expansion des noms de fichiers. C'est particuli√®rement utile si vous
 utilisez un 'shell' de type Unix.
 
 ==============================================================================
 3. Mappages standards				*dos-standard-mappings*
 
-CTRL-PagePrec	curseur sur la premiËre ligne de l'Ècran	*<C-PageUp>*
-CTRL-PageSuiv	curseur sur la derniËre ligne de l'Ècran,	*<C-PageDown>*
-		   sur le dernier caractËre
+CTRL-PagePrec	curseur sur la premi√®re ligne de l'√©cran	*<C-PageUp>*
+CTRL-PageSuiv	curseur sur la derni√®re ligne de l'√©cran,	*<C-PageDown>*
+		   sur le dernier caract√®re
 
 Ces mappages ont l'effet suivant :
 
@@ -96,7 +96,7 @@ Ces mappages ont l'effet suivant :
     CTRL-PageSuiv	<M-N>v		L$		     <C-O>L<C-O>$
 
 De plus, ces touches sont disponibles pour copier/couper/coller. Dans les
-versions Win32 er DJGPP, le presse-papiers est utilisÈ.
+versions Win32 er DJGPP, le presse-papiers est utilis√©.
 
 MAJ-Inser	colle le texte (depuis le presse-papiers)	*<S-Insert>*
 CTRL-Inser	copie la zone Visuel (vers le presse-papiers)	*<C-Insert>*
@@ -119,194 +119,194 @@ Ces mappages ont l'effet suivant (versions non-Win32 de Vim) :
     MAJ-Suppr		<M-N><M-W>		d
     CTRL-Suppr		<M-N><M-X>		d
 
-Quand le presse-papiers est supportÈ, le registre "* est utilisÈ.
+Quand le presse-papiers est support√©, le registre "* est utilis√©.
 
 ==============================================================================
-4. Rendu ‡ l'Ècran et couleurs				*dos-colors*
+4. Rendu √† l'√©cran et couleurs				*dos-colors*
 
-La mÈthode de sortie par dÈfaut pour l'Ècran utilise les appels du BIOS. Cela
-fonctionne correctement sur la plupart des systËmes. Vous n'avez pas besoin de
-"ansi.sys". Vous pouvez utiliser ":mode" pour choisir le mode d'Ècran courant.
+La m√©thode de sortie par d√©faut pour l'√©cran utilise les appels du BIOS. Cela
+fonctionne correctement sur la plupart des syst√®mes. Vous n'avez pas besoin de
+"ansi.sys". Vous pouvez utiliser ":mode" pour choisir le mode d'√©cran courant.
 Voir |:mode|.
 
-Pour modifier les couleurs utilisÈes par Vim ‡ l'Ècran , vous pouvez utiliser
-la commande |:highlight|. Le groupe de surbrillance Normal prÈcise les
+Pour modifier les couleurs utilis√©es par Vim √† l'√©cran , vous pouvez utiliser
+la commande |:highlight|. Le groupe de surbrillance Normal pr√©cise les
 couleurs que Vim utilise pour le texte normal. Par exemple, pour obtenir un
 texte gris sur fond bleu : >
 	:hi Normal ctermbg=Blue ctermfg=grey
 Voir |highlight-groups| pour les autres groupes disponibles. 
 
-La console DOS ne supporte par les attributs tels que gras ou soulignÈ. Il
-existe cinq modes pour lesquels vous pouvez dÈfinir la couleur ‡ utiliser avec
-neuf options termcap. NOTE : Cela n'est pas forcÈment nÈcessaire puisque vous
-pouvez dÈfinir les couleurs directement avec la commande ":highlight" ; ces
-options ne sont prÈsentes que pour la compatibilitÈ ascendante. L'option
-|'highlight'| prÈcise lequel des cinq modes est utilisÈ pour chaque action. >
+La console DOS ne supporte par les attributs tels que gras ou soulign√©. Il
+existe cinq modes pour lesquels vous pouvez d√©finir la couleur √† utiliser avec
+neuf options termcap. NOTE : Cela n'est pas forc√©ment n√©cessaire puisque vous
+pouvez d√©finir les couleurs directement avec la commande ":highlight" ; ces
+options ne sont pr√©sentes que pour la compatibilit√© ascendante. L'option
+|'highlight'| pr√©cise lequel des cinq modes est utilis√© pour chaque action. >
 
-	:set t_mr=^V^[\|xxm		dÈbut du mode vidÈo inverse
-	:set t_md=^V^[\|xxm		dÈbut du mode gras
+	:set t_mr=^V^[\|xxm		d√©but du mode vid√©o inverse
+	:set t_md=^V^[\|xxm		d√©but du mode gras
 	:set t_me=^V^[\|xxm		retour au texte normal
 
-	:set t_so=^V^[\|xxm		dÈbut du mode surlignÈ
+	:set t_so=^V^[\|xxm		d√©but du mode surlign√©
 	:set t_se=^V^[\|xxm		retour au texte normal
 
-	:set t_us=^V^[\|xxm		dÈbut du mode soulignÈ
+	:set t_us=^V^[\|xxm		d√©but du mode soulign√©
 	:set t_ue=^V^[\|xxm		retour au texte normal
 
-	:set t_ZH=^V^[\|xxm		dÈbut du mode italique
+	:set t_ZH=^V^[\|xxm		d√©but du mode italique
 	:set t_ZR=^V^[\|xxm		retour au texte normal
 
-"^V" dÈsigne CTRL-V et ^[ dÈsigne <Esc>.
-Vous devez remplacer "xx" par un code dÈcimal, qui correspond ‡ la somme des
-numÈros des couleurs de premier plan et de fond :
+"^V" d√©signe CTRL-V et ^[ d√©signe <Esc>.
+Vous devez remplacer "xx" par un code d√©cimal, qui correspond √† la somme des
+num√©ros des couleurs de premier plan et de fond :
 
     NOM DE LA COULEUR	 PREMIER PLAN	FOND ~
-    Black		     0	          0 	                     [´ Noir ª]
-    DarkBlue		     1		 16 		       [´ Bleu foncÈ ª]
-    DarkGreen		     2		 32 		       [´ Vert foncÈ ª]
-    DarkCyan		     3		 48 		       [´ Cyan foncÈ ª]
-    DarkRed		     4		 64		      [´ Rouge foncÈ ª]
-    DarkMagenta		     5		 80 		    [´ Magenta foncÈ ª]
-    Brown, DarkYellow	     6		 96	      [´ Marron, Jaune foncÈ ª]
-    LightGray		     7		112 		       [´ Gris clair ª]
-    DarkGray		     8		128 *		       [´ Gris foncÈ ª]
-    Blue, LightBlue	     9		144 *		 [´ Bleu, Bleu clair ª]
-    Green, LightGreen	    10		160 *		 [´ Vert, Vert clair ª]
-    Cyan, LightCyan	    11		176 *		 [´ Cyan, Cyan clair ª]
-    Red, LightRed	    12		192 *	       [´ Rouge, Rouge clair ª]
-    Magenta, LightMagenta   13		208 *	   [´ Magenta, Magenta clair ª]
-    Yellow, LightYellow	    14		224 *	       [´ Jaune, Jaune clair ª]
-    White		    15		240 *			    [´ Blanc ª]
+    Black		     0	          0 	                     [¬´ Noir ¬ª]
+    DarkBlue		     1		 16 		       [¬´ Bleu fonc√© ¬ª]
+    DarkGreen		     2		 32 		       [¬´ Vert fonc√© ¬ª]
+    DarkCyan		     3		 48 		       [¬´ Cyan fonc√© ¬ª]
+    DarkRed		     4		 64		      [¬´ Rouge fonc√© ¬ª]
+    DarkMagenta		     5		 80 		    [¬´ Magenta fonc√© ¬ª]
+    Brown, DarkYellow	     6		 96	      [¬´ Marron, Jaune fonc√© ¬ª]
+    LightGray		     7		112 		       [¬´ Gris clair ¬ª]
+    DarkGray		     8		128 *		       [¬´ Gris fonc√© ¬ª]
+    Blue, LightBlue	     9		144 *		 [¬´ Bleu, Bleu clair ¬ª]
+    Green, LightGreen	    10		160 *		 [¬´ Vert, Vert clair ¬ª]
+    Cyan, LightCyan	    11		176 *		 [¬´ Cyan, Cyan clair ¬ª]
+    Red, LightRed	    12		192 *	       [¬´ Rouge, Rouge clair ¬ª]
+    Magenta, LightMagenta   13		208 *	   [¬´ Magenta, Magenta clair ¬ª]
+    Yellow, LightYellow	    14		224 *	       [¬´ Jaune, Jaune clair ¬ª]
+    White		    15		240 *			    [¬´ Blanc ¬ª]
 
-* Selon les modes d'affichage, les codes de couleur supÈrieurs ‡ 128 peuvent
-  ne pas Ítre disponibles, le code 128 activera alors le clignotement.
+* Selon les modes d'affichage, les codes de couleur sup√©rieurs √† 128 peuvent
+  ne pas √™tre disponibles, le code 128 activera alors le clignotement.
 
-Si vous utilisez 0, la couleur est rÈinitialisÈe ‡ la valeur avec laquelle Vim
-a demarrÈ (en gÈnÈral 7, gris clair sur noir, mais vous pouvez changer ce
-comportement. Si vous avez changÈ la couleur par dÈfaut de l'invite de
-commande, il est possible que vous ayez ‡ ajuster certaines couleurs de
+Si vous utilisez 0, la couleur est r√©initialis√©e √† la valeur avec laquelle Vim
+a demarr√© (en g√©n√©ral 7, gris clair sur noir, mais vous pouvez changer ce
+comportement. Si vous avez chang√© la couleur par d√©faut de l'invite de
+commande, il est possible que vous ayez √† ajuster certaines couleurs de
 surbrillance dans votre vimrc -- voir plus bas).
-   C'est la valeur par dÈfaut pour 't_me'.
+   C'est la valeur par d√©faut pour 't_me'.
 
-Les valeurs par dÈfaut pour les diffÈrents modes de surbrillance sont :
-	't_mr'	112	 vidÈo inverse : texte Black (0) sur LightGray (112)
+Les valeurs par d√©faut pour les diff√©rents modes de surbrillance sont :
+	't_mr'	112	 vid√©o inverse : texte Black (0) sur LightGray (112)
 	't_md'	 15	 gras : texte White (15) sur Black (0)
-	't_me'	  0	 normal (retour aux couleurs par dÈfaut)
+	't_me'	  0	 normal (retour aux couleurs par d√©faut)
 
-	't_so'	 31	 surlignÈ : White (15) sur DarkBlue (16)
-	't_se'	  0	 fin du mode surlignÈ (retour aux couleurs par dÈfaut)
+	't_so'	 31	 surlign√© : White (15) sur DarkBlue (16)
+	't_se'	  0	 fin du mode surlign√© (retour aux couleurs par d√©faut)
 
-	't_czh'	225	 italique : DarkBlue foncÈ (1) sur Yellow (224)
-	't_czr'	  0	 fin du mode italique (retour aux couleurs par dÈfaut)
+	't_czh'	225	 italique : DarkBlue fonc√© (1) sur Yellow (224)
+	't_czr'	  0	 fin du mode italique (retour aux couleurs par d√©faut)
 
-	't_us'	 67	 soulignÈ : texte DarkCyan (3) sur DarkRed (64)
-	't_ue'	  0	 fin du mode soulignÈ (retour aux couleurs par dÈfaut)
+	't_us'	 67	 soulign√© : texte DarkCyan (3) sur DarkRed (64)
+	't_ue'	  0	 fin du mode soulign√© (retour aux couleurs par d√©faut)
 
-Ces couleurs ont ÈtÈ choisies parce qu'elles restent lisibles lors de
-l'utilisation d'un affichage inversÈ, mais vous pouvez les modifier ‡ votre
+Ces couleurs ont √©t√© choisies parce qu'elles restent lisibles lors de
+l'utilisation d'un affichage invers√©, mais vous pouvez les modifier √† votre
 convenance.
 
 Exemples : >
 
-  :set t_mr=^V^[\|97m	" DÈbut vidÈo inverse : DarkBlue (1) sur Brown (96)
-  :set t_md=^V^[\|67m	" DÈbut gras : DarkCyan (3) sur DarkRed (64)
+  :set t_mr=^V^[\|97m	" D√©but vid√©o inverse : DarkBlue (1) sur Brown (96)
+  :set t_md=^V^[\|67m	" D√©but gras : DarkCyan (3) sur DarkRed (64)
   :set t_me=^V^[\|112m	" Retour au mode normal : Black (0) sur LightGray (112)
 
-  :set t_so=^V^[\|37m	" DÈbut surlignÈ: DarkMagenta (5) sur DarkGreen (32)
+  :set t_so=^V^[\|37m	" D√©but surlign√©: DarkMagenta (5) sur DarkGreen (32)
   :set t_se=^V^[\|112m	" Retour au mode normal : Black (0) sur LightGray (112)
 
 ==============================================================================
 5. Formats des fichiers					*dos-file-formats*
 
-Si l'option 'fileformat' est fixÈe ‡ "dos" (elle l'est par dÈfaut), Vim
-accepte un <NL> simple ou un couple <CR><NL> comme fin-de-ligne (<EOL>). ¿
-l'enregistrement d'un fichier, Vim utilise <CR><NL>. Ainsi, si vous Èditez un
+Si l'option 'fileformat' est fix√©e √† "dos" (elle l'est par d√©faut), Vim
+accepte un <NL> simple ou un couple <CR><NL> comme fin-de-ligne (<EOL>). √Ä
+l'enregistrement d'un fichier, Vim utilise <CR><NL>. Ainsi, si vous √©ditez un
 fichier puis l'enregistrez, Vim remplace <NL> par <CR><NL>.
 
-Si l'option 'fileformat' est fixÈe ‡ "unix", Vim utilise un <NL> simple pour
+Si l'option 'fileformat' est fix√©e √† "unix", Vim utilise un <NL> simple pour
 les fins-de-lignes, et affiche ^M pour les <CR> .
 
 Vous pouvez utiliser Vim pour remplacer les <NL> par des <CR><NL> dans un
-fichier en le lisant dans n'importe quel mode et l'en Ècrivant en mode Dos
+fichier en le lisant dans n'importe quel mode et l'en √©crivant en mode Dos
 (":se ff=dos"). 
    Vous pouvez utiliser Vim pour remplacer les <CR><NL> par des <NL> dans un
-fichier en le lisant depuis n'importe quel mode et en l'Ècrivant en mode Unix
+fichier en le lisant depuis n'importe quel mode et en l'√©crivant en mode Unix
 (":se ff=unix").
 
 Vim fixe automatiquement 'fileformat' quand 'fileformats' n'est pas vide (ce
-qui est le cas par dÈfaut), Vous n'avez donc pas ‡ vous en soucier.
+qui est le cas par d√©faut), Vous n'avez donc pas √† vous en soucier.
 |'fileformat'| |'fileformats'|
 
-Si vous voulez Èditer un fichier de script ou un fichier binaire, vous devriez
+Si vous voulez √©diter un fichier de script ou un fichier binaire, vous devriez
 activer l'option 'binary' avant de charger le fichier. En effet, ces fichiers
-pourraient contenir des caractËres <NL> simples que Vim remplacerait par
-<CR><NL>. Vous pouvez fixer 'binary' automatiquement en lanÁant Vim avec
+pourraient contenir des caract√®res <NL> simples que Vim remplacerait par
+<CR><NL>. Vous pouvez fixer 'binary' automatiquement en lan√ßant Vim avec
 l'argument "-b" (binaire) de la ligne de commande.
 
 ==============================================================================
 6. Commande ":cd"					*dos-:cd*
 
-La commande ":cd" reconnaÓt l'unitÈ spÈcifiÈe et change l'unitÈ courante en
-consÈquence. Utilisez ":cd c:" pour faire du disque C l'unitÈ active. Utilisez
-":cd d:\toto" pour aller au rÈpertoire "toto" situÈ ‡ la racine de l'unitÈ D.
-Vim reconnaÓt Ègalement les noms UNC si le systËme les supporte ; par exemple,
+La commande ":cd" reconna√Æt l'unit√© sp√©cifi√©e et change l'unit√© courante en
+cons√©quence. Utilisez ":cd c:" pour faire du disque C l'unit√© active. Utilisez
+":cd d:\toto" pour aller au r√©pertoire "toto" situ√© √† la racine de l'unit√© D.
+Vim reconna√Æt √©galement les noms UNC si le syst√®me les supporte ; par exemple,
 ":cd \\serveur\partage\rep". |:cd|
 
 ==============================================================================
 7. Interruption						*dos-CTRL-Break*
 
-Utilisez CTRL-Attn ‡ la place de CTRL-C pour interrompre les recherches. Vim
-ne dÈtecte le CTRL-C que lorsqu'il tente de lire l'appui sur une touche.
+Utilisez CTRL-Attn √† la place de CTRL-C pour interrompre les recherches. Vim
+ne d√©tecte le CTRL-C que lorsqu'il tente de lire l'appui sur une touche.
 
 ==============================================================================
 8. Fichiers temporaires					*dos-temp-files*
 
 Pour les versions 16 et 32 bits DOS uniquement :
 Vim place les fichiers temporaires (pour le filtrage) dans le premier de ces
-rÈpertoires qu'il trouve et dans lequel il peut crÈer un fichier :
+r√©pertoires qu'il trouve et dans lequel il peut cr√©er un fichier :
 	$TMP
 	$TEMP
 	C:\TMP
 	C:\TEMP
-	RÈpertoire courant
+	R√©pertoire courant
 
 Pour la version Win32 (console et graphique) :
 Vim utilise les fonctions Windows standards pour obtenir un nom de fichier
-temporaire (pour le filtrage). Le premier de ces rÈpertoire dans lequel Vim
-peut crÈer un fichier est utilisÈ :
+temporaire (pour le filtrage). Le premier de ces r√©pertoire dans lequel Vim
+peut cr√©er un fichier est utilis√© :
 	$TMP
 	$TEMP
-	RÈpertoire courant
+	R√©pertoire courant
 
 ==============================================================================
-9. Options par dÈfaut du shell				*dos-shell*
+9. Options par d√©faut du shell				*dos-shell*
 
-La valeur par dÈfaut pour l'option 'sh' ('shell') est "command.com" sur
-Windows 95 et "cmd.exe" sur Windows NT. Si SHELL est dÈfinie, Vim utilise
-SHELL ‡ la place, et si SHELL n'est pas dÈfinie mais que COMSPEC l'est, Vim
+La valeur par d√©faut pour l'option 'sh' ('shell') est "command.com" sur
+Windows 95 et "cmd.exe" sur Windows NT. Si SHELL est d√©finie, Vim utilise
+SHELL √† la place, et si SHELL n'est pas d√©finie mais que COMSPEC l'est, Vim
 utilise COMSPEC. Vim lance les commandes externes avec `<shell> /c
 <nom_commande>`. Si vous tapez CTRL-Z, Vim lance la commande dans un
-sous-shell. Utilisez `exit` pour revenir ‡ Vim. |'shell'| |CTRL-Z|
+sous-shell. Utilisez `exit` pour revenir √† Vim. |'shell'| |CTRL-Z|
 
-Si vous utilisez un shell tiers, vous devrez peut-Ítre modifier les options
+Si vous utilisez un shell tiers, vous devrez peut-√™tre modifier les options
 |'shellcmdflag'| ('shcf') et |'shellquote'| ('shq') ou |'shellxquote'|
-('sxq'). Malheureusement, cela dÈpend de la version de Vim utilisÈe. Par
+('sxq'). Malheureusement, cela d√©pend de la version de Vim utilis√©e. Par
 exemple, avec le shell Korn MKS ou avec Bash, les valeurs de ces options
-devraient Ítre :
+devraient √™tre :
 
 		DOS 16 BITS    DOS 32 BITS	WIN32  ~
 'shellcmdflag'	    -c		   -c		 -c
 'shellquote'	     "
 'shellxquote'					  "
 
-Pour la version Dos 16 bits, le shell est dÈmarrÈ ainsi : >
+Pour la version Dos 16 bits, le shell est d√©marr√© ainsi : >
 	<shell> -c "nom_commande" >fichier
 Pour la version Win32 : >
 	<shell> -c "nom_commande >fichier"
 Pour la version Dos 32 bits, DJGPP semble le faire en interne.
 
-Au dÈmarrage, Vim vÈrifie la prÈsence de "sh" quelquepart dans l'option
-'shell'. S'il est prÈsent, Vim fixe les options 'shellcmdflag' et 'shellquote'
-ou 'shellxquote' comme dÈcrit ci-dessus.
+Au d√©marrage, Vim v√©rifie la pr√©sence de "sh" quelquepart dans l'option
+'shell'. S'il est pr√©sent, Vim fixe les options 'shellcmdflag' et 'shellquote'
+ou 'shellxquote' comme d√©crit ci-dessus.
 
  vim:tw=78:ts=8:ft=help:norl:

@@ -1,52 +1,52 @@
 *todo.txt*      Pour Vim version 6.2.
 
 
-		 MANUEL de RÉFÉRENCE VIM - par Bram Moolenaar
+		 MANUEL de RÃ‰FÃ‰RENCE VIM - par Bram Moolenaar
 
 
-Liste des tâches pour Vim				*todo*
+Liste des tÃ¢ches pour Vim				*todo*
 
-Voici une trèèès longue liste de bogues connus, de travaux en cours et
-d'améliorations diverses. Pour la rendre un peu plus digeste, les éléments de
-cette liste sont regroupés par thèmes. Dans la première colonne de chaque
-ligne, une classification est indiquée pour donner une idée « des prochaines
-tâches à accomplir » :
+Voici une trÃ¨Ã¨Ã¨s longue liste de bogues connus, de travaux en cours et
+d'amÃ©liorations diverses. Pour la rendre un peu plus digeste, les Ã©lÃ©ments de
+cette liste sont regroupÃ©s par thÃ¨mes. Dans la premiÃ¨re colonne de chaque
+ligne, une classification est indiquÃ©e pour donner une idÃ©e Â« des prochaines
+tÃ¢ches Ã  accomplir Â» :
 
-Classification des priorités :
+Classification des prioritÃ©s :
 
 	9   prochaine mouture mineure
 	8   prochaine mouture
-	7   dès que possible
+	7   dÃ¨s que possible
 	6   prochainement
-	5   devrait être inclus
-	4   appréciable
-	3   inclusion à délibérer
-	2   peut-être jamais
+	5   devrait Ãªtre inclus
+	4   apprÃ©ciable
+	3   inclusion Ã  dÃ©libÃ©rer
+	2   peut-Ãªtre jamais
 	1   sans doute jamais
-	-   non classé
+	-   non classÃ©
 
-Voir |votes-for-changes| pour la liste des votes sur les fonctionnalités
-souhaitées dans Vim.
-Voir |develop.txt| pour l'organisation des développements.
+Voir |votes-for-changes| pour la liste des votes sur les fonctionnalitÃ©s
+souhaitÃ©es dans Vim.
+Voir |develop.txt| pour l'organisation des dÃ©veloppements.
 
 
-[N.D.T. : Plus qu'un document de référence, la liste contenue dans ce fichier
+[N.D.T. : Plus qu'un document de rÃ©fÃ©rence, la liste contenue dans ce fichier
 constitue un document de travail pour Bram Moolenaar, auteur de Vim. Il y
-consigne les bogues et suggestions au fur et à mesure qu'il les reçoit et les
-retire dès que le problème est résolu. Ce fichier est donc très régulièrement
-modifié (parfois quotidiennement). Il est par conséquent illusoir d'espérer en
-avoir une traduction parfaitement à jour.
+consigne les bogues et suggestions au fur et Ã  mesure qu'il les reÃ§oit et les
+retire dÃ¨s que le problÃ¨me est rÃ©solu. Ce fichier est donc trÃ¨s rÃ©guliÃ¨rement
+modifiÃ© (parfois quotidiennement). Il est par consÃ©quent illusoir d'espÃ©rer en
+avoir une traduction parfaitement Ã  jour.
 
-Le présent fichier, laissé en version originale dans sa majeure partie, n'est
-qu'un instantané forcément dépassé de cette liste.
+Le prÃ©sent fichier, laissÃ© en version originale dans sa majeure partie, n'est
+qu'un instantanÃ© forcÃ©ment dÃ©passÃ© de cette liste.
 
-Pour les personnes intéressées et/ou curieuses, la toute dernière version
-(en langue anglaise) de ce fichier est disponible à cette adresse : 
+Pour les personnes intÃ©ressÃ©es et/ou curieuses, la toute derniÃ¨re version
+(en langue anglaise) de ce fichier est disponible Ã  cette adresse : 
 
 	ftp://ftp.vim.org/pub/vim/runtime/doc/todo.txt ~
 
-Les évolutions de ce fichiers reflètent en particulier les échanges et
-problèmes soulevés sur les listes de diffusion anglophones. Voir |mail-list|.]
+Les Ã©volutions de ce fichiers reflÃ¨tent en particulier les Ã©changes et
+problÃ¨mes soulevÃ©s sur les listes de diffusion anglophones. Voir |mail-list|.]
 
 
 							*known-bugs*
@@ -158,7 +158,7 @@ GTK and Win32: disabling an item in the popup menu does not work. (Ajit
 Thakkar, Mar 12)
 
 When using the accents keymap and Select mode is used, ^e inserts ^ instead of
-ê. (Alex Jakushev)  Also, Visual mode mappings get in the way of keymaps.
+Ãª. (Alex Jakushev)  Also, Visual mode mappings get in the way of keymaps.
 
 Win32: Polish characters  copied/pasted through clipboard end up translated to
 utf-8.  (Mikolaj Machowski, Apr 3)
@@ -1015,7 +1015,7 @@ Problems that will (probably) not be solved:
 
 
 						    *extensions-improvements*
----------------------  Extensions et améliorations ----------------------
+---------------------  Extensions et amÃ©liorations ----------------------
 
 For version 6.3:
 -   Give a warning when highlight group names use something else than ASCII
@@ -3444,121 +3444,121 @@ Far future and "big" extensions:
 
 
 							*votes-for-changes*
-------------- Votes pour les fonctionnatités souhaitées -----------------
+------------- Votes pour les fonctionnatitÃ©s souhaitÃ©es -----------------
 
-En novembre 1998, un sondage a été réalisé pour permettre aux utilisateurs de
-voter pour les modifications qu'ils souhaiteraient voir apportées à Vim.
-Chaque personne disposait d'un crédit de 10 points positifs et 5 points
-négatifs, à répartir entre les éléments d'une liste. Le résultat est rapporté
-ci-dessous. Cette liste indique les souhaits des utilisateurs vis-à-vis de
+En novembre 1998, un sondage a Ã©tÃ© rÃ©alisÃ© pour permettre aux utilisateurs de
+voter pour les modifications qu'ils souhaiteraient voir apportÃ©es Ã  Vim.
+Chaque personne disposait d'un crÃ©dit de 10 points positifs et 5 points
+nÃ©gatifs, Ã  rÃ©partir entre les Ã©lÃ©ments d'une liste. Le rÃ©sultat est rapportÃ©
+ci-dessous. Cette liste indique les souhaits des utilisateurs vis-Ã -vis de
 certaines modifications. Il en sera tenu compte au moment du choix des
-prochains travaux à effectuer dans la gigantesque liste présentées ci-dessus.
+prochains travaux Ã  effectuer dans la gigantesque liste prÃ©sentÃ©es ci-dessus.
 
-[N.D.T. : Ces résultats datent de 1998 ; certains éléments de la liste donnée
-ci-dessous sont depuis longtemps partie intégrante de Vim (pour citer les plus
-populaires : les replis, le partage vertical des fenêtres, etc.). Un nouveau
-système de vote est disponible en ligne sur le site communautaire de Vim. Vous
-pouvez consulter les derniers résultats sur :
+[N.D.T. : Ces rÃ©sultats datent de 1998 ; certains Ã©lÃ©ments de la liste donnÃ©e
+ci-dessous sont depuis longtemps partie intÃ©grante de Vim (pour citer les plus
+populaires : les replis, le partage vertical des fenÃªtres, etc.). Un nouveau
+systÃ¨me de vote est disponible en ligne sur le site communautaire de Vim. Vous
+pouvez consulter les derniers rÃ©sultats sur :
 	http://vim.sourceforge.net/sponsor/vote_results.php ~
-et connaître les modalités du vote sur :
+et connaÃ®tre les modalitÃ©s du vote sur :
 	http://vim.sourceforge.net/sponsor/index.php ~
 NOTE : Ces pages sont en anglais.]
 
-Le premier nombre représente la somme des points recueillis ; le nombre entre
-parenthèses indique le cumul des points négatifs.
+Le premier nombre reprÃ©sente la somme des points recueillis ; le nombre entre
+parenthÃ¨ses indique le cumul des points nÃ©gatifs.
 
 317  (-5)   Ajouter les replis (n'afficher qu'une partie choisie du texte)
-252  (-10)  Partage vertical des fenêtres (côte à côte)
-197  (-3)   Ajouter l'indentation souple et automatique pour différents
+252  (-10)  Partage vertical des fenÃªtres (cÃ´te Ã  cÃ´te)
+197  (-3)   Ajouter l'indentation souple et automatique pour diffÃ©rents
 	    langages (comme 'cindent')
-183  (-5)   Corriger tous les problèmes, rendre Vim plus robuste
+183  (-5)   Corriger tous les problÃ¨mes, rendre Vim plus robuste
 155  (-8)   Ajouter les motifs de recherche compatibles avec Perl
-125  (-1)   Motifs de recherche allant au-delà des sauts-de-lignes
-125  (-1)   Accélérer la coloration syntaxique
-116	    Améliorer les fonctionnalités de la coloration syntaxique
+125  (-1)   Motifs de recherche allant au-delÃ  des sauts-de-lignes
+125  (-1)   AccÃ©lÃ©rer la coloration syntaxique
+116	    AmÃ©liorer les fonctionnalitÃ©s de la coloration syntaxique
 101	    Ajouter un menu donnant la liste des tampons
-93   (-1)   Améliorer les performances d'une manière générale
-93   (-6)   Plusieurs fenêtres principales pour un seul Vim en exécution
-90   (-4)   Pouvoir éditer la ligne de cmd avec des commandes Vi
-90   (-36)  Ajouter une fenêtre de shell (pour y exécuter des commandes shell)
-83	    Ajouter des motifs pour définir les sections/paragraphes avec "{",
+93   (-1)   AmÃ©liorer les performances d'une maniÃ¨re gÃ©nÃ©rale
+93   (-6)   Plusieurs fenÃªtres principales pour un seul Vim en exÃ©cution
+90   (-4)   Pouvoir Ã©diter la ligne de cmd avec des commandes Vi
+90   (-36)  Ajouter une fenÃªtre de shell (pour y exÃ©cuter des commandes shell)
+83	    Ajouter des motifs pour dÃ©finir les sections/paragraphes avec "{",
 	    "[[", "%", etc.
-81	    Améliorer le mode Visuel par bloc : davantage de commandes
-71   (-13)  Réduire la taille de l'exécutable et l'occupation mémoire
-70   (-5)   Améliorer l'aide intégrée
-68	    Améliorer la mise en forme du texte avec "gq" (p. ex. justifié,
-	    aligné à droite/gauche, selon 'comments')
-68   (-2)   Améliorer le support des caractères multi-octets
-59   (-8)   Améliorer l'interface avec Visual Studio (VisVim)
-59   (-12)  Permettre d'exécuter Vim dans la fenêtre d'un autre programme
-58   (-11)  Ajouter d'un arbre d'annulation (pour revenir à toute situation
-	    antérieure)
-57   (-9)   Supporter le chargement de DLL définissant de nouvelles commandes
-54   (-1)   Ajouter la possibilité d'exécuter une commande pour plusieurs
-	    tampons/fenêtres
-52	    Améliorer l'interface Perl
-51   (-10)  Améliorer l'impression depuis gvim (menu File.Print)
-50   (-20)  Version légère de Vim, réduite, avec peu de fonctionnalités
-47	    Ajouter une méthode pour répéter le changement préc. (p. ex. "c.")
-44   (-8)   Ajouter davantage de fonctionnalités au langage de script intégré
-37	    Ajouter une cmd pour répéter un mappage entier (pas seulement son
+81	    AmÃ©liorer le mode Visuel par bloc : davantage de commandes
+71   (-13)  RÃ©duire la taille de l'exÃ©cutable et l'occupation mÃ©moire
+70   (-5)   AmÃ©liorer l'aide intÃ©grÃ©e
+68	    AmÃ©liorer la mise en forme du texte avec "gq" (p. ex. justifiÃ©,
+	    alignÃ© Ã  droite/gauche, selon 'comments')
+68   (-2)   AmÃ©liorer le support des caractÃ¨res multi-octets
+59   (-8)   AmÃ©liorer l'interface avec Visual Studio (VisVim)
+59   (-12)  Permettre d'exÃ©cuter Vim dans la fenÃªtre d'un autre programme
+58   (-11)  Ajouter d'un arbre d'annulation (pour revenir Ã  toute situation
+	    antÃ©rieure)
+57   (-9)   Supporter le chargement de DLL dÃ©finissant de nouvelles commandes
+54   (-1)   Ajouter la possibilitÃ© d'exÃ©cuter une commande pour plusieurs
+	    tampons/fenÃªtres
+52	    AmÃ©liorer l'interface Perl
+51   (-10)  AmÃ©liorer l'impression depuis gvim (menu File.Print)
+50   (-20)  Version lÃ©gÃ¨re de Vim, rÃ©duite, avec peu de fonctionnalitÃ©s
+47	    Ajouter une mÃ©thode pour rÃ©pÃ©ter le changement prÃ©c. (p. ex. "c.")
+44   (-8)   Ajouter davantage de fonctionnalitÃ©s au langage de script intÃ©grÃ©
+37	    Ajouter une cmd pour rÃ©pÃ©ter un mappage entier (pas seulement son
 	    dernier changement)
-37   (-2)   Améliorer le support de l'édition de fichiers en projets (ID utils)
-33   (-3)   Prendre en charge les tampons modifiés hors de Vim (récup du focus)
-28	    Améliorer le complètement en mode Insertion
-28   (-14)  Persistance de l'annulation (revenir avant l'écriture/chargement)
-25	    Améliorer le complètement de la ligne de commande
-23   (-30)  Permettre l'exécution d'un prog. dans Vim, en s'interfaçant
-22	    Améliorer les commandes du mode mise-au-point
-21   (-1)   Ajouter des mappages et abréviations locales à un tampon
-21   (-6)   Ajouter une fenêtre pour modifier les options, avec une courte
+37   (-2)   AmÃ©liorer le support de l'Ã©dition de fichiers en projets (ID utils)
+33   (-3)   Prendre en charge les tampons modifiÃ©s hors de Vim (rÃ©cup du focus)
+28	    AmÃ©liorer le complÃ¨tement en mode Insertion
+28   (-14)  Persistance de l'annulation (revenir avant l'Ã©criture/chargement)
+25	    AmÃ©liorer le complÃ¨tement de la ligne de commande
+23   (-30)  Permettre l'exÃ©cution d'un prog. dans Vim, en s'interfaÃ§ant
+22	    AmÃ©liorer les commandes du mode mise-au-point
+21   (-1)   Ajouter des mappages et abrÃ©viations locales Ã  un tampon
+21   (-6)   Ajouter une fenÃªtre pour modifier les options, avec une courte
 	    description
 19   (-4)   Ajouter le verrouillage des fichiers
-18   (-1)   Permettre de désactiver temporairement les messages (d'erreurs)
-17   (-5)   Chiffrer les E/S d'un fichier et le fichier d'échange
-10	    Améliorer le portage sur MacOS X Server, alias Rhapsody
+18   (-1)   Permettre de dÃ©sactiver temporairement les messages (d'erreurs)
+17   (-5)   Chiffrer les E/S d'un fichier et le fichier d'Ã©change
+10	    AmÃ©liorer le portage sur MacOS X Server, alias Rhapsody
 10	    Ajouter une interface Qt
-10   (-1)   Ajouter une argument de portée à la commande ":tag" (comme Elvis)
-9    (-3)   Améliorer le tutoriel (cours pour débutant)
-8	    Améliorer le portage sur OS/2
-8    (-1)   Ajouter une pile pour mémoriser/restaurer les options
-8    (-3)   Améliorer 'viminfo' (contient des informations quand Vim quitte)
-8    (-6)   Améliorer les performances des scripts Vim (les pré-analyser)
-7    (-2)   Ajouter des événements d'autocommande (pour ":cd", passage en mode
+10   (-1)   Ajouter une argument de portÃ©e Ã  la commande ":tag" (comme Elvis)
+9    (-3)   AmÃ©liorer le tutoriel (cours pour dÃ©butant)
+8	    AmÃ©liorer le portage sur OS/2
+8    (-1)   Ajouter une pile pour mÃ©moriser/restaurer les options
+8    (-3)   AmÃ©liorer 'viminfo' (contient des informations quand Vim quitte)
+8    (-6)   AmÃ©liorer les performances des scripts Vim (les prÃ©-analyser)
+7    (-2)   Ajouter des Ã©vÃ©nements d'autocommande (pour ":cd", passage en mode
 	    Insertion, etc.)
-6    (-4)   Améliorer l'interface TCL
-6    (-4)   Ajouter une option pour placer le curseur à une position où il n'y
+6    (-4)   AmÃ©liorer l'interface TCL
+6    (-4)   Ajouter une option pour placer le curseur Ã  une position oÃ¹ il n'y
 	    a pas de texte en mode Visuel
-5	    Améliorer le portage sur MacOS
-4	    Améliorer le portage sur GTK+
-4	    Ajouter des possibilités pour Diff et Merge avec CVS, comme Emacs
-4    (-5)   Ajouter une option pour ne pas déplacer le curseur lors de
-	    l'utilisation d'une barre de défilement
+5	    AmÃ©liorer le portage sur MacOS
+4	    AmÃ©liorer le portage sur GTK+
+4	    Ajouter des possibilitÃ©s pour Diff et Merge avec CVS, comme Emacs
+4    (-5)   Ajouter une option pour ne pas dÃ©placer le curseur lors de
+	    l'utilisation d'une barre de dÃ©filement
 4    (-8)   Ajouter les motifs de recherches compatibles avec Posix
-3	    Améliorer le portage sur X Window (en utilisant GTK+, ou Athena)
-3    (-2)   Améliorer l'interface Cscope
-3    (-14)  Ajouter une option pour placer le curseur à une position où il n'y
+3	    AmÃ©liorer le portage sur X Window (en utilisant GTK+, ou Athena)
+3    (-2)   AmÃ©liorer l'interface Cscope
+3    (-14)  Ajouter une option pour placer le curseur Ã  une position oÃ¹ il n'y
 	    a pas de texte, dans n'importe quel mode
-2	    Supporter Borland Delphi (remplacer l'éditeur par défaut)
-2	    Ajouter la mise en forme immédiate des paragraphes et césures
-1	    Améliorer le portage sur "EPOC 32"
-1	    Ajouter des contrôles graphiques pour mémoriser/arrêter/exécuter
-	    une macro (séquence de touches)
-0    (-2)   Améliorer ":mksession" (revenir dans un état antérieur)
--1   (-1)   Améliorer le portage sur <système souhaité> (p. ex. "VMS")
--4   (-77)  Ajouter des fonctions à l'IHMg (sélecteurs, menus, dialogues)
+2	    Supporter Borland Delphi (remplacer l'Ã©diteur par dÃ©faut)
+2	    Ajouter la mise en forme immÃ©diate des paragraphes et cÃ©sures
+1	    AmÃ©liorer le portage sur "EPOC 32"
+1	    Ajouter des contrÃ´les graphiques pour mÃ©moriser/arrÃªter/exÃ©cuter
+	    une macro (sÃ©quence de touches)
+0    (-2)   AmÃ©liorer ":mksession" (revenir dans un Ã©tat antÃ©rieur)
+-1   (-1)   AmÃ©liorer le portage sur <systÃ¨me souhaitÃ©> (p. ex. "VMS")
+-4   (-77)  Ajouter des fonctions Ã  l'IHMg (sÃ©lecteurs, menus, dialogues)
 -10  (-14)  Ajouter le mode "open", comme dans Vi original
--10  (-15)  Améliorer l'interface OLE
--10  (-17)  Améliorer la compatibilité du mode Ex
+-10  (-15)  AmÃ©liorer l'interface OLE
+-10  (-17)  AmÃ©liorer la compatibilitÃ© du mode Ex
 -12  (-89)  Ajouter la correction orthographique au vol
--13  (-24)  Réduire la taille de la distribution (utilisation du disque dur)
--13  (-32)  Améliorer la compatibilité avec Vi
--25  (-38)  Ajouter plein de petites choses, plutôt que peu de grosses
--47  (-53)  Améliorer la version Dos16 (éviter les limitations de mémoire)
--81  (-123) Améliorer gvim pour qu'il s'intègre au comportement et à
+-13  (-24)  RÃ©duire la taille de la distribution (utilisation du disque dur)
+-13  (-32)  AmÃ©liorer la compatibilitÃ© avec Vi
+-25  (-38)  Ajouter plein de petites choses, plutÃ´t que peu de grosses
+-47  (-53)  AmÃ©liorer la version Dos16 (Ã©viter les limitations de mÃ©moire)
+-81  (-123) AmÃ©liorer gvim pour qu'il s'intÃ¨gre au comportement et Ã 
 	    l'apparence MS-Windows (avec une option)
--110 (-136) Arrêter de modifier Vim, il est bien comme il est
--117 (-122) Enlever des fonctionnalités, il y en a trop
+-110 (-136) ArrÃªter de modifier Vim, il est bien comme il est
+-117 (-122) Enlever des fonctionnalitÃ©s, il y en a trop
 
 vim:tw=78:sw=4:sts=4:ts=8:ft=help:norl:
 vim: set fo+=n :

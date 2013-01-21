@@ -1,27 +1,27 @@
-*pi_netrw.txt*  Pour Vim version 6.2.  Dernière modification : 03 avr 2003
+*pi_netrw.txt*  Pour Vim version 6.2.  DerniÃ¨re modification : 03 avr 2003
 
 
-	    MANUEL de RÉFÉRENCE VIM - par Charles E. Campbell, Jr.
+	    MANUEL de RÃ‰FÃ‰RENCE VIM - par Charles E. Campbell, Jr.
 		  
 
 					*ftp* *http* *scp* *rcp* *Nread*
 					*Nwrite* *netrw* *netrw.vim* *network*
-Transferts de fichiers depuis le réseau avec Vim
+Transferts de fichiers depuis le rÃ©seau avec Vim
 
-1. Transferts de fichiers depuis le réseau		|netrw-xfer|
+1. Transferts de fichiers depuis le rÃ©seau		|netrw-xfer|
 2. Activation						|netrw-activate|
 3. Commandes Ex						|netrw-ex|
 4. Variables						|netrw-var|
 5. Options utilisateur					|netrw-options|
-6. Débogage						|netrw-debug|
+6. DÃ©bogage						|netrw-debug|
 
-La fonctionnalité mentionnée dans ce fichier est mise en oeuvre par le biais
-d'un greffon global |standard-plugin|. Ce greffon n'est chargé que si :
+La fonctionnalitÃ© mentionnÃ©e dans ce fichier est mise en oeuvre par le biais
+d'un greffon global |standard-plugin|. Ce greffon n'est chargÃ© que si :
 >
-    set nocp			" l'option 'compatible' n'est pas activée ;
-    filetype plugin on		" les greffons sont activés.
+    set nocp			" l'option 'compatible' n'est pas activÃ©e ;
+    filetype plugin on		" les greffons sont activÃ©s.
 <
-Vous pouvez éviter le chargement de ce greffon en fixant la variable
+Vous pouvez Ã©viter le chargement de ce greffon en fixant la variable
 "loaded_netrw" : >
 
 	:let loaded_netrw = 1
@@ -29,86 +29,86 @@ Vous pouvez éviter le chargement de ce greffon en fixant la variable
 {absent de Vi}
 
 ==============================================================================
-1. Transfert de fichiers depuis le réseau		*netrw-xfer*
+1. Transfert de fichiers depuis le rÃ©seau		*netrw-xfer*
 
-Le transfert de fichiers depuis le réseau avec Vim est mis en oeuvre avec un
+Le transfert de fichiers depuis le rÃ©seau avec Vim est mis en oeuvre avec un
 script Vim ("netrw.vim") sous la forme d'un greffon. Actuellement, il supporte
-la lecture et l'écriture au travers du réseau en utilisant RCP, SCP, FTP ou
+la lecture et l'Ã©criture au travers du rÃ©seau en utilisant RCP, SCP, FTP ou
 FTP + .netrc, DAV/cadaver et RSYNC.
 
-HTTP n'est supporté que pour la lecture, en utilisant `wget`.
+HTTP n'est supportÃ© que pour la lecture, en utilisant `wget`.
 
-FTP, protocole d'age avancé, bénéficie de nombreuses implémentations.
+FTP, protocole d'age avancÃ©, bÃ©nÃ©ficie de nombreuses implÃ©mentations.
 Malheureusement, certaines sont brouillonnes (elles ajoutent du bruit dans le
-fichier). Pour cela, les utilisateurs concernés peuvent décider d'écrire une
-fonction NetReadFixup(), qui nettoie le fichier après l'avoir lu avec leur
-client FTP. Certains systèmes Unix (notamment FreeBSD) fournissent un
-utilitaire appelé "fetch" qui est basé sur le protocole FTP, mais qui s'avère
-moins bruyant et bien plus commode, finalement, à utiliser pour "netrw.vim".
-Par conséquent, si "fetch" est exécutable, il sera utilisé pour la lecture des
+fichier). Pour cela, les utilisateurs concernÃ©s peuvent dÃ©cider d'Ã©crire une
+fonction NetReadFixup(), qui nettoie le fichier aprÃ¨s l'avoir lu avec leur
+client FTP. Certains systÃ¨mes Unix (notamment FreeBSD) fournissent un
+utilitaire appelÃ© "fetch" qui est basÃ© sur le protocole FTP, mais qui s'avÃ¨re
+moins bruyant et bien plus commode, finalement, Ã  utiliser pour "netrw.vim".
+Par consÃ©quent, si "fetch" est exÃ©cutable, il sera utilisÃ© pour la lecture des
 fichiers ftp://... et http://... . Voir |netrw-var| pour davantages
-d'informations à ce sujet.
+d'informations Ã  ce sujet.
 
 Pour RCP, SCP et HTTP, il est possible d'utiliser le transfert de fichiers
-depuis le réseau de manière transparente : >
+depuis le rÃ©seau de maniÃ¨re transparente : >
 
 	vim rcp://[user@]machine/path
 	vim scp://[user@]machine/path
 <
-Si votre client FTP supporte le fichier ".netrc", alors il peut être utilisé
-de manière tout aussi transparente, si le trio constitué du nom de l'hôte, du
-nom d'utilisateur et du mot de passe est présent dans ce fichier. Votre client
-FTP doit toutefois être capable d'utiliser le fichier ".netrc" par lui-même. >
+Si votre client FTP supporte le fichier ".netrc", alors il peut Ãªtre utilisÃ©
+de maniÃ¨re tout aussi transparente, si le trio constituÃ© du nom de l'hÃ´te, du
+nom d'utilisateur et du mot de passe est prÃ©sent dans ce fichier. Votre client
+FTP doit toutefois Ãªtre capable d'utiliser le fichier ".netrc" par lui-mÃªme. >
 
 	vim ftp://[user@]machine/path
 <
-Cependant, `ftp` devra souvent demander à l'utilisateur un nom d'utilisateur
-et un mot de passe. Ce dernier est donné « silencieusement », c'est-à-dire que
-des étoiles seront affichés à la place des caractères tapés en réalité.
-"netrw.vim" mémorisera le nom d'utilisateur et le mot de passe du transfert le
-plus récent afin que les tranferts suivants vers ou depuis le même hôte
+Cependant, `ftp` devra souvent demander Ã  l'utilisateur un nom d'utilisateur
+et un mot de passe. Ce dernier est donnÃ© Â« silencieusement Â», c'est-Ã -dire que
+des Ã©toiles seront affichÃ©s Ã  la place des caractÃ¨res tapÃ©s en rÃ©alitÃ©.
+"netrw.vim" mÃ©morisera le nom d'utilisateur et le mot de passe du transfert le
+plus rÃ©cent afin que les tranferts suivants vers ou depuis le mÃªme hÃ´te
 puissent avoir lieu sans l'intervention de l'utilisateur.
 
   +==============================+==============================+============+
-  |  La lecture avec		 | L'écriture avec		|  utilise   |
+  |  La lecture avec		 | L'Ã©criture avec		|  utilise   |
   +==============================+==============================+============+
   | RCP :			 |				|	     |
-  |  rcp://[user@]hôte/chemin    | rcp://[user@]hôte/chemin	|  rcp       |
-  |  :Nread rcp://hôte/chemin    | :Nwrite rcp://hôte/chemin	|  rcp       |
+  |  rcp://[user@]hÃ´te/chemin    | rcp://[user@]hÃ´te/chemin	|  rcp       |
+  |  :Nread rcp://hÃ´te/chemin    | :Nwrite rcp://hÃ´te/chemin	|  rcp       |
   +------------------------------+------------------------------+------------+
   | SCP :			 |				|	     |
-  |  scp://[user@]hôte/chemin    | scp://[user@]hôte/chemin	|  scp       |
-  |  :Nread scp://hôte/chemin    | :Nwrite scp://hôte/chemin	|  scp  (*1) |
+  |  scp://[user@]hÃ´te/chemin    | scp://[user@]hÃ´te/chemin	|  scp       |
+  |  :Nread scp://hÃ´te/chemin    | :Nwrite scp://hÃ´te/chemin	|  scp  (*1) |
   +------------------------------+------------------------------+------------+
   | FTP :			 |				|	     |
-  |  ftp://[user@]hôte/chemin    | ftp://[user@]hôte/chemin	|  ftp  (*2) |
-  |  :Nread ftp://hôte/chemin    | :Nwrite ftp://hôte/chemin	|  ftp+.netrc|
-  |  :Nread hôte chemin		 | :Nwrite hôte chemin		|  ftp+.netrc|
-  |  :Nread hôte uid pass chemin | :Nwrite hôte uid pass chemin |  ftp       |
+  |  ftp://[user@]hÃ´te/chemin    | ftp://[user@]hÃ´te/chemin	|  ftp  (*2) |
+  |  :Nread ftp://hÃ´te/chemin    | :Nwrite ftp://hÃ´te/chemin	|  ftp+.netrc|
+  |  :Nread hÃ´te chemin		 | :Nwrite hÃ´te chemin		|  ftp+.netrc|
+  |  :Nread hÃ´te uid pass chemin | :Nwrite hÃ´te uid pass chemin |  ftp       |
   +------------------------------+------------------------------+------------+
-  | FTP : si fetch est présent   |				|	     |
-  |  ftp://[user@]hôte/chemin	 | ftp://[user@]hôte/chemin	|  fetch     |
+  | FTP : si fetch est prÃ©sent   |				|	     |
+  |  ftp://[user@]hÃ´te/chemin	 | ftp://[user@]hÃ´te/chemin	|  fetch     |
   +------------------------------+------------------------------+------------+
   | HTTP :			 |				|	     |
-  |  http://[user@]hôte/chemin   |				|  wget      |
-  |  :Nread http://hôte/chemin   |				|  wget      |
+  |  http://[user@]hÃ´te/chemin   |				|  wget      |
+  |  :Nread http://hÃ´te/chemin   |				|  wget      |
   +------------------------------+------------------------------+------------+
-  | HTTP : si fetch est présent  |				|	     |
-  |  http://[user@]hôte/chemin   |				|  fetch     |
+  | HTTP : si fetch est prÃ©sent  |				|	     |
+  |  http://[user@]hÃ´te/chemin   |				|  fetch     |
   +------------------------------+------------------------------+------------+
   | DAV :			 |				|	     |
-  |  dav://hôte/chemin		 |				|  cadaver   |
-  |  :Nread dav://hôte/chemin    | :Nwrite dav://hôte/chemin	|  cadaver   |
+  |  dav://hÃ´te/chemin		 |				|  cadaver   |
+  |  :Nread dav://hÃ´te/chemin    | :Nwrite dav://hÃ´te/chemin	|  cadaver   |
   +------------------------------+------------------------------+------------+
   | RSYNC :			 |				| 	     |
-  |  rsync://[user@]hôte/chemin  | rsync://[user@]hôte/chemin   |  rsync     |
-  |  :Nread rsync://hôte/chemin  | :Nwrite rsync://hôte/chemin  |  rsync     |
+  |  rsync://[user@]hÃ´te/chemin  | rsync://[user@]hÃ´te/chemin   |  rsync     |
+  |  :Nread rsync://hÃ´te/chemin  | :Nwrite rsync://hÃ´te/chemin  |  rsync     |
   +==============================+==============================+============+
-	(*1) Pour un chemin absolu, utilisez scp://hôte//chemin.
-	(*2) Si le fichier ".netrc" existe, "netrw.vim" considère que votre
+	(*1) Pour un chemin absolu, utilisez scp://hÃ´te//chemin.
+	(*2) Si le fichier ".netrc" existe, "netrw.vim" considÃ¨re que votre
 	     client FTP en tient compte. Sinon, le script vous demandera un
 	     nom d'utilisateur et un mot de passe.
-	(*3) Avec FTP, "hôte" peut s'écrire "hôte#port" si un port différent
+	(*3) Avec FTP, "hÃ´te" peut s'Ã©crire "hÃ´te#port" si un port diffÃ©rent
 	     du port standard FTP est requis.
 
 Les deux commandes Ex ":Nread" et ":Nwrite" acceptent plusieurs noms de
@@ -117,155 +117,155 @@ fichiers.
 
 NETRC							*netrw-netrc*
 
-La syntaxe typique des lignes d'un fichier ".netrc" est donnée ci-dessous.
-Les clients FTP sous Unix supporte généralement le fichier ".netrc". Le client
-`ftp` de MS-Windows généralement pas.
+La syntaxe typique des lignes d'un fichier ".netrc" est donnÃ©e ci-dessous.
+Les clients FTP sous Unix supporte gÃ©nÃ©ralement le fichier ".netrc". Le client
+`ftp` de MS-Windows gÃ©nÃ©ralement pas.
 >
-  machine {NomCompletDeLHôte} login {NomUtilisateur} password {MotDePasse}
+  machine {NomCompletDeLHÃ´te} login {NomUtilisateur} password {MotDePasse}
   default		      login {NomUtilisateur} password {MotDePasse}
 
-Votre client FTP doit gérer l'utilisation de ".netrc" de lui-même, mais si le
+Votre client FTP doit gÃ©rer l'utilisation de ".netrc" de lui-mÃªme, mais si le
 fichier ".netrc" existe, un tranfert FTP ne demandera pas de nom d'utilisateur
 ni de mot de passe.
 
 	NOTE : Comme ce fichier contient des mots de passe, assurez-vous que
 	personne d'autre ne peut le lire ! La plupart des programmes
 	refuseront d'utiliser un fichier ".netrc" que les autres peuvent lire.
-	N'oubliez pas que l'administrateur du système peut tout de même lire
+	N'oubliez pas que l'administrateur du systÃ¨me peut tout de mÃªme lire
 	votre fichier !
 
 
 MOT DE PASSE						*netrw-passwd*
 
-Le script tente d'obtenir les mots de passe pour FTP sans les dévoiler, en
+Le script tente d'obtenir les mots de passe pour FTP sans les dÃ©voiler, en
 utilisant la fonction interne de Vim |inputsecret()|. Voir |netrw-uidpass|
-pour savoir comment changer le mot de passe un fois qu'il a été donné.
+pour savoir comment changer le mot de passe un fois qu'il a Ã©tÃ© donnÃ©.
 
 ==============================================================================
 2. Activation						*netrw-activate*
 
-Les transferts de fichiers depuis le réseau sont disponibles par défaut si le
-mode |'nocompatible'| est activé. Le fichier "netrw.vim" se situe dans le
-répertoire système des greffons de Vim et est automatiquement sourcé quand Vim
-est lancé.
+Les transferts de fichiers depuis le rÃ©seau sont disponibles par dÃ©faut si le
+mode |'nocompatible'| est activÃ©. Le fichier "netrw.vim" se situe dans le
+rÃ©pertoire systÃ¨me des greffons de Vim et est automatiquement sourcÃ© quand Vim
+est lancÃ©.
 
 
 TRANSFERT DE FICHIER TRANSPARENT			*netrw-transparent*
 
-Les transferts de fichiers transparents se produisent à chaque fois que la
-lecture ou l'écriture d'un fichier a lieu (le transfert est invoqué par une
-|autocommand|e déclenchée par les événements |BufReadCmd| et |BufWriteCmd|).
-Ainsi, il est possible d'utiliser des fichiers au travers de réseaux comme
-s'ils étaient locaux. >
+Les transferts de fichiers transparents se produisent Ã  chaque fois que la
+lecture ou l'Ã©criture d'un fichier a lieu (le transfert est invoquÃ© par une
+|autocommand|e dÃ©clenchÃ©e par les Ã©vÃ©nements |BufReadCmd| et |BufWriteCmd|).
+Ainsi, il est possible d'utiliser des fichiers au travers de rÃ©seaux comme
+s'ils Ã©taient locaux. >
 
-	vim ftp://[user@]hôte/chemin
+	vim ftp://[user@]hÃ´te/chemin
 	...
 	:wq
 
 ==============================================================================
 3. Commandes Ex						*netrw-ex*
 
-Les commandes de lecture/écriture habituelles sont supportées. Plusieurs
-commandes supplémentaires sont également disponibles.
+Les commandes de lecture/Ã©criture habituelles sont supportÃ©es. Plusieurs
+commandes supplÃ©mentaires sont Ã©galement disponibles.
 
-:[plage]Nw			Écrit les lignes spécifiées dans le fichier
-				courant, tel qu'il est spécifié dans
+:[plage]Nw			Ã‰crit les lignes spÃ©cifiÃ©es dans le fichier
+				courant, tel qu'il est spÃ©cifiÃ© dans
 				"b:netrw_lastfile".
 
 :[plage]Nw {fichreseau} [{fichreseau}]...
-				Écrit les lignes spécifiées dans {fichreseau}.
+				Ã‰crit les lignes spÃ©cifiÃ©es dans {fichreseau}.
 
-:[plage]Nread			Lit les lignes spécifiées du fichier spécifié
+:[plage]Nread			Lit les lignes spÃ©cifiÃ©es du fichier spÃ©cifiÃ©
 				dans "b:netrw_lastfile" dans le tampon
 				courant.
 
 :Nread {fichreseau} {fichreseau}...
-				Insère les {fichreseau} après la ligne
+				InsÃ¨re les {fichreseau} aprÃ¨s la ligne
 				courante.
 
 							*netrw-uidpass*
 :call NetUserPass()		Si "b:netrw_uid" et "b:netrw_passwd"
-				n'existent pas, les demande à l'utilisateur.
+				n'existent pas, les demande Ã  l'utilisateur.
 
 :call NetUserPass("userid")	Fixe le nom d'utilisateur ("b:netrw_uid") et
-				demande le mot de passe à l'utilisateur s'il
+				demande le mot de passe Ã  l'utilisateur s'il
 				n'est pas disponible.
 
 :call NetUserPass("userid", "passwd")
 				Fixe le nom d'utilisateur ("b:netrw_uid") et
 				le mot de passe ("b:netrw_passwd").
 				Les noms d'utilisateur ("userid") et mot de
-				passe ("passwd") sont utilisés pour les
+				passe ("passwd") sont utilisÃ©s pour les
 				transferts FTP. Il est possible de les
-				supprimer en utilisant des chaînes vides "".
+				supprimer en utilisant des chaÃ®nes vides "".
 
 ==============================================================================
 4. Variables						*netrw-var*
 
 Le script "netrw.vim" utilise plusieurs variables pour adapter son
-fonctionnement. Typiquement, ces variables sont fixées dans le fichier
+fonctionnement. Typiquement, ces variables sont fixÃ©es dans le fichier
 ".vimrc" de l'utilisateur :
 
 	LA VARIABLE		CONTIENT  ~
 	g:netrw_uid		le nom d'utilisateur actuel pour FTP
 	g:netrw_passwd		le mot de passe actuel pour FTP
-	b:netrw_lastfile	les derniers protocole://hôte/chemin
-	b:netrw_line		le numéro de ligne courante (durant NetWrite)
+	b:netrw_lastfile	les derniers protocole://hÃ´te/chemin
+	b:netrw_line		le numÃ©ro de ligne courante (durant NetWrite)
 	b:netrw_col		la position actuelle du curseur (durant
 				   NetWrite)
-	g:netrw_ftp		0 pour utiliser les paramètres FTP par défaut
+	g:netrw_ftp		0 pour utiliser les paramÃ¨tres FTP par dÃ©faut
 				   (nomutilisateur motpasse)
-				1 pour utiliser les paramètres FTP alternatifs
+				1 pour utiliser les paramÃ¨tres FTP alternatifs
 				   (user nomutilisateur motpasse)
 				   (voir |netrw-options|)
-	g:netrw_ftpmode		"binary" pour le mode binaire, par défault
-				"ascii"  pour le mode texte, si vous préférez
-	g:netrw_win95ftp	0 pour utiliser `ftp` comme sur Unix, même sur 
+	g:netrw_ftpmode		"binary" pour le mode binaire, par dÃ©fault
+				"ascii"  pour le mode texte, si vous prÃ©fÃ©rez
+	g:netrw_win95ftp	0 pour utiliser `ftp` comme sur Unix, mÃªme sur 
 				   MS-Windows 95/98/ME/etc.
-				1 pour utiliser la méthode FTP par défaut
-	g:netrw_cygwin		1 pour considérer que SCP sous MS-Windows
-				   provient de cygwin (par défaut sur Windows)
-				0 pour considérer que SCP sous MS-Windows
+				1 pour utiliser la mÃ©thode FTP par dÃ©faut
+	g:netrw_cygwin		1 pour considÃ©rer que SCP sous MS-Windows
+				   provient de cygwin (par dÃ©faut sur Windows)
+				0 pour considÃ©rer que SCP sous MS-Windows
 				   accepte les chemins de style Windows. (par
-				   défaut sur les autres systèmes).
+				   dÃ©faut sur les autres systÃ¨mes).
 	g:netrw_use_nt_rcp	0 pour ne pas utiliser le RCP de MS-Windows
-				   NT/2K/XP (par défaut)
+				   NT/2K/XP (par dÃ©faut)
 				1 pour utiliser le RCP de MS-Windows en mode
 				   binaire
 
-Les variables suivantes spécifient le programme externe à utiliser pour
-prendre en charge le protocole associé (RCP, FTP, etc.), ainsi que les
-options. Encore une fois, l'utilisateur peut les changer à sa convenance :
+Les variables suivantes spÃ©cifient le programme externe Ã  utiliser pour
+prendre en charge le protocole associÃ© (RCP, FTP, etc.), ainsi que les
+options. Encore une fois, l'utilisateur peut les changer Ã  sa convenance :
 
-	LA VARIABLE		CONTIENT PAR DÉFAUT  ~
+	LA VARIABLE		CONTIENT PAR DÃ‰FAUT  ~
 	g:netrw_rcp_cmd		"rcp"
 	g:netrw_ftp_cmd		"ftp"
 	g:netrw_scp_cmd		"scp -q"
 	g:netrw_http_cmd	"wget -O"
 	gnetrw_dav_cmd		"cadaver"
 	g:netrw_rsync_cmd	"rsync -a"
-	g:netrw_fetch_cmd	""	Cette variable est utilisée pour FTP
+	g:netrw_fetch_cmd	""	Cette variable est utilisÃ©e pour FTP
 					et HTTP en lecture seule uniquement si
 					elle se termine par "fetch -o"
 
-Le script fait également une utilisation interne des variables suivantes, bien
+Le script fait Ã©galement une utilisation interne des variables suivantes, bien
 que temporairement :
 
 	LA VARIABLE		CONTIENT  ~
 	g:netrw_method		un index indiquant RCP/FTP + .netrc/FTP
-	g:netrw_machine		le nom de l'hôte extrait de la saisie
-	g:netrw_fname		le nom du fichier en cours d'accès
+	g:netrw_machine		le nom de l'hÃ´te extrait de la saisie
+	g:netrw_fname		le nom du fichier en cours d'accÃ¨s
 
 ==============================================================================
 5. Options utilisateur					*netrw-options*
 
     OPTION	       TYPE	  VALEUR	  SIGNIFICATION ~
-    netrw_ftp	       variable			  nom d'utilisateur fixé avec
+    netrw_ftp	       variable			  nom d'utilisateur fixÃ© avec
 				  n'existe pas      "user nomutilisateur"
 				  0		    "user nomutilisateur"
 				  1		    "nomutilisateur"
     NetReadFixup       fonction	  n'existe pas    pas de modification
-				  existe	  permet à l'utilisateur de
+				  existe	  permet Ã  l'utilisateur de
 						  traiter automatiquement les
 						  fichier lus avec FTP.
     g:netrw_rcp_cmd    variable   "rcp"
@@ -274,24 +274,24 @@ que temporairement :
     g:netrw_http_cmd   variable   "wget -O"
     g:netrw_dav_cmd    variable   "cadaver"
     g:netrw_rsync_cmd  variable   "rsync -a"
-    g:netrw_fetch_cmd  variable   ""	Cette variable est utilisée pour FTP
+    g:netrw_fetch_cmd  variable   ""	Cette variable est utilisÃ©e pour FTP
 					et HTTP en lecture seule uniquement si
 					elle se termine par "fetch -o"
 
-Les deux premières options aident toutes deux avec les clients FTP posant des
-problèmes. Afin de mieux comprendre comment utiliser ces fonctions dans le cas
-où `ftp` pose problème, la discussion suivante aborde en partie la manière
+Les deux premiÃ¨res options aident toutes deux avec les clients FTP posant des
+problÃ¨mes. Afin de mieux comprendre comment utiliser ces fonctions dans le cas
+oÃ¹ `ftp` pose problÃ¨me, la discussion suivante aborde en partie la maniÃ¨re
 dont le greffon "netrw.vim" effectue la lecture avec FTP.
 
-Les variables g:netrw_..._cmd précisent le programme externe à utiliser pour
-prendre en charge le protocole associé (RCP, FTP, etc.), ainsi que des
+Les variables g:netrw_..._cmd prÃ©cisent le programme externe Ã  utiliser pour
+prendre en charge le protocole associÃ© (RCP, FTP, etc.), ainsi que des
 options.
 
 Typiquement, "netrw.vim" construit des lignes de l'un des formats suivants
 dans fichier temporaire :
 >
   SI g:netrw_ftp n'existe pas     SI g:netrw_ftp existe
-     OU est différent de 1           ET vaut 1
+     OU est diffÃ©rent de 1           ET vaut 1
   ---------------------------     ------------------------------
        open machine [port]		 open machine [port]
        user userid password		 userid password
@@ -299,34 +299,34 @@ dans fichier temporaire :
        get filename tempfile		 [g:netrw_ftpmode]
 					 get filename tempfile
 <
-"netrw.vim" exécute alors les lignes ci-dessus en les utilisant comme filtre :
+"netrw.vim" exÃ©cute alors les lignes ci-dessus en les utilisant comme filtre :
 >
 	:%! {g:netrw_ftp_cmd} -i [-n]
 <
-où
+oÃ¹
 	g:netrw_ftp_cmd	    vaut habituellement "ftp",
-	-i		    précise à `ftp` de ne pas être interactif
-	-n		    précise de ne pas utiliser ".netrc" (utilisé pour
-			       la méthode n°3 : ftp sans ".netrc")
+	-i		    prÃ©cise Ã  `ftp` de ne pas Ãªtre interactif
+	-n		    prÃ©cise de ne pas utiliser ".netrc" (utilisÃ© pour
+			       la mÃ©thode nÂ°3 : ftp sans ".netrc")
 
-Si un fichier ".netrc" existe, il est utilisé pour éviter de demander le nom
-d'utilisateur et le mot de passe à l'utilisateur. Le fichier tranféré est
-placé dans un fichier temporaire. Le fichier temporaire est ensuite lu dans la
-fenêtre de la session d'édition principale qui l'a demandé, puis le fichier
-temporaire est effacé.
+Si un fichier ".netrc" existe, il est utilisÃ© pour Ã©viter de demander le nom
+d'utilisateur et le mot de passe Ã  l'utilisateur. Le fichier tranfÃ©rÃ© est
+placÃ© dans un fichier temporaire. Le fichier temporaire est ensuite lu dans la
+fenÃªtre de la session d'Ã©dition principale qui l'a demandÃ©, puis le fichier
+temporaire est effacÃ©.
 
 Si votre client FTP n'accepte pas la commande "user" et vous demande
 simplement un nom d'utilisateur, essayer d'ajouter "let netrw_ftp=1" dans
 votre fichier ".vimrc".
 
-Si votre client FTP génère pour quelques raisons que ce soit des lignes
-parasites (par exemple des messages AUTH), vous pouvez écrire une fonction
+Si votre client FTP gÃ©nÃ¨re pour quelques raisons que ce soit des lignes
+parasites (par exemple des messages AUTH), vous pouvez Ã©crire une fonction
 NetReadFixup() : >
 >
     function! NetReadFixup(methode, ligne1, ligne2)
       if     methode == 1   " rcp
       elseif methode == 2   " ftp + .netrc
-      elseif methode == 3   " ftp + hôte, nomutilisateur, motdepasse, nomfich
+      elseif methode == 3   " ftp + hÃ´te, nomutilisateur, motdepasse, nomfich
       elseif methode == 4   " scp
       elseif methode == 5   " http/wget
       elseif methode == 6   " dav/cadaver
@@ -334,12 +334,12 @@ NetReadFixup() : >
       endif
     endfunction
 >
-La fonction NetReadFixup() sera appelée si elle existe, ce qui vous permet de
-personnaliser le processus de lecture. À titre d'exemple, le fichier
+La fonction NetReadFixup() sera appelÃ©e si elle existe, ce qui vous permet de
+personnaliser le processus de lecture. Ã€ titre d'exemple, le fichier
 "netrw.vim" contient une telle fonction, qui prend juste en charge le `ftp` de
 MS-Windows 95. Pour certaines raisons, le `ftp` de Windows 95 ajoute quatre
-lignes vides à la fin du transfert ; il paraît souhaitable d'automatiser leur
-suppression. Voici le code, copié depuis le fichier "netrw.vim" : 
+lignes vides Ã  la fin du transfert ; il paraÃ®t souhaitable d'automatiser leur
+suppression. Voici le code, copiÃ© depuis le fichier "netrw.vim" : 
 >
     if has("win95") && g:netrw_win95ftp
      function! NetReadFixup(methode, ligne1, ligne2)
@@ -351,35 +351,35 @@ suppression. Voici le code, copié depuis le fichier "netrw.vim" :
     endif
 >
 ==============================================================================
-6. Débogage						*netrw-debug*
+6. DÃ©bogage						*netrw-debug*
 
-Le script "netrw.vim" est généralement disponible en tant que :
+Le script "netrw.vim" est gÃ©nÃ©ralement disponible en tant que :
 
 	/usr/local/share/vim/vim6x/plugin/netrw.vim ~
 
-et est chargé automatiquement lors du démarrage de Vim (à supposer que "set
+et est chargÃ© automatiquement lors du dÃ©marrage de Vim (Ã  supposer que "set
 nocp" soit effectif).
 
-	1. Récupérer le script "Decho.vim", disponible dans :
+	1. RÃ©cupÃ©rer le script "Decho.vim", disponible dans :
 
 		http://vim.sourceforge.net/scripts/script.php?script_id=120 ~
 
-	   et placez-le dans votre répertoire local des greffons.
+	   et placez-le dans votre rÃ©pertoire local des greffons.
 
-	2. Éditez le fichier "netrw.vim" de la façon suivante :
+	2. Ã‰ditez le fichier "netrw.vim" de la faÃ§on suivante :
 >
 		:g/DBG/s/^"//
 <
 	   (pour restaurer l'original utilisez :g/DBG/s/^/"/ )
 
-	3. Puis démarrez Vim et tentez un transfert. Des messages devraient
-	   apparaître à propos des étapes traversées par "netrw.vim" pour
-	   tenter de lire/écrire votre fichier à travers le réseau. Merci
+	3. Puis dÃ©marrez Vim et tentez un transfert. Des messages devraient
+	   apparaÃ®tre Ã  propos des Ã©tapes traversÃ©es par "netrw.vim" pour
+	   tenter de lire/Ã©crire votre fichier Ã  travers le rÃ©seau. Merci
 	   d'envoyer ces informations au responsable du script "netrw.vim",
 	   
 		cec@NgrOyphSon.gPsfAc.nMasa.gov - NOSPAM ~
 
-	   [N.D.T. : retirez au préalable les lettres N, O, S, P, A, M de
-	   l'adresse électronique ci-dessus.]
+	   [N.D.T. : retirez au prÃ©alable les lettres N, O, S, P, A, M de
+	   l'adresse Ã©lectronique ci-dessus.]
 
  vim:tw=78:ts=8:ft=help:norl:

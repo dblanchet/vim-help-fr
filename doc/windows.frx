@@ -1,173 +1,173 @@
 *windows.txt*   Pour Vim version 6.2.
 
 
-		 MANUEL de RÉFÉRENCE VIM - par Bram Moolenaar
+		 MANUEL de RÃ‰FÃ‰RENCE VIM - par Bram Moolenaar
 
 
-Édition avec plusieurs fenêtres et tampons		*windows* *buffers*
+Ã‰dition avec plusieurs fenÃªtres et tampons		*windows* *buffers*
 
-Les commandes qui ont été ajoutées pour utiliser plusieurs fenêtres et tampons
-sont décrites ici. Vous trouverez en outre toutes les explications pour les
-commandes qui fonctionnent différemment lorsqu'elles sont utilisées avec plus
-d'une fenêtre.
+Les commandes qui ont Ã©tÃ© ajoutÃ©es pour utiliser plusieurs fenÃªtres et tampons
+sont dÃ©crites ici. Vous trouverez en outre toutes les explications pour les
+commandes qui fonctionnent diffÃ©remment lorsqu'elles sont utilisÃ©es avec plus
+d'une fenÃªtre.
 
-Les bases sont abordées dans le chapitre 7 et 8 du Manuel de l'utilisateur
+Les bases sont abordÃ©es dans le chapitre 7 et 8 du Manuel de l'utilisateur
 |usr_07.txt| |usr_08.txt|.
 
  1. Introduction					  |windows-intro|
  2. Lancer Vim						  |windows-starting|
- 3. Ouvrir et fermer une fenêtre			  |opening-window|
- 4. Déplacer le curseur dans d'autres fenêtres		  |window-move-cursor|
- 5. Déplacer des fenêtres				  |window-moving|
- 6. Redimensionner des fenêtres				  |window-resize|
+ 3. Ouvrir et fermer une fenÃªtre			  |opening-window|
+ 4. DÃ©placer le curseur dans d'autres fenÃªtres		  |window-move-cursor|
+ 5. DÃ©placer des fenÃªtres				  |window-moving|
+ 6. Redimensionner des fenÃªtres				  |window-resize|
  7. Commandes pour les listes des arguments/tampons	  |buffer-list|
- 8. Exécuter une commande dans tous les tampons/fenêtres  |list-repeat|
+ 8. ExÃ©cuter une commande dans tous les tampons/fenÃªtres  |list-repeat|
  9. Nom de marqueur ou de fichier sous le curseur	  |window-tag|
-10. La fenêtre d'aperçu					  |preview-window|
-11. Utiliser les tampons cachés				  |buffer-hidden|
-12. Types de tampons spéciaux				  |special-buffers|
+10. La fenÃªtre d'aperÃ§u					  |preview-window|
+11. Utiliser les tampons cachÃ©s				  |buffer-hidden|
+12. Types de tampons spÃ©ciaux				  |special-buffers|
 
 {absent de Vi}
-Le multi-fenêtrage est disponible {uniquement si compilé avec la
-fonctionnalité |+windows|}
-Le partage vertical est disponible {uniquement si compilé avec la
-fonctionnalité |+vertsplit|}
+Le multi-fenÃªtrage est disponible {uniquement si compilÃ© avec la
+fonctionnalitÃ© |+windows|}
+Le partage vertical est disponible {uniquement si compilÃ© avec la
+fonctionnalitÃ© |+vertsplit|}
 
 ==============================================================================
 1. Introduction						*windows-intro*
 
-Une fenêtre est une zone de vue sur un tampon. Vous pouvez utiliser plusieurs
-fenêtres pour un même tampon, ou plusieurs fenêtres pour différents tampons.
+Une fenÃªtre est une zone de vue sur un tampon. Vous pouvez utiliser plusieurs
+fenÃªtres pour un mÃªme tampon, ou plusieurs fenÃªtres pour diffÃ©rents tampons.
 
-Un tampon est un fichier chargé en mémoire afin d'être édité. Le fichier
-original reste inchangé jusqu'à ce que vous écriviez le tampon dans le
+Un tampon est un fichier chargÃ© en mÃ©moire afin d'Ãªtre Ã©ditÃ©. Le fichier
+original reste inchangÃ© jusqu'Ã  ce que vous Ã©criviez le tampon dans le
 fichier.
 
-Un tampon peut être dans un de ces trois états :
+Un tampon peut Ãªtre dans un de ces trois Ã©tats :
 							*active-buffer*
-actif	  Le tampon est affiché dans une fenêtre. S'il y a un fichier pour ce
-	  tampon, il a été lu dans le tampon. Le tampon peut avoir été modifié
-	  depuis et donc être différent du fichier.
+actif	  Le tampon est affichÃ© dans une fenÃªtre. S'il y a un fichier pour ce
+	  tampon, il a Ã©tÃ© lu dans le tampon. Le tampon peut avoir Ã©tÃ© modifiÃ©
+	  depuis et donc Ãªtre diffÃ©rent du fichier.
 							*hidden-buffer*
-caché	  Le tampon n'est pas affiché. S'il y a un fichier pour ce tampon, il
-	  a été lu dans le tampon. Sinon, c'est identique à un tampon actif,
+cachÃ©	  Le tampon n'est pas affichÃ©. S'il y a un fichier pour ce tampon, il
+	  a Ã©tÃ© lu dans le tampon. Sinon, c'est identique Ã  un tampon actif,
 	  seulement vous ne pouvez pas le voir.
 							*inactive-buffer*
-inactif	  Le tampon n'est pas affiché et ne contient rien. Les options pour le
-	  tampon sont mémorisées si le fichier a été chargé une fois. Il peut
+inactif	  Le tampon n'est pas affichÃ© et ne contient rien. Les options pour le
+	  tampon sont mÃ©morisÃ©es si le fichier a Ã©tÃ© chargÃ© une fois. Il peut
 	  contenir les marques du fichier |viminfo|. Mais le tampon ne
 	  contient pas de texte.
 
-En résumé :
-		  AFFICHÉ DANS	 TAMPON   ":buffers"  ~
-	ÉTAT	  UNE FENÊTRE	 CHARGÉ	   INDIQUE    ~
+En rÃ©sumÃ© :
+		  AFFICHÃ‰ DANS	 TAMPON   ":buffers"  ~
+	Ã‰TAT	  UNE FENÃŠTRE	 CHARGÃ‰	   INDIQUE    ~
 	actif	      oui	  oui	     'a'
-	caché	      non	  oui	     'h'
+	cachÃ©	      non	  oui	     'h'
 	inactif	      non	  non	     ' '
 
-NOTE : Toutes les commandes CTRL-W peuvent aussi être exécutées avec
-|:wincmd|, pour les circonstances où une commande du mode Normal ne peut pas
-être utilisée ou est gênante.
+NOTE : Toutes les commandes CTRL-W peuvent aussi Ãªtre exÃ©cutÃ©es avec
+|:wincmd|, pour les circonstances oÃ¹ une commande du mode Normal ne peut pas
+Ãªtre utilisÃ©e ou est gÃªnante.
 
 ==============================================================================
 2. Lancer Vim						*windows-starting*
 
-Par défaut, Vim est lancé avec une seule fenêtre ouverte, tout comme Vi.
+Par dÃ©faut, Vim est lancÃ© avec une seule fenÃªtre ouverte, tout comme Vi.
 
-Les arguments "-o" et "-O" de Vim peuvent être utilisés pour ouvrir une
-fenêtre pour chaque fichier de la liste des arguments. L'argument "-o"
-partagera la fenêtre horizontalement ; l'argument "-O" la partagera
-verticalement. Si "-o" et "-O" sont donnés tous les deux, celui spécifié en
-dernier sera retenu. Par exemple, ceci ouvrira trois fenêtres en partageant
+Les arguments "-o" et "-O" de Vim peuvent Ãªtre utilisÃ©s pour ouvrir une
+fenÃªtre pour chaque fichier de la liste des arguments. L'argument "-o"
+partagera la fenÃªtre horizontalement ; l'argument "-O" la partagera
+verticalement. Si "-o" et "-O" sont donnÃ©s tous les deux, celui spÃ©cifiÃ© en
+dernier sera retenu. Par exemple, ceci ouvrira trois fenÃªtres en partageant
 horizontalement : >
 
 	vim -o fich1 fich2 fich3
 
-"-o{N}", où N est un nombre décimal, ouvre N fenêtres en partageant
-horizontalement. S'il y a plus de noms de fichiers que de fenêtres, seules N
-fenêtres seront ouvertes et certains fichiers seront sans fenêtre. S'il y a
-plus de fenêtres que de noms de fichiers, les dernières fenêtres en surplus
-éditeront des tampons vides.
-   Pareillement, "-O{N}" ouvre N fenêtres en partageant verticalement, avec
-les mêmes restrictions.
+"-o{N}", oÃ¹ N est un nombre dÃ©cimal, ouvre N fenÃªtres en partageant
+horizontalement. S'il y a plus de noms de fichiers que de fenÃªtres, seules N
+fenÃªtres seront ouvertes et certains fichiers seront sans fenÃªtre. S'il y a
+plus de fenÃªtres que de noms de fichiers, les derniÃ¨res fenÃªtres en surplus
+Ã©diteront des tampons vides.
+   Pareillement, "-O{N}" ouvre N fenÃªtres en partageant verticalement, avec
+les mÃªmes restrictions.
 
-S'il y a beaucoup de noms de fichiers, les fenêtres deviendront très petites.
+S'il y a beaucoup de noms de fichiers, les fenÃªtres deviendront trÃ¨s petites.
 Vous voudrez certainement fixer les options 'winheight' et/ou 'winwidth' pour
-travailler à l'aise.
+travailler Ã  l'aise.
 
-Les |autocommand|es "Buf/Win Enter/Leave" ne sont pas exécutées à l'ouverture
-des nouvelles fenêtres ou à la lecture des fichiers, mais uniquement quand
-l'entrée est effective.
+Les |autocommand|es "Buf/Win Enter/Leave" ne sont pas exÃ©cutÃ©es Ã  l'ouverture
+des nouvelles fenÃªtres ou Ã  la lecture des fichiers, mais uniquement quand
+l'entrÃ©e est effective.
 
 							*status-line*
-Une ligne d'état est utilisée pour séparer les fenêtres. L'option 'laststatus'
-détermine quand la dernière fenêtre dispose aussi d'une ligne d'état :
-	'laststatus' = 0	jamais de ligne d'état
-	'laststatus' = 1	ligne d'état s'il y a plus d'une fenêtre
-	'laststatus' = 2	toujours une ligne d'état
+Une ligne d'Ã©tat est utilisÃ©e pour sÃ©parer les fenÃªtres. L'option 'laststatus'
+dÃ©termine quand la derniÃ¨re fenÃªtre dispose aussi d'une ligne d'Ã©tat :
+	'laststatus' = 0	jamais de ligne d'Ã©tat
+	'laststatus' = 1	ligne d'Ã©tat s'il y a plus d'une fenÃªtre
+	'laststatus' = 2	toujours une ligne d'Ã©tat
 
-Vous pouvez changer le contenu de la ligne d'état avec l'option 'statusline'.
+Vous pouvez changer le contenu de la ligne d'Ã©tat avec l'option 'statusline'.
 
-Normalement, l'inversion est utilisée pour afficher la ligne d'état. Cela peut
-être changé avec le drapeau 's' de l'option 'highlight'. Par exemple, "sb" la
-passe en caractère gras. S'il n'y a pas de surbrillance pour la ligne d'état
-("sn"), le caractère '^' est utilisé pour la fenêtre courante, et '=' pour les
-autres fenêtres. Si la souris est supportée et activée avec l'option 'mouse',
-il est possible de redimensionner une fenêtre en tirant sa ligne d'état.
+Normalement, l'inversion est utilisÃ©e pour afficher la ligne d'Ã©tat. Cela peut
+Ãªtre changÃ© avec le drapeau 's' de l'option 'highlight'. Par exemple, "sb" la
+passe en caractÃ¨re gras. S'il n'y a pas de surbrillance pour la ligne d'Ã©tat
+("sn"), le caractÃ¨re '^' est utilisÃ© pour la fenÃªtre courante, et '=' pour les
+autres fenÃªtres. Si la souris est supportÃ©e et activÃ©e avec l'option 'mouse',
+il est possible de redimensionner une fenÃªtre en tirant sa ligne d'Ã©tat.
 
-NOTE : Si, contrairement à ce que vous attendez, votre ligne d'état n'est pas
-en mode vidéo inverse, vérifiez que l'option 'highlight' ne contient pas "si".
-Dans la version 3.0, cela provoquait l'inversion de la ligne d'état.
-Actuellement, c'est "sr" qui est utilisé pour cela, "si" passe la ligne en
+NOTE : Si, contrairement Ã  ce que vous attendez, votre ligne d'Ã©tat n'est pas
+en mode vidÃ©o inverse, vÃ©rifiez que l'option 'highlight' ne contient pas "si".
+Dans la version 3.0, cela provoquait l'inversion de la ligne d'Ã©tat.
+Actuellement, c'est "sr" qui est utilisÃ© pour cela, "si" passe la ligne en
 italique ! Si le mode italique n'est pas disponible pour votre terminal, la
-ligne d'état sera inversée malgré tout ; il n'y aura de problème que sur les
-terminaux qui disposent de codes termcap pour gérer l'italique.
+ligne d'Ã©tat sera inversÃ©e malgrÃ© tout ; il n'y aura de problÃ¨me que sur les
+terminaux qui disposent de codes termcap pour gÃ©rer l'italique.
 
 ==============================================================================
-3. Ouvrir et fermer une fenêtre				*opening-window* *E36*
+3. Ouvrir et fermer une fenÃªtre				*opening-window* *E36*
 
 CTRL-W s						*CTRL-W_s*
 CTRL-W S						*CTRL-W_S*
 CTRL-W CTRL-S						*CTRL-W_CTRL-S*
 :[N]sp[lit] [++opt] [+cmd]				*:sp* *:split*
-		Partage la fenêtre courante en deux. Cela offre deux vues sur
-		le même fichier. La nouvelle fenêtre est fixée à une hauteur N
-		(défaut : moitié de la hauteur de la fenêtre courante). Réduit
-		la hauteur de la fenêtre courante pour faire de la place (et
-		des autres, si l'option 'equalalways' est activée et que
+		Partage la fenÃªtre courante en deux. Cela offre deux vues sur
+		le mÃªme fichier. La nouvelle fenÃªtre est fixÃ©e Ã  une hauteur N
+		(dÃ©faut : moitiÃ© de la hauteur de la fenÃªtre courante). RÃ©duit
+		la hauteur de la fenÃªtre courante pour faire de la place (et
+		des autres, si l'option 'equalalways' est activÃ©e et que
 		'eadirection' ne vaut pas "hor").
 		NOTE : CTRL-S ne fonctionne pas sur tous les terminaux et
-		pourra bloquer la saisie de caractères : utilisez alors CTRL-Q
-		pour y remédier.
+		pourra bloquer la saisie de caractÃ¨res : utilisez alors CTRL-Q
+		pour y remÃ©dier.
 		Voir aussi |++opt| et |+cmd|.
 
 CTRL-W CTRL-V						*CTRL-W_CTRL-V*
 CTRL-W v						*CTRL-W_v*
 :[N]vs[plit] [++opt] [+cmd] [fichier]			*:vs* *:vsplit*
 		Comme |:split|, mais partage verticalement. Si 'equalalways'
-		est activé et que 'eadirection' ne vaut pas "ver", les
-		fenêtres se développeront horizontalement, à moins qu'une
-		largeur n'ait été spécifiée.
-		NOTE : À d'autres endroits, CTRL-Q se comporte comme CTRL-V,
+		est activÃ© et que 'eadirection' ne vaut pas "ver", les
+		fenÃªtres se dÃ©velopperont horizontalement, Ã  moins qu'une
+		largeur n'ait Ã©tÃ© spÃ©cifiÃ©e.
+		NOTE : Ã€ d'autres endroits, CTRL-Q se comporte comme CTRL-V,
 		mais ici ce n'est pas le cas !
 
 CTRL-W n						*CTRL-W_n*
 CTRL-W CTRL_N						*CTRL-W_CTRL-N*
 :[N]new [++opt] [+cmd]					*:new*
-		Crée une nouvelle fenêtre et y débute l'édition d'un fichier
-		vide. La nouvelle fenêtre est fixée à une hauteur N (défaut :
-		moitié de la hauteur existante). Réduit la hauteur de la
-		fenêtre courante pour faire de la place (et des autres, si
-		l'option 'equalalways' est activée et que 'eadirection' ne
+		CrÃ©e une nouvelle fenÃªtre et y dÃ©bute l'Ã©dition d'un fichier
+		vide. La nouvelle fenÃªtre est fixÃ©e Ã  une hauteur N (dÃ©faut :
+		moitiÃ© de la hauteur existante). RÃ©duit la hauteur de la
+		fenÃªtre courante pour faire de la place (et des autres, si
+		l'option 'equalalways' est activÃ©e et que 'eadirection' ne
 		vaut pas "hor").
 		Voir aussi |++opt| et |+cmd|.
-		Si 'fileformats' n'est pas vide, le premier format donné sera
-		utilisé pour le nouveau tampon. Si 'fileformats' est vide, la
-		valeur de 'fileformat' du tampon courant est utilisée. Cela
-		peut être recouvert avec l'argument |++opt|.
-		Les autocommandes sont exécutées dans cet ordre :
-		1. WinLeave pour la fenêtre courante ;
-		2. WinEnter pour la nouvelle fenêtre ;
+		Si 'fileformats' n'est pas vide, le premier format donnÃ© sera
+		utilisÃ© pour le nouveau tampon. Si 'fileformats' est vide, la
+		valeur de 'fileformat' du tampon courant est utilisÃ©e. Cela
+		peut Ãªtre recouvert avec l'argument |++opt|.
+		Les autocommandes sont exÃ©cutÃ©es dans cet ordre :
+		1. WinLeave pour la fenÃªtre courante ;
+		2. WinEnter pour la nouvelle fenÃªtre ;
 		3. BufLeave pour le tampon courant ;
 		4. BufEnter pour le nouveau tampon.
 		Cette commande se comporte comme un ":split" d'abord, puis
@@ -176,19 +176,19 @@ CTRL-W CTRL_N						*CTRL-W_CTRL-N*
 							*:vne* *:vnew*
 :[N]vne[w] [++opt] [+cmd] [fichier]
 		Comme |:new|, mais partage verticalement. Si 'equalalways' est
-		activé et que 'eadirection' ne vaut pas "ver", les fenêtres se
-		développeront horizontalement, à moins qu'une largeur n'ait
-		été spécifiée.
+		activÃ© et que 'eadirection' ne vaut pas "ver", les fenÃªtres se
+		dÃ©velopperont horizontalement, Ã  moins qu'une largeur n'ait
+		Ã©tÃ© spÃ©cifiÃ©e.
 
 :[N]new [++opt] [+cmd] {fichier}
 :[N]sp[lit] [++opt] [+cmd] {fichier}			*:split_f*
-		Crée une nouvelle fenêtre et y édite {fichier}. Si [+cmd] est
-		donné, exécute la commande quand le fichier a été chargé
+		CrÃ©e une nouvelle fenÃªtre et y Ã©dite {fichier}. Si [+cmd] est
+		donnÃ©, exÃ©cute la commande quand le fichier a Ã©tÃ© chargÃ©
 		|+cmd|. Voir aussi |++opt|.
-		La nouvelle fenêtre est fixée à une hauteur N (défaut : moitié
-		de la hauteur existante). Réduit la hauteur de la fenêtre
+		La nouvelle fenÃªtre est fixÃ©e Ã  une hauteur N (dÃ©faut : moitiÃ©
+		de la hauteur existante). RÃ©duit la hauteur de la fenÃªtre
 		courante pour faire de la place (et des autres, si l'option
-		'equalalways' est activée).
+		'equalalways' est activÃ©e).
 
 						*:sv* *:sview* *splitview*
 :[N]sv[iew] [++opt] [+cmd] {fichier}
@@ -198,434 +198,434 @@ CTRL-W CTRL_N						*CTRL-W_CTRL-N*
 						*:sf* *:sfind* *splitfind*
 :[N]sf[ind] [++opt] [+cmd] {fichier}
 		Comme ":split", mais recherche {fichier} dans 'path'. Pas de
-		partage si {fichier} n'est pas trouvé.
+		partage si {fichier} n'est pas trouvÃ©.
 
 CTRL-W CTRL-^					*CTRL-W_CTRL-^* *CTRL-W_^*
-CTRL-W ^	Exécute ":split #" : partage la fenêtre en deux et édite le
-		fichier alternatif. Si un quantificateur est donné, exécute
-		":split #N" : partage la fenêtre et édite le tampon N.
+CTRL-W ^	ExÃ©cute ":split #" : partage la fenÃªtre en deux et Ã©dite le
+		fichier alternatif. Si un quantificateur est donnÃ©, exÃ©cute
+		":split #N" : partage la fenÃªtre et Ã©dite le tampon N.
 
 NOTE : Les options 'splitbelow' et 'splitright' conditionnent l'emplacement
-d'une nouvelle fenêtre.
+d'une nouvelle fenÃªtre.
 
 						*:vert* *:vertical*
 :vert[ical] {cmd}
-		Exécute {cmd}. Si {cmd} contient une commande de partage de
-		fenêtre, le partage se fera verticalement.
+		ExÃ©cute {cmd}. Si {cmd} contient une commande de partage de
+		fenÃªtre, le partage se fera verticalement.
 
 :lefta[bove] {cmd}				*:lefta* *leftabove*
 :abo[veleft] {cmd}				*:abo* *:aboveleft*
-		Exécute {cmd}. Si {cmd} contient une commande de partage de
-		fenêtre, celle-ci sera ouverte à gauche (partage vertical) ou
-		en haut (partage horizontal) de la fenêtre courante. Recouvre
+		ExÃ©cute {cmd}. Si {cmd} contient une commande de partage de
+		fenÃªtre, celle-ci sera ouverte Ã  gauche (partage vertical) ou
+		en haut (partage horizontal) de la fenÃªtre courante. Recouvre
 		les options 'splitbelow' et 'splitright'.
 
 :rightb[elow] {cmd}				*:rightb* *:rightbelow*
 :bel[owright] {cmd}				*:bel* *:belowright*
-		Exécute {cmd}. Si {cmd} contient une commande de partage de
-		fenêtre, celle-ci sera ouverte à droite (partage vertical) ou
-		en bas (partage horizontal) de la fenêtre courante. Recouvre
+		ExÃ©cute {cmd}. Si {cmd} contient une commande de partage de
+		fenÃªtre, celle-ci sera ouverte Ã  droite (partage vertical) ou
+		en bas (partage horizontal) de la fenÃªtre courante. Recouvre
 		les options 'splitbelow' et 'splitright'.
 
 						*:topleft* *E442*
 :to[pleft] {cmd}
-		Exécute {cmd}. Si {cmd} contient une commande de partage de
-		fenêtre, celle-ci sera ouverte tout en haut et occupera toute
-		la largeur de la fenêtre Vim.
-		Si le partage est vertical, la fenêtre sera ouvert tout à
-		gauche et occupera toute la hauteur de la fenêtre Vim.
+		ExÃ©cute {cmd}. Si {cmd} contient une commande de partage de
+		fenÃªtre, celle-ci sera ouverte tout en haut et occupera toute
+		la largeur de la fenÃªtre Vim.
+		Si le partage est vertical, la fenÃªtre sera ouvert tout Ã 
+		gauche et occupera toute la hauteur de la fenÃªtre Vim.
 
 						*:botright*
 :bo[tright] {cmd}
-		Exécute {cmd}. Si {cmd} contient une commande de partage de
-		fenêtre, celle-ci sera ouverte tout en bas et occupera toute
-		la largeur de la fenêtre Vim.
-		Si le partage est vertical, la fenêtre sera ouvert tout à
-		droite et occupera toute la hauteur de la fenêtre Vim.
+		ExÃ©cute {cmd}. Si {cmd} contient une commande de partage de
+		fenÃªtre, celle-ci sera ouverte tout en bas et occupera toute
+		la largeur de la fenÃªtre Vim.
+		Si le partage est vertical, la fenÃªtre sera ouvert tout Ã 
+		droite et occupera toute la hauteur de la fenÃªtre Vim.
 
-Ces modificateurs de commandes peuvent être associés pour, par exemple, faire
-occuper toute la hauteur disponible à un partage vertical : >
+Ces modificateurs de commandes peuvent Ãªtre associÃ©s pour, par exemple, faire
+occuper toute la hauteur disponible Ã  un partage vertical : >
 	:vertical topleft edit tags
-Ceci ouvre une fenêtre verticalement, sur toute la hauteur et tout à gauche de
-la fenêtre Vim, et y édite le fichier "tags".
+Ceci ouvre une fenÃªtre verticalement, sur toute la hauteur et tout Ã  gauche de
+la fenÃªtre Vim, et y Ã©dite le fichier "tags".
 
 
-FERMER UNE FENÊTRE
+FERMER UNE FENÃŠTRE
 
 CTRL-W q						*CTRL-W_q*
 CTRL-W CTRL-Q						*CTRL-W_CTRL-Q*
-:q[uit]		Quitte la fenêtre courante. Si vous quittez la dernier fenêtre
-		(sans compter la fenêtre d'aide), quitte Vim.
-		Si 'hidden' est activé et qu'il n'y a qu'une seule fenêtre
-		pour le tampon courant, celui-ci devient caché.
-		Si 'hidden' est désactivé, qu'il n'y a qu'une seule fenêtre
-		pour le tampon courant et que le tampon a été changé, la
-		commande échoue.
+:q[uit]		Quitte la fenÃªtre courante. Si vous quittez la dernier fenÃªtre
+		(sans compter la fenÃªtre d'aide), quitte Vim.
+		Si 'hidden' est activÃ© et qu'il n'y a qu'une seule fenÃªtre
+		pour le tampon courant, celui-ci devient cachÃ©.
+		Si 'hidden' est dÃ©sactivÃ©, qu'il n'y a qu'une seule fenÃªtre
+		pour le tampon courant et que le tampon a Ã©tÃ© changÃ©, la
+		commande Ã©choue.
 		NOTE : CTRL-Q ne fonctionne pas sur certains terminaux.
 
-:q[uit]!	Quitte la fenêtre courante. Si c'était la dernière fenêtre
+:q[uit]!	Quitte la fenÃªtre courante. Si c'Ã©tait la derniÃ¨re fenÃªtre
 		pour un tampon, tous les changements pour ce tampon sont
-		perdus. Si vous quittez la dernier fenêtre (sans compter la
-		fenêtre d'aide), quitte Vim. Le contenu des tampons est perdu,
-		même lorsque 'hidden' est activé.
+		perdus. Si vous quittez la dernier fenÃªtre (sans compter la
+		fenÃªtre d'aide), quitte Vim. Le contenu des tampons est perdu,
+		mÃªme lorsque 'hidden' est activÃ©.
 
 CTRL-W c					*CTRL-W_c* *:clo* *:close*
-:clo[se][!]	Ferme la fenêtre courante. Si l'option 'hidden' est activée,
-		ou si le tampon a été changé et que [!] est utilisé, le tampon
-		devient caché (à moins qu'une autre fenêtre ne l'édite).
-		Cette commande échoue si :		*E444*
-		- il y a une seule fenêtre à l'écran ;
-		- 'hidden' n'est pas activé, [!] pas spécifié, le tampon
-		  contient des changements, et il n'y a qu'une seule fenêtre
+:clo[se][!]	Ferme la fenÃªtre courante. Si l'option 'hidden' est activÃ©e,
+		ou si le tampon a Ã©tÃ© changÃ© et que [!] est utilisÃ©, le tampon
+		devient cachÃ© (Ã  moins qu'une autre fenÃªtre ne l'Ã©dite).
+		Cette commande Ã©choue si :		*E444*
+		- il y a une seule fenÃªtre Ã  l'Ã©cran ;
+		- 'hidden' n'est pas activÃ©, [!] pas spÃ©cifiÃ©, le tampon
+		  contient des changements, et il n'y a qu'une seule fenÃªtre
 		  pour ce tampon.
-		Les changements du tampon ne seront pas écrits ni perdus,
-		cette commande est donc « sûre ».
+		Les changements du tampon ne seront pas Ã©crits ni perdus,
+		cette commande est donc Â« sÃ»re Â».
 
 							*CTRL-W_CTRL-C*
-CTRL-W CTRL-C	Vous vous attendiez peut-être à ce que "CTRL-W CTRL-C" ferme
-		la fenêtre courante, mais cela ne marchera pas, parce que
+CTRL-W CTRL-C	Vous vous attendiez peut-Ãªtre Ã  ce que "CTRL-W CTRL-C" ferme
+		la fenÃªtre courante, mais cela ne marchera pas, parce que
 		CTRL-C annule la commande.
 
 							*:hide*
-:hid[e]		Quitte la fenêtre courante, à moins que ce ne soit la dernière
-		fenêtre à l'écran. Le tampon devient caché (à moins qu'une
-		autre fenêtre ne l'édite ou que 'bufhidden' vaille "unload" ou
+:hid[e]		Quitte la fenÃªtre courante, Ã  moins que ce ne soit la derniÃ¨re
+		fenÃªtre Ã  l'Ã©cran. Le tampon devient cachÃ© (Ã  moins qu'une
+		autre fenÃªtre ne l'Ã©dite ou que 'bufhidden' vaille "unload" ou
 		"delete"). La valeur de l'option 'hidden' n'influence pas
 		cette commande.
-		Les changements du tampon ne seront pas écrits ni perdus,
-		cette commande est donc « sûre ».
+		Les changements du tampon ne seront pas Ã©crits ni perdus,
+		cette commande est donc Â« sÃ»re Â».
 
-:hid[e] {cmd}	Exécute {cmd} avec 'hidden' activé. La valeur précédente de
-		'hidden' est restaurée après l'exécution de {cmd}.
+:hid[e] {cmd}	ExÃ©cute {cmd} avec 'hidden' activÃ©. La valeur prÃ©cÃ©dente de
+		'hidden' est restaurÃ©e aprÃ¨s l'exÃ©cution de {cmd}.
 		Exemple : >
 			:hide edit Makefile
-<		Ceci éditera "Makefile" et cachera le tampon courant s'il
+<		Ceci Ã©ditera "Makefile" et cachera le tampon courant s'il
 		contient des changements.
 
 CTRL-W o					*CTRL-W_o* *E445*
 CTRL-W CTRL-O					*CTRL-W_CTRL-O* *:on* *:only*
-:on[ly][!]	Fait de la fenêtre courante la seule à l'écran. Toutes les
-		autres fenêtres sont fermées.
-		Si 'hidden' est activé, tous les tampons dans des fenêtres
-		fermées deviennent cachés.
-		Si 'hidden' est désactivé et que 'autowrite' est activé, les
-		tampons modifiés sont écrits. Sinon, les fenêtres contenant
-		des tampons modifiés ne sont pas supprimées, à moins que [!]
-		ne soit spécifié, auquel cas ils deviennent cachés. Mais des
-		tampons modifiés ne sont jamais abandonnés, les changements ne
-		peuvent donc pas être perdus.
+:on[ly][!]	Fait de la fenÃªtre courante la seule Ã  l'Ã©cran. Toutes les
+		autres fenÃªtres sont fermÃ©es.
+		Si 'hidden' est activÃ©, tous les tampons dans des fenÃªtres
+		fermÃ©es deviennent cachÃ©s.
+		Si 'hidden' est dÃ©sactivÃ© et que 'autowrite' est activÃ©, les
+		tampons modifiÃ©s sont Ã©crits. Sinon, les fenÃªtres contenant
+		des tampons modifiÃ©s ne sont pas supprimÃ©es, Ã  moins que [!]
+		ne soit spÃ©cifiÃ©, auquel cas ils deviennent cachÃ©s. Mais des
+		tampons modifiÃ©s ne sont jamais abandonnÃ©s, les changements ne
+		peuvent donc pas Ãªtre perdus.
 
 ==============================================================================
-4. Déplacer le curseur dans d'autres fenêtres		*window-move-cursor*
+4. DÃ©placer le curseur dans d'autres fenÃªtres		*window-move-cursor*
 
 CTRL-W <Bas>					*CTRL-W_<Down>*
 CTRL-W CTRL-J					*CTRL-W_CTRL-J* *CTRL-W_j*
-CTRL-W j	Déplace le curseur dans la N-ième fenêtre en dessous de la
+CTRL-W j	DÃ©place le curseur dans la N-iÃ¨me fenÃªtre en dessous de la
 		courante. Utilise la position du curseur pour choisir en
 		cas d'alternative.
 
 CTRL-W <Haut>					*CTRL-W_<Up>*
 CTRL-W CTRL-K					*CTRL-W_CTRL-K* *CTRL-W_k*
-CTRL-W k	Déplace le curseur dans la N-ième fenêtre au-dessus de la
+CTRL-W k	DÃ©place le curseur dans la N-iÃ¨me fenÃªtre au-dessus de la
 		courante. Utilise la position du curseur pour choisir en
 		cas d'alternative.
 
 CTRL-W <Gauche>					*CTRL-W_<Left>*
 CTRL-W CTRL-H					*CTRL-W_CTRL-H*
 CTRL-W <BS>					*CTRL-W_<BS>* *CTRL-W_h*
-CTRL-W h	Déplace le curseur dans la N-ième fenêtre à gauche de la
+CTRL-W h	DÃ©place le curseur dans la N-iÃ¨me fenÃªtre Ã  gauche de la
 		courante. Utilise la position du curseur pour choisir en cas
 		d'alternative.
 
 CTRL-W <Droite>					*CTRL-W_<Right>*
 CTRL-W CTRL-L					*CTRL-W_CTRL-L* *CTRL-W_l*
-CTRL-W l	Déplace le curseur dans la N-ième fenêtre à droite de la
+CTRL-W l	DÃ©place le curseur dans la N-iÃ¨me fenÃªtre Ã  droite de la
 		courante. Utilise la position du curseur pour choisir en cas
 		d'alternative.
 
 CTRL-W w					*CTRL-W_w* *CTRL-W_CTRL-W*
-CTRL-W CTRL-W	Sans quantificateur : déplace le curseur dans la fenêtre en
-		bas et à droite de la fenêtre courante. S'il n'y a pas de
-		fenêtre en bas ou à droite, remonte à la fenêtre en haut et à
+CTRL-W CTRL-W	Sans quantificateur : dÃ©place le curseur dans la fenÃªtre en
+		bas et Ã  droite de la fenÃªtre courante. S'il n'y a pas de
+		fenÃªtre en bas ou Ã  droite, remonte Ã  la fenÃªtre en haut et Ã 
 		gauche.
-		Avec quantificateur : va à la N-ième fenêtre (les fenêtres
-		sont numérotées de de gauche à droite et de haut en bas).
+		Avec quantificateur : va Ã  la N-iÃ¨me fenÃªtre (les fenÃªtres
+		sont numÃ©rotÃ©es de de gauche Ã  droite et de haut en bas).
 
 						*CTRL-W_W*
-CTRL-W W	Sans quantificateur : déplace le curseur dans la fenêtre en
-		haut et à gauche de la fenêtre courante. S'il n'y a pas de
-		fenêtre en haut ou à gauche, remonte à la fenêtre en bas et à
+CTRL-W W	Sans quantificateur : dÃ©place le curseur dans la fenÃªtre en
+		haut et Ã  gauche de la fenÃªtre courante. S'il n'y a pas de
+		fenÃªtre en haut ou Ã  gauche, remonte Ã  la fenÃªtre en bas et Ã 
 		droite.
-		Avec quantificateur : va à la N-ième fenêtre (les fenêtres
-		sont numérotées de de gauche à droite et de haut en bas).
+		Avec quantificateur : va Ã  la N-iÃ¨me fenÃªtre (les fenÃªtres
+		sont numÃ©rotÃ©es de de gauche Ã  droite et de haut en bas).
 
 CTRL-W t					*CTRL-W_t* *CTRL-W_CTRL-T*
-CTRL-W CTRL-T	Déplace le curseur dans la fenêtre tout en haut et à gauche.
+CTRL-W CTRL-T	DÃ©place le curseur dans la fenÃªtre tout en haut et Ã  gauche.
 									["Top"]
 
 CTRL-W b					*CTRL-W_b* *CTRL-W_CTRL-B*
-CTRL-W CTRL-B	Déplace le curseur dans la fenêtre tout en bas et à droite.
+CTRL-W CTRL-B	DÃ©place le curseur dans la fenÃªtre tout en bas et Ã  droite.
 								     ["Bottom"]
 
 CTRL-W p					*CTRL-W_p* *CTRL-W_CTRL-P*
-CTRL-W CTRL-P	Va à la fenêtre précédente (la dernière à laquelle vous avez
-		accédé).
+CTRL-W CTRL-P	Va Ã  la fenÃªtre prÃ©cÃ©dente (la derniÃ¨re Ã  laquelle vous avez
+		accÃ©dÃ©).
 
 						*CTRL-W_P* *E441*
-CTRL-W P	Va à la fenêtre d'aperçu. Quand il n'y a pas de fenêtre
-		d'aperçu, émet un message d'erreur.		    ["Preview"]
-		{uniquement si compilé avec la fonctionnalité |+quickfix|}
+CTRL-W P	Va Ã  la fenÃªtre d'aperÃ§u. Quand il n'y a pas de fenÃªtre
+		d'aperÃ§u, Ã©met un message d'erreur.		    ["Preview"]
+		{uniquement si compilÃ© avec la fonctionnalitÃ© |+quickfix|}
 
-Si le mode Visuel est actif et que la nouvelle fenêtre ne concerne pas le
-tampon courant, le mode Visuel est arrêté. Si la nouvelle fenêtre contient le
-même tampon, la position du curseur est fixée pour pouvoir conserver la même
-zone Visuel sélectionnée.
+Si le mode Visuel est actif et que la nouvelle fenÃªtre ne concerne pas le
+tampon courant, le mode Visuel est arrÃªtÃ©. Si la nouvelle fenÃªtre contient le
+mÃªme tampon, la position du curseur est fixÃ©e pour pouvoir conserver la mÃªme
+zone Visuel sÃ©lectionnÃ©e.
 
 						*:winc* *:wincmd*
-Ces commandes peuvent aussi être exécutées avec ":wincmd" :
+Ces commandes peuvent aussi Ãªtre exÃ©cutÃ©es avec ":wincmd" :
 
 :[quant]winc[md] {arg}
-		Identique à l'exécution de "CTRL-W [quant] {arg}". Par
+		Identique Ã  l'exÃ©cution de "CTRL-W [quant] {arg}". Par
 		exemple >
 			:wincmd j
-<		amène à la fenêtre en dessous de la fenêtre courante.
+<		amÃ¨ne Ã  la fenÃªtre en dessous de la fenÃªtre courante.
 		Cette commande est utile quand une commande du mode Normal ne
-		peut pas être utilisée (avec l'événement d'autocommande
-		|CursorHold|) ; ou bien quand elle est gênante.
+		peut pas Ãªtre utilisÃ©e (avec l'Ã©vÃ©nement d'autocommande
+		|CursorHold|) ; ou bien quand elle est gÃªnante.
 
 ==============================================================================
-5. Déplacer des fenêtres				*window-moving*
+5. DÃ©placer des fenÃªtres				*window-moving*
 
 CTRL-W r				*CTRL-W_r* *CTRL-W_CTRL-R* *E443*
-CTRL-W CTRL-R	Opère une rotation des toutes les fenêtres vers le bas/droite.
-		La première fenêtre devient la deuxième, la deuxième devient
-		la troisième, etc. La dernière fenêtre devient la première. Le
-		curseur reste dans la même fenêtre.
-		Cela marche uniquement dans la ligne ou colonne de fenêtre
-		dans laquelle se trouve la fenêtre courante.
+CTRL-W CTRL-R	OpÃ¨re une rotation des toutes les fenÃªtres vers le bas/droite.
+		La premiÃ¨re fenÃªtre devient la deuxiÃ¨me, la deuxiÃ¨me devient
+		la troisiÃ¨me, etc. La derniÃ¨re fenÃªtre devient la premiÃ¨re. Le
+		curseur reste dans la mÃªme fenÃªtre.
+		Cela marche uniquement dans la ligne ou colonne de fenÃªtre
+		dans laquelle se trouve la fenÃªtre courante.
 
 						*CTRL-W_R*
-CTRL-W R	Opère une rotation des toutes les fenêtres vers le haut/gauche.
-		La deuxième fenêtre devient la première, la troisième devient
-		la deuxième, etc. La première fenêtre devient la dernière. Le
-		curseur reste dans la même fenêtre.
-		Cela marche uniquement dans la ligne ou colonne de fenêtre
-		dans laquelle se trouve la fenêtre courante.
+CTRL-W R	OpÃ¨re une rotation des toutes les fenÃªtres vers le haut/gauche.
+		La deuxiÃ¨me fenÃªtre devient la premiÃ¨re, la troisiÃ¨me devient
+		la deuxiÃ¨me, etc. La premiÃ¨re fenÃªtre devient la derniÃ¨re. Le
+		curseur reste dans la mÃªme fenÃªtre.
+		Cela marche uniquement dans la ligne ou colonne de fenÃªtre
+		dans laquelle se trouve la fenÃªtre courante.
 
 CTRL-W x					*CTRL-W_x* *CTRL-W_CTRL-X*
-CTRL-W CTRL-X	Sans quantificateur : permute les fenêtres courante et
-		suivante. S'il n'y a pas de fenêtre suivante, permute avec la
-		précédente.
-		Avec quantificateur : permute la fenêtre courante avec la
-		N-ième fenêtre (la première fenêtre vaut 1). Le curseur est
-		placé dans l'autre fenêtre.
-		Cela marche uniquement dans la ligne ou colonne de fenêtre
-		dans laquelle se trouve la fenêtre courante.	   ["eXchange"]
+CTRL-W CTRL-X	Sans quantificateur : permute les fenÃªtres courante et
+		suivante. S'il n'y a pas de fenÃªtre suivante, permute avec la
+		prÃ©cÃ©dente.
+		Avec quantificateur : permute la fenÃªtre courante avec la
+		N-iÃ¨me fenÃªtre (la premiÃ¨re fenÃªtre vaut 1). Le curseur est
+		placÃ© dans l'autre fenÃªtre.
+		Cela marche uniquement dans la ligne ou colonne de fenÃªtre
+		dans laquelle se trouve la fenÃªtre courante.	   ["eXchange"]
 
-Les commandes suivantes peuvent être utilisées pour changer la disposition des
-fenêtres. Par exemple, si vous avez deux fenêtres partagées verticalement,
-"CTRL-W K" les transformera en fenêtres partagées horizontalement. "CTRL-W H"
+Les commandes suivantes peuvent Ãªtre utilisÃ©es pour changer la disposition des
+fenÃªtres. Par exemple, si vous avez deux fenÃªtres partagÃ©es verticalement,
+"CTRL-W K" les transformera en fenÃªtres partagÃ©es horizontalement. "CTRL-W H"
 agit dans le sens inverse.
 
 						*CTRL-W_K*
-CTRL-W K	Déplace la fenêtre tout en haut de l'écran, en utilisant toute
-		la largeur disponible. C'est identique à la fermeture de la
-		fenêtre courante et à la création d'une autre fenêtre avec
-		":topleft split", sauf que le contenu de la fenêtre courante
-		est utilisé pour cette nouvelle fenêtre.
+CTRL-W K	DÃ©place la fenÃªtre tout en haut de l'Ã©cran, en utilisant toute
+		la largeur disponible. C'est identique Ã  la fermeture de la
+		fenÃªtre courante et Ã  la crÃ©ation d'une autre fenÃªtre avec
+		":topleft split", sauf que le contenu de la fenÃªtre courante
+		est utilisÃ© pour cette nouvelle fenÃªtre.
 
 						*CTRL-W_J*
-CTRL-W J	Déplace la fenêtre tout en bas de l'écran, en utilisant toute
-		la largeur disponible. C'est identique à la fermeture de la
-		fenêtre courante et à la création d'une autre fenêtre avec
-		":botright split", sauf que le contenu de la fenêtre courante
-		est utilisé pour cette nouvelle fenêtre.
+CTRL-W J	DÃ©place la fenÃªtre tout en bas de l'Ã©cran, en utilisant toute
+		la largeur disponible. C'est identique Ã  la fermeture de la
+		fenÃªtre courante et Ã  la crÃ©ation d'une autre fenÃªtre avec
+		":botright split", sauf que le contenu de la fenÃªtre courante
+		est utilisÃ© pour cette nouvelle fenÃªtre.
 
 						*CTRL-W_H*
-CTRL-W H	Déplace la fenêtre tout à gauche de l'écran, en utilisant toute
-		la hauteur disponible. C'est identique à la fermeture de la
-		fenêtre courante et à la création d'une autre fenêtre avec
-		":vert topleft split", sauf que le contenu de la fenêtre
-		courante est utilisé pour cette nouvelle fenêtre.
-		{uniquement si compilé avec la fonctionnalité |+vertsplit|}
+CTRL-W H	DÃ©place la fenÃªtre tout Ã  gauche de l'Ã©cran, en utilisant toute
+		la hauteur disponible. C'est identique Ã  la fermeture de la
+		fenÃªtre courante et Ã  la crÃ©ation d'une autre fenÃªtre avec
+		":vert topleft split", sauf que le contenu de la fenÃªtre
+		courante est utilisÃ© pour cette nouvelle fenÃªtre.
+		{uniquement si compilÃ© avec la fonctionnalitÃ© |+vertsplit|}
 
 						*CTRL-W_L*
-CTRL-W L	Déplace la fenêtre tout à droite de l'écran, en utilisant toute
-		la hauteur disponible. C'est identique à la fermeture de la
-		fenêtre courante et à la création d'une autre fenêtre avec
-		":vert botright split", sauf que le contenu de la fenêtre
-		courante est utilisé pour cette nouvelle fenêtre.
-		{uniquement si compilé avec la fonctionnalité |+vertsplit|}
+CTRL-W L	DÃ©place la fenÃªtre tout Ã  droite de l'Ã©cran, en utilisant toute
+		la hauteur disponible. C'est identique Ã  la fermeture de la
+		fenÃªtre courante et Ã  la crÃ©ation d'une autre fenÃªtre avec
+		":vert botright split", sauf que le contenu de la fenÃªtre
+		courante est utilisÃ© pour cette nouvelle fenÃªtre.
+		{uniquement si compilÃ© avec la fonctionnalitÃ© |+vertsplit|}
 
 ==============================================================================
-6. Redimensionner des fenêtres				*window-resize*
+6. Redimensionner des fenÃªtres				*window-resize*
 
 						*CTRL-W_=*
-CTRL-W =	Met toutes les fenêtres à (peu près à) la même hauteur et
+CTRL-W =	Met toutes les fenÃªtres Ã  (peu prÃ¨s Ã ) la mÃªme hauteur et
 		largeur, mais utilise 'winheight' et 'winwidth' pour la
-		fenêtre courante.
+		fenÃªtre courante.
 
 :res[ize] -{N}					*:res* *:resize* *CTRL-W_-*
-CTRL-W -	Diminue la hauteur de la fenêtre courante de N (défaut : 1).
-		Si utilisé après ":vertical" : diminue la largeur de N.
+CTRL-W -	Diminue la hauteur de la fenÃªtre courante de N (dÃ©faut : 1).
+		Si utilisÃ© aprÃ¨s ":vertical" : diminue la largeur de N.
 
 :res[ize] +{N}					*CTRL-W_+*
-CTRL-W +	Augmente la hauteur de la fenêtre courante de N (défaut : 1).
-		Si utilisé après ":vertical" : augmente la largeur de N.
+CTRL-W +	Augmente la hauteur de la fenÃªtre courante de N (dÃ©faut : 1).
+		Si utilisÃ© aprÃ¨s ":vertical" : augmente la largeur de N.
 
 :res[ize] [N]
 CTRL-W CTRL-_					*CTRL-W_CTRL-_* *CTRL-W__*
-CTRL-W _	Fixe la hauteur de la fenêtre courante à N (défaut : le plus
+CTRL-W _	Fixe la hauteur de la fenÃªtre courante Ã  N (dÃ©faut : le plus
 		haut possible).
 
-z{nombre}<CR>	Fixe la hauteur de la fenêtre courante à {nombre}.
+z{nombre}<CR>	Fixe la hauteur de la fenÃªtre courante Ã  {nombre}.
 
 						*CTRL-W_<*
-CTRL-W <	Diminue la largeur de la fenêtre courante de N (défaut : 1).
+CTRL-W <	Diminue la largeur de la fenÃªtre courante de N (dÃ©faut : 1).
 
 						*CTRL-W_>*
-CTRL-W >	Augmente la largeur de la fenêtre courante de N (défaut : 1).
+CTRL-W >	Augmente la largeur de la fenÃªtre courante de N (dÃ©faut : 1).
 
 :vertical res[ize] [N]				*:vertical-resize* *CTRL-W_bar*
-CTRL-W |	Fixe la largeur de la fenêtre courante à N (défaut : le plus
+CTRL-W |	Fixe la largeur de la fenÃªtre courante Ã  N (dÃ©faut : le plus
 		large possible).
 
-Vous pouvez aussi redimensionner une fenêtre en tirant sa ligne d'état vers le
-haut ou vers le bas avec la souris. Ou en tirant une séparation verticale vers
-la gauche/droite. Cela ne fonctionne que si la version de Vim qui est utilisée
-supporte la souris et que l'option 'mouse' a été fixée pour l'activer.
+Vous pouvez aussi redimensionner une fenÃªtre en tirant sa ligne d'Ã©tat vers le
+haut ou vers le bas avec la souris. Ou en tirant une sÃ©paration verticale vers
+la gauche/droite. Cela ne fonctionne que si la version de Vim qui est utilisÃ©e
+supporte la souris et que l'option 'mouse' a Ã©tÃ© fixÃ©e pour l'activer.
 
-L'option 'winheight' ('wh') est utilisée pour fixer la hauteur minimale de la
-fenêtre courante. Cette option est utilisée à chaque fois qu'une autre fenêtre
-devient la fenêtre courante. Si l'option vaut 0, elle est désactivée. Fixez
-'winheight' à un nombre très grand (par exemple, 9999) pour que la fenêtre
-courante occupe toujours tout l'espace disponible. Fixez-le à un nombre
-raisonnable (p. ex., 10) pour rendre l'édition dans la fenêtre courante
+L'option 'winheight' ('wh') est utilisÃ©e pour fixer la hauteur minimale de la
+fenÃªtre courante. Cette option est utilisÃ©e Ã  chaque fois qu'une autre fenÃªtre
+devient la fenÃªtre courante. Si l'option vaut 0, elle est dÃ©sactivÃ©e. Fixez
+'winheight' Ã  un nombre trÃ¨s grand (par exemple, 9999) pour que la fenÃªtre
+courante occupe toujours tout l'espace disponible. Fixez-le Ã  un nombre
+raisonnable (p. ex., 10) pour rendre l'Ã©dition dans la fenÃªtre courante
 confortable.
-   L'option équivalente 'winwidth' ('wiw') est utilisée pour fixer la largeur
-minimale de la fenêtre courante.
+   L'option Ã©quivalente 'winwidth' ('wiw') est utilisÃ©e pour fixer la largeur
+minimale de la fenÃªtre courante.
 
-Quand l'option 'equalalways' ('ea') est activée, toutes les fenêtres sont
-automatiquement mises à la même taille après le partage ou la fermeture d'une
-fenêtre. Si cette option n'est pas activée, le partage d'une fenêtre réduira
-la taille de la fenêtre courante et laissera les autres fenêtres inchangées ;
-à la fermeture d'une fenêtre, les lignes ainsi libérées sont données à la
-fenêtre du dessus.
+Quand l'option 'equalalways' ('ea') est activÃ©e, toutes les fenÃªtres sont
+automatiquement mises Ã  la mÃªme taille aprÃ¨s le partage ou la fermeture d'une
+fenÃªtre. Si cette option n'est pas activÃ©e, le partage d'une fenÃªtre rÃ©duira
+la taille de la fenÃªtre courante et laissera les autres fenÃªtres inchangÃ©es ;
+Ã  la fermeture d'une fenÃªtre, les lignes ainsi libÃ©rÃ©es sont donnÃ©es Ã  la
+fenÃªtre du dessus.
 
 L'option 'eadirection' limite la direction dans laquelle 'equalalways' doit
-s'appliquer. La valeur par défaut "both" appliquera le redimensionnement dans
-les deux directions. Si cette option vaut "ver", seule la hauteur des fenêtres
-sera égalisée. Utilisez cette valeur quand vous avez redimensionné un partage
-vertical à la main et que vous souhaitez conserver la même largeur. De la même
-façon, "hor" appliquera le redimensionnement à la seule largeur des fenêtres.
+s'appliquer. La valeur par dÃ©faut "both" appliquera le redimensionnement dans
+les deux directions. Si cette option vaut "ver", seule la hauteur des fenÃªtres
+sera Ã©galisÃ©e. Utilisez cette valeur quand vous avez redimensionnÃ© un partage
+vertical Ã  la main et que vous souhaitez conserver la mÃªme largeur. De la mÃªme
+faÃ§on, "hor" appliquera le redimensionnement Ã  la seule largeur des fenÃªtres.
 
-L'option 'cmdheight' ('ch') est utilisée pour fixer la hauteur de la ligne de
-commande. Si vous êtes importunés par des invites Appuyez-sur-entrée
-|hit-enter| pour des messages longs, fixez cette option à 2 ou 3.
+L'option 'cmdheight' ('ch') est utilisÃ©e pour fixer la hauteur de la ligne de
+commande. Si vous Ãªtes importunÃ©s par des invites Appuyez-sur-entrÃ©e
+|hit-enter| pour des messages longs, fixez cette option Ã  2 ou 3.
 
-S'il n'y a qu'une seule fenêtre, son redimensionnement changera également la
-hauteur de la ligne de commande. S'il y a plusieurs fenêtres, le
-redimensionnement de la fenêtre courante changera aussi la hauteur de la
-fenêtre du dessous (et parfois aussi celle du dessus).
+S'il n'y a qu'une seule fenÃªtre, son redimensionnement changera Ã©galement la
+hauteur de la ligne de commande. S'il y a plusieurs fenÃªtres, le
+redimensionnement de la fenÃªtre courante changera aussi la hauteur de la
+fenÃªtre du dessous (et parfois aussi celle du dessus).
 
-La hauteur et la largeur minimale d'une fenêtre sont données par les options
-'winminheight' et 'winminwidth'. Ces valeurs sont absolues, une fenêtre ne
+La hauteur et la largeur minimale d'une fenÃªtre sont donnÃ©es par les options
+'winminheight' et 'winminwidth'. Ces valeurs sont absolues, une fenÃªtre ne
 deviendra jamais plus petite.
 
 ==============================================================================
 7. Commandes pour les listes des arguments et des tampons	*buffer-list*
 
 LISTE DES ARGUMENTS    LISTE DES TAMPONS      SIGNIFICATION    ~
-1. :[N]argument [N]    11. :[N]buffer [N]     à l'arg/tamp N
-2. :[N]next [fich...]  12. :[N]bnext [N]      au N-ième arg/tamp suivant
-3. :[N]Next [N]	       13. :[N]bNext [N]      au N-ième arg/tamp précédent
-4. :[N]previous	[N]    14. :[N]bprevious [N]  au N-ième arg/tamp précédent
+1. :[N]argument [N]    11. :[N]buffer [N]     Ã  l'arg/tamp N
+2. :[N]next [fich...]  12. :[N]bnext [N]      au N-iÃ¨me arg/tamp suivant
+3. :[N]Next [N]	       13. :[N]bNext [N]      au N-iÃ¨me arg/tamp prÃ©cÃ©dent
+4. :[N]previous	[N]    14. :[N]bprevious [N]  au N-iÃ¨me arg/tamp prÃ©cÃ©dent
 5. :rewind/:first      15. :brewind/:bfirst   au premier arg/tamp
 6. :last	       16. :blast	      au dernier arg/tamp
-7. :all		       17. :ball	      édite tous les arg/tamp
-		       18. :unhide	      édite tous les tampons chargés
-		       19. :[N]bmod [N]	      au N-ième tampon modifié
+7. :all		       17. :ball	      Ã©dite tous les arg/tamp
+		       18. :unhide	      Ã©dite tous les tampons chargÃ©s
+		       19. :[N]bmod [N]	      au N-iÃ¨me tampon modifiÃ©
 
 PARTAGE & LISTE ARG.   PARTAGE & LISTE TAMP.  SIGNIFICATION    ~
-21. :[N]sargument [N]  31. :[N]sbuffer [N]    partage & à l'arg/tamp N
-22. :[N]snext [fich..] 32. :[N]sbnext [N]     partage & au N-ième arg/tamp suiv
-23. :[N]sNext [N]      33. :[N]sbNext [N]     partage & au N-ième arg/tamp préc
-24. :[N]sprevious [N]  34. :[N]sbprevious [N] partage & au N-ième arg/tamp préc
+21. :[N]sargument [N]  31. :[N]sbuffer [N]    partage & Ã  l'arg/tamp N
+22. :[N]snext [fich..] 32. :[N]sbnext [N]     partage & au N-iÃ¨me arg/tamp suiv
+23. :[N]sNext [N]      33. :[N]sbNext [N]     partage & au N-iÃ¨me arg/tamp prÃ©c
+24. :[N]sprevious [N]  34. :[N]sbprevious [N] partage & au N-iÃ¨me arg/tamp prÃ©c
 25. :srewind/:sfirst   35. :sbrewind/:sbfirst partage & au premier arg/tamp
 26. :slast	       36. :sblast	      partage & au dernier arg/tamp
-27. :sall	       37. :sball	      édite tous les arg/tamp
-		       38. :sunhide	      édite tous les tampons chargés
-		       39. :[N]sbmod [N]      partage & au N-ième tamp modifié
+27. :sall	       37. :sball	      Ã©dite tous les arg/tamp
+		       38. :sunhide	      Ã©dite tous les tampons chargÃ©s
+		       39. :[N]sbmod [N]      partage & au N-iÃ¨me tamp modifiÃ©
 
 40. :args	       liste des arguments
 41. :buffers	       liste des tampons
 
-La signification de [N] dépend de la commande :
-- [N] est le nombre d'arguments/tampons à sauter pour ?2, ?3 et ?4 ;
-- [N] est un numéro d'argument (argument courant par défaut) pour 1 et 21 ;
-- [N] est un numéro de tampon (tampon courant par défaut) pour 11 et 31 ;
+La signification de [N] dÃ©pend de la commande :
+- [N] est le nombre d'arguments/tampons Ã  sauter pour ?2, ?3 et ?4 ;
+- [N] est un numÃ©ro d'argument (argument courant par dÃ©faut) pour 1 et 21 ;
+- [N] est un numÃ©ro de tampon (tampon courant par dÃ©faut) pour 11 et 31 ;
 - [N] est un quantificateur pour 19 et 39.
 
 NOTE : ":next" est une exception, car il doit accepter une liste de noms de
 fichiers (cela est compatible Vi).
 
 
-LA LISTE DES TAMPONS ET LE MULTI-FENÊTRAGE
+LA LISTE DES TAMPONS ET LE MULTI-FENÃŠTRAGE
 
-La position courante dans la liste des arguments peut être la même pour chaque
-fenêtre. Rappelez-vous que lorsque vous faites ":e fichier", la position dans
-la liste des arguments reste la même, mais vous n'êtes pas en train d'éditer
-le fichier correspondant à cette position. Pour indiquer ceci, le message de
-fichier (et de titre si vous en avez un) affichera "(file (N) of M)", où "(N)"
-désigne la position courante dans la liste des fichiers, et "M" le nombre de
+La position courante dans la liste des arguments peut Ãªtre la mÃªme pour chaque
+fenÃªtre. Rappelez-vous que lorsque vous faites ":e fichier", la position dans
+la liste des arguments reste la mÃªme, mais vous n'Ãªtes pas en train d'Ã©diter
+le fichier correspondant Ã  cette position. Pour indiquer ceci, le message de
+fichier (et de titre si vous en avez un) affichera "(file (N) of M)", oÃ¹ "(N)"
+dÃ©signe la position courante dans la liste des fichiers, et "M" le nombre de
 fichiers dans cette liste.
 
-Toutes les entrées dans la liste des arguments sont ajoutées à la liste des
-tampons. Ainsi, vous pouvez y accéder avec les commandes de liste des tampons,
+Toutes les entrÃ©es dans la liste des arguments sont ajoutÃ©es Ã  la liste des
+tampons. Ainsi, vous pouvez y accÃ©der avec les commandes de liste des tampons,
 comme ":bnext".
 
 :[N]al[l][!] [N]					*:al* *:all*
 :[N]sal[l][!] [N]					*:sal* *:sall*
-		Réarrange l'écran pour ouvrir une fenêtre pour chaque
-		argument. Toutes les autres fenêtres sont fermées. Si un
-		quantificateur est donné, il indique le nombre maximal de
-		fenêtres à ouvrir.
-		Si 'hidden' est activé, tous les tampons dans des fenêtres
-		fermées deviennent cachés.
-		Si 'hidden' est désactivé et que 'autowrite' est activé, les
-		tampons modifiés sont écrits. Sinon, les fenêtres contenant
-		des tampons modifiés ne sont pas supprimées, à moins que [!]
-		ne soit spécifié, auquel cas ils deviennent cachés. Mais des
-		tampons modifiés ne sont jamais abandonnés, les changements ne
-		peuvent donc pas être perdus.
-		Les autocommandes "Buf/Win Enter/Leave" ne sont pas exécutées
-		ici pour les nouvelles fenêtres, mais uniquement quand
-		l'entrée est effective.
+		RÃ©arrange l'Ã©cran pour ouvrir une fenÃªtre pour chaque
+		argument. Toutes les autres fenÃªtres sont fermÃ©es. Si un
+		quantificateur est donnÃ©, il indique le nombre maximal de
+		fenÃªtres Ã  ouvrir.
+		Si 'hidden' est activÃ©, tous les tampons dans des fenÃªtres
+		fermÃ©es deviennent cachÃ©s.
+		Si 'hidden' est dÃ©sactivÃ© et que 'autowrite' est activÃ©, les
+		tampons modifiÃ©s sont Ã©crits. Sinon, les fenÃªtres contenant
+		des tampons modifiÃ©s ne sont pas supprimÃ©es, Ã  moins que [!]
+		ne soit spÃ©cifiÃ©, auquel cas ils deviennent cachÃ©s. Mais des
+		tampons modifiÃ©s ne sont jamais abandonnÃ©s, les changements ne
+		peuvent donc pas Ãªtre perdus.
+		Les autocommandes "Buf/Win Enter/Leave" ne sont pas exÃ©cutÃ©es
+		ici pour les nouvelles fenÃªtres, mais uniquement quand
+		l'entrÃ©e est effective.
 
 							*:sa* *:sargument*
 :[N]sa[rgument][!] [++opt] [+cmd] [N]
-		Raccourci pour ":split | argument [N]" : partage la fenêtre
-		courante et édite le N-ième argument. Mais si cet argument
+		Raccourci pour ":split | argument [N]" : partage la fenÃªtre
+		courante et Ã©dite le N-iÃ¨me argument. Mais si cet argument
 		n'existe pas, ne partage pas. Voir aussi |++opt| et |+cmd|.
 
 							*:sn* *:snext*
 :[N]sn[ext][!] [++opt] [+cmd] [fichier ...]
-		Raccourci pour ":split | [N]next" : partage la fenêtre
-		courante et édite le N-ième argument suivant. Mais si cet
+		Raccourci pour ":split | [N]next" : partage la fenÃªtre
+		courante et Ã©dite le N-iÃ¨me argument suivant. Mais si cet
 		argument n'existe pas, ne partage pas. Voir aussi |++opt| et
 		|+cmd|.
 
 :[N]spr[evious][!] [++opt] [+cmd] [N]			*:spr* *:sprevious*
 :[N]sN[ext][!] [++opt] [+cmd] [N]			*:sN* *:sNext*
-		Raccourci pour ":split | [N]Next" : partage la fenêtre
-		courante et édite le N-ième argument précédent. Mais si cet
+		Raccourci pour ":split | [N]Next" : partage la fenÃªtre
+		courante et Ã©dite le N-iÃ¨me argument prÃ©cÃ©dent. Mais si cet
 		argument n'existe pas, ne partage pas. Voir aussi |++opt| et
 		|+cmd|.
 
 							*:sr* *:srewind*
 :sr[ewind][!] [++opt] [+cmd]
-		Raccourci pour ":split | rewind" : partage la fenêtre
-		courante et édite le premier argument. Mais s'il n'y a pas de
+		Raccourci pour ":split | rewind" : partage la fenÃªtre
+		courante et Ã©dite le premier argument. Mais s'il n'y a pas de
 		liste des arguments, ne partage pas. Voir aussi |++opt| et
 		|+cmd|.
 							*:sfir* *:sfirst*
@@ -634,71 +634,71 @@ comme ":bnext".
 
 							*:sla* *:slast*
 :sla[st][!] [++opt] [+cmd]
-		Raccourci pour ":split | last" : partage la fenêtre courante
-		et édite le dernier argument. Mais s'il n'y a pas de liste des
+		Raccourci pour ":split | last" : partage la fenÃªtre courante
+		et Ã©dite le dernier argument. Mais s'il n'y a pas de liste des
 		arguments, ne partage pas. Voir aussi |++opt| et |+cmd|.
 
 							*:dr* *:drop*
 :dr[op] {fichier} ...
-		Édite le premier {fichier} dans un fenêtre.
-		- Si le fichier est déjà ouvert dans une fenêtre, va à cette
-		  fenêtre.
-		- Si le fichier n'est pas ouvert dans un fenêtre, édite le
-		  fichier dans la fenêtre courante. Si le tampon courant ne
-		  peut pas être |abandon|né, la fenêtre est d'abord partagée.
-		La liste des arguments |argument-list| est fixée, comme avec
+		Ã‰dite le premier {fichier} dans un fenÃªtre.
+		- Si le fichier est dÃ©jÃ  ouvert dans une fenÃªtre, va Ã  cette
+		  fenÃªtre.
+		- Si le fichier n'est pas ouvert dans un fenÃªtre, Ã©dite le
+		  fichier dans la fenÃªtre courante. Si le tampon courant ne
+		  peut pas Ãªtre |abandon|nÃ©, la fenÃªtre est d'abord partagÃ©e.
+		La liste des arguments |argument-list| est fixÃ©e, comme avec
 		la commande |:next|.
-		L'intérêt de cette commande est d'être utilisée depuis un
-		autre programme (p. ex. un débogueur) pour faire éditer
-		d'autres fichiers à Vim.
-		{uniquement si compilé avec la fonctionnalité |+gui|}
+		L'intÃ©rÃªt de cette commande est d'Ãªtre utilisÃ©e depuis un
+		autre programme (p. ex. un dÃ©bogueur) pour faire Ã©diter
+		d'autres fichiers Ã  Vim.
+		{uniquement si compilÃ© avec la fonctionnalitÃ© |+gui|}
 
 ==============================================================================
-8. Exécuter une commande dans tous les tampons ou fenêtres	*list-repeat*
+8. ExÃ©cuter une commande dans tous les tampons ou fenÃªtres	*list-repeat*
 
 							*:windo*
-:windo[!] {cmd}	Exécute {cmd} dans chaque fenêtre. Cela revient à faire : >
+:windo[!] {cmd}	ExÃ©cute {cmd} dans chaque fenÃªtre. Cela revient Ã  faire : >
 			CTRL-W t
 			:{cmd}
 			CTRL-W w
 			:{cmd}
 			etc.
-<		Si une erreur est détectée dans une fenêtre, les fenêtres
-		suivantes ne seront pas visitées.
-		La dernière fenêtre (ou celle où une erreur est rencontrée)
-		devient la fenêtre courante.
-		{cmd} peut contenir '|' pour concaténer plusieurs commandes,
-		mais ne doit pas ouvrir, fermer ou réordonner des fenêtres.
-		NOTE : Quand cette commande est exécutée, l'événement
-		d'autocommande Syntax est désactivé en étant ajouté à
+<		Si une erreur est dÃ©tectÃ©e dans une fenÃªtre, les fenÃªtres
+		suivantes ne seront pas visitÃ©es.
+		La derniÃ¨re fenÃªtre (ou celle oÃ¹ une erreur est rencontrÃ©e)
+		devient la fenÃªtre courante.
+		{cmd} peut contenir '|' pour concatÃ©ner plusieurs commandes,
+		mais ne doit pas ouvrir, fermer ou rÃ©ordonner des fenÃªtres.
+		NOTE : Quand cette commande est exÃ©cutÃ©e, l'Ã©vÃ©nement
+		d'autocommande Syntax est dÃ©sactivÃ© en Ã©tant ajoutÃ© Ã 
 		'eventignore'.
-		{absent de Vi} {uniquement si compilé avec la fonctionnalité
+		{absent de Vi} {uniquement si compilÃ© avec la fonctionnalitÃ©
 		|+listcmds|}
 		Voir aussi |:argdo| et |:bufdo|.
 
 							*:bufdo*
-:bufdo[!] {cmd}	Exécute {cmd} dans chaque tampon de la liste des tampons. Cela
-		revient à faire : >
+:bufdo[!] {cmd}	ExÃ©cute {cmd} dans chaque tampon de la liste des tampons. Cela
+		revient Ã  faire : >
 			:bfirst
 			:{cmd}
 			:bnext
 			:{cmd}
 			etc.
-<		Quand le fichier courant ne peut pas être |abandon|né et que
-		[!] n'est pas spécifié, la commande échoue.
-		Si une erreur est détectée dans un tampon, les tampons
-		suivants ne seront pas visités.
-		Les tampons non listés sont sautés.
-		Le dernier tampon (ou celui où une erreur est rencontrée)
+<		Quand le fichier courant ne peut pas Ãªtre |abandon|nÃ© et que
+		[!] n'est pas spÃ©cifiÃ©, la commande Ã©choue.
+		Si une erreur est dÃ©tectÃ©e dans un tampon, les tampons
+		suivants ne seront pas visitÃ©s.
+		Les tampons non listÃ©s sont sautÃ©s.
+		Le dernier tampon (ou celui oÃ¹ une erreur est rencontrÃ©e)
 		devient le tampon courant.
-		{cmd} peut contenir '|' pour concaténer plusieurs commandes,
-		mais ne doit pas supprimer ou ajouter des tampons à la liste
+		{cmd} peut contenir '|' pour concatÃ©ner plusieurs commandes,
+		mais ne doit pas supprimer ou ajouter des tampons Ã  la liste
 		des tampons.
-		NOTE : Quand cette commande est exécutée, l'événement
-		d'autocommande Syntax est désactivé en étant ajouté à
-		'eventignore'. Cela accélère considérablement l'édition de
+		NOTE : Quand cette commande est exÃ©cutÃ©e, l'Ã©vÃ©nement
+		d'autocommande Syntax est dÃ©sactivÃ© en Ã©tant ajoutÃ© Ã 
+		'eventignore'. Cela accÃ©lÃ¨re considÃ©rablement l'Ã©dition de
 		chaque tampon.
-		{absent de Vi} {uniquement si compilé avec la fonctionnalité
+		{absent de Vi} {uniquement si compilÃ© avec la fonctionnalitÃ©
 		|+listcmds|}
 		Voir aussi |:argdo| et |:windo|.
 
@@ -706,12 +706,12 @@ Exemples : >
 
 	:windo set nolist nofoldcolumn | normal zn
 
-Ceci désactive l'option 'list' et les replis dans toutes les fenêtres. >
+Ceci dÃ©sactive l'option 'list' et les replis dans toutes les fenÃªtres. >
 
 	:bufdo set fileencoding= | update
 
-Ceci annule la valeur de 'fileencoding' dans chaque tampon et l'écrit si son
-contenu est modifié. Le résultat est que tous les tampons utiliseront
+Ceci annule la valeur de 'fileencoding' dans chaque tampon et l'Ã©crit si son
+contenu est modifiÃ©. Le rÃ©sultat est que tous les tampons utiliseront
 l'encodage 'encoding' (si la conversion marche correctement).
 
 ==============================================================================
@@ -719,148 +719,148 @@ l'encodage 'encoding' (si la conversion marche correctement).
 
 							*:sta* *:stag*
 :sta[g][!] [nommarqueur]
-		Exécute ":tag[!] [nommarqueur]" et partage la fenêtre pour le
-		marqueur trouvé. Voir aussi |:tag|.
+		ExÃ©cute ":tag[!] [nommarqueur]" et partage la fenÃªtre pour le
+		marqueur trouvÃ©. Voir aussi |:tag|.
 
 CTRL-W ]					*CTRL-W_]* *CTRL-W_CTRL-]*
-CTRL-W CTRL-]	Partage la fenêtre courante en deux. Utilise l'identifiant
+CTRL-W CTRL-]	Partage la fenÃªtre courante en deux. Utilise l'identifiant
 		sous le curseur comme un marqueur et y saute dans la nouvelle
-		fenêtre. Fixe la hauteur de la nouvelle fenêtre à N.
+		fenÃªtre. Fixe la hauteur de la nouvelle fenÃªtre Ã  N.
 
 							*CTRL-W_g]*
-CTRL-W g ]	Partage la fenêtre courante en deux. Utilise l'identifiant
+CTRL-W g ]	Partage la fenÃªtre courante en deux. Utilise l'identifiant
 		sous le curseur comme un marqueur et effectue ":tselect"
-		dessus dans la nouvelle fenêtre. Fixe la hauteur de la
-		nouvelle fenêtre à N.
+		dessus dans la nouvelle fenÃªtre. Fixe la hauteur de la
+		nouvelle fenÃªtre Ã  N.
 
 							*CTRL-W_g_CTRL-]*
-CTRL-W g CTRL-]	Partage la fenêtre courante en deux. Utilise l'identifiant
+CTRL-W g CTRL-]	Partage la fenÃªtre courante en deux. Utilise l'identifiant
 		sous le curseur comme un marqueur et effectue ":tjump" dessus
-		dans la nouvelle fenêtre. Fixe la hauteur de la nouvelle
-		fenêtre à N.
+		dans la nouvelle fenÃªtre. Fixe la hauteur de la nouvelle
+		fenÃªtre Ã  N.
 
 CTRL-W f					*CTRL-W_f* *CTRL-W_CTRL-F*
-CTRL-W CTRL-F	Partage la fenêtre courante en deux. Édite le nom de fichier
-		sous le curseur. Comme ":split ]f", mais la fenêtre n'est pas
-		partagée si le fichier n'existe pas.
+CTRL-W CTRL-F	Partage la fenÃªtre courante en deux. Ã‰dite le nom de fichier
+		sous le curseur. Comme ":split ]f", mais la fenÃªtre n'est pas
+		partagÃ©e si le fichier n'existe pas.
 		Utilise la variable 'path' comme une liste de noms de
-		répertoires où rechercher le fichier. Le chemin du fichier
-		courant est également utilisé.
+		rÃ©pertoires oÃ¹ rechercher le fichier. Le chemin du fichier
+		courant est Ã©galement utilisÃ©.
 		Si le nom de fichier est un lien hypertexte de la forme
-		"type://machine/chemin", seul "/chemin" est utilisé.
-		Si un quantificateur est donné, le [quant]-ième fichier
-		correspondant est édité.
-		{uniquement si compilé avec la fonctionnalité |+file_in_path|}
+		"type://machine/chemin", seul "/chemin" est utilisÃ©.
+		Si un quantificateur est donnÃ©, le [quant]-iÃ¨me fichier
+		correspondant est Ã©ditÃ©.
+		{uniquement si compilÃ© avec la fonctionnalitÃ© |+file_in_path|}
 
-Voir aussi |CTRL-W_CTRL-I| : ouvre une fenêtre pour le fichier inclus dont le
-nom est compris dans le mot-clé sous le curseur.
+Voir aussi |CTRL-W_CTRL-I| : ouvre une fenÃªtre pour le fichier inclus dont le
+nom est compris dans le mot-clÃ© sous le curseur.
 
 ==============================================================================
-10. La fenêtre d'aperçu					*preview-window*
+10. La fenÃªtre d'aperÃ§u					*preview-window*
 
-La fenêtre d'aperçu est une fenêtre spéciale permettant d'afficher (de
-visualiser) un autre fichier. C'est normalement une petite fenêtre utilisée
-pour afficher un fichier inclus ou la définition d'une fonction.
+La fenÃªtre d'aperÃ§u est une fenÃªtre spÃ©ciale permettant d'afficher (de
+visualiser) un autre fichier. C'est normalement une petite fenÃªtre utilisÃ©e
+pour afficher un fichier inclus ou la dÃ©finition d'une fonction.
 
-{uniquement si compilé avec la fonctionnalité |+quickfix|}
+{uniquement si compilÃ© avec la fonctionnalitÃ© |+quickfix|}
 
-Il ne peut y avoir qu'une seule fenêtre d'aperçu. Elle est créée avec une des
-commandes ci-dessous. L'option 'previewheight' peut être fixée pour spécifier
-la hauteur de la fenêtre d'aperçu quand elle est ouverte. L'option
-'previewwindow' est fixée dans la fenêtre d'aperçu afin de la reconnaître.
-L'option 'winfixheight' est fixée afin qu'elle conserve la même taille lors de
-l'ouverture/fermeture d'autres fenêtres.
+Il ne peut y avoir qu'une seule fenÃªtre d'aperÃ§u. Elle est crÃ©Ã©e avec une des
+commandes ci-dessous. L'option 'previewheight' peut Ãªtre fixÃ©e pour spÃ©cifier
+la hauteur de la fenÃªtre d'aperÃ§u quand elle est ouverte. L'option
+'previewwindow' est fixÃ©e dans la fenÃªtre d'aperÃ§u afin de la reconnaÃ®tre.
+L'option 'winfixheight' est fixÃ©e afin qu'elle conserve la mÃªme taille lors de
+l'ouverture/fermeture d'autres fenÃªtres.
 
 							*:pta* *:ptag*
 :pta[g][!] [nommarqueur]
-		Exécute ":tag[!] [nommarqueur]" et affiche le marqueur trouvé
-		dans une fenêtre d'aperçu sans changer le tampon courant ou la
-		position du curseur. Si une fenêtre d'aperçu existe déjà, elle
-		est réemployée (comme pour une fenêtre d'aide). Si une
-		nouvelle fenêtre est ouverte, 'previewheight' est utilisée
+		ExÃ©cute ":tag[!] [nommarqueur]" et affiche le marqueur trouvÃ©
+		dans une fenÃªtre d'aperÃ§u sans changer le tampon courant ou la
+		position du curseur. Si une fenÃªtre d'aperÃ§u existe dÃ©jÃ , elle
+		est rÃ©employÃ©e (comme pour une fenÃªtre d'aide). Si une
+		nouvelle fenÃªtre est ouverte, 'previewheight' est utilisÃ©e
 		pour fixer la hauteur. Voir aussi |:tag|.
 		Voir ci-dessous pour un exemple. |CursorHold-example|
 
 CTRL-W z					*CTRL-W_z*
 CTRL-W CTRL-Z					*CTRL-W_CTRL-Z* *:pc* *:pclose*
-:pc[lose][!]	Ferme toute fenêtre d'aperçu actuellement ouverte. Si l'option
-		'hidden' est activée, ou si le tampon a été changé et que [!]
-		est spécifié, le tampon devient caché (à moins qu'une autre
-		fenêtre ne l'édite). La commande échoue si une fenêtre
-		d'aperçu ne peut pas être fermé. Voir aussi |:close|.
+:pc[lose][!]	Ferme toute fenÃªtre d'aperÃ§u actuellement ouverte. Si l'option
+		'hidden' est activÃ©e, ou si le tampon a Ã©tÃ© changÃ© et que [!]
+		est spÃ©cifiÃ©, le tampon devient cachÃ© (Ã  moins qu'une autre
+		fenÃªtre ne l'Ã©dite). La commande Ã©choue si une fenÃªtre
+		d'aperÃ§u ne peut pas Ãªtre fermÃ©. Voir aussi |:close|.
 
 							*:pp* *:ppop*
 :[quant]pp[op][!]
-		Exécute ":[quant]pop[!]" dans la fenêtre d'aperçu. Voir |:pop|
+		ExÃ©cute ":[quant]pop[!]" dans la fenÃªtre d'aperÃ§u. Voir |:pop|
 		et |:ptag|. {absent de Vi}
 
 							*CTRL-W_}*
 CTRL-W }	Utilise l'identifiant sous le curseur et effectue ":ptag"
-		dessus. Fixe la hauteur de la nouvelle (si nécessaire) fenêtre
-		d'aperçu à N. Si N n'est pas donné, 'previewheight' est
-		utilisé.
+		dessus. Fixe la hauteur de la nouvelle (si nÃ©cessaire) fenÃªtre
+		d'aperÃ§u Ã  N. Si N n'est pas donnÃ©, 'previewheight' est
+		utilisÃ©.
 
 							*CTRL-W_g}*
 CTRL-W g }  	Utilise l'identifiant sous le curseur et effectue ":ptjump"
-		dessus. Fixe la hauteur de la nouvelle (si nécessaire) fenêtre
-		d'aperçu à N. Si N n'est pas donné, 'previewheight' est
-		utilisé.
+		dessus. Fixe la hauteur de la nouvelle (si nÃ©cessaire) fenÃªtre
+		d'aperÃ§u Ã  N. Si N n'est pas donnÃ©, 'previewheight' est
+		utilisÃ©.
 
 							*:ped* *:pedit*
 :ped[it][!] [++opt] [+cmd] {fichier}
-		Édite {fichier} dans la fenêtre d'aperçu. La fenêtre d'aperçu
-		est ouverte comme ouverte comme avec |:ptag|. La fenêtre
-		courante et la position du curseur ne sont pas changées.
+		Ã‰dite {fichier} dans la fenÃªtre d'aperÃ§u. La fenÃªtre d'aperÃ§u
+		est ouverte comme ouverte comme avec |:ptag|. La fenÃªtre
+		courante et la position du curseur ne sont pas changÃ©es.
 		Exemple utile : >
 			:pedit +/fputc /usr/include/stdio.h
 <
 							*:ps* *:psearch*
 :[plage]ps[earch][!] [quant] [/]motif[/]
 		Fonctionne comme |:ijump| mais affiche la correspondance
-		trouvéé dans la fenêtre d'aperçu. La fenêtre d'aperçu est
-		ouverte comme avec |:ptag|. La fenêtre courante et la position
-		du curseur ne sont pas changées. Exemple utile : >
+		trouvÃ©Ã© dans la fenÃªtre d'aperÃ§u. La fenÃªtre d'aperÃ§u est
+		ouverte comme avec |:ptag|. La fenÃªtre courante et la position
+		du curseur ne sont pas changÃ©es. Exemple utile : >
 			:psearch popen
 <		Comme avec la commande |:ptag|, vous pouvez utiliser ceci pour
 		afficher automatiquement des informations sur le mot sous le
-		curseur. C'est moins ingénieux que d'utiliser |:ptag|, mais
+		curseur. C'est moins ingÃ©nieux que d'utiliser |:ptag|, mais
 		vous n'avez pas besoin d'un fichier de marqueurs et vous aurez
-		aussi les correspondances dans les fichiers système inclus.
+		aussi les correspondances dans les fichiers systÃ¨me inclus.
 		Exemple : >
 			:au! CursorHold *.[ch] nested exe "silent! psearch " . expand("<cword>")
-<		Attention : Cela peut être lent.
+<		Attention : Cela peut Ãªtre lent.
 
 
 EXEMPLE						*CursorHold-example*  >
 
 	:au! CursorHold *.[ch] nested exe "silent! ptag " . expand("<cword>")
 
-Ceci provoquera l'exécution d'une commande ":ptag" pour le mot-clé sous le
-curseur, si le curseur n'a pas bougé pendant un temps fixé par 'updatetime'.
-Le "nested" provoque l'exécution des autres autocommandes, pour que la
-coloration syntaxique fonctionne dans la fenêtre de aperçu. Le "silent!" évite
-un message d'erreur quand le marqueur ne peut pas être trouvé. Voir aussi
-|CursorHold|. Pour désactiver ceci à nouveau : >
+Ceci provoquera l'exÃ©cution d'une commande ":ptag" pour le mot-clÃ© sous le
+curseur, si le curseur n'a pas bougÃ© pendant un temps fixÃ© par 'updatetime'.
+Le "nested" provoque l'exÃ©cution des autres autocommandes, pour que la
+coloration syntaxique fonctionne dans la fenÃªtre de aperÃ§u. Le "silent!" Ã©vite
+un message d'erreur quand le marqueur ne peut pas Ãªtre trouvÃ©. Voir aussi
+|CursorHold|. Pour dÃ©sactiver ceci Ã  nouveau : >
 
 	:au! CursorHold
 
-Cet exemple peut être amélioré en mettant en surbrillance le marqueur trouvé,
+Cet exemple peut Ãªtre amÃ©liorÃ© en mettant en surbrillance le marqueur trouvÃ©,
 en annulant la commande quand il n'y a pas de mot sous le curseur, et avec
-quelques autres éléments : >
+quelques autres Ã©lÃ©ments : >
 
   :au! CursorHold *.[ch] nested call PrevisuMot()
   :func PrevisuMot()
-  :  if &previewwindow			" pas dans la fenêtre d'aperçu
+  :  if &previewwindow			" pas dans la fenÃªtre d'aperÃ§u
   :    return
   :  endif
   :  let m = expand("<cword>")		" extrait le mot sous le curseur
-  :  if m != ""				" s'il y a un ":ptag" associé
+  :  if m != ""				" s'il y a un ":ptag" associÃ©
   :
   :    " Supprime la surbrillance existante avant d'afficher un autre marqueur
-  :    silent! wincmd P			" saute à la fenêtre d'aperçu
+  :    silent! wincmd P			" saute Ã  la fenÃªtre d'aperÃ§u
   :    if &previewwindow		" quand on y est...
   :	 match none			" supprime la surbrillance existante
-  :	 wincmd p			" revient à l'ancienne fenêtre
+  :	 wincmd p			" revient Ã  l'ancienne fenÃªtre
   :    endif
   :
   :    " Essaie d'afficher un marqueur correspondant au mot sous le curseur
@@ -870,61 +870,61 @@ quelques autres éléments : >
   :	 return
   :    endif
   :
-  :    silent! wincmd P			" saute à la fenêtre d'aperçu
+  :    silent! wincmd P			" saute Ã  la fenÃªtre d'aperÃ§u
   :    if &previewwindow		" quand on y est...
   :	 if has("folding")
-  :	   silent! .foldopen		" pas de replis fermés
+  :	   silent! .foldopen		" pas de replis fermÃ©s
   :	 endif
-  :	 call search("$", "b")		" à la fin de la ligne précédente
+  :	 call search("$", "b")		" Ã  la fin de la ligne prÃ©cÃ©dente
   :	 let m = substitute(w, '\\', '\\\\', "")
   :	 call search('\<\V' . m . '\>')	" place le curseur sur la corres.
-  :	 " Ajoute un élément de syntaxe pour le mot à cette position
+  :	 " Ajoute un Ã©lÃ©ment de syntaxe pour le mot Ã  cette position
   :	 hi previewWord term=bold ctermbg=green guibg=green
   :	 exe 'match previsuMot "\%' . line(".") . 'l\%' . col(".") . 'c\k*"'
-  :	 wincmd p			" revient à l'ancienne fenêtre
+  :	 wincmd p			" revient Ã  l'ancienne fenÃªtre
   :    endif
   :  endif
   :endfun
 
 ==============================================================================
-11. Utiliser les tampons cachés				*buffer-hidden*
+11. Utiliser les tampons cachÃ©s				*buffer-hidden*
 
-Un tampon caché n'est pas montré dans une fenêtre, mais est tout de même
-chargé en mémoire. Cela permet de sauter d'un fichier à un autre sans avoir
-besoin de lire ou d'enregistrer le fichier à chaque fois que vous appelez un
-autre tampon dans une fenêtre.
+Un tampon cachÃ© n'est pas montrÃ© dans une fenÃªtre, mais est tout de mÃªme
+chargÃ© en mÃ©moire. Cela permet de sauter d'un fichier Ã  un autre sans avoir
+besoin de lire ou d'enregistrer le fichier Ã  chaque fois que vous appelez un
+autre tampon dans une fenÃªtre.
 
-{uniquement si compilé avec la fonctionnalité |+listcmds|}
+{uniquement si compilÃ© avec la fonctionnalitÃ© |+listcmds|}
 
 							*:buffer-!*
-Si l'option 'hidden' ('hid') est activée, les tampons abandonnés sont
-conservés pour toutes les commandes qui lancent l'édition d'un autre fichier :
+Si l'option 'hidden' ('hid') est activÃ©e, les tampons abandonnÃ©s sont
+conservÃ©s pour toutes les commandes qui lancent l'Ã©dition d'un autre fichier :
 ":edit", ":next", ":tag", etc. Les commandes qui font parcourir la liste des
-tampons rendent parfois le tampon courant caché, même quand 'hidden' n'est pas
-activé. Cela se produit lorsqu'un tampon contenant des changements est obligé
-(par '!') de libérer un fenêtre, si 'autowrite' est désactivé ou que le tampon
-ne peut pas être écrit.
+tampons rendent parfois le tampon courant cachÃ©, mÃªme quand 'hidden' n'est pas
+activÃ©. Cela se produit lorsqu'un tampon contenant des changements est obligÃ©
+(par '!') de libÃ©rer un fenÃªtre, si 'autowrite' est dÃ©sactivÃ© ou que le tampon
+ne peut pas Ãªtre Ã©crit.
 
-Vous pouvez changer un tampon caché en tampon non caché en l'éditant avec
+Vous pouvez changer un tampon cachÃ© en tampon non cachÃ© en l'Ã©ditant avec
 n'importe quelle commande. Ou en le supprimant avec la commande ":bdelete".
 
-L'option 'hidden' est globale, elle est utilisée pour tous les tampons.
-L'option 'bufhidden' peut être utilisée pour définir une exception pour un
+L'option 'hidden' est globale, elle est utilisÃ©e pour tous les tampons.
+L'option 'bufhidden' peut Ãªtre utilisÃ©e pour dÃ©finir une exception pour un
 tampon particulier. Elle peut prendre une des valeurs suivantes :
 	<vide>		utilise la valeur de 'hidden'
-	hide		cache ce tampon, même quand 'hidden' est désactivé
-	unload		ne cache pas mais décharge ce tampon, même quand
-			   'hidden' est activé
+	hide		cache ce tampon, mÃªme quand 'hidden' est dÃ©sactivÃ©
+	unload		ne cache pas mais dÃ©charge ce tampon, mÃªme quand
+			   'hidden' est activÃ©
 	delete		supprime ce tampon
 
 							*hidden-quit*
-Quand vous essayez de quitter Vim alors qu'il y a un tampon caché et modifié,
-un message d'erreur sera émis et ce tampon deviendra le tampon courant. Vous
-pouvez alors décider de l'écrire (":wq") ou de quitter sans l'écrire (":q!").
-ATTENTION : Il peut y avoir plus d'un tampon modifié et caché !
+Quand vous essayez de quitter Vim alors qu'il y a un tampon cachÃ© et modifiÃ©,
+un message d'erreur sera Ã©mis et ce tampon deviendra le tampon courant. Vous
+pouvez alors dÃ©cider de l'Ã©crire (":wq") ou de quitter sans l'Ã©crire (":q!").
+ATTENTION : Il peut y avoir plus d'un tampon modifiÃ© et cachÃ© !
 
-Un tampon peut aussi être non listé. Cela signifie qu'il existe, mais qu'il
-n'apparaît pas dans la liste des tampons. |unlisted-buffer|
+Un tampon peut aussi Ãªtre non listÃ©. Cela signifie qu'il existe, mais qu'il
+n'apparaÃ®t pas dans la liste des tampons. |unlisted-buffer|
 
 
 :files[!]						*:files*
@@ -935,266 +935,266 @@ n'apparaît pas dans la liste des tampons. |unlisted-buffer|
 			2u    "toto"			line 0 ~
 			3 %l+ "version.c"		line 1 ~
 
-		Si [!] est spécifié, la liste mentionnera aussi les tampons
-		non listés (le terme « non listé » prête ici un peu à
+		Si [!] est spÃ©cifiÃ©, la liste mentionnera aussi les tampons
+		non listÃ©s (le terme Â« non listÃ© Â» prÃªte ici un peu Ã 
 		confusion...).
-		Chaque tampon possède un numéro unique. Ce numéro ne sera pas
-		changé, vous pourrez toujours accéder à un tampon particulier
-		avec ":buffer N" ou "N CTRL-^", où N désigne le numéro du
+		Chaque tampon possÃ¨de un numÃ©ro unique. Ce numÃ©ro ne sera pas
+		changÃ©, vous pourrez toujours accÃ©der Ã  un tampon particulier
+		avec ":buffer N" ou "N CTRL-^", oÃ¹ N dÃ©signe le numÃ©ro du
 		tampon.
-		Indicateurs (les caractères dans la même colonne s'excluent
+		Indicateurs (les caractÃ¨res dans la mÃªme colonne s'excluent
 		mutuellement) :
-		u	 un tampon non listé (donné uniquement si [!] est
-			    spécifié) |unlisted-buffer|
+		u	 un tampon non listÃ© (donnÃ© uniquement si [!] est
+			    spÃ©cifiÃ©) |unlisted-buffer|
 		 %	 le tampon courant
 		 #	 le tampon alternatif (pour ":e #" et CTRL-^)
-		  a	 un tampon actif : il est chargé et visible
-		  h	 un tampon caché : il est chargé mais pas actuellement
-			    affiché dans une fenêtre |hidden-buffer|
-		   -	 un tampon avec 'modifiable' désactivé
+		  a	 un tampon actif : il est chargÃ© et visible
+		  h	 un tampon cachÃ© : il est chargÃ© mais pas actuellement
+			    affichÃ© dans une fenÃªtre |hidden-buffer|
+		   -	 un tampon avec 'modifiable' dÃ©sactivÃ©
 		    =	 un tampon en lecture seule
-		     +	 un tampon modifié
+		     +	 un tampon modifiÃ©
 		     x	 un tampon contenant des erreurs de lecture
 
 							*:bad* *:badd*
 :bad[d]	[+nol] {nomfich}
-		Ajoute le nom de fichier {nomfich} à la liste des tampons,
-		sans le charger. Si [+nol] est spécifié, le curseur sera
-		positionné sur cette ligne lors de la première entrée dans le
+		Ajoute le nom de fichier {nomfich} Ã  la liste des tampons,
+		sans le charger. Si [+nol] est spÃ©cifiÃ©, le curseur sera
+		positionnÃ© sur cette ligne lors de la premiÃ¨re entrÃ©e dans le
 		tampon.
-		NOTE : Les autres commandes après le '+' seront ignorées.
+		NOTE : Les autres commandes aprÃ¨s le '+' seront ignorÃ©es.
 
 :[N]bd[elete][!]			    *:bd* *:bdel* *:bdelete* *E516*
 :bd[elete][!] [N]
-		Décharge le tampon N (défaut : tampon courant) et le supprime
-		de la liste des tampons. Si le tampon a été changé, cela
-		échoue, à moins que [!] ne soit spécifié, auquel cas les
+		DÃ©charge le tampon N (dÃ©faut : tampon courant) et le supprime
+		de la liste des tampons. Si le tampon a Ã©tÃ© changÃ©, cela
+		Ã©choue, Ã  moins que [!] ne soit spÃ©cifiÃ©, auquel cas les
 		changements sont perdus.
-		Le fichier reste inchangé. Toutes les fenêtres pour ce tampon
-		sont fermées. Si le tampon N est le tampon courant, un autre
-		tampon sera utilisé à la place. Il s'agira de l'entrée la plus
-		récente dans la liste des sauts qui pointe vers un tampon
-		chargé.
-		En fait le tampon n'est pas complètement supprimé, il est
-		simplement ôté de la liste des tampons |unlisted-buffer| et
+		Le fichier reste inchangÃ©. Toutes les fenÃªtres pour ce tampon
+		sont fermÃ©es. Si le tampon N est le tampon courant, un autre
+		tampon sera utilisÃ© Ã  la place. Il s'agira de l'entrÃ©e la plus
+		rÃ©cente dans la liste des sauts qui pointe vers un tampon
+		chargÃ©.
+		En fait le tampon n'est pas complÃ¨tement supprimÃ©, il est
+		simplement Ã´tÃ© de la liste des tampons |unlisted-buffer| et
 		les valeurs des options, des variables, les mappages et
-		abréviations pour le tampon sont effacées.
+		abrÃ©viations pour le tampon sont effacÃ©es.
 							*E93* *E94*
 :bdelete[!] {nomtampon}
-		Comme ":bdelete[!] [N]", mais le tampon est donné par son nom.
-		NOTE : Un tampon dont le nom est un nombre ne peut pas être
-		référencé  par ce nom ; utilisez le numéro du tampon à la
-		place. Insérez une contre-oblique avant un espace dans le nom
+		Comme ":bdelete[!] [N]", mais le tampon est donnÃ© par son nom.
+		NOTE : Un tampon dont le nom est un nombre ne peut pas Ãªtre
+		rÃ©fÃ©rencÃ©  par ce nom ; utilisez le numÃ©ro du tampon Ã  la
+		place. InsÃ©rez une contre-oblique avant un espace dans le nom
 		d'un tampon.
 
 :bdelete[!] N1 N2 ...
-		Exécute ":bdelete[!]" pour les tampons N1, N2, etc. Les
-		arguments peuvent être des numéros de tampons ou des noms de
+		ExÃ©cute ":bdelete[!]" pour les tampons N1, N2, etc. Les
+		arguments peuvent Ãªtre des numÃ©ros de tampons ou des noms de
 		tampons (mais pas des noms de tampons qui soient un nombre).
-		Insérez une contre-oblique avant un espace dans le nom d'un
+		InsÃ©rez une contre-oblique avant un espace dans le nom d'un
 		tampon.
 
-:N,Mbdelete[!]	Exécute ":bdelete[!]" pour tous les tampons compris dans la
-		plage de N à M (inclus).
+:N,Mbdelete[!]	ExÃ©cute ":bdelete[!]" pour tous les tampons compris dans la
+		plage de N Ã  M (inclus).
 
 :[N]bw[ipeout][!]			    *:bw* *:bwipe* *:bwipeout* *E517*
 :bw[ipeout][!] {nomtampon}
 :N,Mbw[ipeout][!]
 :bw[ipeout][!] N1 N2 ...
-		Comme |:bdelete|, mais supprime réellement le tampon (le
-		« liquide »). Toutes les marques pour ce tampons deviennent
-		invalides, les paramètres d'options sont perdus, etc.
+		Comme |:bdelete|, mais supprime rÃ©ellement le tampon (le
+		Â« liquide Â»). Toutes les marques pour ce tampons deviennent
+		invalides, les paramÃ¨tres d'options sont perdus, etc.
 		N'utilisez cette commande que si vous savez ce que vous
 		faites.
 
 :[N]bun[load][!]				    *:bun* *:bunload* *E515*
 :bun[load][!] [N]
-		Décharge le tampon N (défaut : tampon courant). La mémoire
-		allouée pour ce tampon sera libérée. Le tampon reste dans la
+		DÃ©charge le tampon N (dÃ©faut : tampon courant). La mÃ©moire
+		allouÃ©e pour ce tampon sera libÃ©rÃ©e. Le tampon reste dans la
 		liste des tampons.
-		Si le tampon a été changé, cela échoue, à moins que [!] ne
-		soit spécifié, auquel cas les changements sont perdus.
-		Toutes les fenêtres pour ce tampon sont fermées. Si le tampon
-		N est le tampon courant, un autre tampon sera utilisé à la
-		place. Il s'agira de l'entrée la plus récente dans la liste
-		des sauts qui pointe vers un tampon chargé.
+		Si le tampon a Ã©tÃ© changÃ©, cela Ã©choue, Ã  moins que [!] ne
+		soit spÃ©cifiÃ©, auquel cas les changements sont perdus.
+		Toutes les fenÃªtres pour ce tampon sont fermÃ©es. Si le tampon
+		N est le tampon courant, un autre tampon sera utilisÃ© Ã  la
+		place. Il s'agira de l'entrÃ©e la plus rÃ©cente dans la liste
+		des sauts qui pointe vers un tampon chargÃ©.
 
 :bunload[!] {nomtampon}
-		Comme ":bunload[!] [N]", mais le tampon est donné par son nom.
-		NOTE : Un tampon dont le nom est un nombre ne peut pas être
-		référencé  par ce nom ; utilisez le numéro du tampon à la
-		place. Insérez une contre-oblique avant un espace dans le nom
+		Comme ":bunload[!] [N]", mais le tampon est donnÃ© par son nom.
+		NOTE : Un tampon dont le nom est un nombre ne peut pas Ãªtre
+		rÃ©fÃ©rencÃ©  par ce nom ; utilisez le numÃ©ro du tampon Ã  la
+		place. InsÃ©rez une contre-oblique avant un espace dans le nom
 		d'un tampon.
 
-:N,Mbunload[!]	Exécute ":bunload[!]" pour tous les tampons compris dans la
-		plage de N à M (inclus).
+:N,Mbunload[!]	ExÃ©cute ":bunload[!]" pour tous les tampons compris dans la
+		plage de N Ã  M (inclus).
 
 :bunload[!] N1 N2 ...
-		Exécute ":bunload[!]" pour les tampons N1, N2, etc. Les
-		arguments peuvent être des numéros de tampons ou des noms de
+		ExÃ©cute ":bunload[!]" pour les tampons N1, N2, etc. Les
+		arguments peuvent Ãªtre des numÃ©ros de tampons ou des noms de
 		tampons (mais pas des noms de tampons qui soient un nombre).
-		Insérez une contre-oblique avant un espace dans le nom d'un
+		InsÃ©rez une contre-oblique avant un espace dans le nom d'un
 		tampon.
 
 					*:b* *:bu* *:buf* *:buffer* *E86*
 :[N]b[uffer][!] [N]
-		Édite le tampon N de la liste des tampons. Si N n'est pas
-		donné, le tampon courant reste celui édité. Voir |:buffer-!|
-		pour [!]. Cela éditera aussi un tampon qui n'est pas dans la
+		Ã‰dite le tampon N de la liste des tampons. Si N n'est pas
+		donnÃ©, le tampon courant reste celui Ã©ditÃ©. Voir |:buffer-!|
+		pour [!]. Cela Ã©ditera aussi un tampon qui n'est pas dans la
 		liste des tampons, sans activer l'option 'buflisted'.
 
 :[N]b[uffer][!] {nomfich}
-		Édite le tampon de la liste des tampons correspondant à
-		{nomfich}. Voir |:buffer-!| pour [!]. Cela éditera aussi un
+		Ã‰dite le tampon de la liste des tampons correspondant Ã 
+		{nomfich}. Voir |:buffer-!| pour [!]. Cela Ã©ditera aussi un
 		tampon qui n'est pas dans la liste des tampons, sans activer
 		l'option 'buflisted'.
 
 							*:sb* *:sbuffer*
 :[N]sb[uffer] [N]
-		Partage la fenêtre et édite le tampon N de la liste des
-		tampons. Si N n'est pas donné, le tampon courant reste celui
-		édité. Respecte le drapeau "useopen" de l'option 'switchbuf'
-		lors du partage. Cela éditera aussi un tampon qui n'est pas
+		Partage la fenÃªtre et Ã©dite le tampon N de la liste des
+		tampons. Si N n'est pas donnÃ©, le tampon courant reste celui
+		Ã©ditÃ©. Respecte le drapeau "useopen" de l'option 'switchbuf'
+		lors du partage. Cela Ã©ditera aussi un tampon qui n'est pas
 		dans la liste des tampons, sans activer l'option 'buflisted'.
 
 :[N]sb[uffer] {nomfich}
-		Partage la fenêtre et édite le tampon de la liste des tampons
-		correspondant à {nomfich}. Cela éditera aussi un tampon qui
+		Partage la fenÃªtre et Ã©dite le tampon de la liste des tampons
+		correspondant Ã  {nomfich}. Cela Ã©ditera aussi un tampon qui
 		n'est pas dans la liste des tampons, sans activer l'option
 		'buflisted'.
 
 							*:bn* *:bnext* *E87*
 :[N]bn[ext][!] [N]
-		Va au N-ième tampon suivant de la liste des tampons (N vaut 1
-		par défaut). Boucle à la fin de la liste des tampons. Voir
+		Va au N-iÃ¨me tampon suivant de la liste des tampons (N vaut 1
+		par dÃ©faut). Boucle Ã  la fin de la liste des tampons. Voir
 		|:buffer-!| pour [!].
-		Si vous êtes dans un tampon d'aide, cela vous amènera au
-		tampon d'aide suivant (s'il y en a un). De même, si vous êtes
-		dans un tampon normal (non aide), cela vous amènera au tampon
-		normal suivant. Cela a été fait pour que, si vous invoquez de
-		l'aide, cela ne vous dérange pas lorsque vous naviguez dans
+		Si vous Ãªtes dans un tampon d'aide, cela vous amÃ¨nera au
+		tampon d'aide suivant (s'il y en a un). De mÃªme, si vous Ãªtes
+		dans un tampon normal (non aide), cela vous amÃ¨nera au tampon
+		normal suivant. Cela a Ã©tÃ© fait pour que, si vous invoquez de
+		l'aide, cela ne vous dÃ©range pas lorsque vous naviguez dans
 		des tampons de texte/code. Les trois commandes qui suivent se
-		comportent de la même façon.
+		comportent de la mÃªme faÃ§on.
 
 							*:sbn* *:sbnext*
 :[N]sbn[ext] [N]
-		Partage la fenêtre et va au N-ième tampon suivant de la liste
-		des tampons (N vaut 1 par défaut). Boucle à la fin de la liste
+		Partage la fenÃªtre et va au N-iÃ¨me tampon suivant de la liste
+		des tampons (N vaut 1 par dÃ©faut). Boucle Ã  la fin de la liste
 		des tampons. Utilise 'switchbuf'.
 
 :[N]bN[ext][!] [N]					*:bN* *:bNext* *E88*
 :[N]bp[revious][!] [N]					*:bp* *:bprevious*
-		Va au N-ième tampon précédent de la liste des tampons (N vaut
-		1 par défaut). Boucle au début de la liste des tampons. Voir
+		Va au N-iÃ¨me tampon prÃ©cÃ©dent de la liste des tampons (N vaut
+		1 par dÃ©faut). Boucle au dÃ©but de la liste des tampons. Voir
 		|:buffer-!| pour [!] et 'switchbuf'.
 
 :[N]sbN[ext] [N]					*:sbN* *:sbNext*
 :[N]sbp[revious] [N]					*:sbp* *:sbprevious*
-		Partage la fenêtre et va au N-ième tampon précédent de la
-		liste des tampons (N vaut 1 par défaut). Boucle au début de la
+		Partage la fenÃªtre et va au N-iÃ¨me tampon prÃ©cÃ©dent de la
+		liste des tampons (N vaut 1 par dÃ©faut). Boucle au dÃ©but de la
 		liste des tampons. Utilise 'switchbuf'.
 
 							*:br* *:brewind*
 :br[ewind][!]	Va au premier tampon de la liste des tampons. Si la liste des
-		tampons est vide, va au premier tampon non listé. Voir
+		tampons est vide, va au premier tampon non listÃ©. Voir
 		|:buffer-!| pour [!].
 							*:bf* *:bfirst*
 :bf[irst]	Comme ":brewind".
 
 							*:sbr* *:sbrewind*
-:sbr[ewind]	Partage la fenêtre et va au premier tampon de la liste des
+:sbr[ewind]	Partage la fenÃªtre et va au premier tampon de la liste des
 		tampons. Si la liste des tampons est vide, va au premier
-		tampon non listé. Respecte l'option 'switchbuf'.
+		tampon non listÃ©. Respecte l'option 'switchbuf'.
 							*:sbf* *:sbfirst*
 :sbf[irst]	Comme ":sbrewind".
 
 							*:bl* *:blast*
 :bl[ast][!]	Va au dernier tampon de la liste des tampons. Si la liste des
-		tampons est vide, va au dernier tampon non listé. Voir
+		tampons est vide, va au dernier tampon non listÃ©. Voir
 		|:buffer-!| pour [!].
 
 							*:sbl* *:sblast*
-:sbl[ast]	Partage la fenêtre et va au dernier tampon de la liste des
+:sbl[ast]	Partage la fenÃªtre et va au dernier tampon de la liste des
 		tampons. Si la liste des tampons est vide, va au dernier
-		tampon non listé. Respecte l'option 'switchbuf'.
+		tampon non listÃ©. Respecte l'option 'switchbuf'.
 
 						*:bm* *:bmodified* *E84*
 :[N]bm[odified][!] [N]
-		Va au N-ième tampon modifié suivant.
-		NOTE : Cette commande trouve aussi les tampons non listés.
-		S'il n'y a pas de tampon modifié, la commande échoue
+		Va au N-iÃ¨me tampon modifiÃ© suivant.
+		NOTE : Cette commande trouve aussi les tampons non listÃ©s.
+		S'il n'y a pas de tampon modifiÃ©, la commande Ã©choue
 
 							*:sbm* *:sbmodified*
 :[N]sbm[odified] [N]
-		Partage la fenêtre et va au N-ième tampon modifié suivant.
+		Partage la fenÃªtre et va au N-iÃ¨me tampon modifiÃ© suivant.
 		Respecte l'option 'switchbuf'.
-		NOTE : Cette commande trouve aussi les tampons non listés.
+		NOTE : Cette commande trouve aussi les tampons non listÃ©s.
 
 :[N]unh[ide] [N]					*:unh* *:unhide*
 :[N]sun[hide] [N]					*:sun* *:sunhide*
-		Réarrange l'écran pour ouvrir une fenêtre pour chaque tampon
-		chargé dans la liste des tampons. Si un quantificateur est
-		donné, il indique le nombre maximal de fenêtres à ouvrir.
+		RÃ©arrange l'Ã©cran pour ouvrir une fenÃªtre pour chaque tampon
+		chargÃ© dans la liste des tampons. Si un quantificateur est
+		donnÃ©, il indique le nombre maximal de fenÃªtres Ã  ouvrir.
 
 :[N]ba[ll] [N]					*:ba* *:ball* *:sba* *:sball*
-:[N]sba[ll] [N]	Réarrange l'écran pour ouvrir une fenêtre pour chaque tampon
-		dans la liste des tampons. Si un quantificateur est donné, il
-		indique le nombre maximal de fenêtres à ouvrir.
-		Les autocommandes "Buf/Win Enter/Leave" ne sont pas exécutées
-		ici pour les nouvelles fenêtres, mais uniquement quand
-		l'entrée est effective.
+:[N]sba[ll] [N]	RÃ©arrange l'Ã©cran pour ouvrir une fenÃªtre pour chaque tampon
+		dans la liste des tampons. Si un quantificateur est donnÃ©, il
+		indique le nombre maximal de fenÃªtres Ã  ouvrir.
+		Les autocommandes "Buf/Win Enter/Leave" ne sont pas exÃ©cutÃ©es
+		ici pour les nouvelles fenÃªtres, mais uniquement quand
+		l'entrÃ©e est effective.
 
-NOTE : Toutes les commandes ci-dessus qui lancent l'édition d'un autre tampon
-ne modifient pas l'option 'readonly'. Cela diffère de la commande ":edit", qui
-active le drapeau 'readonly' à chaque fois que le fichier est lu.
+NOTE : Toutes les commandes ci-dessus qui lancent l'Ã©dition d'un autre tampon
+ne modifient pas l'option 'readonly'. Cela diffÃ¨re de la commande ":edit", qui
+active le drapeau 'readonly' Ã  chaque fois que le fichier est lu.
 
 ==============================================================================
-12. Types de tampons spéciaux				*special-buffers*
+12. Types de tampons spÃ©ciaux				*special-buffers*
 
-Au lieu de contenir le texte d'un fichier, les tampons peuvent aussi être
-utilisés à d'autres fins. Plusieurs options peuvent être employées pour
+Au lieu de contenir le texte d'un fichier, les tampons peuvent aussi Ãªtre
+utilisÃ©s Ã  d'autres fins. Plusieurs options peuvent Ãªtre employÃ©es pour
 changer le comportement d'un tampon :
-	'bufhidden'	comportement du tampon quand il n'est plus affiché
-			   dans une fenêtre
+	'bufhidden'	comportement du tampon quand il n'est plus affichÃ©
+			   dans une fenÃªtre
 	'buftype'	type du tampon
-	'swapfile'	si le tampon a un fichier d'échange
-	'buflisted'	si le tampon est présent dans la liste des tampons
+	'swapfile'	si le tampon a un fichier d'Ã©change
+	'buflisted'	si le tampon est prÃ©sent dans la liste des tampons
 
 Voici quelques exemples de tampons utiles :
 
-mise-au-point	Utilisé pour la liste d'erreurs. Voir |:cwindow|. Cette
-		commande fixe l'option 'buftype' à "quickfix". Vous n'êtes pas
-		censé la changer ! 'swapfile' est désactivé.
+mise-au-point	UtilisÃ© pour la liste d'erreurs. Voir |:cwindow|. Cette
+		commande fixe l'option 'buftype' Ã  "quickfix". Vous n'Ãªtes pas
+		censÃ© la changer ! 'swapfile' est dÃ©sactivÃ©.
 
-aide		Contient un fichier d'aide. Ce genre de tampon est créé
+aide		Contient un fichier d'aide. Ce genre de tampon est crÃ©Ã©
 		uniquement avec la commande |:help|. Le drapeau qui indique un
-		tampon d'aide est interne et ne peut pas être changé. L'option
-		'buflisted' sera désactivée pour un tampon d'aide.
+		tampon d'aide est interne et ne peut pas Ãªtre changÃ©. L'option
+		'buflisted' sera dÃ©sactivÃ©e pour un tampon d'aide.
 
-répertoire	Affiche le contenu d'un répertoire. Utilisé par le greffon
+rÃ©pertoire	Affiche le contenu d'un rÃ©pertoire. UtilisÃ© par le greffon
 		de l'explorateur de fichier |file-explorer|. Le tampon est
-		créé avec ces paramètres : >
+		crÃ©Ã© avec ces paramÃ¨tres : >
 			:set buftype=nowrite
 			:set bufhidden=delete
 			:set noswapfile
-<		Le tampon prend le nom du répertoire (qui sera ajusté avec la
+<		Le tampon prend le nom du rÃ©pertoire (qui sera ajustÃ© avec la
 		commande |:cd|).
 
-brouillon	Contient du texte qui peut être abandonné à tout moment. Ce
-		genre de tampon est conservé après la fermeture de la fenêtre,
-		il doit être supprimé explicitement. Paramètres : >
+brouillon	Contient du texte qui peut Ãªtre abandonnÃ© Ã  tout moment. Ce
+		genre de tampon est conservÃ© aprÃ¨s la fermeture de la fenÃªtre,
+		il doit Ãªtre supprimÃ© explicitement. ParamÃ¨tres : >
 			:set buftype=nofile
 			:set bufhidden=hide
 			:set noswapfile
-<		Le tampon peut être identifié par son nom.
+<		Le tampon peut Ãªtre identifiÃ© par son nom.
 
 							*unlisted-buffer*
-non listé	Le tampon n'est pas répertorié dans la liste des tampons. Il
-		n'est pas utilisé pour l'édition normale, mais pour afficher
-		un fichier d'aide, mémoriser un nom de fichier ou des marques.
-		Paramètres : >
+non listÃ©	Le tampon n'est pas rÃ©pertoriÃ© dans la liste des tampons. Il
+		n'est pas utilisÃ© pour l'Ã©dition normale, mais pour afficher
+		un fichier d'aide, mÃ©moriser un nom de fichier ou des marques.
+		ParamÃ¨tres : >
 			:set nobuflisted
-<		La commande ":bdelete" activera également cette option, ainsi
-		le tampon n'est pas complètement supprimé.
+<		La commande ":bdelete" activera Ã©galement cette option, ainsi
+		le tampon n'est pas complÃ¨tement supprimÃ©.
 
  vim:tw=78:ts=8:ft=help:norl:

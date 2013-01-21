@@ -1,140 +1,140 @@
-*usr_45.txt*	Pour Vim version 6.2.  Dernière modification : 08 oct 2002
+*usr_45.txt*	Pour Vim version 6.2.  DerniÃ¨re modification : 08 oct 2002
 
 	       MANUEL de l'UTILISATEUR VIM - par Bram Moolenaar
 
 			      Choisir sa langue
 
 
-Dans Vim, les messages peuvent être affichés en plusieurs langues. Ce chapitre
-explique comment changer la langue utilisée. Il explique également les
-différentes méthodes pour travailler avec des fichiers dans des langues
-différentes.
+Dans Vim, les messages peuvent Ãªtre affichÃ©s en plusieurs langues. Ce chapitre
+explique comment changer la langue utilisÃ©e. Il explique Ã©galement les
+diffÃ©rentes mÃ©thodes pour travailler avec des fichiers dans des langues
+diffÃ©rentes.
 
-|45.1|	Langue utilisée pour les messages
-|45.2|	Langue utilisée pour les menus
-|45.3|	Utiliser un encodage différent
-|45.4|	Éditer des fichiers avec un encodage différent
-|45.5|	Saisir du texte dans une langue donnée
+|45.1|	Langue utilisÃ©e pour les messages
+|45.2|	Langue utilisÃ©e pour les menus
+|45.3|	Utiliser un encodage diffÃ©rent
+|45.4|	Ã‰diter des fichiers avec un encodage diffÃ©rent
+|45.5|	Saisir du texte dans une langue donnÃ©e
 
   Chapitre suivant : |usr_90.txt|  Installer Vim
-Chapitre précédent : |usr_44.txt|  Créer ses propres colorations syntaxiques
-Table des matières : |usr_toc.txt|
+Chapitre prÃ©cÃ©dent : |usr_44.txt|  CrÃ©er ses propres colorations syntaxiques
+Table des matiÃ¨res : |usr_toc.txt|
 
 ==============================================================================
-*45.1*	Langue utilisée pour les messages
+*45.1*	Langue utilisÃ©e pour les messages
 
-Au démarrage, Vim examine l'environnement pour déterminer quelle langue vous
+Au dÃ©marrage, Vim examine l'environnement pour dÃ©terminer quelle langue vous
 utilisez. La plupart du temps, cela fonctionne bien et vous obtenez les
 messages dans votre langue (s'ils sont disponibles). Pour voir la langue
-actuellement utilisée, utilisez cette commande : >
+actuellement utilisÃ©e, utilisez cette commande : >
 
 	:language
 
-Si la réponse est "C", cela signifie que Vim utilise la langue par défaut,
-c.-à-d. l'anglais.
+Si la rÃ©ponse est "C", cela signifie que Vim utilise la langue par dÃ©faut,
+c.-Ã -d. l'anglais.
 
 	NOTE :
-	L'utilisation de langues différentes fonctionne uniquement lorsque Vim
-	a été compilé pour le supporter. Pour déterminer si c'est le cas,
+	L'utilisation de langues diffÃ©rentes fonctionne uniquement lorsque Vim
+	a Ã©tÃ© compilÃ© pour le supporter. Pour dÃ©terminer si c'est le cas,
 	utilisez la commande ":version" et cherchez "+gettext" et
-	"+multi_lang" dans la réponse. Si vous ne voyez que "-gettext" ou
+	"+multi_lang" dans la rÃ©ponse. Si vous ne voyez que "-gettext" ou
 	"-multi_lang", vous devrez trouver un autre Vim.
 
 Comment faire si vous voulez que les messages soient dans une autre langue ?
-Il y a plusieurs méthodes, selon le système que vous utilisez.
-   La première méthode consiste à configurer l'environnement pour la langue
-désirée avant de démarrer Vim. Exemple sous Unix : >
+Il y a plusieurs mÃ©thodes, selon le systÃ¨me que vous utilisez.
+   La premiÃ¨re mÃ©thode consiste Ã  configurer l'environnement pour la langue
+dÃ©sirÃ©e avant de dÃ©marrer Vim. Exemple sous Unix : >
 
 	env LANG=de_DE.ISO_8859-1  vim
 
-Cette méthode fonctionne seulement si la langue est disponible sur votre
-système. L'avantage est que tous les messages de l'IHM graphique et les
-bibliothèques utiliseront aussi la bonne langue. L'inconvénient est qu'il faut
-le faire avant de démarrer Vim. Si vous voulez changer de langue sans quitter
-Vim, vous pouvez utiliser la seconde méthode : >
+Cette mÃ©thode fonctionne seulement si la langue est disponible sur votre
+systÃ¨me. L'avantage est que tous les messages de l'IHM graphique et les
+bibliothÃ¨ques utiliseront aussi la bonne langue. L'inconvÃ©nient est qu'il faut
+le faire avant de dÃ©marrer Vim. Si vous voulez changer de langue sans quitter
+Vim, vous pouvez utiliser la seconde mÃ©thode : >
 
 	:language fr_FR.ISO_8859-1
 
 Vous pouvez ainsi essayer plusieurs noms pour votre langue. Vous obtiendrez un
-message d'erreur pour les langues non supportées sur votre système. En
+message d'erreur pour les langues non supportÃ©es sur votre systÃ¨me. En
 revanche, vous n'obtiendrez pas d'erreur si les messages traduits sont
 indisponibles. Dans ce cas Vim se rabattra silencieusement sur l'anglais.
-   Pour déterminer les langues supportées par votre système, trouvez le
-répertoire où elles sont listées. Sur mon système il s'agit de
-"/usr/share/locale". Sur certains systèmes, il s'agit de "/usr/lib/locale". La
-page de manuel de `setlocale` devrait vous aider à déterminer cet emplacement
-sur votre système.
-   Attention à saisir le nom avec exactitude. La casse est prise en compte, et
-il est facile de confondre les caractères '-' et '_'.
+   Pour dÃ©terminer les langues supportÃ©es par votre systÃ¨me, trouvez le
+rÃ©pertoire oÃ¹ elles sont listÃ©es. Sur mon systÃ¨me il s'agit de
+"/usr/share/locale". Sur certains systÃ¨mes, il s'agit de "/usr/lib/locale". La
+page de manuel de `setlocale` devrait vous aider Ã  dÃ©terminer cet emplacement
+sur votre systÃ¨me.
+   Attention Ã  saisir le nom avec exactitude. La casse est prise en compte, et
+il est facile de confondre les caractÃ¨res '-' et '_'.
 
-Vous pouvez aussi fixer séparément la langue des messages, celle du texte
-édité et celle utilisée pour la date. Voir |:language|.
+Vous pouvez aussi fixer sÃ©parÃ©ment la langue des messages, celle du texte
+Ã©ditÃ© et celle utilisÃ©e pour la date. Voir |:language|.
 
 
-TRADUIRE SOI-MÊME LES MESSAGES
+TRADUIRE SOI-MÃŠME LES MESSAGES
 
 Si la traduction des messages n'est pas disponible pour votre langue, vous
-pouvez la faire vous-même. Pour cela, récupérez le code source de Vim ainsi
-que le paquetage GNU gettext. Une fois les sources dépaquetées, vous trouverez
+pouvez la faire vous-mÃªme. Pour cela, rÃ©cupÃ©rez le code source de Vim ainsi
+que le paquetage GNU gettext. Une fois les sources dÃ©paquetÃ©es, vous trouverez
 les instructions dans le fichier "src/po/README.TXT".
-   Il n'est pas très difficile d'effectuer la traduction. Pas la peine d'être
-un développeur. Bien entendu, vous devez connaître l'anglais et la langue dans
+   Il n'est pas trÃ¨s difficile d'effectuer la traduction. Pas la peine d'Ãªtre
+un dÃ©veloppeur. Bien entendu, vous devez connaÃ®tre l'anglais et la langue dans
 laquelle vous traduisez.
-   Lorsque vous êtes satisfait de votre traduction, envisagez de la mettre à
-disposition pour les autres. Déposez-la sur le site de Vim (http://vim.sf.net)
-ou envoyez un courriel au responsable de Vim à l'adresse <maintainer@vim.org>.
+   Lorsque vous Ãªtes satisfait de votre traduction, envisagez de la mettre Ã 
+disposition pour les autres. DÃ©posez-la sur le site de Vim (http://vim.sf.net)
+ou envoyez un courriel au responsable de Vim Ã  l'adresse <maintainer@vim.org>.
 Ou bien les deux.
 
 ==============================================================================
-*45.2*	Langue utilisée pour les menus
+*45.2*	Langue utilisÃ©e pour les menus
 
-Par défaut, les menus sont en anglais. Pour être affichés dans votre langue
-locale, ils doivent être traduits. Normalement, si l'environnement est
-configuré pour votre langue, cela se fait automatiquement comme pour les
-messages. Vous n'avez aucune manipulation particulière à faire. Mais cela ne
-fonctionne que si les traductions pour la langue souhaitée sont disponibles.
-   Supposons que vous êtes en Allemagne, votre langue est l'allemand mais vous
-préférez utiliser "File" plutôt que "Datei". Vous pouvez remettre les menus en
+Par dÃ©faut, les menus sont en anglais. Pour Ãªtre affichÃ©s dans votre langue
+locale, ils doivent Ãªtre traduits. Normalement, si l'environnement est
+configurÃ© pour votre langue, cela se fait automatiquement comme pour les
+messages. Vous n'avez aucune manipulation particuliÃ¨re Ã  faire. Mais cela ne
+fonctionne que si les traductions pour la langue souhaitÃ©e sont disponibles.
+   Supposons que vous Ãªtes en Allemagne, votre langue est l'allemand mais vous
+prÃ©fÃ©rez utiliser "File" plutÃ´t que "Datei". Vous pouvez remettre les menus en
 anglais ainsi : >
 
 	:set langmenu=none
 
-Il est également possible d'indiquer une langue : >
+Il est Ã©galement possible d'indiquer une langue : >
 
 	:set langmenu=nl_NL.ISO_8859-1
 
-Comme précédemment, la différence entre '-' et '_' est importante. Par contre,
+Comme prÃ©cÃ©demment, la diffÃ©rence entre '-' et '_' est importante. Par contre,
 ici, la casse n'est pas prise en compte.
-   L'option 'langmenu' doit être fixée avant le chargement des menus. Une
-fois les menus définis, le changement de l'option 'langmenu' n'a aucun effet
-immédiat. Il vous faut donc mettre la commande qui fixe 'langmenu' dans votre
+   L'option 'langmenu' doit Ãªtre fixÃ©e avant le chargement des menus. Une
+fois les menus dÃ©finis, le changement de l'option 'langmenu' n'a aucun effet
+immÃ©diat. Il vous faut donc mettre la commande qui fixe 'langmenu' dans votre
 fichier vimrc.
-   Si vous voulez quand même changer la langue des menus sans quitter Vim,
+   Si vous voulez quand mÃªme changer la langue des menus sans quitter Vim,
 vous pouvez le faire ainsi : >
 
 	:source $VIMRUNTIME/delmenu.vim
 	:set langmenu=de_DE.ISO_8859-1
 	:source $VIMRUNTIME/menu.vim
 
-Il y a un inconvénient : la disparition de tous les menus que vous avez
-définis vous-même. Vous devrez également les redéfinir.
+Il y a un inconvÃ©nient : la disparition de tous les menus que vous avez
+dÃ©finis vous-mÃªme. Vous devrez Ã©galement les redÃ©finir.
 
 
-TRADUIRE SOI-MÊME LES MENUS
+TRADUIRE SOI-MÃŠME LES MENUS
 
-Pour voir les langues dans lesquelles les menus ont été traduits, regardez
-dans ce répertoire :
+Pour voir les langues dans lesquelles les menus ont Ã©tÃ© traduits, regardez
+dans ce rÃ©pertoire :
 
 	$VIMRUNTIME/lang ~
 
-Les fichiers sont nommés "menu_{langue}.vim". Si vous ne trouvez pas la langue
-que vous voulez utiliser, vous pouvez effectuer la traduction vous-même. Le
+Les fichiers sont nommÃ©s "menu_{langue}.vim". Si vous ne trouvez pas la langue
+que vous voulez utiliser, vous pouvez effectuer la traduction vous-mÃªme. Le
 plus simple est de copier l'une des traductions existantes puis de la
 modifier.
-   Tout d'abord déterminez le nom de votre langue avec la commande
+   Tout d'abord dÃ©terminez le nom de votre langue avec la commande
 ":language". Utilisez ce nom, mais avec toutes les lettres en minuscules.
-Ensuite, copiez le fichier dans votre répertoire de support personnel, tel que
-défini au début de 'runtimepath'. Par exemple, sous Unix, vous procéderiez
+Ensuite, copiez le fichier dans votre rÃ©pertoire de support personnel, tel que
+dÃ©fini au dÃ©but de 'runtimepath'. Par exemple, sous Unix, vous procÃ©deriez
 comme suit : >
 
 	:!cp $VIMRUNTIME/lang/menu_ko_kr.euckr.vim ~/.vim/lang/menu_nl_be.iso_8859-1.vim
@@ -143,88 +143,88 @@ Vous trouverez des conseils pour la traduction dans
 "$VIMRUNTIME/lang/README.txt".
 
 ==============================================================================
-*45.3*	Utiliser un encodage différent
+*45.3*	Utiliser un encodage diffÃ©rent
 
-Vim suppose que les fichiers que vous allez éditer sont encodés pour votre
-langue. Pour bon nombre de langues européennes, il s'agit de "latin1", pour
-lequel chaque octet correspond à un caractère. Cela signifie qu'il existe 256
-différents caractères possibles. Pour les langues asiatiques, ce n'est pas
-suffisant. La plupart du temps, ces langues utilisent un encodage à deux
-octets (double-octet), ce qui leur permet plus de dix mille caractères. Mais
+Vim suppose que les fichiers que vous allez Ã©diter sont encodÃ©s pour votre
+langue. Pour bon nombre de langues europÃ©ennes, il s'agit de "latin1", pour
+lequel chaque octet correspond Ã  un caractÃ¨re. Cela signifie qu'il existe 256
+diffÃ©rents caractÃ¨res possibles. Pour les langues asiatiques, ce n'est pas
+suffisant. La plupart du temps, ces langues utilisent un encodage Ã  deux
+octets (double-octet), ce qui leur permet plus de dix mille caractÃ¨res. Mais
 ce n'est toujours pas suffisant lorsqu'un texte contient plusieurs langues
-différentes. C'est là qu'intervient Unicode. Unicode a été conçu pour inclure
-tous les caractères utilisés de la plupart des langues usuelles. C'est le «
-super encodage qui remplace tous les autres ». Mais pour le moment, il n'est
-pas tellement utilisé.
+diffÃ©rentes. C'est lÃ  qu'intervient Unicode. Unicode a Ã©tÃ© conÃ§u pour inclure
+tous les caractÃ¨res utilisÃ©s de la plupart des langues usuelles. C'est le Â«
+super encodage qui remplace tous les autres Â». Mais pour le moment, il n'est
+pas tellement utilisÃ©.
    Heureusement, Vim supporte ces trois types d'encodage. Et vous pouvez les
-utiliser même lorsque votre environnement est configuré pour une autre langue
+utiliser mÃªme lorsque votre environnement est configurÃ© pour une autre langue
 que celle du texte, avec quelques restrictions.
-   Quoi qu'il en soit lorsque vous éditez des fichiers qui sont encodés dans
-votre langue, le comportement de Vim par défaut devrait convenir, sans que
-vous ayez à le modifier. Ce qui suit n'est intéressant que si vous voulez
-éditer des langues différentes.
+   Quoi qu'il en soit lorsque vous Ã©ditez des fichiers qui sont encodÃ©s dans
+votre langue, le comportement de Vim par dÃ©faut devrait convenir, sans que
+vous ayez Ã  le modifier. Ce qui suit n'est intÃ©ressant que si vous voulez
+Ã©diter des langues diffÃ©rentes.
 
 	NOTE :
-	L'utilisation d'encodages différents fonctionne uniquement lorsque Vim
-	a été compilé pour le supporter. Pour déterminer si c'est le cas,
+	L'utilisation d'encodages diffÃ©rents fonctionne uniquement lorsque Vim
+	a Ã©tÃ© compilÃ© pour le supporter. Pour dÃ©terminer si c'est le cas,
 	utilisez la commande ":version" et cherchez "+multi_byte" dans la
-	réponse. Si vous le trouvez, c'est bon. Si vous voyez "-multi_byte",
+	rÃ©ponse. Si vous le trouvez, c'est bon. Si vous voyez "-multi_byte",
 	vous devrez trouver un autre Vim.
 
 
 UTILISER UNICODE DANS L'IHM GRAPHIQUE
 
 L'avantage d'Unicode est que l'on peut facilement convertir n'importe quel
-encodage vers celui-là, et vice versa, sans perte d'information. Quand vous
-configurez Vim pour qu'il utilise Unicode en interne, vous pouvez éditer des
+encodage vers celui-lÃ , et vice versa, sans perte d'information. Quand vous
+configurez Vim pour qu'il utilise Unicode en interne, vous pouvez Ã©diter des
 fichiers dans n'importe quel encodage.
-   Malheureusement, le nombre de systèmes qui supportent Unicode reste
-toujours limité. Il est donc improbable que votre langue l'utilise. Vous devez
-indiquer à Vim que vous voulez utiliser Unicode, et comment s'interfacer avec
-le reste du système.
-   Commençons par la version IHM graphique de Vim, qui est capable d'afficher
-des caractères Unicode. Ceci devrait fonctionner : >
+   Malheureusement, le nombre de systÃ¨mes qui supportent Unicode reste
+toujours limitÃ©. Il est donc improbable que votre langue l'utilise. Vous devez
+indiquer Ã  Vim que vous voulez utiliser Unicode, et comment s'interfacer avec
+le reste du systÃ¨me.
+   CommenÃ§ons par la version IHM graphique de Vim, qui est capable d'afficher
+des caractÃ¨res Unicode. Ceci devrait fonctionner : >
 
 	:set encoding=utf-8
 	:set guifont=-misc-fixed-medium-r-normal--18-120-100-100-c-90-iso10646-1
 
-L'option 'encoding' indique à Vim l'encodage des caractères que vous utilisez.
-Cela s'applique au texte dans les tampons (les fichiers que vous êtes en train
-d'éditer), les registres, les scripts Vim, etc. Vous pouvez considérer la
+L'option 'encoding' indique Ã  Vim l'encodage des caractÃ¨res que vous utilisez.
+Cela s'applique au texte dans les tampons (les fichiers que vous Ãªtes en train
+d'Ã©diter), les registres, les scripts Vim, etc. Vous pouvez considÃ©rer la
 valeur de 'encoding' comme l'encodage interne de Vim.
-   Cet exemple présuppose que vous possédez cette police sur votre système. Le
-nom de la police concerne le système X Window. Cette police se trouve dans un
-paquetage permettant d'ajouter à xterm le support Unicode. Si vous ne possédez
-pas cette police, vous la trouverez peut-être ici :
+   Cet exemple prÃ©suppose que vous possÃ©dez cette police sur votre systÃ¨me. Le
+nom de la police concerne le systÃ¨me X Window. Cette police se trouve dans un
+paquetage permettant d'ajouter Ã  xterm le support Unicode. Si vous ne possÃ©dez
+pas cette police, vous la trouverez peut-Ãªtre ici :
 
 	http://www.cl.cam.ac.uk/~mgk25/download/ucs-fonts.tar.gz ~
 
-Pour MS-Windows, certaines polices ont un nombre limité de caractères Unicode.
+Pour MS-Windows, certaines polices ont un nombre limitÃ© de caractÃ¨res Unicode.
 Essayez d'utiliser la police "Courier New". Vous pouvez utiliser le menu
-Edition/Sélectionner la Police... pour sélectionner et tester les polices
-disponibles. Cela étant, seules les polices à espacement constant peuvent être
-utilisées. Exemple : >
+Edition/SÃ©lectionner la Police... pour sÃ©lectionner et tester les polices
+disponibles. Cela Ã©tant, seules les polices Ã  espacement constant peuvent Ãªtre
+utilisÃ©es. Exemple : >
 
 	:set guifont=courier_new:h12
 
 Si cela ne fonctionne pas, essayez de vous procurer un paquetage de polices.
-Si Microsoft ne l'a pas déplacé, voyez à cette adresse :
+Si Microsoft ne l'a pas dÃ©placÃ©, voyez Ã  cette adresse :
 
 	http://www.microsoft.com/typography/fontpack/default.htm ~
 
-Maintenant vous avez indiqué à Vim d'utiliser Unicode en interne et d'afficher
-le texte avec une police Unicode. Les caractères saisis au clavier arrivent
-toujours avec l'encodage de votre langue de départ. Il faut les convertir en
-Unicode. Indiquez à Vim la langue depuis laquelle effectuer la conversion avec
+Maintenant vous avez indiquÃ© Ã  Vim d'utiliser Unicode en interne et d'afficher
+le texte avec une police Unicode. Les caractÃ¨res saisis au clavier arrivent
+toujours avec l'encodage de votre langue de dÃ©part. Il faut les convertir en
+Unicode. Indiquez Ã  Vim la langue depuis laquelle effectuer la conversion avec
 l'option 'termencoding'. Vous pouvez le faire comme suit : >
 
 	:let &termencoding = &encoding
 	:set encoding=utf-8
 
-Ceci assigne l'ancienne valeur de 'encoding' à 'termencoding', avant de fixer
-'encoding' à UTF-8. Vous devrez tester si cela fonctionne vraiment pour votre
-configuration. Cela devrait particulièrement bien fonctionner si vous utilisez
-la méthode de saisie d'une langue asiatique, et que vous voulez éditer le
+Ceci assigne l'ancienne valeur de 'encoding' Ã  'termencoding', avant de fixer
+'encoding' Ã  UTF-8. Vous devrez tester si cela fonctionne vraiment pour votre
+configuration. Cela devrait particuliÃ¨rement bien fonctionner si vous utilisez
+la mÃ©thode de saisie d'une langue asiatique, et que vous voulez Ã©diter le
 texte en Unicode.
 
 
@@ -232,224 +232,224 @@ UTILISER UNICODE DANS UN TERMINAL UNICODE
 
 Il existe des terminaux qui supportent Unicode directement. Le xterm standard
 fourni avec XFree86 en fait partie. Utilisons-le comme exemple.
-   Tout d'abord, `xterm` doit avoir été compilé avec le support Unicode. Voir
-|UTF8-xterm| pour savoir comment vérifier si c'est le cas et comment le
+   Tout d'abord, `xterm` doit avoir Ã©tÃ© compilÃ© avec le support Unicode. Voir
+|UTF8-xterm| pour savoir comment vÃ©rifier si c'est le cas et comment le
 compiler si besoin est.
-   Lancez un xterm avec l'argument "-u8". Il se peut que vous deviez également
+   Lancez un xterm avec l'argument "-u8". Il se peut que vous deviez Ã©galement
 indiquer une police. Exemple : >
 
    xterm -u8 -fn -misc-fixed-medium-r-normal--18-120-100-100-c-90-iso10646-1
 
-À présent vous pouvez démarrer Vim dans ce terminal. Fixez 'encoding' à
-"utf-8" comme précédemment. C'est tout.
+Ã€ prÃ©sent vous pouvez dÃ©marrer Vim dans ce terminal. Fixez 'encoding' Ã 
+"utf-8" comme prÃ©cÃ©demment. C'est tout.
 
 
 UTILISER UNICODE DANS UN TERMINAL ORDINAIRE
 
 Supposons que vous vouliez travailler sur des fichiers Unicode, mais que vous
 n'ayez pas de terminal Unicode. Vous pouvez le faire avec Vim, mais dans ce
-cas les caractères non supportés par le terminal ne seront pas affichés. La
-disposition du texte sera préservée. >
+cas les caractÃ¨res non supportÃ©s par le terminal ne seront pas affichÃ©s. La
+disposition du texte sera prÃ©servÃ©e. >
 
 	:let &termencoding = &encoding
 	:set encoding=utf-8
 
-C'est la même chose que pour l'IHM graphique. Mais le fonctionnement est
-différent : Vim convertira le texte à afficher avant de l'envoyer au terminal.
-Cela évite de salir l'écran avec des caractères étranges.
-   Pour que cette méthode fonctionne, la conversion entre 'termencoding' et
-'encoding' doit être possible. Vim sait faire la conversion de latin1 vers
+C'est la mÃªme chose que pour l'IHM graphique. Mais le fonctionnement est
+diffÃ©rent : Vim convertira le texte Ã  afficher avant de l'envoyer au terminal.
+Cela Ã©vite de salir l'Ã©cran avec des caractÃ¨res Ã©tranges.
+   Pour que cette mÃ©thode fonctionne, la conversion entre 'termencoding' et
+'encoding' doit Ãªtre possible. Vim sait faire la conversion de latin1 vers
 Unicode, si bien que ce cas fonctionnera toujours. Pour les autres
-conversions, la fonctionnalité |+iconv| est requise.
-   Essayez d'éditer un fichier comportant des caractères Unicode. Vous
-remarquerez que Vim affiche un point d'interrogation (ou bien un caractère de
-soulignement, ou un autre caractère) là où se trouve un caractère que le
-terminal ne peut pas afficher. Déplacez le curseur sur un point
+conversions, la fonctionnalitÃ© |+iconv| est requise.
+   Essayez d'Ã©diter un fichier comportant des caractÃ¨res Unicode. Vous
+remarquerez que Vim affiche un point d'interrogation (ou bien un caractÃ¨re de
+soulignement, ou un autre caractÃ¨re) lÃ  oÃ¹ se trouve un caractÃ¨re que le
+terminal ne peut pas afficher. DÃ©placez le curseur sur un point
 d'interrogation et utilisez cette commande : >
 
 	ga
 
-Vim affichera une ligne indiquant le code du caractère, ce qui vous permet de
-savoir de quel caractère il s'agit. Vous pouvez le chercher dans une liste
-Unicode. En fait, vous pourriez visualiser un fichier de cette manière, si
+Vim affichera une ligne indiquant le code du caractÃ¨re, ce qui vous permet de
+savoir de quel caractÃ¨re il s'agit. Vous pouvez le chercher dans une liste
+Unicode. En fait, vous pourriez visualiser un fichier de cette maniÃ¨re, si
 vous aviez beaucoup de temps devant vous.
 
 	NOTE :
-	Étant donné que 'encoding' est utilisé pour la totalité du texte dans
+	Ã‰tant donnÃ© que 'encoding' est utilisÃ© pour la totalitÃ© du texte dans
 	Vim, sa modification rend tout texte non-ASCII invalide. Vous le
 	constaterez en utilisant les registres et le fichier 'viminfo'
-	(p. ex., un motif de recherche mémorisé). Il est recommandé de fixer
+	(p. ex., un motif de recherche mÃ©morisÃ©). Il est recommandÃ© de fixer
 	'encoding' dans votre fichier vimrc, et de ne plus y toucher.
 
 ==============================================================================
-*45.4*	Éditer des fichiers avec un encodage différent
+*45.4*	Ã‰diter des fichiers avec un encodage diffÃ©rent
 
-Supposons que vous ayez configuré Vim pour utiliser Unicode, et que vous
-vouliez éditer un fichier encodé en 16-bits. Cela paraît simple, non ? Eh bien
+Supposons que vous ayez configurÃ© Vim pour utiliser Unicode, et que vous
+vouliez Ã©diter un fichier encodÃ© en 16-bits. Cela paraÃ®t simple, non ? Eh bien
 en fait, Vim utilise en interne l'encodage UTF-8, c'est pourquoi l'encodage
-16-bits doit être converti. Ainsi il y a une différence entre le jeu de
-caractères (Unicode) et l'encodage (UTF-8 ou 16-bits).
-   Vim essaye de détecter le type de fichier que vous éditez. Il utilise les
-noms d'encodage dans l'option 'fileencodings'. Lorsqu'Unicode est utilisé, la
-valeur par défaut est : "ucs-bom,utf-8,latin1". Cela signifie que Vim examine
+16-bits doit Ãªtre converti. Ainsi il y a une diffÃ©rence entre le jeu de
+caractÃ¨res (Unicode) et l'encodage (UTF-8 ou 16-bits).
+   Vim essaye de dÃ©tecter le type de fichier que vous Ã©ditez. Il utilise les
+noms d'encodage dans l'option 'fileencodings'. Lorsqu'Unicode est utilisÃ©, la
+valeur par dÃ©faut est : "ucs-bom,utf-8,latin1". Cela signifie que Vim examine
 le fichier pour voir si l'encodage est l'un des suivants :
 
 	ucs-bom		Le fichier doit commencer par une marque d'encodage
 			(BOM, pour [Byte Order Mark]), ce qui permet la
-			détection des encodages Unicode 16-bits, 32-bits et
+			dÃ©tection des encodages Unicode 16-bits, 32-bits et
 			UTF-8.
-	utf-8		Unicode UTF-8. Cet encodage est rejeté lorsqu'une
-			séquence d'octets est illégale en UTF-8.
+	utf-8		Unicode UTF-8. Cet encodage est rejetÃ© lorsqu'une
+			sÃ©quence d'octets est illÃ©gale en UTF-8.
 	latin1		Le bon vieil encodage 8-bits. Fonctionne dans tous les
 			cas.
 
-Lorsque vous commencez à éditer un fichier Unicode 16-bits qui comporte une
-marque d'encodage, Vim le détecte et le convertit en UTF-8 lors de la lecture.
-L'option 'fileencoding' (sans 's' à la fin) est fixée à la valeur détectée.
-Dans ce cas il s'agit de "ucs-2le", c.-à-d. Unicode, deux octets et petit
+Lorsque vous commencez Ã  Ã©diter un fichier Unicode 16-bits qui comporte une
+marque d'encodage, Vim le dÃ©tecte et le convertit en UTF-8 lors de la lecture.
+L'option 'fileencoding' (sans 's' Ã  la fin) est fixÃ©e Ã  la valeur dÃ©tectÃ©e.
+Dans ce cas il s'agit de "ucs-2le", c.-Ã -d. Unicode, deux octets et petit
 boutiste ([Little Endian]). Ce format de fichier est usuel sur MS-Windows (p.
 ex., les fichiers pour la base de registre).
-   À l'enregistrement du fichier, Vim comparera 'fileencoding' avec
-'encoding'. En cas de différence, le texte sera converti.
-   Si 'fileencoding' est vide, cela signifie qu'aucune conversion ne doit être
-effectuée. Dans ce cas, Vim part du principe que le fichier est encodé avec
+   Ã€ l'enregistrement du fichier, Vim comparera 'fileencoding' avec
+'encoding'. En cas de diffÃ©rence, le texte sera converti.
+   Si 'fileencoding' est vide, cela signifie qu'aucune conversion ne doit Ãªtre
+effectuÃ©e. Dans ce cas, Vim part du principe que le fichier est encodÃ© avec
 'encoding'.
 
-Si la valeur par défaut de 'fileencodings' ne vous convient pas, vous pouvez y
+Si la valeur par dÃ©faut de 'fileencodings' ne vous convient pas, vous pouvez y
 mettre les encodages que vous voulez faire essayer par Vim. C'est seulement
-lorsqu'une valeur apparaît comme invalide que Vim passe à la suivante. Mettre
-"latin1" en premier n'est pas une bonne idée, car ce n'est jamais illégal. Par
+lorsqu'une valeur apparaÃ®t comme invalide que Vim passe Ã  la suivante. Mettre
+"latin1" en premier n'est pas une bonne idÃ©e, car ce n'est jamais illÃ©gal. Par
 exemple, pour se rabattre sur le japonais lorsque le fichier n'a pas de marque
-d'encodage et n'est pas encodé en UTF-8 : >
+d'encodage et n'est pas encodÃ© en UTF-8 : >
 
 	:set fileencodings=ucs-bom,utf-8,sjis
 
 Voir |encoding-values| pour des suggestions. D'autres valeurs devraient
-également fonctionner, selon les conversions disponibles.
+Ã©galement fonctionner, selon les conversions disponibles.
 
 
 FORCER UN ENCODAGE
 
-Si la détection automatique de l'encodage échoue, vous devez indiquer à Vim
+Si la dÃ©tection automatique de l'encodage Ã©choue, vous devez indiquer Ã  Vim
 l'encodage du fichier. Exemple : >
 
 	:edit ++enc=koi8-r russe.txt
 
-"++enc" permet de définir l'encodage à utiliser pour ce fichier uniquement.
-Vim convertira le fichier depuis l'encodage spécifié, russe dans cet exemple,
-vers 'encoding'. 'fileencoding' sera également fixé à l'encodage spécifié,
-afin que la conversion inverse puisse être effectuée lors de l'enregistrement
+"++enc" permet de dÃ©finir l'encodage Ã  utiliser pour ce fichier uniquement.
+Vim convertira le fichier depuis l'encodage spÃ©cifiÃ©, russe dans cet exemple,
+vers 'encoding'. 'fileencoding' sera Ã©galement fixÃ© Ã  l'encodage spÃ©cifiÃ©,
+afin que la conversion inverse puisse Ãªtre effectuÃ©e lors de l'enregistrement
 du fichier.
-   Le même argument peut s'appliquer pour enregistrer un fichier. Vous pouvez
+   Le mÃªme argument peut s'appliquer pour enregistrer un fichier. Vous pouvez
 ainsi utiliser Vim pour convertir un fichier. Exemple : >
 
 	:write ++enc=utf-8 russe.txt
 <
 	NOTE :
-	La conversion peut entraîner une perte de caractères. La plupart du
-	temps, la conversion d'un encodage donné en Unicode et vice versa n'a
-	pas ce problème, pour peu qu'il n'y ait aucun caractère illégal. La
-	conversion depuis Unicode vers d'autres encodages entraîne souvent des
+	La conversion peut entraÃ®ner une perte de caractÃ¨res. La plupart du
+	temps, la conversion d'un encodage donnÃ© en Unicode et vice versa n'a
+	pas ce problÃ¨me, pour peu qu'il n'y ait aucun caractÃ¨re illÃ©gal. La
+	conversion depuis Unicode vers d'autres encodages entraÃ®ne souvent des
 	pertes d'information lorsque le fichier contient plusieurs langues.
 
 ==============================================================================
-*45.5*	Saisir du texte dans une langue donnée
+*45.5*	Saisir du texte dans une langue donnÃ©e
 
-Les claviers d'ordinateur ont à peine plus de cent touches. Certaines langues
-possèdent des milliers de caractères, Unicode en a dix mille. Dans ces
-conditions, comment saisir ces caractères ?
-   Tout d'abord, si vous n'utilisez pas trop de caractères spéciaux, vous
-pouvez utiliser les digrammes. Ce sujet a déjà été traité, voir |24.9|.
-   Lorsque vous écrivez dans une langue qui comporte bien plus de caractères
-que de touches sur votre clavier, vous aurez à utiliser une méthode de saisie
-[N.D.T. : "Input Method" ou IM]. Cela nécessite d'apprendre la correspondance
-entre des touches pressées et le caractère associé. Si vous avez besoin d'une
-méthode de saisie, vous en avez probablement déjà une sur votre système, qui
+Les claviers d'ordinateur ont Ã  peine plus de cent touches. Certaines langues
+possÃ¨dent des milliers de caractÃ¨res, Unicode en a dix mille. Dans ces
+conditions, comment saisir ces caractÃ¨res ?
+   Tout d'abord, si vous n'utilisez pas trop de caractÃ¨res spÃ©ciaux, vous
+pouvez utiliser les digrammes. Ce sujet a dÃ©jÃ  Ã©tÃ© traitÃ©, voir |24.9|.
+   Lorsque vous Ã©crivez dans une langue qui comporte bien plus de caractÃ¨res
+que de touches sur votre clavier, vous aurez Ã  utiliser une mÃ©thode de saisie
+[N.D.T. : "Input Method" ou IM]. Cela nÃ©cessite d'apprendre la correspondance
+entre des touches pressÃ©es et le caractÃ¨re associÃ©. Si vous avez besoin d'une
+mÃ©thode de saisie, vous en avez probablement dÃ©jÃ  une sur votre systÃ¨me, qui
 devrait fonctionner pour Vim comme pour les autres programmes. Pour plus de
-détails, voir |mbyte-XIM| pour le système X Window et |mbyte-IME| pour
+dÃ©tails, voir |mbyte-XIM| pour le systÃ¨me X Window et |mbyte-IME| pour
 MS-Windows.
 
 
 CODAGES CLAVIER
 
-Certaines langues utilisent un jeu de caractères non latin, mais qui compte à
-peu près autant de caractères. Il est possible de mapper les touches aux
-caractères. Pour ce faire Vim utilise les codages clavier.
-   Supposons que vous vouliez saisir de l'hébreu. Vous pouvez charger le
+Certaines langues utilisent un jeu de caractÃ¨res non latin, mais qui compte Ã 
+peu prÃ¨s autant de caractÃ¨res. Il est possible de mapper les touches aux
+caractÃ¨res. Pour ce faire Vim utilise les codages clavier.
+   Supposons que vous vouliez saisir de l'hÃ©breu. Vous pouvez charger le
 codage clavier ainsi : >
 
 	:set keymap=hebrew
 
 Vim essaye de trouver le codage clavier pour vous, en fonction de la valeur de
-'encoding'. Si aucun fichier approprié n'est trouvé, vous obtiendrez un
+'encoding'. Si aucun fichier appropriÃ© n'est trouvÃ©, vous obtiendrez un
 message d'erreur.
 
-Maintenant, vous pouvez taper de l'hébreu en mode Insertion. En mode Normal,
+Maintenant, vous pouvez taper de l'hÃ©breu en mode Insertion. En mode Normal,
 et lorsque vous saisissez une commande ":", Vim passe automatiquement en mode
-latin. Vous pouvez utiliser cette commande pour passer de l'hébreu au latin,
+latin. Vous pouvez utiliser cette commande pour passer de l'hÃ©breu au latin,
 et vice versa : >
 
 	CTRL-^
 
 Cela ne fonctionne que dans les modes Insertion et Ligne-de-commande. En mode
-Normal, le résultat est complètement différent (Vim saute au fichier
+Normal, le rÃ©sultat est complÃ¨tement diffÃ©rent (Vim saute au fichier
 alternatif).
-   L'utilisation du codage clavier est indiquée dans le message de mode, si
-l'option 'showmode' est activée. Dans l'IHM graphique, Vim vous indiquera
-l'utilisation d'un codage clavier avec un curseur de couleur différente.
-   Vous pouvez également modifier l'activation automatique d'un codage clavier
+   L'utilisation du codage clavier est indiquÃ©e dans le message de mode, si
+l'option 'showmode' est activÃ©e. Dans l'IHM graphique, Vim vous indiquera
+l'utilisation d'un codage clavier avec un curseur de couleur diffÃ©rente.
+   Vous pouvez Ã©galement modifier l'activation automatique d'un codage clavier
 avec les options 'iminsert' et 'imsearch'.
 
 Pour voir la liste des mappages, utilisez cette commande : >
 
 	:lmap
 
-Dans l'IHM graphique, pour déterminer quels fichiers de codage clavier sont
+Dans l'IHM graphique, pour dÃ©terminer quels fichiers de codage clavier sont
 disponibles, vous pouvez utiliser le menu Edition/Codage Clavier XXX. Autrement
 vous pouvez utiliser cette commande : >
 
 	:echo globpath(&rtp, "keymap/*.vim")
 
 
-CRÉER SES PROPRES CODAGES CLAVIER
+CRÃ‰ER SES PROPRES CODAGES CLAVIER
 
-Vous pouvez créer votre propre fichier de codage clavier. Ce n'est pas très
-difficile. Partez d'un fichier de codage clavier similaire à la langue que
-vous voulez utiliser. Copiez-le dans le répertoire "keymap" de votre
-répertoire de support personnel. Par exemple sous Unix, vous utiliseriez le
-répertoire "~/.vim/keymap".
-   Le nom du fichier de codage clavier doit ressembler à cela :
+Vous pouvez crÃ©er votre propre fichier de codage clavier. Ce n'est pas trÃ¨s
+difficile. Partez d'un fichier de codage clavier similaire Ã  la langue que
+vous voulez utiliser. Copiez-le dans le rÃ©pertoire "keymap" de votre
+rÃ©pertoire de support personnel. Par exemple sous Unix, vous utiliseriez le
+rÃ©pertoire "~/.vim/keymap".
+   Le nom du fichier de codage clavier doit ressembler Ã  cela :
 
 	keymap/{nom}.vim ~
 ou
 	keymap/{nom}_{encodage}.vim ~
 
 {nom} est le nom du codage clavier. Choisissez un nom aussi simple que
-possible, mais différent des codages clavier déjà existants (à moins que vous
-ne vouliez remplacer un fichier de codage clavier déjà présent). {nom} ne doit
-pas contenir de caractère de soulignement ('_'). Éventuellement, ajoutez
-l'encodage à utiliser après un caractère de soulignement. Exemples :
+possible, mais diffÃ©rent des codages clavier dÃ©jÃ  existants (Ã  moins que vous
+ne vouliez remplacer un fichier de codage clavier dÃ©jÃ  prÃ©sent). {nom} ne doit
+pas contenir de caractÃ¨re de soulignement ('_'). Ã‰ventuellement, ajoutez
+l'encodage Ã  utiliser aprÃ¨s un caractÃ¨re de soulignement. Exemples :
 
 	keymap/hebrew.vim ~
 	keymap/hebrew_utf-8.vim ~
 
-Le contenu du fichier se comprend de lui-même. Examinez quelques-uns des
-fichiers de codage clavier distribués avec Vim. Pour les détails, voir
+Le contenu du fichier se comprend de lui-mÃªme. Examinez quelques-uns des
+fichiers de codage clavier distribuÃ©s avec Vim. Pour les dÃ©tails, voir
 |mbyte-keymap|.
 
 
 DERNIER RECOURS
 
-Si toutes les autres méthodes échouent, vous pouvez entrer n'importe quel
-caractère avec CTRL-V :
+Si toutes les autres mÃ©thodes Ã©chouent, vous pouvez entrer n'importe quel
+caractÃ¨re avec CTRL-V :
 
 	ENCODAGE   SAISIE		PLAGE ~
-	8-bits	   CTRL-V 123		décimal 0-255
-	8-bits	   CTRL-V x a1		hexadécimal 00-ff
-	16-bits	   CTRL-V u 013b	hexadécimal 0000-ffff
-	31-bits	   CTRL-V U 001303a4	hexadécimal 00000000-7fffffff
+	8-bits	   CTRL-V 123		dÃ©cimal 0-255
+	8-bits	   CTRL-V x a1		hexadÃ©cimal 00-ff
+	16-bits	   CTRL-V u 013b	hexadÃ©cimal 0000-ffff
+	31-bits	   CTRL-V U 001303a4	hexadÃ©cimal 00000000-7fffffff
 
-Ne saisissez pas les espaces. Voir |i_CTRL-V_digit| pour plus de détails.
+Ne saisissez pas les espaces. Voir |i_CTRL-V_digit| pour plus de dÃ©tails.
 
 ==============================================================================
 
