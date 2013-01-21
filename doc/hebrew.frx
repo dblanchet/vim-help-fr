@@ -1,0 +1,178 @@
+﻿*hebrew.txt*  Pour Vim version 6.2  Dernière modification : 11 mai 2003
+
+
+	  MANUEL de RÉFÉRENCE VIM - par Ron Aaron (et Avner Lottem)
+
+
+								*hebrew*
+Support linguistique de l'hébreu (options et mappages) pour Vim
+
+[NOTE du traducteur : Le présent fichier d'aide ne sera visualisé correctement
+qu'en UTF-8 : voir |Unicode| et la section de la FAQ commençant à 
+	http://vimdoc.sourceforge.net/cgi-bin/vimfaq2html3.pl#35.1 ~
+]
+
+La fonctionnalité 'rightleft' sous-jacente fut créée à l'origine par Avner
+Lottem :
+	courriel :	alottem@iil.intel.com
+	Téléphone :	+972-4-8307322
+
+Ron Aaron <ronaharon@yahoo.com> aide à présent au développement de ces
+fonctionnalités.
+
+[N.D.T. : le traducteur ne garantit pas que l'un ou l'autre de ces auteurs
+comprenne le français.]
+
+{Vi ne possède aucune de ces commandes}
+
+Tout ceci n'est disponible que lorsque la fonctionnalité |+rightleft| a été
+activée lors de la compilation.
+
+
+Introduction
+------------
+Les options spécifiques à l'hébreu sont 'hkmap', 'hkmapp', 'keymap'=hebrew et
+'aleph'. D'autres options utiles pour l'hébreu sont 'delcombine',
+'allowrevins', 'revins', 'rightleft' et 'rightleftcmd'.
+
+Le mode 'rightleft' (droite-gauche) inverse l'ordre d'affichage des caractères
+à l'écran : ils sont alors affichés de droite à gauche au lieu de l'être de
+gauche à droite. Cette fonctionnalité est utile principalement pour l'édition
+de textes en hébreu ou dans certaines autres langues du Proche et du
+Moyen-Orient. Pour plus de détails, voir |rileft.txt|
+
+Détails
+-------
++  Options :
+   +  'rightleft' ('rl') [édition de droite à gauche] impose à la fenêtre une
+      orientation de droite à gauche. Ceci signifie que le « texte logique »
+      "ABC" sera affiché "CBA" et partira de la marge droite de l'écran.
+   +  'hkmap' ('hk') mappe le clavier pour l'hébreu, dans les modes Insertion
+      et Remplacement. Si le clavier latin sous-jacent est de type QWERTY, on
+      obtient alors un clavier hébreu semblable à celui des machines à écrire
+      d'Israël.
+   +  'aleph' ('al') est une option numérique qui définit la valeur décimale
+      de la lettre Aleph, pour le mappage du clavier.
+   +  'hkmapp' ('hkp') mappe le clavier en « hébreu phonétique ».
+
+   NOTE : Les trois options qui précèdent ('hkmap', 'hkmapp' et 'aleph') sont
+   obsolètes. Il vaut mieux utiliser ":set keymap=hebrewp".
+
+   +  'delcombine' ('deco'), option booléenne, permet, lors de l'édition de
+      textes en hébreu encodés en UTF-8, de supprimer le niqud ou les te'amim
+      d'un caractère qui en est pourvu, simplement en y plaçant le curseur et
+      en appuyant sur "x".
+
+   +  'rightleftcmd' ('rlc') applique l'affichage de droite à gauche aux
+      commandes de recherche. Le point d'interrogation ou la barre oblique
+      lançant la recherche apparaissent alors à la marge droite. Cette option
+      n'a d'effet qu'à partir d'une fenêtre en mode 'rightleft'.
+
++  Encodage :
+   +  Sous Unix, avec l'encodage ISO-8859-8, les lettres hébraïques ont les
+      valeurs 224 à 250.
+   +  Sous MS-DOS, avec l'encodage PC, les lettres hébraïques ont les valeurs
+      128 à 154.
+   +  Il s'agit là de valeurs par défaut, que l'option 'aleph' permet de
+      recouvrir.
+   +  Une possibilité plus moderne et plus puissante consiste à utiliser un
+      encodage |Unicode|, ce qui permet :
+      +  de saisir dans un même fichier des caractères appartenant à
+         plusieurs écritures différentes (hébreu, arabe, grec,...);
+      +  d'utiliser des caractères de composition (voyelles hébraïques par
+	 exemple). L'option 'delcombine' n'a pas d'effet en dehors des
+	 encodages de la famille |Unicode|.
+
++  Options de lancement :
+   +  `vim -H nomfich` lance l'édition d'un fichier en hébreu, en activant
+      les options 'rightleft' et 'hkmap'.
+
++  Clavier :
+   +  L'option 'allowrevins' autorise la commande CTRL-_ en mode Insertion et
+      en mode Commande.
+
+   +  CTRL-_ en mode Insertion ou Remplacement bascule comme suit les
+      options 'revins' et 'hkmap' :
+
+	Dans une fenêtre orientée de droite à gauche ('rightleft'), 'revins'
+	et 'nohkmap' basculent, de manière à permettre l'insertion de texte en
+	caractères latins ;
+
+	Dans une fenêtre orientée de gauche à droite ('norightleft'), 'revins'
+	et 'hkmap' basculent, de manière à permettre l'insertion de texte
+	hébreu ;
+
+	CTRL-_ place le curseur à la fin du texte saisi.
+
+   +  En mode commande, CTRL-_ ne bascule que le mappage du clavier (voir
+      plus loin « Bogues »). Cette action est indépendante de l'option
+      'hkmap', qui n'a d'effet qu'en mode Insertion/Remplacement.
+
+      NOTE : Sur certains claviers, CTRL-_ est mappé sur CTRL-?.
+
+   +  Voici comment l'option 'hkmap' mappe un clavier QWERTY sur le clavier
+      standard en usage en Israël :
+
+	q w e r t y u i o p
+	/ ' ק ר א ט ו ן ם פ
+
+	 a s d f g h j k l ; '
+	 ש ד ג כ ע י ח ל ך ף ,
+
+	  z x c v b n m , . /
+	  ז ס ב ה נ מ צ ת ץ .
+
+      Ce clavier est aussi celui obtenu (toujours au départ d'un clavier
+      QWERTY) par ":set keymap=hebrew" (voir 'keymap'). L'avantage de cette
+      dernière méthode est qu'elle fonctionne correctement même avec les
+      encodages |Unicode|, ce que ne fait pas l'option 'hkeymap'. Le clavier
+      'keymap' permet en outre aussi l'insertion de caractères de
+      composition (niqud et te'amim). Pour voir comment ces caractères de
+      composition sont mappés, examinez le fichier de codage clavier
+      "hebrew.vim", etc.
+
+Insertion à reculons
+--------------------
+Si l'option 'revins' (insertion inversée) est activée, l'insertion se produit
+à reculons. Ceci peut être mis à profit pour la saisie de textes en hébreu. Au
+cours de la saisie, le curseur reste immobile et le texte se déplace vers la
+droite. La touche <RetArr> supprime le caractère sous le curseur. CTRL-W et
+CTRL-U fonctionnent elles aussi en sens inverse. L'action de ces trois touches
+ne s'arrête ni au début de l'insertion ni à la fin de la ligne, quelle que
+soit la valeur de l'option 'backspace'.
+
+Il n'y a pas (encore) de mode Remplacement inversé.
+
+Si l'option 'showmode' est activée, la ligne d'état affiche 
+"-- REVERSE INSERTION --" lorsque l'insertion se fait à reculons.
+
+Lorsque l'option 'allowrevins' est activée, l'insertion à reculons peut aussi
+être obtenue grâce à la touche CTRL-_, qui possède les fonctionnalités
+supplémentaires suivantes : primo, le mappage clavier est modifié en fonction
+de l'orientation de la fenêtre -- dans une fenêtre orientée de gauche à
+droite, 'revins' est activée pour permettre l'insertion de texte hébreu, le
+clavier hébreu est activé (validation de 'hkmap') ; dans une fenêtre de droite
+à gauche, 'revins' permet l'insertion de texte en caractères latins, le
+clavier hébreu est désactivé (désactivation de 'hkmap'). Secundo, lorsqu'on
+quitte l'insertion à reculons au moyen de la touche CTRL-_, le curseur saute à
+la fin du texte saisi (si possible).
+
+Collage dans une fenêtre orientée de droite à gauche
+----------------------------------------------------
+Si on coupe du texte avec la souris et qu'on le colle dans une fenêtre
+orientée de droite à gauche, le texte sera inversé, car les caractères coupés
+sont placés de gauche à droite dans le tampon de coupage, puis insérés de
+droite à gauche dans le fichier. Pour évitez cela, désactivez 'revins' (en
+appuyant sur CTRL-? ou CTRL-_) avant de coller.
+
+Les caractères hébraïques et l'option 'isprint'
+-----------------------------------------------
+Il arrive que les valeurs des caractères hébraïques se situent dans le domaine
+« non-imprimable » tel que défini par la valeur de l'option 'isprint'. Par
+exemple, en mode texte sous Linux, l'encodage des caractères hébraïques
+démarre à 128, alors que la valeur par défaut de l'option 'isprint' est
+"@,161-255". Le résultat en est que les caractères hébraïques sont représentés
+par des symboles du type ~x. Pour corriger cette erreur, faites
+":set isprint=@,128-255".
+
+ vim:tw=78:ts=8:ft=help:norl:enc=utf8:
